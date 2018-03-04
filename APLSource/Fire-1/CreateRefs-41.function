@@ -1,0 +1,6 @@
+ CreateRefs
+⍝ Create refs if possible at all.
+⍝ Tries to find needs stuff in ## first, then in ⎕SE, then it gives up.
+ A←GetRefTo'APLTreeUtils'
+ F←GetRefTo'FilesAndDirs'
+ R←GetRefTo'WinReg'

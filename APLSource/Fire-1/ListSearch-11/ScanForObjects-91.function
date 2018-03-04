@@ -1,0 +1,24 @@
+ list←ScanForObjects(list ref obj NC);data;noOf;q
+⍝ Scans "obj" for all hits of all items in "list"
+ :Select NC
+ :CaseList 3.1 4.1 3.2 4.2
+     data←ref.⎕NR obj
+ :Case 9
+     :Return                    ⍝ We don't want them twice, so we ignore the scripts
+     :If {0::0 ⋄ ⍵.KeepOnClose}⍎obj
+         data←ref.⎕NR obj
+     :Else
+         :Return
+     :EndIf
+ :CaseList 9.4 9.5
+     data←⎕SRC ref.⍎obj
+ :Else
+     data←''
+ :EndSelect
+ :If ~0∊⍴data
+     data←0⊃##.GetTextAndRest data              ⍝ Get rid of text
+     data←{'⍝'∊⍵:⍵↑⍨⍵⍳'⍝' ⋄ ⍵}¨data             ⍝ Get rid  of comments
+     data←##.A.dmb data                         ⍝ Well invested time
+     data~←⊂''                                  ⍝ Ditto
+     list[;1]+←list[;0]SearchIn(NC data)
+ :EndIf

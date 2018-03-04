@@ -1,0 +1,9 @@
+ (r flag)←HandleKey_CursorUp rl;b
+ flag←r←0
+ :If n.AutoCompleteForm.Visible
+     :If 1≠↑rl.SelItems
+         rl.SelItems←1↓rl.SelItems,0    ⍝ Select former one
+     :EndIf
+ :Else
+     r←1
+ :EndIf

@@ -1,0 +1,4 @@
+ OnInvertSelectionCmd←{
+⍝
+     n.HitList.SelItems←~n.HitList.SelItems
+ }

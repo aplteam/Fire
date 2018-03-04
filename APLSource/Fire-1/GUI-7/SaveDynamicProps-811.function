@@ -1,0 +1,16 @@
+ SaveDynamicProps←{
+⍝ Takes a ref pointing to a form. Then "Active" for all buttons of
+⍝ that form are set to 0. Next the same with all menu items.
+⍝ The original values are stored in an unnamed namespace which is
+⍝ returned as result. That can be used as right argument of
+⍝ "RestoreDynamicProps"
+     r←⎕NS''
+     r.parent←⍵
+     r.parentButtons←r.parent.(⍎¨'Button'⎕WN'')         ⍝ We need to know all buttons
+     r.saveBtnActive←r.parentButtons.Active             ⍝ Remember current state for restore
+     r.parentButtons.Active←0                           ⍝ Now make them inactive
+     r.parentMenuItems←↑,/r.parent.({⍵.{⍵.⍎¨'MenuItem'⍵.⎕WN''}¨⍵.⍎¨'Menu'⍵.⎕WN''}⍎0⊃'Menubar'⎕WN'')
+     r.saveMenuItemActive←r.parentMenuItems.Active      ⍝ Remember current state for restore
+     r.parentMenuItems.Active←0                         ⍝ Now make them inactive
+     r
+ }

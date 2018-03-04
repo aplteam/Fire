@@ -1,0 +1,25 @@
+ {n}←CreateReplacePushButtons n;∆
+⍝
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' '&Preview'
+ ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
+ ∆,←⊂'Size'(⍬ 110)
+ ∆,←⊂'Event' 'Select' 1
+ ∆,←⊂'TipObj'n.TipObj
+ ∆,←⊂'Tip'(Split'Start the Replace operation.')
+ n.StartBtn←⍎'Start'n.Form.⎕WC ∆
+ n.StartBtn.onSelect←'OnStartReplace'
+ n.StartBtn.onKeyPress←'OnKeyPressStandard'
+ n.StartBtn.Posn←(n.Form.Size[0]-n.StartBtn.Size[0]+10),10
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' 'Cancel'
+ ∆,←⊂'Posn'(n.StartBtn.Posn[0],10+1⊃PosnPlusSize n.StartBtn)
+ ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
+ ∆,←⊂'Size'(⍬ 110)
+ ∆,←⊂'Cancel' 1
+ ∆,←⊂'Event' 'Select' 1
+ n.Cancel←⍎'Cancel'n.Form.⎕WC ∆
+ n.Cancel.onSelect←'OnClose'
+ n.Cancel.onKeyPress←'OnKeyPressStandard'
+⍝Done

@@ -1,0 +1,7 @@
+ OnCopyNameToSearchFor←{
+⍝ If just one row is selected in the hit list copy name of that object to "Search For"
+     (1≠+/n.HitList.SelItems):⍬
+     n.SearchFor.Text←n.HitList.((SelItems⍳1)⊃Items)
+     n.(ReplaceBtn ReportHits).Active←0
+     ⍬
+ }

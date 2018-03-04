@@ -1,0 +1,32 @@
+ r←ExecuteContextCommand(cmd rows)
+⍝ Executes the context menu command "cmd" selected by the user.
+⍝ "rows" are the selected rows in the list
+ r←0
+ :Select cmd
+ :Case 'mm.cancel'
+     :Return
+ :Case 'mm.edit'
+     {}EditCmd ⍬
+ :Case 'mm.remove'
+     {}RemoveFromHitList rows
+ :Case 'mm.delete'
+     {}DeleteFromWorkspaceAndList rows
+ :Case 'mm.saveSelection'
+     {}SaveSelectedObjects rows
+ :Case 'mm.printNames'
+     {}PrintNamesFromHitList rows
+ :Case 'mm.copyName'
+     {}OnCopyNameToSearchFor ⍬
+ :Case 'mm.copyPath'
+     {}OnCopyPathToStartLookingHere ⍬
+ :Case 'mm.namespaceList'
+     NamespaceList.Run
+ :Case 'mm.allOfThis'
+     RemoveAllInCertainNamespace ⍬
+ :Case 'mm.printNames'
+     {}PrintNamesFromHitList ⍬
+ :Case 'mm.selectAll'
+     n.HitList.SelItems←(⍴n.HitList.SelItems)⍴1
+ :Else
+     . ⍝ Huhh?!
+ :EndSelect

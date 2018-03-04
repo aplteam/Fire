@@ -1,0 +1,9 @@
+ WriteInfo←{
+⍝ Writes ⍵ to the "Text" field of the status bar field "info"
+     ⍺←0
+     n.Info.Text←⍵
+     (0=⍺):⍬
+     n.Info.Text,←' in ',(⍕##.G.ProcessingTime),' seconds processing time'
+     ##.∆AI←0
+     ⍬
+ }

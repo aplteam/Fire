@@ -1,0 +1,68 @@
+ n←CreateGUI n;∆;size
+
+ ∆←⊂'Form'
+ ∆,←⊂'Caption'(##.AddPidToCaption'Fire - vars name - ',##.WSID)
+ ∆,←⊂'Size'(200 500)
+ ∆,←⊂'Coord' 'Pixel'
+ ∆,←⊂'MinButton' 0
+ ∆,←⊂'IconObj'##.GUI.n.TheIcon
+ ∆,←⊂'MinButton' 0
+ ∆,←⊂'MaxButton' 0
+ ∆,←⊂'Sizeable' 0
+ n.TheForm←⍎'TheVarsForm'##.GUI.n.Form.⎕WC ∆
+ n.TheForm.Posn←n.TheForm.Size ##.GUI.CenterIn ##.GUI.n.Form
+ n.TheForm.onKeyPress←'OnKeyPressStandard'
+ n.TheForm.onClose←'OnClose'
+
+ ∆←⊂'Label'
+ ∆,←⊂'Posn'(10 10)
+ ∆,←⊂'Caption' 'Name of the variable:'
+ 'VarsName_L'n.TheForm.⎕WC ∆
+
+ ∆←⊂'Edit'
+ ∆,←⊂'Posn'((0⊃##.GUI.PosnPlusSize n.TheForm.VarsName_L),10)
+ ∆,←⊂'FontObj'##.GUI.n.APL_Font
+ ∆,←⊂'Size'(⍬(n.TheForm.Size[1])-20)
+ n.VarsName←⍎'VarsName'n.TheForm.⎕WC ∆
+ n.VarsName.onKeyPress←'OnKeyPressStandard'
+ n.VarsName.Size[0]-←5
+
+ :If ~0∊⍴'⎕se'⎕WG'CurObj'
+ :AndIf 2=#.⎕NC'⎕se'⎕WG'CurObj'
+     n.VarsName.Text←'#.'{((⍺≢2⍴⍵)/⍺),⍵}'⎕se'⎕WG'CurObj'
+     n.VarsName.SelText←1,1+⍴,n.VarsName.Text
+ :Else
+     n.VarsName.Text←'#.'
+     n.VarsName.SelText←3 3
+ :EndIf
+
+ ∆←⊂'Label'
+ ∆,←⊂'Posn'((10+↑+⌿⊃n.VarsName.(Posn Size)),10)
+ ∆,←⊂'Caption' 'The variable must be a vector of vectors with fully-qualified names'
+ n.Info_L1←⍎'Info_L1'n.TheForm.⎕WC ∆
+
+ ∆←⊂'Label'
+ ∆,←⊂'Posn'((5+↑+⌿⊃n.Info_L1.(Posn Size)),10)
+ ∆,←⊂'Caption' 'Fire then reports how often these names are used/called.'
+ n.Info_L2←⍎'Info_L2'n.TheForm.⎕WC ∆
+
+ ∆←⊂'Button'
+ ∆,←⊂'Size'(⍬ 110)
+ ∆,←⊂'Caption' 'OK'
+ ∆,←⊂'Default' 1
+ ∆,←⊂'Posn'(⍬ 10)
+ n.OK_Btn←⍎'OK_Btn'n.TheForm.⎕WC ∆
+ n.OK_Btn.onKeyPress←'OnKeyPressStandard'
+ n.OK_Btn.onSelect←'OnRun'
+ n.OK_Btn.Posn[0]←n.TheForm.Size[0]-10+n.OK_Btn.Size[0]
+
+ ∆←⊂'Button'
+ ∆,←⊂'Size'(⍬ 110)
+ ∆,←⊂'Caption' 'Cancel'
+ ∆,←⊂'Cancel' 1
+ ∆,←⊂'Posn'((0⊃n.TheForm.Size-45),(10+1⊃##.GUI.PosnPlusSize n.OK_Btn))
+ n.Cancel_Btn←⍎'Cancel_Btn'n.TheForm.⎕WC ∆
+ n.Cancel_Btn.onKeyPress←'OnKeyPressStandard'
+ n.Cancel_Btn.onSelect←'OnClose'
+ n.Cancel_Btn.Posn[0]←n.TheForm.Size[0]-10+n.OK_Btn.Size[0]
+⍝Done

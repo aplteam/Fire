@@ -1,0 +1,5 @@
+ SetActivePropTo←{
+ ⍝ Set the "Active" property of all ⍺ controls (like "Group" on the form in one go to ⍵
+     0∊⍴l←⍺ n.Form.⎕WN'':⍬
+     0⍴(n.Form.⍎¨l).Active←⍵
+ }

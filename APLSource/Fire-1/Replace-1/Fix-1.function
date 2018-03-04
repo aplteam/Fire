@@ -1,0 +1,14 @@
+ {r}←Fix(ref name nc code i noOf)
+ ⍝ Establishes "code" under "name" in the workspace.
+ ⍝ Returns 1 when user has cancelled the proccess, otherwise 0.
+ r←0
+ :If nc∊3 4                         ⍝ Function or operator?
+     r←FixFnsOpr ref name code i noOf
+ :ElseIf nc=2
+     r←FixVars ref name code
+ :ElseIf nc=9                              ⍝ Script?
+     r←FixScript(ref name code i noOf)
+ :Else
+     ⍎(⍕ref),'.',name,'←code'
+     r←0
+ :EndIf

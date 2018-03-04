@@ -1,0 +1,49 @@
+ {r}←DisplayList(varsName hits);∆;rf;rl;info;size
+ ⍝ Show the result of a batch search
+ r←⍬
+
+ size←200 450
+ ∆←⊂'Form'
+ ∆,←⊂'Caption'(##.AddPidToCaption'Fire: Report on "',varsName)
+ ∆,←⊂'Icon'##.GUI.TheIcon
+ ∆,←⊂'Coord' 'Pixel'
+ ∆,←⊂'Size'size
+ ∆,←⊂'Visible' 0
+ rf←⍎'TheCounterForm'⎕WC ∆
+ rf.onKeyPress←'OnKeyPressInForm'
+ rf.onConfigure←'##.GUI.OnConfigure'size
+ rf.Posn←rf.Size ##.GUI.CenterIn ##.GUI.n.Form
+
+ 'SB'rf.⎕WC'Statusbar'
+
+ ∆←⊂'StatusField'
+ ∆,←⊂'Coord' 'Prop'
+ ∆,←⊂'Size'(⍬ 99)
+ info←⍎'F1'rf.SB.⎕WC ∆
+
+ ∆←⊂'ListView'
+ ∆,←⊂'Posn'(0 0)
+ ∆,←⊂'Size'(100 100)
+ ∆,←⊂'Coord' 'Prop'
+ ∆,←⊂'Font'##.GUI.n.APL_Font
+ ∆,←⊂'ColTitles'('Name  ' 'Hits ↑')
+ ∆,←⊂'View' 'Report'
+ ∆,←⊂'FullRowSelect' 1
+ ∆,←⊂'Items'(hits[;0])
+ ∆,←⊂'ReportInfo'(hits[;,1])
+ ∆,←⊂'Attach'('Top' 'Left' 'Bottom' 'Right')
+ rl←⍎'TheList'rf.⎕WC ∆
+ {rl.SetColSize ⍵ ¯3}¨⍳2
+ rl.onColumnClick←'OnSortTable'
+ rl.onKeyPress←'OnKeyPressInList'
+ rl.onContextMenu←'OnContextMenuInList'
+ rf.Sort←1 'desc'    ⍝ column and sort sequence
+ rf.Visible←1
+ rl.Coord←'Pixel'
+ rl.Size[0]-←30
+ rl.SelItems←(⍴rl.Items)⍴1
+
+ info.Text←(⍕0⊃⍴hits),' item',(1<0⊃⍴hits)/'s'
+ _←⎕NQ rl'GotFocus'
+
+⍝Done

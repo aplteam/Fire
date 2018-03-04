@@ -1,0 +1,50 @@
+ CreateObjectTypes;∆;rf;tip;msg
+ ∆←⊂'Group'
+ ∆,←⊂'Caption' 'Object types'
+ ∆,←⊂'Posn'((15+0⊃PosnPlusSize n.LookIn)),(10+1⊃PosnPlusSize n.Case.##)
+ ∆,←⊂'Size'((0⊃n.Case.##.Size),280)
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ rf←⍎'ScanGroup'n.Form.⎕WC ∆
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' '&Fns, opr and scripts'
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'Posn'(25 10)
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ ∆,←⊂'TipObj'n.TipObj
+ ∆,←⊂'Tip'(Split'Functions, operators, classes, interfaces and scripted namespaces.')
+ n.Code←⍎'Code'rf.⎕WC ∆
+ n.Code.onSelect←'OnObjectType'
+ n.Code.onKeyPress←'OnKeyPressStandard'
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' '&Variables'
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'Posn'(50 10)
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ ∆,←⊂'TipObj'n.TipObj
+ msg←'Search variables.⌹'
+ msg,←'Note that although all variables are searched⌹'
+ msg,←'(and possibly reported), the "Replace" option⌹'
+ msg,←'works only on specific types of variables:⌹'
+ msg,←'Simple text vectors and vectors of text vectors.'
+ ∆,←⊂'Tip'(Split msg)
+ n.Vars←⍎'Vars'rf.⎕WC ∆
+ n.Vars.onSelect←'OnObjectType'
+ n.Vars.onKeyPress←'OnKeyPressStandard'
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' 'Name list &only (⎕NL)'
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'Posn'(75 10)
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ ∆,←⊂'TipObj'n.TipObj
+ msg←'Searches just for names in ⎕NL.'
+ ∆,←⊂'Tip'(Split msg)
+ n.NamesOnly←⍎'NamesOnly'rf.⎕WC ∆
+ n.NamesOnly.onSelect←'OnObjectType'
+ n.NamesOnly.onKeyPress←'OnKeyPressStandard'
+
+ {}PolishWidth rf
+ {}PolishHeight rf
+⍝ Done

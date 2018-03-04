@@ -1,0 +1,4 @@
+ GetDisplayFormat←{
+⍝ Returns the current value of ⎕DF for ⍵ without actually changing it
+     ⍵{(⍺.⎕DF ⍵)⊢⍕⍺}⍵.⎕DF ⎕NULL
+ }

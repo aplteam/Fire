@@ -1,0 +1,11 @@
+ Tag←{
+⍝ Examples:
+⍝ '<p>hello</p>' ←→ Tag 'hello'
+⍝ '<h1>hello</h1>' ←→ 'h1' Tag 'hello'
+⍝ '<h1 class="this">hello</h1>' ←→ 'h1 class=this' Tag 'hello'
+     ⍺←'pre'
+     (0∊⍴⍵):''
+     tag←' '~⍨⍺↑⍨' '⍳⍨,⍺
+     attr←(⍴tag)↓⍺
+     '<',tag,attr,'>',⍵,'</',tag,'>'
+ }

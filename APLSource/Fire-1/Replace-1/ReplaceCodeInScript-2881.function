@@ -1,0 +1,17 @@
+ {r}←ReplaceCodeInScript(ref name code);script
+⍝ Replaces the old code for "name" in namespace script "ref" is pointing to _
+⍝ against "code" which represents the new (changed) code.
+⍝ Returns 1 in case the user has cancelled the process, otherwise 0
+ r←0
+ script←⎕SRC ref
+ 'Something is very wrong here!'⎕SIGNAL 11/⍨~∨/':namespace '⍷##.A.Lowercase 0⊃script
+ :Select ref.⎕NC⊂name
+ :CaseList 3.1 4.1
+     script←ReplaceTfnsCodeInScript script code name
+ :CaseList 3.2 4.2
+     script←ReplaceDfnsCodeInScript ref name script code
+ :Else
+     . ⍝ Huuh?!
+ :EndSelect
+ r←QFIX ref name script
+⍝Done

@@ -1,0 +1,20 @@
+ {ref}←Run startHere;data;tree;candidates;contents;bool;types;parents
+⍝ Report all code in any ghostly namespaces except those in GUI instances.
+⍝ Note that the function creates a GUI but does not execute ⎕DQ in it.
+⍝ The result is a reference to the report's GUI.
+ ref←⍬
+ :If 0∊⍴tree←##.List startHere 1
+     candidates←##.Types.(GUI_Instance ClassInstance Class Interface)
+ :OrIf 0∊⍴tree←(tree[;1]∊candidates)⌿tree           ⍝ These may have ghosts
+     (parents types contents)←↓⍉⊃GetContents tree
+ :OrIf 0=+/bool←0<↑∘⍴¨contents
+     {}##.Question.ShowMsg'No ghosts found'
+ :Else
+     (parents types contents)←bool∘/¨parents types contents
+     ref←CreateGUI ⍬
+     ⎕NQ ref'GotFocus'
+     ref.TV.Items←↑,/(⊂¨⍕¨parents),¨contents
+     ref.TV.Depth←↑,/0,¨1⍴⍨¨↑∘⍴¨contents
+     ref.TV.(parents types contents)←parents types contents
+     {}ExpandAll ref.TV
+ :EndIf

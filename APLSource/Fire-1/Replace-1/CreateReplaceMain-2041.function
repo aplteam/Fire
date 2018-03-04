@@ -1,0 +1,26 @@
+ n←CreateReplaceMain n;∆
+⍝
+
+ ∆←⊂'Form'
+ ∆,←⊂'Coord' 'Pixel'
+ ∆,←⊂'Caption'(##.AddPidToCaption'Fire - Replace - ',##.WSID)
+ ∆,←⊂'Size'(350 540)
+ ∆,←⊂'MaxButton' 0
+ ∆,←⊂'MinButton' 0
+ ∆,←⊂'Sizeable' 1
+ ∆,←⊂'FontObj'##.GUI.n.Std_Font
+ :If 9=⎕NC⍕##.GUI.n.TheIcon
+     ∆,←⊂'IconObj'##.GUI.n.TheIcon
+ :EndIf
+ n.Form←⍎'ReplaceForm'##.GUI.n.Form.⎕WC ∆
+ n.Form.Posn←n.Form.Size ##.GUI.CenterIn ##.GUI.n.Form
+ n.Form.onConfigure←'OnConfigure'n.Form.Size
+ n.Form.onClose←'OnClose'
+ n.Form.Event,←⊂9955 1              ⍝ Used to quit ⎕DQ, even from test cases!
+ n.Form.LastKey←⍬
+ n.Form.sizeable←0
+
+ ∆←⊂'TipField'
+ ∆,←⊂'FontObj'##.GUI.n.Tip_Font
+ n.TipObj←⍎'TheTip'n.Form.⎕WC ∆
+⍝Done

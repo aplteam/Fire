@@ -1,0 +1,19 @@
+ {n}←{testFlags}Run debugFlag;TheCounterForm
+⍝ debugFlag=1 and you get some Developer-specific options _
+⍝ making it easier to debug Fire.
+⍝ testFlags:
+⍝ [0]: Replace does not execute ⎕DQ, CompareIt! is not _
+⍝      really called, you named it. Used only when the test cases _
+⍝      are executed.
+⍝ [1]: 1: Pretend that CompareIt! is not available
+⍝ Home page: http://aplwiki.com/Fire
+ testFlags←2↑{0<⎕NC ⍵:(⍎⍵),0 0 ⋄ 0 0}'testFlags'
+ {}Cleanup
+ :If debugFlag ⋄ #.FilesAndDirs.PolishCurrentDir ⋄ :EndIf
+ Init testFlags
+ G.HelpPath←FindFireReadMe ⍬
+ n←GUI.n←GUI.CreateGUI debugFlag
+ :If 0=+/testFlags
+     ⎕DL 0.05
+     2 ⎕NQ GUI.n.SearchFor'GotFocus'
+ :EndIf

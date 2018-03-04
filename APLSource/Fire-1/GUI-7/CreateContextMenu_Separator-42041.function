@@ -1,0 +1,3 @@
+ CreateContextMenu_Separator i;name;_
+ name←'mm.s',⍕i
+ _←name ⎕WC'Separator'

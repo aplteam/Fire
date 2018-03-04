@@ -1,0 +1,71 @@
+ CreateGui;∆
+⍝ Offers the user a list of all namespace in the current hit list.
+⍝ Selected ones are removed from the list
+ n←⎕NS''
+
+ ∆←⊂'Form'
+ ∆,←⊂'Caption' 'Remove namespace from hit list'
+ ∆,←⊂'Size'(380 500)
+ ∆,←⊂'Coord' 'Pixel'
+ ∆,←⊂'Icon'##.TheIcon
+ ∆,←⊂'Event'##.Events.QuitWait 1
+ n.TheForm←⍎'TheForm'##.n.Form.⎕WC ∆
+ n.TheForm.Posn←n.TheForm.Size ##.CenterIn ##.n.Form
+ n.TheForm.onConfigure←'##.OnConfigure'n.TheForm.Size
+
+ ∆←⊂'Label'
+ ∆,←⊂'Posn'(5 5)
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ ∆,←⊂'Caption' 'Tick the namespace(s) you want to remove from the hit list:'
+ 'Label1'n.TheForm.⎕WC ∆
+
+ ∆←⊂'ListView'
+ ∆,←⊂'Posn'((0⊃##.PosnPlusSize n.TheForm.Label1),5)
+ ∆,←⊂'Size'(n.TheForm.Size-100 10)
+ ∆,←⊂'Font'##.n.APL_Font
+ ∆,←⊂'Attach'('Top' 'Left' 'Bottom' 'Right')
+ ∆,←⊂'Items'(GetItemList ⍬)
+ ∆,←⊂'View' 'Report'
+ ∆,←⊂'Header' 0
+ ∆,←⊂'CheckBoxes' 1
+ n.TheList←⍎'LV'n.TheForm.⎕WC ∆
+ n.TheList.SetColSize 0 ¯3
+ n.TheList.onKeyPress←'onKeyPressInList'
+
+ ∆←⊂'Button'
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'Caption' '&Show top-level objects only'
+ ∆,←⊂'Active'(2<⌈/'.'+.=⍉⊃n.TheList.Items)
+ ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
+ n.Restrict←⍎'Restrict'n.TheForm.⎕WC ∆
+ n.Restrict.Posn←(5+0⊃##.PosnPlusSize n.TheList),5
+ n.Restrict.onSelect←'OnToggleRestrict'
+
+ ∆←⊂'Button'
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'Caption' 'Remove also sub-namespaces'
+ ∆,←⊂'Active'(2<⌈/'.'+.=⍉⊃n.TheList.Items)
+ ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
+ ∆,←⊂'State' 1
+ n.RemoveSub_NS←⍎'Restrict'n.TheForm.⎕WC ∆
+ n.RemoveSub_NS.Posn←(n.Restrict.Posn[0]),(10+1⊃+⌿⊃n.Restrict.(Size Posn))
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' 'OK'
+ ∆,←⊂'Default' 1
+ ∆,←⊂'Size'(⍬ 110)
+ ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
+ n.OK←⍎'OK'n.TheForm.⎕WC ∆
+ n.OK.Posn←((0⊃n.TheForm.Size)-n.OK.Size[0]+5),5
+ n.OK.onSelect←'OnOkay'
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' 'Cancel'
+ ∆,←⊂'Cancel' 1
+ ∆,←⊂'Size'(⍬ 110)
+ ∆,←⊂'Event' 'Select' 1
+ ∆,←⊂'Attach'(4⍴'Bottom' 'Right')
+ n.Cancel←⍎'Cancel'n.TheForm.⎕WC ∆
+ n.Cancel.Posn←n.TheForm.Size-n.OK.Size+5 5
+
+⍝Done

@@ -1,0 +1,4 @@
+ OnDblCklickInHitList←{
+⍝
+     Edit n.HitList.Data[,n.HitList.SelItems⍳1;0 1]
+ }

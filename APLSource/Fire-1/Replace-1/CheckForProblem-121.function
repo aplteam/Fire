@@ -1,0 +1,24 @@
+ CheckForProblem←{
+⍝ This check MUST NOT crash. If it does please take a screenshot
+     (oldCode newCode noOfReplaceItems)←⍵
+     ((noOfReplaceItems+⍴oldCode)=⍴newCode):
+     n.DeleteLine.State:
+     . ⍝ This check MUST NOT crash. If it does please read the following lines carefully.
+     ⍝
+     ⍝ We know that there is abug but we have not been able to reproduce it this so far.
+     ⍝ Therefore your help would be highly appreciated:
+     ⍝
+     ⍝ 1) Take a screenshot of both, the Fire main GUI and the Fire Replace GUI.
+     ⍝ 2) Check what you see on the screen is what you expect to see - it's probably not.
+     ⍝ 3) Tell us what you did/entered into the GUI as well as _everything_ you can remember
+     ⍝    (every keystroke/mouse action can matter!) in an email and attach the screenshots.
+     ⍝
+     ⍝ The email address is kai@aplteam.com
+     ⍝
+     ⍝ It seems as if sometimes under yet unknown and rare circumstances Fire tries to find
+     ⍝ something that was NOT entered into the "Search for" field, and that is causing havoc.
+     ⍝ If you simply retry it very likely will work, and that's why it is so hard to work out
+     ⍝ what exactly the conditions are that lead to this problem, and why we need your help!
+     ⍝ Thank you!
+     ⍝ Kai Jaeger
+ }

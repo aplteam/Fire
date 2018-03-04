@@ -1,0 +1,8 @@
+ Run;∆;n;TheForm
+⍝ Offers the user a list of all namespace in the current hit list.
+⍝ Selected ones are removed from the list
+ CreateGui
+ ⎕NQ n.TheList'GotFocus'
+ ⎕DQ n.TheForm
+ n.TheForm.Close
+⍝Done

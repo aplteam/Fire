@@ -1,0 +1,34 @@
+ script←ReplaceSingleLineDfnsInScriptCode(script code sl name);masked;tl;com;soc;b2;sl;name;ind;fnsNames
+ script←sl⌽script
+ tl←0⊃script                                ⍝ The Line
+ masked←MaskText tl
+ masked←MaskDfnsBodies masked
+ :If 0<soc←{('⍝'∊⍵):⍵⍳'⍝' ⋄ 0}masked        ⍝ Start Of Comment
+     com←soc↓masked
+     (masked tl)←soc↑¨masked tl
+ :Else
+     com←''
+ :EndIf
+ b2←{'⋄'=⍵}'⋄',masked                       ⍝ Break points
+ (tl masked)←b2∘{⎕IO←⎕ML←1 ⋄ 1↓¨⍺⊂⍵}¨'⋄',¨tl masked  ⍝ Split both, "tl" and "masked" at ⋄
+ :If 1=⍴tl                                  ⍝ No diamondized statement involved?
+     script←(-sl)⌽code,1↓script
+ :Else
+     masked←##.A.dlb masked
+     fnsNames←{⍵↑⍨¯1+⍵⍳'{'}¨({∨/'←{'⍷⍵}¨masked)/¨masked
+     ⍎((⍴fnsNames)=ind←fnsNames⍳⊂name)/'. ⍝ Something is very wrong here!'
+     :If 1<⍴code                                ⍝ Replaced by a muli-line definition?!
+         :If 1=⍴tl
+             tl←0⊃tl
+         :Else
+             tl←SimplifyAndDiamondize¨(ind↑tl)(tl↑⍨ind+1)
+             tl←(⊂((0⊃tl)),' ⋄ ',0⊃code),(¯1↓1↓code),⊂((¯1+⍴code)⊃code),' ⋄ ',1⊃tl
+         :EndIf
+     :Else                                      ⍝ No, it's a single line dfns
+         :If 1<⍴tl
+             tl←ind{(-⍺)⌽code,1↓⍺⌽⍵}tl
+             tl←⊂(SimplifyAndDiamondize tl),com
+         :EndIf
+     :EndIf
+     script←(-sl)⌽tl,1↓script
+ :EndIf

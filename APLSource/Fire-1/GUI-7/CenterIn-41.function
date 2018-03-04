@@ -1,0 +1,15 @@
+ CenterIn←{
+     ref←⍵                              ⍝ Ref to the parent or to all monitors
+     sz←⍺                               ⍝ Size of the form to be centered.
+     (pp ps)←ref.(Posn Size)            ⍝ Posn & Size of "parent" window.
+     mh←GetSystemMetrics 15             ⍝ Menu height in pixels; 15=SM_CYMENU.
+     mi←MonitorInfo ⍬                   ⍝ Monitor info.
+     np←pp-mh,0                         ⍝ New Posn inside main app: start with "parent" pos.
+     np+←0⌈⌊(ps-sz)÷2                   ⍝ Center it.
+     buf←30 10                          ⍝ Buffer; Used to force the Dlg away from the brim.
+     max←⌊(+⌿2 2⍴mi)-sz+buf             ⍝ Calc max value.
+     min←mi[0 1]+buf                    ⍝ Calc min value.
+     np←min⌈(np+buf)⌊max                ⍝ Calc result.
+     np
+⍝ Returns a vector useful to center dialog ⍺ within ⍵ (size).
+ }

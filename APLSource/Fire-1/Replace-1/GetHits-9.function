@@ -1,0 +1,11 @@
+ r←GetHits(fn type)
+⍝ Returns a vector with indices indicatinghits and the body of the object.
+ :If 2=⌊type
+     .
+ :Else
+     :If (⌊type)∊3 4
+         r←(##.GetHitsForScanFnsAndOprs fn)~⊂⍬
+     :Else
+         r←(##.ScanScripts fn)~⊂⍬
+     :EndIf
+ :EndIf

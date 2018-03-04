@@ -1,0 +1,6 @@
+ CheckForQSE←{
+⍝
+     (~⍵):⍬
+     n.LookIn.Text←'⎕SE',3↓n.LookIn.Text        ⍝ Ensure that "⎕se" becomes "⎕SE"
+     ⍬
+ }

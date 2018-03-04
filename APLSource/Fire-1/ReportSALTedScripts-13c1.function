@@ -1,0 +1,6 @@
+ ReportSALTedScripts←{
+⍝
+     l←G.ChangedSaltedScript
+     ⎕←⊃'⎕SE.SALT.Save '''∘,¨l,¨''''
+     ⍬
+ }

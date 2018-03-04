@@ -1,0 +1,44 @@
+ {r}←FixScript(ref name code i noOf);flag;msg;saltFlag;salt;_;cs;taa;managedFlag
+⍝ Establishes script (class, interface or scripted namespace) "name" in the namepsace
+⍝ ref is pointing to with the contents "code".
+⍝ Returns 1 in case the user has cancelled the process, otherwise 0.
+ r←flag←0
+ taa←''         ⍝ Collect the names acre needs to be told about
+ :Repeat
+     :If saltFlag←9=ref.⎕NC name,'.SALT_Data'       ⍝ Controlled by SALT?!
+         salt←ref.⎕NS name,'.SALT_Data'
+     :EndIf
+     managedFlag←IsManagedByInterpreter name
+     :Trap 11
+         ref.⎕FIX code
+         flag←1
+         :If saltFlag
+             'SALT_Data'(ref.⍎name).⎕NS salt.SALT_Data  ⍝ Restore the SALT data
+             ##.G.ChangedSaltedScript,←⊂name
+         :ElseIf managedFlag
+             ##.G.ChangedSaltedScript,←⊂name
+         :EndIf
+         taa,←⊂(⍕ref),'.',name
+     :Else
+         msg←⊂'Sorry, but fixing the script of this object:'
+         msg,←⊂'   ',name
+         msg,←⊂'(no. ',(⍕i+1),' of ',(⍕noOf),')'
+         msg,←⊂'did not work.'
+         msg,←⊂'Let me edit it and then try fixing it again.'
+         cs←##.Question.CreateDefaultParms
+         cs.okCaption←'Yes'
+         cs.cancelCaption←'Skip this one'
+         cs.caption2←'Cancel operation'
+         :Select cs ##.Question.Run msg
+         :Case 1                ⍝ Yes
+             ⎕ED'code'
+             →1
+         :Case 2                ⍝ Cancel the whole thing
+             r←1 ⋄ :Return
+         :Case 0 ⍝ No           ⍝ No, but carry on with the next one
+             flag←1
+         :EndSelect
+     :EndTrap
+ :Until flag
+ TellAcre taa
+⍝Done

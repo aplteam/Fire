@@ -1,0 +1,25 @@
+ r←type MarkupDiff2(tx1a tx2a tx1b tx2b);b;l;equal;l1;l2;equal2
+⍝ Everything that is different between tx1a and tx1b is marked up as <span class="diff">
+⍝ tx1a & tx1b are lines of code
+⍝ tx2a & tx2b are G.SearchFor & G.ReplaceBy or vice versa
+ r←''
+ (tx1b tx2b)←∊¨tx1b tx2b
+ (l1 l2)←↑∘⍴¨tx1b tx2b
+ :If ∨/0∊↑∘⍴¨tx1b tx2b~¨' '                         ⍝ Replace by nothing?
+     r←tx1a
+ :Else
+     equal2←+/∧\↑=/{(⌊/↑∘⍴¨⍵)↑¨⍵}tx1b tx2b          ⍝ "searchFor" and "replaceBy" might by equal to some extent
+     :While (~0∊⍴tx2a)
+         equal←+/∧\⊃=/{(⌊/↑∘⍴¨⍵)↑¨⍵}tx1a tx2a
+         :If 0<equal
+             r,←ReplaceSpecialChars equal↑tx1a
+             (tx1a tx2a)←equal↓¨tx1a tx2a
+         :ElseIf 0∊⍴0∊⍴tx2b
+             r,←'<span class="diff',(⍕type),'">',(ReplaceSpecialChars equal2↓tx2b),'</span>'
+         :Else
+             r,←'<span class="diff',(⍕type),'">',(ReplaceSpecialChars equal2↓tx2b),'</span>'
+             tx1a←(l1-equal2)↓tx1a
+             tx2a←(l2-equal2)↓tx2a
+         :EndIf
+     :EndWhile
+ :EndIf

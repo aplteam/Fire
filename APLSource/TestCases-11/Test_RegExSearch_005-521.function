@@ -1,0 +1,44 @@
+ R←Test_RegExSearch_005(stopFlag batchFlag);n;⎕TRAP;n2;html;expected
+⍝ Search for Text (anything between ') in a simple vars that stretches over several lines (CRs). (Greedy=1)
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ 1 #._Fire.Fire.Run 0
+ n←#._Fire.Fire.GUI.n
+
+ #.⎕SHADOW'Temp_RegExSearch_005'
+ 'Temp_RegExSearch_005'#.⎕NS''
+ #.Temp_RegExSearch_005.vars1←1↓∊(⎕UCS 13),¨'a←1' 'b←2 ''This is' 'text that' 'runs over' 'several lines.'' c←3' 'd←4' 'e←5 ''Holy shit!!!!'' ⋄ g←6' '''a''' '' '123'
+ #.Temp_RegExSearch_005.vars2←1↓∊(⎕UCS 13),¨'a←1' 'b←20' 'c←30' 'd←40' 'e←50'
+
+ ∆InitialyzeFireMainGUI_Settings n
+ n.SearchFor.Text←'''.*?'''
+ n.LookIn.Text←'#.Temp_RegExSearch_005'
+ n.SearchIsRegEx.State←1
+ n.DotAll.(Active State)←1
+ n.Greedy.(Active State)←1
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →GoToTidyUp 1≠↑⍴n.HitList.ReportInfo
+ →GoToTidyUp'vars1'≢⊃n.Form.##.##.G.Hits[0;1]
+
+ n2←#._Fire.Fire.ReportHits.Run 1
+ ∆Process n.Form
+ →GoToTidyUp 1≠⍴n2.List.Items
+ →GoToTidyUp'HTML Document'≢n2.Browser.Type
+ html←#.APLTreeUtils.Lowercase'flat'#.APLTreeUtils.ReadUtf8File n2.∆Filename
+ html←((⎕UCS 10)≠html)/html
+ expected←''
+ expected,←⊂'<div class="comp">b←2 <span class="diff">''this is</div>'
+ expected,←⊂'<div class="comp">text that</div>'
+ expected,←⊂'<div class="comp">runs over</div>'
+ expected,←⊂'<div class="comp">several lines.''</span> c←3</div>'
+ expected,←⊂'<div class="comp">e←5 <span class="diff">''holy shit!!!!''</span> ⋄ g←6</div>'
+ expected,←⊂'<div class="comp"><span class="diff">''a''</span></div>'
+ →GoToTidyUp~∧/∨/¨expected⍷¨⊂html
+ R←∆OK
+
+∆TidyUp:
+ CloseFire

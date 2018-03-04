@@ -1,0 +1,5 @@
+ OnKeyPressStandard←{
+⍝ Handles (9 2) (Ctrl+Tab) which is used to move focus to ther session
+     (⍵[4 5]≡9 2):⎕NQ'⎕SE' 'GotFocus'               ⍝ Ctrl+Tab?!
+     1
+ }

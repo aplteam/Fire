@@ -1,0 +1,53 @@
+ ∆CreateNestedNSforQIOdetection
+⍝ This is used for several purposes:
+⍝ 1. Detect ⎕IO settings in fns that do not localize ⎕IO
+⍝ 2. With different settings for "Recursion"
+
+ 'TEMP'#.⎕NS''
+ {' '≠1↑0⍴⍵:.}#.TEMP.⎕FX'r1←With1;⎕IO;Foo;abc1;abc2;abc3;zzz' 'r←''With1''' 'Foo←''Text'''
+ {' '≠1↑0⍴⍵:.}#.TEMP.⎕FX'r2←With2;⎕IO' '⎕IO←1' 'r←''With2'''
+ {' '≠1↑0⍴⍵:.}#.TEMP.⎕FX'r3←(fns With3)y;⎕IO' '⎕IO←1' 'r←''With3'''
+ {' '≠1↑0⍴⍵:.}#.TEMP.⎕FX'r4←Without1⍝⎕IO' 'r←''Without1'''
+ {' '≠1↑0⍴⍵:.}#.TEMP.⎕FX'r5←Without2' '⎕IO←1' 'r←''Without2'''
+ {' '≠1↑0⍴⍵:.}#.TEMP.⎕FX'r6←(fns Without3)y' '⎕IO←1' 'r←''Without3'''
+ #.TEMP.dfns1←{⎕IO←1 ⋄ a←1 ⋄ a⍟⍺×⍵}
+ #.TEMP.dfns2←{
+     ⎕IO←1
+     a←1⍟⍺×⍵
+ }
+ 'Sub1'#.TEMP.⎕NS''
+ {' '≠1↑0⍴⍵:.}#.TEMP.Sub1.⎕FX'r10←Sub1With1;foo;⎕IO;xyz1;xyz2;xyz3;zzz' 'r←''Sub1With1''' 'foo←''Text'''
+ {' '≠1↑0⍴⍵:.}#.TEMP.Sub1.⎕FX'r11←Sub1With2;⎕IO' '⎕IO←1' 'r←''Sub1With2'''
+ {' '≠1↑0⍴⍵:.}#.TEMP.Sub1.⎕FX'r12←(fns Sub1With3)y;⎕IO' '⎕IO←1' 'r←''Sub1With3'''
+ {' '≠1↑0⍴⍵:.}#.TEMP.Sub1.⎕FX'r13←Sub1Without1' 'r←''Sub1Without1'''
+ {' '≠1↑0⍴⍵:.}#.TEMP.Sub1.⎕FX'r14←Sub1Without2' '⎕IO←1' 'r←''Sub1Without2'''
+ {' '≠1↑0⍴⍵:.}#.TEMP.Sub1.⎕FX'r15←(fns Sub1Without3)y' '⎕IO←1' 'r←''Sub1Without3'''
+ #.TEMP.Sub1Dfns1←{⎕IO←1 ⋄ a←1 ⋄ a⍟⍺×⍵}
+ #.TEMP.Sub1Dfns2←{
+     ⎕IO←1
+     a←1⍟⍺×⍵
+ }
+ 'Sub2'#.TEMP.⎕NS''
+ {' '≠1↑0⍴⍵:.}#.TEMP.Sub2.⎕FX'r20←Sub2With1;⎕IO;qwe1;qwe2;qwe3;zzz' 'r←''Sub2With1'''
+ {' '≠1↑0⍴⍵:.}#.TEMP.Sub2.⎕FX'r21←Sub2With2;⎕IO' '⎕IO←1' 'r←''Sub2With2'''
+ {' '≠1↑0⍴⍵:.}#.TEMP.Sub2.⎕FX'r22←(fns Sub2With3)y;⎕IO' '⎕IO←1' 'r←''Sub2With3'''
+ {' '≠1↑0⍴⍵:.}#.TEMP.Sub2.⎕FX'r23←Sub2Without1' 'r←''Sub1Without1'''
+ {' '≠1↑0⍴⍵:.}#.TEMP.Sub2.⎕FX'r24←Sub2Without2' '⎕IO←1' 'r←''Sub1Without2'''
+ {' '≠1↑0⍴⍵:.}#.TEMP.Sub2.⎕FX'r25←(fns Sub2Without3)y' '⎕IO←1' 'r←''Sub2Without3'''
+ #.TEMP.Sub2Dfns1←{⎕IO←1 ⋄ a←1 ⋄ a⍟⍺×⍵}
+ #.TEMP.Sub2Dfns2←{
+     ⎕IO←1
+     a←1⍟⍺×⍵
+ }
+ 'SubSub'#.TEMP.Sub2.⎕NS''
+ {' '≠1↑0⍴⍵:.}#.TEMP.Sub2.SubSub.⎕FX'r30←SubSubWith1;Foo;⎕IO;ab1;ab2;ab3' 'r←''SubSubWith1''' 'Foo←''Text'''
+ {' '≠1↑0⍴⍵:.}#.TEMP.Sub2.SubSub.⎕FX'r31←SubSubWith2;⎕IO;Foo' '⎕IO←1' 'r←''SubSubWith2''' 'Foo←''Text'''
+ {' '≠1↑0⍴⍵:.}#.TEMP.Sub2.SubSub.⎕FX'zzz←(fns SubSubWith3)y;Foo;⎕IO' '⎕IO←1' 'r←''SubSubWith3''' 'Foo←''Text'''
+ {' '≠1↑0⍴⍵:.}#.TEMP.Sub2.SubSub.⎕FX'r33←SubSubWithout1;zzz' 'r←''SubSubWithout1''' 'Foo←''Text'''
+ {' '≠1↑0⍴⍵:.}#.TEMP.Sub2.SubSub.⎕FX'r34←SubSubWithout2;Foo' '⎕IO←1' 'r←''SubSubWithout2'''
+ #.TEMP.Sub2.SubSub.⎕FX'r35←(fns SubSubWithout3)y;foo;zzz' '⎕IO←1' 'r←''SubSubWithout3'''
+ #.TEMP.Sub2SubSubDfns1←{⎕IO←1 ⋄ a←1 ⋄ a⍟⍺×⍵}
+ #.TEMP.Sub2SubSubDfns2←{
+     ⎕IO←1
+     a←1⍟⍺×⍵
+ }

@@ -1,0 +1,9 @@
+ RestoreDynamicProps←{
+⍝ Takes a ref pointing to a namespace that was created by
+⍝ "RestoreDynamicProps". All "Active" properties for both
+⍝ buttons and menu items are restored than from that namepsace.
+     rf←⍵
+     rf.parentButtons.Active←rf.saveBtnActive           ⍝ Restore "Active" for all buttons.
+     rf.parentMenuItems.Active←rf.saveMenuItemActive    ⍝ Restore "Active" for all menu items.
+     ⍬
+ }

@@ -1,0 +1,29 @@
+ {r}←OnEnlarge msg;moh;no;nh;h;h2;newPosn;newSize;corr;meh;scale;SM_CYMENU;SM_CYBORDER;SM_CYCAPTION;SM_CYHSCROLL;SM_CYFULLSCREEN
+⍝ Make the GUI control as large as either necessary or possible.
+ r←⍬
+ :If 0<0⊃n.HitList.Size                             ⍝ No list, done
+     scale←GetDPI÷100                               ⍝ Scale up
+     SM_CYMENU←15                                   ⍝ The height of the menubar
+     meh←GetSystemMetrics SM_CYMENU
+     SM_CYBORDER←6                                  ⍝ Height of window border
+     SM_CYCAPTION←4                                 ⍝ Height of caption area
+     SM_CYHSCROLL←3                                 ⍝ Height of horizontal scroll bar
+     corr←+/GetSystemMetrics¨SM_CYBORDER SM_CYCAPTION SM_CYHSCROLL
+     SM_CYFULLSCREEN←17                             ⍝ Monitor height
+     moh←⌊(GetSystemMetrics SM_CYFULLSCREEN)÷scale
+     moh-←(corr+meh)÷scale
+     no←1+⍴n.HitList.Items                          ⍝ Number of rows plus col titles; we add one to be on the save side
+     nh←no×1+GetListViewItemHeight n.HitList        ⍝ Needed height of the list
+     nh+←15×no<6
+     h←n.Form.height[1]+⌊nh÷scale
+     :If (h<moh-n.Form.Posn[0])
+         newPosn←n.Form.Posn
+         newSize←(h-10),n.Form.Size[1]
+     :Else
+         h2←h⌊moh-30+meh
+         newPosn←(meh+moh-h2+meh),n.Form.Posn[1]
+         newSize←h2,n.Form.Size[1]                  ⍝ Enlarge
+     :EndIf
+ :EndIf
+ 2 ⎕NQ n.Form'Configure',newPosn,newSize
+⍝Done  2

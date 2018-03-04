@@ -1,0 +1,2 @@
+ r←∆GetTestDir
+ r←#.FilesAndDirs.GetTempPath,'Fire_TestCases\'

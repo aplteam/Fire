@@ -1,0 +1,21 @@
+ (yes these)←Display(G noOf);these;n;res;ff
+⍝ Gets two filenames:
+⍝ [1] Contains the HTML representing the report
+⍝ [2] Is the special CSS file used to highlight those excluded
+⍝ "yes" gets 0 only when user has cancelled the dialog or clicked the close box.
+⍝ "these" is a vector of Booleans: needed because the user may decide to ignore some.
+ these←0
+ n←CreateGUI noOf
+ n.TheForm.CursorObj←1
+ n.Browser.Navigate⊂'file:///',G.htmlFilename
+ n.TheForm.htmlFile←G.htmlFilename
+ n.TheForm.CursorObj←0
+ res←DQ n
+ yes←{0∊⍴⍵:0 ⋄ n.Cancel≢0⊃⍵}res
+ :If yes
+     these←IsTicked ⍬
+     these←({2≠⌊2⊃⍵:1 ⋄ ~##.Replace.NonReplaceVars⍎↑{(⍕⍺),'.',⍵}/2↑⍵}¨↓##.G.Hits)\these
+ :EndIf
+ ##.F.DeleteFile G.(htmlFilename cssFilename)
+ n←CloseReportForm n
+⍝Done

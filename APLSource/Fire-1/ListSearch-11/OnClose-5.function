@@ -1,0 +1,9 @@
+ OnClose←{
+⍝ "Opens" buttons and the main form
+     6::1                                       ⍝ User might have close the main window
+     ##.GUI.n.(StartBtn ReplaceBtn).Active←1
+     ##.GUI.n.CallingCmd.Active←1
+     _←⎕EX⍕n.TheForm
+     _←⎕EX'n'
+     1
+ }

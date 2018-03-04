@@ -1,0 +1,6 @@
+ IsManagedByInterpreter←{
+     name←'.',⍵
+     l←⊃5177⌶⍬
+     l←⍕¨(9=l[;2])⌿l[;0]
+     ∨/name∘≡¨(-⍴name)↑¨l
+ }

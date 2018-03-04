@@ -1,0 +1,4 @@
+ r←GetSizeFromWinReg dummy;p
+ p←##.GetFireRegistryKey    ⍝ Path to the proper Registry key
+ r←⍎'0 0'##.R.GetString p,'Size'
+⍝Done

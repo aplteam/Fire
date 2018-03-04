@@ -1,0 +1,28 @@
+ r←ScanVars(ref varsName type);data;l;pt;ind;buff;length
+⍝ Scan all variables in "ref" for the search string
+⍝ For result see "ScanBody".
+ r←''
+ ind←length←⍬
+ :If 2=ref.⎕NC varsName         ⍝ Might be a Fire-internal one which is now shadowed
+     :Trap 1 10  ⍝ WS FULL and LIMIT ERROR
+         :If 0∊⍴∊data←ref.⍎varsName
+             :Return
+         :EndIf
+         :If ~Replace.NonReplaceVars data
+             data←IfLower data
+             :If 0<⍴buff←2 Scan⊂⍣(2>≡ref⍎varsName)⊣data
+                 (ind length)←buff
+             :EndIf
+         :Else
+             data←IfLower ⎕FMT data
+             buff←2 Scan↓data
+             :If 0<⍴buff←{0∊⍴⍵:⍵ ⋄ ⍵}buff
+                 (ind length)←buff
+             :EndIf
+         :EndIf
+         →(0=⍴ind)/0
+         r←⊂ref varsName(⍴ind)2.1 ind length type
+     :Else
+         REPORT,←⊂varsName(0⊃⎕DMX.DM)(⍕ref)
+     :EndTrap
+ :EndIf

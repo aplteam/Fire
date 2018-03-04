@@ -1,0 +1,8 @@
+ onKeyPressInList←{
+⍝ Handle <Blank> as toggle key for the check boxes
+     (32 0≢2↑4↓⍵):1                             ⍝ Not <Blank>? Done!
+     (1≠+/n.TheList.SelItems):1                 ⍝ Not exactly one line selected? Done!
+     b←{⌽(32⍴2)⊤⍵}n.TheList.GetItemState n.TheList.SelItems⍳1
+     b[12]←~b[12]
+     0⊣n.TheList.SetItemState(n.TheList.SelItems⍳1)((32⍴2)⊥⌽b)
+ }

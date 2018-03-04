@@ -1,0 +1,4 @@
+ {r}←ResetAfterSearch cursorWas
+ r←⍬
+ HandleControlDependencies 1
+ ##.SetCursorObj cursorWas

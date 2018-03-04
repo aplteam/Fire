@@ -1,0 +1,25 @@
+ CreateReplaceByEditField;∆;msg;height
+ ∆←⊂'Edit'
+ ∆,←⊂'Posn'((0⊃PosnPlusSize n.L_ReplaceBy),10)
+ ∆,←⊂'Size'(##.GUI.n.SearchFor.Size[0],n.Form.Size[1]-20)
+ ∆,←⊂'FontObj'##.GUI.n.APL_Font
+ ∆,←⊂'Text'(##.G.SearchIsRegEx/'&')
+ ∆,←⊂'TipObj'n.TipObj
+ ∆,←⊂'HScroll' ¯2
+ :If ##.G.SearchIsRegEx
+     ∆,←⊂'Attach'('Top' 'Left' 'Top' 'Right')
+ :Else
+     ∆,←⊂'Attach'('Top' 'Left' 'Bottom' 'Right')
+ :EndIf
+ msg←'Enter here the string you want⌹to replace "Search for" with.'
+ msg,←##.G.SearchIsRegEx/'⌹This will become the right argument⌹of the ⎕R operator.'
+ ∆,←⊂'Style' 'Multi'
+ ∆,←⊂'VScroll' ¯1
+ ∆,←⊂'WantsReturn' 0
+ height←3×##.GUI.n.SearchFor.Size[0]       ⍝ We want three lines
+ msg,←'⌹Use <Ctrl+Enter> to separate lines.'
+ ∆,←⊂'Tip'(Split msg)
+ n.ReplaceBy←⍎'ReplaceBy'n.Form.⎕WC ∆
+ n.ReplaceBy.Size[0]←height
+ n.ReplaceBy.onContextMenu←'OnContextMenuInReplaceBy'
+ n.ReplaceBy.onKeyPress←'OnKeyPressStandard'

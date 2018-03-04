@@ -1,0 +1,17 @@
+ DeleteGhost←{
+     rf←⍵
+     ⍺←0
+     testFlag←⍺
+     (parent name)←GetParentAndName rf
+     msg←'Sure that you want delete:'('   ',name)'from'('   ',(⍕parent),'?')
+     {⍵:0 ⋄ (0=##.Question.YesOrNo msg)}testFlag:⍬
+     _←parent.⎕EX name
+     no←rf.SelItems⍳1
+     txt←no⊃rf.Items
+     markup←' (deleted)'
+     (markup{⍺≡(-⍴⍺)↑⍵}txt):⍬
+     rf.Visible←0
+     rf.Items[no]←⊂txt,markup
+     _←ExpandAll rf
+     rf.Visible←1
+ }

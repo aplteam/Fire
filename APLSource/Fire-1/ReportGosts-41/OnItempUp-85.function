@@ -1,0 +1,14 @@
+ OnItempUp msg;rf;item;depth;no;names;ncs;bool;txt
+ (rf no)←msg[0 2]
+ item←no⊃rf.Items
+ depth←no⊃rf.Depth
+ ff.SB.F1.Caption←(no⊃rf.Items),':  '
+ :If depth=0
+     ff.SB.F1.Text←''
+ :Else
+     names←'n/a' 'Variable' 'Trad FNS' 'Direct FNS' 'Trad OPR' 'Direct OPR' 'Class' 'Interface' 'Instance' 'Namespace' ''
+     ncs←¯1 2.1 3.1 3.2 4.1 4.2 9.4 9.5 9.2 9.1
+     bool←0≠rf.Depth
+     txt←names[ncs⍳no⊃bool\∊rf.parents.⎕NC¨⊂bool⊂rf.Items]
+     ff.SB.F1.Text←txt
+ :EndIf

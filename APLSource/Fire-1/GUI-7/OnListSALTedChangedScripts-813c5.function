@@ -1,0 +1,10 @@
+ OnListSALTedChangedScripts←{
+⍝
+     (0∊⍴##.G.ChangedSaltedScript):⍬⊣##.Question.ShowMsg'There are no such scripts'
+     _←##.ReportSALTedScripts ⍬
+     m←⊂'The list was printed to the seesion.'
+     m,←⊂'Would you like to empty the list kept by Fire?'
+     (0=##.Question.YesOrNo m):⍬
+     ##.G.ChangedSaltedScript←''
+     ⍬
+ }

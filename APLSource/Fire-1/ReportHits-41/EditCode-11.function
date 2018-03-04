@@ -1,0 +1,20 @@
+ {r}←EditCode names;old;name;new;i
+ r←⍬
+ names←{0 1∊⍨≡⍵:,⊂,⍵ ⋄ ⍵}names
+ i←0
+ :For name :In names
+     i+←1
+     old←GetCode name
+     {}⎕TSYNC{⎕ED name}&name
+     new←GetCode name
+     :If old≢new
+     :AndIf n.firstFlag
+         {}##.Question.ShowMsg('You''ve changed ',(⍕name))'' 'This means that the Hit Report is out of date now'
+         n.firstFlag←0
+     :EndIf
+     :If 1<⍴names
+     :AndIf (i+1)<⍴names
+     :AndIf 0=##.Question.YesOrNo'This was ',(⍕i),' of ',(⍕⍴names),' - do you want to continue?'
+         :Leave
+     :EndIf
+ :EndFor

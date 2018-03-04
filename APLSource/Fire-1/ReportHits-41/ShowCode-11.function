@@ -1,0 +1,25 @@
+ {r}←ShowCode(n name);∆;size;rf;rf2
+⍝ Show fns/opr/script in its own form.
+ r←⍬
+ size←400 600
+ ∆←⊂'Form'
+ ∆,←⊂'Caption'(name,'; type=',⍕⎕NC⊂name)
+ ∆,←⊂'Icon'##.GUI.n.TheIcon
+ ∆,←⊂'Coord' 'Pixel'
+ ∆,←⊂'Size'size
+ ∆,←⊂'Posn'(size ##.GUI.CenterIn ##.GUI.n.Form)
+ rf←⍎'ff'n.TheForm.⎕WC ∆
+ rf.Coord←'Prop'
+ rf.FontObj←n.APL_Font
+ rf.onKeyPress←'OnKeyPressInShowCode'
+
+ ∆←⊂'Edit'
+ ∆,←⊂'Posn'(0 0)
+ ∆,←⊂'Size'(100 100)
+ ∆,←⊂'ReadOnly' 1
+ ∆,←⊂'Style' 'Multi'
+ ∆,←⊂'Text'(##.CR{⍺∊⍵:⍺ ##.A.Split ⍵ ⋄ ⍵}↑n ##.GetCode name)
+ rf2←⍎'ff.e'n.TheForm.⎕WC ∆
+ rf2.onKeyPress←'OnKeyPressInShowCode'
+ ⎕NQ rf2'GotFocus' ⋄ ⎕DQ rf
+ ⍝Done

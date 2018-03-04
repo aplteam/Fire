@@ -1,0 +1,36 @@
+ CreateDevelopersMenu debugFlag;∆;rf
+⍝ Create a special "Developers" menu if "debugFlag" is on.
+
+ :If debugFlag
+
+     rf←⍎'MB.DeveloperMenu'n.Form.⎕WC'Menu' 'Developers'
+     rf.onDropDown←'OnDropDownDevelopersMenu'
+
+     ∆←⊂'MenuItem'
+     ∆,←⊂'Caption' 'Stop in "Search"'
+     n.StopInSearch←⍎'StopInSearch'rf.⎕WC ∆
+     n.StopInSearch.onSelect←'OnToggleStop'
+
+     ∆←⊂'MenuItem'
+     ∆,←⊂'Caption' 'Stop in "Replace"'
+     n.StopInReplace←⍎'StopInReplace'rf.⎕WC ∆
+     n.StopInReplace.onSelect←'OnToggleStop'
+
+     ∆←⊂'MenuItem'
+     ∆,←⊂'Caption' 'Stop in "Calling counter'
+     n.StopInCallingCounter←⍎'StopInCallingCounter'rf.⎕WC ∆
+     n.StopInCallingCounter.onSelect←'OnToggleStop'
+
+     's1'rf.⎕WC'Separator'
+
+     ∆←⊂'MenuItem'
+     ∆,←⊂'Caption' 'Check all'
+     n.ToggleAllInDeveloperMenu←⍎'All'rf.⎕WC ∆
+     n.ToggleAllInDeveloperMenu.onSelect←'OnToggleAll'
+
+
+ :Else
+
+     n.StopInSearch←n.StopInReplace←n.StopInSearch←n.StopInCallingCounter←⍬
+
+ :EndIf

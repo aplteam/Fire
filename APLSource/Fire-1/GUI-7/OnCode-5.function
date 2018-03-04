@@ -1,0 +1,5 @@
+ OnCode←{
+     n.(ReplaceBtn ReportHits).Active←0
+     _←CheckStartButton ⍬
+     0
+ }

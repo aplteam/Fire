@@ -1,0 +1,11 @@
+ ref←FindScript name
+⍝ Tries to find `name` and returns a ref pointing to it or ⍬
+⍝ if it cannot find the script in question.
+ ref←⍬
+ :If 9=##.⎕NC name
+     ref←##.⍎name
+ :ElseIf (↑1↓⎕RSI).⎕NC name
+     ref←(↑1↓⎕RSI).⍎name
+ :Else #.⎕NC name
+     ref←#.⍎name
+ :EndIf

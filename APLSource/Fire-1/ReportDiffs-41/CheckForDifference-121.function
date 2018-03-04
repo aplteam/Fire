@@ -1,0 +1,5 @@
+ CheckForDifference←{
+     (noOf data searchString name)←⍵
+     (2=⎕NC name):1                   ⍝ Don't check vars (performance!); there MUST be a hit
+     0<noOf⌊←+/∧\searchString∘{~∨/⍺⍷⍵}¨noOf{(⍺=⍴⍵):⍵ ⋄ ⍺↑⍵}data
+ }

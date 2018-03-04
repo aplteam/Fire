@@ -1,0 +1,20 @@
+ {n}←CreateDeleteHitLines n;∆;rf;msg;flags
+⍝
+ ∆←⊂'Button'
+ flags←##.G.(Code Vars)
+ ∆,←⊂'Caption'('&Delete ',((flags[0])/'lines'),((∧/flags)/'/'),((flags[1])/'items'),' with hits')
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'Posn'((10+0⊃PosnPlusSize n.BatchMode.##),10)
+ ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
+ ∆,←⊂'TipObj'n.TipObj
+ msg←'All lines containing a hit will be deleted from the⌹'
+ msg,←'source code except the header line of trad fns/opr⌹'
+ msg,←'and the first and last line of any scripts.⌹'
+ msg,←'However, deleting lines is surprisingly complex.⌹'
+ msg,←'See the ReadMe.html document for details.'
+ ∆,←⊂'Tip'(Split msg)
+ n.DeleteLine←⍎'DeleteLine'n.Form.⎕WC ∆
+ n.DeleteLine.onSelect←'OnToggleDeleteLine'
+ n.DeleteLine.onKeyPress←'OnKeyPressStandard'
+ n.DeleteLine.Active←~##.G.SearchIsRegEx
+⍝Done

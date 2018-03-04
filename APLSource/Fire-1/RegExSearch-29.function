@@ -1,0 +1,9 @@
+ r←RegExSearch data;msg;UCP;options
+ :Trap 6 11
+     options←('Mode' 'M')('IC'(~G.Case))('DotAll'G.DotAll)('Greedy'G.Greedy),IsVersion16OrBetter/⊂('UCP'G.UCP)
+     r←G.SearchFor2 ⎕S 0 1⍠options⊣data
+ :Else
+     msg←A.dmb{0=+/b←':'=⍵:⍵ ⋄ (~b)⊂⍵}⎕DMX.Message
+     'Regular Expression error'Question.ShowMsg msg
+     ⎕SIGNAL 988
+ :EndTrap

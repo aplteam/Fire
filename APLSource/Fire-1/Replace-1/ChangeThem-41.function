@@ -1,0 +1,46 @@
+ {r}←ChangeThem batchFlag;G;_;yes;these;cursorWas
+⍝ Let the user change the objects either...
+⍝ * one by one with the help of CompareIt! (batchFlag=0)
+⍝ * all in one go (batchFlag=1)
+⍝ In case "batchFlag" is true there is one final report at the end of the process
+⍝ which includes all objects involved. The user then has to make the final
+⍝ decision whether all the changes should get fixed or not.
+⍝ r gets 1 in case sonething got changed. If selection is zero or the user refuses
+⍝ the confirmation then it is 0.
+⍝ In case of an error r gets ¯1.
+ r←⍬
+ G←⎕NS''
+ :If 0<0⊃⍴##.GUI.n.HitList.Data
+     G.(NameClasses Names FullNames Refs filenameOld fileOldTieNo)←⊂⍬
+     :If batchFlag
+         cursorWas←##.SetCursorObj 1
+         G.(filenameOld fileOldTieNo)←SaveThese ⍬       ⍝ Save the code as it is right now (before the replace) for comparison
+         ##.SetCursorObj cursorWas
+     :EndIf
+     G.filenameCompare←0 ##.GetTempFileName'.dcf'       ⍝ Native file used to write the changed source code for comparison
+     G.compareFileTieNo←G.filenameCompare ⎕FCREATE 0    ⍝ Create and open the report file
+
+     :If 0=r←ChangeThem_ batchFlag                      ⍝ ←←← workhorse
+         r←¯1
+         :Return                                        ⍝ User has cancelled or a serious error like WS FULL has occured
+     :EndIf
+
+     :If batchFlag
+         :If IsThereAnyChange G.compareFileTieNo
+             G←CompileReport G
+             {}##.DisableProgressbar ⍬
+             (yes these)←ReportAllChanges G
+             :If yes
+                 ⎕THIS.NoOfReplacements←Establish these G.compareFileTieNo
+             :EndIf
+         :Else
+             ##.Question.ShowMsg'No changes'
+         :EndIf
+         ⎕FUNTIE G.fileOldTieNo G.compareFileTieNo
+         ##.F.DeleteFile G.(filenameCompare filenameOld)
+     :EndIf
+     {}##.DisableProgressbar ⍬
+ :Else
+     {}⍬(##.Question.ShowMsg ##.HonorTestFlag)'Nothing selected?!'
+ :EndIf
+ ⎕NQ n.Form'GotFocus'

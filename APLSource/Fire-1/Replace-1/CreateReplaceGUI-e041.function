@@ -1,0 +1,11 @@
+ {n}←CreateReplaceGUI n;∆
+ n←CreateReplaceMain n
+ n←CreateHiddenBtns n
+ n←CreateReplaceSearchFor n
+ n←CreateReplaceReplaceBy n
+ n←CreateType n
+ n←CreateCompareOptions n
+ n←CreateMarkChanges n
+ n←CreateDeleteHitLines n
+ n←CreateReplacePushButtons n
+⍝Done

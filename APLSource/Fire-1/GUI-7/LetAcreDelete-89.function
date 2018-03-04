@@ -1,0 +1,17 @@
+ {r}←LetAcreDelete rows
+⍝ In case acre 2.x or 3.x or 4.x is around acre will be told.
+⍝ Note that acre is smart enough to work out which project an object belongs to.
+ r←⍬
+ :If ##.IsAnyAcreAround
+     :If 0<⎕NC'⎕SE.acre'
+         {}{⎕SE.UCMD'acre.Erase ',⍵,' [ messages←''off'' ]'}¨GetFullPath¨rows
+     :EndIf
+     :If 0<⎕NC'#.acre'
+         {}#.acre.Erase GetFullPath¨rows
+     :EndIf
+    ⍝ We need to make sure that stuff inside unnamed namespaces and instances (Forms etc, not classes)
+    ⍝ is properly deleted as well since acre is not dealing with them by definition.
+     {{⍺.⎕EX ⍵}/⍵}¨↓n.HitList.Data[rows;0 1]
+ :Else
+     {{⍺.⎕EX ⍵}/⍵}¨↓n.HitList.Data[rows;0 1]
+ :EndIf

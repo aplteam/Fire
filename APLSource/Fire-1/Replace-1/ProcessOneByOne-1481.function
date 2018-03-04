@@ -1,0 +1,19 @@
+ {r}←ProcessOneByOne dummy;batchFlag
+⍝ Checks whether the user input is okay and then performs a "one-by-one" Replace.
+ r←⍬
+ →(0=Warning_ReplaceIsEmpty⍣((0=n.DeleteLine.State)∧0∊⍴n.ReplaceBy.Text)⊣1)/0
+ n←CopyGuiTo_G n
+ →(0=CheckUserInput)/0
+ n.(StartBtn Cancel).Active←0
+ n.Form.Active←0
+ batchFlag←0
+ :If ¯1≡ChangeThem batchFlag
+     n.(StartBtn Cancel).Active←1
+     n.Form.Active←1
+     {}##.DisableProgressbar ⍬
+     :Return
+ :EndIf
+ :If 0=⎕THIS.NoOfReplacements
+     r←0
+ :EndIf
+ {}OnClose ⍬

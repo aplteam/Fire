@@ -1,0 +1,22 @@
+ R←Test_Search_020(stopFlag batchFlag);n;⎕TRAP
+⍝ Search for string "Send" in #.TestData.LookForNames as name (comments only)
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ 1 #._Fire.Fire.Run 0
+ n←#._Fire.Fire.GUI.n
+
+ ∆InitialyzeFireMainGUI_Settings n
+ n.SearchFor.Text←'Send'
+ n.LookIn.Text←'#.TestData.LookForNames'
+ n.(APL_Code Text).State←0
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →GoToTidyUp n.HitList.Items≢,⊂'fns10'
+ →GoToTidyUp(,⊂'#.TestData.LookForNames')≢∪n.HitList.ReportInfo[;0]
+ R←∆OK
+
+∆TidyUp:
+ CloseFire

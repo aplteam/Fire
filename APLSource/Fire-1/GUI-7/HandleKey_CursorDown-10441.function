@@ -1,0 +1,10 @@
+ (r flag)←HandleKey_CursorDown rl;b
+ flag←r←0
+ :If n.AutoCompleteForm.Visible
+     :If ~0∊⍴b←(⍴rl.SelItems)⍴0
+         b[(¯1+0⊃⍴rl.Items)⌊1+rl.SelItems⍳1]←1  ⍝ Select the next one
+         rl.SelItems←b
+     :EndIf
+ :Else
+     r←1
+ :EndIf

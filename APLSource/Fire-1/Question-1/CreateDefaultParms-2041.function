@@ -1,0 +1,11 @@
+ r←CreateDefaultParms
+⍝  Creates a set od default parms
+ r←⎕NS''
+ r.addToCaption←''
+ r.defaultBtn←'OK'          ⍝ Which button gets the focus?
+ r.okCaption←'OK'
+ r.cancelCaption←'Cancel'
+ r.caption2←''              ⍝ If this is not empty then there are three buttons
+ r.escape←1                 ⍝ Is <Escape> key leaving?
+ r.checkBoxCaption←''
+ r.⎕FX'r←List' 'r←{⍵,[0.5]⍎¨⍵}⎕nl -2'

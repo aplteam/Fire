@@ -1,0 +1,7 @@
+ OnCancel←{
+⍝ Set RESULT and quit
+     ⎕THIS.RESULT←0
+     _←⎕NQ(0⊃⍵)9999
+     _←2 ⎕NQ((0⊃⍵).##)'Close'
+     0
+ }

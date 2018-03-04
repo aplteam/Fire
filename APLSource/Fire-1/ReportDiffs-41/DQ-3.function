@@ -1,0 +1,3 @@
+ res←DQ n
+ ⎕NQ n.List'GotFocus' ⋄ res←⎕DQ n.TheForm
+⍝Done

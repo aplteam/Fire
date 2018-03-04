@@ -1,0 +1,7 @@
+ ScanText←{
+⍝ Scans any text in ⍵ (fns/opr/script text) if requiered by the user.
+     (~G.Text):⍬                    ⍝ Scan text at all?!
+     text←⍵
+     (0=+/↑,/⍴¨text~¨' '):⍬ 0       ⍝ No contents?
+     Scan text
+ }

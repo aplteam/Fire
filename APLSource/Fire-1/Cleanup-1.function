@@ -1,0 +1,10 @@
+ {r}←Cleanup;_
+⍝ Tidy up
+ r←''
+ :Trap 0 ⋄ _←GUI.n.Form.Close ⋄ :EndTrap
+ :Trap 6 ⋄ SetCursorObj G.saveCursorObj ⋄ :EndTrap
+ :Trap 0 ⋄ ⎕NQ GUI.n.Form'Close' ⋄ :EndTrap
+ ⎕EX¨'AWRG'
+ ⎕EX¨'GUI.n' 'GUI.TheIcon'
+ (⍎¨⎕NL-9).(⎕EX¨⎕WN'')
+⍝Done

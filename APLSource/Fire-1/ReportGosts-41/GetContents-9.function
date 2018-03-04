@@ -1,0 +1,22 @@
+ r←GetContents tree;i;type;ref;list;temp;types
+ r←(0⊃⍴tree)⍴⊂⍬
+ :For i :In ⍳⍴r
+     (ref type)←tree[i;]
+     :If ~0∊⍴list←' '~⍨¨↓ref.⎕NL⍳16
+     :AndIf ##.Types.ScriptedNamespace=type
+     ⍝ For scripted namespaces it needs some gymnastics to
+     ⍝ find out what is ghostly and what is not. That's
+     ⍝ because namespace scripts are NOT just another
+     ⍝ representation of an ordinary namespace: they have
+     ⍝ a ghostly namespace as well, and the only way to
+     ⍝ tell whether an object is part of the script or
+     ⍝ not is to refix the script elsewhere and then
+     ⍝ compare the name list of that one with the original
+     ⍝ one:
+         temp←⎕NS''
+         temp.⎕FIX ⎕SRC ref
+         list~←temp.({' '~⍨¨↓⍵.⎕NL⍳16}⍎,⎕NL 9) ⍝ The remains must live in the ghost
+     :EndIf
+     types←ref.⎕NC¨list
+     (i⊃r)←ref types list
+ :EndFor

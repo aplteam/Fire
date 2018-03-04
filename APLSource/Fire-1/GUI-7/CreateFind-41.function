@@ -1,0 +1,26 @@
+ CreateFind;∆;rf;msg
+⍝
+
+ ∆←⊂'Label'
+ ∆,←⊂'Caption' '&Search for:'
+ ∆,←⊂'Posn'(10 13)
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ n.L_SearchFor←⍎'L_SearchFor'n.Form.⎕WC ∆
+
+ ∆←⊂'Combo'
+ ∆,←⊂'Posn'(35 10)
+ ∆,←⊂'Size'(⍬(minWidth-20))
+ ∆,←⊂'FontObj'n.APL_Font
+ ∆,←⊂'Style' 'DropEdit'
+ ∆,←⊂'Attach'('Top' 'Left' 'Top' 'Left')
+ ∆,←⊂'Items'##.G.LookForList
+ ∆,←⊂'TipObj'n.TipObj
+ msg←'Enter here what you want to search for.⌹'
+ msg,←'Select from the combo box previously⌹'
+ msg,←'used search terms (WSID specific).'
+ ∆,←⊂'Tip'(Split msg)
+ n.SearchFor←⍎'SearchFor'n.Form.⎕WC ∆
+ n.SearchFor.onContextMenu←'SuppressContextMenu'
+ n.SearchFor.onKeyPress←'OnKeyPressInSearchFor'
+ n.SearchFor.Event,←⊂Events.CheckForChangeInSearchFor'OnCheckForChangeInSearchFor'
+⍝ Done

@@ -1,0 +1,31 @@
+ R←Test_RegExSearch_019(stopFlag batchFlag);n;⎕TRAP;n2;html;expected
+⍝ Search for Text with both DotAll←0 and DotAll←1 - makes no difference here
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ 1 #._Fire.Fire.Run 0
+ n←#._Fire.Fire.GUI.n
+
+ #.⎕SHADOW'Temp_RegExSearch_019'
+ 'Temp_RegExSearch_019'#.⎕NS''
+ #.Temp_RegExSearch_019.⎕FX'Fns' 'Start ⋄ abc←1 ⋄ End ⋄ Start ⋄ xyz←2 ⋄ End'
+
+ ∆InitialyzeFireMainGUI_Settings n
+ n.SearchFor.Text←'Start.*End'
+ n.LookIn.Text←'#.Temp_RegExSearch_019'
+ n.SearchIsRegEx.State←1
+ n.(DotAll Greedy).(Active State)←1
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →GoToTidyUp 1≠↑⍴n.HitList.ReportInfo
+
+ n.DotAll.State←1
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →GoToTidyUp 1≠↑⍴n.HitList.ReportInfo
+ R←∆OK
+
+∆TidyUp:
+ CloseFire

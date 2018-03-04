@@ -1,0 +1,8 @@
+ r←ShowUserViaHomeMadeEditor y;ref;name;oldCode;i;newCode;noOf;p
+⍝ Takes ⍵ (name,oldCode,NewCode) and displayes it with an home=made
+⍝ comparison and edit tool - very basic but it works.
+⍝ Returns 1 in case the object got established in the workspace, otherwoise 0
+ p←⎕NS''
+ p.(ref name oldCode newCode i noOf)←y
+ .
+⍝Done

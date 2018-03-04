@@ -1,0 +1,28 @@
+ r←GetPotentialControls(current rf);l;not;this;c;b
+⍝ Returns a list with all controls that potentially can get the focus.
+⍝ "current" is the control which is about to get the focus.
+⍝ "rf" is a ref to the form.
+⍝ Takes all children of "rf" and also all groups but only when there is _
+⍝ at least one child in that group active. Finally the vector is rotated _
+⍝ so that "current is the first one.
+⍝ In the final step all but the very first control of every group is removed.
+⍝ At that stage either the first (<TAB>) or the last <Shift+TAB>) control _
+⍝ is going to be the "next" one.
+ l←rf.(⍎¨⎕WN'')                             ⍝ All children
+ not←'Font' 'Label' 'TipField' 'MenuBar' 'StatusBar' 'Bitmap' 'SubForm'  ⍝ We are not interested in any of these
+ l/⍨←~l.Type∊not                            ⍝ So let's get rid of them
+ r←⍬
+ :For this :In l
+     :If 'Group'≡this.Type
+         c←this.(⍎¨⎕WN'')                   ⍝ All children in that group
+         :If 0<+/c.Active                   ⍝ Is there at least one active child?
+             r,←↑c.Active/c                 ⍝ Remember the first one
+         :EndIf
+     :Else
+         r,←this
+     :EndIf
+ :EndFor
+ r←(r⍳current)⌽r                            ⍝ Make the current one the first one
+ :If 0∊⍴n.HitList.Items                     ⍝ If the hit list is empty...
+     r~←n.HitList                           ⍝ ... it should never get the focus!
+ :EndIf

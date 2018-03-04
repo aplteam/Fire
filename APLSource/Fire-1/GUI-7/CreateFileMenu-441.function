@@ -1,0 +1,8 @@
+ CreateFileMenu;∆;rf
+
+ rf←⍎'MB.TheFileMenu'n.Form.⎕WC'Menu' 'File'
+
+ ∆←⊂'MenuItem'
+ ∆,←⊂'Caption'('Quit',##.TAB,'Escape')
+ n.QuitCmd←⍎'QuitCmd'rf.⎕WC ∆
+ n.QuitCmd.onSelect←'OnQuitCmd'

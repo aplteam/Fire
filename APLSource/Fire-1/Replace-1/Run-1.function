@@ -1,0 +1,30 @@
+ {r}←Run;∆;parentButtons;saveAccelerators;props;noOfInstances;hl;bool
+⍝ Allows the user to specify the replace string and to change the "Search for" string.
+⍝ These results are stored in ##.G.(SearchFor ReplaceBy ReplaceType).
+⍝ Result "rc" gets 1 for "carry on" and 0 if the user wants to cancel.
+ r←⍬
+ (0⊃⎕SI)⎕STOP⍨(⎕STOP 0⊃⎕SI){StopInReplace:⍺,⍵ ⋄ ⍺~⍵}1+0⊃⎕LC
+⍝ ##.GUI.n.Form.Active←0  ⍝ I would love to do that but it stops the test cases from working!
+ hl←##.GUI.n.HitList
+ :If 0<noOfInstances←+/~bool←(⊂'Class Instance')≢¨hl.ReportInfo[;1]
+     ##.G.NoOfHits-←noOfInstances
+     hl.Data←bool⌿hl.Data
+     hl.Items←bool/hl.Items
+     hl.ReportInfo←bool⌿hl.ReportInfo
+     ##.G.Hits←bool⌿##.G.Hits
+     ##.G.ProcessingTime←{0.01×⌊100×⍵}(⎕AI[1]-##.∆AI)÷1000
+     0 ##.GUI.ReportHitsInStatusbar ##.G.NoOfHits,##.G.NoOfObjects,##.G.NoOfObjects ⍬
+ :EndIf
+ {}##.GUI.CopyGuiToGlobal ⍬
+ n←##.CreateGuiRefContainer   ⍝ DO NOT localize "n"!
+ n←CreateReplaceGUI n
+ n.ReplaceBy.SelText←1,1+⍴,n.ReplaceBy.Text
+ ##.GUI.TheForm.saveProps←##.GUI.SaveDynamicProps ##.GUI.TheForm
+ {}##.GUI.n.Form.onGotFocus
+ n.Form.n←n
+ :If ##.G.TestFlag
+     ⎕NQ n.ReplaceBy'GotFocus'
+ :Else
+     ⎕NQ n.ReplaceBy'GotFocus' ⋄ r←DQ n.Form
+ :EndIf
+⍝Done

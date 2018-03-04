@@ -1,0 +1,51 @@
+ (rc objHits noOfObj noOfContainers)←RunSearch flag;list;_;buffer;Performs
+⍝ Performs the actual search.
+⍝ If "flag" is 1 then either the workspace or ⎕SE is scanned.
+⍝ If "flag" is zero then only the current hit list is scanned.
+⍝ rc is 0 when no objects to be searched in could be found (CLEAR WS for example).
+⍝ rc is 1 when an ordinary search was performed.
+⍝ rc might become ¯1 one day when we allow the user to cancel a search operation.
+⍝ `objHits` reports objects that carry a hit.
+ rc←1 ⋄ objHits←'' ⋄ noOfObj←0
+ ToggleAutoStatus 0
+ (0⊃⎕SI)⎕STOP⍨(⎕STOP 0⊃⎕SI){StopInSearch:⍺,⍵ ⋄ ⍺~⍵}1+0⊃⎕LC
+ :If 0=G.(Code+Vars)
+     (list noOfContainers)←GetNames flag
+ :Else
+     (list noOfContainers)←GetList flag 1
+ :EndIf
+ :If 0∊⍴list
+     GUI.ResetHitList noOfObj,noOfContainers
+ :Else
+     list←RemoveUnwanted list
+     list←RemoveClones list
+     :If 0∊noOfObj←0⊃⍴list
+         GUI.ResetHitList noOfObj,noOfContainers
+         rc←0
+     :Else
+         :If G.NamesOnly
+             objHits←ProcessNameSearch list
+         :Else
+             objHits←⊃ProcessList list
+         :EndIf
+         :If G.Negate
+             :If 0∊⍴objHits
+                 objHits←list[;0 1],0,0,list[;2],(⊂⍬),list[;,3]
+             :Else
+                 :If 0∊⍴buffer←((↓list[;0 1]){~⍺∊⍵}↓objHits[;0 1])⌿list
+                     objHits←0⍴⊂⊂''
+                 :Else
+                     objHits←buffer[;0 1],0,buffer[;2],0,(⊂⍬),buffer[;,3]
+                 :EndIf
+             :EndIf
+         :EndIf
+         :If ~0∊⍴objHits
+             objHits←SortHits objHits
+         :EndIf
+     :EndIf
+     :If ~0∊⍴objHits
+         objHits←DropDoublesFromHitList objHits
+     :EndIf
+ :EndIf
+ ToggleAutoStatus 1
+⍝Done

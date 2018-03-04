@@ -1,0 +1,35 @@
+ CreateOptions;∆;rf;tip;msg
+⍝
+
+ ∆←⊂'Group'
+ ∆,←⊂'Caption' 'Options'
+ ∆,←⊂'Posn'((15+0⊃PosnPlusSize n.LookIn),10)
+ ∆,←⊂'Size'(130 160)
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ rf←⍎'OptionsGroup'n.Form.⎕WC ∆
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' '&Match case'
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'Posn'(25 10)
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ ∆,←⊂'TipObj'n.TipObj
+ ∆,←⊂'Tip'(Split'Makes the search case sensitive.')
+ n.Case←⍎'Case'rf.⎕WC ∆
+ n.Case.onSelect←'OnCase'
+ n.Case.onKeyPress←'OnKeyPressStandard'
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' 'Match &APL name'
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'Posn'(50 10)
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ ∆,←⊂'TipObj'n.TipObj
+ msg←'Makes the search strict in terms of identifier boundaries.'
+ ∆,←⊂'Tip'(Split msg)
+ n.APL_Name←⍎'APL_Name'rf.⎕WC ∆
+ n.APL_Name.onSelect←'OnAPL_Name'
+ n.APL_Name.onKeyPress←'OnKeyPressStandard'
+
+ {}PolishWidth rf
+ ⍝ Done

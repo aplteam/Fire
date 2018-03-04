@@ -1,0 +1,16 @@
+ RemoveAllInCertainNamespace←{
+⍝ Removes all items situated in a particular namespace from the list.
+⍝ It was ensured earlier on that we can get here only if there is either
+⍝ just one line selected or all lines selected share the parent namespace.
+     name←∪n.HitList.(SelItems⌿ReportInfo[;0])
+     (1≠⍴name):. ⍝ Something is very wrong here!
+     b←((1+⍴↑name)∘{⍺↑⍵}¨n.HitList.ReportInfo[;0])≢¨'.',⍨¨⍕¨name
+     b∧←n.HitList.ReportInfo[;0]≢¨⍕¨name
+     n.HitList.Items←b⌿n.HitList.Items
+     n.HitList.ReportInfo←b⌿n.HitList.ReportInfo
+     n.HitList.Data←b⌿n.HitList.Data
+     ##.G.Hits←b⌿##.G.Hits
+     noOf←⍴n.HitList.Items
+     (0=noOf):_←WriteInfo''
+     _←WriteInfo(⍕noOf),' remaining hit',(1<noOf)/'s'
+ }

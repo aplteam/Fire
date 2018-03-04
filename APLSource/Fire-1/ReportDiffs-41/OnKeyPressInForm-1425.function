@@ -1,0 +1,4 @@
+ OnKeyPressInForm←{
+     (~(⊂2↑4↓⍵)∊(27 0)(115 4)):1
+     0⊣⎕NQ n.TheForm'Close'
+ }

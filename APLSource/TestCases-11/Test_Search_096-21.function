@@ -1,0 +1,27 @@
+ R←Test_Search_096(stopFlag batchFlag);n;⎕TRAP;n2;html
+⍝ Search within a namespace script that has comments **before** the `:Namespace` statement.
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ 1 #._Fire.Fire.Run 0
+ n←#._Fire.Fire.GUI.n
+
+ #.⎕SHADOW'TMP'
+ 'TMP'#.⎕NS''
+ #.TMP.⎕FIX'⍝ Leading comment "Foo"' ':Namespace Test1' 'Hello←{' '''world''' '}' ':EndNamespace'
+
+ ∆InitialyzeFireMainGUI_Settings n
+ n.SearchFor.Text←'"Foo"'
+ n.LookIn.Text←'#.TMP'
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ n2←#._Fire.Fire.GUI.OnReportHits ⍬
+ ∆Process n.Form
+ html←#.APLTreeUtils.ReadUtf8File n2.∆Filename
+ →GoToTidyUp 1≠+/'<div class="comp">[0] ⍝ Leading comment <span class="diff">"Foo"</span></div>'⍷∊html
+ R←∆OK
+
+∆TidyUp:
+ CloseFire

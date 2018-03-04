@@ -1,0 +1,32 @@
+ OnSortTable y;c;rf;rl;data;f;b
+⍝ Sort table
+ c←2⊃y                          ⍝ The column
+ rl←0⊃y                         ⍝ Ref to the list
+ rf←{⍵.##}0⊃y                   ⍝ Ref to the form
+ data←rl.(Items,ReportInfo)
+ :If c=0⊃rf.Sort
+     b←'asc'≡1⊃rf.Sort
+     f←⍎b⊃'⍒⍋'
+     :If 0=c
+         data←data[f⊃data[;0];]
+     :Else
+         data←data[f data[;1];]
+     :EndIf
+     rl.ColTitles←{⍵↑⍨⍵⍳' '}¨rl.ColTitles
+     (c⊃rl.ColTitles)←(c⊃rl.ColTitles),' ',b⊃'↓↑'
+     rf.Sort←c(b⊃'asc' 'desc')
+ :Else
+     :If 0=c
+         data←data[⍋⊃data[;0];]
+     :Else
+         data←data[⍋data[;1];]
+     :EndIf
+     rl.ColTitles←{⍵↑⍨⍵⍳' '}¨rl.ColTitles
+     (c⊃rl.ColTitles)←(c⊃rl.ColTitles),' ↑'
+     rf.Sort←c 1
+ :EndIf
+ rl.Visible←0
+ rl.Items←data[;0]
+ rl.ReportInfo←data[;,1]
+ rl.Visible←1
+⍝Done

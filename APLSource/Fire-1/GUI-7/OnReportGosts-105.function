@@ -1,0 +1,4 @@
+ OnReportGosts←{
+⍝ Builds up a report with all ghostly namespaces that actually contain something
+     n.RefToGhostsReport←##.ReportGosts.Run #
+ }

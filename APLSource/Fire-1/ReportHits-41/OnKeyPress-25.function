@@ -1,0 +1,21 @@
+ r←OnKeyPress msg;Escape;AltF4;ref;key;Enter;n;bool;k
+ r←1
+ k←⎕NS''
+ k.(Escape AltF4 Enter)←(27 0)(115 4)(13 0)
+ k.(Up Down)←(38 0)(40 0)
+ k.(Home End)←(36 0)(35 0)
+ k.(PgUp PgDown)←(33 0)(34 0)
+ k.(CtrlHome CtrlEnd)←(36 2)(35 2)
+ ref←↑msg
+ key←⊂2↑4↓msg
+ :If key∊k.(Escape AltF4)
+     :Trap 6
+         ⎕NQ ref.##.##'Close'
+     :EndTrap
+     r←0
+ :ElseIf key∊k.(CtrlHome CtrlEnd)  ⍝ Ignore those
+     r←0
+ :ElseIf key∊k.(⍎¨↓⎕NL 2)
+     ⎕NQ ref 9994
+ :EndIf
+⍝Done

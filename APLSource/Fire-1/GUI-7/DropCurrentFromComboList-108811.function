@@ -1,0 +1,9 @@
+ DropCurrentFromComboList←{
+⍝ Removes current item from the combo list.
+⍝ Returns 1 in case something was deleted, otherwise 0.
+     rf←⍵
+     (0∊⍴rf.Items):0                    ⍝ List is empty? Done!
+     (0=+/rf.SelItems):0                ⍝ No item is selected? Done!
+     rf.Items←(~rf.SelItems)/rf.Items   ⍝ Remove current item from list
+     1
+ }

@@ -1,0 +1,10 @@
+ r←Replace_RotateBackAndForce(line old new ind);new2
+⍝ Replace ##.G.SearchFor by "new" at all "ind" positions.
+⍝ Note that since version 1.4 "new" is a) always nested and b) may
+⍝ have a length greater than one.
+ r←line
+ ind←⌽ind
+ new2←1↓Simplify ##.CR,¨new
+ :Repeat
+     r←(-↑ind)⌽new2,(⍴,old)↓(↑ind)⌽r
+ :Until 0∊⍴ind←1↓ind

@@ -1,0 +1,3 @@
+ OnRemoveFromList←{
+     RemoveFromList ⍬
+ }

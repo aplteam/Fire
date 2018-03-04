@@ -1,0 +1,5 @@
+ r←StopInSearch
+ r←0
+ :If ⍬≢GUI.n.StopInSearch
+     r←GUI.n.StopInSearch.Checked
+ :EndIf

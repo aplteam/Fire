@@ -1,0 +1,24 @@
+ r←HandleCut n;buff;noOf;newSelText;selText;cl
+ r←0
+ 'cl'⎕WC'Clipboard'
+ selText←n.ReplaceBy.SelText
+ :If 1=⍴n.ReplaceBy.Text
+     cl.Text←(1⊃¨n.ReplaceBy.SelText){(-/⌽⍺)⍴(⍺[0]-1)↓⍵}↑n.ReplaceBy.Text
+     n.ReplaceBy.Text←(1⊃¨n.ReplaceBy.SelText){(1+-⍺[0])⌽(-/⌽⍺)↓(⍺[0]-1)⌽⍵}↑n.ReplaceBy.Text
+     n.ReplaceBy.SelText←2⍴selText[0]
+ :Else
+     buff←⊂(¯1+0⊃n.ReplaceBy.SelText){⍺[1]↓⍺[0]⊃⍵}n.ReplaceBy.Text
+     :If 0<noOf←¯1+-/⌽↑¨n.ReplaceBy.SelText
+         buff,←n.ReplaceBy.Text[(↑↑n.ReplaceBy.SelText)+⍳noOf]
+     :EndIf
+     buff,←⊂(¯1+1⊃n.ReplaceBy.SelText){⍺[1]↑⍺[0]⊃⍵}n.ReplaceBy.Text
+     cl.Text←buff
+     buff←(¯1+↑↑n.ReplaceBy.SelText)↑n.ReplaceBy.Text
+     buff,←⊂(¯1+1⊃↑n.ReplaceBy.SelText)↑(¯1+↑↑n.ReplaceBy.SelText)⊃n.ReplaceBy.Text
+     ((¯1+⍴buff)⊃buff),←(¯1+1⊃n.ReplaceBy.SelText){⍺[1]↓⍺[0]⊃⍵}n.ReplaceBy.Text
+     buff,←(↑1⊃n.ReplaceBy.SelText)↓n.ReplaceBy.Text
+     newSelText←2⍴n.ReplaceBy.SelText[0]
+     n.ReplaceBy.Text←buff
+     n.ReplaceBy.SelText←newSelText
+ :EndIf
+⍝Done

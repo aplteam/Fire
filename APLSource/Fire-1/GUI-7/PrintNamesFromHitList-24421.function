@@ -1,0 +1,9 @@
+ PrintNamesFromHitList←{
+⍝ Prints the fully qualified names of all currently selected
+⍝ items in the hit list to the session (⎕SE).
+     l←n.HitList.SelItems/n.HitList.ReportInfo[;0]
+     l,¨←'.'
+     l,¨←n.HitList.SelItems/n.HitList.Items
+     ⎕←⊃'⍝ '∘,¨l
+     ⍬
+ }

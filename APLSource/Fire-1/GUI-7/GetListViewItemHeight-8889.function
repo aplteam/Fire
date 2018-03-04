@@ -1,0 +1,12 @@
+ GetListViewItemHeight←{
+⍝ ⍵ is ref pointing to a ListView
+⍝ Returns the height of a single item
+     ref←⍵
+     h←ref.Handle
+     LVM_GETITEMRECT←4110
+     LVIR_BOUNDS←0
+     _←⎕NA'u user32|SendMessage* U U U ={I I I I }'
+     r←SendMessage h LVM_GETITEMRECT 0(4↑LVIR_BOUNDS)
+     (1≠↑r):5+↑ref.GetTextSize'9' ⍝ In case of an error we return the height of text plus 5 as best guess
+     |-/|(1⊃r)[1 3]
+ }

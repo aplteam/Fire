@@ -1,0 +1,10 @@
+ NonReplaceVars←{
+⍝ Returns a 1 in case the vars (⍵) cannot be changed.
+⍝ We change just simple text vectors and vectors of simple text vectors
+     ~(≡⍵)∊1 2:1
+     ~(⍴⍴⍵)∊0 1:1
+     ~∧/(↑∘⍴∘⍴¨⍵)∊0 1:1
+     ⍝ Most throw a NONCE but some a DOMAIN ERROR and even a LENGTH ERROR (!) was seen:
+     ⍝ This is caused by an overtake on a class instance where the constructor requires data
+     (,⊂,' ')≢∪{5 11 16::⍬ ⋄ 1↑0⍴⍵}¨⍵
+ }

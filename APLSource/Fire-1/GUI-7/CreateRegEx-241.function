@@ -1,0 +1,55 @@
+ CreateRegEx;∆;rf;tip;msg
+⍝
+
+ ∆←⊂'Group'
+ ∆,←⊂'Caption' 'RegEx'
+ ∆,←⊂'Posn'((15+0⊃PosnPlusSize n.LookIn),(10+1⊃PosnPlusSize n.APL_Code.##))
+ ∆,←⊂'Size'(130 160)
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ rf←⍎'OptionsGroup'n.Form.⎕WC ∆
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' 'Is RegE&x'
+ ∆,←⊂'Posn'(20 10)
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'Attach'('Top' 'Right' 'Top' 'Right')
+ ∆,←⊂'TipObj'n.TipObj
+ ∆,←⊂'Tip'(Split'Interpret "Search for" as a regular expression.')
+ n.SearchIsRegEx←⍎'SearchIsRegEx'rf.⎕WC ∆
+ n.SearchIsRegEx.onSelect←'OnToggleSearchIsRegEx'
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' 'Dot&All'
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'Posn'(40 25)
+ ∆,←⊂'Attach'('Top' 'Right' 'Top' 'Right')
+ ∆,←⊂'TipObj'n.TipObj
+ ∆,←⊂'Tip'(Split'Specifies whether the dot (‘.’) character in⌹search patterns matches line ending characters.')
+ n.DotAll←⍎'DotAll'rf.⎕WC ∆
+ n.DotAll.onSelect←'OnToggleSearchIsRegEx'
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' '&Greedy'
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'Posn'(59 25)
+ ∆,←⊂'Attach'('Top' 'Right' 'Top' 'Right')
+ ∆,←⊂'TipObj'n.TipObj
+ ∆,←⊂'Tip'(Split'Specifies whether the RegEx is greedy.')
+ n.Greedy←⍎'Greedy'rf.⎕WC ∆
+ n.Greedy.onSelect←'OnToggleSearchIsRegEx'
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' '&UCP'
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'Posn'(78 25)
+ ∆,←⊂'Attach'('Top' 'Right' 'Top' 'Right')
+ ∆,←⊂'TipObj'n.TipObj
+ ∆,←⊂'Tip'(Split'Use Unicode properties to classify characters.')
+ ∆,←⊂'Visible'##.IsVersion16OrBetter
+ ∆,←⊂'Active'##.IsVersion16OrBetter
+ n.UCP←⍎'UCP'rf.⎕WC ∆
+ n.UCP.onSelect←'OnToggleSearchIsRegEx'
+
+ {}PolishWidth rf
+ {}PolishHeight rf
+ ⍝ Done

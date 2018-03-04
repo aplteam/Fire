@@ -1,0 +1,5 @@
+ {r}←∆ShowMsg msg
+ ⎕←(⎕PW-1)⍴'---'
+ ⎕←{(0 1∊⍨|≡⍵):⍵ ⋄ ⍪⍵}msg
+ ⎕←'When you are ready to continue please press <enter>'
+ r←0/⍞

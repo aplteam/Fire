@@ -1,0 +1,21 @@
+ r←OnContextMenuInReplaceBy msg;f;res
+ r←0
+ res←⍬
+ {}'mm'⎕WC'Menu'
+ {}'mm.copyField'⎕WC'MenuItem'('Copy "Search for" to "Replace by"',##.TAB,'F6')('Event' 'Select' '⍎res←''copyField''')
+ {}'mm.sep1'⎕WC'Separator'
+ {}'mm.selall'⎕WC'MenuItem'('Select all',##.TAB,'Ctrl+A')('Event' 'Select' '⍎res←''selectAll''')
+ {}⎕DQ'mm'
+ :Select res
+ :Case 'cut'
+     ⎕NQ n.ReplaceBy'KeyPress' 'CT'
+ :Case 'copy'
+     ⎕NQ n.ReplaceBy'KeyPress' 'CP'
+ :Case 'paste'
+     ⎕NQ n.ReplaceBy'KeyPress' 'PT'
+ :Case 'copyField'
+     CopySearchFor2ReplaceBy n
+ :Case 'selectAll'
+     SelectAll ⍬
+ :EndSelect
+ ⍝Done

@@ -1,0 +1,4 @@
+ OnCallingCmd←{
+⍝
+     ##.ListSearch.Run ⍬
+ }

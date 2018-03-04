@@ -1,0 +1,22 @@
+ R←Test_Search_026(stopFlag batchFlag);n;⎕TRAP
+⍝ Search for string "send" in #.TestData.LookForNames without "Match case"
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ 1 #._Fire.Fire.Run 0
+ n←#._Fire.Fire.GUI.n
+
+ ∆InitialyzeFireMainGUI_Settings n
+ n.SearchFor.Text←'send'
+ n.LookIn.Text←'#.TestData.LookForNames'
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →PassesIf n.HitList.Items ∆LazyMatch'Sendß' 'fns01' 'fns02' 'fns03' 'fns04' 'fns05' 'fns10' 'fns11' 'fns12'
+ →PassesIf(,⊂'#.TestData.LookForNames')≡∪n.HitList.ReportInfo[;0]
+
+⍝ Tidy up
+ CloseFire
+
+ R←∆OK

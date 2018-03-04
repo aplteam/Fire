@@ -1,0 +1,7 @@
+ CreateContextMenu_Edit noOf;c;_
+ :If 1=noOf
+     c←'Edit "',(n.HitList.((SelItems⍳1)⊃Items)),'"'
+ :Else
+     c←'Edit ',(⍕noOf),' object',(1<noOf)/'s'
+ :EndIf
+ _←'mm.edit'⎕WC'MenuItem'(c,##.TAB,'Ctrl+E')('Event' 'Select' 1)

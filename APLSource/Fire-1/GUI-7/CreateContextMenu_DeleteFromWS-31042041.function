@@ -1,0 +1,7 @@
+ CreateContextMenu_DeleteFromWS noOf;c;active;_
+ :If 1=noOf
+     c←'Delete "',(n.HitList.((SelItems⍳1)⊃Items)),'" from workspace',##.TAB,'Ctrl+Del'
+ :Else
+     c←'Delete ',(⍕noOf),' object',((1<noOf)/'s'),' from workspace',##.TAB,'Ctrl+Del'
+ :EndIf
+ _←'mm.delete'⎕WC'MenuItem'c('Event' 'Select' 1)

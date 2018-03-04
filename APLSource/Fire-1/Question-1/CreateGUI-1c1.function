@@ -1,0 +1,98 @@
+ ff←cs CreateGUI caption;∆;i;flag;this;rf;btnWidth;LinkFnt
+ ∆←⊂'Form'
+ :If 0∊⍴cs.addToCaption
+     ∆,←⊂'Caption'(##.AddPidToCaption'Fire')
+ :Else
+     ∆,←⊂'Caption'(##.AddPidToCaption'Fire : ',cs.addToCaption)
+ :EndIf
+ ∆,←⊂'Size'((140+30×~0∊⍴cs.checkBoxCaption)500)
+ ∆,←⊂'Coord' 'Pixel'
+ ∆,←⊂'MinButton' 0
+ ∆,←⊂'MaxButton' 0
+ ∆,←⊂'Sizeable' 0
+ ∆,←⊂'FontObj'##.GUI.n.Std_Font
+ ∆,←⊂'Event' 9999 1
+ :If 9=⎕NC⍕##.GUI.n.TheIcon
+     ∆,←⊂'IconObj'##.GUI.n.TheIcon
+ :EndIf
+ ff←⍎'ff'##.GUI.n.Form.⎕WC ∆
+ ff.Posn←ff.Size ##.GUI.CenterIn ##.GUI.n.Form
+ ff.Size[1]⌈←⌈/1⊃∘ff.GetTextSize¨caption,¨⊂'WW'
+ 'LinkFnt'ff.⎕WC'Font'('Underline' 1)('Weight' 600)
+
+ caption←,{0 1∊⍨≡⍵:⊂⍵ ⋄ ⍵}caption
+ i←0
+ flag←0
+ :For i :In ⍳⍴caption
+     this←i⊃caption
+     ∆←⊂'Label'
+     ∆,←⊂'Caption'this
+     ∆,←⊂'Posn'((15+i×5+0⊃ff.GetTextSize'W'),10)
+     :If 'http://'{⍺≡(⍴⍺)↑⍵}this
+         ∆,←⊂'FCol'(0 0 255)  ⍝ It's a link
+         ∆,←⊂'FontObj' 'LinkFnt'
+         flag←1
+     :EndIf
+     rf←⍎('l',⍕i)ff.⎕WC ∆
+     :If flag
+         rf.onMouseUp←'OnSelectLink'
+         flag←0
+     :EndIf
+ :EndFor
+ ff.Size[0]+←(5+0⊃ff.GetTextSize'W')×0⌈(⍴caption)-3
+
+ btnWidth←80⌈⌈/{1⊃2 ⎕NQ'ff' 'GetTextSize'(⍵,'WW')}¨cs.(cancelCaption caption2 okCaption)
+ ∆←⊂'Button'
+ ∆,←⊂'Caption'cs.okCaption
+ ∆,←⊂'Posn'(ff.Size[0]-35),5
+ ∆,←⊂'Size'(⍬ btnWidth)
+ ∆,←⊂'Event' 'Select' 1
+ ∆,←⊂'Event' 9999 1
+ ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
+ 'ok'ff.⎕WC ∆
+ ff.ok.onSelect←'OnOkay'
+
+ :If ~ff.ok.Cancel←0∊⍴cs.caption2
+     ∆←⊂'Button'
+     ∆,←⊂'Caption'cs.caption2
+     ∆,←⊂'Posn'((ff.Size[0]-35),10+1⊃+⌿⊃ff.ok.(Posn Size))
+     ∆,←⊂'Size'(⍬ btnWidth)
+     ∆,←⊂'Event' 'Select' 1
+     ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
+     ∆,←⊂'Event' 9999 1
+     ∆,←cs.escape/⊂'Cancel' 1
+     'btn2'ff.⎕WC ∆
+     ff.btn2.onSelect←'OnBtn2'
+ :EndIf
+
+ :If ~ff.ok.Cancel←0∊⍴cs.cancelCaption
+     ∆←⊂'Button'
+     ∆,←⊂'Caption'cs.cancelCaption
+     ∆,←⊂'Size'(⍬ btnWidth)
+     ∆,←⊂'Event' 'Select' 1
+     :If 0=ff.⎕NC'btn2'
+     :AndIf cs.escape
+         ∆,←⊂'Cancel' 1
+     :EndIf
+     :If 0∊⍴cs.caption2
+         ∆,←⊂'Posn'((ff.Size[0]-35),10+1⊃+⌿⊃ff.ok.(Posn Size))
+         ∆,←⊂'Attach'(4⍴'Bottom' 'Right')
+     :Else
+         ∆,←⊂'Posn'((ff.Size[0]-35),10+1⊃+⌿⊃ff.btn2.(Posn Size))
+         ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
+     :EndIf
+     ∆,←⊂'Event' 9999 1
+     'cancel'ff.⎕WC ∆
+     ff.cancel.onSelect←'OnCancel'
+ :EndIf
+ :If ~0∊⍴cs.checkBoxCaption
+     ∆←⊂'Button'
+     ∆,←⊂'Caption'cs.checkBoxCaption
+     ∆,←⊂'Style' 'Check'
+     'fixRemainingChanges'ff.⎕WC ∆
+     ff.fixRemainingChanges.Posn←(ff.ok.Posn[0]-10+ff.fixRemainingChanges.Size[0]),10
+ :EndIf
+ :If 2=+/(↑0=ff.⎕NC'btn2')(↑0=ff.⎕NC'cancel')
+     ff.ok.Posn[1]←⌊0.5×ff.Size[1]-ff.ok.Size[1]
+ :EndIf
+⍝Done

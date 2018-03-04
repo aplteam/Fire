@@ -1,0 +1,5 @@
+ OnToggleStop←{
+⍝
+     rf←0⊃⍵
+     rf.Checked←~rf.Checked
+ }

@@ -1,0 +1,4 @@
+ OnCopy←{
+     CopySearchFor2ReplaceBy n
+     0
+ }

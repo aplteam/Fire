@@ -1,0 +1,7 @@
+ r←DoesClipboardHoldText clipboard
+⍝ Returns 1 in case the clipboard holds a non-empty piece of text, otherwise 0.
+ :Trap 0
+     r←~0∊⍴clipboard.Text
+ :Else
+     r←0
+ :EndTrap

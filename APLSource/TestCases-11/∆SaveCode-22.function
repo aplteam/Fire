@@ -1,0 +1,4 @@
+ filename←∆SaveCode(ref info);code
+ code←info ∆GetAllCodeFrom_NS ref
+ filename←#.FilesAndDirs.GetTempFilename''
+ #.APLTreeUtils.WriteUtf8File filename code

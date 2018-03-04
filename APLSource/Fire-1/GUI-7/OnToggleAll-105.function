@@ -1,0 +1,5 @@
+ OnToggleAll←{
+⍝ Toggles all "Stop" menu commands in the "Developers" menu on or off (⍺)
+     f←'Check all'≡n.ToggleAllInDeveloperMenu.Caption
+     n.(StopInSearch StopInReplace StopInCallingCounter).Checked←f
+ }

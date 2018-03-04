@@ -1,0 +1,65 @@
+ {r}←{filename}SaveSelectedObjects rows;msg;_;ans;ref;∆;filename;row;name;buffer;appendFlag;cs;rf;∆Cancel;∆OK;TEMP
+⍝ Allows the user to save all currently selected objects in a single file.
+⍝ That can be useful for comparison.
+ r←⍬
+ :If 0=⎕NC'filename'
+     'TEMP'⎕NS''
+     ∆←''
+     ∆,←⊂'Caption'('Save object',((1<⍴rows)/'s'),' in single file for comparison')
+     ∆,←⊂'FileMode' 'Write'
+     ∆,←⊂'Filters'(⊂'*.dyalog' 'Dyalog file (*.dyalog)')
+     ref←TEMP.⎕NEW'FileBox'∆
+     ∆OK←∆Cancel←0
+     TEMP.⎕FX'onPushButton msg' '∆MSG←msg'
+     ref.onFileBoxOK←'TEMP.onPushButton'
+     ref.onFileBoxCancel←'TEMP.onPushButton'
+     {}ref.Wait
+     :If 'FileBoxCancel'≡1⊃TEMP.∆MSG
+         {}ref.Close
+         :Return
+     :EndIf
+     filename←ref.(Directory,File)
+     filename,←(~'.'∊ref.File)/'.dyalog'
+ :EndIf
+ :If ~0∊⍴filename
+     buffer←''
+     appendFlag←0
+     :If ##.F.Exists filename
+         msg←'The file:'filename'already exists.'
+         cs←##.Question.CreateDefaultParms
+         cs.okCaption←'Append'
+         cs.caption2←'Overwrite'
+         :If ¯1=appendFlag←(1 0 ¯1)[1 2 0⍳cs ##.Question.Run msg]
+             :Return
+         :EndIf
+     :EndIf
+     :For row :In rows
+         ⍝ name←(0⊃n.HitList.ReportInfo[row;]),'.',(row⊃n.HitList.Items)
+         name←row⊃n.HitList.Items
+        ⍝rf←⍎↑n.HitList.ReportInfo[row;0]   <== this does not work in case the parent is an unnamed namespace!
+         rf←##.G.Hits[row;0]
+         :If 3 4∊⍨rf.⎕NC name
+             buffer,←(⎕UCS 13)##.A.Split rf.⎕VR name
+         :ElseIf 9=rf.⎕NC name
+             :Trap 0
+                 buffer,←⎕SRC rf.⍎name
+             :Else
+                 msg←'Problem saving script "',name,'"; is going to be ignored!'
+                 ##.Question.ShowMsg msg
+             :EndTrap
+         :Else
+             :Trap 0
+                 buffer,←(⊂'*** start vars ',name),(↓⎕FMT rf.⍎name),(⊂'*** end vars ',name)
+             :Else
+                 msg←'Problem saving vars "',name,'"; is going to be ignored!'
+                 ##.Question.ShowMsg msg
+             :EndTrap
+         :EndIf
+     :EndFor
+     appendFlag ##.A.WriteUtf8File filename buffer
+     :If 0=##.G.TestFlag
+         msg←⊂(⍕⍴rows),' object',((1<⍴rows)/'s'),' successfully ',(appendFlag⊃'saved in:' 'added to:')
+         msg,←⊂filename
+         {}##.Question.ShowMsg msg
+     :EndIf
+ :EndIf

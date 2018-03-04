@@ -1,0 +1,5 @@
+ ∆Flush←{
+     ⍝ _←2 ⎕NQ fmF'Close'
+     _←fmF.Wait
+     0
+ }

@@ -1,0 +1,7 @@
+ r←ScanFnsAndOprs(ref fnsOprName type);body
+⍝ Scans fnsOprName for the search string.
+⍝ For result see "ScanBody".
+ body←IfLower ref.⎕NR fnsOprName
+ :If ~0∊⍴r←ScanBody ref fnsOprName body
+     (0⊃r)←(0⊃r),type
+ :EndIf

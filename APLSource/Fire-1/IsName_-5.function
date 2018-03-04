@@ -1,0 +1,36 @@
+ r←x IsName_ hit;ss;ref;code;sb;after;eb;rem;lastIsDot
+⍝ Checks whether ss (searchString) is contained in "code" as a real "word" (APL name).
+⍝ Searching for "⎕SE" and "#" or "#." are considered special.
+⍝ Use this function for code; for comments and text see IsWord;
+⍝ r returns a vector with start indices for the hits or an empty vector if there aren't any,
+ r←⍬
+ (code ss)←x
+ ref←⎕NS''
+ :If ('⎕SE'≡ss)∨((,'#')≡,ss)∨('##')≡,ss
+     sb←eb←1
+ :Else
+     sb←{(⍵∊'#⎕.')∨0=↑ref.⎕NC ⍵}code[hit]     ⍝ First char must be either one of "#⎕." or 0=⎕NC
+     :If lastIsDot←'.'=code[¯1+hit+⍴ss]       ⍝ Is the last char of ss a dot?
+         rem←(¯2+⍴ss)↑(1+hit)↓code            ⍝ Remaining ones without the "."
+         (('#'=rem)/rem)←'a'                  ⍝ In case ss is something like "##" or "##.##" we replace "#" by "a"
+         rem←'_',rem                          ⍝ we add a leading"_"in case they are all digits
+         sb∧←0=ref.⎕NC rem                    ⍝ Those must be 0=⎕NC
+     :Else
+         rem←'_',(¯1+⍴ss)↑(1+hit)↓code
+         (('#'=rem)/rem)←'a'                  ⍝ In case ss is something like "##" or "##.##" we replace "#" by "a"
+         sb∧←0=ref.⎕NC rem                    ⍝ Remaining must be 0=⎕NC but we add a leading "_" in case they are all digits
+     :EndIf
+     :If '.'≠code[hit]                        ⍝ Otherwise it is already dealt with
+         sb∧←{(~⍵∊'⎕#')∧0≠ref.⎕NC ⍵}code[hit-1] ⍝ First char before ss must not be 0=⎕NC but also not "⎕"
+     :EndIf
+     :If lastIsDot
+         eb←1                                 ⍝ That's already settled
+     :Else
+         after←hit+⍴ss                        ⍝ Index of the first char _after_ ss
+         eb←0
+         :If ~code[after]∊⎕D
+             eb←0≠ref.⎕NC code[after]         ⍝ First char after ss must not be 0=⎕NC
+         :EndIf
+     :EndIf
+ :EndIf
+ r←(sb∧eb)/hit

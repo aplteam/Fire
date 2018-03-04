@@ -1,0 +1,1 @@
+ OnHitListGotFocus←{(~0∊⍴(0⊃⍵).Items):1 ⋄ 0⊣⎕NQ n.SearchFor'GotFocus'}

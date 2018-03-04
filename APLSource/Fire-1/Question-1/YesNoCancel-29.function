@@ -1,0 +1,8 @@
+ r←YesNoCancel caption;cs;f;opt
+⍝ Ask a Question with thre buttons: "Yes" and "No" and "Cancel"
+ opt←0=⎕NC'cs'
+ cs←CreateDefaultParms
+ cs.okCaption←'Yes'
+ cs.cancelCaption←'No'
+ cs.caption2←'Cancel'
+ r←cs Run caption

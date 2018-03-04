@@ -1,0 +1,12 @@
+ (hits body)←GetHitsForScanFnsAndOprs fnsOprName;body;textFreeBody;text;remainingBody;comments
+
+⍝ Get indices for all hits in fnsOprName for the search string depending on user parms.
+ r←''
+ :If ~0∊⍴body←IfLower ⎕CR fnsOprName
+     (textFreeBody text)←GetTextAndRest body
+     hits←CompileHits ScanText text
+     (remainingBody comments)←GetCommentsAndRest textFreeBody
+     hits⍪←CompileHits ScanComments comments
+     hits⍪←CompileHits ScanCode remainingBody
+ :EndIf
+ body←{⍵↓⍨-+/∧\' '=⌽⍵}¨↓body

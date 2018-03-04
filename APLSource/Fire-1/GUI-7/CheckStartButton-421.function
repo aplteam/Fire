@@ -1,0 +1,4 @@
+ CheckStartButton←{
+     n.StartBtn.Active←n.NamesOnly.State∨(0<+/n.(Code Vars).State)∧n.Vars.State∨0<+/n.(APL_Code Comments Text).State
+     1:r←⍬
+ }

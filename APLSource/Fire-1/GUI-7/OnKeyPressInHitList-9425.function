@@ -1,0 +1,9 @@
+ OnKeyPressInHitList←{
+⍝
+     n.Form.LastKey←⍵[4 5]
+     (9 2≡⍵[4 5]):⎕NQ'⎕SE' 'GotFocus'       ⍝ Is it Ctrl+Tab?!
+     (27 0≡⍵[4 5]):SendCloseToForm ⍬        ⍝ <Escape>?! Get out!
+     (13 0≡⍵[4 5]):ClickFindButton ⍬        ⍝ <Enter>?! Press "Find"
+     (67 2≢⍵[4 5]):1                        ⍝ Is NOT Ctrl+C (Copy)? Done!
+     ⍬
+ }

@@ -1,0 +1,5 @@
+ CompileHits←{
+⍝ Returns a vector of hits, each with a line number in the first item
+⍝ and the index of any hits in the second item.
+     {⍵⌿⍨0<↑∘⍴¨⍵[;1]}(⍳⍴⍵),[0.5]⍵
+ }

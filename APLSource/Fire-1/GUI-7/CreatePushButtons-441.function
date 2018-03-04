@@ -1,0 +1,51 @@
+ CreatePushButtons;∆;btnWidth;msg
+⍝
+ btnWidth←80
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' 'Find'
+ ∆,←⊂'Size'(⍬ btnWidth)
+ ∆,←⊂'Posn'((15+0⊃PosnPlusSize n.APL_Code.##),10)
+ ∆,←⊂'Default' 1
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ ∆,←⊂'TipObj'n.TipObj
+ ∆,←⊂'Tip'(Split'Performs a "Search" operation.')
+ n.StartBtn←⍎'StartBtn'n.Form.⎕WC ∆
+ n.StartBtn.onSelect←'OnStartBtn'
+ n.StartBtn.onKeyPress←'OnKeyPressStandard'
+
+ ∆←''
+ ∆,←⊂'Caption' 'Cancel'
+ ∆,←⊂'Size'(⍬ btnWidth)
+ ∆,←⊂'Posn'((15+0⊃PosnPlusSize n.APL_Code.##),10)
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ ∆,←⊂'TipObj'n.TipObj
+ ∆,←⊂'Tip'(Split'Interrupts a "Search" operation.')
+ ∆,←⊂'Active' 0
+ ∆,←⊂'Visible' 0
+ ∆,←⊂'Default' 1
+ ∆,←⊂'Cancel' 1
+ n.CancelSearchBtn←n.Form.⎕NEW'Button'∆
+ n.CancelSearchBtn.onSelect←'OnCancelSearch&'
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' 'Replace...'
+ ∆,←⊂'Size'(⍬ btnWidth)
+ ∆,←⊂'Posn'(n.StartBtn.Posn[0],15+1⊃PosnPlusSize n.StartBtn)
+ ∆,←⊂'Active' 0
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ ∆,←⊂'Accelerator'(123 0)
+ ∆,←⊂'TipObj'n.TipObj
+ msg←'Performs "Replace" on all rows in the hit list.⌹'
+ msg,←'This operation can be triggered by pressing F12.⌹'
+ msg,←'It is suggested to remove any unwanted rows from⌹'
+ msg,←'the hit list first.⌹'
+ msg,←'Note that variables that cannot be changed due⌹'
+ msg,←'to wrong shape and/or depth will be ignored when⌹'
+ msg,←'a "Replace" operation is triggered.'
+ ∆,←⊂'Tip'(Split msg)
+ n.ReplaceBtn←⍎'ReplaceBtn'n.Form.⎕WC ∆
+ n.ReplaceBtn.onSelect←'OnReplaceBtn'
+ n.ReplaceBtn.onKeyPress←'OnKeyPressStandard'
+
+ ⍝Done

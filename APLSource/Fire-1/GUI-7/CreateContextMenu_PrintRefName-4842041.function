@@ -1,0 +1,4 @@
+ CreateContextMenu_PrintRefName noOf;c;_
+ noOf+/n.HitList.SelItems
+ c←'Print ref name',(1<+/n.HitList.SelItems)/'s'
+ _←'mm.printRefName'⎕WC'MenuItem'c('Event' 'Select' 1)

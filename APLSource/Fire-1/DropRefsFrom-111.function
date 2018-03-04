@@ -1,0 +1,4 @@
+ DropRefsFrom←{
+     (0∊⍴⍵):⍵
+     (~IsUnnameNamespace¨0⊃¨⍵[;0])⌿⍵
+ }

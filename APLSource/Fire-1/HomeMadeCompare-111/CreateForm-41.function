@@ -1,0 +1,17 @@
+ n←CreateForm ps;∆;rf
+ n←⎕NS''
+ ∆←⊂'Form'
+ ∆,←⊂'Coord' 'Pixel'
+ ∆,←⊂'Size'(400 600)
+ ∆,←⊂'Posn'(⍬ ⍬)
+ ∆,←⊂'FontObj'##.GUI.n.APL_Font
+ :If 9=⎕NC⍕##.GUI.n.TheIcon
+     ∆,←⊂'IconObj'##.GUI.n.TheIcon
+ :EndIf
+ n.Form←⍎'Form'⎕WC ∆
+ n.Form.Posn←n.Form.Size ##.GUI.CenterIn ##.GUI.n.Form
+ n.Form.Coord←'Prop'
+ n.Form.onClose←'OnClose'ps.(name noOf i)
+
+ rf←⍎'SB'n.Form.⎕WC'Statusbar'
+ n.StatusField←⍎'StatusField'rf.⎕WC'StatusField'('Size'(100 100))

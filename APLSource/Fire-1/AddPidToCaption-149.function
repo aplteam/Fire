@@ -1,0 +1,12 @@
+ AddPidToCaption←{
+⍝ ⍵ is what is going to be the caption of a dialog box etc.
+⍝ This functions adds the ID of the current process (PID) to the beginning if the
+⍝ Windows Registry key for $DYALOG$\Captions\Messagebox is suppoed to show "{PID}".
+⍝ If so we return that PID, otherwise we return an empty vector.
+⍝ Used in Fire to show the PID in the same way.
+     rk←GetDyalogRegKey ⍬
+     rk,←'\Captions\MessageBox'
+     caption←##.WinReg.GetString rk
+     0=+/'{PID}'⍷caption:⍵
+     (⍕##.OS.GetPID),' ',⍵
+ }

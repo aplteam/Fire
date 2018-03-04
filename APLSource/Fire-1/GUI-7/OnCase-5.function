@@ -1,0 +1,3 @@
+ OnCase←{
+     n.(ReplaceBtn ReportHits).Active←0
+ }

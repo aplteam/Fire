@@ -1,0 +1,16 @@
+ Populate_G testFlags
+⍝ Creates namespace "G" (for "Globals") and populates it
+ G←⎕NS''    ⍝ Holds Globals. GUI data is copied into this
+ G.TestFlag←testFlags[0]
+ G.DontUseCompareIt←testFlags[1]
+ G←AssignRegistryValuesTo G
+ :If 0∊⍴G.LookIn
+     G.LookIn←#
+ :EndIf
+ G.ColSort←0 0  ⍝ Column number, sort direction (0=⍋, 1=⍒)
+ G.LastSearchedFor←''
+ G.NoOfHits←⍬                       ⍝ This can differ from the item in hits list as the list is not reduced when nothing was found!
+ G.NoOfObjects←⍬
+ G.ChangedSaltedScript←''           ⍝ Used to remember the names of all the SALTed scripts changed by a "Replace"
+ G.HaveShownNoTextWarning←0
+ G.saveCurcorObj←GetCursorObj

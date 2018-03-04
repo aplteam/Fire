@@ -1,0 +1,10 @@
+ {r}←∆CompareFiles(filename1 filename2);cmd
+⍝ Takes to filenames and runs CompareIt against them.
+ r←⍬
+ cmd←''
+ cmd,←⊂filename2
+ cmd,←⊂filename1
+ cmd,←1 1                           ⍝ ReadOnly flags
+ cmd,←⊂'New'
+ cmd,←⊂'Old'
+ {}(#.CompareSimple.RunCompareIt&)cmd

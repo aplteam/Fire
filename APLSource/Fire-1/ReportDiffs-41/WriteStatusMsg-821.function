@@ -1,0 +1,16 @@
+ {r}←WriteStatusMsg;b
+⍝ Write the appropriate message to the status bar, depending on the tickings.
+ r←⍬
+ :If ∧/b←IsTicked ⍬
+     :If 1=⍴b
+         n.Statusbar.Text←'One item is ticked'
+     :Else
+         n.Statusbar.Text←'All ',(⍕⍴b),' item',((1<⍴b)⊃' is' 's are'),' ticked'
+     :EndIf
+ :Else
+     :If 1=⍴b
+         n.Statusbar.Text←'No item is ticked'
+     :Else
+         n.Statusbar.Text←(⍕+/~b),' of ',(⍕⍴b),' items ',((1<+/~b)⊃'is' 'are'),' not ticked'
+     :EndIf
+ :EndIf

@@ -1,0 +1,2 @@
+ CloseFire
+ :Trap 0 ⋄ {}⎕NQ #._Fire.Fire.GUI.n.Form'Close' ⋄ :EndTrap

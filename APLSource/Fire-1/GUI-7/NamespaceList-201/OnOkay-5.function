@@ -1,0 +1,14 @@
+ OnOkay←{
+⍝
+     bp←{12⊃⌽(32⍴2)⊤n.TheList.GetItemState ⍵}¨⍳⍴n.TheList.Items                 ⍝ The parents
+     (0=+/bp):##.##.Question.ShowMsg'Nothing selected?!'
+     not←bp/n.TheList.Items
+     ba←GetRemoveList not
+     msg←CompileMsgAndBoolForAll ba n.RemoveSub_NS.State not
+     (0=##.##.Question.YesOrNo msg):⍬
+     ##.n.HitList.(Items ReportInfo)←ba∘⌿¨##.n.HitList.(Items ReportInfo)
+     ##.n.HitList.Data←ba⌿##.n.HitList.Data
+     ##.##.G.Hits←ba⌿##.##.G.Hits
+     _←##.WriteInfo(⍕⍴##.n.HitList.Items),' hit',(1<⍴##.n.HitList.Items)/'s'
+     ⎕NQ n.TheForm 9991  ⍝ Quites ⎕DQ
+ }

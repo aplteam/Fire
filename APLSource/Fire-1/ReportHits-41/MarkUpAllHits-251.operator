@@ -1,0 +1,5 @@
+ r←(fns MarkUpAllHits)data;i;var
+ r←''
+ :For i var :InEach (1+⍳0⊃⍴data)data
+     r,←i fns var
+ :EndFor

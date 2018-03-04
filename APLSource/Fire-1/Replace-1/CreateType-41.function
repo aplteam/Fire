@@ -1,0 +1,33 @@
+ {n}←CreateType n;∆;rf
+⍝
+ ∆←⊂'Group'
+ ∆,←⊂'Caption' 'Change objects'
+ ∆,←⊂'Posn'((15+↑PosnPlusSize n.ReplaceBy),10)
+ ∆,←⊂'Size'(90 130)
+ ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
+ rf←⍎'TypeGrp'n.Form.⎕WC ∆
+
+ ∆←⊂'Button'
+ ∆,←⊂'Style' 'Radio'
+ ∆,←⊂'Caption' '&all in one go '
+ ∆,←⊂'Posn'(25 15)
+ ∆,←⊂'State'(~##.G.SearchIsRegEx)
+ ∆,←⊂'Active'(~##.G.SearchIsRegEx)
+ ∆,←⊂'TipObj'n.TipObj
+ ∆,←⊂'Tip'(Split'Prepare a report, then make the⌹decison whether to fix them all⌹or forget about it.')
+ ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
+ n.BatchMode←⍎'R1'rf.⎕WC ∆
+ n.BatchMode.onSelect←'OnBatchMode'
+
+ ∆←⊂'Button'
+ ∆,←⊂'Style' 'Radio'
+ ∆,←⊂'Caption' '&one by one'
+ ∆,←⊂'Posn'(50 15)
+ ∆,←⊂'State'(~n.BatchMode.State)
+ ∆,←⊂'TipObj'n.TipObj
+ ∆,←⊂'Tip'(Split'Check and fix (or skip) one⌹object after the other.')
+ ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
+ n.OneByOneMode←⍎'R2'rf.⎕WC ∆
+ n.OneByOneMode.onSelect←'OnOneByOneMode'
+ n.OneByOneMode.onKeyPress←'OnKeyPressStandard'
+⍝Done

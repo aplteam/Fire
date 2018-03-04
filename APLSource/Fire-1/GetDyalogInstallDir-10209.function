@@ -1,0 +1,2 @@
+ r←GetDyalogInstallDir
+ r←2 ⎕NQ'#' 'GetEnvironment' 'Dyalog'

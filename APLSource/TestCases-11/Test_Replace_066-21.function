@@ -1,0 +1,75 @@
+ R←Test_Replace_066(stopFlag batchFlag);n;Text;n2;⎕TRAP;buffer
+⍝ Replace string in dfns located in a scripted namespace
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ 1 #._Fire.Fire.Run 0
+ n←#._Fire.Fire.GUI.n
+
+ #.⎕SHADOW'TEMP'
+ '#.TEMP'⎕NS''
+ buffer←''
+ buffer,←⊂':Namespace ToBeChanged_1'
+ buffer,←⊂'⍝ Contains two tfns and one topr'
+ buffer,←⊂'⍝ Unique: {093C2F3E-FB8E-734E-97A7-441A8C407FD9}'
+ buffer,←⊂''
+ buffer,←⊂'    ∇ r←Hello'
+ buffer,←⊂'     r←''whole world'''
+ buffer,←⊂'    ∇'
+ buffer,←⊂''
+ buffer,←⊂'    ∇ r←(f Hello2)array'
+ buffer,←⊂'      r←''Universe'''
+ buffer,←⊂'    ∇'
+ buffer,←⊂''
+ buffer,←⊂'    ∇ r←Hello3'
+ buffer,←⊂'     r←''Hello whole world'''
+ buffer,←⊂'    ∇'
+ buffer,←⊂''
+ buffer,←⊂'    ∇ r←x(f Hello4)array'
+ buffer,←⊂'      r←''community'''
+ buffer,←⊂'    ∇'
+ buffer,←⊂''
+ buffer,←⊂''
+ buffer,←⊂':EndNamespace'
+ #.TEMP.⎕FIX buffer
+ buffer←''
+ buffer,←⊂':Namespace ToBeChanged_2'
+ buffer,←⊂'⍝ Contains dfns and doprs only'
+ buffer,←⊂''
+ buffer,←⊂'      Hello←{'
+ buffer,←⊂'          ''World'''
+ buffer,←⊂'      }'
+ buffer,←⊂''
+ buffer,←⊂'    Hello2←{⍵ ⍺⍺ ''Universe''}'
+ buffer,←⊂''
+ buffer,←⊂'    Hello3←{{''Hello World''}⍬}'
+ buffer,←⊂''
+ buffer,←⊂':EndNamespace'
+ #.TEMP.⎕FIX buffer
+
+ ∆InitialyzeFireMainGUI_Settings n
+ n.SearchFor.Text←'World'
+ n.LookIn.Text←'#.TEMP'
+ n.(Case APL_Name).State←1
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →GoToTidyUp('Hello' 'Hello3')≢n.HitList.Items
+
+ {}∆Select n.ReplaceBtn
+ ∆Process n.Form
+
+ n2←#._Fire.Fire.Replace.n
+ ∆InitialyzeFireReplaceGUI_Settings n2
+ n2.ReplaceBy.Text←'whole damn world'
+
+ {}∆Select n2.StartBtn
+ ∆Process n.Form
+ →GoToTidyUp 2≠#._Fire.Fire.Replace.NoOfReplacements
+ →GoToTidyUp 0≠+/'whole damn world'⍷∊⎕SRC #.TEMP.ToBeChanged_1
+ →GoToTidyUp 2≠+/'whole damn world'⍷∊⎕SRC #.TEMP.ToBeChanged_2
+ R←∆OK
+
+∆TidyUp:
+ CloseFire

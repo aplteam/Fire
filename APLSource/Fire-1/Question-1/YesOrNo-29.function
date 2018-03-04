@@ -1,0 +1,13 @@
+ r←{addToCaption}YesOrNo caption;cs
+⍝ Ask a Question with two buttons: "Yes" and "No"
+ :If ##.G.TestFlag
+     r←1
+ :Else
+     cs←CreateDefaultParms
+     cs.okCaption←'Yes'
+     cs.cancelCaption←'No'
+     :If 0<⎕NC'addToCaption'
+         cs.addToCaption←addToCaption
+     :EndIf
+     r←cs Run caption
+ :EndIf

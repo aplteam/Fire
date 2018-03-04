@@ -1,0 +1,14 @@
+ OnRun←{
+⍝ The real workhorse: process the variable
+     varsName←n.VarsName.Text
+     0∊⍴varsName:##.Question.ShowMsg'No variable name specified?!'
+     varsName,⍨←('#.'≢2⍴varsName)/'#.'
+     (2≠⎕NC varsName):##.Question.ShowMsg'"',varsName,'" is not a variable!'
+     buf←,⍎varsName
+     CheckVars varsName:
+     _←2 ⎕NQ((0⊃⍵).##)'Close'
+     _←##.GUI.CopyGuiToGlobal ⍬
+     ##.∆AI←⎕AI[1]
+     _←##.ListSearch.ProcessListSearch varsName buf
+     ##.GUI.n.Info.Text,←'Variable "',varsName,'" processed in ',(⍕{0.01×⌊100×⍵}(⎕AI[1]-##.∆AI)÷1000),' seconds'
+ }

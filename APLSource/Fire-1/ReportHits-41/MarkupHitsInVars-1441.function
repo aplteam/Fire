@@ -1,0 +1,28 @@
+ r←rn MarkupHitsInVars(ref name qnc ind length);body;rs;ss;options;data;fullName
+⍝ rn=Running number
+ r←''
+ :If ~0∊⍴data←ref.{6::'' ⋄ ⍎⍵}name
+     :If ~##.Replace.NonReplaceVars data
+         :If (1=≡data)∧1=⍴⍴data
+             r,←MarkupHitsInSimpleVars data name rn ref
+         :Else
+             options←('IC'(~##.G.Case))('Greedy' 0)('EOL' 'CR'),##.IsVersion16OrBetter/⊂('UCP'##.G.UCP)
+             ss←rs←'' ⍝ ss:Search String; rs=Replace string
+             :If ~##.G.Text
+                 ss,←⊂'''\N*?'''
+                 rs,←⊂,'&'
+             :EndIf
+             ss,←⊂⍣(~1=≡ss)⊣##.G.SearchFor
+             rs,←⊂⍣(~1=≡ss)⊣'<span class="diff">&</span>'
+             data←ref.⍎name
+             r←ss ⎕R rs⍠options⊣data
+             r←(∨/¨'<span class="diff"'∘⍷¨r)/r
+             r←'div class="comp"'∘Tag¨r
+             fullName←(⍕ref),'.',name
+             r←(⊂'<a href="#',fullName,'" id="',fullName,'"</a><h2>',(⍕rn),'. ',fullName,'</h2></a>'),r
+         :EndIf
+     :Else
+         fullName←(⍕ref),'.',name
+         r←(⊂'<a href="#',fullName,'" id="',fullName,'"</a><h2>',(⍕rn),'. ',fullName,' (not changeable variable)</h2></a>'),r
+     :EndIf
+ :EndIf

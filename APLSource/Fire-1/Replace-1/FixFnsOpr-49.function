@@ -1,0 +1,9 @@
+ {r}←FixFnsOpr(ref name code i noOf)
+⍝ Establishes function or operator "name" with contents "code" in namespace "ref".
+⍝ Returns 1 when the user has cancelled the process, otherwise 0.
+ r←0
+ :If ⎕THIS ##.IsScripted ref
+     r←ReplaceCodeInScript ref name code
+ :Else
+     r←QFX(ref name code i noOf)
+ :EndIf

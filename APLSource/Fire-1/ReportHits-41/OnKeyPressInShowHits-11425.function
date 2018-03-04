@@ -1,0 +1,5 @@
+ OnKeyPressInShowHits←{
+     ('EP'≢2⊃⍵):1
+     rf←0⊃⍵
+     0⊣rf.##.Close
+ }

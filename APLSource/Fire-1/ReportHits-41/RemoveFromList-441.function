@@ -1,0 +1,19 @@
+ RemoveFromList←{
+     n←⍵
+     (0∊⍴n.List.SelItems):⍬
+     rows←n.List.SelItems/⍳⍴n.List.SelItems
+     names←n.List.ReportInfo[rows;0]
+     b←~(##.GUI.n.HitList.ReportInfo[;0],¨'.',¨##.GUI.n.HitList.Items)∊names
+     ##.GUI.n.HitList.Data←b⌿##.GUI.n.HitList.Data
+     ##.GUI.n.HitList.Items←b/##.GUI.n.HitList.Items
+     ##.GUI.n.HitList.ReportInfo←b⌿##.GUI.n.HitList.ReportInfo
+     n.List.ReportInfo[rows;2]←⊂'removed from hit list'
+     _←n RemoveFromHitReport rows
+     _←n PutOnDisplay 0⌈¯1+⌊/rows
+     (0∊⍴n.List.SelItems):⍬
+     n.List.SelItems[]←0
+     newRow←0⌈¯1+b⍳0
+     n.List.SelItems[newRow]←1
+     _←##.GUI.SetFocusTo n.List newRow
+     ⍬
+ }

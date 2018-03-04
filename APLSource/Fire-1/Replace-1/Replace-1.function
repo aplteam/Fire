@@ -1,0 +1,11 @@
+ r←Replace(line old new ind);new2;q;save
+⍝ Decides which method to use depending on the data for best performance
+ :If 0=⍴ind
+     r←line
+ :ElseIf 10>⍴ind
+     r←Replace_RotateBackAndForce(line old new ind)
+ :ElseIf 100>⍴ind
+     r←Replace_Rotate(line old new ind)
+ :Else
+     r←Replace_Split(line old new ind)
+ :EndIf

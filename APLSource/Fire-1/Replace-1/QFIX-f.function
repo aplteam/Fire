@@ -1,0 +1,34 @@
+ {r}←QFIX(ref name script);rc;msg;_;cs
+⍝ Returns 1 if user cancels the whole operation, otherwise 0
+ r←0
+ :If 9=ref.##.⎕NC ##.A.Last⍕ref
+     ref←ref.##
+ :EndIf
+∆Fix:
+ :Trap 0
+     ref.⎕FIX script
+     rc←0
+ :Else
+     rc←1
+ :EndTrap
+ :If rc
+     msg←⊂'Sorry, but fixing the code of this namespace script:'
+     msg,←⊂'   ',¯1↓{('.'∊⍵):0⊃'.'##.A.SplitPath ⍵ ⋄ ⍵}name
+     msg,←⊂'did not work; please check in editor now.'
+     msg,←⊂'Would you like to investigate in ⎕ED and then try fixing it again?'
+     cs←##.Question.CreateDefaultParms
+     cs.okCaption←'Yes'
+     cs.cancelCaption←'Skip this one'
+     cs.caption2←'Cancel operation'
+     :Select cs ##.Question.Run msg
+     :Case 1
+         ⎕ED'script'
+         →∆Fix
+     :Case 0
+         :Return
+     :Case 2
+         r←1 ⋄ :Return
+     :EndSelect
+ :EndIf
+ TellAcre(⍕ref),'.',{⍵↑⍨⍵⍳' '}(⍴':Namespace ')↓0⊃script
+ ⍝Done

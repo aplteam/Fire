@@ -1,0 +1,13 @@
+ GetHits←{
+     (ref name ind)←⍵
+     (2=⎕NC name):'' ⍝ Ignore variables
+     body←0⊃ref ##.GetCode name
+     (0∊⍴body):''
+     body←↑,/##.CR,¨body
+     body←(1+ind)↓¨⊂body
+     body←(body⍳¨##.CR)↑¨body
+     body←∪{(+/∧\⍵∊⎕A,(##.A.Lowercase ⎕A),⎕D,'⎕.#∆⍙⍎')↑⍵}¨body
+     b←'⍎'∊¨body
+     (b/body)←{⍵↑⍨¯1+⍵⍳'⍎'}¨b/body
+     body
+ }

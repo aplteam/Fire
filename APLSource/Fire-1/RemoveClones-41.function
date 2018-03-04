@@ -1,0 +1,21 @@
+ RemoveClones←{
+⍝ Remove clones caused by pointers
+⍝ At first this seemed to be a good idea because it makes sure that
+⍝ a scripts makes an appearance in a result list only once, even if more
+⍝ than just one reference is pointing to it.
+⍝ However, imagine this
+⍝ 1. You create a script "Foo".
+⍝ 2. You create a ref "Foo2" with Foo2←Foo
+⍝ 3. You delete "Foo".
+⍝ This means that the script has disappeared from the workspace but remains
+⍝ in the workspace anyway until the final ref "Foo2" is deleted as well.
+⍝ Would you expect Fire to find code within the script that does not exist
+⍝ but Foo2 is still pointing to? The answer is probably yes, so this function
+⍝ should NOT be executed! Then "Foo" is listed as a hit but with a name class
+⍝ of zero, and that is correct!
+     ⍵
+
+     list←⍵
+     (~1∊b←↑¨0=⍴¨list[;0]):list
+     ((~b)∨b\~(b/list[;1])∊∪((~b)/list[;0]))⌿list
+ }

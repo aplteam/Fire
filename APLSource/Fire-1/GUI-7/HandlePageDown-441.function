@@ -1,0 +1,10 @@
+ HandlePageDown←{
+⍝ Passes a "KeyPress" with PageDwn to the list and also
+⍝ move the focus to the list.
+⍝ Right argument must be a full "KeyPress" event message,
+     (key modifyer)←⍵[4 5]
+     (34 0≢key,modifyer):0          ⍝ Not PgDwn? Done!
+     _←⎕NQ n.HitList'GotFocus'      ⍝ Hand focus to list
+     _←⎕NQ n.HitList,1↓⍵            ⍝ Pass the "KeyPress" to the list
+     1
+ }

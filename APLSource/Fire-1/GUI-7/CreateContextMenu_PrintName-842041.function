@@ -1,0 +1,7 @@
+ CreateContextMenu_PrintName(noOf name);c;_
+ :If 1=noOf
+     c←'Print name "',name,'" to session',##.TAB,'F4'
+ :Else
+     c←'Print names of ',(⍕noOf),' object',((1<noOf)/'s'),' to session',##.TAB,'F4'
+ :EndIf
+ _←'mm.printNames'⎕WC'MenuItem'c('Event' 'Select' 1)('Accelerator'(115 0))

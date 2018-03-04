@@ -1,0 +1,5 @@
+ ∆GetCode←{
+⍝ Takes a name (functions, operators) or a reference (scripts) and returns code.
+     0::⎕NR ⍵
+     ⎕SRC⍎⍵
+ }

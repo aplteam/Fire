@@ -1,0 +1,5 @@
+ DropComments←{
+⍝ Drop comments from ⍵ which is supposed to be a sinmple vector of APL code.
+     (~'⍝'∊⍵):⍵
+     ⍵↑⍨⍵⍳'⍝'
+ }

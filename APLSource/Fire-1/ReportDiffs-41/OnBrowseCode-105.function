@@ -1,0 +1,31 @@
+ r←OnBrowseCode msg;k;key;name;n;obj;row;flags
+⍝ Handles hot key for "Browse code"
+ r←1
+ obj←↑msg
+ n←##.GUI.GetRefTo_n obj
+ k←⎕NS''
+ k.Escape←27 0
+ k.Ctrl_E←69 2
+ k.Space←32 0
+ (k.CursorUp k.CursorDown k.Home k.End k.PgUp k.PgDown)←(38 0)(40 0)(36 0)(35 0)(33 0)(34 0)
+ key←2↑4↓msg
+ :If key≡k.Escape
+     n←CloseReportForm n
+     r←1
+ :ElseIf key≡k.Ctrl_E
+     :If 0<+/n.List.SelItems
+         name←0⊃n.List.(ReportInfo[SelItems⍳1;])
+         BrowseCode name n.TheForm
+     :EndIf
+ :ElseIf key≡k.Space
+     :If 0<+/n.List.SelItems
+         row←n.List.SelItems⍳1
+         flags←⌽(16⍴2)⊤n.List.GetItemState row
+         flags[12]←~flags[12]
+         n.List.SetItemState row(2⊥⌽flags)
+         ⎕NQ obj'ItemUp'row
+     :EndIf
+ :ElseIf 1
+     ⎕NQ obj 9994
+ :EndIf
+⍝Done

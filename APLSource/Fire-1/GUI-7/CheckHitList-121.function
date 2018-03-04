@@ -1,0 +1,13 @@
+ CheckHitList←{
+⍝ Since we performed the search, variables we've found might have ceased to exist.
+⍝ This is particularly possible when Fire searches itself.
+⍝ Therefore at this stage we check and get rid of everything that's not there any more.
+⍝ Naturally this is about variables and dynamically introduced fns/opr, but honestly we
+⍝ don't care about the latter.
+⍝ ⍵ are the hits. We MUST avoid assigning it to a name here!
+     0∊⍴⍵:⍵
+     nc2←∊2=⌊⍵[;3]                                 ⍝ We need to check variables for being in existence by now.
+     0=+/nc2:⍵                                     ⍝ No vars found? Done!
+     bool←(~nc2)∨nc2\↑¨{2=↑⍺.⎕NC ⍵}/¨↓nc2⌿⍵[;0 1]
+     bool⌿⍵
+ }

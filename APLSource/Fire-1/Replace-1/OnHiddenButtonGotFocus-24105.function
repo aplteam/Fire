@@ -1,0 +1,4 @@
+ OnHiddenButtonGotFocus←{
+⍝ If a hidden button gets the focus then the focus is given to "Search for".
+     0⊣⎕NQ n.SearchFor'GotFocus'
+ }

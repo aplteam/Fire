@@ -1,0 +1,8 @@
+:Namespace Foo
+
+      Hello←{
+          ⎕IO←1
+          'Hello world'
+      }
+
+:EndNamespace

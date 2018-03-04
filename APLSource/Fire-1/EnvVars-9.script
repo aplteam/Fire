@@ -1,0 +1,4 @@
+:Namespace EnvVars
+  ##.⎕IO←0
+  ##.⎕ML←3
+:EndNamespace

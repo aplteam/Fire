@@ -1,0 +1,8 @@
+ WhichItemsOrRows←{
+⍝ Takes the contents of a variable or the body of a function etc (⍺) and the vector of hits ⍵
+⍝ and works out from this which items (vars) or rows (fns etc) in ⍺ contain actual hits.
+     (start length)←⍵
+     txt←⍺
+     allLengths←{(0,¯1↓+\⍵)+⍳¨⍵}{⍵+~1↑⍨⍴⍵}↑∘⍴¨,¨txt
+     ∨/¨allLengths∊¨⊂∊(start+¨⍳¨length)
+ }

@@ -1,0 +1,15 @@
+ OnContextMenu←{
+⍝
+     tab←⎕UCS 9
+     _←'mm'⎕WC'Menu'
+     f←0<+/n.List.SelItems
+     name←f{⍺:0⊃⍵.(ReportInfo[SelItems⍳1;]) ⋄ ''}n.List
+     f1←1=+/n.List.SelItems      ⍝ Flag: is there currently just one item selected?
+     caption←f1⊃('Browse')('Browse ',name)
+     caption,←tab,'Ctrl+E'
+     _←'mm.Browse'⎕WC'MenuItem'caption('Event' 'Select' 1)('Active'f1)
+     _←{⍵:'mm.GetUrl'⎕WC'MenuItem' 'Get URL'('Event' 'Select' 1) ⋄ ⍬}'*'∊1⊃##.Version
+     (0∊⍴res←⎕DQ'mm'):⍬
+     ('mm.Browse'≡0⊃res):BrowseCode name n.TheForm
+     ⍬
+ }

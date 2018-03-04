@@ -1,0 +1,11 @@
+ GetCode←{
+     tv←⍵
+     ⍺←0
+     testFlag←⍺
+     (parent name)←GetParentAndName tv
+     ⎕←{⍵:0 0⍴⍬ ⋄ (⎕PW-1)⍴'--- Code of ',name,' in ',(⍕parent),' ',(⎕PW-1)⍴'-'}testFlag
+     (9=parent.⎕NC name):testFlag{⍺:⍵ ⋄ ⎕←⍵ ⋄ ⍵}⎕SRC parent.⍎name
+     buffer←parent.⎕VR name
+     ⎕←buffer{⍵:0 0⍴⍬ ⋄ ⍺}testFlag
+     buffer
+ }

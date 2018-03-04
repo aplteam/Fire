@@ -1,0 +1,12 @@
+ GetHitListRefs←{
+⍝ Returns a matrix from the current hit list:
+⍝ [;0] Object names
+⍝ [;1] Ref pointing to the parent
+⍝ [;2] Precise ⎕NC of that object
+⍝ [;3] Type; see Types.∆GetTypes for details
+     (0∊⍴⍴GUI.n.HitList.Data):⍬
+     r←GUI.n.HitList.Data[;0 1]
+     r,←GUI.n.HitList.ReportInfo[;GUI.hc.NC]
+     r,←GUI.n.HitList.Data[;2]
+     r
+ }

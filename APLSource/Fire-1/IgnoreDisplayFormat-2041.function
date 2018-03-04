@@ -1,0 +1,4 @@
+ IgnoreDisplayFormat←{
+⍝ Returns the default "name" for namespaces rather then the value of ⎕DF
+     ⍵{(⍺.⎕DF ⍵)⊢⍕⍺}⍵.⎕DF ⎕NULL
+ }

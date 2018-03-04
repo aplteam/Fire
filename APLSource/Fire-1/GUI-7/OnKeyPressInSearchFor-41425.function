@@ -1,0 +1,18 @@
+ OnKeyPressInSearchFor←{
+⍝ Handle some special keystrokes
+     rf←0⊃⍵
+     n.Form.LastKey←⍵[4 5]
+     (⍵[4 5]≡46 2):0⊣DropCurrentFromComboList rf    ⍝ Ctrl+DEL?!
+     (⍵[4 5]≡9 2):⎕NQ'⎕SE' 'GotFocus'               ⍝ Ctrl+Tab?!
+     (⍵[4 5]≡39 0):1                                ⍝ <CursorRight>?! Let it pass
+     ('F1'≡2⊃⍵):OnHelp(⍵[0])'Select'                ⍝ Help?! (we should not get here since F1 is a hot-key but we do get here at times anyway
+     (HandlePageDown ⍵):0
+     (27 0≡⍵[4 5]):0⊣SendCloseToForm ⍬              ⍝ Escape?! Get out!
+     (⍵[4 5]≡13 0):ClickFindButton ⍬
+     f←⍵[4 5]≡9 1                                   ⍝ Shift+Tab?
+     f∧←~0∊⍴n.HitList.Items                         ⍝ And hit list is not empty?
+     f:0⊣⎕NQ n.HitList'GotFocus'                    ⍝ Then we go there!
+     (⍵[4 5]≡9 1):⎕NQ'⎕SE' 'GotFocus'               ⍝ Shift+Tab? Go to hit list if it's not empty
+     _←⎕NQ rf Events.CheckForChangeInSearchFor      ⍝ Use to check whether it got changed; "Changed" would be too late
+     1
+ }

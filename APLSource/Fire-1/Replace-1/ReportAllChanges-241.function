@@ -1,0 +1,24 @@
+ (yes these)←ReportAllChanges G;thisObj;alias2;cs;type;msg;noOf;cursorWas
+⍝ Report all changed objects in one single document and then give the user
+⍝ a last chance to stop the batch replace operation.
+ :If ##.G.TestFlag
+     yes←these←1
+ :Else
+     noOf←NoOfCandidatesForChange ⍬
+     :If ~0∊⍴G.MarkChangesWith
+         msg←⊂'You''ve decided to let Fire mark your changes.'
+         msg,←⊂'Please note that the mark-up is NOT shown in the change report.'
+         msg,←'' 'It WILL however appear in the changed objects.'
+         {}'Replace mark-up'##.Question.ShowMsg msg
+     :EndIf
+     :If G.DeleteLineFlag
+         msg←⊂'You''ve ticked the "delete lines/item with hits" check box.'
+         msg,←⊂'Note that the report will show just the items/lines that are going to be deleted.'
+         {}'"Replace" deletes lines'##.Question.ShowMsg msg
+     :EndIf
+     (yes these)←##.ReportDiffs.Display G noOf
+     :If yes
+         msg←⊂'You''re sure? There is no Undo!'
+         yes←##.Question.Run msg
+     :EndIf
+ :EndIf

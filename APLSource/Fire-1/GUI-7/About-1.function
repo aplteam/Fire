@@ -1,0 +1,9 @@
+ About←{
+⍝ Show the "About" information
+     msg←⊂'Fire version ',↑{⍺,' - ',⍵}/1↓##.Version
+     msg,←⊂''
+     msg,←⊂'Written by Kai Jaeger ⋄ APL Software Ltd'
+     msg,←⊂''
+     msg,←⊂'http://aplwiki.com/Fire'
+     ##.Question.ShowMsg msg
+ }

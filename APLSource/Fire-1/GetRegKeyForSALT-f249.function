@@ -1,0 +1,7 @@
+ r←GetRegKeyForSALT
+ r←'HKEY_CURRENT_USER\Software\Dyalog\Dyalog APL/W'
+ r,←('-64'≡¯3↑0⊃'.'⎕WG'APLVersion')/'-64'
+ r,←' '
+ r,←{⍵↑⍨+/∧\1≥+\'.'=⍵}1⊃'.'⎕WG'APLVersion'             ⍝ APL version number
+ r,←(80=⎕DR' ')/' Unicode'
+ r,←'\SALT\'

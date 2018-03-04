@@ -1,0 +1,6 @@
+ (r flag)←HandleEndKey rl
+ rl.SelItems[]←0
+ rl.Index←¯10+0⊃⍴rl.Items
+ (¯1↑rl.SelItems)←1
+ n.LookIn.SelText←2⍴1+⍴,n.LookIn.Text
+ r←flag←0

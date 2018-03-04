@@ -1,0 +1,10 @@
+ MaskCurlyContents←{
+⍝ Everything that lives inside curlies gets ⍺ which default to blank.
+     ⍺←' '
+     string←1↓⊃,/(⎕UCS 13),¨,⍵
+     b1←+\string='{'
+     b2←+\string='}'
+     b3←string≠⎕UCS 13
+     ((b3∧0<b1-b2)/string)←⍺
+     (⎕UCS 13)Split string
+ }

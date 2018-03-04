@@ -1,0 +1,4 @@
+ OnSaveSelectedObjects←{
+     rows←##.A.Where n.HitList.SelItems
+     ⍬⊣SaveSelectedObjects rows
+ }

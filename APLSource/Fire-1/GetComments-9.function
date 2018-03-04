@@ -1,0 +1,6 @@
+ GetComments←{
+⍝ Get only the comments from ⍵ which is supposed to be a sinmple vector of APL code.
+⍝ Assumes that any text 'A⍝C' is converted to '   ' at this stage.
+     (~'⍝'∊⍵):''
+     ⍵↓⍨1+⍵⍳'⍝'
+ }

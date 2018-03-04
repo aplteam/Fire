@@ -1,0 +1,7 @@
+ HandleCombo←{
+⍝ Save "Text" if appropriate. Also changes the sequence.
+     ⍵.Items←(⊂⍵.Text),⍵.Items~⊂⍵.Text
+     ⍵.Text←''
+     ⍵.SelItems←(⍴⍵.Items)↑1
+     ⍬
+ }

@@ -1,0 +1,4 @@
+ ExpandAll←{
+     ref←⍵
+     ⍬⊣{ref.SetItemState ⍵ 32}¨⍳⍴ref.Items
+ }

@@ -1,0 +1,6 @@
+ IsScripted←{
+ ⍝ Returns 1 if ⍵ is scripted (class or namespace) and 0 otherwise
+     ⍺←⎕THIS
+     ⍺.{0::0 ⋄ (3 4∊⍨⎕NC ⍵)}⍵:⍺.{0::0 ⋄ ⍺.##.⎕SRC ⍵}⍵
+     ⍺.{0::0 ⋄ 1⊣⎕SRC ⍵}⍵
+ }

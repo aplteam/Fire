@@ -1,0 +1,10 @@
+ ShowVarsReport←{
+     (0∊⍴⍵):⍬
+     ⎕←(⎕PW-1)⍴'--- These variables have not been changed by Fire: ',⎕PW⍴'-'
+     ⎕←' ',⍪⍵
+     msg←⊂(⍕⍴⍵),' variable',((1<⍴,⍵)/'s'),' carry hits but cannot be changed anyway '
+     msg,←⊂'due to Fire''s restrictions regarding variables.'
+     msg,←⊂'A full report was printed to the session.'
+     _←##.Question.ShowMsg msg
+     ⍬
+ }

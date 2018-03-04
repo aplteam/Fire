@@ -1,0 +1,15 @@
+ RemoveInvalidVars←{
+⍝ Only certain variables might be changed by Fire's "Replace" operation:
+⍝ Simple text vectors and vectors of text vectors.
+⍝ Those that are not suitable are now removed.
+     names←GlueNames GUI.n.HitList.Data[;0 1]
+     exist←2=↑∘⎕NC¨names
+     0=+/exist:⍬
+     data←⍎¨exist/names
+     bool1←{((↑∘⍴⍴⍵)∊0 1)∧(≡⍵)∊1 2}¨data            ⍝ Check depth and rank for being fine
+     bool2←{(,' ')≡∪∊{⎕ML←0 ⋄ ∊⍵}⍵}¨bool1/data      ⍝ Mixed is invalid as well
+     bool←(~exist)∨exist\bool1\bool2
+     GUI.n.HitList.Data←bool⌿GUI.n.HitList.Data
+     G.Hits←bool⌿G.Hits
+     ⍬
+ }

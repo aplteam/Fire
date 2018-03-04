@@ -1,0 +1,5 @@
+ ∆GetNameFor←{
+     3::'Invalid type'⎕SIGNAL 3
+     l←(⎕NL-3)~'∆'⎕NL-3
+     l[(⍎¨l)⍳⍵]
+ }

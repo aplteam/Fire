@@ -1,0 +1,12 @@
+ MaskDfnsBodies←{
+⍝ "masked" is the body of a dfns but with text already replaced by blanks.
+⍝ All dfns bodies, including interlocked ones, are replaced by blanks but
+⍝ the initial "}" does survive.
+     masked←⍵
+     b1←'{'=masked
+     b2←'}'=masked
+     b←b2∨0≠(+\b1)-+\b2
+     b[1+##.A.Where 0 1⍷b]←0            ⍝ Preserve the first "{" within each ⋄-statement - we need that!
+     (b/masked)←' '
+     masked
+ }

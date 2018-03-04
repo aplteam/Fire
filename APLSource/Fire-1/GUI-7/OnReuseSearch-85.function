@@ -1,0 +1,10 @@
+ OnReuseSearch
+⍝ Toggle "Active" and contents of the "Start looking here"
+⍝ field depending on the "Search hit list" check box.
+ :If TheForm.ReuseSearch.State
+     n.LookIn.Text←''
+     n.LookIn.Active←0
+     n.LookIn.BCol←¯16
+ :Else
+     n.LookIn.(Active BCol Text)←1 0 n.LookIn.was
+ :EndIf

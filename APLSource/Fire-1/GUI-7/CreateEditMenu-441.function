@@ -1,0 +1,27 @@
+ CreateEditMenu;∆;rf
+
+ rf←⍎'MB.TheEditMenu'n.Form.⎕WC'Menu' 'Edit'
+
+ ∆←⊂'MenuItem'
+ ∆,←⊂'Caption'('Edit',##.TAB,'Ctrl+E')
+ ∆,←⊂'Accelerator'(69 2)
+ ∆,←⊂'Active' 0
+ n.EditCmd←⍎'MB.TheEditMenu.EditCmd'n.Form.⎕WC ∆
+ n.EditCmd.onSelect←'OnEditCmd'
+
+ 's1'rf.⎕WC'Separator'
+
+ ∆←⊂'MenuItem'
+ ∆,←⊂'Caption'('Select all',##.TAB,'Ctrl+A')
+ ∆,←⊂'Accelerator'(65 2)
+ ∆,←⊂'Active' 0
+ n.SelectAllCmd←⍎'SelectAllCmd'rf.⎕WC ∆
+ n.SelectAllCmd.onSelect←'OnSelectAllCmd'
+
+ ∆←⊂'MenuItem'
+ ∆,←⊂'Caption'('Invert selection',##.TAB,'Ctrl+Shift+A')
+ ∆,←⊂'Accelerator'(65 3)
+ ∆,←⊂'Active' 0
+ n.InvertSelectionCmd←⍎'InvertSelectionCmd'rf.⎕WC ∆
+ n.InvertSelectionCmd.onSelect←'OnInvertSelectionCmd'
+ ⍝Done

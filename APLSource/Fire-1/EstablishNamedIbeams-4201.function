@@ -1,0 +1,6 @@
+ {r}←EstablishNamedIbeams dummy
+⍝ name some useful I-beams
+ r←⍬
+ iscompiled←1∘(400⌶)
+ compile←2∘(400⌶)
+ uncompile←3∘(400⌶)

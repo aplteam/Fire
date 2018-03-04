@@ -1,0 +1,44 @@
+ r←CheckUserInput;msg;_
+ ⍝ Returns a 1 only the user has put something into both, "Search For" and "Replace by"
+ ⍝ or if the user confirms the "Search for" shall be deleted.
+ :If 0∊⍴##.G.ReplaceBy
+ :AndIf ~n.DeleteLine.State
+     msg←⊂'You have not entered anything into "Replace by".'
+     msg,←⊂'That means that <',##.G.SearchFor,'> would effectively be deleted. '
+     msg,←⊂'It might also lead to functions/operators being deleted when no lines are left. '
+     msg,←'' 'Are you certain about this?'
+     r←##.Question.YesOrNo msg
+ :ElseIf n.SearchFor.Text≡,n.ReplaceBy.Text ⍬
+ :AndIf ##.G.Case
+     msg←⊂'"Search for" and "Replace by" do equal.'
+     msg,←⊂'Carrying out a "Replace" would not change anything.'
+     :If n.MarkChanges.State
+         msg,←⊂''
+         msg,←⊂'(You''ve ticked "Mark changes" but nothing would change!)'
+     :EndIf
+     _←##.Question.ShowMsg msg
+     r←0
+ :ElseIf ~##.G.Case
+ :AndIf ≡/##.##.APLTreeUtils.Lowercase¨n.SearchFor.Text(,n.ReplaceBy.Text)
+     msg←⊂'"Search for" and "Replace by" do equal.'
+     msg,←⊂'That does not make too much sense, right?'
+     _←##.Question.ShowMsg msg
+     r←0
+ :ElseIf n.MarkChanges.State
+     :If 0∊⍴n.MarkChangesText.Text
+         msg←⊂'You have not specified a text for marking up the changes.'
+         _←##.Question.ShowMsg msg
+         r←0
+     :EndIf
+     :If '⍝'≠1⍴n.MarkChangesText.Text
+         n.MarkChangesText.Text←'⍝ ',n.MarkChangesText.Text
+     :EndIf
+     r←1
+ :ElseIf ##.G.SearchIsRegEx
+ :AndIf (,'&')≡,n.ReplaceBy.Text
+     msg←⊂'Replacing the search pattern by itself does not make too much sense?!'
+     _←##.Question.ShowMsg msg
+     r←0
+ :Else
+     r←1
+ :EndIf

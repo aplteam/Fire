@@ -1,0 +1,4 @@
+ OnClose←{
+     _←##.F.DeleteFile(0⊃⍵).filenameHTML
+     1
+ }

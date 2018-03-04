@@ -1,0 +1,14 @@
+ MonitorInfo←{
+⍝ Gives valueable information about current monitor(s):
+⍝ R[1+2] Top-left corner of the virtual desktop.
+⍝ R[3+4] Size of the  virtual desktop.
+⍝ R[5] Number of monitors.
+⍝ R[6] Flag; is true if all monitors have the same display format.
+⍝ 77: SM_YVIRTUALSCREEN
+⍝ 76: SM_CMETRICS
+⍝ 79: SM_CYVIRTUALSCREEN
+⍝ 78: SM_CXVIRTUALSCREEN
+⍝ 80: SM_CMONITORS
+⍝ 81: SM_SAMEDISPLAYFORMAT
+     GetSystemMetrics¨77 76 79 78 80 81
+ }

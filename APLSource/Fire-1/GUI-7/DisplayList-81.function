@@ -1,0 +1,34 @@
+ {r}←DisplayList(hits noOfObj noOfContainers);locs;names;type1;fnsOprs;date;by;desc;tx;_;hasFocus;isScript;realNames;type2
+⍝ Show the hits in the list view or, if there aren't any,
+⍝ Shrink the list and adapt the form size.
+⍝ ⍵ is a vector of names pointing to the hits.
+ r←⍬
+ (locs names)←↓⍉hits[;0 1]                  ⍝ Location and name
+ _←EnlargeForm ⍬                            ⍝ Make it visible if needed
+ n.HitList.Visible←0
+ n.HitList.Items←names                      ⍝ Assign the names
+ n.HitList.Visible←1
+ type2←('Vars' 'tfn' 'dfn' 'top' 'dop' 'NS' 'Interface' 'Class' '')[type1←2.1 3.1 3.2 4.1 4.2 9.1 9.5 9.4⍳hits[;3]]
+ type2[##.A.Where hits[;6]=4]←⊂'Class Instance'
+ fnsOprs←type1∊1 2
+ isScript←(hits[;3]∊9.4 9.5)∨{↑{(0∊⍴⍵):##.IsScripted ⍺ ⋄ ⍺ ##.IsScripted ⍵}/⍵}¨↓hits[;0 1]
+ realNames←⍕¨##.IgnoreDisplayFormat¨locs
+ :If 0<+/fnsOprs
+     (date by)←{0∊⍴⍵:'' '' ⋄ Get_QAT ⍵}↓fnsOprs⌿hits[;0 1]
+     date←fnsOprs\↓##.FormatDateTime⊃date
+     desc←(⍴date)⍴⊂''
+     n.HitList.ReportInfo←realNames,type2,(hits[;3]),(hits[;2]),(fnsOprs\by),[0.4]date
+ :Else
+     by←date←(⍴names)⍴' '
+     desc←(⍴date)⍴⊂''
+     n.HitList.ReportInfo←realNames,type2,(hits[;3]),(hits[;2]),by,[0.5]date
+ :EndIf
+ _←{n.HitList.SetColSize ⍵ ¯3}¨⍳⍴n.HitList.ColTitles
+ n.SB.Posn[0]←n.Form.Size[0]-n.SB.Size[0]+2
+ SetFocusTo n.HitList 0
+ n.HitList.(SelItems←(⍴Items)↑1)
+ ##.G.ProcessingTime←{0.01×⌊100×⍵}(⎕AI[1]-##.∆AI)÷1000
+ ##.G.NoOfHits←##.G.Negate⊃(+/+/↑¨hits[;2])(↑⍴hits)
+ ##.G.NoOfObjects←↑⍴hits
+ {}ReportHitsInStatusbar ##.G.NoOfHits,##.G.NoOfObjects,noOfObj,noOfContainers
+⍝Done

@@ -1,0 +1,9 @@
+ HonorTestFlag←{
+⍝ This operator executes ⍺⍺ only when G.TestFlag ←→ 0, otherwise
+⍝ ⍺ (the "default") is returned as result. ⍵ is provided as right
+⍝ argument to ⍺⍺.
+⍝ This is used in constructions like:
+⍝ 1 (HonorTestFlag Question.Run) 'Sure?'
+     G.TestFlag:⍺
+     ⍺⍺ ⍵
+ }

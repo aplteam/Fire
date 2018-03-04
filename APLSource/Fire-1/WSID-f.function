@@ -1,0 +1,3 @@
+ r←WSID
+⍝ Returns WSID without the path
+ r←1⊃'\'A.SplitPath ⎕WSID

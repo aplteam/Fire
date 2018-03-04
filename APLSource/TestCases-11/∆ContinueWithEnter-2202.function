@@ -1,0 +1,6 @@
+ {r}←∆ContinueWithEnter msg
+ msg←,{(0 1∊⍨≡⍵):⊂⍵ ⋄ msg}msg
+ ⎕←⍪msg
+ ⎕←''
+ ⎕←' Press <enter> to continue'
+ r←¯1↑⍞

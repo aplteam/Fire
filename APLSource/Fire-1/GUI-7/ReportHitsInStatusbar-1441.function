@@ -1,0 +1,12 @@
+ ReportHitsInStatusbar←{
+⍝
+     ⍺←1
+     reportCPU_time←⍺
+     (noOfHits noOfNames noOfScannedObjs noOfContainers)←⍵
+     tx←(⍕noOfHits),' hit',((1≠noOfHits)/'s')
+     tx,←' found in ',(⍕noOfNames)
+     tx,←' of ',(⍕noOfScannedObjs),' APL object',(1≠noOfScannedObjs)/'s'
+     tx,←{0∊⍴⍵:'' ⋄ ' from ',(⍕⍵),' container',((1≠⍵)/'s')}noOfContainers
+     _←reportCPU_time WriteInfo tx
+     1:r←⍬
+ }

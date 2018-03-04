@@ -1,0 +1,7 @@
+ CreateContextMenu_CopySearchFor(noOf name);c;_
+ :If 1=noOf
+     c←'Copy name "',name,'" to "Search for"',##.TAB,'F6'
+ :Else
+     c←'Copy name to "Search for"'
+ :EndIf
+ _←'mm.copyName'⎕WC'MenuItem'c('Event' 'Select' 1)('Active'(1=noOf))

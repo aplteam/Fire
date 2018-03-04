@@ -1,0 +1,3 @@
+ DQ y
+ 2 ⎕NQ GUI.n.SearchFor'GotFocus' ⋄ ⎕DQ y
+⍝Done

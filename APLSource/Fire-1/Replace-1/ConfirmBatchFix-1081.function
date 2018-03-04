@@ -1,0 +1,8 @@
+ r←ConfirmBatchFix no;msg
+ msg←⊂'You''ve ticked the check box:'
+ msg,←⊂'  "Carry out any remaining changes without further ado"'
+ msg,←⊂''
+ msg,←⊂'This is dangerous - are you really sure about this?!'
+ msg,←⊂'There ',({⍵=1:'is one more object' ⋄ 'are ',(⍕⍵),' more objects'}no),' to be processed.'
+ r←'Confirm batch fix'##.Question.YesOrNo msg
+⍝Done

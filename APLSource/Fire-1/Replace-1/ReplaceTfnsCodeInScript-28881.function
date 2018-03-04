@@ -1,0 +1,18 @@
+ script←ReplaceTfnsCodeInScript(script code name);masked;sel;sl;el;names;i;noOf;code
+ masked←script                              ⍝ Take a copy with....
+ masked←MaskText¨masked                     ⍝ ... all text (stuff within quotes) masked and...
+ masked←{⍵↑⍨⍵⍳'⍝'}¨masked                   ⍝ ... all comments removed ...
+ masked←MaskCurlyContents masked            ⍝ ... and contents of dfns masked (recursive ∇!!)
+ sel←##.A.Where'∇'=↑¨##.A.dlb¨masked        ⍝ Potential start- and end lines
+ sl←{⍵/⍨1 0⍴⍨⍴⍵}sel                         ⍝ That's where trad functions start
+ el←{⍵/⍨0 1⍴⍨⍴⍵}sel                         ⍝ That's where trad functions end
+ names←GetNameFromDelLine¨masked[sl]
+ i←names⍳1⌷'.'##.A.SplitPath name
+ script←(i⊃sl)⌽script
+ noOf←2+1⍳⍨'∇'∊¨1↓(i⊃sl)⌽masked             ⍝ How many lines does the function have?
+ script←noOf↓script
+ :If 0∊⍴code
+     script←(-i⊃sl)⌽script
+ :Else
+     script←(-i⊃sl)⌽({'    '∘,¨(⊂'∇',0⊃⍵),(1↓⍵),⊂,'∇'}code),script
+ :EndIf

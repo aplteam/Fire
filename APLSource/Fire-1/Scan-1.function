@@ -1,0 +1,63 @@
+ r←{nc}Scan data;data1;data2
+⍝ Performs search on "data".
+⍝ "data" must be a vector of text vectors.
+⍝ Returns a vector of start indices for all hits found.
+ nc←{(0<⎕NC ⍵):⍎⍵ ⋄ ⍬}'nc'
+ :If 0=G.Text
+     data←Replace.MaskText data                         ⍝ Remove any text from data but preserve length
+ :EndIf
+ :If 0=G.Comments
+ :AndIf 2≢nc                                            ⍝ n/a for variables
+     :If (≡data)∊0 1
+         data←{(⍴⍵)↑⍵↑⍨'⍝'⍳⍨Replace.MaskText ⍵}data     ⍝ Remove comments from data but preserve length
+     :Else
+         data←{(⍴⍵)↑⍵↑⍨'⍝'⍳⍨Replace.MaskText ⍵}¨data    ⍝ Remove comments from data but preserve length
+     :EndIf
+ :EndIf
+ :If 9.1≡nc
+     data←RemoveFnsAndOpr data
+ :EndIf
+ :If G.APL_Name
+     r←IsName(1↓Simplify CR,¨data)(,G.SearchFor2)
+     r←r((⍴r)⍴⍴,G.SearchFor)
+ :Else
+     :If 0=G.APL_Code                                   ⍝ No APL code?
+         :Select G.(Text Comments)
+         :Case 1 0                                      ⍝ Just text
+             :If nc≢2                                   ⍝ Because variables are by definition text
+                 data←{(⍴⍵)↑⍵↑⍨'⍝'⍳⍨Replace.MaskText ⍵}¨data
+                 data←{w←⍵ ⋄ w[A.Where~{⍵∨≠\⍵}w='''']←' ' ⋄ w}¨data
+             :EndIf
+         :Case 0 1                                      ⍝ Just comments
+             data←{{(~'⍝'∊⍵):(⍴⍵)⍴' ' ⋄ ⍵{(⍵⍴' '),⍵↓⍺}⍵⍳'⍝'}Replace.MaskText ⍵}¨data
+         :Case 1 1                                      ⍝ Just Text and comments
+             :If nc≢2
+                 data1←{w←⍵ ⋄ w[A.Where~{⍵∨≠\⍵}w='''']←' ' ⋄ w}¨data
+             :Else
+                 data1←data
+             :EndIf
+             data2←{{(~'⍝'∊⍵):(⍴⍵)⍴' ' ⋄ ⍵{(⍵⍴' '),⍵↓⍺}⍵⍳'⍝'}Replace.MaskText ⍵}¨data
+             data←{(⍴⍵)⍴' '}¨data
+             data{b←⍵≠' ' ⋄ a←⍺ ⋄ (b/a)←b/⍵ ⋄ a}¨←data1
+             data{b←⍵≠' ' ⋄ a←⍺ ⋄ (b/a)←b/⍵ ⋄ a}¨←data2
+         :EndSelect
+     :EndIf
+     :If 2≡⌊nc
+     :AndIf 2>≡data
+         :If G.SearchIsRegEx
+             r←{0∊⍴⍵:⍵ ⋄ ↓⍉⊃⍵}RegExSearch data
+         :Else
+             r←A.Where G.SearchFor2⍷data
+             r←r(↑⍴,G.SearchFor)    ⍝ Length is the same for all hits, so we specify a scalar.
+         :EndIf
+     :Else
+         :If G.SearchIsRegEx
+             :If 0∊⍴r←{0∊⍴⍵:⍵ ⋄ ↓⍉⊃⍵}RegExSearch 1↓Simplify CR,¨data
+                 r←r r
+             :EndIf
+         :Else
+             r←A.Where G.SearchFor2⍷1↓Simplify CR,¨data
+             r←r(↑⍴,G.SearchFor)    ⍝ Length is the same for all hits, so we specify a scalar.
+         :EndIf
+     :EndIf
+ :EndIf

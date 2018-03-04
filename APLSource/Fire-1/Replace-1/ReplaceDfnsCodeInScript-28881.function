@@ -1,0 +1,9 @@
+ script←ReplaceDfnsCodeInScript(ref name script code);fnsName;sl;noOf;oldBody
+ fnsName←(1⊃'.'##.A.SplitPath name)         ⍝ Pure name without the full path
+ sl←##.A.Where∨/¨(fnsName,'←{')∘⍷¨script
+ noOf←⍴oldBody←ref.⎕NR name                 ⍝ How many lines does it have right now?
+ :If noOf=1                                 ⍝ That simplifies things
+     script←ReplaceSingleLineDfnsInScriptCode script code sl name
+ :Else
+     script←ReplaceMultipleLineDfnsInScriptCode script code sl noOf fnsName
+ :EndIf

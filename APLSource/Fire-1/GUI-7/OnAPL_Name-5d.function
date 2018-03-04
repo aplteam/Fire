@@ -1,0 +1,11 @@
+ OnAPL_Name←{
+⍝
+     rf←0⊃⍵
+     n.(ReplaceBtn ReportHits).Active←0
+     0=n.SearchIsRegEx.State:⍬
+     msg←⊂'You just ticked "Match APL name" but that does not go with'
+     msg,←⊂'"Is RegEx - it is therefore un-ticked by Fire for you.'
+     _←'"Match APL name"'##.Question.ShowMsg msg
+     n.APL_Name.State←0
+     ⍬
+ }

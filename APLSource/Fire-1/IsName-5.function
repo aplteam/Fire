@@ -1,0 +1,10 @@
+ r←IsName(code ss);startPoints
+⍝ Checks whether `ss` is contained in `code` as a real "word" (APL name).
+⍝ Use this function for code; for comments and text see IsWord;
+⍝ `r` is a vector with start indices for the hits or an empty vector if there aren't any,
+ r←⍬
+ code←CR,code,CR
+ ((''''=code)/code)←'+'                 ⍝ In order to separate names
+ :If ~0∊⍴startPoints←##.APLTreeUtils.Where ss⍷code
+     r←¯1+↑,/(code ss)∘IsName_¨startPoints
+ :EndIf

@@ -1,0 +1,17 @@
+ ExchangeHtmlChars←{
+ ⍝ When we do not depend on former findings any more
+ ⍝ (version 7.0 should switch to ⎕R!)
+ ⍝ then we can change this function to:
+     ⍝ ss←,¨'<>&'
+     ⍝ rs←'\&lt;' '\&gt;' '\&amp;'
+     ⍝ ss ⎕R rs⊣⍵
+     1<≡⍵:∇¨⍵
+     str←⍵
+     b1←str='<'
+     b2←str='>'
+     b3←str='&'
+     (b1/str)←⊂'&lt;'
+     (b2/str)←⊂'&gt;'
+     (b3/str)←⊂'&amp;'
+     str
+ }

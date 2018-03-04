@@ -1,0 +1,6 @@
+ SetStateForGroup←{
+⍝ Sets the "State" property for group ⍵ and all children to ⍺
+     ⍵.State←⍺             ⍝ Toggle group
+     ⍵.(⍎¨⎕WN'').State←⍺   ⍝ Toggle all children
+     ⍬
+ }

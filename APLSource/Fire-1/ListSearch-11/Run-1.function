@@ -1,0 +1,19 @@
+ {r}←Run dummy;∆;_
+⍝ Takes a variable (vector of strings) and searches all objects for all
+⍝ strings found on that vector: mass search! Has also a special output.
+⍝ Builds GUI and asks user for variable name
+⍝ Populated with ⎕SE.CurrentObj if that is a vars.
+⍝ Real workhorse is the handler on the OK button
+⍝ DO NOT localyze "n" in this function!
+ r←⍬
+
+ (0⊃⎕SI)⎕STOP⍨(⎕STOP 0⊃⎕SI){StopInCallingCounter:⍺,⍵ ⋄ ⍺~⍵}1+0⊃⎕LC
+
+ ##.GUI.n.(StartBtn ReplaceBtn).Active←0
+ ##.GUI.n.CallingCmd.Active←0
+
+ n←⎕NS''
+ n←CreateGUI n
+
+ ⎕NQ n.VarsName'GotFocus'
+⍝Done

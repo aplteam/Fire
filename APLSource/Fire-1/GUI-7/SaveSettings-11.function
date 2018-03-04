@@ -1,0 +1,5 @@
+ SaveSettings←{
+⍝
+     _←##.SaveSettingsAsDefaultInRegistry ⍬
+     ⍬
+ }

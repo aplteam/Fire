@@ -1,0 +1,9 @@
+ ref←∆CreateWithUserStuff n
+ n.SearchFor.Text←'abc'
+ n.LookIn.Text←'#.TEMP'
+ ref←⎕NS''
+ ref.⎕FX'r←Hello1' 'r←''World'''
+ ref.⎕FX'r←Hello2' 'r←''All of you'''
+ ref.⎕FX'r←Hello1' 'r←''Univers'' ⍝ abc'
+ ref.⎕FX'r←abc' 'r←⎕A'
+ ⍝Done

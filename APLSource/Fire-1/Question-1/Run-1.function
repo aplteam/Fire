@@ -1,0 +1,20 @@
+ RESULT←{cs}Run caption;default;ff;_;res;f;defaultBtn;cursorWas
+ ⍝ Asks a question and returns either 0 or 1. In case "caption2" is not empty
+ ⍝ however there are three buttons and the result is 0 for the left-most,
+ ⍝ 1 for the right-most and 2 for the  middle (additional) one.
+ ⍝ By default the type is "Query" but you may change this to "Warn" or "Error"
+ ⍝ via the left argument
+ cursorWas←##.GetCursorObj
+ cs←{0=⎕NC ⍵:CreateDefaultParms ⋄ ⍎⍵}'cs'
+ f←∨/~(cs.⎕NL-2)∊CreateDefaultParms.⎕NL-2
+ 'Invalid parameter ; check left argument'⎕SIGNAL f/11
+ ff←cs CreateGUI caption
+ RESULT←0
+ :If ~0∊⍴cs.cancelCaption
+     defaultBtn←('OK' 'CANCEL'⍳⊂##.A.Uppercase cs.defaultBtn)⊃ff.(ok cancel) ⍝ Index Error? Invalid "defaultBtn"
+ :Else
+     defaultBtn←ff.ok
+ :EndIf
+ ##.SetCursorObj cursorWas
+ ⎕NQ defaultBtn'GotFocus' ⋄ res←⎕DQ ff
+ ⍝ "RESULT" is re-assigned in OnOkay if appropriate

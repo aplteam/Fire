@@ -1,0 +1,21 @@
+ r←Replace_Split(line old new ind);new2;q;save
+⍝ Replace old by "new" at all "ind" positions.
+⍝ Note that since version 1.4 "new" is a) always nested and b) may
+⍝ have a length greater than one.
+ r←line
+ :If ~0∊⍴ind
+     new2←1↓Simplify ##.CR,¨new
+     :If 1=⍴,old
+         r[ind]←⊂new2
+         r←∊r
+     :Else
+         save←ind[0]↑r
+         r←line{⍺⊂⍨∊⍵⍴¨⍳⍴⍵}(⍴line){⍵,⍺-+/⍵}ind[0],(2{⍵-⍺}/ind)
+         r←(⍴,old)↓¨r
+         :If 0∊⍴new2
+             r←save,∊r
+         :Else
+             r←save,∊new2∘,¨r
+         :EndIf
+     :EndIf
+ :EndIf

@@ -1,0 +1,11 @@
+ GetTextAndRest←{
+ ⍝ Investigates what's text in ⍵.
+ ⍝ Return any text found (including surrounding quotes) as well as ⍵ with the text replaced by blanks.
+     data←⍵
+     data←{2=⍴⍴⍵:↓data ⋄ ⍵}data
+     data←,{0 1∊⍨≡⍵:,⊂⍵ ⋄ ⍵}data
+     bool←{{⍵∨≠\⍵}''''=⍵}¨data
+     remains←bool{w←⍵ ⋄ ((~⍺)/w)←' ' ⋄ w}¨data
+     textFree←bool{w←⍵ ⋄ (⍺/w)←' ' ⋄ w}¨data
+     textFree remains
+ }

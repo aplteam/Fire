@@ -1,0 +1,4 @@
+ OnDelete←{
+     rf←⍺
+     DeleteGhost rf
+ }

@@ -1,0 +1,4 @@
+ EnableGhostlyReportWhenAppropriate←{
+ ⍝ Checks whether we found something
+     ⍬⊣n.ReportGhosts.Active←0<##.G.NoOfObjects
+ }

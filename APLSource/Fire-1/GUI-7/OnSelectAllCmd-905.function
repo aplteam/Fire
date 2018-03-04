@@ -1,0 +1,4 @@
+ OnSelectAllCmd←{
+⍝
+     n.HitList.SelItems←(⍴n.HitList.Items)⍴1
+ }

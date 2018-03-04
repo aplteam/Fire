@@ -1,0 +1,18 @@
+ r←RemoveMarkupForReport(markupFlag markupType markup code)
+⍝ "Markup" here refers to Fire's feature to mark up any changed line,
+⍝ either above or underneath or on the same line.
+ :If markupFlag                                         ⍝ DO we do mark-up at all?
+     :If markupType=1                                   ⍝ Markup above?
+         r←{(1=⍴⍵):∊⍵ ⋄ 1↓↑,/##.CR,¨⍵}{A.dlb ⍵}¨1↓2↑code
+     :ElseIf markupType=2                               ⍝ Markup added to the right?
+         r←1↑code
+         r←(-2+⍴markup)↓¨r                              ⍝ Between code and mark-up there are 2 additional blanks
+         r←{(1=⍴⍵):∊⍵ ⋄ 1↓↑,/##.CR,¨⍵}{A.dlb ⍵}¨r
+     :ElseIf markupType=3                               ⍝ Markup added underneath?
+         r←{(1=⍴⍵):∊⍵ ⋄ 1↓↑,/##.CR,¨⍵}{A.dlb ⍵}¨1↑(markupType=1)↓code
+     :Else
+         . ⍝ Huuh?!
+     :EndIf
+ :Else
+     r←{(1=⍴⍵):∊⍵ ⋄ 1↓↑,/##.CR,¨⍵}{A.dlb ⍵}¨1↑code
+ :EndIf

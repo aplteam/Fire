@@ -1,0 +1,9 @@
+ msg←CompileMsgAndBoolForAll(bool subFlag not)
+⍝ Compiles a proper message for the confirmation dialog and prepares a vector
+⍝ of Booleans that can be used to delete the stuff depending on whether
+⍝ sub-namespaces shall be included or not.
+ :If subFlag
+     msg←'Remove ',(⍕+/~bool),' item',((1<⍴+/~bool)/'s'),' (including sub-Namespaces) from hit list?'
+ :Else
+     msg←'Remove ',(⍕+/~bool),' item',((1<⍴+/~bool)/'s'),' from hit list?'
+ :EndIf

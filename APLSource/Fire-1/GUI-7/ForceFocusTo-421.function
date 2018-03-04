@@ -1,0 +1,5 @@
+ ForceFocusTo←{
+⍝ Force the focus to ⍵
+  ⍝   (~0∊⍴hasFocus←2 ⎕NQ'.' 'GetFocus'):⍬
+     ⍬⊣⎕NQ ⍵'GotFocus'
+ }

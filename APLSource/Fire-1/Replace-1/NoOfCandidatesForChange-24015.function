@@ -1,0 +1,5 @@
+ NoOfCandidatesForChange←{
+⍝ Returns the total number of objects potentially subject to a change.
+⍝ ⍵ is ignored
+     -/⌽2↑⎕FSIZE G.compareFileTieNo
+ }

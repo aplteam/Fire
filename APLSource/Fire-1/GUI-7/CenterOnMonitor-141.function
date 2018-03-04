@@ -1,0 +1,26 @@
+ CenterOnMonitor←{
+⍝ ⍺: the handle of parent form!
+     0::0                               ⍝ On any error get out!
+     ⍵.Type≢'Form':z←0                  ⍝ Don't fool with SubForms, Groups, etc.
+     ⍺←{0=⎕NC'#.CAS.rF':0 ⋄ #.CAS.rF.Handle}''
+
+     ⍝ .NET Reference
+     ⎕USING←'' 'System' 'System.Windows.Forms.Screen,System.Windows.Forms.dll'
+
+     ⍝ Make pointer object.
+     6::z←0                             ⍝ break out on value error.
+     ptr←⎕NEW IntPtr ⍺
+
+     ⍝ Do positioning.
+     scr←System.Windows.Forms.Screen.FromHandle ptr
+     xL←scr.WorkingArea.X
+     xR←+/scr.WorkingArea.(X Width)
+     yT←scr.WorkingArea.Y
+     yB←+/scr.WorkingArea.(Y Height)
+     b←yB xR                            ⍝ bottom-right
+     t←yT xL                            ⍝ top-left
+
+     ⍵.Posn←t+0⌈0.5×(b-t)-⍵.Size        ⍝ Center
+
+     1:z←1
+ }

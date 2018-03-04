@@ -1,0 +1,14 @@
+ HandleReportFile←{
+⍝ Asks the user whether he wants to append more reports to an already existing
+⍝ report fiel ⍵. Of course the question is asked only if there is a file ⍵.
+⍝ Deletes any existing file if appropriate and returns a 0 or does nothing
+⍝ and returns a 1.
+     (0=##.F.Exists ⍵):0
+     cs←##.Question.CreateDefaultParms
+     cs.okCaption←'&Append'
+     cs.cancelCaption←'&Replace'
+     msg←'There is already a file'fn'What would you like to do?'
+     (cs ##.Question.Run msg):1
+     _←##.F.DeleteFile ⍵
+     0
+ }

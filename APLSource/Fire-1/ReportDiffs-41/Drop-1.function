@@ -1,0 +1,9 @@
+ Drop←{
+     ⍺←⎕THIS
+     (delFlag l1 l2)←⍵
+     delFlag:⍺.New←1↓⍺.New
+     ⍺.(New lns)←l1↓¨⍺.(New lns)
+     ⍺.Old←l2↓⍺.Old
+     ⍺.new←l1↓⍺.new
+     ⍺.old←l2↓⍺.old
+ }

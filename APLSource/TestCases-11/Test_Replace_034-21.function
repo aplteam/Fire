@@ -1,0 +1,40 @@
+ R←Test_Replace_034(stopFlag batchFlag);n;n2;list;⎕TRAP
+⍝ Replace "#.UTILS.#.UTILS" in #.TestData.Replacements by "#.UTILS." everywhere + comments with "Case" on.
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ 1 #._Fire.Fire.Run 0
+ n←#._Fire.Fire.GUI.n
+
+ ∆InitialyzeFireMainGUI_Settings n
+ n.SearchFor.Text←'#.UTILS.#.UTILS.'
+ n.LookIn.Text←'#.TestData.Replacements'
+ n.Case.State←1
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ list←'InText' 'class_1' 'class_3' 'fns1' 'fns1' 'fns1' 'fns3' 'interface_1' 'opr1'
+ →GoToTidyUp~n.HitList.Items ∆LazyMatch list
+
+ {}∆Select n.ReplaceBtn
+ ∆Process n.Form
+
+ n2←#._Fire.Fire.Replace.n
+ ∆InitialyzeFireReplaceGUI_Settings n2
+ n2.ReplaceBy.Text←'#.UTILS.'
+
+ {}∆Select n2.StartBtn
+ ∆Process n.Form
+ →GoToTidyUp #._Fire.Fire.Replace.NoOfReplacements≠⍴list
+
+ n.SearchFor.Text←'#.UTILS.#'
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →GoToTidyUp 0≠#._Fire.Fire.G.NoOfObjects
+ R←∆OK
+
+∆TidyUp:
+ CloseFire

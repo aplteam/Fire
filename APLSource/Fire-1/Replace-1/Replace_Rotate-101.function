@@ -1,0 +1,15 @@
+ r←Replace_Rotate(line old new ind);new2;i;drop;max;length
+⍝ Replace ##.G.SearchFor by "new" at all "ind" positions.
+⍝ Note that since version 1.4 "new" is a) always nested and b) may
+⍝ have a length greater than one.
+ r←line
+ new2←1↓Simplify ##.CR,¨new
+ drop←↑⍴,old
+ length←(↑⍴new2)-drop
+ ind←ind[0],(2{⍵-⍺}/ind)+length
+ i←0
+ max←⍴ind
+ :Repeat
+     r←new2,drop↓ind[i]⌽r
+ :Until max=i←i+1
+ r←((⍴r)-+/ind)⌽r

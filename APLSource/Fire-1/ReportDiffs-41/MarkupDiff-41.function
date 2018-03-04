@@ -1,0 +1,16 @@
+ r←MarkupDiff(tx1 tx2 l1 l2);b;noOf
+⍝ Everything that is different between tx1 and tx2 is marked up as <span class="diff">
+ r←''
+ :If ∨/0∊⍴¨tx1 tx2~¨' '
+     r←tx1
+ :Else
+     :While ~0∊⍴tx1
+         :If 0<noOf←+/∧\b←↑=/(⌊/↑∘⍴¨tx1 tx2)↑¨tx1 tx2
+             r,←noOf↑tx1
+             (tx1 tx2)←noOf↓¨tx1 tx2
+         :Else
+             r,←'span class="diff"'Tag l1↑tx1
+             (tx1 tx2)←l1 l2↓¨tx1 tx2
+         :EndIf
+     :EndWhile
+ :EndIf

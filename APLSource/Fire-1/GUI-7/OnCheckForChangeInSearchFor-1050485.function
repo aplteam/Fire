@@ -1,0 +1,6 @@
+ OnCheckForChangeInSearchFor←{
+⍝ Watches whether the contents of the "Search for" field has changed since the last
+⍝ search was performed. If that's the case the "Replace" button is deactivated.
+     (0=n.ReplaceBtn.Active):                                   ⍝ Then we don't care
+     n.ReplaceBtn.Active←n.SearchFor.Text≡##.G.LastSearchedFor  ⍝ Set "Active" appropriately
+ }

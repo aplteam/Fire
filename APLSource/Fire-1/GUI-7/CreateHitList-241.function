@@ -1,0 +1,28 @@
+ CreateHitList;∆
+⍝
+
+ ∆←⊂'ListView'
+ ∆,←⊂'Posn'((10+0⊃PosnPlusSize n.StartBtn),0)
+ ∆,←⊂'Size'(n.Form.Size-(n.SB.Size[0]+5+10+0⊃PosnPlusSize n.StartBtn),0)
+ ∆,←⊂'View' 'Report'
+ ∆,←⊂'ColTitles'('Name' 'Location' 'Type' '⎕NC' 'Hits' 'Modified by' 'Modified on')
+ ∆,←⊂'Attach'('Top' 'Left' 'Bottom' 'Right')
+ ∆,←⊂'FullRowSelect' 1
+ ∆,←⊂'GridLines' 1
+ ∆,←⊂'FontObj'n.APL_Font
+ ∆,←⊂'Style' 'Multi'
+ ∆,←⊂'DragItems' 1
+ ∆,←⊂'ReportInfo'(0 4⍴'')
+ ∆,←⊂'AlwaysShowSelection' 1
+ n.HitList←⍎'HitList'n.Form.⎕WC ∆
+ n.HitList.height←200
+ n.HitList.onContextMenu←'OnDblCklickInHitList'
+ n.HitList.onKeyPress←'OnKeyPressInHitList'
+ n.HitList.onContextMenu←'OnContextMenuInHitList'
+ n.HitList.onItemDblClick←'OnDblCklickInHitList'
+ n.HitList.onColumnClick←'OnColumnClickInHitList'
+ n.HitList.onGotFocus←'OnHitListGotFocus'
+ n.HitList.colWidth←↑∘⍴∘,¨n.HitList.ColTitles
+ n.HitList.Posn[1]←0
+
+ ⍝Done

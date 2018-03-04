@@ -1,0 +1,16 @@
+ str←ReplaceSpecialChars str;b;b1;b2;b3
+⍝ & gets &amp;
+⍝ < gets &lt;
+⍝ > gets &gt;
+ b1←'&'=str
+ b2←'<'=str
+ b3←'>'=str
+ :If 0<+/b1+b2+b3
+     (b1/str)←⊂'&amp;'
+     (b2/str)←⊂'&lt;'
+     (b3/str)←⊂'&gt;'
+ :EndIf
+ :If 1∊b←##.CR=str
+     (b/str)←⊂'<br />'
+ :EndIf
+ str←∊str

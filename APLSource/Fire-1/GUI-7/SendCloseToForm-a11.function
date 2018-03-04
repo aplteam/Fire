@@ -1,0 +1,4 @@
+ SendCloseToForm←{
+     _←⎕NQ n.Form'Close'
+     ⍬
+ }

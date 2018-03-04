@@ -1,0 +1,13 @@
+ r←Loop(r list);i;thisObj;thisNC;thisRef;cursorWas
+⍝ Loops through all the list members
+ cursorWas←##.SetCursorObj 1
+ 'Searching...'##.EnableProgressbar 0⊃⍴list
+ :For i :In ⍳0⊃⍴list
+     (thisRef thisObj thisNC)←list[i;0 1 2]
+     {⍵:##.GUI.n.PB.Thumb←i}(i∊1 2 3)∨0=10|i
+     r←ScanForObjects r thisRef thisObj thisNC
+ :EndFor
+ r←r[⍋r[;1];]
+ ##.SetCursorObj cursorWas
+ ##.DisableProgressbar ⍬
+⍝Done

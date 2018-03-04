@@ -1,0 +1,10 @@
+ CheckVars←{
+⍝ Checks whether the variable fullfills all conditions.
+⍝ ⍵ is the vars name
+     l←⍎vn←⍵                                                       ⍝ list, varsName
+     (2≠≡l):1⊣##.Question.ShowMsg'"',vn,'" has the wrong depth!'
+     (1≠⍴⍴l):1⊣##.Question.ShowMsg'"',vn,'" has the wrong rank!'
+     (326≠⎕DR l):1⊣##.Question.ShowMsg'"',vn,'" has the wrong data type!'
+     (~∧/(⊃1↑¨0⍴¨l)∧.=' '):1⊣##.Question.ShowMsg'"',vn,'" has the wrong data type!'
+     0
+ }

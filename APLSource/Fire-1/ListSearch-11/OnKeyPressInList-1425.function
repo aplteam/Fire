@@ -1,0 +1,16 @@
+ r←OnKeyPressInList y;kc;rf;_
+ r←0
+ kc←2↑4↓y
+ rf←0⊃y
+ :Select kc
+ :Case 65 2                     ⍝ Ctrl+A
+     rf.SelItems[]←1
+ :CaseList (67 2)(45 2)         ⍝ Ctrl+C, Ctrl+Shift
+     CopyItems rf
+ :Case 93 0                     ⍝ <Menu> key
+     _←OnContextMenuInList,rf
+ :Case 27 0                     ⍝ <Escape>
+     rf.##.Close
+ :Else
+     r←1
+ :EndSelect

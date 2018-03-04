@@ -1,0 +1,45 @@
+ R←Test_Replace_072(stopFlag batchFlag);n;Text;n2;allCode;⎕TRAP
+⍝ Add a change marker  above the changed line
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+ 'Test_72'#.TestData.⎕NS{(⊂'.',⍨⍕⍵),¨⍵.⎕NL-3 4}#.TestData.A3
+ #.TestData.A3 ∆CopyClassesTo #.TestData.Test_72
+
+⍝ Preconditions
+ 1 #._Fire.Fire.Run 0
+ n←#._Fire.Fire.GUI.n
+
+ ∆InitialyzeFireMainGUI_Settings n
+ n.SearchFor.Text←'b←'
+ n.LookIn.Text←'#.TestData.Test_72'
+ n.Case.State←1
+ n.Comments.State←0
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →FailsIf 6≠#._Fire.Fire.G.NoOfObjects
+
+ {}∆Select n.ReplaceBtn
+ ∆Process n.Form
+
+ n2←#._Fire.Fire.Replace.n
+ ∆InitialyzeFireReplaceGUI_Settings n2
+ n2.ReplaceBy.Text←'B←'
+ n2.MarkChanges.(Active State)←1
+ n2.MarkChangesText.(Active BCol)←1 0
+ n2.MarkChangesText.Text←'Changed by Fire (above)'
+ n2.MarkChangesType.SelItems←1 0 0
+ n2.MarkChangesType.Active←1
+
+ {}∆Select n2.StartBtn
+ ∆Process n.Form
+ →PassesIf 6=#._Fire.Fire.Replace.NoOfReplacements
+ allCode←1↓∊(⎕UCS 13),¨↑,/∆GetCode¨'#.TestData.Test_72.'∘{⍺,⍕⍵}¨#.TestData.Test_72.⎕NL-3 4 9.4
+ →PassesIf 8=+/'⍝ Changed by Fire (above)'⍷allCode
+
+⍝ Tidy up
+ #.TestData.⎕EX'Test_72'
+ CloseFire
+
+ R←∆OK

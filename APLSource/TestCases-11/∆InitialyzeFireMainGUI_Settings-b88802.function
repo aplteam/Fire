@@ -1,0 +1,20 @@
+ {n}←∆InitialyzeFireMainGUI_Settings n
+ n.Case.(State Active)←0 1
+ n.APL_Name.(State Active)←0 1
+
+ n.Code.(State Active)←1 1
+ n.Vars.(State Active)←1 1
+ n.NamesOnly.(State Active)←0 1
+
+ n.APL_Code.(State Active)←1 1
+ n.Comments.(State Active)←1 1
+ n.Text.(State Active)←1 1
+
+ n.SearchIsRegEx.(State Active)←0 1
+ n.DotAll.(State Active)←0 0
+ n.Greedy.(State Active)←0 0
+ n.UCP.(State Active)←1 0
+ n.UCP.Visible←IsVersion16OrBetter
+
+ n.Negate.(State Active)←0 1
+ n.ReuseSearch.(State Active)←0 0

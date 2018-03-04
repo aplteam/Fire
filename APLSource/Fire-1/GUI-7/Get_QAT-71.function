@@ -1,0 +1,4 @@
+ Get_QAT←{
+ ⍝ Returns time stamp and "modified by"
+     (↓⍉⊃{⊃{⍺.⎕AT ⍵}/⍵}¨⍵)[1 3]
+ }

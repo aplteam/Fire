@@ -1,0 +1,20 @@
+ n←CreateGUI debugFlag;minWidth
+⍝
+ n←##.CreateGuiRefContainer
+ minWidth←585
+ CreateIcon
+ CreateMainForm debugFlag n
+ CreateHiddenButtons
+ CreateFind
+ CreateWhereToLook
+ CreateOptions
+ CreateObjectTypes
+ {}PolishHeight n.Case.##
+ CreateScan
+ CreateRegEx
+ CreatePushButtons
+ CreateCheckBoxes
+ CreateHitList
+ SetStateAndActive ⍬
+ CheckStartButton ⍬
+⍝Done

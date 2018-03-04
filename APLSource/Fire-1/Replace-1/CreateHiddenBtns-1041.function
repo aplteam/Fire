@@ -1,0 +1,18 @@
+ {n}←CreateHiddenBtns n;∆;rf
+ ∆←⊂'Button'
+ ∆,←⊂'Posn'(¯5 ¯5)
+ ∆,←⊂'Size'(0 0)
+ ∆,←⊂'Caption' 'Copy "Search for" to " Replace by"'
+ ∆,←⊂'Accelerator'(117 0)
+ rf←⍎'copy'n.Form.⎕WC ∆
+ rf.onSelect←'OnCopy'
+ rf.onGotFocus←'OnHiddenButtonGotFocus'
+
+ ∆←⊂'Button'
+ ∆,←⊂'Posn'(¯5 ¯5)
+ ∆,←⊂'Size'(0 0)
+ ∆,←⊂'Caption' 'Select all'
+ ∆,←⊂'Accelerator'(65 2)
+ rf←⍎'selectAll'n.Form.⎕WC ∆
+ rf.onSelect←'OnSelectAll'
+ rf.onGotFocus←'OnHiddenButtonGotFocus'

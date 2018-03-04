@@ -1,0 +1,11 @@
+ r←DeleteLinesFromThis2;a_;b_;c_;abc;e_;d_;xyz;xyz2
+ a_←1
+ b_←2
+ c_←3
+ abc←a_+b_+c_
+    ⍝ A comment with "abc"
+ abc+←1
+ d_←4
+ e_←5
+ xyz2←2*d_+e_
+ r←a_+b_+c_+d_+e_

@@ -1,0 +1,2 @@
+ from ∆CopyClassesTo to
+ to{⍺.⎕FIX¨⍵.⎕SRC¨⍵.⍎¨⍵.⎕NL-9.4}from

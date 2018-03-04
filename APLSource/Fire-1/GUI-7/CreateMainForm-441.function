@@ -1,0 +1,33 @@
+ CreateMainForm(debugFlag n);∆;height;size;posn
+
+ height←690 330    ⍝ [0]: Initial value; [1]: Used when F8 is pressed
+ size←(355,minWidth)⌈GetSizeFromWinReg ⍬
+ posn←GetPosnFromWinReg
+
+ ∆←⊂'Form'
+ ∆,←⊂'Caption'(##.AddPidToCaption'Fire - ',##.WSID)
+ ∆,←⊂'Coord' 'Pixel'
+ ∆,←⊂'Size'size
+ ∆,←⊂'Posn'(GetProperPosition posn size)
+ ∆,←⊂'IconObj'n.TheIcon
+ n.Form←⍎'TheForm'⎕WC ∆
+ n.Form.CursorObj←0
+ n.Form.height←height
+ n.Form.onClose←'OnClose'
+ n.Form.onKeyPress←'OnKeyPressStandard'
+ n.Form.onHelp←'OnHelp'
+ n.Form.Event,←⊂9955 1
+ n.Form.LastKey←⍬
+ n.Form.CursorObj←0
+ n.Form.n←n
+
+ CreateFonts
+ n.Form.FontObj←n.Std_Font
+
+ ∆←⊂'TipField'
+ ∆,←⊂'FontObj'n.Tip_Font
+ n.TipObj←⍎'TheTip'n.Form.⎕WC ∆
+
+ CreateStatusbar
+ CreateMenubar debugFlag
+ ⍝Done

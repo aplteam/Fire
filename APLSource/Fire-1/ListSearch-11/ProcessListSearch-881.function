@@ -1,0 +1,18 @@
+ {r}←ProcessListSearch(varsName nameList);_;noOfContainers;Namespacelist;objList
+⍝ "nameList" is a vector of text vectors containing names to be searched
+ nameList/⍨←0<↑∘⍴¨nameList          ⍝ Remove any empty lines
+ r←(,[0.5]nameList),0
+ (0⊃⎕SI)⎕STOP⍨(⎕STOP 0⊃⎕SI){StopInCallingCounter:⍺,⍵ ⋄ ⍺~⍵}1+0⊃⎕LC
+ (objList noOfContainers)←##.GetList(~##.GUI.n.ReuseSearch.State)0
+ :If 0=noOfContainers
+     {}##.Question.ShowMsg'No hits: no containers found'
+ :ElseIf ~0∊⍴objList
+     objList←(2≠⌊objList[;2])⌿objList
+     :If 0∊⍴objList
+         {}##.Question.ShowMsg'No hits: no APL objects found'
+     :Else
+         r←Loop r objList
+         {}DisplayList varsName r
+         {}OnClose ⍬
+     :EndIf
+ :EndIf

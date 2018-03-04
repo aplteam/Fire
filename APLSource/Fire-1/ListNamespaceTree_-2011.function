@@ -1,0 +1,45 @@
+ level ListNamespaceTree_(ref type classFlag);list;list1;list2;bool1;bool2;list3;list4;this;lista;lista2
+⍝ Sub-function of "ListNamespaceTree" without independent value.
+⍝ "flag" decides whether unnamed namespaces and instances (form, sockets etc
+⍝ but no class instances!) should be included or not.
+⍝ Needs semi-global "∆buffer" to save results.
+ list1←ref{⍺.(⍎⍕'⍺',⌽⎕NL-9.1)}⍬                     ⍝ Ordinary & unnamed namespaces (NS)
+⍝ If somebody is brave enough to assign ⎕DMX to a variable we end up with a ref pointing to it.
+⍝ Luckily the format of such a ref happens to be a matrix rather than a string.
+⍝ That's why we get rid of those here:
+ list1←(1=↑∘⍴∘⍴¨⍕¨list1)/list1
+ list1←(~↑¨∨/¨(IgnoreDisplayFormat¨list1)∊¨⊂'[]')/list1 ⍝ Remove unnamed NS
+ :If ~0∊⍴list2←1↓ref{⍺.(⍎⍕'⍺',⌽⎕NL-9.2)}⍬           ⍝ Instances (classes & GUI objects)
+ :AndIf ~0∊⍴list2←(~'('∊¨⍕¨list2)/list2             ⍝ Those carrying a "(" are useless for us: GUI leftover.
+     list2/⍨←{0::1 ⋄ ⍵.⎕WG'KeepOnClose'}¨list2      ⍝ We take only KeepOnClose=1 into account
+ :AndIf ~0∊⍴list2
+     bool1←'Instance'∘≢¨{6::'' ⋄ ⍵.⎕WG'Type'}¨list2 ⍝ All GUI objects. .NET objects and stuff have no "Type".
+     list1,←bool1/list2
+     list2←(~bool1)/list2                           ⍝ Remove GUI instances; leaves class instances
+ :EndIf
+ :If 2=type
+     list←list1~ref,2⊃¨∆buffer
+     :If ~0∊⍴lista←ref{⍺.(⌽⎕NL-9.1 9.4 9.5)}⍬       ⍝ Refs (for reference reports only)
+         lista2←(('.',⍨IgnoreDisplayFormat ref)∘,¨lista){⍺,[0.5]IgnoreDisplayFormat¨⍵}ref.⍎¨lista
+         ∆buffer,←(↓lista2),¨ref.⍎¨lista
+     :EndIf
+ :Else
+     list2←list2                                    ⍝ Remove those as well if not wanted
+     :If classFlag                                  ⍝ Include class and instances?
+         list3←∪1↓ref{⍺.(⍎⍕'⍺',⌽⎕NL-9.4)}⍬          ⍝ Classes
+         list4←∪1↓ref{⍺.(⍎⍕'⍺',⌽⎕NL-9.5)}⍬          ⍝ Interfaces
+         list←(list1,list2,list3,list4)~∆buffer
+     :Else
+         list←(list1,list2)~∆buffer
+     :EndIf
+     :If ~0∊⍴list
+     :AndIf ~0∊⍴list←(ref≠list)/list
+         ∆buffer,←list
+     :EndIf
+ :EndIf
+⍝ ⎕←level list
+ level+←1
+ :If ~0∊⍴list
+     level ListNamespaceTree_¨(list,¨type),¨classFlag
+ :EndIf
+⍝ ⎕DL 0

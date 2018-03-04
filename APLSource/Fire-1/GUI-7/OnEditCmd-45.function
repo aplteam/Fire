@@ -1,0 +1,8 @@
+ OnEditCmd←{
+⍝ Edit an object
+     hasFocus←2 ⎕NQ(↑⍵)'GetFocus'
+     6::0 ⍝ Whatever "hasFocus" is pointing to might disappear at any point in time (mainly tracing)
+     n.Form≢GetParentForm⍎hasFocus:⍬  ⍝ Then this is called from somewhere unexpected like "Report details"
+     _←EditCmd ⍬
+     0
+ }

@@ -1,0 +1,17 @@
+ (list noOfContainers)←GetNames searchType;noOfContainers;nsList;rf;objList
+⍝ "searchType" tells ordinary search (1) from searching the hit list (0).
+ :If searchType
+     rf←⍎G.LookIn
+     noOfContainers←0⊃⍴nsList←CompileNamespaceList G.LookIn 0
+     :If ~0∊⍴list←⊃↑,/{⍵∘,¨⊂¨⍵.⎕NL-2 3 4}¨nsList[;0]
+     :AndIf ~0∊⍴list←list⍪↑⍪/{⍵,[0.5]⍵.⎕NL-9.4 9.5}¨nsList[;0]
+         list,←{↑⍺.⎕NC⊂⍵}/¨↓list[;0 1]
+         list⌿⍨←~list[;2]∊-2.6 3.6 8.6 9.6            ⍝ Drop external stuff
+         list,←Types.∆GetTypes list[;0]
+         nsList←{⍵⌿⍨⍵[;1]∊0 2}nsList
+         list⍪←((⊂''),[0.5]nsList[;0]),9,nsList[;,1]
+     :EndIf
+ :Else
+     list←GetHitListRefs ⍬
+     noOfContainers←⍴∪list[;0]
+ :EndIf

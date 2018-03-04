@@ -1,0 +1,4 @@
+ IsThereAnyChange←{
+⍝ Returns 0 in case the change file is empty (=no changes at all).
+     1 1≢2↑⎕FSIZE ⍵
+ }

@@ -1,0 +1,19 @@
+ script←ReplaceMultipleLineDfnsInScriptCode(script code sl noOf fnsName);fl;sp;oldBody;maskedOld;leading;ind;com;masked;buf;li;otl;tl;masked2;ll
+⍝ A multi-line dfns needs to be changed within a namespace script.
+⍝ Things are slightly complicated by the fact the the first and last line
+⍝ might be diamondized, holding definitions of vars and other dfns, and that
+⍝ their also might be a comment on the last line after that.
+ script←sl⌽script
+ fl←0⊃script                            ⍝ First Line of the dfns
+ sp←1⍳⍨(fnsName,'←{')⍷##.A.dmb fl       ⍝ Starting Point
+ oldBody←noOf↑script
+ script←noOf↓script
+ maskedOld←MaskText¨oldBody
+ :If 0=sp                               ⍝ Starts at the beginning of the line (blanks ignored)
+     leading←''
+ :Else                                  ⍝ Oh dear, their are diamonds on the first line involved... :(
+     .                                  ⍝ At the moment Dyalog (13.2) does not allow this (or is buggy?!)
+ :EndIf
+ ((¯1+⍴code)⊃code),←GetCommentFrom{∊¯1↑⍵}¨maskedOld oldBody
+ (0⊃code),⍨←leading
+ script←(-sl)⌽code,script

@@ -1,0 +1,17 @@
+ r←IsWord line;b;start;end;sb;eb
+⍝ Checks whether G.SearchFor is contained in "line" as a word.
+⍝ Note that this function currently does NOT take into account non-ANSI characters!
+⍝ Use this function for comments and text; for code see IsName;
+⍝ r gets a two-item vector:
+⍝ [0]: Vector of Booleans indicating all hits or ⍬ if there aren't any.
+⍝ [1]: Start indices for the hits or ⍬
+ :If 0=+/b←(IfLower G.SearchFor)⍷line←' ',line,' '
+     r←⍬ ⍬
+ :Else
+     start←¯1+{⍵/⍳⍴,⍵}b
+     end←start+1+⍴G.SearchFor
+     sb←~line[start]∊⎕A,'abcdefghijklmnopqrstuvwxyz'
+     eb←~line[end]∊⎕A,'abcdefghijklmnopqrstuvwxyz:;.!?-'
+     r←sb∧eb
+     r←r(1+r/start)
+ :EndIf

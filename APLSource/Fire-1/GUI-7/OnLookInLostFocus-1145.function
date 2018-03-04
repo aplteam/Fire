@@ -1,0 +1,1 @@
+ OnLookInLostFocus←{_←{~0∊⍴,⍵.Text:⍬ ⋄ ⍵.Text←,'#'}↑⍵ ⋄ 1⊣HideAutoComplete ⍬}

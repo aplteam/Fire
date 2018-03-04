@@ -1,0 +1,3 @@
+ OnShowUsefulRegExes←{
+     ##.ShowUsefulRegExes ⍬
+ }

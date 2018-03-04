@@ -1,0 +1,10 @@
+ GetRefTo←{
+ ⍝ ⍵ is name of a script.
+ ⍝ Returns a ref to that script or it throws an error.
+ ⍝ Looks first in ## then in ⎕SE.
+     name←⍵
+     (9=##.⎕NC name):##.⍎name
+     9=(↑⎕RSI~⎕THIS).⎕NC name:(↑⎕RSI).##.⍎name
+     (9=⎕SE.⎕NC name):⎕SE.⍎name
+     6 ⎕SIGNAL⍨'Could not find ',name
+ }

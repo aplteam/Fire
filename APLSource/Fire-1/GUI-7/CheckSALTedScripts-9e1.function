@@ -1,0 +1,8 @@
+ CheckSALTedScripts←{
+⍝
+     (0∊no←⍴##.G.ChangedSaltedScript):⍬
+     m←⊂(⍕no),' script',((1<no)/'s'),' managed by SALT got changed,'
+     m,←⊂' Would you like to get ',((1=no)/'a '),'SALT "Save" command',((1<no)/'s'),' printed to []SE?'
+     (0=##.Question.YesOrNo m):⍬
+     ##.ReportSALTedScripts ⍬
+ }

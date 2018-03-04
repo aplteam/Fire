@@ -1,0 +1,8 @@
+ GetDyalogRegKey←{
+ ⍝ Returns the main Windows Registry key for the version of Dyalog currently running.
+     v←# ⎕WG'APLVersion'
+     version←↑{⍺,'.',⍵}/2↑'.'##.APLTreeUtils.Split 1⊃v
+     is64Bit←∨/'-64'⍷0⊃v
+     isUnicode←80=⎕DR' '
+     'HKCU\Software\Dyalog\Dyalog APL/W',(is64Bit/'-64'),' ',version,(isUnicode/' Unicode')
+ }

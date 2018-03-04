@@ -1,0 +1,6 @@
+ SetListSize←{  ⍝ OBSOLETE?!
+ ⍝ Blows up the size of the hit list if it's still zero.
+     0<n.HitList.Size[0]:⍬
+     n.Form.Size[0]←n.Form.height+n.HitList.height+15  ⍝ Enlarge the form
+     ⍬
+ }

@@ -1,0 +1,5 @@
+ OnReportHits←{
+⍝ Builds up a report with all the lines that contain hits
+     _←##.GUI.CopyGuiToGlobal ⍬
+     ##.ReportHits.Run 0
+ }

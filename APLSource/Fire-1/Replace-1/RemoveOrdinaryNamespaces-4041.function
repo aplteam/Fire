@@ -1,0 +1,12 @@
+ {r}←RemoveOrdinaryNamespaces dummy;bool;buff
+⍝ In case the user did perform a name list (⎕NL) search then the hit list
+⍝ might well carry the names of ordinary (non-scripted) namespaces.
+⍝ Those need to be removed now.
+ r←⍬
+ :If ~0∊⍴##.GUI.n.HitList.Data
+ :AndIf 0<+/bool←9.1=##.GUI.n.HitList.Data[;3]
+     buff←bool⌿##.GUI.n.HitList.Data
+     bool←(~bool)∨bool\{##.IsScripted ⍺⍎⍵}/¨↓buff[;0 1]
+     ##.GUI.n.HitList.Data←bool⌿##.GUI.n.HitList.Data
+     ##.G.Hits←bool⌿##.G.Hits
+ :EndIf

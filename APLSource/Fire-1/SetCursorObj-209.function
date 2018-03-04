@@ -1,0 +1,3 @@
+ {r}←SetCursorObj val
+ r←GetCursorObj
+ '.'⎕WS'CursorObj'val

@@ -1,0 +1,12 @@
+ OnClose←{
+⍝
+     _←##.GUI.RestoreDynamicProps ##.GUI.n.Form.saveProps
+     ##.GUI.n.ReplaceBtn.Active←1
+     ##.GUI.n.Form.Active←1
+     _←n.Form.Close
+     _←⎕NQ ##.GUI.n.Form 9955           ⍝ Allow test cases to ⎕DQ and quit that ⎕DQ
+     _←⎕EX⍕n.Form
+     _←⎕EX'n'
+     _←⎕NQ ##.GUI.n.Form'GotFocus'
+     1
+ }

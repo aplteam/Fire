@@ -1,0 +1,9 @@
+ OnAutoCompleteList←{
+⍝ Copy the current one to the "Start looking here" control
+     rf←0⊃⍵
+     n.LookIn.Text←' '~⍨rf.(Items[SelItems⍳1;])
+     n.LookIn.SelText←2⍴1+⍴n.LookIn.Text
+     n.AutoCompleteForm.Visible←0
+     _←2 ⎕NQ n.LookIn'GotFocus'
+     1
+ }

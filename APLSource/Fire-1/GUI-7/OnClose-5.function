@@ -1,0 +1,10 @@
+ OnClose←{
+⍝
+     _←CopyGuiToGlobal ⍬
+     _←SaveWsSpecifics ⍬
+     _←SaveValues ⍬
+     _←SaveSettings ⍬
+     _←CheckSALTedScripts ⍬
+     _←##.Cleanup
+     1
+ }

@@ -1,0 +1,10 @@
+ EnableProgressbar←{
+ ⍝ Makes the Progressbar visible. ⍵ is number of items to be processed.
+     GUI.n.PB.Thumb←1
+     GUI.n.PB.Limits←0,⍵
+     GUI.n.PB.Visible←~GUI.n.Info.Visible←0
+     GUI.n.PB_Text.Text←⍺
+     GUI.n.PB_Text.Visible←1
+     GUI.n.PB_Text.Points[1]←⌊0.5×GUI.n.PB.Size[1]-1⊃GUI.n.Form.GetTextSize GUI.n.PB_Text.Text
+     1:r←⍬
+ }

@@ -1,0 +1,18 @@
+:Namespace Foo
+⍝ abc←1
+⍝ Another comment
+abc←1  ⍝ global assignment
+txt←'abc←1'  ⍝ text
+txt←'dfns←{}'  ⍝ text
+∇r←hello;abc
+ abc←1
+
+∇
+hello2←{abc←1 ⋄ x←abc×⍵ ⋄ x}
+hello3←{
+abc←1
+}
+hello4←{
+x←{abc←1 ⋄ b←'∇' ⋄ ⍵×⍺×abc} 1  ⍝ This is a dfns, really; abc←1
+} ⍝ This exits a dfns definition; abc←1
+:EndNamespace

@@ -1,0 +1,7 @@
+ On9994←{
+     ref←↑⍵
+     n←##.GUI.GetRefTo_n ref
+     bool←n.List.SelItems
+     _←n PutOnDisplay 1+bool⍳1
+     ⍬
+ }

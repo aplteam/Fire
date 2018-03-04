@@ -1,0 +1,38 @@
+ r←{x}ConfirmFix name;okCaption;cs;defaultBtn;ff;RESULT;FIXREMAINING;i;noOf;res;cursorWas
+⍝ Returns
+ :If 0∊⍴x←{(0<⎕NC ⍵):⍎⍵ ⋄ ''}'x'
+     (i noOf)←⍬ ⍬
+ :Else
+     (i noOf)←x
+ :EndIf
+ cs←##.Question.CreateDefaultParms
+ cs.addToCaption←'Confirm fix'
+ :If i noOf≢⍬ ⍬
+     cs.addToCaption,←'  (',(⍕i+1),' of ',(⍕noOf),')'
+ :EndIf
+ cs.okCaption←'&Fix'
+ cs.caption2←'&Skip'
+ cs.cancelCaption←'&Cancel'
+ cs.escape←0
+ cs.checkBoxCaption←'Carry out any &remaining changes without further ado (dangerous!)'
+ ff←cs ##.Question.CreateGUI'Sure that you want establish the changed object:'name'in the workspace?'
+ :If noOf=1
+ :OrIf (i+2)≥noOf
+     ff.fixRemainingChanges.(Active Visible)←0
+ :EndIf
+ RESULT←FIXREMAINING←0
+ :If ~0∊⍴cs.cancelCaption
+     defaultBtn←('OK' 'CANCEL'⍳⊂##.A.Uppercase cs.defaultBtn)⊃ff.(ok cancel) ⍝ Index Error? Invalid "defaultBtn"
+ :Else
+     defaultBtn←ff.ok
+ :EndIf
+ cursorWas←##.SetCursorObj 0
+ :If 0=##.G.TestFlag
+     ⎕NQ defaultBtn'GotFocus' ⋄ res←⎕DQ ff
+ :Else
+     RESULT FIXREMAINING←1 0
+ :EndIf
+ ⍝ "RESULT" is re-assigned in OnOkay if appropriate
+ r←RESULT FIXREMAINING
+ ##.SetCursorObj cursorWas
+⍝Done

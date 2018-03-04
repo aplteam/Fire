@@ -1,0 +1,6 @@
+ GetItemList←{
+     r←∪##.n.HitList.ReportInfo[;0]∪##.n.HitList.ReportInfo[;0]
+     r←∪r,{⍵/⍨1≥+\'.'=⍵}¨(2='.'+.=¨r)⌿r
+     r~←,¨'#' '⎕SE'
+     r[⍋⊃r]
+ }

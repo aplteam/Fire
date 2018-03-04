@@ -1,0 +1,6 @@
+ MakeBlanksVisible←{
+⍝ Exchange blanks in ⍵ against &nbsp; in order to make them visible in the resulting HTML
+     w←⍵
+     ((' '=w)/w)←⊂'&nbsp;'
+     ↑,/w
+ }

@@ -1,0 +1,8 @@
+ EnlargeForm←{
+ ⍝ Enlarge the form by firing a "Configure" event in order to make the
+ ⍝ hit list visible which has originally a height of nn pixels.
+     44<n.HitList.Size[0]:⍬
+     vals←n.Form.Posn,(n.Form.height[1]+n.HitList.height),n.Form.Size[1]  ⍝ Enlarge the form
+     _←2 ⎕NQ n.Form'Configure',vals
+     ⍬
+ }

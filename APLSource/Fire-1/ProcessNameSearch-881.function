@@ -1,0 +1,41 @@
+ hits←ProcessNameSearch list;b;names;bool;buffer;options;msg
+⍝ Search names only
+ {}'Searching...'EnableProgressbar 10
+ ⎕DL 0.1
+ hits←0 7⍴''
+ :If ~0∊⍴list
+ :AndIf ~0∊⍴names←{0∊⍴⍺:{⍵↑⍨-(⌽⍵)⍳'.'}⍕⍵ ⋄ ⍵}/¨↓list[;0 1]
+     :If G.SearchIsRegEx
+         options←('Greedy'G.Greedy)('DotAll'G.DotAll),IsVersion16OrBetter/⊂'UCP'G.UCP
+         :Trap 11
+             b←{~0∊∘⍴¨⍵}{G.SearchFor2 ⎕S 0⍠options⊣⍵}¨⍕¨names
+         :Else
+             msg←A.dmb{0=+/b←':'=⍵:⍵ ⋄ (~b)⊂⍵}⎕DMX.Message
+             'Regular Expression error'Question.ShowMsg msg
+             ⎕SIGNAL 988
+         :EndTrap
+     :Else
+         :If G.NamesOnly
+             b←(' '~¨⍨IfLower{(~'.'∊⍵):⍵ ⋄ ##.APLTreeUtils.Last ⍵}∘⍕¨names)≡¨⊂G.SearchFor2
+         :Else
+             b←∨/G.SearchFor2⍷IfLower⊃{(~'.'∊⍵):⍵ ⋄ ##.APLTreeUtils.Last ⍵}∘⍕¨names
+         :EndIf
+     :EndIf
+     :If 0<+/b
+         hits←b⌿list
+     :EndIf
+     :If ~0∊⍴hits
+         :If 1∊bool←~↑∘⍴∘,¨hits[;0]
+             hits[A.Where bool;0 1]←⊃{⍵.##(1⊃'.'A.SplitPath⍕⍵)}¨bool⌿hits[;1]
+         :EndIf
+         hits,←⊂⍬
+         hits,←⊂⍬
+         hits,←0
+         hits[;6]←hits[;3]
+         hits[;2]←1                                 ⍝ No of hits
+         hits[;3]←{{↑⍺.⎕NC⊂⍵}/⍵}¨↓hits[;0 1]        ⍝ Detailed name class
+     :EndIf
+ :EndIf
+ GUI.n.PB.Thumb←8
+ ⎕DL 0.1
+ DisableProgressbar ⍬

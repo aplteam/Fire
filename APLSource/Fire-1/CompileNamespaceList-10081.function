@@ -1,0 +1,7 @@
+ CompileNamespaceList←{
+⍝ Returns containers.
+⍝ Compiles always a complete tree and then throws away unwanted stuff. Fast anyway.
+     ref←⍎0⊃⍵
+     flag←1⊃⍵
+     List ref flag                    ⍝ Get full list.
+ }

@@ -1,0 +1,4 @@
+ OnDel←{
+⍝
+     RemoveFromList(0⊃⍵).##.n
+ }

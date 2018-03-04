@@ -1,0 +1,7 @@
+ GetRemoveList←{
+⍝ ⍵ is a list of (container) names to be removed.
+⍝ Removes also all sub-namepsaces when the check box is ticked.
+     r←~##.n.HitList.ReportInfo[;0]∊⍵
+     (0=n.RemoveSub_NS.State):r
+     ~⊃∨/##.n.HitList.ReportInfo[;0]∘{('.',⍨¨(⍴⍵)↑¨⍺)≡¨⊂⍵,'.'}¨⍵
+ }

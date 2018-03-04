@@ -1,0 +1,7 @@
+ CreateContextMenu_Object noOf;c;_
+ :If 1=noOf
+     c←'Remove "',(n.HitList.((SelItems⍳1)⊃Items)),'" from list',##.TAB,'Del'
+ :Else
+     c←'Remove ',(⍕noOf),' object',((1<noOf)/'s'),' from list',##.TAB,'Del'
+ :EndIf
+ _←'mm.remove'⎕WC'MenuItem'c('Event' 'Select' 1)

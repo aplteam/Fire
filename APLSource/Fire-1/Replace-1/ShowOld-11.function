@@ -1,0 +1,13 @@
+ {r}←x ShowOld y;i;line;ind;no;body;fn;new;newLine
+⍝
+ r←⍬
+ (fn body new)←x
+ :For i :In ⍳⍴y
+     (no ind)←i⊃y
+     line←no⊃body
+     n.Grid.Values[2×i;0]←⊂(⍕↑⍴ind),' hit',(1<↑⍴ind)/'s'    ⍝ Hits
+     n.Grid.Values[2×i;1]←⊂line                             ⍝ Old code
+     n.Grid.Values[1+2×i;0]←0                               ⍝ The "accept" checkbox
+     newLine←Replace line ##.G.SearchFor2 new ind           ⍝ Replace
+     n.Grid.Values[1+2×i;1]←⊂newLine                        ⍝ New code
+ :EndFor

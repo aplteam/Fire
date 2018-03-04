@@ -1,0 +1,5 @@
+ r←StopInReplace
+ r←0
+ :If ⍬≢##.GUI.n.StopInReplace
+     r←##.GUI.n.StopInReplace.Checked
+ :EndIf

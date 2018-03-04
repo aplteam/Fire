@@ -1,0 +1,7 @@
+ OnItemUpInListView←{
+     n←##.GUI.GetRefTo_n↑⍵
+     row←⌊/##.A.Where n.List.SelItems
+     name←↑n.List.ReportInfo[row;]
+     _←n.Browser{6::⍬ ⋄ ,⍺.Navigate2⊂'file:///',⍵}n.TheForm.filenameHTML,'#',name
+     ⍬
+ }

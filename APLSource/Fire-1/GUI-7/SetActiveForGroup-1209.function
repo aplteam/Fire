@@ -1,0 +1,6 @@
+ SetActiveForGroup←{
+⍝ Sets the "Active" property for group ⍵ and all children to ⍺
+     ⍵.Active←⍺             ⍝ Toggle group
+     ⍵.(⍎¨⎕WN'').Active←⍺   ⍝ Toggle all children
+     ⍬
+ }

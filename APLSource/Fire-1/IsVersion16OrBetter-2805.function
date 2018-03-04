@@ -1,0 +1,2 @@
+ r←IsVersion16OrBetter
+ r←16≤↑(//)⎕VFI↑{⍺,'.',⍵}/{2↑⍵⊂⍨'.'≠⍵}1⊃# ⎕WG'APLVersion'

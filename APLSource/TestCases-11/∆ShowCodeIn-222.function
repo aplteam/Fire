@@ -1,0 +1,14 @@
+ {r}←∆ShowCodeIn ref;code
+ r←⍬
+ code←ref.{⎕VR¨↓⎕NL 3 4}⍬
+ code,←ref.{{16::'' ⋄ 1↓∊(⎕UCS 13),¨⎕SRC ⍵}¨⍎¨↓⎕NL 9}⍬
+ code/⍨←0<↑∘⍴¨code
+ code←code,¨⎕UCS 13
+ code←¯1↓↓⎕FMT⍪code
+ :If 0<ref.⎕NC'∆Info'
+     code←(1↑1↓⎕SI),ref.∆Info,(⊂30⍴'-'),code
+ :Else
+     code←(1↑1↓⎕SI),(⊂30⍴'-'),code
+ :EndIf
+ {{}{⍵}(#.⎕NS'').(⎕ED&{'ed'}ed←⍵)}code
+ ⍝Done

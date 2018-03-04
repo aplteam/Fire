@@ -1,0 +1,13 @@
+ CopyAutoCompleteToCombo←{
+  ⍝ In case something is selected in autocomplete and the cursor is either at the end of the field
+  ⍝ or has selected the full contents of the field we copy the selected autocomplete stuff
+  ⍝ to the "llok In" field.
+     (rf rl)←⍵
+     (~(⊂n.LookIn.SelText)∊(2⍴1+⍴,n.LookIn.Text)(1,⍴,n.LookIn.Text)):1
+     (~rf.Visible):1
+     (1≠+/rl.SelItems):0
+     ref.Text←' '~⍨rl.(Items[SelItems⍳1;])
+     ref.SelText←2⍴1+⍴,ref.Text
+     rf.Visible←0
+     1
+ }

@@ -1,0 +1,9 @@
+ OnKeyPressStandard←{
+⍝ Handles (9 2) (Ctrl+Tab) which is used to move focus to
+⍝ the session and a couple of other keystrokes.
+     n.Form.LastKey←(6↑⍵,6⍴⊂⍬)[4 5]
+     _←⎕NQ n.ReplaceBy 9955
+     5>⍴⍵:1
+     9 2≡2↑(4↓⍵),6⍴⊂⍬:⎕NQ'⎕SE' 'GotFocus'       ⍝ Ctrl+Tab?!
+     1
+ }

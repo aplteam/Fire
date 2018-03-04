@@ -1,0 +1,12 @@
+ r←OnContextMenuInList y;res
+⍝
+ r←0
+ 'mm'⎕WC'Menu'
+ 'm1'mm.⎕WC'MenuItem'('Cancel this menu',(⎕UCS 9),'Escape')('Event' 'Select' 1)
+ 's1'mm.⎕WC'Separator'
+ 'm2'mm.⎕WC'MenuItem'('Copy',(⎕UCS 9),'Ctrl+C')('Event' 'Select' 1)
+ res←⎕DQ mm
+ :If ~0∊⍴res
+ :AndIf 'mm.m2'≡0⊃res
+     CopyItems 0⊃y
+ :EndIf

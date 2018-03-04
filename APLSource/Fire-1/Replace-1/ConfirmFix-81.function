@@ -1,0 +1,9 @@
+ r←ConfirmFix name;cs;caption
+⍝ Asks the user whether he really wants to fix the object
+ cs←##.Question.CreateDefaultParms
+ cs.okCaption←'&Fix'
+ cs.caption2←'&Skip'
+ cs.cancelCaption←'&Cancel'
+ cs.escape←0
+ caption←'Sure that you want establish the changed object:'name'in the workspace?'
+ r←cs ##.Question.Run caption

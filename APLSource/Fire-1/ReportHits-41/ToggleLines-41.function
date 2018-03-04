@@ -1,0 +1,8 @@
+ {r}←n ToggleLines flag
+ r←⍬
+ :If flag
+     .
+ :Else
+     .
+ :EndIf
+⍝Done

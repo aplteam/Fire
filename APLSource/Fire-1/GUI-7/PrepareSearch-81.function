@@ -1,0 +1,19 @@
+ (parms_____)←PrepareSearch
+⍝ Prepare for the search.
+⍝ Returns 1 for "carry on" and 0 otherwise.
+⍝ Returns a namespace in order to avoid name clashes, in particular when Fire searches itself.
+ parms_____←⎕NS''
+ parms_____.successFlag_____←0
+ parms_____.cursorWas_____←##.GetCursorObj
+ {}HideAutoComplete ⍬
+ :If 0∊⍴n.SearchFor.Text
+     ResetHitList 0 0
+ :Else
+     {}HandleCombo n.SearchFor
+     →(CheckLookIn)/0
+     {}HandleControlDependencies 0
+     {}CopyGuiToGlobal ⍬
+     ##.SetCursorObj 1  ⍝ Is reset by caller
+     ##.∆AI←⎕AI[1]
+     parms_____.successFlag_____←1
+ :EndIf

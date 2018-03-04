@@ -1,0 +1,6 @@
+ {r}←CopySearchFor2ReplaceBy n;∆SendMessage;EM_REPLACESEL
+ r←0
+ {}'∆SendMessage'⎕NA'U USER32|SendMessage* P U P <0T[]'
+ EM_REPLACESEL←194 ⍝ x00c3
+ {}∆SendMessage n.ReplaceBy.Handle EM_REPLACESEL 0 n.SearchFor.Text
+⍝Done

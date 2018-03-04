@@ -1,0 +1,7 @@
+ r←ConvertToPixel ref;save
+⍝ Treats size of "ref" as "Prop" and converts in into "Pixel'
+⍝ "ref" must be a ref to any GUI control
+ save←ref.Coord
+ ref.Coord←'Pixel'
+ r←ref.Size
+ ref.Coord←save

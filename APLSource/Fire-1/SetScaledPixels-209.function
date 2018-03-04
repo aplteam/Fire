@@ -1,0 +1,5 @@
+ SetScaledPixels←{
+     11::⍬      ⍝ Versions prior to 14.1 will DOMAIN ERROR
+     _←2035⌶'ScaledPixel'
+     1:r←⍬
+ }

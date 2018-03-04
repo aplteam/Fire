@@ -1,0 +1,27 @@
+ R←Test_RegExSearch_020(stopFlag batchFlag);n;⎕TRAP;n2;html;expected
+⍝ Search for Text with "Greedy←1"
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ 1 #._Fire.Fire.Run 0
+ n←#._Fire.Fire.GUI.n
+
+ #.⎕SHADOW'Temp_RegExSearch_020'
+ 'Temp_RegExSearch_020'#.⎕NS''
+ #.Temp_RegExSearch_020.⎕FX'Fns' 'Start ⋄ abc←1 2 3 4 5 ⋄ End ⋄ Start ⋄ xyz←2 ⋄ End'
+
+ ∆InitialyzeFireMainGUI_Settings n
+ n.SearchFor.Text←'Start.*End'
+ n.LookIn.Text←'#.Temp_RegExSearch_020'
+ n.SearchIsRegEx.State←1
+ n.(DotAll Greedy).(Active State)←1
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →GoToTidyUp 1≠↑⍴n.HitList.ReportInfo
+
+ R←∆OK
+
+∆TidyUp:
+ CloseFire

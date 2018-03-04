@@ -1,0 +1,2 @@
+ r←SortAlph
+ r←' '⍪⎕A,[-0.5]A.Lowercase ⎕A

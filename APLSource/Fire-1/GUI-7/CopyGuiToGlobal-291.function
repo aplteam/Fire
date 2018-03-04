@@ -1,0 +1,23 @@
+ CopyGuiToGlobal←{
+⍝ Copy all relevant data from the GUI to the "Globals" namespace
+     ##.G.Case←n.Case.State
+     ##.G.APL_Name←n.APL_Name.State
+     ##.G.Vars←n.Vars.State
+     ##.G.Code←n.Code.State
+     ##.G.APL_Code←n.APL_Code.State
+     ##.G.Comments←n.Comments.State
+     ##.G.Text←n.Text.State
+     ##.G.Negate←n.Negate.State
+     ##.G.ReuseSearch←n.ReuseSearch.State
+     ##.G.SearchFor←n.SearchFor.Text
+     ##.G.LookIn←n.LookIn.Text
+     ##.G.SearchIsRegEx←n.SearchIsRegEx.State
+     ##.G.DotAll←n.DotAll.State
+     ##.G.Greedy←n.Greedy.State
+     ##.G.UCP←n.UCP.State
+     ##.G.NamesOnly←n.NamesOnly.State
+   ⍝ G.SearchFor2 might or might not be lowercase version of G.SearchFor depending
+   ⍝      ↓↓↓↓↓↓↓↓↓↓   on user preferences. That's why this must be done late.
+     ##.G.SearchFor2←##.IfLower ##.G.SearchFor
+     ⍬
+ }

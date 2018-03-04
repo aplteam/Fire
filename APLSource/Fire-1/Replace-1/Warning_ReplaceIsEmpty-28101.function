@@ -1,0 +1,5 @@
+ Warning_ReplaceIsEmpty←{
+     msg←⊂'"Replace by" is empty, meaning that all hits would be removed.'
+     msg,←'' 'Are you sure about this?'
+     'Replace'##.Question.YesOrNo msg
+ }

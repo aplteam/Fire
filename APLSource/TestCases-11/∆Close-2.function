@@ -1,0 +1,6 @@
+ {delay}∆Close ref
+⍝ Call the "Close" method of the parent "ref" is pointing to after
+⍝ executing a delay of 0.25 seconds (default) or what got specified via ⎕L
+ delay←{2=⎕NC ⍵:⍎⍵ ⋄ 0.25}'delay'
+ ⎕DL delay
+ ref.##.Close

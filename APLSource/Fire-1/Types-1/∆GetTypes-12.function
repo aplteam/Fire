@@ -1,0 +1,25 @@
+ r←∆GetTypes list;A;types;bool;ind
+⍝ "list" is a vector with references.
+⍝ Returns a vector of integers with types of those.
+ A←##.A
+ :If ~0∊⍴r←(⍴list)⍴NamedNamespace                               ⍝ The default
+     r[A.Where ##.IsUnnameNamespace¨list]←UnnamedNamespace
+     types←list ⎕WG¨⊂'Type'
+     bool←types≡¨⊂'Instance'
+     r[A.Where bool]←ClassInstance
+     bool←~types∊'Namespace' 'Class' 'Interface'
+     bool∧←¯1≠{11::¯1 ⋄ ⍵.⎕WG'KeepOnClose'}¨list        ⍝ Only namespaces have a "KeepOnClose" property
+     r[A.Where bool]←GUI_Instance
+    ⍝⍝⍝⍝ ↓↓↓ This does not work due to Dyalog bug 10571 ↓↓↓ ⍝⍝⍝⍝⍝⍝
+    ⍝ r[A.Where ##.IsScripted¨list]←ScriptedNamespace
+    ⍝ r[A.Where(r=ScriptedNamespace)∧types≡¨⊂'Class']←Class
+    ⍝ r[A.Where(r=ScriptedNamespace)∧types≡¨⊂'Interface']←Interface
+    ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
+     ind←A.Where ##.IsScripted¨list
+     r[ind]←ScriptedNamespace
+     ind←A.Where(r=ScriptedNamespace)∧types≡¨⊂'Class'
+     r[ind]←Class
+     ind←A.Where(r=ScriptedNamespace)∧types≡¨⊂'Interface'
+     r[ind]←Interface
+    ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ ↑↑↑ This works ↑↑↑ ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
+ :EndIf

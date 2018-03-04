@@ -1,0 +1,12 @@
+ Init testFlags;_
+ (⎕IO ⎕ML)←0 3
+ CreateRefs
+ CleanRegistry
+ Populate_G testFlags
+ Replace.NoOfReplacements←0 ⍝ Used by test cases to check the number of replacements
+ ∆AI←0              ⍝ Used for CPU consumption figures
+ ∆CANCEL←0          ⍝ Used to cancel a search operation via the "Cancel" button
+ GUI.hc.Init ⍬
+ SetScaledPixels ⍬
+ EstablishNamedIbeams ⍬
+ CompileFireFunctions ⍬

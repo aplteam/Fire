@@ -1,0 +1,23 @@
+ {n}←CreateReplaceSearchFor n;∆
+⍝
+ ∆←⊂'Label'
+ ∆,←⊂'Posn'(10 12)
+ ∆,←⊂'Caption'('&Search for ',(##.G.SearchIsRegEx/'(Regular Expression)'),':')
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ n.L_SearchFor←⍎'SearchFor_L'n.Form.⎕WC ∆
+
+ ∆←⊂'Edit'
+ ∆,←⊂'Posn'((0⊃PosnPlusSize n.L_SearchFor),10)
+ ∆,←⊂'Attach'('Top' 'Left' 'Top' 'Right')
+ ∆,←⊂'FontObj'##.GUI.n.APL_Font
+ ∆,←⊂'Size'((##.GUI.n.SearchFor.Size[0])(n.Form.Size[1]-20))
+ :If ##.G.SearchIsRegEx
+     ∆,←⊂'Tip'(Split'This is going to be the left argument of the ⎕R operator.⌹You cannot change this here.')
+ :Else
+     ∆,←⊂'Tip'(Split'This is what you''ve searched for.⌹You cannot change this here.')
+ :EndIf
+ ∆,←⊂'Text'##.G.SearchFor
+ ∆,←⊂'ReadOnly' 1
+ ∆,←⊂'TipObj'n.TipObj
+ n.SearchFor←⍎'SearchFor'n.Form.⎕WC ∆
+ n.SearchFor.onKeyPress←'OnKeyPressStandard'

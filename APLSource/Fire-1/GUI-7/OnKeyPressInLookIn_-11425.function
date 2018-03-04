@@ -1,0 +1,61 @@
+ (r flag)←OnKeyPressInLookIn_ kc;rf;rl
+ r←flag←1
+ (rf rl)←n.(AutoCompleteForm AutoCompleteList)
+ :Select kc
+ :Case 38 0
+     (r flag)←HandleKey_CursorUp rl
+ :Case 40 0
+     (r flag)←HandleKey_CursorDown rl
+ :Case 40 4                                    ⍝ Alt+CursorDown
+     flag←0
+     r←~n.AutoCompleteForm.Visible             ⍝ We ignore that when autocomplete is on
+ :Case 33 0
+     (r flag)←HandlePgUp rl
+ :Case 34 0
+     (r flag)←HandlePgDown rl
+ :Case 39 0                                    ⍝ Cursor →
+     r←CopyAutoCompleteToCombo rf rl
+     flag←0
+ :Case 13 0                                    ⍝ Enter
+     flag←0                                    ⍝ No Autocomplete update
+     :If rf.Visible
+         {}CopyAutoCompleteToCombo rf rl
+     :Else
+         {}ClickFindButton ⍬
+     :EndIf
+ :Case 35 0
+     (r flag)←HandleEndKey rl
+ :Case 36 0
+     (r flag)←HandleHomeKey rl
+ :Case 27 0                                    ⍝ <Escape>
+     flag←0
+     :If n.AutoCompleteForm.Visible
+         {}HideAutoComplete ⍬                  ⍝ Close autocomplete then
+     :Else
+         {}SendCloseToForm ⍬                   ⍝ Then <Escape> is obviously meant to close Fire
+     :EndIf
+ :CaseList (9 0)(9 1)                          ⍝ Tab, Shift+Tab
+     (r flag)←1 0                              ⍝ Let it pass, no AutoCompletion
+ :Case 9 2                                     ⍝ Ctrl+Tab
+     {}⎕NQ'⎕SE' 'GotFocus'
+ :Case 114 0                                   ⍝ F3
+     {}ClickFindButton ⍬
+     flag←1
+ :Case 8 2                                     ⍝ Ctrl+Backspace: delete last branch
+     HandleKey_CtrlBackspace ⍬
+     r←0
+     flag←1
+ :Case 46 0                                    ⍝ DEL ?
+     n.LookIn.Text←,'#'
+     n.LookIn.SelText←2 2
+     {}HideAutoComplete ⍬
+     r←flag←0
+ :Case 115 4
+     SendCloseToForm ⍬                         ⍝ <Escape> or <Alt+F4>?! Get out!
+     r←1
+     flag←0
+ :Case 8 0
+     r←flag←1                                  ⍝ Let <Backspace> pass
+ :Else
+     .                                         ⍝ This MUST NOT happen since the caller already checks!
+ :EndSelect

@@ -1,0 +1,25 @@
+ {r}←DeleteFromWorkspaceAndList rows;b;msg;_;ans
+⍝ Deletes the selected objects from both, the workspace and the hit list.
+⍝ Also: tell acre.
+ r←⍬
+ b←{3≠⎕NC⊃{⍺,'.',⍵}/⍵:0 ⋄ (9.1≠⎕NC ⍵[0]):0 ⋄ ##.IsScripted⍎0⊃⍵}¨↓n.HitList.(ReportInfo[;,0],Items)[rows;]
+ :If ∧/b
+     msg←⊂((1<⍴b)⊃'This object is' 'All objects are'),' situated in a scripted namespace.'
+     msg,←⊂'Those cannot be deleted.'
+     ##.Question.ShowMsg msg
+     :Return
+ :ElseIf 1∊b
+     msg←⊂'There are ',(⍕+/b),' objects situated in scripted namespaces.'
+     msg,←⊂'Those cannot be deleted.'
+     msg,←'' 'Would you like to delete the others?'
+     :If 0=##.Question.YesOrNo msg
+         :Return
+     :EndIf
+     rows←(~b)/rows
+ :Else
+     :If 0=##.Question.YesOrNo'Sure that you want delete ',(⍕⍴rows),' object',((1<⍴rows)/'s'),' from the workspace?'
+         :Return
+     :EndIf
+ :EndIf
+ LetAcreDelete rows
+ _←RemoveFromHitList rows

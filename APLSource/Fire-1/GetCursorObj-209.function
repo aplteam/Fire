@@ -1,0 +1,4 @@
+ r←GetCursorObj
+ :If 0∊⍴r←'.'⎕WG'CursorObj'
+     r←0
+ :EndIf

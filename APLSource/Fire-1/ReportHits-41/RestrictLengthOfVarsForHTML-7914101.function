@@ -1,0 +1,7 @@
+ RestrictLengthOfVarsForHTML←{
+⍝ We show a maximuum of 100 chars per (changeable) variable or sub-variable.
+⍝ It its longer we crop it and add "..."
+     ∧/~b←100≤l←↑¨⍴¨w←⍵:w
+     (b/w)←{(100⍴⍵),'...'}¨b/w
+     w
+ }

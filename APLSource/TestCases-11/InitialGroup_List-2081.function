@@ -1,0 +1,30 @@
+ InitialGroup_List
+ 'FireObjectTest'#.⎕NS''
+ #.FireObjectTest.selfRef←#.FireObjectTest
+ #.FireObjectTest.DisplayFormat←#.FireObjectTest.⎕NS''
+ #.FireObjectTest.DisplayFormat.⎕DF'#.FireObjectTest.DisplayFormat'
+ #.FireObjectTest.DisplayFormat.⎕FX'r←HelloFrom_DF' 'r←''World'''
+ 'FireObjectTest.Level2'#.⎕NS''
+ #.FireObjectTest.Level2.⎕DF'#.FireObjectTest.[Level2]'
+ #.FireObjectTest.Level2.⎕FX'r←HelloinLevel2' 'r←''World'''
+ 'FireObjectTest.Level2.Level3'#.⎕NS''
+ #.FireObjectTest.Level2.Level3.⎕FX'r←HelloinLevel3' 'r←''World'''
+ #.FireObjectTest.Level2.Level3.ref←#.FireObjectTest
+ #.FireObjectTest.⎕FX'r←Doe' 'r←''Johnny ''' 'r,←''in the world'''
+ #.FireObjectTest.⎕FIX':Class MyClass1' '∇r←Hello' ':Access Public Shared' 'r←''World''' '∇' ':EndClass'
+ #.FireObjectTest.ref1←⎕NS''  ⍝ To be ignored: does not come from #.FireObjectTest!
+ #.FireObjectTest.ref1.⎕DF'#.FireObjectTest.ref1'
+ #.FireObjectTest.ref1.⎕FX'r←DeleteMe' 'r←''This is DeleteMe''' '⍝world'
+ #.FireObjectTest.ref2←#.FireObjectTest.⎕NS''
+ #.FireObjectTest.ref2.⎕DF'#.FireObjectTest.ref2'
+ #.FireObjectTest.ref3←#.FireObjectTest.⎕NS''
+ #.FireObjectTest.ref3.⎕DF'#.FireObjectTest.ref3'
+ #.FireObjectTest.ref3.⎕FX'r←HelloFromRef3' 'r←''⍝world'''
+ #.FireObjectTest.⎕FIX':Class MyClass2' '∇Hello' 'r←''world''' '∇' '∇co' ':Access Public' 'Implements constructor' '∇' ':EndClass'
+ #.FireObjectTest.⎕FIX':Namespace MyScriptedNS' '∇HelloNS' 'r←''world''' '∇' ':EndNamespace'
+ 'MyFormInstance'#.FireObjectTest.⎕WC' Form'('Visible' 0)
+ #.FireObjectTest.MyFormInstance.⎕FX'r←Universe' 'r←''Includes world'''
+ 'MyFormLike_NS'#.FireObjectTest.⎕WC' Form'('Visible' 0)
+ #.FireObjectTest.MyFormLike_NS.⎕FX'r←Universe2' 'r←''Includes world'''
+ #.FireObjectTest.MyClassInstance←#.FireObjectTest.⎕NEW #.FireObjectTest.MyClass1
+ #.FireObjectTest.MyInterface←#.FireObjectTest.⎕FIX':Interface IF' '∇ SubForm←Paint(Container Position)' '⍝ World' '∇' ':EndInterface'

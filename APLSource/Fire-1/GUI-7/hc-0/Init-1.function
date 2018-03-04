@@ -1,0 +1,9 @@
+ Init dummy
+⍝ This namespace contains constants useful to index into "ReportInfo" (not "Items").
+ Location←0
+ Type←1
+ NC←2
+ Hits←3
+ ModBy←4
+ ModAt←5
+ ⎕FX'r←∆List' 'r←{⍵[⍋⍵[;1];]}{⍵,[.5]⍎¨⍵}⎕nl -2'

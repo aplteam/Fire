@@ -1,0 +1,4 @@
+ OnKeyPress←{
+     ('EP'≢2⊃⍵):1
+     ff.Close
+ }

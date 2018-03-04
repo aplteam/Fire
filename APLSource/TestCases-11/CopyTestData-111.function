@@ -1,0 +1,5 @@
+ CopyTestData
+ #.⎕EX'#.TestData'
+ '#.TestData'⎕NS''
+ #.TestData.⎕CY'Fire_Test'
+ 'A2'#.⎕CY'Fire_Test'

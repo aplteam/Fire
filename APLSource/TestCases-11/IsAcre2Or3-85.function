@@ -1,0 +1,13 @@
+ r←IsAcre2Or3
+⍝ Returns a 1 in case either acre 2 or acre 3 are available.
+⍝ Used by some test cases in order to decide whether they should run or not.
+ :Trap 0 ⋄ {}⎕SE.UCMD'acre.projects' ⋄ :EndTrap         ⍝ Enforce acre to be loaded.
+ :If 0=r←9=#.⎕NC'acre'
+ :AndIf 9=⎕SE.⎕NC'acre'
+     :Trap 6
+         {}⎕SE.acre._code.getVersion ⍬                    ⍝ This works just in acre 4
+         r←0
+     :Else
+         r←1
+     :EndTrap
+ :EndIf

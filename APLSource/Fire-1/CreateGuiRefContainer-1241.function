@@ -1,0 +1,17 @@
+ r←CreateGuiRefContainer;fns
+⍝ Creates an empty namespace and populates it with a method useful to list refs.
+⍝ The purpose of that namespace is to hold refs pointing to GUI controls
+ r←(0⊃⎕RSI).⎕NS''
+ fns←⊂'r←{noOfCols}∆List sortByCol;n;refs'
+ fns,←⊂'⍝ Returns a matrix with all refs and there type and there caption and style (if any)'
+ fns,←⊂'⍝ sortByCol can be 0 (default anyway) or 1 which makes List sort'
+ fns,←⊂'⍝ the matrix by Type rather than name.'
+ fns,←⊂'⍝ You can restrict the number of columns by specifying a left argument (default=4)'
+ fns,←⊂'noOfCols←{0<⎕NC ⍵:⍎⍵ ⋄ 4}''noOfCols'''
+ fns,←⊂'refs←⍎¨n←⎕NL-9'                             ⍝ The refs and the names
+ fns,←⊂'r←n,[0.5]refs.Type'                         ⍝ The "Type"
+ fns,←⊂'r,←{0::'''' ⋄ ⍵.Style}¨refs'                ⍝ The "Style", if any
+ fns,←⊂'r,←{0::'''' ⋄ ⍵.Caption}¨refs'              ⍝ The "Caption", if any
+ fns,←⊂'r,←↓{{⍵↓[1]⍨+/∧\∧⌿⍵=[1]⍵[0;]}⊃⍵}⍕¨refs'     ⍝ Add real names
+ fns,←⊂'r←r[⍋⊃r[;sortByCol];⍳noOfCols]'             ⍝ Sort and take requested number of cols
+ r.⎕FX fns

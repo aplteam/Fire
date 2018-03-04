@@ -1,0 +1,4 @@
+ OnDblClick←{
+     n←(0⊃⍵).##.##.n
+     ShowCode n(0⊃n.List.ReportInfo[n.List.SelItems⍳1;]) ⍝ By definition just one
+ }

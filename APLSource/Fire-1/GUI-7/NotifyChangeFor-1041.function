@@ -1,0 +1,15 @@
+ NotifyChangeFor←{
+⍝ ⍵ is a line number pointing into the hit list.
+⍝ Updates "Modified by/on" in the list then.
+     (0∊⍴⍵):0
+     names←↑,/{⍺,'.',⍵}/¨↓n.HitList.(Items,ReportInfo)[⍵;(1+hc.Location),0]
+     names←(b←(⎕NC⊃names)∊3 4)/names
+     0∊⍴names:0               ⍝ Only fns/opr
+     lines←b/⍵
+     at←{2=⍴⍴⍵:⍵ ⋄ ,[-0.4]⍵}⎕AT names
+     was←↓n.HitList.ReportInfo[lines;hc.(ModBy ModAt)]
+     new←↓(at[;3]),[0.5]{(0=+/⍵):'' ⋄ ##.FormatDateTime ⍵}¨at[;1]
+     (was≡new):0
+     n.HitList.ReportInfo[lines;hc.(ModBy ModAt)]←⊃new
+     1
+ }

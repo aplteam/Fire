@@ -1,0 +1,5 @@
+ OnQuitCmd←{
+⍝ ⍝ Called via the "Quit" menu command.
+⍝ Closes the GUI and therefore forces ⎕DQ to leave.
+     1⊣⎕NQ n.Form'Close'
+ }

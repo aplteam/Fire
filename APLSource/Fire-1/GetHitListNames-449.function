@@ -1,0 +1,7 @@
+ GetHitListNames←{
+⍝ Returns a matrix with two columns from the current hit list:
+⍝ [;0] Fully qualified object names
+⍝ [;2] Precise ⎕NC of that object
+     (0∊⍴⍴GUI.n.HitList.Data):⍬
+     l,[0.5]GUI.n.HitList.ReportInfo[;GUI.hc.NC]
+ }

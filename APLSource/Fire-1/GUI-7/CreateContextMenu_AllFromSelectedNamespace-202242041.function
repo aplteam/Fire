@@ -1,0 +1,3 @@
+ CreateContextMenu_AllFromSelectedNamespace noOf;c;_
+ c←'Remove all objects of namespace ... from list'
+ _←'mm.namespaceList'⎕WC'MenuItem'c('Event' 'Select' 1)

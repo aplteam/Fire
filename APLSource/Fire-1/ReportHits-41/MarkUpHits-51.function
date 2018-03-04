@@ -1,0 +1,30 @@
+ r←rn MarkUpHits(ref name qnc ind length);bool;body;bool2;buff;l;items;fullName
+ ⍝ rn = running number
+ r←''
+ :If 2=⌊qnc
+     r←rn MarkupHitsInVars(ref name qnc ind length)
+ :Else
+     fullName←(⍕ref),'.',name
+     r←⊂'<a href="#',fullName,'" id="',fullName,'"><h2>',(⍕rn),'. ',(⍕ref),'.',name,'</h2></a>'
+     :Trap 918
+         body←0⊃ref ##.GetCode name
+     :Else
+         r,←⊂'<b>>>> The code for this object could not be resolved!</b>'
+         :Return
+     :EndTrap
+     →(0∊⍴body)/0
+     l←↑¨⍴¨body
+     body←##.Simplify body,¨##.CR
+     body←ExchangeHtmlChars body
+     body[ind]←'<span class="diff">'∘,¨body[ind]
+     bool2←(⍴body)⍴1
+     bool2[(⍴bool2)⌊ind∘.+length]←⊂0 1
+     bool2←↑,/bool2
+     body←bool2\body
+     body[##.A.Where~bool2]←⊂'</span>'
+     body←##.Simplify body
+     body←##.CR ##.A.Split{⍵↓⍨-##.CR=¯1↑⍵}body
+     bool←∨/¨'<span class="diff">'∘⍷¨body
+     items←ind{+/∧\⍺≥⍵}¨⊂(⍳⍴l){⍵+⍺}+\l
+     r,←'div class="comp"'∘Tag¨bool/{⍵,⍨¨{'[',⍵,'] '}¨⍕¨⍳⍴⍵}body
+ :EndIf

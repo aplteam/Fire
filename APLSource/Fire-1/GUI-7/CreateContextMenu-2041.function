@@ -1,0 +1,15 @@
+ {r}←CreateContextMenu noOf;name;c;NS_name;flag;i
+ r←⍬
+ :If 0<noOf
+     name←{(0⊃n.HitList.ReportInfo[⍵;]),'.',⍵⊃n.HitList.Items}n.HitList.SelItems⍳1
+     i←0
+     CreateContextMenu_Edit noOf
+     CreateContextMenu_Separator i←i+1
+     CreateContextMenu_RemoveObject noOf
+     CreateContextMenu_AllSituatedinCertainNamespace noOf
+     CreateContextMenu_AllFromSelectedNamespace noOf
+     CreateContextMenu_DeleteFromWS noOf
+     CreateContextMenu_Separator i←i+1
+     CreateContextMenu_PrintName noOf name
+     CreateContextMenu_CopySearchFor noOf name
+ :EndIf

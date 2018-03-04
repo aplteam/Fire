@@ -1,0 +1,40 @@
+ r←ProcessList list;i;name;type;noOf;_;container;nc;dummy;buff;REPORT;msg
+⍝ Loops through the list and tries to find something
+⍝ For result see "ScanBody".
+ r←''
+ REPORT←''
+ noOf←0⊃⍴list
+ {}'Searching...'EnableProgressbar noOf
+ :For i :In ⍳noOf
+     {}{⍵:GUI.n.PB.Thumb←1⌈i ⋄ ⍬}(i∊1 2 3)∨0=100|i
+     (container name nc type)←list[↑i;]
+     buff←''
+     nc container.{0=⍺:⎕NC⊂⍵ ⋄ ⍺}←name
+     :If 2.1=nc
+         buff←ScanVars container name type
+     :ElseIf nc∊3.1 3.2 4.1 4.2
+         buff←ScanFnsAndOprs container name type
+     :ElseIf 9=⌊nc
+         buff←ScanScripts container name type
+     :EndIf
+     r,←buff
+     ⍎(0∊⍴¨,¨r)/'.'  ⍝ There was once a strange bug, so we check just in case...
+     :If ∆CANCEL
+         :Leave
+     :EndIf
+ :EndFor
+ :If ~0∊⍴r
+     r←{(0<⍴1⊃⍵):⍵ ⋄ ({⍵.##}0⊃⍵)(1⊃'.'A.SplitPath⍕0⊃⍵),2↓⍵}¨r
+ :EndIf
+ {}DisableProgressbar ⍬
+ :If 0<⍴REPORT
+     :If 1=⍴REPORT
+         {}Question.ShowMsg'Variable "',(↑{⍵,'.',⍺}/1 0 1/0⊃REPORT),'" was ignored due to a ',0 1⊃REPORT
+     :Else
+         msg←⊂(⍕⍴REPORT),' variables have been ignored due to errors (',(↑{⍺,',',⍵}/∪1⊃¨REPORT),')'
+         msg,←'' 'Would you like to print the names of them to the session?'
+         :If Question.YesOrNo msg
+             ⎕←⍪{(2⊃⍵),'.',(0⊃⍵),' caused a ',1⊃⍵}¨REPORT
+         :EndIf
+     :EndIf
+ :EndIf

@@ -1,0 +1,14 @@
+ ToggleAutoStatus←{
+ ⍝ Toggle whether the AutoStatus menu item is checked or not.
+ ⍝ ⍵ must be either 1 (checked) or 0 (not checked) or `?`, otherwise an error is thrown.
+ ⍝ Use this to temporarily switch it off and back on again later.
+ ⍝ Returns the status of the menu item as result.
+     ~(⊂⍵)∊0 1 '?':'Invalid right argument (0, 1 or ''?'')'⎕SIGNAL 11
+     currentStatus←↑1↑↑(//)⎕VFI 2 ⎕NQ'.' 'GetEnvironment' 'ShowStatusOnError'
+     ⍵≡'?':r←currentStatus
+     currentStatus=⍵:r←currentStatus
+     f←⎕NEW'Form'(⊂'Visible' 0)
+     b←f.⎕NEW'Button'(⊂'Event'('Select' '[AutoStatus]'))
+     _←0 ⎕NQ b'select'
+     1:r←~currentStatus
+ }

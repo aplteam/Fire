@@ -1,0 +1,15 @@
+ r←MarkupRegExHitsInSimpleVars data;ss;rs
+⍝ This one marks up simple text vectors.
+⍝ Note that those that contain <CR> are handled differently earlier on already.
+ r←RestrictLengthOfVarsForHTML⊂data
+ r←∊↑ExchangeHtmlChars¨r
+ ss←rs←''  ⍝ ss:Search string; rs:Replace String
+ :If ~##.G.Text
+     ss,←⊂'''\N*?'''
+     rs,←⊂,'&'
+ :EndIf
+ ss,←⊂⍣(2=≡ss)⊣##.G.SearchFor
+ rs,←⊂⍣(2=≡ss)⊣'<span class="diff">&</span>'
+ r←ss ⎕R rs⍠('Greedy' 0)⊣{300>⍴,⍵:⍵ ⋄ (300↑⍵),'...'}data
+ r←⊂'div class="comp"'Tag r
+⍝Done

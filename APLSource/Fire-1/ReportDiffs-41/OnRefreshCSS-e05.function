@@ -1,0 +1,11 @@
+ OnRefreshCSS←{
+ ⍝ Rewrite the CSS and then refreshs the browser.
+ ⍝ Used to highlight excluded objects.
+     b←IsTicked ⍬
+     ⎕THIS.wasTicked←b
+     _←RewriteCSS~b
+     _←WriteStatusMsg
+     n.SF2.Visible←0
+     _←{0::⍬ ⋄ n.Browser.Refresh ⍵}⍬
+     n.SF2.Visible←1
+ }

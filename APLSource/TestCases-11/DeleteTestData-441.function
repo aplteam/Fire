@@ -1,0 +1,6 @@
+ DeleteTestData
+ :If 9=#.⎕NC'TestData'
+     :With #.TestData
+         ⎕EX ⎕NL⍳16
+     :EndWith
+ :EndIf

@@ -1,0 +1,35 @@
+ R←Test_Replace_065(stopFlag batchFlag);n;n2;⎕TRAP
+⍝ Replace string in trad fns located in a scripted namespace
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ 1 #._Fire.Fire.Run 0
+ n←#._Fire.Fire.GUI.n
+
+ ∆InitialyzeFireMainGUI_Settings n
+ n.SearchFor.Text←'World'
+ n.LookIn.Text←'#.TestData.ScriptedNamespaces'
+ n.(Case APL_Name).State←1
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →GoToTidyUp'Hello' 'Hello' 'Hello3' 'Hello3'≢n.HitList.Items
+ →GoToTidyUp(4⍴'#.TestData.ScriptedNamespaces.ToBeChanged_2' '#.TestData.ScriptedNamespaces.ToBeChanged_1')≢n.HitList.ReportInfo[;0]
+
+ {}∆Select n.ReplaceBtn
+ ∆Process n.Form
+
+ n2←#._Fire.Fire.Replace.n
+ ∆InitialyzeFireReplaceGUI_Settings n2
+ n2.ReplaceBy.Text←'whole world'
+
+ {}∆Select n2.StartBtn
+ ∆Process n.Form
+ →GoToTidyUp 4≠#._Fire.Fire.Replace.NoOfReplacements
+ →GoToTidyUp 2≠+/'whole world'⍷∊⎕SRC #.TestData.ScriptedNamespaces.ToBeChanged_1
+ →GoToTidyUp 2≠+/'whole world'⍷∊⎕SRC #.TestData.ScriptedNamespaces.ToBeChanged_2
+ R←∆OK
+
+∆TidyUp:
+ CloseFire

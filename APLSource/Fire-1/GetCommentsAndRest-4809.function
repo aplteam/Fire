@@ -1,0 +1,20 @@
+ (commentFree remains)←GetCommentsAndRest data;mask;i;data2;buff;where;commentFree;remains;buf;noOf
+ ⍝ Investigates what's a comment in ⍵.
+ ⍝ Return any comments found as well as ⍵ with the comments replaced by blanks.
+ data←{2=⍴⍴⍵:↓data ⋄ ⍵}data
+ data2←data←,{0 1∊⍨≡⍵:,⊂⍵ ⋄ ⍵}data
+ mask←{{⍵∨≠\⍵}⍵=''''}¨data
+ :For i :In ⍳⍴data
+     buff←i⊃data2
+     buff[A.Where i⊃mask]←' '
+     (i⊃data2)←buff
+ :EndFor
+ where←data2⍳¨'⍝'
+ commentFree←where↑¨data
+ remains←data
+ :For i :In ⍳⍴remains
+     buf←i⊃remains
+     noOf←i⊃where
+     buf←(noOf⍴' '),noOf↓buf
+     (i⊃remains)←buf
+ :EndFor

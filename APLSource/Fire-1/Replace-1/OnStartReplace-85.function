@@ -1,0 +1,29 @@
+ {r}←OnStartReplace msg;txt
+⍝ Start "Replace" either in Batch Moder or in One-by-one Mode
+ r←0
+ :If ~0∊⍴##.G.Hits          ⍝ In case the presses "Replace" twice with no (remaining) hits
+     {}##.RemoveInvalidVars ⍬
+     RemoveOrdinaryNamespaces ⍬
+ :AndIf ~0∊⍴##.G.Hits
+     :If n.BatchMode.State
+         :Trap 918
+             {}ProcessBatch ⍬
+         :Else
+             txt←⊂'It appears that you are trying to change Fire with Fire.'
+             txt,←⊂'Unfortunately there is a shadowed variable involved.'
+             txt,←⊂'The conflict connot be resolved.'
+             'Replace conflict'##.Question.ShowMsg txt
+             2 ⎕NQ(↑msg).##'Close'
+             ##.GUI.n.StartBtn.Active←1
+             ##.GUI.n.Form.Active←1
+             ##.GUI.TheForm.saveProps.parentMenuItems.Active←1
+             {}##.DisableProgressbar ⍬
+         :EndTrap
+     :Else
+         ProcessOneByOne ⍬
+     :EndIf
+ :Else
+     ReportNoHits ⍬
+     ⎕NQ(↑msg).##'CLose'
+ :EndIf
+⍝Done

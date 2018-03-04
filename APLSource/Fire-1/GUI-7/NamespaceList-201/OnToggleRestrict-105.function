@@ -1,0 +1,5 @@
+ OnToggleRestrict←{
+⍝
+     n.TheList.Items/⍨←{1=+/'.'=⊃⍵}n.TheList.Items
+     n.Restrict.Active←0
+ }

@@ -1,0 +1,9 @@
+ DropCurrentObject←{
+     (t1 d t2)←⍵                    ⍝ New code, difs, old code
+     0=+/b←1↓##.TAB=↑¨t2:3⍴⊂''      ⍝ Is there no <TAB> anymore? Done!
+     noOf←1+b⍳1
+     (d t2)←noOf↓¨d t2
+     noOf←(↑¨t1)⍳TAB
+     t1←noOf↓t1
+     t1 d t2
+ }

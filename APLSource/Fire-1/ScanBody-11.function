@@ -1,0 +1,52 @@
+ hits←ScanBody(ref name body);noOf;ind;length;buffer;buff
+⍝ Scans fnsOprName for the search string.
+⍝ Returns vector of vectors; each item contains:
+⍝ [1] Parent
+⍝ [2] Name
+⍝ [3] Number of hits
+⍝ [4] Name class
+⍝ [5] Lines with hits
+⍝ [6] Length (important for RegEx)
+⍝ [7] type: 2=scripted namespace, 5=class, 6=interface, 0=everything else  (NOTE: added later!)
+ length←⍬
+ hits←0/⊂6⍴⍬
+ :If G.APL_Code                                 ⍝ APL_Code?
+     →(0∊⍴buff←ScanCode body)/0
+     (ind length)←buff
+     :If 0<⍴,ind
+         noOf←⍴,ind
+         :If 0∊⍴name
+             hits←,⊂ref name noOf 9 ind length
+         :Else
+             hits←,⊂ref name noOf(ref.⎕NC⊂name)ind length
+         :EndIf
+     :EndIf
+ :Else
+     :If G.Comments                                 ⍝ Comments?
+         buffer←1⊃GetCommentsAndRest body
+         (ind length)←Scan buffer
+         :If 0<noOf←⍴,ind
+             :If 0∊⍴name
+                 hits,←⊂ref name noOf 9 ind length
+             :Else
+                 hits,←⊂ref name noOf(ref.⎕NC⊂name)ind length
+             :EndIf
+         :EndIf
+     :EndIf
+     :If G.Text                                     ⍝ Text?
+         buffer←GetTextOnly body
+         (ind length)←ScanText buffer
+         :If 0<noOf←⍴,ind
+             :If 0∊⍴name
+                 hits,←⊂ref name noOf 9 ind length
+             :Else
+                 hits,←⊂ref name noOf(ref.⎕NC⊂name)ind length
+             :EndIf
+         :EndIf
+     :EndIf
+ :EndIf
+ :If 1<⍴hits
+     (0 2⊃hits)←↑+/2⊃¨hits          ⍝ Total
+     (0 4⊃hits)←{⍵[⍋⍵]}↑,/4⊃¨hits   ⍝ Start points
+     hits←1↑hits
+ :EndIf

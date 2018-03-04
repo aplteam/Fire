@@ -1,0 +1,5 @@
+ OnAccept←{
+⍝ Enable the "Fix and next" button if there is at least one check box in the grid ticked.
+     n.FixAndNextBtn.Active←0<+/{⍵/⍨(⍴⍵)⍴0 1}n.Grid.Values[;0]
+     1
+ }

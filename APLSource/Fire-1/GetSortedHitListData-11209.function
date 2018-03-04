@@ -1,0 +1,8 @@
+ GetSortedHitListData←{
+⍝ Returns GUI.n.HitList.Data
+⍝ We MUST deal with scripts first when it comes to fixing things so we need to sort the list accordingly.
+⍝ The reason is that for example the user might have deleted line from fns/opr or the script itself,
+⍝ like global variables. Therefore we must tidy up the script itself first and then incorporate any
+⍝ other changes.
+     {⍵[⍒{9={⌊⍺.⎕NC⊂⍵}/⍵}¨↓⍵[;0 1];]}GUI.n.HitList.Data
+ }

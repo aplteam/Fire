@@ -1,0 +1,12 @@
+ CreateReplaceMainForm;∆
+⍝
+
+ CreateReplaceMain
+ CreateHiddenBtns
+ CreateReplaceSearchFor
+ CreateReplaceReplaceBy
+ CreateType
+ CreateCompareOptions
+ CreateDeleteLine
+ CreateReplacePushButtons
+⍝Done

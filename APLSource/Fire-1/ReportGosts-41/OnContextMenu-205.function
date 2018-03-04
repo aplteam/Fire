@@ -1,0 +1,16 @@
+ OnContextMenu←{
+     _←'mm'⎕WC'Menu'
+     tv←0⊃⍵
+     no←tv.SelItems⍳1
+     caption←'Delete <',(no⊃tv.Items),'> from WS'
+     active1←1=no⊃tv.Depth
+     (parent name)←GetParentAndName tv
+     active2←0<parent.⎕NC name
+     rf←⍎'mm.mi2'⎕WC'MenuItem'caption('Active'(active1∧active2))
+     rf.onSelect←'OnDelete'tv
+     active2←(parent.⎕NC⊂name)∊9.4 9.5 3.1 3.2 4.1 4.2
+     caption←'Print code of <',(tv.((SelItems⍳1)⊃Items)),'>'
+     rf←⍎'mm.mi3'⎕WC'MenuItem'caption('Active'(active1∧active2))
+     rf.onSelect←'OnPrintCode'tv
+     0⊣⎕DQ'mm'
+ }

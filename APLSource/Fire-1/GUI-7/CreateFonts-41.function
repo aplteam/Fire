@@ -1,0 +1,27 @@
+ CreateFonts;∆
+ ∆←⊂'Font'
+ ∆,←⊂'PName' 'APL385 Unicode'
+ ∆,←⊂'Size' 16
+ n.APL_Font←⍎'APL_Font'n.Form.⎕WC ∆
+
+ ∆←⊂'Font'
+ ∆,←⊂'PName' 'APL385 Unicode'
+ ∆,←⊂'Size' 14
+ n.SmallAplFont←⍎'SmallAplFont'n.Form.⎕WC ∆
+
+ ∆←⊂'Font'
+ ∆,←⊂'PName' 'Verdana'
+ ∆,←⊂'Size' 15
+ n.Std_Font←⍎'Std_Font'n.Form.⎕WC ∆
+
+ ∆←⊂'Font'
+ ∆,←⊂'PName' 'Verdana'
+ ∆,←⊂'Size' 13
+ ∆,←⊂'Weight' 800
+ n.Std_Font2←⍎'Std_Font'n.Form.⎕WC ∆
+
+ ∆←⊂'Font'
+ ∆,←⊂'PName' 'Verdana'
+ ∆,←⊂'Size' 15
+ n.Tip_Font←⍎'Tip_Font'n.Form.⎕WC ∆
+⍝Done

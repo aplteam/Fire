@@ -1,0 +1,4 @@
+ GetParentForm←{
+     'Form'≡⍵.Type:⍵
+     ∇ ⍵.##
+ }

@@ -1,0 +1,34 @@
+ {r}←ProcessSearchResult(flag hits noOfObj noOfContainers cursorWas);msg;⎕IO;⎕ML;⎕TRAP
+⍝ This MUST be an independent tfns.
+ ⎕IO←0 ⋄ ⎕ML←3       ⍝ To overcome bug <01001>
+ ⎕TRAP←(999 'C' '→∆Error')(0 'N')
+ r←⍬
+ ##.G.LastSearchedFor←n.SearchFor.Text
+ :If 0∊⍴hits
+     ResetHitList 0 0
+ :Else
+     n.HitList.ColTitles←n.HitList.colWidth↑¨n.HitList.ColTitles
+     ##.G.NoOfObjects←0⊃⍴hits
+     ##.G.Hits←hits[;0 1 3 4 5] ⍝ Used in "Report details"
+     :If (0=flag)∨##.∆CANCEL=1
+         ##.∆CANCEL←0
+         {}{HandleControlDependencies 1}##.SetCursorObj cursorWas
+         :Return
+     :EndIf
+     {}DisplayList hits noOfObj noOfContainers
+     n.HitList.Data←hits[;0 1 6 3]
+     :If ~0∊⍴hits
+         ⎕NQ n.HitList'GotFocus'
+     :EndIf
+ :EndIf
+ {}EnableReportHitsWhenAppropriate ⍬
+ {}EnableGhostlyReportWhenAppropriate ⍬
+
+∆Reset:
+ ResetAfterSearch cursorWas
+ :Return
+
+∆Error:
+ msg←##.CR ##.A.Split↑⎕DM
+ 'Regular Expression problem'##.Question.ShowMsg msg
+ →∆Reset

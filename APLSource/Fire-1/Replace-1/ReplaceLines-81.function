@@ -1,0 +1,6 @@
+ ReplaceLines←{
+⍝ Replace all "lines" against ##.G.ReplaceBy
+     (code lines)←⍵
+     code[lines]←⊂##.G.ReplaceBy
+     ↑,/{(⊂⍣(↑1=≡⍵))⍵}¨code
+ }

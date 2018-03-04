@@ -1,0 +1,7 @@
+ Simplify←{
+ ⍝ Use this to simpify a nested vector from statements like:
+ ⍝ {...}¨array
+  ⍝ ↑,/{...}¨array won't work when array is empty
+     0∊⍴⍵:''
+     ↑,/⍵
+ }

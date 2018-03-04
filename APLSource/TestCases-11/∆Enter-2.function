@@ -1,0 +1,9 @@
+ ∆Enter←{
+     ⍺.Type≡'Edit':⍺{1 ⎕NQ ⍺'KeyPress'⍵}¨⍵
+     g←⍺
+     k←⍵
+     c←1⊃g.CurCell
+     e←g⍎'col',⍕c
+     _←{1 ⎕NQ e'KeyPress'⍵}¨k,⊂'ER'
+     0
+ }

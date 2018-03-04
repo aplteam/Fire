@@ -1,0 +1,11 @@
+ {r}←CompileFireFunctions dummy;GetFnsOpr;list;containers
+ r←⍬
+ :If 14.1≤{↑(//)⎕VFI ⍵⌿⍨2>+\'.'=⍵}(1+⎕IO)⊃'#'⎕WG'APLVersion'
+     GetFnsOpr←{(⊂' ',⍨⍕⎕THIS),¨' '~¨⍨↓⍵.⎕NL 3 4}
+     list←GetFnsOpr ⎕THIS
+     containers←' '~¨⍨↓⎕NL 9.1
+     containers←((⍕⎕THIS){⍺∘≡¨(⍴⍺)↑¨⍵}⍕¨⍎¨containers)/containers
+     containers←{⍵/⍨~'['∊¨⍕¨⍎¨⍵}containers
+     list,←↑,/{0∊⍴l←↓(⍎⍵).⎕NL 3 4:'' ⋄ (⊂⍵,'.'),¨l}¨containers
+     {}compile list
+ :EndIf

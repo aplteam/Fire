@@ -1,0 +1,5 @@
+ n←CloseReportForm n
+ :Trap 0
+     n.TheForm.Close
+ :EndTrap
+⍝Done

@@ -1,0 +1,5 @@
+ r←StopInCallingCounter
+ r←0
+ :If ⍬≢##.GUI.n.StopInCallingCounter
+     r←##.GUI.n.StopInCallingCounter.Checked
+ :EndIf

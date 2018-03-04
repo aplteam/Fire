@@ -1,0 +1,17 @@
+ r←{flag}List(ref classFlag);bool;types;koc
+⍝ Container tree
+⍝ ⍵ ns
+⍝ ← [;0]=ns and all nss below ref
+⍝ ← [;1]=Type; See Types.∆List for details
+⍝ "flag" must be one of:
+⍝ 0 ←→ all containers; this is the default
+⍝ 1 ←→ just named namespaces
+ flag←{(0<⎕NC ⍵):⍎⍵ ⋄ 0}'flag'
+ r←,ListNamespaceTree ref classFlag
+ :If flag                               ⍝ We are after named namespaces only
+     r←(~IsUnnameNamespace¨r)⌿r
+     r←r,[0.5]Types.NamedNamespace      ⍝ The default
+ :Else
+     r←r,[0.5]Types.∆GetTypes r
+     r⌿⍨←r[;1]≠Types.UnnamedNamespace
+ :EndIf

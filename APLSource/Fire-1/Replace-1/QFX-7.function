@@ -1,0 +1,48 @@
+ {r}←QFX(ref name code i noOf);l;flag;msg;cs
+⍝ The fix as such; called by FixFnsOpr
+⍝ Attempts to delete objects when "code" is empty & they are dfns/dops.
+⍝ Returns 1 in case the user has cancelled the whole operation, otherwise 0.
+ r←0
+ :If 0∊⍴code
+ :AndIf (ref.⎕NC⊂name)∊3.1 3.2 4.1 4.2
+     ref.⎕EX name
+     :If 1=##.IsAnyAcreAround
+         :If 3=⎕NC'#.acre.Erase'
+             {}#.acre.Erase(⍕ref),'.',name
+         :ElseIf 9=⎕NC'⎕SE.acre'
+             {}⎕SE.UCMD'acre.Erase ',(⍕ref),'.',name,' [ messages←''off'' ]'
+         :Else
+             . ⍝ Huuh?! Acre is around and isn't?!
+         :EndIf
+     :EndIf
+ :Else
+∆Fix:
+     l←ref.⎕FX code
+     flag←0
+     :Repeat
+         :If ' '≠1↑0⍴l
+             msg←⊂'Sorry, but fixing the code of this object:'
+             msg,←⊂'   ',name
+             msg,←⊂'(no. ',(⍕i),' of ',(⍕noOf),')'
+             msg,←⊂'did not work because of a problem in the following line',((1<⍴l)/'s'),':'
+             msg,←⊂⍕l
+             msg,←⊂'Let me edit it and then try fixing it again.'
+             cs←##.Question.CreateDefaultParms
+             cs.okCaption←'Yes'
+             cs.cancelCaption←'Skip this one'
+             cs.caption2←'Cancel operation'
+             :Select cs ##.Question.Run msg
+             :Case 1            ⍝ Yes
+                 ⎕ED'code'
+                 →∆Fix
+             :Case 0            ⍝ No
+                 flag←1
+             :Case 2            ⍝ Cancel the whole operation
+                 r←1 ⋄ :Return
+             :EndSelect
+         :Else
+             flag←1
+             TellAcre(⍕ref),'.',name
+         :EndIf
+     :Until flag
+ :EndIf

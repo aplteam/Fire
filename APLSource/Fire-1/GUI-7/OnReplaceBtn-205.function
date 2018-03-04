@@ -1,0 +1,4 @@
+ OnReplaceBtn←{
+     n.ReportHits.Active←0
+     ##.Replace.Run
+ }

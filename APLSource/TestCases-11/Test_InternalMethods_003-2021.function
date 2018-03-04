@@ -1,0 +1,48 @@
+ R←Test_InternalMethods_003(stopFlag batchFlag);⎕TRAP;data;ind;result1;result2
+⍝ Exercise Fire's "Replace" method.
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+ data←'Kai Thomas Max Jäger ⋄ 38 Cotswold Drive ⋄ Stevenage ⋄ Hertfordshire ⋄ SG1 6GT ⋄ United Kingdom '
+ ind←{⍵/⍳⍴,⍵}'Thomas Max Jä'⍷data
+ result1←#._Fire.Fire.Replace.Replace_RotateBackAndForce data'Thomas Max Jä'(,⊂'Jae')ind
+ result2←#._Fire.Fire.Replace.Replace_Rotate data'Thomas Max Jä'(,⊂'Jae')ind
+ →FailsIf result1≢result2
+ result2←#._Fire.Fire.Replace.Replace_Split data'Thomas Max Jä'(,⊂'Jae')ind
+ →FailsIf result1≢result2
+ result1←#._Fire.Fire.Replace.Replace data'Thomas Max'(⊂'')ind
+ result2←#._Fire.Fire.Replace.Replace_Split data'Thomas Max'(⊂'')ind
+ →FailsIf result1≢result2
+ data←∊{(' '⍴¨⍨?100⍴⍨⍴⍵),¨⍵}5⍴⊂'Kai Thomas Max Jäger ⋄ 38 Cotswold Drive ⋄ Stevenage ⋄ Hertfordshire ⋄ SG1 6GT ⋄ United Kingdom; '
+ ind←{⍵/⍳⍴,⍵}'Thomas Max Jä'⍷data
+ result1←#._Fire.Fire.Replace.Replace_RotateBackAndForce data'Thomas Max Jä'(,⊂'Jae')ind
+ result2←#._Fire.Fire.Replace.Replace_Split data'Thomas Max Jä'(,⊂'Jae')ind
+ →FailsIf result1≢result2
+ result1←#._Fire.Fire.Replace.Replace_RotateBackAndForce data'Thomas Max'(⊂'')ind
+ result2←#._Fire.Fire.Replace.Replace_Split data'Thomas Max'(⊂'')ind
+ →FailsIf result1≢result2
+ data←'Kai Thomas Max Jäger ⋄ 38 Cotswold Drive ⋄ Stevenage ⋄ Hertfordshire ⋄ SG1 6GT ⋄ United Kingdom;'
+ data←∊{(' '⍴¨⍨?100⍴⍨⍴⍵),¨⍵}100⍴⊂data
+ ind←{⍵/⍳⍴,⍵}'Thomas Max Jä'⍷data
+ result1←#._Fire.Fire.Replace.Replace_RotateBackAndForce data'Thomas Max Jä'(⊂'Jae')ind
+ result2←#._Fire.Fire.Replace.Replace_Rotate data'Thomas Max Jä'(⊂'Jae')ind
+ →FailsIf result1≢result2
+ result2←#._Fire.Fire.Replace.Replace_Split data'Thomas Max Jä'(⊂'Jae')ind
+ →FailsIf result1≢result2
+ result1←#._Fire.Fire.Replace.Replace_Rotate data'Thomas Max Jäger'('Jaeger' 'Second House')ind
+ result2←#._Fire.Fire.Replace.Replace_Split data'Thomas Max Jäger'('Jaeger' 'Second House')ind
+ →FailsIf result1≢result2
+ result1←#._Fire.Fire.Replace.Replace data'Thomas Max Jäger'(,⊂'Jaeger')ind
+ result2←#._Fire.Fire.Replace.Replace_RotateBackAndForce data'Thomas Max Jä'(,⊂'Jae')ind
+ →FailsIf result1≢result2
+ data←'Kai Thomas Max Jäger ⋄ 38 Cotswold Drive ⋄ Stevenage ⋄ Hertfordshire ⋄ SG1 6GT ⋄ United Kingdom;'
+ data←∊{(' '⍴¨⍨?100⍴⍨⍴⍵),¨⍵}1000⍴⊂data
+ ind←{⍵/⍳⍴,⍵}'Thomas Max Jä'⍷data
+ result1←#._Fire.Fire.Replace.Replace_RotateBackAndForce data'Thomas Max Jä'(⊂'Jae')ind
+ result2←#._Fire.Fire.Replace.Replace_Rotate data'Thomas Max Jä'(⊂'Jae')ind
+ →FailsIf result1≢result2
+ result1←#._Fire.Fire.Replace.Replace_RotateBackAndForce data'Thomas Max Jä'('Jae' 'Second House')ind
+ result2←#._Fire.Fire.Replace.Replace_Split data'Thomas Max Jä'('Jae' 'Second House')ind
+ →FailsIf result1≢result2
+
+ R←∆OK

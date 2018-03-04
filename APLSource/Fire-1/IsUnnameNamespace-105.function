@@ -1,0 +1,5 @@
+ IsUnnameNamespace←{
+     was←⍵.⎕DF ⎕NULL
+     r←'['∊⍕⍵
+     r⊣⍵.⎕DF was
+ }

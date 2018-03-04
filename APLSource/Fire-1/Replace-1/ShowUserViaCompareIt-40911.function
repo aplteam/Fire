@@ -1,0 +1,19 @@
+ ShowUserViaCompareIt←{
+⍝ Takes ⍵ (name,oldCode,NewCode) and displayes it with CompareIt!
+⍝ Returns:
+⍝ [0]: 1 in case the object shall get fixed; 2=skip this one, 0=cancel
+⍝ [1]: Boolean; 1=fix remaining ones in one go
+⍝ [2]: New (and maybe changed by the user, too) code
+     (ref name oldCode newCode i noOf)←⍵
+     C←##.##.CompareSimple
+     filename1←C.WriteToFile newCode
+     filename2←C.WriteToFile oldCode
+     parms←⎕NS''
+     parms.readOnly2←1
+     parms.alias1←'New'
+     parms.alias2←name
+     rc←parms C.These'file://'∘,¨filename1 filename2
+     newCode{⍵:##.A.ReadUtf8File filename1 ⋄ ⍺}←rc[0]       ⍝ Get changes, if any
+     ac←(i noOf)##.Question.ConfirmFix name                 ⍝ Ask user
+     ac,⊂newCode
+ }

@@ -1,0 +1,20 @@
+ r←Run y;ref;name;oldCode;i;newCode;noOf;p;n
+⍝ Takes ⍵ (name,oldCode,NewCode) and displayes it with an home=made
+⍝ comparison and edit tool - very basic but it works.
+⍝ Returns:
+⍝ [0]: 1 in case the object shall get fixed; 2=skip this one, 0=cancel
+⍝ [1]: Boolean; 1=fix remaining ones in one go
+⍝ [2]: New (and maybe changed) code
+ p←⎕NS''
+ p.(ref name oldCode newCode i noOf)←y
+ n←CreateGui p
+ n.Form.Caption←p.name,'; []NC=',(⍕p.ref.⎕NC⊂p.name),' (No. ',(⍕1+p.i),' of ',(⍕p.noOf),')'
+ n.StatusField.Text←'Left: ',(⍕⍴p.newCode),' lines;   right: ',(⍕⍴p.oldCode),' lines'
+ n.(Left Right).Text←p.newCode p.oldCode
+ :If 0=##.G.TestFlag
+     ⎕NQ n.Left'GotFocus' ⋄ ⎕DQ n.Form
+     r←p.ac,⊂p.newCode
+ :Else
+     r←1 0 p.newCode
+ :EndIf
+⍝Done

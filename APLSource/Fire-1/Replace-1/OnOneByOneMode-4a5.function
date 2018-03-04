@@ -1,0 +1,7 @@
+ OnOneByOneMode←{
+⍝
+     n.(CompareCompressed CompareFull).Active←~(0⊃⍵).State
+     n.CompareFull.State←(0⊃⍵).State
+     n.CompareCompressed.State←~(0⊃⍵).State
+     ⍬
+ }

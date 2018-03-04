@@ -1,0 +1,18 @@
+ {r}←TellAcre name;buff;flag
+⍝ Tells acre that ⍵ (fully qualified name) got changed.
+⍝ Returns 0 in case acre did not take action and 1 otherwise
+ r←⍬
+ :If ~0∊⍴name
+ :AndIf ##.IsAnyAcreAround
+     :If 9=⎕SE.⎕NC'acre'
+     ⍝ We should catch acre's messages here and then restore the original settings but we cannot do this with the current version of acre.
+         flag←~0∊⍴' '~⍨⎕SE.UCMD'Acre.SetChanged ',(∊name),' [ messages←''off'' ]'
+     :ElseIf 9=#.⎕NC'acre'
+         flag←~0∊⍴' '~⍨#.acre.SetChanged name
+     :EndIf
+     :If flag
+         ⎕←'acre was told successfully about ',name
+     :Else
+         ⎕←'acre was told but not interested in ',name
+     :EndIf
+ :EndIf

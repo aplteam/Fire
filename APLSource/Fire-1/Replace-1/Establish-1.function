@@ -1,0 +1,15 @@
+ {noOf}←Establish(these fno);i;name;nc;code;l;flag;msg;ref
+⍝ Establishes "code" under "name" in the workspace. Errors are
+⍝ trapped and the user gets a chance to fix any problem in the editor
+⍝ or to skip the problem and carry on with the next object.
+ noOf←NoOfCandidatesForChange ⍬
+ :For i :In these/⍳noOf
+     :If ⍬≡code←1⊃⎕FREAD fno(1+i)
+         noOf-←1
+     :Else
+         (ref name nc)←i⊃¨G.(Refs Names NameClasses)
+         :If Fix ref name(⌊nc)code i noOf
+             :Return  ⍝ User has cancelled
+         :EndIf
+     :EndIf
+ :EndFor

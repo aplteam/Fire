@@ -1,0 +1,5 @@
+ OnSelectLink←{
+⍝ Start a browser and go to the link the label is pointing to.
+     rf←0⊃⍵
+     ##.A.GoToWebPage rf.Caption
+ }

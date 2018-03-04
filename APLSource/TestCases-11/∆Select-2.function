@@ -1,0 +1,5 @@
+ ∆Select←{
+⍝ Send a "Select" event to ⍵
+     _←⎕NQ ⍵'Select'
+     0
+ }

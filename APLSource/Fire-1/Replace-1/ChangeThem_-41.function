@@ -1,0 +1,75 @@
+ r←ChangeThem_ batchFlag;i;noOf;oldCode;objName;newCode;rc;ind;objLocation;objType;objFullname;msg;nc;varsReport;fixRemaining;data;objNC;ac;length;cursorWas
+⍝ Processes all the objects.
+⍝ Returns 0 if the user cancels, otherwise 1.
+ r←1
+ varsReport←''
+ ⎕THIS.NoOfReplacements←0
+ fixRemaining←0
+ noOf←↑⍴data←##.GetSortedHitListData ⍬
+ {}'Prepare changes...'##.EnableProgressbar 1+noOf
+ :For i :In ⍳noOf
+     {(0=10|⍵):##.GUI.n.PB.Thumb←⍵}i+1
+     (objLocation objName objType objNC)←data[i;]
+     objFullname←(⍕objLocation),'.',objName
+     :If 2=⌊objNC
+     :AndIf NonReplaceVars⍎objFullname
+         (objFullname ⍬)⎕FAPPEND G.compareFileTieNo
+         {}SaveOn_G objLocation objName objFullname ⍬
+         :Continue
+     :EndIf
+     (oldCode nc)←objLocation ##.GetCode objName
+     :If 0∊⍴oldCode
+         :Continue
+     :EndIf
+     :If ##.G.SearchIsRegEx
+         (rc newCode)←(objLocation.⎕NC⊂objName)ChangeItByRegEx oldCode  ⍝ ¯1: an error has occurred.
+         :If 0≠rc
+             r←0
+             :Leave
+         :EndIf
+     :Else
+         (ind length)←nc ##.Scan ##.IfLower oldCode
+         newCode←(objLocation.⎕NC⊂objName)ChangeIt oldCode ind
+     :EndIf
+     :If batchFlag
+         {}SaveOn_G objLocation objName objFullname newCode
+         :Trap 1
+             (objFullname newCode)⎕FAPPEND G.compareFileTieNo
+         :Else
+             {}##.Question.ShowMsg'Not enough memory; changing:'objFullname'failed'
+             r←0
+             :Leave
+         :EndTrap
+     :Else
+         :If 0=fixRemaining
+             cursorWas←##.SetCursorObj 0
+             (ac fixRemaining newCode)←ShowUser objLocation objName oldCode newCode i noOf
+             ##.SetCursorObj cursorWas
+         :EndIf
+         :If 0=ac                   ⍝ Cancelled by user?!
+             r←0
+             {}##.DisableProgressbar ⍬
+             :Leave
+         :ElseIf ac=1               ⍝ Fix this one
+             {}Fix objLocation objName(objLocation.⎕NC objName)newCode i noOf
+             ⎕THIS.NoOfReplacements+←1
+         :ElseIf 2=ac
+                                    ⍝ This one is skipped but we carry on
+         :Else ⋄.                   ⍝ Huuh?!
+         :EndIf
+         :If 1=fixRemaining
+             msg←⊂'You''ve ticked the check box:'
+             msg,←⊂'  "Carry out any remaining changes without further ado"'
+             msg,←⊂''
+             msg,←⊂'This is dangerous - are you really sure about this?!'
+             msg,←⊂'There ',({⍵=1:'is one more object' ⋄ 'are ',(⍕⍵),' more objects'}noOf-i+1),' to be processed.'
+         :AndIf 'Conform batch fix'##.Question.YesOrNo msg
+             rc←1
+             fixRemaining←2
+         :ElseIf fixRemaining≠2
+             fixRemaining←0
+         :EndIf
+     :EndIf
+ :EndFor
+ ##.GUI.n.PB.Thumb←i+2
+⍝Done

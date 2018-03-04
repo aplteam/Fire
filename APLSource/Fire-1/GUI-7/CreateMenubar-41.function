@@ -1,0 +1,11 @@
+ CreateMenubar debugFlag;∆;v
+⍝
+ 'MB'n.Form.⎕WC'Menubar'
+ v←n.Form.Posn[0]
+ CreateFileMenu
+ n.heightCorrection←n.Form.Posn[0]-v
+ CreateEditMenu
+ CreateReportMenu
+ CreateHelpMenu
+ CreateDevelopersMenu debugFlag
+ ⍝Done

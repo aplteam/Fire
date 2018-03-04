@@ -1,0 +1,16 @@
+ CleanRegistry;rk;t;this;lsd;today
+⍝ Deletes workspace specific entries from the Registry older than one year.
+ rk←GetFireRegistryKey              ⍝ Get Registry key
+ :If R.DoesKeyExist rk
+     t←1 R.GetTree rk           ⍝ Get tree with all keys, but only one level
+     t←((2+'\'+.=rk)=(⊃t[;1])+.='\')⌿t
+     t←(t[;0]=2)⌿t[;1]
+     today←2 ⎕NQ'.' 'DateToIdn'(3↑⎕TS)
+     :For this :In t
+         lsd←⍎¨(1+4 2 2/⍳3)⊂'00000000'R.GetString this,'LastSaveDate'
+         lsd←2 ⎕NQ'.' 'DateToIdn'lsd
+         :If 365<today-lsd
+             R.DeleteSubKeyTree this
+         :EndIf
+     :EndFor
+ :EndIf

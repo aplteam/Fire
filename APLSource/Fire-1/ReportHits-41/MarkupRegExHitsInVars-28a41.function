@@ -1,0 +1,16 @@
+ r←runningNumber MarkupRegExHitsInVars(ref name qnc ind length);data;items
+ r←''
+ :If ~0∊⍴data←ref{6::⍬ ⋄ ⍺.⍎⍵}name
+ :AndIf ~##.Replace.NonReplaceVars data
+     :If 1=≡data
+         :If ##.CR∊data
+             data←##.CR ##.A.Split data
+             r,←MarkupRegExHitsInVars_ data ind length
+         :Else
+             r,←MarkupRegExHitsInSimpleVars data
+         :EndIf
+     :Else
+         r,←MarkupRegExHitsInVars_ data ind length
+     :EndIf
+     r←(⊂'<h2>',(⍕runningNumber),'. ',(⍕ref),'.',name,'</h2>'),r
+ :EndIf

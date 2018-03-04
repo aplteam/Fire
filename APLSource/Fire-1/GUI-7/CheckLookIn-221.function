@@ -1,0 +1,13 @@
+ r←CheckLookIn;andif;msg
+⍝ Checks whether the string in "LookIn" points to a namespace or script (0) or not (1).
+ r←0
+ :If 0=n.ReuseSearch.State
+ :AndIf 9≠⎕NC n.LookIn.Text
+     :If r←0∊⍴n.LookIn.Text
+         {}##.Question.ShowMsg'"Start looking here" is empty'
+     :ElseIf (,'#')≢,n.LookIn.Text
+     :AndIf '⎕SE'≢##.A.Uppercase n.LookIn.Text
+         {}##.Question.ShowMsg'Start looking here: "',n.LookIn.Text,'¨ does not exist'
+         r←1
+     :EndIf
+ :EndIf

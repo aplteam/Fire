@@ -1,0 +1,20 @@
+ CreateHelpMenu;∆;rf
+ rf←⍎'MB.TheHelpMenu'n.Form.⎕WC'Menu' 'Help'
+
+ ∆←⊂'MenuItem'
+ ∆,←⊂'Caption' 'ReadMe'
+ n.ReadMe←⍎'ReadMe'rf.⎕WC ∆
+ n.ReadMe.onSelect←'OnShowReadMe'
+
+ ∆←⊂'MenuItem'
+ ∆,←⊂'Caption' 'Useful RegExes'
+ n.UsefulRegExes←⍎'ReadMe'rf.⎕WC ∆
+ n.UsefulRegExes.onSelect←'OnShowUsefulRegExes'
+
+ 's1'rf.⎕WC'Separator'
+
+ ∆←⊂'MenuItem'
+ ∆,←⊂'Caption' 'About...'
+ n.About←⍎'About'rf.⎕WC ∆
+ n.About.onSelect←'OnAbout'
+⍝Done

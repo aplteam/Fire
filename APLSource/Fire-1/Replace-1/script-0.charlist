@@ -1,0 +1,15 @@
+:Namespace NS1
+    ∇ r←myFns1
+     r←'line1
+    line2
+    line3
+    10 abc line1
+    line2
+    line3
+    10 line1
+    line2
+    line3
+    10'
+    ⍝Hello
+    ∇
+:EndNamespace

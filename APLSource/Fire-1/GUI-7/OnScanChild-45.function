@@ -1,0 +1,4 @@
+ OnScanChild msg
+ n.(ReplaceBtn ReportHits).Active←0
+ {}CheckStartButton ⍬
+⍝Done

@@ -1,0 +1,9 @@
+ GetTextOnly←{
+ ⍝ Investigates what's text in ⍵.
+ ⍝ Returns any text without surrounding quotes
+     data←⍵
+     data←{2=⍴⍴⍵:↓data ⋄ ⍵}data
+     data←,{0 1∊⍨≡⍵:,⊂⍵ ⋄ ⍵}data
+     bool←{{⍵∨≠\⍵}''''=⍵}¨data
+     bool{w←⍵ ⋄ ((~⍺)/w)←' ' ⋄ w}¨data
+ }

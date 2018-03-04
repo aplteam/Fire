@@ -1,0 +1,8 @@
+ IsRef←{
+⍝ Used to identify references: anything that is not scripted but type 9.
+⍝ ⍵ must be fully qualified.
+     (9≠⎕NC ⍵):0
+     rf←⍎⍕⍵
+     (⍵≢⍕rf):1
+     {0::1 ⋄ 0⊣⎕SRC ⍵}rf
+ }

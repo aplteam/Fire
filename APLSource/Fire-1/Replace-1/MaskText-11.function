@@ -1,0 +1,9 @@
+ MaskText←{
+⍝ All text (anything between quotes) in ⍵ becomes ⍺ which defaults to a blank.
+     ⍺←' '
+     ~(≡⍵)∊0 1:⍺∘∇¨⍵
+     string←,⍵
+     w←##.A.Where{⍵∨≠\⍵}''''=string
+     string[w]←⍺
+     string
+ }

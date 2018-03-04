@@ -1,0 +1,35 @@
+ r←OnKeyPressInLookIn y;ref;kc;b;flag;key;_;specialKeys;rf;rl
+⍝ Special handler for the "Look In" control, in particular for autocomplete
+ (ref key)←y[0 3]
+ n.Form.LastKey←y[4 5]
+ kc←y[4 5]                                      ⍝ Key code
+ flag←1+r←0
+ specialKeys←(38 0)(40 0)(40 4)(33 0)(34 0)(39 0)(13 0)(35 0)(36 0)(27 0)(9 0)(9 1)(9 2)(114 0)(8 2)(46 0)(8 0)
+ :If (⊂kc)∊specialKeys
+     (r flag)←OnKeyPressInLookIn_ kc
+ :Else
+     (rf rl)←n.(AutoCompleteForm AutoCompleteList)
+     :If 1=⍴,2⊃y
+         :If 0∊⍴,n.LookIn.Text
+             r←0
+             :If '#'=2⊃y
+                 n.LookIn.Text←'#.'
+             :ElseIf '⎕'=2⊃y
+                 n.LookIn.Text←'⎕SE'
+             :EndIf
+         :Else
+             :If '.'=2⊃y
+                 :If '.'≠¯1↑n.LookIn.Text
+                     :Trap 2
+                         r←0<(⍎n.LookIn.Text).{↑⍴⎕NL ⍵}2 3 4 9
+                     :Else
+                         :Return
+                     :EndTrap
+                 :EndIf
+             :ElseIf ~0∊⍴rl.Items
+                 r←∨/rl.Items{((⍴⍵)↑[1]⍺)∧.=⍵}n.LookIn.Text,2⊃y
+             :EndIf
+         :EndIf
+     :EndIf
+ :EndIf
+ {⍵:⎕NQ ref Events.Autocomplete}flag            ⍝ Invoke self-check of autocomplete

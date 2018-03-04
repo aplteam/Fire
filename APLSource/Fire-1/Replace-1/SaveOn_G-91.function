@@ -1,0 +1,10 @@
+ SaveOn_G←{
+⍝ Saves code on global variables:
+⍝ Location, Name, Full Path, Name Class
+     (location name fullName code)←⍵
+     G.Refs,←⊂location
+     G.NameClasses,←location.⎕NC⊂name
+     G.FullNames,←⊂fullName
+     G.Names,←⊂name
+     ⍬
+ }

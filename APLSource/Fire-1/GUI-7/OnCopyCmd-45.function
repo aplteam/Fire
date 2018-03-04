@@ -1,0 +1,4 @@
+ OnCopyCmd←{
+⍝
+     _←CopyNamesFromHitList{⍵/⍳⍴,⍵}n.HitList.SelItems
+ }

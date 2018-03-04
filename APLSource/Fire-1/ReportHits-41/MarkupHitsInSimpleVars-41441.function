@@ -1,0 +1,16 @@
+ r←MarkupHitsInSimpleVars(data name rn ref);options;ss;rs;data;fullName
+ r←↑RestrictLengthOfVarsForHTML⊂data
+ data←↑,/ExchangeHtmlChars data
+ options←('IC'(~##.G.Case))('Greedy' 0)('EOL' 'CR'),##.IsVersion16OrBetter/⊂('UCP'##.G.UCP)
+ ss←rs←'' ⍝ ss:Search String; rs=Replace string
+ :If ~##.G.Text
+     ss,←⊂'''.*?''\N'
+     rs,←⊂,'&'
+ :EndIf
+ ss,←⊂⍣(~1=≡ss)⊣##.G.SearchFor
+ rs,←⊂⍣(~1=≡ss)⊣'<span class="diff">&</span>'
+ data←ss ⎕R rs⍠options⊣{300>⍴,⍵:⍵ ⋄ (300↑⍵),'...'}data
+ r←⊂'div class="comp"'∘Tag data
+ fullName←(⍕ref),'.',name
+ r←(⊂'<a href="#',fullName,'" id="',fullName,'"> <h2>',(⍕rn),'. ',fullName,'</h2></a>'),r
+⍝Done

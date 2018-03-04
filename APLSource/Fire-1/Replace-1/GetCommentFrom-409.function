@@ -1,0 +1,7 @@
+ GetCommentFrom←{
+⍝ ⍵[0] is a line of code with text already masked
+⍝ ⍵[1] is the same but with text still available
+     (masked code)←⍵
+     (~'⍝'∊masked):''
+     (masked⍳'⍝')↓code
+ }

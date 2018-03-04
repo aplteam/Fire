@@ -1,0 +1,8 @@
+ n←{testFlag}Display(filenameHTML data);these;res;ff;n
+⍝ Gets the name of the file holding the HTML.
+ testFlag←{0<⎕NC ⍵:⍎⍵ ⋄ 0}'testFlag'
+ n←CreateGUI ⍬
+ n.TheForm.filenameHTML←filenameHTML
+ n.Browser.Navigate⊂'file:///',filenameHTML
+ ⎕NQ n.List'GotFocus'
+⍝Done

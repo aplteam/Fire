@@ -1,0 +1,9 @@
+ OnOkay←{
+⍝ Set RESULT and quit
+     ⎕THIS.RESULT←1
+     rf←(↑⍵).##
+     ⎕THIS.FIXREMAINING←rf.{0<⎕NC ⍵:⍵⍎'State' ⋄ 0}'fixRemainingChanges'
+     _←⎕NQ rf 9999
+     _←2 ⎕NQ rf'Close'
+     0
+ }

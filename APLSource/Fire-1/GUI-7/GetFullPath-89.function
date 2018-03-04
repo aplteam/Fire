@@ -1,0 +1,6 @@
+ GetFullPath←{
+⍝ ⍵ is supposed to be a single line number in the hit list.
+⍝ Returns the fully qualified workspace path to that item.
+     1≠⍴,⍵:'⍵ has invalid length'⎕SIGNAL 11
+     (0⊃n.HitList.ReportInfo[⍵;]),'.',⍵⊃n.HitList.Items
+ }

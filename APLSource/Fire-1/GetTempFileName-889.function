@@ -1,0 +1,24 @@
+ r←{create}GetTempFileName extension;add;orig
+⍝ Returns a temporary filename with `extension`.
+⍝ In case extension is empty it defaults to `.tmp`.
+⍝ `C:\...\tmpfile.tmp ← GetTempFileName ''`
+⍝ `C:\...\tmpfile.html ← GetTempFileName 'html'`
+⍝ `C:\...\tmpfile.html ← GetTempFileName '.html'`
+⍝ By default the file is created. If you don't want that specify a 0
+⍝ as the left argument.
+ create←{0<⎕NC ⍵:⍎⍵ ⋄ 1}'create'
+ add←(' '~⍨⍕⎕TS),'_'
+ r←orig←add F.GetTempFilename''
+ :If 0<⍴,extension
+     :If '.'=1⍴extension
+         r←(¯4↓r),extension
+     :Else
+         r←(¯3↓r),extension
+     :EndIf
+     :If create
+         orig F.MoveTo r
+     :Else
+         F.DeleteFile orig
+     :EndIf
+ :EndIf
+⍝Done

@@ -1,0 +1,10 @@
+ OnNameList←{
+     rf←0⊃⍵
+     n←({('Form'≡⍵.##.Type):⍵.## ⋄ ∇ ⍵.##}rf).n
+     (0∊⍴data←{⍵⌿⍨2≠⌊⍵[;2]}##.G.Hits):0
+     buffer←↑,/GetHits¨↓data[;0 1 3]
+     buffer←∪buffer
+     buffer←('.'≠↑¨¯1↑¨buffer)/buffer
+     buffer←buffer[⍋⊃buffer]
+     0⊣n ShowHits buffer
+ }

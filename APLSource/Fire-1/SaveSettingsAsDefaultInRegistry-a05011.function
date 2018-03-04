@@ -1,0 +1,16 @@
+ SaveSettingsAsDefaultInRegistry←{
+     p←GetFireRegistryKey
+     _←R.PutString(p,'Case')(⍕GUI.n.Case.(State Active))
+     _←R.PutString(p,'APL_Name')(⍕GUI.n.APL_Name.State)  ⍝ NOT "Active"!
+     _←R.PutString(p,'Code')(⍕GUI.n.Code.(State Active))
+     _←R.PutString(p,'Vars')(⍕GUI.n.Vars.(State Active))
+     _←R.PutString(p,'NamesOnly')(⍕GUI.n.NamesOnly.(State Active))
+     _←R.PutString(p,'APL_Code')(⍕GUI.n.APL_Code.(State Active))
+     _←R.PutString(p,'Comments')(⍕GUI.n.Comments.(State Active))
+     _←R.PutString(p,'Text')(⍕GUI.n.Text.(State Active))
+     _←R.PutString(p,'SearchIsRegEx')(⍕GUI.n.SearchIsRegEx.(State Active))
+     _←R.PutString(p,'DotAll')(⍕GUI.n.DotAll.(State Active))
+     _←R.PutString(p,'Greedy')(⍕GUI.n.Greedy.(State Active))
+     _←R.PutString(p,'UCP')(⍕GUI.n.UCP.(State Active))
+     ⍬
+ }

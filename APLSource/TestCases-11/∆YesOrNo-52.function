@@ -1,0 +1,9 @@
+ r←∆YesOrNo question;flag;answer
+ flag←0
+ :Repeat
+     ⎕←(⎕PW-1)⍴'-'
+     ⍞←question,' '
+     answer←¯1↑⍞
+     flag←answer∊'NnYy'
+ :Until flag
+ r←answer∊'Yy'

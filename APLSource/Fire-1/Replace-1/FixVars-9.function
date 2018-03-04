@@ -1,0 +1,7 @@
+ r←FixVars(ref name data)
+⍝ Establishes variable "name" with contents "data" in namespace "ref".
+⍝ Returns 1 when the user has cancelled the process, otherwise 0.
+ r←0
+ ⍎(⍕ref),'.',name,'←data'
+ TellAcre(⍕ref),'.',name
+⍝Done

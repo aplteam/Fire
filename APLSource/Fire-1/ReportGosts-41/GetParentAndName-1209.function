@@ -1,0 +1,7 @@
+ GetParentAndName←{
+ ⍝ Returns (parent name) for currently selected item in ⍵ (the TreeView)
+     rf←⍵
+     buffer←↑,/(1+↑∘⍴¨rf.Depth⊂rf.Depth)⍴¨rf.parents
+     no←rf.SelItems⍳1
+     no⊃¨buffer rf.Items
+ }

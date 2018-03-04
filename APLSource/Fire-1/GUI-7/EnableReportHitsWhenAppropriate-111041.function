@@ -1,0 +1,5 @@
+ EnableReportHitsWhenAppropriate←{
+ ⍝ Checks whether a) we found something and b) it's not a ⎕NL-only search
+     0=##.G.(Code+Vars):⍬
+     ⍬⊣n.ReportHits.Active←0<##.G.NoOfObjects
+ }

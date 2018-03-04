@@ -1,0 +1,19 @@
+ CreateProgressbar;∆
+⍝ Creates a progressbar in the status bar and sets the limits to 1,1+⍵
+ ∆←⊂'Progressbar'
+ ∆,←⊂'Thumb' 1
+ ∆,←⊂'Coord' 'Pixel'
+ ∆,←⊂'Posn'(2 0)
+ ∆,←⊂'Size'(n.SB.Size-4 1)
+ ∆,←⊂'Visible' 0
+ ∆,←⊂'ProgressStyle' 'Smooth'
+ n.PB←⍎'PB'n.SB.⎕WC ∆
+ n.PB_TextFont←n.PB.⎕NEW'Font'(('Pname' 'Verdana')('Size' 16))
+ ∆←''
+ ∆,←⊂'Text' 'Searching...'
+ ∆,←⊂'Points'(0 0)
+ ∆,←⊂'FCol'(250 100 0)
+ ∆,←⊂'Visible' 0
+ ∆,←⊂'FontObj'n.PB_TextFont
+ n.PB_Text←n.PB.⎕NEW'Text'∆
+⍝Done

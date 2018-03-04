@@ -1,0 +1,4 @@
+ ∆GetFullName←{
+⍝ Return a vector will fully qualifed names from the hit list.
+     ⊃¨{0∊⍴⍺:⍵ ⋄ (⍕⍺),'.',⍕⍵}/¨↓n.HitList.(ReportInfo[;,0],Items)
+ }

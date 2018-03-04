@@ -1,0 +1,31 @@
+ CreateHiddenButtons;rf;p
+⍝ These buttons all remain invisible but establish certain Accelerator keys
+ p←'Button'('Posn'(¯5 ¯5))('Size'(0 0))
+ n.HiddenBtns←rf←⍎'CopyNameBtn'n.Form.⎕WC p,⊂('Accelerator'(117 0))      ⍝ F6
+
+ rf.onSelect←'OnCopyNameToSearchFor'
+ rf.onGotFocus←'OnHiddenButtonGotFocus'
+
+ n.HiddenBtns,←rf←⍎'CopyPathBtn'n.Form.⎕WC p,⊂('Accelerator'(118 0))     ⍝ F7
+ rf.onSelect←'OnCopyPathToStartLookingHere'
+ rf.onGotFocus←'OnHiddenButtonGotFocus'
+
+ n.HiddenBtns,←rf←⍎'RemoveFromList'n.Form.⎕WC p,⊂('Accelerator'(46 0))   ⍝ Del
+ rf.onSelect←'OnRemoveFromList'
+ rf.onGotFocus←'OnHiddenButtonGotFocus'
+
+ n.HiddenBtns,←rf←⍎'DeleteFromWS'n.Form.⎕WC p,⊂('Accelerator'(46 2))     ⍝ Ctrl+Del
+ rf.onSelect←'OnDelKey'
+ rf.onGotFocus←'OnHiddenButtonGotFocus'
+
+ n.HiddenBtns,←rf←⍎'WriteToFileForComparison'n.Form.⎕WC p,⊂('Accelerator'(83 3)) ⍝ Ctrl+Shift+S
+ rf.onSelect←'OnSaveSelectedObjects'
+ rf.onGotFocus←'OnHiddenButtonGotFocus'
+
+ rf←⍎'PrintCmd'n.Form.⎕WC p,⊂('Accelerator'(115 0))      ⍝ F4
+ rf.onSelect←'OnPrintCmd'
+ rf.onGotFocus←'OnHiddenButtonGotFocus'
+
+ rf←⍎'Enlarge'n.Form.⎕WC p,⊂('Accelerator'(119 0))      ⍝ F8
+ rf.onSelect←'OnEnlarge'
+ rf.onGotFocus←'OnHiddenButtonGotFocus'

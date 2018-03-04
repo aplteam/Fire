@@ -1,0 +1,1 @@
+ HideAutoComplete←{⍬⊣n.AutoCompleteForm.(Active Visible)←0}

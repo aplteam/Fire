@@ -1,0 +1,6 @@
+ r←cs ThreeButton caption
+⍝ Ask a Question with three buttons that MUST be specifid in the left arugment.
+⍝ The left argument must be a command space, and it must contain at least the three
+⍝ captions for the three buttons.
+ 'Invalid left argument'⎕SIGNAL 11/⍨∨/~'okCaption' 'cancelCaption' 'caption2'∊cs.⎕NL-2
+ r←cs Run caption

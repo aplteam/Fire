@@ -1,0 +1,11 @@
+ code←{addInfo}∆GetAllCodeFrom_NS ref
+ ⍝ Returns a vector of vectors with all the code in a given namespace.
+ ⍝ Does NOT work recursively.
+ addInfo←{(0<⎕NC ⍵):⍎⍵ ⋄ ''}'addInfo'
+ code←ref.{⎕VR¨↓⎕NL 3 4}⍬
+ code,←ref.{6::'' ⋄ {16::'' ⋄ 1↓∊(⎕UCS 13),¨⎕SRC ⍵}¨⍎¨↓⎕NL 9}⍬
+ code/⍨←0<↑∘⍴¨code
+ code←code,¨⎕UCS 13
+ code←¯1↓↓⎕FMT⍪code
+ code←(1↑1↓⎕SI),addInfo,(⊂30⍴'-'),code
+⍝Done

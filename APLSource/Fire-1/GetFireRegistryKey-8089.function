@@ -1,0 +1,3 @@
+ r←GetFireRegistryKey
+⍝ Returns the key to the "Fire" specific Windows Registry entry
+ r←'HKCU\Software\APLTree\Fire\'

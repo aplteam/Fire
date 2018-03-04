@@ -1,0 +1,6 @@
+ ∆LazyMatch←{
+⍝ Considers ⍺ and be the same when all items in ⍺ are member of ⍵ and vice versa.
+⍝ In other words, the sort sequence is considered not important.
+     (a w)←,¨¨{2=≡⍵:⍵ ⋄ ,⊂⍵}¨⍺ ⍵
+     (∧/a∊w)∧(∧/w∊a)
+ }

@@ -1,0 +1,5 @@
+ ShowAutoCompleteForm←{
+⍝ Make the "Autocomplete" form visible and active
+     n.AutoCompleteForm.(Active Visible)←1
+     ⍬
+ }

@@ -1,0 +1,9 @@
+ CreateContextMenu_AllSituatedinCertainNamespace noOf;c;flag;NS_name;_
+ flag←1=noOf
+ flag∨←1=⍴NS_name←∪n.HitList.(SelItems/ReportInfo[;0])
+ :If flag
+     c←'Remove all situated in "',(0⊃NS_name),'" from list'
+ :Else
+     c←'Remove all from list'
+ :EndIf
+ _←'mm.allOfThis'⎕WC'MenuItem'c('Event' 'Select' 1)('Active'flag)

@@ -1,0 +1,12 @@
+ OnDelKey msg;hasFocus
+ hasFocus←2 ⎕NQ #'GetFocusObj'
+ :Select hasFocus
+ :Case n.SearchFor
+     n.SearchFor.Text←''
+     n.(ReplaceBtn ReportHits).Active←0
+ :Case n.HitList
+     :If ~0∊⍴ind←{⍵/⍳⍴,⍵}n.HitList.SelItems
+         DeleteFromWorkspaceAndList ind
+     :EndIf
+ :EndSelect
+ ⍝Done

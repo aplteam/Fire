@@ -1,0 +1,6 @@
+ IfLower←{
+⍝ Return ⍵ as lowercase if G.Case is zero
+     G.SearchIsRegEx:⍵
+     G.Case:⍵
+     A.Lowercase ⍵
+ }

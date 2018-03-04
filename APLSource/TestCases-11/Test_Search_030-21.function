@@ -1,0 +1,109 @@
+ R←Test_Search_030(stopFlag batchFlag);n;⎕TRAP;html
+⍝ Search for "Foo" everywhere, then narrow down: just APL, comments, text and finally all possible combination.
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ 1 #._Fire.Fire.Run 0
+ n←#._Fire.Fire.GUI.n
+
+ #.⎕SHADOW'TMP'
+ 'TMP'#.⎕NS''
+ #.TMP.⎕FIX'⍝ Leading comment "Foo"' ':Class Class1' 'Hello←{' 'Foo←1' '''Foo''' '}' ':EndClass' '⍝Foo'
+ #.TMP.⎕FIX'⍝ Leading comment "Goo"' ':Class Class2' 'Hello←{' 'Goo←1' '''Goo''' '}' ':EndClass' '⍝Goo'
+ #.TMP.⎕FIX'⍝ Leading comment "Foo"' ':Namespace Namespace1' 'Hello←{' 'Foo←1' '''Foo''' '}' ':EndNamespace' '⍝Foo'
+ #.TMP.⎕FIX'⍝ Leading comment "Goo"' ':Namespace Namespace2' 'Hello←{' 'Goo←1' '''Goo''' '}' ':EndNamespace' '⍝Goo'
+ #.TMP.⎕FX'r←Fns1 dummy' '⍝ Foo' 'Foo←1' 'r←''Foo'''
+ #.TMP.⎕FX'r←Fns2 dummy' '⍝ Goo' 'Goo←1' 'r←''Goo'''
+ #.TMP.⎕FX'r←FnsJustCode dummy' 'Foo←1' 'r←1 2 3'
+ #.TMP.⎕FX'r←FnsJustComment dummy' '⍝Foo←1' 'r←1 2 3'
+ #.TMP.⎕FX'r←FnsJustText dummy' 'r←''⍝Foo←1'''
+ #.TMP.⎕FX'r←FnsJustCommentAndText dummy' '⍝ Foo' 'r←''All about Foo' 'a←''Foo'''
+ #.TMP.⎕FX'r←FnsJustCodeAndComment dummy' 'Foo←''1 2 3''' '⍝ All about Foo' 'r←1 2 3'
+ #.TMP.⎕FX'r←FnsJustCodeAndText dummy' 'Foo←''1 2 3''' 'r←''Foo'''
+ #.TMP.vars1←'Foo' 'Goo' 'Zoo'
+ #.TMP.vars2←'Foo;Goo;Zoo'
+ #.TMP.vars3←'This and that'
+ #.TMP.vars4←'''Foo''' 'Goo' 'Zoo'
+ 'NS'#.TMP.⎕NS''
+ #.TMP.NS.⎕FX'r←Fns_A dummy' '⍝ Foo' 'Foo←1' 'r←''Foo'''
+ #.TMP.NS.⎕FX'r←Fns_B dummy' '⍝ Goo' 'Goo←1' 'r←''Goo'''
+
+ n.SearchFor.Text←'Foo'
+ n.LookIn.Text←'#.TMP'
+
+⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ Search everywhere: APL code, comments, text
+ ∆InitialyzeFireMainGUI_Settings n
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →PassesIf 14=⍴n.HitList.Items
+ →PassesIf 14=#._Fire.Fire.G.NoOfObjects
+ →PassesIf 27=#._Fire.Fire.G.NoOfHits
+ →PassesIf 27=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
+
+ ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ Search just Code
+ ∆InitialyzeFireMainGUI_Settings n
+ n.(Comments Text).State←0
+ n.Vars.(Active State)←0
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →PassesIf 7=⍴n.HitList.Items
+ →PassesIf 7=#._Fire.Fire.G.NoOfObjects
+ →PassesIf 7=#._Fire.Fire.G.NoOfHits
+ →PassesIf 7=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
+
+⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ Search just Comments
+ ∆InitialyzeFireMainGUI_Settings n
+ n.(APL_Code Text).State←0
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →PassesIf 7=⍴n.HitList.Items
+ →PassesIf 7=#._Fire.Fire.G.NoOfObjects
+ →PassesIf 9=#._Fire.Fire.G.NoOfHits
+ →PassesIf 9=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
+
+⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ Search just Text
+ ∆InitialyzeFireMainGUI_Settings n
+ n.(APL_Code Comments).State←0
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →PassesIf 10=⍴n.HitList.Items
+ →PassesIf 10=#._Fire.Fire.G.NoOfObjects
+ →PassesIf 11=#._Fire.Fire.G.NoOfHits
+ →PassesIf 11=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
+
+⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ Search just Code and Comments
+ ∆InitialyzeFireMainGUI_Settings n
+ n.Text.State←0
+ n.Vars.(Active State)←0
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →PassesIf 10=⍴n.HitList.Items                              ⍝ Because the namespace and the fns within the namespace...
+ →PassesIf 10=#._Fire.Fire.G.NoOfObjects                    ⍝ ... count twice because there is text outside fns/opr!
+ →PassesIf 16=#._Fire.Fire.G.NoOfHits
+ →PassesIf 16=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
+
+⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ Search just Code and Text
+ ∆InitialyzeFireMainGUI_Settings n
+ n.Comments.State←0
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →PassesIf 12=⍴n.HitList.Items
+ →PassesIf 12=#._Fire.Fire.G.NoOfObjects
+ →PassesIf 18=#._Fire.Fire.G.NoOfHits
+ →PassesIf 18=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
+
+⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ Search just Comments and Text
+ ∆InitialyzeFireMainGUI_Settings n
+ n.APL_Code.State←0
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →PassesIf 13=⍴n.HitList.Items                              ⍝ Because the namespace and the fns within the namespace...
+ →PassesIf 13=#._Fire.Fire.G.NoOfObjects                    ⍝ ... count twice because there is text outside fns/opr!
+ →PassesIf 20=#._Fire.Fire.G.NoOfHits
+ →PassesIf 20=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
+
+⍝ Tidy up
+ CloseFire
+
+ R←∆OK

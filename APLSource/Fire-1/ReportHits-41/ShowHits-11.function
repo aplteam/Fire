@@ -1,0 +1,26 @@
+ {r}←N ShowHits data;n;∆
+ r←⍬
+ n←⎕NS''
+ ∆←⊂'Form'
+ ∆,←⊂'Caption' 'Fire - "Names" Report'
+ ∆,←⊂'Coord' 'Pixel'
+ ∆,←⊂'Size'(600 400)
+ ∆,←⊂'Icon'##.GUI.n.TheIcon
+
+ n.TheForm←⍎'ff'##.GUI.n.Form.⎕WC ∆
+ n.TheForm.Posn←N.TheForm.Size ##.GUI.CenterIn N.TheForm
+
+ n.APL_Font←⍎'fnt'n.TheForm.⎕WC'Font' 'APL385 Unicode' 18
+ ∆←⊂'Edit'
+ ∆,←⊂'Coord' 'Prop'
+ ∆,←⊂'Posn'(0 0)
+ ∆,←⊂'Size'(100 100)
+ ∆,←⊂'Style' 'Multi'
+ ∆,←⊂'ReadOnly' 1
+ ∆,←⊂'VScroll' ¯1
+ ∆,←⊂'Font'n.APL_Font
+ n.Edit←⍎'E'n.TheForm.⎕WC ∆
+ n.Edit.Text←data
+ n.Edit.onKeyPress←'OnKeyPressInShowHits'
+ ⎕NQ n.Edit'GotFocus' ⋄ ⎕DQ n.TheForm
+⍝Done

@@ -1,0 +1,27 @@
+ {ref}←Run startHere;list;noOf;buffer;cursorWas
+⍝ Report namespaces references
+ cursorWas←##.SetCursorObj 1
+ ref←⍬
+ :If 0∊⍴list←2 ##.ListNamespaceTree startHere 0
+     ##.SetCursorObj 0
+     {}##.Question.ShowMsg'No namespace references found'
+     ##.SetCursorObj cursorWas
+ :Else
+     ref←CreateGUI ⍬
+     ⎕NQ ref'GotFocus'
+     ref.LV.Items←⍕¨1+⍳0⊃⍴list
+     ref.LV.ReportInfo←list[;3 0 1]
+     buffer←⎕NC∘⊂¨ref.LV.ReportInfo[;1]
+     ((0=buffer)/buffer)←' '
+     ref.LV.ReportInfo,←⍕¨buffer
+     ref.LV.{SetColSize ⍵ ¯3}¨⍳1⊃⍴list
+     :If 0<noOf←'!'+.=list[;3]
+         :If 1=noOf
+             ref.SB.F1.Text←'Attention: there is one anomaly; see line ',⍕1+list[;0]⍳'!'
+         :Else
+             ref.SB.F1.Text←'Attention: there are ',(⍕noOf),' anomalies; see lines ',⊃{⍺,',',⍵}/⍕¨1+##.A.Where list[;3]='!'
+         :EndIf
+         ref.SB.F1.FCol←250 0 0
+     :EndIf
+     ##.SetCursorObj cursorWas
+ :EndIf

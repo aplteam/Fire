@@ -1,0 +1,32 @@
+ OnColumnClickInHitList y;cn;col;si;sf;ind;cursorWas
+⍝
+ cn←2⊃y                                         ⍝ Column number
+ cursorWas←##.SetCursorObj 1
+ n.HitList.Active←0
+ :If cn=##.G.ColSort[0]
+     sf←⍎(##.G.ColSort[1])⊃'⍒⍋'                 ⍝ The sort function
+     ind←(##.G.ColSort[1])⊃'↓↑'
+ :Else
+     sf←⍋                                       ⍝ Default sort function
+     ind←'↑'
+     ##.G.ColSort[1]←1
+ :EndIf
+ col←n.HitList.(Items,ReportInfo)[;cn]          ⍝ The column in question
+ :If 0=1↑0⍴↑col
+     si←sf⊃col                                  ⍝ Sort index for num
+ :ElseIf ∧/~(∊col)∊⎕A,##.A.Lowercase ⎕A
+     si←sf⊃col                                  ⍝ Sort index for digits
+ :Else
+     si←##.SortAlph sf⊃col                      ⍝ Sort index for char
+ :EndIf
+ :If ~0∊⍴n.HitList.Items
+     n.HitList.Items←n.HitList.Items[si]            ⍝ Sort Items
+     n.HitList.ReportInfo←n.HitList.ReportInfo[si;] ⍝ Sort ReportInfo
+     n.HitList.Data←n.HitList.Data[si;]
+     ##.G.Hits←##.G.Hits[si;]
+     ##.G.ColSort←cn(~##.G.ColSort[1])              ⍝ Remember col and sort direction
+     n.HitList.Active←1
+     n.HitList.ColTitles←n.HitList.colWidth↑¨n.HitList.ColTitles
+     n.HitList.ColTitles[cn]←⊂(cn⊃n.HitList.ColTitles),' ',ind
+ :EndIf
+ ##.SetCursorObj cursorWas

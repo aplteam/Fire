@@ -1,0 +1,8 @@
+ OnDropDownDevelopersMenu←{
+⍝
+     refs←3↑n.ToggleAllInDeveloperMenu.##.(⍎¨⎕WN'')
+     f←∧/refs.Checked
+     f:1⊣n.ToggleAllInDeveloperMenu.Caption←'Uncheck all'
+     n.ToggleAllInDeveloperMenu.Caption←'Check all'
+     1
+ }

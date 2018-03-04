@@ -1,0 +1,4 @@
+ OnKeyPressInShowCode←{
+     rf←0⊃⍵
+     rf.##.Close
+ }

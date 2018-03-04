@@ -1,0 +1,6 @@
+ ReportNoHits←{
+     caption←'No Replace'
+     msg←'After removing variables that cannot be changed' 'there is nothing left to change!'
+     _←caption ##.Question.ShowMsg msg
+     1:r←⍬
+ }
