@@ -49,7 +49,7 @@ Fire also overcomes a couple of problems that Dyalog's built-in Search tool is s
 
 ## Installing Fire
 
-See the document ["HowToInstallFire.html"](/Docs/HowToInstall.md).
+See the document ["HowToInstallFire.html"](./HowToInstall.html).
 
 
 ## Running Fire
