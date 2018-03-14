@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>Fire</title>
+<style media="screen">
+html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}body{margin:0;}article,aside,footer,header,nav,section{display:block;}h1{font-size:2em;margin:0.67em 0;}figcaption,figure,main{display:block;}figure{margin:1em 40px;}hr{box-sizing:content-box;height:0;overflow:visible;}pre{font-family:monospace, monospace;font-size:1em;}a{background-color:transparent;-webkit-text-decoration-skip:objects;}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted;}b,strong{font-weight:inherit;}b,strong{font-weight:bolder;}code,kbd,samp{font-family:monospace, monospace;font-size:1em;}dfn{font-style:italic;}mark{background-color:#ff0;color:#000;}small{font-size:0.8em;}sub,sup{font-size:0.75em;line-height:0;position:relative;vertical-align:baseline;}sub{bottom:-0.25em;}sup{top:-0.5em;}audio,video{display:inline-block;}audio:not([controls]){display:none;height:0;}img{border-style:none;}svg:not(:root){overflow:hidden;}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:1em;line-height:1.15;margin:0;}button,input{overflow:visible;}button,select{text-transform:none;}button,html [type="button"], [type="reset"],[type="submit"]{-webkit-appearance:button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner{border-style:none;padding:0;}button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring{outline:1px dotted ButtonText;}fieldset{padding:0.35em 0.75em 0.625em;}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal;}progress{display:inline-block;vertical-align:baseline;}textarea{overflow:auto;}[type="checkbox"],[type="radio"]{box-sizing:border-box;padding:0;}[type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto;}[type="search"]{-webkit-appearance:textfield;outline-offset:-2px;}[type="search"]::-webkit-search-cancel-button,[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit;}details, menu{display:block;}summary{display:list-item;}canvas{display:inline-block;}template{display:none;}[hidden]{display:none;}body{margin:0;font-family:"Bookman Old Style", "Callisto MT", Bookman, "Goudy Old Style", Garamond, serif;background-color:#fdfdfd;font-size:18px;line-height:1.4;max-width:900px;padding:0.83em;color:#292929;}h1, h2, h3, h4, h5, h6{color:#404040;font-weight:800;padding-left:0;}h1, h2, h3, h4, h5, h6{font-family:"Century Gothic", Verdana, "Sans";}h1, h2, h3, h4, p{margin-bottom:0.88em;}h1{font-size:1.8em;margin:0.27em 0 1.11em 0;}h1 > code, h2 > code, h3 > code, h4 > code, h5 > code, h6 > code{font-size:1em;background-color:inherit;}h2{font-size:1.44em;margin:0.55em 0 0.55em 0;padding-top:0.55em;border-bottom:1px solid Silver;}h3{margin:0;margin-top:0.55em;font-size:1.22em;}nav h3{font-size:0.88em;margin-left:0.83em;margin-bottom:0.27em;}h4{font-size:1em;margin:0;margin-top:0.55em;}h5{font-size:0.94em;margin:0;margin-top:0.66em;padding:0;}h6{font-size:0.88em;margin:0;margin-top:0.66em;padding:0;}a{color:#0099ff;margin:0;padding:0;vertical-align:baseline;}a:visited{color:purple;}a.autoheader_anchor{text-decoration:none;}ul{list-style-type:disc;}ul, ol{padding:0;margin:0;}dd{padding-top:0.25em;}p.first_dd{padding-top:0.25em;}li > ul, ol{padding-bottom:0;}li{line-height:1.3;margin-left:1.38em;margin-bottom:0.55em;}ul > li{margin-left:1.11em;}li ul{margin-left:0.55em;}li ul{margin-left:0.27em;}li p{padding:1px 0 0 0;margin:0.55em 0 0.27em 0;line-height:1.3;}p, ul, ol{line-height:1.3;padding:0.44em 0 0 0;margin:0;}pre{overflow:scroll;padding:0.55em 0.27em;margin:0.55em 0 0.55em 0 !important;background-color:#faebd7;color:#3e3e3e;border:1px Silver dashed;display:block;font-family:APLFont, monospace;font-weight:400;}pre > code{line-height:1.2;border:0;padding:0;margin:0;background-color:inherit;color:inherit;font-weight:inherit;}a code{padding:0;font-size:1em;}nav code{background-color:inherit;font-weight:400;color:inherit;}code{font-family:APLFont, monospace;background-color:#e7e7e7;color:Black;font-weight:800;line-height:1.2;font-size:0.88em;margin:0;color:#950000;padding:0 0.16em;}tbody tr:nth-child(even){background-color:#F0F0F0;}th{background-color:#E6E6E6;color:black;}th, td{padding:0.16em 0.55em;}table{border-color:Black;margin:1.11em 0 1.11em 0;border:2px black;border-collapse:collapse;font-family:APLFont;font-size:0.88em;line-height:1.2;border:1px solid Gray;}li > table{margin:0.55em 0 0.55em 0;}tr{margin:1.11em;}th{font-weight:bold;}tfoot td{font-weight:bold;}blockquote{border-left:0.27em solid silver;padding-left:0.27em;margin:0.83em 0.27em 0.83em 0.55em;}blockquote ul li{margin-left:1.38em;}blockquote ol li{margin-left:1.38em;}li > blockquote{margin-left:0;}nav{background-color:#f5f5f5;border:1px solid Black;padding:0.55em;margin:0.55em;margin-right:0;box-shadow:0.27em 0.27em 0.27em Gray;overflow:hidden;}nav#main_nav{position:fixed;top:0;right:0.55em;float:none;width:auto;}nav#main_nav_no_collapse li{font-size:0.77rem;}nav#main_nav_no_collapse li{line-height:1.5;}nav ul{list-style-type:none;margin:0 0 0.11em 0;padding:0;}nav a:visited{color:black;}nav ul li{margin-bottom:0.16em;}nav li p{margin:0;padding:0;line-height:1;margin:0;padding:0;}nav li{font-size:0.75rem;line-height:1.3;padding:0;margin-top:0;margin-bottom:0;margin-left:0.83em;}nav p{font-weight:bold;font-size:0.75rem;padding-top:0;}dl{margin-top:0.1em;margin-bottom:0.1em;}dt{margin-top:0.75em;margin-bottom:0.1em;font-weight:800;}label#hide_toc_label{font-size:0.8em;}.toc-container{position:relative;height:auto;}div.toc-container h1{font-size:0.88em;margin:0.27em 0 0.27em 0;}[type="checkbox"]{position:absolute;left:-9999px;}label{display:block;width:100%;height:1.1em;cursor:pointer;top:0;padding-left:1.1em;}label:before{content:'Table of contents \25BC';font-weight:bold;font-size:90%;padding-bottom:0;}[type="checkbox"] ~ div{display:none;}[type="checkbox"]:checked ~ div{display:block;margin-top:1.1em;}[type="checkbox"]:checked + label{top:100%;}[type="checkbox"]:checked + label:before{content:'Table of contents ▲';}div#footnotes_div p{line-height:1;padding-bottom:0;padding-top:0;}div#footnotes_div ol{padding-top:0;}@font-face{font-family:"APLFont";src:local("APL385 Unicode"), url("http://misc.aplteam.com/apl385.ttf") format("truetype");}.no_display{display:none;}.red{color:red;}img{margin-top:0.55em;margin-bottom:0.27em;}div.leanpub{padding:0.83em 0.55em 1.11em 0;margin:0.55em 0 0 0.27em;overflow:auto;}div.leanpub_A{border:1px solid black;background-color:#f1f1f1;padding:0.55em;margin:1.11em 0 0.83em 0;}div.leanpub h3, div.leanpub_A h3{font-size:1.2em;padding:0;margin:0;}div.leanpub h4, div.leanpub_A h4{font-size:1.1em;padding:0.27em 0 0 0;margin:0;}div.leanpub h5, div.leanpub h5{font-size:1.0em;padding:0.27em 0 0 0;margin:0;}div.leanpub_A h5, div.leanpub_A h5{font-size:1.0em;padding:0.27em 0 0 0;margin:0;}div.leanpub img{padding:0;margin:0 1.11em 0.27em 0;}div.leanpub_A > p:first-child{padding-top:0;margin-top:0;}div.leanpub img{float:left;padding:0;margin:0.55em 1.11em 0 0;clear:both;}div.leanpub tbody *{background-color:transparent;}div.leanpub p{padding:0.17em 0 0 0;margin:0;}span.leanpub_code{color:Red;}div.leanpub p{display:block;padding:0.44em 0 0 0;}div.leanpub > div{margin-left:2.27em;}
+</style>
+<style media="print">
+@page{margin:25mm 20mm 25mm 20mm;}body{font-family:"Bookman Old Style", "Callisto MT", Bookman,"Goudy Old Style", Garamond, serif;font-size:9pt;line-height:1.2;}h1{font-size:170%;}h2{font-size:110%;}h3{font-size:110%;}h4{font-size:105%;}h5{font-size:100%;}h6{font-size:95%;}h1{margin:0 0 20pt 0;}h2{margin:15pt 0 3pt 0;}h3{margin:10pt 0 0pt 0;}h4{margin:10pt 0 0pt 0;}h5{margin:9pt 0 0pt 0;}h6{margin:9pt 0 0pt 0;}h1, h2, h3, h4, h5, h6{color:black;font-family:"Century Gothic", Verdana, "Sans";page-break-after:avoid;}h1 > code, h2 > code, h3 > code, h4 > code, h5 > code, h6 > code{font-size:100%;}h2{border-bottom:1pt solid Silver;padding-bottom:2pt;}.h_tag{page-break-after:avoid;break-after:avoid;}abbr[title]{border-bottom:0;text-decoration:none;}a{color:black;margin:0;padding:0;vertical-align:baseline;text-decoration:none;font-style:italic;}a.autoheader_anchor{text-decoration:none;font-style:normal;page-break-after:avoid;break-after:avoid;}ul{list-style-type:square;}ul, ol{padding:0;margin:0;}li > ul, ol{padding-bottom:0;}li{line-height:1.3;margin-left:13pt;margin-bottom:5pt;}ul > li{margin-left:10pt;}li ul{margin-left:5pt;}li ul{margin-left:3pt;}li p{padding:1pt 0 0 0;margin:5pt 0 3pt 0;line-height:1.3;}p, ul, ol{line-height:1.3;padding:4pt 0 0 0;margin:0;color:black;}pre{padding:3pt;margin:5pt 0;white-space:pre-wrap;background-color:#FAFAFA;border:1pt Silver solid;display:block;font-family:APLFont, monospace;page-break-inside:avoid;-webkit-print-color-adjust:exact;}pre code{background-color:#FAFAFA;color:Black;padding:0;margin:0 0 -6pt 0;line-height:1.1;border:0;}code{font-family:APLFont, monospace;line-height:1.2;font-size:9pt;padding:3pt 1pt 3pt 1pt;color:#950000;padding:3pt 4pt 3pt 4pt;}tbody th, tfoot tr{background-color:#e6e6e6;}tbody tr:nth-child(even){background-color:#fafafa;}th{background-color:#F0F0F0;}th, td{padding:1pt 5pt;}table{margin:10pt 0;font-family:APLFont;font-size:9pt;padding:0;border:1pt solid silver;-webkit-print-color-adjust:exact;}li > table{margin:10pt 0 10pt 0;}tr{margin:20pt;}th{font-weight:bold;}tfoot td{font-weight:bold;}blockquote{border-left:5pt solid silver;padding-left:5pt;margin:8pt 3pt 8pt 8pt;}nav{background-color:#f8f8f8;border:1pt solid Gray;width:auto;float:right;padding:5pt 5pt 5pt 0;margin:5pt 0 5pt 5pt;page-break-inside:avoid;}nav *{font-size:75%;}nav ul{list-style-type:none;margin:0 0 2pt 0;padding:0;}nav ul li{margin-bottom:0;}nav li p{margin:0;padding:0;line-height:1;margin:0;padding:0;}nav li{font-size:9pt;line-height:1;padding:0;margin-top:0;margin-bottom:0;margin-left:8pt;}dl{margin-top:0;margin-bottom:10pt;}dt{margin-top:10pt;margin-bottom:0;font-weight:800;page-break-inside:avoid;}dd{margin-top:2pt;}label#hide_toc_label{font-size:65%;}.toc-container{position:relative;height:auto;margin-top:5pt;}.toc-container h1{margin:0 0 7pt 7pt;}[type="checkbox"]{display:none;}label{display:block;width:100%;height:1.1em;top:0;padding-left:10pt;}label:before{content:'Table of contents';font-weight:bold;font-size:140%;padding-bottom:10pt;}a.external_link::before{content:" 🌎";}a.bookmark_link::before{content:" ➯";}a.mailto_link::before{content:" ✉"}nav a.bookmark_link{font-style:normal;}nav p{margin-left:10pt;font-weight:bold;font-size:9pt;}nav a{font-style:normal;}nav a.bookmark_link::before{content:"";}div#footnotes_div a::before{content:"";}div#footnotes_div a{font-style:normal;}div#footnotes_div{page-break-inside:avoid;}@font-face{font-family:"APLFont";src:local("APL385 Unicode"), url("http://misc.aplteam.com/apl385.ttf") format("truetype");}.no_print{display:none;}.red{color:red;}.avoid_page_break{page-break-inside:avoid;}.page_break_before{page-break-before:auto;}div.leanpub{margin:10pt 0 10pt 8pt;page-break-inside:avoid;}div.leanpub_A{border:1pt solid black;background-color:#f9f9f9;padding:5pt;margin:10pt 0 10pt 0;page-break-inside:avoid;}div.leanpub h3, div.leanpub_A h3{font-size:1.2em;padding:3pt 0 0 0;margin:0;}div.leanpub h4, div.leanpub_A h4{font-size:1.1em;padding:3pt 0 0 0;margin:0;}div.leanpub h5, div.leanpub h5{font-size:1.0em;padding:3pt 0 0 0;margin:0;}div.leanpub_A h5, div.leanpub_A h5{font-size:1.0em;padding:3pt 0 0 0;margin:0;}div.leanpub img{padding:0;margin:0 10pt 2pt 0;}div.leanpub_A > p:first-child{padding-top:0;margin-top:0;}div.leanpub > div > h1:first-child{padding-top:5pt;}div.leanpub img{float:left;padding:0;margin:5pt 10pt 0 0;clear:both;}div.leanpub p{padding:3pt 0 0 0;margin:0;}span.leanpub_code{color:black;}div.leanpub p{display:block;padding:8pt 0 0 0;}div.leanpub > div{margin-left:35pt;}
+</style>
+
+</head>
+<body>
+<nav id="main_nav">
+<input type="checkbox" id="hide_toc">
+<label id="hide_toc_label" for="hide_toc"></label>
+<div class="toc-container">
+<ul>
+<li><a href="#Fire"> Fire</a>
+<ul>
+<li><a href="#Features">1. Features</a></li>
+<li><a href="#Fire-to-the-rescue">2. Fire to the rescue</a></li>
+<li><a href="#Installing-Fire">3. Installing Fire</a></li>
+<li><a href="#Running-Fire">4. Running Fire</a></li>
+<li><a href="#What-Fire-scans">5. What Fire scans</a></li>
+<li><a href="#What-Fire-does-not-scan">6. What Fire does not scan</a></li>
+<li><a href="#Ghostly-namespaces">7. Ghostly namespaces</a>
+<ul>
+<li><a href="#GUI-objects-and-ghostly-namespaces">7.1. GUI objects and ghostly namespaces</a></li>
+<li><a href="#Semi-ghostly-namespaces">7.2. Semi-ghostly namespaces</a></li>
+</ul></li>
+<li><a href="#Deleting-stuff">8. Deleting stuff</a></li>
+<li><a href="#Tips-and-Tricks">9. Tips and Tricks</a>
+<ul>
+<li><a href="#Editing">9.1. Editing</a></li>
+<li><a href="#Report-hits">9.2. Report hits</a></li>
+<li><a href="#Print-object-name-to-the-session">9.3. Print object name(s) to the session</a></li>
+<li><a href="#Copy-object-name-to-Search-for">9.4. Copy object name to “Search for”</a></li>
+<li><a href="#The-Start-looking-here-control">9.5. The “Start looking here” control</a></li>
+<li><a href="#Enlarge-the-window">9.6. Enlarge the window</a></li>
+</ul></li>
+<li><a href="#Useful-Regular-expressions">10. Useful Regular expressions</a></li>
+<li><a href="#acre-and-Fire">11. acre and Fire</a></li>
+<li><a href="#Salt-and-Fire">12. Salt and Fire</a></li>
+<li><a href="#Showing-the-PID-in-all-Fire-window-captions">13. Showing the PID in all Fire window captions</a>
+</li></ul></li>
+</ul>
+</div>
+</nav>
+<div class="h_tag">
+<a href="#Fire" id="Fire" class="autoheader_anchor">
+<h1>Fire</h1>
+</a>
+</div>
+<p>Note that FiRe stands for FInd and REplace.</p>
+<div class="h_tag">
+<a href="#Features" id="Features" class="autoheader_anchor">
+<h2>1. Features</h2>
+</a>
+</div>
+<p>Fire has a couple of features that Dyalog's built-in “Search” tool do not offer. These are the main features:</p>
+<ul>
+<li>Most importantly, a global “Replace”.
+<p>This feature is particularly powerful since it allows you to inspect every single item that is going to be changed in a preview, and to exclude objects with a single click.</p></li>
+<li>The scope of a search can be restricted to just code while comments or even text will be ignored. Or you search just in comments, or just in text, or just in the name list (<code>⎕NL</code>).</li>
+<li>A search result can become the source of another search.</li>
+<li>Regular Expressions can be used for both “Search” as well as “Replace”.</li>
+</ul>
+<p>Fire has however many more features:</p>
+<ul>
+<li>The “Start search in” control remembers the last 30 entries per workspace and user.</li>
+<li>The “Start looking here” control offers auto-completion.</li>
+<li>One can negate a search: all which do <em>not</em> contain …
+<p>In conjunction with “Search hit list” this can effectively be used to exclude unwanted stuff before triggering a “Replace”.</p></li>
+<li>Built-in reports designed to help refurbishing code that has started to smell.</li>
+</ul>
+<div class="h_tag">
+<a href="#Fire-to-the-rescue" id="Fire-to-the-rescue" class="autoheader_anchor">
+<h2>2. Fire to the rescue</h2>
+</a>
+</div>
+<p>Fire also overcomes a couple of problems that Dyalog's built-in Search tool is suffering from.</p>
+<ul>
+<li>It handles circular references well thanks to Phil Last.</li>
+<li>It is less likely to generate a WS FULL.</li>
+<li>It supports regular expressions (<code>⎕R</code>/<code>⎕S</code>). (Dyalog supports this partly since version 16.0)</li>
+</ul>
+<div class="h_tag">
+<a href="#Installing-Fire" id="Installing-Fire" class="autoheader_anchor">
+<h2>3. Installing Fire</h2>
+</a>
+</div>
+<p>See the document “HowToInstallFire.html”.</p>
+<div class="h_tag">
+<a href="#Running-Fire" id="Running-Fire" class="autoheader_anchor">
+<h2>4. Running Fire</h2>
+</a>
+</div>
+<p>After having installed Fire you can start it by executing:</p>
+<pre><code>]Fire</code></pre>
+<p>The User Command checks whether Fire is already available in <code>⎕SE</code>. If that is not the case then it is copied into <code>⎕SE</code>. From now on it is started directly from <code>⎕SE</code> which you might find significantly faster than loading it into <code>⎕SE</code> first depending on where Fire is copied from in your environment. Of course you can make that change persistent by saving your session.</p>
+<p>However, when a new version of Fire comes along you need a way to load this new version. This can be achieved by specifying an optional parameter:</p>
+<pre><code>]Fire -fl</code></pre>
+<p>“fl” stands for “force load”. This loads Fire into <code>⎕SE</code> no matter whether it's already there or not.</p>
+<div class="h_tag">
+<a href="#What-Fire-scans" id="What-Fire-scans" class="autoheader_anchor">
+<h2>5. What Fire scans</h2>
+</a>
+</div>
+<ol start="1">
+<li>Named namespaces</li>
+<li>Scripts</li>
+<li>Functions and operators</li>
+<li>GUI instances which have <code>KeepOnClose←1</code></li>
+</ol>
+<div class="h_tag">
+<a href="#What-Fire-does-not-scan" id="What-Fire-does-not-scan" class="autoheader_anchor">
+<h2>6. What Fire does not scan</h2>
+</a>
+</div>
+<ol start="1">
+<li>Unnamed namespaces.</li>
+<li>Class instances.</li>
+<li>GUI instances which have <code>KeepOnClose←0</code>.</li>
+<li>Ghostly namespace.</li>
+</ol>
+<div class="h_tag">
+<a href="#Ghostly-namespaces" id="Ghostly-namespaces" class="autoheader_anchor">
+<h2>7. Ghostly namespaces</h2>
+</a>
+</div>
+<p>Note that Fire does not search ghostly namespaces. These are namespaces which exist together with GUI objects as well as classes. If you did not know about ghostly namespaces then it might be best to ignore them: they can be quite confusing. Ghostly namespaces exist for a very long time but until OO was introduced to Dyalog APL they were kept hidden from users.</p>
+<p>If you would like to know more then consider this code:</p>
+<pre><code>      ⎕fix ':Class Test' ':EndClass'
+      Test.⎕FX'r←Hello' 'r←''World'''
+      Test.Hello
+World</code></pre>
+<p>If you are under the impression that you've created a method “Hello” in the class “Test” then you are wrong: that cannot work because the function “Hello” does not carry an “Access Public” statement, so it wouldn't be possible to call the method as a class member anyway.</p>
+<p>The same is true for this:</p>
+<pre><code>      #.Test.⎕IO←0</code></pre>
+<p>This statement does not throw an error, so somehow it was successful. Referencing works as well:</p>
+<pre><code>      #.Test.⎕IO
+1</code></pre>
+<p>However, <code>⎕IO</code> <strong>must</strong> be a private property of the class, so it can <strong>never</strong> be set or even referenced directly: you cannot specify anywhere an “Access Public” statement for <code>⎕IO</code>.</p>
+<p>But since we managed to execute these statements successfully (<code>⎕FX 'code'</code> and <code>⎕IO←0</code>) the question is where they have been executed. Well, in the ghostly namespace which exists together with the class script, sharing the same name.</p>
+<p>Even if Fire would show the function <code>Hello</code> in the hit list there is another anomaly: executing <code>Test.⎕ed 'Hello'</code> doesn't allow you to edit it. That means that Fire does not have the means to allow you editing the code.</p>
+<p>The final obstacle: making a change to the class <code>Test</code> will make <code>Hello</code> disappear because the ghostly namespace will be re-created when the class is (re-) fixed.</p>
+<p>Therefore it seems to be best to ignore ghostly namespaces altogether.</p>
+<div class="h_tag">
+<a href="#GUI-objects-and-ghostly-namespaces" id="GUI-objects-and-ghostly-namespaces" class="autoheader_anchor">
+<h3>7.1. GUI objects and ghostly namespaces</h3>
+</a>
+</div>
+<p>Investigate this code:</p>
+<pre><code>      'MyForm' ⎕WC 'Form' ('KeepOnClose' 1)
+      MyForm.⎕FX'r←Hello' 'r←''World'''</code></pre>
+<p>Note that strictly speaking this is the same thing: There is a GUI object called “MyForm” but there is also a ghostly namespace holding the “Hello” function. However, Dyalog APL perfectly keeps that as a secret: it has always been that way since GUI objects were introduced into Dyalog APL a long time ago, yet nobody ever realized this because Dyalog APL behaved in a way that makes that actually impossible.</p>
+<div class="h_tag">
+<a href="#Semi-ghostly-namespaces" id="Semi-ghostly-namespaces" class="autoheader_anchor">
+<h3>7.2. Semi-ghostly namespaces</h3>
+</a>
+</div>
+<p>Note that this code:</p>
+<pre><code>      ⎕FIX':Namespace MyNS' ':EndNamespace'
+      MyNS.⎕FX'r←Hello' 'r←''World'''</code></pre>
+<p>has consequences that make it look as if a ghostly namespace is involved when actually there isn't. Look at this:</p>
+<pre><code>      MyNS.Hello
+World
+      ⎕←⍪MyNS.⎕SRC MyNS
+ :Namespace MyNS
+ :EndNamespace</code></pre>
+<p>You can execute “Hello” but it's not part of the script - looks like a ghostly namespace is involved, right?!</p>
+<p>Well, it's not. By definition a namespace script can only be changed by editing the script. Therefore the <code>⎕FX</code> statement did actually add the function “Hello” to the namespace but not to the namespace script. In other words, the script and the namespace are now out of sync.</p>
+<p>According to Dyalog this is not a bug but a feature.</p>
+<p>BTW, this:</p>
+<pre><code>      ⎕FIX ':Namespace MyNS' '∇r←Hello2' 'r←''1 2 3''' '∇' ':EndNamespace'
+      MyNS.Hello2
+1 2 3
+      MyNS.⎕EX 'Hello2'
+      MyNS.Hello2
+VALUE ERROR
+      MyNS.Hello2
+     ∧</code></pre>
+<p>has the same effect: the <code>⎕EX</code> statement did actually remove the “Hello2” function from the namespace but not from the script.</p>
+<p>Note that Fire investigates the script rather than the namespace. “<code>Hello2</code>” therefore would not pop up in Fire because it's not part of the script. If you find this confusing - so do I.</p>
+<p>If you now think: “Hang on, if <code>⎕FX</code> does not change a script at all, then surely a ”Replace“ operation with Fire must fail, right?” then luckily you would be wrong: Fire is smart enough to recognize the situation and manipulates - and finally fixes - the script rather than individual functions.</p>
+<p>By the way, if for any reason you want to know whether there is code somewhere in a ghostly namespace then you can achieve this by executing the “Report ghosts” command from the “Reports” menu.</p>
+<p>Note that code that exists in a ghostly namespace associated with an external object (Like an Excel workbook) is not reported; Fire cares about APL objects only.</p>
+<div class="h_tag">
+<a href="#Deleting-stuff" id="Deleting-stuff" class="autoheader_anchor">
+<h2>8. Deleting stuff</h2>
+</a>
+</div>
+<p>The “Replace” dialog has a check box “Delete lines/items with hits”. That seems to be easy enough: any lines that carry the search string are going to be deleted. However, there are details you need to be aware of:</p>
+<ol start="1">
+<li>The first and the last line of any script is never deleted, no matter whether they carry a hit or not.</li>
+<li>The first line of any function or operator is never deleted, no matter whether they carry a hit or not.</li>
+<li>If a simple variable carries a hit it is going to be an empty vector.</li>
+<li>All items in a vector of text vectors that carry a hit are deleted from that vector. That means that after the conversion the new vector will be shorter than the original one.</li>
+<li>A one-line dfns that carries a hit is deleted.</li>
+<li>A tfns that carries hits on all its lines is deleted.</li>
+</ol>
+<div class="h_tag">
+<a href="#Tips-and-Tricks" id="Tips-and-Tricks" class="autoheader_anchor">
+<h2>9. Tips and Tricks</h2>
+</a>
+</div>
+<p>Fire does not execute either <code>⎕DQ</code> or <code>Wait</code> on its main GUI. That allows one to move the focus to the session by pressing &lt;Ctrl+Tab&gt; in Fire. Sadly there is no way to move the focus back to Fire without the mouse.</p>
+<p>Avoiding <code>⎕DQ</code> works well in many circumstances but it might cause problems when other threads are running. In that case you are advised to finish those threads before you use Fire.</p>
+<div class="h_tag">
+<a href="#Editing" id="Editing" class="autoheader_anchor">
+<h3>9.1. Editing</h3>
+</a>
+</div>
+<p>When you edit one or more APL objects from Fire you can double-click another APL object in an Edit window successfully. You can also go to the session and add another Edit window to those which are already open. However, you are advised to use this feature with care.</p>
+<div class="h_tag">
+<a href="#Report-hits" id="Report-hits" class="autoheader_anchor">
+<h3>9.2. Report hits</h3>
+</a>
+</div>
+<p>After having performed a search “Report hits” allows you to check the hits in context. This is particularly useful in order to find out whether the hit list needs some fine tuning.</p>
+<div class="h_tag">
+<a href="#Print-object-name-to-the-session" id="Print-object-name-to-the-session" class="autoheader_anchor">
+<h3>9.3. Print object name(s) to the session</h3>
+</a>
+</div>
+<p>Note that you can make Fire print the fully qualified name of all selected items in the hit list either by selecting the appropriate command from the context menu or by pressing F4.</p>
+<div class="h_tag">
+<a href="#Copy-object-name-to-Search-for" id="Copy-object-name-to-Search-for" class="autoheader_anchor">
+<h3>9.4. Copy object name to “Search for”</h3>
+</a>
+</div>
+<p>Via the context menu or by pressing F6 you can copy the name of the currently selected object in the hit list to the “Search for” control. This option is inactive in case more than just one row of the hit list is selected.</p>
+<div class="h_tag">
+<a href="#The-Start-looking-here-control" id="The-Start-looking-here-control" class="autoheader_anchor">
+<h3>9.5. The “Start looking here” control</h3>
+</a>
+</div>
+<p>You can reduce the length of the path in the “Start looking in” by one “unit” by pressing Ctrl+Backspace. For example, if the current contents of the control is</p>
+<p><code>#.foo.my.subnamespaceNumber0911</code></p>
+<p>then pressing Ctrl+Backspace reduces this to</p>
+<p><code>#.foo.my</code></p>
+<p>Note that this works only when the cursor is positioned to the right of the contents.</p>
+<p>By pressing the &lt;delete&gt; key — when the focus is in the “Start looking here” field — you can reduce it from</p>
+<p><code>#.foo.my.subnamespaceNumber0911</code></p>
+<p>to just</p>
+<p><code>#</code></p>
+<div class="h_tag">
+<a href="#Enlarge-the-window" id="Enlarge-the-window" class="autoheader_anchor">
+<h3>9.6. Enlarge the window</h3>
+</a>
+</div>
+<p>If the hit list is too big to display all hits try pressing F8. This will enhance the height of the window to what's either necessary to display the full list or what is the maximum size of the monitor. This might not work too well on multiple-monitor systems when the screen sizes of the monitors involved are different.</p>
+<div class="h_tag">
+<a href="#Useful-Regular-expressions" id="Useful-Regular-expressions" class="autoheader_anchor">
+<h2>10. Useful Regular expressions</h2>
+</a>
+</div>
+<p>There is a separate document <code>UsefulRegExes.html</code> available — see there.</p>
+<div class="h_tag">
+<a href="#acre-and-Fire" id="acre-and-Fire" class="autoheader_anchor">
+<h2>11. acre and Fire</h2>
+</a>
+</div>
+<p><a href="https://github.com/the-carlisle-group/Acre-Desktop" class="external_link">acre on GitHub</a> is an Open Source source code management systen written in Dyalog APL by <a href="http://aplwiki.com/PhilLast" class="external_link">Phil Last</a>.</p>
+<p>Whether you are using acre 2, 3 or 4, as soon as Fire finds acre in the workspace (acre 2) or in <code>⎕SE</code> (acre 3 and 4) it will tell acre about all change and delete operations. acre will work out what project the object in question belongs to and take action, if any. In other words, Fire and acre are fully integrated.</p>
+<div class="h_tag">
+<a href="#Salt-and-Fire" id="Salt-and-Fire" class="autoheader_anchor">
+<h2>12. Salt and Fire</h2>
+</a>
+</div>
+<p>The Simple APL Library Toolkit (SALT) which is supplied with Dyalog APL is supported by Fire: when a script is managed by SALT then the script “contains” an ordinary namespace SALT_Data. This namespace contains a number of variables including</p>
+<ul>
+<li>CRC</li>
+<li>GlobalName</li>
+<li>LastWriteTime</li>
+<li>PreviousVersion</li>
+<li>SourceFile</li>
+<li>Version</li>
+</ul>
+<p>and others. SALT uses them for its own purposes.</p>
+<p>When a script is re-fixed with <code>⎕FIX</code> then the namespace SALT_Data disappears. However, Fire works out whether a script is managed by SALT and restores the namespace SALT_Data after having re-fixed it as part of a “Replace” operation. Therefore the script continues to be managed by SALT.</p>
+<p>What Fire does not do is actually saving any object via a SALT command. The simple reason is that when you change an object in the workspace it does not necessarily mean that you want to save those changes on disk. It's completely up to the programmer to make that decision.</p>
+<p>Note that in the “Report” menu there is a command “List changed SALTed scripts”. This command prints a SALT “Save” command to the session for all scripts that got changed by Fire and are managed by SALT.</p>
+<div class="h_tag">
+<a href="#Showing-the-PID-in-all-Fire-window-captions" id="Showing-the-PID-in-all-Fire-window-captions" class="autoheader_anchor">
+<h2>13. Showing the PID in all Fire window captions</h2>
+</a>
+</div>
+<p>Dyalog allows you to specify the captions of many GUI elements like the session, the Workspace Explorer, message boxes etc. by setting certain values in the Windows Registry. For details search for “Windows captions” in the Dyalog Help.</p>
+<p>In case you've added {PID} - which stands for “Process ID” - to the MessageBox value Fire will honor this and show the PID in all its GUI elements as well.</p>
+<p>In case you wonder what this is good for: there are people out there who have more than just one Dyalog session running at the same time, sometimes many. In such cases it can be very useful to know the process ID a particular message box belongs to, because it can be very awkward or impossible to find out by other means.</p>
+<p>Kai Jaeger — 2018-01-28</p>
+</body>
+</html>

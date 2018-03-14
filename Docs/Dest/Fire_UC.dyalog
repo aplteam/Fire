@@ -1,0 +1,101 @@
+﻿:Class  Fire
+⍝ User Command script for "Fire"
+⍝ Checks whether Fire is already loaded into ⎕SE.Fire.
+⍝ If this is the case than Fire is started.
+⍝ If this is not the case then Fire is copied into []SE from
+⍝ the same directory the User Command stems from and then started.
+⍝ Kai Jaeger ⋄ APL Team Ltd
+⍝ Version 2.0.0 - 2017-07-10
+⍝  * Massive changes: compatible only with Fire 6.0 and later.
+⍝  * Accepts `.` as an argument. Treated as "Copy current namespace into `Start looking here:`"
+⍝ Version 1.3.1 - 2017-02-24
+⍝  * Bug fix for the CommandFolder/WinReg key/separator problem
+⍝ Version 1.3.0 - 2016-09-19
+
+    ∇ r←List;⎕IO;⎕ML ⍝ this function usually returns 1 or more namespaces (here only 1)
+      :Access Shared Public
+      ⎕IO←⎕ML←1
+      r←⎕NS''                               ⍝ create the command
+      r.Name←'Fire'                         ⍝ the name
+      r.Desc←'Starts Fire (FInd & REplace)'
+      r.Group←'APLTree'                     ⍝ In 14.0 this MUST NOT be empty!
+     ⍝ Parsing rules for each:
+      r.Parse←'1s -fl'                      ⍝ Takes one optional switch: force load
+    ∇
+
+    ∇ r←Run(Cmd Args);⎕IO;⎕ML;rk;paths;thisPath;flag;l;tbc;dne;bool;regData;n
+      :Access Shared Public
+      ⎕IO←0 ⋄ ⎕ML←3 ⋄ ⎕WX←3
+      r←0 0⍴''
+      flag←Args.Switch'fl'
+      tbc←'APLTreeUtils' 'Fire' 'CompareSimple' 'FilesAndDirs' 'OS' 'WinReg'    ⍝ to be copied (tbc)
+      dne←0=↑∘⎕SE.⎕NC¨tbc                                                       ⍝ do not exist (dne)
+      :If flag
+          dne[tbc⍳⊂'Fire']←1                                                    ⍝ Enforce a load
+          ⎕SE.⎕EX'Fire'
+      :EndIf
+      :If 1∊dne
+          rk←'HKEY_CURRENT_USER\Software\Dyalog\Dyalog APL/W'
+          rk,←('64'≡¯2↑0⊃'.'⎕WG'APLVersion')/'-64'
+          rk,←' ',{⍵/⍨2>+\'.'=⍵}1⊃'.'⎕WG'APLVersion'
+          rk,←(80=⎕DR' ')/' Unicode'
+          rk,←'\SALT\CommandFolder'
+          regData←ReadRegKey rk
+          ((regData∊'∘°')/regData)←';'
+          paths←';'Split regData
+          :For thisPath :In paths
+              :Trap 11
+                  (⊃dne/tbc)⎕SE.⎕CY thisPath,'\Fire\Fire.dws'
+                  :Leave
+              :EndTrap
+          :EndFor
+      :EndIf
+      :If ∨/bool←0=↑∘⎕SE.⎕NC¨tbc
+          ⎕←'Copy operation failed:'
+          ⎕←⍪' ',¨bool/tbc
+          'Fire cannot be started'⎕SIGNAL 11
+      :EndIf
+      n←⎕SE.Fire.Run 0
+      :If 1=⍴↑Args.Arguments
+      :AndIf (,'.')≡,↑Args.Arguments
+          n.LookIn.Text←(⎕SI⍳⊂'UCMD')⊃⎕NSI
+      :EndIf
+    ∇
+
+    ∇ r←Help Cmd;⎕IO;⎕ML
+      ⎕IO←0 ⋄ ⎕ML←3
+      :Access Shared Public
+      r←⊂'Starts Fire (FInd & REplace).'
+      r,←⊂'Loads Fire (and some stuff needed by Fire) into ⎕SE'
+      r,←⊂'and starts it. When you call Fire again it is started'
+      r,←⊂'from ⎕SE without further ado.'
+      r,←⊂'However, you can force a reload into ⎕SE by specifying'
+      r,←⊂'the optional switch -fl (force load)'
+      r,←⊂''
+      r,←⊂'If you are somewhere different from # then you can force'
+      r,←⊂'Fire to put the current namespace path into "Start looking here"'
+      r,←⊂'by providing a dot as right argument:'
+      r,←⊂']Fire .'
+    ∇
+
+    ∇ r←{default}ReadRegKey key;wsh;⎕WX
+     ⍝ Read a registry key. Uses a particular default path which can be _
+     ⍝ overridden via the left argument
+      :Access public shared
+      ⎕WX←1
+      default←{0<⎕NC ⍵:⍎⍵ ⋄ ''}'default'
+      'wsh'⎕WC'OLEClient' 'WScript.Shell'
+      :Trap 11
+          r←wsh.RegRead key
+      :Else
+          r←default
+      :EndTrap
+    ∇
+
+      Split←{
+          ⎕ML←⎕IO←1
+          ⍺←⎕UCS 13 10 ⍝ Default is CR+LF
+          (⍴,⍺)↓¨⍺{⍵⊂⍨⍺⍷⍵}⍺,⍵
+      }
+
+:EndClass
