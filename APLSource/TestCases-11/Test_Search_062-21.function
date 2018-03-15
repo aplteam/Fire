@@ -1,5 +1,5 @@
- R←Test_Search_081(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search
-⍝ Search for a name in name only with "Match case" and "Match APL name" ticked.
+ R←Test_Search_062(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search
+⍝ Search for a string with "Names list only" (⎕NL) ticked with RegEx.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  R←∆Failed
 
@@ -10,19 +10,22 @@
  #.TEMP.⎕FX'r←Hello1' 'r←''Universe1'''
  #.TEMP.⎕FX'r←Hello2' 'r←''Universe2'''
  #.TEMP.⎕FX'r←Hello3' 'r←''Universe3'''
+ #.TEMP.⎕FX'r←BigHello' 'r←''Universe4'''
  #.TEMP.⎕FIX':Class Hello' '∇r←Hello' 'r←''Universe9''' '∇' ':EndClass'
 
  1 #._Fire.Fire.Run 0
  n←#._Fire.Fire.GUI.n
 
  ∆InitialyzeFireMainGUI_Settings n
- n.SearchFor.Text←'Hello2'
+ n.SearchFor.Text←'^Hello'
  n.LookIn.Text←'#.TEMP'
- n.(Case APL_Name).State←1
+ n.NamesOnly.State←1
+ n.(Code Vars).State←0
+ n.SearchIsRegEx.State←1
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp(,⊂'Hello2')≢n.HitList.Items
+ →GoToTidyUp 5≠⍴n.HitList.Items
  →GoToTidyUp'#.TEMP'≢0⊃n.HitList.ReportInfo[0;]
  R←∆OK
 

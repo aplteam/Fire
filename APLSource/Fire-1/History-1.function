@@ -1,4 +1,7 @@
  History
+⍝ * 6.4.1
+⍝   * Bug fixes
+⍝     * Search for name list did not work for both RegEx and non-RegEx searches.
 ⍝ * 6.4.0
 ⍝   * acre 4 is supported from acre's version 4.0.6 onwards only.
 ⍝   * The restriction that "Negate" was not available in case "RegEx" was ticked has been lifted.
