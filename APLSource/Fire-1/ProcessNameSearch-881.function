@@ -24,7 +24,7 @@
      :EndIf
      :If ~0∊⍴hits
          :If 1∊bool←~↑∘⍴∘,¨hits[;0]
-             hits[A.Where bool;0 1]←⊃{⍵.##(1⊃'.'A.SplitPath⍕⍵)}¨bool⌿hits[;1]
+             hits[Where bool;0 1]←⊃{⍵.##(1⊃'.'A.SplitPath⍕⍵)}¨bool⌿hits[;1]
          :EndIf
          hits,←⊂⍬
          hits,←⊂⍬

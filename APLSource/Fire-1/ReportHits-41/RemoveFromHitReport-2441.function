@@ -6,7 +6,7 @@
      file←↑,/{l←⌊/(w←⌽⍵)⍳'/\' ⋄ (⌽l↓w)({⍵↑⍨⍵⍳'#'}⌽l↑w)}file  ⍝ Remove bookmark
      buffer←##.A.ReadUtf8File file
      bool←~↑∨/∨/¨¨buffer∘{∨/¨⍵∘⍷¨⍺}¨({('<h2>',(⍕1+⍵),'. ')}¨rows)
-     rows2←##.A.Where~bool
+     rows2←##.Where~bool
      length←buffer∘{+/∧\'<a '∘≢¨3↑¨(1+⍵)↓⍺}¨rows2  ⍝ Number of rows of each object
      bool[↑,/rows2+¨1+⍳¨length]←0
      buffer/⍨←bool

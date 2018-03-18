@@ -19,7 +19,7 @@
          :If 1=noOf
              ref.SB.F1.Text←'Attention: there is one anomaly; see line ',⍕1+list[;0]⍳'!'
          :Else
-             ref.SB.F1.Text←'Attention: there are ',(⍕noOf),' anomalies; see lines ',⊃{⍺,',',⍵}/⍕¨1+##.A.Where list[;3]='!'
+             ref.SB.F1.Text←'Attention: there are ',(⍕noOf),' anomalies; see lines ',⊃{⍺,',',⍵}/⍕¨1+##.Where list[;3]='!'
          :EndIf
          ref.SB.F1.FCol←250 0 0
      :EndIf

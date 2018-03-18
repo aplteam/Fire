@@ -12,7 +12,7 @@
      options←##.G.Case+4×##.G.SearchIsRegEx
      {}{0::⍬ ⋄ ⍵(4454⌶)1}##.G.SearchFor''options
  :EndIf
- :If ~0∊⍴ind←##.A.Where 0=↑∘⍴¨objects[;1]
+ :If ~0∊⍴ind←##.Where 0=↑∘⍴¨objects[;1]
      objects[ind;]←⊃{#,⊂⍕0⊃⍵}¨↓objects[ind;]
  :EndIf
  (objects[;0]).⎕ED&objects[;1]

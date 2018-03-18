@@ -10,7 +10,7 @@
      _←'mm.RemoveFromList'⎕WC'MenuItem'('Remove from hit list',##.TAB,'Del')('Event' 'Select' 1)
      (0∊⍴res←⎕DQ'mm'):⍬
      ('mm.Cancel'≡0⊃res):⍬
-     ('mm.EditCode'≡0⊃res):EditCode n.List.ReportInfo[##.A.Where n.List.SelItems;0]
+     ('mm.EditCode'≡0⊃res):EditCode n.List.ReportInfo[##.Where n.List.SelItems;0]
      ('mm.RemoveFromList'≡0⊃res):RemoveFromList n
-     ('mm.PrintName'≡0⊃res):PrintName¨n.List.ReportInfo[##.A.Where n.List.SelItems;0]
+     ('mm.PrintName'≡0⊃res):PrintName¨n.List.ReportInfo[##.Where n.List.SelItems;0]
  }

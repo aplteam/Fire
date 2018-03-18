@@ -3,7 +3,7 @@
      ⍺←' '
      ~(≡⍵)∊0 1:⍺∘∇¨⍵
      string←,⍵
-     w←##.A.Where{⍵∨≠\⍵}''''=string
+     w←##.Where{⍵∨≠\⍵}''''=string
      string[w]←⍺
      string
  }

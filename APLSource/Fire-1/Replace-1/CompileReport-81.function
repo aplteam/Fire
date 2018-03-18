@@ -9,7 +9,7 @@
      G.DeleteLineFlag←n.DeleteLine.State
      G.MarkChanges←n.MarkChanges.State
      G.MarkChangesWith←n.MarkChanges.State/n.MarkChangesText.Text
-     G.MarkChangeType←n.MarkChanges.State×1+##.A.Where n.MarkChangesType.SelItems
+     G.MarkChangeType←n.MarkChanges.State×1+##.Where n.MarkChangesType.SelItems
      {}##.ReportDiffs.CompileReport G ##.G.CompressType
      ##.SetCursorObj cursorWas
  :Else

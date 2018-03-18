@@ -9,7 +9,7 @@
  n.HitList.Items←names                      ⍝ Assign the names
  n.HitList.Visible←1
  type2←('Vars' 'tfn' 'dfn' 'top' 'dop' 'NS' 'Interface' 'Class' '')[type1←2.1 3.1 3.2 4.1 4.2 9.1 9.5 9.4⍳hits[;3]]
- type2[##.A.Where hits[;6]=4]←⊂'Class Instance'
+ type2[##.Where hits[;6]=4]←⊂'Class Instance'
  fnsOprs←type1∊1 2
  isScript←(hits[;3]∊9.4 9.5)∨{↑{(0∊⍴⍵):##.IsScripted ⍺ ⋄ ⍺ ##.IsScripted ⍵}/⍵}¨↓hits[;0 1]
  realNames←⍕¨##.IgnoreDisplayFormat¨locs

@@ -8,7 +8,7 @@
  :For i :In ⍳⍴these
      this←(i⊃these)~' '
      :If 0<+/b←this⍷in                                  ⍝ No hit at all?
-         ind←##.A.Where b
+         ind←##.Where b
          :If ~0∊⍴ind←(~in[ind-1]∊start)/ind             ⍝ Can it be a name? (left)
          :AndIf ~0∊⍴ind←(~in[ind+⍴this]∊end)/ind        ⍝ Can it be a name? (Right)
              :If ∧/gf←'.'=in[ind-1]                     ⍝ Globally referenced?

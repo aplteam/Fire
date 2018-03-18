@@ -1,4 +1,7 @@
  History
+⍝ * 6.4.2
+⍝   * Under certain circumstances which are still not understood Fire can become very slow.
+⍝     This it a Dyalog bug but 6.4.2 gets around that.
 ⍝ * 6.4.1
 ⍝   * Bug fixes
 ⍝     * Search for name list did not work for both RegEx and non-RegEx searches.

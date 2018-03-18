@@ -21,7 +21,7 @@
      bool2[(⍴bool2)⌊ind∘.+length]←⊂0 1
      bool2←↑,/bool2
      body←bool2\body
-     body[##.A.Where~bool2]←⊂'</span>'
+     body[##.Where~bool2]←⊂'</span>'
      body←##.Simplify body
      body←##.CR ##.A.Split{⍵↓⍨-##.CR=¯1↑⍵}body
      bool←∨/¨'<span class="diff">'∘⍷¨body

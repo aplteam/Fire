@@ -2,7 +2,7 @@
 ⍝ Called by `MarkupRegExHitsInVars`, no independent value.
  r←1↓↑,/##.CR,¨data
  (ind length)←(length>0)∘/¨ind length   ⍝ A RegEx search can find something with the length of 0, like ^\s{0,}
- items←##.A.Where data ##.WhichItemsOrRows ind length
+ items←##.Where data ##.WhichItemsOrRows ind length
  r←ExchangeHtmlChars r
  r[ind]←'<span class="diff">'∘,¨MakeBlanksVisible¨r[ind]
  r[¯1+ind+length]←r[¯1+ind+length],¨⊂'</span>'

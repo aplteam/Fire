@@ -15,15 +15,15 @@
  (b1/b)←0                           ⍝ Let the "{" survive - we need this later
  (b/body)←' '
  (b/mask)←' '
- body[A.Where(CR≠mask)∧({⍵∨≠\⍵}'∇'=mask)]←' '
+ body[Where(CR≠mask)∧({⍵∨≠\⍵}'∇'=mask)]←' '
  ((mask='}')/mask)←' '
  body←CR A.Split body
  mask←CR A.Split mask
  b1←∨/¨mask='{'
  b2←~'⋄'∊¨b1/mask                   ⍝ Those in b1 have no "⋄"
- ind←b2/A.Where b1                  ⍝ Transform into index
+ ind←b2/Where b1                  ⍝ Transform into index
  mask[ind]←(↑∘⍴¨mask[ind])⍴¨' '     ⍝ ...therefore they are getting blanks.
- b1[b2/A.Where b1]←0                ⍝ Forget those
+ b1[b2/Where b1]←0                ⍝ Forget those
  :If 0<+/b1                         ⍝ Are there any "⋄" at all?
      split←{1,'⋄'=⍵}¨b1/mask
      buffer←split{⎕IO←⎕ML←1 ⋄ ⍺⊂'⋄',⍵}¨b1/body

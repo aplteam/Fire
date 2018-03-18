@@ -6,7 +6,7 @@
  mask←{{⍵∨≠\⍵}⍵=''''}¨data
  :For i :In ⍳⍴data
      buff←i⊃data2
-     buff[A.Where i⊃mask]←' '
+     buff[Where i⊃mask]←' '
      (i⊃data2)←buff
  :EndFor
  where←data2⍳¨'⍝'

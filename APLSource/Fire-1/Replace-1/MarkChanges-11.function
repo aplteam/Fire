@@ -3,14 +3,14 @@
  :If n.MarkChanges.State
      :Select n.MarkChangesType.((SelItems⍳1)⊃Items)
      :Case 'Above'
-         ind←##.A.Where~newCode∊oldCode
+         ind←##.Where~newCode∊oldCode
          newCode[ind]←(⊂⊂n.MarkChangesText.Text),¨⊂¨newCode[ind]
          newCode←↑,/{(0 1∊⍨≡⍵):⊂⍵ ⋄ ⍵}¨newCode
      :Case 'Same line'
-         ind←##.A.Where~newCode∊oldCode
+         ind←##.Where~newCode∊oldCode
          newCode[ind]←newCode[ind],¨⊂'  ',n.MarkChangesText.Text
      :Case 'Underneath'
-         ind←##.A.Where~newCode∊oldCode
+         ind←##.Where~newCode∊oldCode
          newCode[ind]←(⊂¨newCode[ind]),¨⊂⊂n.MarkChangesText.Text
          newCode←↑,/{(0 1∊⍨≡⍵):⊂⍵ ⋄ ⍵}¨newCode
      :EndSelect
