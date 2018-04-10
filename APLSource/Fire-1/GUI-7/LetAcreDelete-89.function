@@ -4,7 +4,7 @@
  r←⍬
  :If ##.IsAnyAcreAround
      :If 0<⎕NC'⎕SE.acre'
-         {}{⎕SE.UCMD'acre.Erase ',⍵,' [ messages←''off'' ]'}¨GetFullPath¨rows
+         {}{⎕SE.UCMD'acre.Erase ',⍵,' -messages=''off'''}¨GetFullPath¨rows
      :EndIf
      :If 0<⎕NC'#.acre'
          {}#.acre.Erase GetFullPath¨rows

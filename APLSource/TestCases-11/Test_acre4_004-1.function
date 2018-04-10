@@ -15,7 +15,7 @@
  'TEMP'#.⎕NS''
  #.TEMP.⎕FX'r←Hello' 'r←''Hello world'''
  #.TEMP.⎕FIX':Class Foo' '∇r←Hello' 'r←''Hello world''' '∇' ':EndClass'
- ⎕SE.UCMD'acre.CreateProject ',acreTestProjectName,' #.TEMP'
+ {}⎕SE.UCMD'acre.CreateProject ',acreTestProjectName,' #.TEMP'
 
  1 #._Fire.Fire.Run 0
  n←#._Fire.Fire.GUI.n

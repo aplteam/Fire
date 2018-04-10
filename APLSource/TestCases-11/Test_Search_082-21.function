@@ -14,7 +14,7 @@
  n.(Code Vars).State←0
 
  {}∆Select n.StartBtn
- 0.5 ∆Process n.Form
+ 0.2 ∆Process n.Form
  →GoToTidyUp 3≠#._Fire.Fire.G.NoOfObjects
  R←∆OK
 

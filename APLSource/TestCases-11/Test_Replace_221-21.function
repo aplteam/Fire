@@ -42,7 +42,7 @@
  n.(Vars APL_Code Text).State←0
 
  {}∆Select n.StartBtn
- 1 ∆Process n.Form
+ 0.2 ∆Process n.Form
  →GoToTidyUp 2≠#._Fire.Fire.G.NoOfObjects
  →GoToTidyUp~n.HitList.Items Match'Foo' 'hello4' ⍝ But NOT hello5 !!
 

@@ -2,9 +2,9 @@
 ⍝ Replace string in two dfns defined on a single line together with some vars defs and a comment by multi-line replacement
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  R←∆Failed
- ⎕←'Test case is inactive: ',∊1↑⎕XSI
 
- →R←0                ⍝ At the moment this is illegal in Dyalog
+ R←∆Inactive
+ :Return
 
 ⍝ Preconditions
  #.⎕SHADOW'TEMP'
@@ -54,7 +54,7 @@
  n.ReuseSearch.State←0
 
  {}∆Select n.StartBtn
- 1 ∆Process n.Form
+ 0.2 ∆Process n.Form
  →GoToTidyUp 3≠#._Fire.Fire.G.NoOfObjects
  →GoToTidyUp~n.HitList.Items Match'Foo' 'f1' 'f2'
 

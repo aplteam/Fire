@@ -39,7 +39,7 @@
  n.SearchIsRegEx.State←1
 
  {}∆Select n.StartBtn
- 0.5 ∆Process n.Form
+ 0.2 ∆Process n.Form
  →GoToTidyUp~n.HitList.Items ∆LazyMatch'Foo_2' 'Hello_2' 'Sub1Hello_2' 'Sub1Foo_2' 'Sub2Hello_2' 'Sub2Foo_2' 'Sub3_Hello2' 'Sub3HelloNS_2' 'Sub_3' 'Sub_4'
  R←∆OK
 

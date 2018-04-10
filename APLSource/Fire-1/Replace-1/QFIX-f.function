@@ -30,5 +30,5 @@
          r←1 ⋄ :Return
      :EndSelect
  :EndIf
- TellAcre(⍕ref),'.',{⍵↑⍨⍵⍳' '}(⍴':Namespace ')↓0⊃script
+ ##.G.TestFlag TellAcre(⍕ref),'.',{⍵↑⍨⍵⍳' '}(⍴':Namespace ')↓0⊃script
  ⍝Done

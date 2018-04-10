@@ -19,7 +19,7 @@
  n.LookIn.Text←'#.TEMP'
 
  {}∆Select n.StartBtn
- 1 ∆Process n.Form
+ 0.3 ∆Process n.Form
  →GoToTidyUp~n.HitList.Items ∆LazyMatch'myDop'
 
  {}∆Select n.ReplaceBtn

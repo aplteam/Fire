@@ -3,5 +3,5 @@
 ⍝ Returns 1 when the user has cancelled the process, otherwise 0.
  r←0
  ⍎(⍕ref),'.',name,'←data'
- TellAcre(⍕ref),'.',name
+ ##.G.TestFlag TellAcre(⍕ref),'.',name
 ⍝Done

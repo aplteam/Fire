@@ -28,7 +28,7 @@
  n.SearchFor.Text←'Universe'
 
  {}∆Select n.StartBtn
- 0.5 ∆Process n.Form
+ 0.2 ∆Process n.Form
  →GoToTidyUp 5≠#._Fire.Fire.G.NoOfObjects ⍝ (!)
  R←∆OK
 

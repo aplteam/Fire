@@ -10,7 +10,7 @@
          :If 3=⎕NC'#.acre.Erase'
              {}#.acre.Erase(⍕ref),'.',name
          :ElseIf 9=⎕NC'⎕SE.acre'
-             {}⎕SE.UCMD'acre.Erase ',(⍕ref),'.',name,' [ messages←''off'' ]'
+             {}⎕SE.UCMD'acre.Erase ',(⍕ref),'.',name,' -messages=''off'''
          :Else
              . ⍝ Huuh?! Acre is around and isn't?!
          :EndIf
@@ -42,7 +42,7 @@
              :EndSelect
          :Else
              flag←1
-             TellAcre(⍕ref),'.',name
+             ##.G.TestFlag TellAcre(⍕ref),'.',name
          :EndIf
      :Until flag
  :EndIf

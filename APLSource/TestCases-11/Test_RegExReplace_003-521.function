@@ -18,7 +18,7 @@
  n.(Greedy DotAll).(Active State)←1
 
  {}∆Select n.StartBtn
- 1 ∆Process n.Form
+ 0.2 ∆Process n.Form
  →GoToTidyUp 1≠↑⍴n.HitList.ReportInfo
 
  {}∆Select n.ReplaceBtn

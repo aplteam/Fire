@@ -1,7 +1,7 @@
 ﻿:Class  Fire
 ⍝ User Command script for "Fire"
 ⍝ Checks whether Fire is already loaded into ⎕SE.Fire.
-⍝ If this is the case than Fire is started.
+⍝ If this is the case then Fire is started.
 ⍝ If this is not the case then Fire is copied into []SE from
 ⍝ the same directory the User Command stems from and then started.
 ⍝ Kai Jaeger ⋄ APL Team Ltd

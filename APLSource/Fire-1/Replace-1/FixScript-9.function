@@ -40,5 +40,5 @@
          :EndSelect
      :EndTrap
  :Until flag
- TellAcre taa
+ ##.G.TestFlag TellAcre taa
 ⍝Done

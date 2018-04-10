@@ -25,7 +25,7 @@
  n.(Comments Text).State←0
 
  {}∆Select n.StartBtn
- 1 ∆Process n.Form
+ 0.2 ∆Process n.Form
  →GoToTidyUp 3≠#._Fire.Fire.G.NoOfObjects
  →GoToTidyUp~n.HitList.Items Match'Foo' 'f1' 'f2'
 

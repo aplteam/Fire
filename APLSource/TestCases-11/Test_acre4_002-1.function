@@ -48,7 +48,7 @@
 
  n.HitList.SelItems←n.HitList.Items∊'Doe' 'Foe'
  {}#._Fire.Fire.GUI.LetAcreDelete n.HitList.Items⍳'Doe' 'Foe'
- 1 ∆Process n.Form
+ 0.2 ∆Process n.Form
 
  →GoToTidyUp~∧/~'Doe' 'Foe'∊#.FireAcreTest.⎕NL-⍳16
  changeFilesFolder←'expand'#.FilesAndDirs.NormalizePath acreTestProjectName,'\.acre\changes\'

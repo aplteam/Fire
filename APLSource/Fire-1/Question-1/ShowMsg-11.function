@@ -1,9 +1,7 @@
  {r}←{addToCaption}ShowMsg msg;cs
 ⍝ Show a piece of information
  r←1
- :If ##.G.TestFlag
-     ⎕←msg
- :Else
+ :If ~##.G.TestFlag
      cs←CreateDefaultParms
      cs.cancelCaption←''
      :If 0<⎕NC'addToCaption'

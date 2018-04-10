@@ -9,8 +9,6 @@
  1 ⎕NQ n.Form'Close'
  :If ∆IsAcre2Or3
      {}⎕SE.UCMD'acre.SetProperty Fire displaymethod ""'
- :Else
-     {}⎕SE.UCMD'acre.projects [messages←''on'']'
  :EndIf
  ⎕EX'∆IsAcre2Or3'
  {}⎕WA

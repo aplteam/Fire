@@ -18,7 +18,7 @@
  n.(Code Vars).State←0
 
  {}∆Select n.StartBtn
- 0.5 ∆Process n.Form
+ 0.2 ∆Process n.Form
  →GoToTidyUp 4≠#._Fire.Fire.G.NoOfObjects
  →GoToTidyUp'#.TestData.OptimaUtils'≢0⊃n.HitList.ReportInfo[3;]
  R←∆OK

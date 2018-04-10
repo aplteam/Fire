@@ -96,7 +96,7 @@
  n.(Case APL_Name).State←1
 
  {}∆Select n.StartBtn
- 1 ∆Process n.Form
+ 0.2 ∆Process n.Form
  →GoToTidyUp 11≠#._Fire.Fire.G.NoOfObjects
 
  {}∆Select n.ReplaceBtn

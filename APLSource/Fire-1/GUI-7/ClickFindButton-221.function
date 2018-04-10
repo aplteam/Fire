@@ -2,7 +2,7 @@
 ⍝ Clicks the find button and returns a zero, Called when user did press <Enter>
      ({0=⎕NC ⍵:0 ⋄ 1⊣⎕NQ(⍎⍵)'GotFocus'}'n.Form.ReplaceForm'):0  ⍝ Ignore when the "Replace" dialog is open (but does not have the focus)
      hasFocus←2 ⎕NQ'.' 'GetFocus'
-    ⍝(n.ReplaceBtn≡⍎hasFocus):1     ⍝ Not when the "Replace" button has the focus! ⍝ Doesn't not always work: <00503>
+    ⍝(n.ReplaceBtn≡⍎hasFocus):1     ⍝ Not when the "Replace" button has the focus! ⍝ Does not always work: <00503>
      (≡/1⊃¨'.'##.A.SplitPath¨(⍕n.ReplaceBtn)hasFocus):1 ⍝ Circumvention of bug <00503>
      _←⎕NQ n.StartBtn'Select'
      0

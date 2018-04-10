@@ -14,7 +14,7 @@
  n.Comments.State←0
 
  {}∆Select n.StartBtn
- 0.5 ∆Process n.Form
+ 0.2 ∆Process n.Form
  →GoToTidyUp n.HitList.Items≢'DeleteLinesFromThis2' 'DeleteLinesFromThis_abc' 'MyClass'
  →GoToTidyUp(,⊂'#.TestData.APL_Names')≢∪n.HitList.ReportInfo[;0]
 

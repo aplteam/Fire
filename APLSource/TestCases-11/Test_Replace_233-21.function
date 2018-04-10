@@ -19,7 +19,7 @@
  n.Case.State←1
 
  {}∆Select n.StartBtn
- 1 ∆Process n.Form
+ 0.2 ∆Process n.Form
  →GoToTidyUp(↑⍴#.TEMP.⎕NL 2)≠#._Fire.Fire.G.NoOfObjects
  →GoToTidyUp~n.HitList.Items Match⊂'vars'
  →GoToTidyUp 1≢↑↑n.HitList.ReportInfo[;3]

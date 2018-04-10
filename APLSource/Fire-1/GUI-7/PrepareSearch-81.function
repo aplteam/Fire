@@ -1,4 +1,4 @@
- (parms_____)←PrepareSearch
+ (parms_____)←PrepareSearch dummy
 ⍝ Prepare for the search.
 ⍝ Returns 1 for "carry on" and 0 otherwise.
 ⍝ Returns a namespace in order to avoid name clashes, in particular when Fire searches itself.

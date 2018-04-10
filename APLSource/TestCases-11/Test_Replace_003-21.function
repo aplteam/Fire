@@ -31,16 +31,16 @@
 
  n.SearchFor.Text←'#.UTILS.#'
  {}∆Select n.StartBtn
- 0.5 ∆Process n.Form
+ 0.2 ∆Process n.Form
  {}∆Select n.StartBtn
- 0.5 ∆Process n.Form
+ 0.2 ∆Process n.Form
  →GoToTidyUp 0≠#._Fire.Fire.G.NoOfObjects
 
  n.SearchFor.Text←'#.UTILS.'
  {}∆Select n.StartBtn
- 0.5 ∆Process n.Form
+ 0.2 ∆Process n.Form
  {}∆Select n.StartBtn
- 0.5 ∆Process n.Form
+ 0.2 ∆Process n.Form
  →GoToTidyUp 5≠#._Fire.Fire.G.NoOfObjects
  R←∆OK
 

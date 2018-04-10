@@ -1,5 +1,5 @@
  ToggleAutoStatus←{
- ⍝ Toggle whether the AutoStatus menu item is checked or not.
+ ⍝ Toggles whether the AutoStatus menu item is checked or not.
  ⍝ ⍵ must be either 1 (checked) or 0 (not checked) or `?`, otherwise an error is thrown.
  ⍝ Use this to temporarily switch it off and back on again later.
  ⍝ Returns the status of the menu item as result.

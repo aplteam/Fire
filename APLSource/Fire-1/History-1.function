@@ -1,4 +1,15 @@
  History
+⍝ * 6.5.0
+⍝   * Fire 6.5 is compatible with acre 4.2 and better only. If you use an older version of
+⍝     acre then you should only update after you've moved to acre 4.2.0 or better. This is due
+⍝     to the introduction of `-flags` in acre 4.2.0.
+⍝   * Bug fixes:
+⍝     * In case <CursorDown> was pressed in "Search for" but no items were available to select from
+⍝       the contents of the "Search for" edit control was deleted anyway.
+⍝     * When "Search hit list" was ticked then later the field "Start looking here" remained under
+⍝       under certain circumstances.
+⍝     * When `#` was typed into an empty "Search hit list" a `.` was wrongly added automatically.
+⍝     * Under certain circumstances the "Find" button became active when it should not.
 ⍝ * 6.4.2
 ⍝   * Under certain circumstances which are still not understood Fire can become very slow.
 ⍝     This it a Dyalog bug but 6.4.2 gets around that.
@@ -15,37 +26,4 @@
 ⍝     * When "Compare one-by-one" (Replace) was selected and acre 4 active then there was a problem.
 ⍝     * Right-click on "Search for" crashed Fire.
 ⍝ * 6.3.0
-⍝   * Fire is now compatible with acre 2, 3 and 4.
-⍝ * 6.2.1
-⍝   * Bug fixes
-⍝     * Pressing a key in "Start looking here" could break Fire in case the list was empty.
-⍝     * The name class in the "Hit" report showed a local separator. Is now always a dot.
-⍝     * The "Action" column in the "Hit" was not always visible.
-⍝     * The help file(s) where not always found.
-⍝     * RegEx expressions crashed in version 16.0.
-⍝     * Some non-changeable varaiables were not removed from the hit list before a Replace operation.
-⍝ * 6.2.0
-⍝   * "Report Hits" improved:
-⍝     * Renamed to "Report details".
-⍝     * By default only lines with hits are shown but with the newly introduced "Show all lines" check box the user might
-⍝       view all lines.
-⍝     * Clicking on an object in the TreeView scrolls to that object.
-⍝     * Styling improved.
-⍝     * "Preview" is scrolled automatically when a line is clicked.
-⍝     * "Preview" is scrolled automatically when one of these keys is pressed: CursourUp, CursorDown, Home, End, PageUp, PageDown
-⍝     * Internal improvements: uses Edge now and produces HTML5.
-⍝   * "Replace Report" improved:
-⍝     * The space bar now toggles the check bos
-⍝     * "Preview" is scrolled automatically when a line is clicked.
-⍝     * "Preview" is scrolled automatically when one of these keys is pressed: CursourUp, CursorDown, Home, End, PageUp, PageDown
-⍝     * Styling improved.
-⍝   * Autocomplete does not allow entering keystrokes that do not fit anyway.
-⍝   * Bug fixes:
-⍝     * "Match APL name" was not honoured when "Name list only" was ticked.
-⍝     * A RegEx search could crash depending on the contents of fns/opr/vars.
-⍝     * With "Comments" not ticked "Report details" might go wrong.
-⍝     * The "Replace" button remained active when a name was copied from to hit list to "Search for" (F6).
-⍝     * The "Detailed report" was not always made inactive when it should.
-⍝ * 6.1.1
-⍝   * Autocomplete in "Start looking here" improved.
-⍝   * "Replace by" improved, in particular the context menu.
+⍝   * Fire is now compatible with acre 2, 3 and 4.0

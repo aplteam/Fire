@@ -30,7 +30,7 @@
  n.LookIn.Text←'#.TEMP'
 
  {}∆Select n.StartBtn
- 0.5 ∆Process n.Form
+ 0.2 ∆Process n.Form
  →GoToTidyUp 11≠#._Fire.Fire.G.NoOfObjects
  expected←'Foo1' 'Foo2' 'FormFns2' 'Hello1' 'Hello2' 'Hello3' 'Hello4' 'IF1' 'IF2' 'myFns2' 'myFns1'
  →GoToTidyUp~expected ∆LazyMatch n.HitList.Items

@@ -37,7 +37,7 @@
  n.LookIn.Text←'#.FireAcreTest'
 
  {}∆Select n.StartBtn
- 1 ∆Process n.Form
+ 0.2 ∆Process n.Form
  →PassesIf 5=#._Fire.Fire.G.NoOfObjects   ⍝ The one in the unnamed namepace is not found!
 
  {}∆Select n.ReplaceBtn
@@ -48,7 +48,7 @@
  n2.ReplaceBy.Text←'Universe'
 
  {}∆Select n2.StartBtn
- 1 ∆Process n.Form
+ 0.2 ∆Process n.Form
 
  →GoToTidyUp~'Johnny in the Universe'≡#.FireAcreTest.Doe
  →GoToTidyUp~'Universe11'≡#.FireAcreTest.MyClass.Hello

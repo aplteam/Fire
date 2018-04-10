@@ -22,7 +22,7 @@
  n.(APL_Code Comments Text).State←0
 
  {}∆Select n.StartBtn
- 1 ∆Process n.Form
+ 0.2 ∆Process n.Form
  →GoToTidyUp 1≠#._Fire.Fire.G.NoOfObjects
 
  {}∆Select n.ReplaceBtn

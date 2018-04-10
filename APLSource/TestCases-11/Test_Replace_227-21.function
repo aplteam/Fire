@@ -2,8 +2,11 @@
 ⍝ Replace string within 1-line dfns & multi-line dfns with definition starting on same line by multi-line replacement.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  R←∆Failed
- ⎕←'This test case is not active: ',∊1↑⎕XSI
- →R←0
+
+ R←∆Inactive
+ :Return
+
+
 ⍝ Preconditions
  #.⎕SHADOW'TEMP'
  'TEMP'#.⎕NS''
@@ -57,7 +60,7 @@
  n.ReuseSearch.State←0
 
  {}∆Select n.StartBtn
- 1 ∆Process n.Form
+ 0.2 ∆Process n.Form
  →GoToTidyUp 3≠#._Fire.Fire.G.NoOfObjects
  →GoToTidyUp~n.HitList.Items Match'Foo' 'f1' 'f2'
 
