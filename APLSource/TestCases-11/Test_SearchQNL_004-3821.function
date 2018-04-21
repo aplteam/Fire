@@ -1,4 +1,4 @@
- R←Test_Search_082(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search
+ R←Test_SearchQNL_004(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search
 ⍝ Search for "QAN" in #.TicToc (bug fix)
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  R←∆Failed
@@ -10,8 +10,9 @@
  ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'qan'
  n.LookIn.Text←'#.TestData.TicToc'
- n.NamesOnly.State←1
- n.(Code Vars).State←0
+ ⎕NQ n.Tab2'Select'
+ ∆Process n.Form
+ n.Vars2.State←0
 
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form

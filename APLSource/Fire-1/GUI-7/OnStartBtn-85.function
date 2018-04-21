@@ -1,20 +1,21 @@
- {r}←OnStartBtn msg;ref_____;flag;hits;noOfObj;noOfContainers;⎕TRAP
+ {r}←OnStartBtn msg;ref_____;flag;hits;noOfObj;noOfContainers;⎕TRAP;n
 ⍝ Perform the search.
 ⍝ This must be a dfns in order to avoid name clashes in case Fire searches itself.
 ⍝ Even so we must use exotic names here because otherwise one of our own test cases would
 ⍝ replace `parms` by `parms`...
  r←0
  ⎕IO←0 ⋄ ⎕ML←3          ⍝ To overcome bug <01001>
- :If CheckForConsistency GetRefTo_n↑msg
+ n←GetRefTo_n↑msg
+ :If CheckForConsistency n
      {}WriteInfo'Search cancelled'
  :Else
      ⎕TRAP←(988 'C' '→∆RegExFailed')(0 'S')
-     {}CopyGuiToGlobal''
+     CopyGuiToGlobal n
      ref_____←⎕NS''              ⍝ Trick to hide `parms` from Fire itself.
      ref_____.parms_____←PrepareSearch ⍬
      :If 0≠ref_____.parms_____.successFlag_____
 
-         (flag hits noOfObj noOfContainers)←##.RunSearch~n.ReuseSearch.State   ⍝ <=== work horse
+         (flag hits noOfObj noOfContainers)←##.RunSearch n   ⍝ <=== work horse
 
          hits←CheckHitList hits
          ProcessSearchResult flag hits noOfObj noOfContainers ref_____.parms_____.cursorWas_____
@@ -23,7 +24,7 @@
          n.SearchFor.SelText←2⍴1+⍴,n.SearchFor.Text
          ⎕NQ n.SearchFor'GotFocus'
      :Else
-         n.ReportHits.Active←1
+         n.ReportHits.Active←~IsNamesOnlySearch n
      :EndIf
  :EndIf
  :Return

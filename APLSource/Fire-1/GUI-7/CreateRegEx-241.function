@@ -1,12 +1,12 @@
- CreateRegEx;∆;rf;tip;msg
+ n←CreateRegEx n;∆;rf;tip;msg
 ⍝
 
  ∆←⊂'Group'
  ∆,←⊂'Caption' 'RegEx'
- ∆,←⊂'Posn'((15+0⊃PosnPlusSize n.LookIn),(10+1⊃PosnPlusSize n.APL_Code.##))
- ∆,←⊂'Size'(130 160)
+ ∆,←⊂'Posn'(7 10)
+ ∆,←⊂'Size'(110 160)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
- rf←⍎'OptionsGroup'n.Form.⎕WC ∆
+ rf←⍎'OptionsGroup'n.SF1.⎕WC ∆
 
  ∆←⊂'Button'
  ∆,←⊂'Caption' 'Is RegE&x'
@@ -51,5 +51,4 @@
  n.UCP.onSelect←'OnToggleSearchIsRegEx'
 
  {}PolishWidth rf
- {}PolishHeight rf
  ⍝ Done

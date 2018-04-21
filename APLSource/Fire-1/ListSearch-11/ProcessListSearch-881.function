@@ -1,9 +1,9 @@
- {r}←ProcessListSearch(varsName nameList);_;noOfContainers;Namespacelist;objList
+ {r}←ProcessListSearch(varsName nameList n);_;noOfContainers;Namespacelist;objList
 ⍝ "nameList" is a vector of text vectors containing names to be searched
  nameList/⍨←0<↑∘⍴¨nameList          ⍝ Remove any empty lines
  r←(,[0.5]nameList),0
  (0⊃⎕SI)⎕STOP⍨(⎕STOP 0⊃⎕SI){StopInCallingCounter:⍺,⍵ ⋄ ⍺~⍵}1+0⊃⎕LC
- (objList noOfContainers)←##.GetList(~##.GUI.n.ReuseSearch.State)0
+ (objList noOfContainers)←##.GetList n(~##.GUI.n.ReuseSearch.State)0
  :If 0=noOfContainers
      {}##.Question.ShowMsg'No hits: no containers found'
  :ElseIf ~0∊⍴objList

@@ -1,24 +1,22 @@
- {r}←SetStateAndActive dummy;p;exec
- r←⍬
+ n←SetStateAndActive n;p;exec
  p←##.GetFireRegistryKey
  exec←{↑(//)⎕VFI ⍵}
- n.Case.(State Active)←2↑exec'0 1'##.R.GetString p,'Case'
+ n.SearchIsRegEx.State←↑(exec'0'##.R.GetString p,'SearchIsRegEx'),0
+ n.DotAll.State←↑(exec'0'##.R.GetString p,'DotAll'),0
+ n.Greedy.State←↑(exec'0'##.R.GetString p,'Greedy'),0
+ n.UCP.State←↑(exec'0'##.R.GetString p,'UCP'),0
+ n.UCP2.State←↑(exec'0'##.R.GetString p,'UCP2'),0
+ n.Case.State←↑exec'0'##.R.GetString p,'Case'
+ n.Case2.State←↑exec'0'##.R.GetString p,'Case2'
  n.APL_Name.State←1↑exec'0'##.R.GetString p,'APL_Name'   ⍝ NOT "Active"!
- n.Code.(State Active)←2↑exec'1 1'##.R.GetString p,'Code'
- n.Vars.(State Active)←2↑exec'1 1'##.R.GetString p,'Vars'
- n.NamesOnly.(State Active)←2↑exec'0 1'##.R.GetString p,'NamesOnly'
- n.APL_Code.(State Active)←2↑exec'1 1'##.R.GetString p,'APL_Code'
- n.Comments.(State Active)←2↑exec'1 1'##.R.GetString p,'Comments'
- n.Text.(State Active)←2↑exec'1 1'##.R.GetString p,'Text'
- n.SearchIsRegEx.(State Active)←2↑(exec'0 1'##.R.GetString p,'SearchIsRegEx'),0
- n.DotAll.(State Active)←2↑(exec'0 0'##.R.GetString p,'DotAll'),0
- n.Greedy.(State Active)←2↑(exec'0 0'##.R.GetString p,'Greedy'),0
- n.UCP.(State Active)←2↑(exec'0 0'##.R.GetString p,'UCP'),0
- n.(Code Vars APL_Code Comments Text).Visible←~n.NamesOnly.State
- :If n.NamesOnly.State∧n.SearchIsRegEx.State
-     n.DotAll.(State Active)←0
- :EndIf
+ n.Code.State←↑exec'1'##.R.GetString p,'Code'
+ n.Code2.State←exec'1'##.R.GetString p,'Code2'
+ n.Vars.State←↑exec'1'##.R.GetString p,'Vars'
+ n.Vars2.State←exec'1'##.R.GetString p,'Vars2'
+ n.APL_Code.State←↑exec'1'##.R.GetString p,'APL_Code'
+ n.Comments.State←↑exec'1'##.R.GetString p,'Comments'
+ n.Text.State←↑exec'1'##.R.GetString p,'Text'
  :If n.SearchIsRegEx.State
      n.Negate.(Active State)←0
  :EndIf
- ⍝Done
+⍝Done

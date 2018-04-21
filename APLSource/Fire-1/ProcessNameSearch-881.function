@@ -5,8 +5,8 @@
  hits←0 7⍴''
  :If ~0∊⍴list
  :AndIf ~0∊⍴names←↑¨{0∊⍴⍺:{⍵↑⍨-(⌽⍵)⍳'.'}⍕⍵ ⋄ ⍵}/¨↓list[;0 1]
-     :If G.SearchIsRegEx
-         options←('Greedy'G.Greedy)('DotAll'G.DotAll)('IC'(~G.Case)),IsVersion16OrBetter/⊂'UCP'G.UCP
+     :If G.SearchIsRegEx2
+         options←(⊂'IC'(~G.Case2)),IsVersion16OrBetter/⊂'UCP'G.UCP2
          :Trap 11
              b←{~0∊∘⍴¨⍵}{G.SearchFor2 ⎕S 0⍠options⊣⍵}¨⍕¨names
          :Else
@@ -15,9 +15,7 @@
              ⎕SIGNAL 988
          :EndTrap
      :Else
-         :If G.NamesOnly
-             b←∨/G.SearchFor2⍷IfLower⊃{~'.'∊⍵:⍵ ⋄ ##.APLTreeUtils.Last ⍵}∘⍕¨names
-         :EndIf
+         b←∨/G.SearchFor2⍷IfLower⊃{~'.'∊⍵:⍵ ⋄ ##.APLTreeUtils.Last ⍵}∘⍕¨names
      :EndIf
      :If 0<+/b
          hits←b⌿list

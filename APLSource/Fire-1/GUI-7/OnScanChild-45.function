@@ -1,4 +1,5 @@
- OnScanChild msg
+ OnScanChild msg;n
+ n←GetRefTo_n↑,msg
  n.(ReplaceBtn ReportHits).Active←0
- {}CheckStartButton ⍬
+ {}CheckStartButton n
 ⍝Done

@@ -1,4 +1,4 @@
- R←Test_Search_084(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search
+ R←Test_SearchQNL_005(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search
 ⍝ Search for "QAN" in #.TicToc with a ref pointing to a non-existing script.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  R←∆Failed
@@ -14,8 +14,10 @@
  ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'QAN'
  n.LookIn.Text←'#.TestData.TicToc'
- n.(Case APL_Name NamesOnly).State←1
- n.(Code Vars).State←0
+ ⎕NQ n.Tab2'Select'
+ ∆Process n.Form
+ n.Case2.State←1
+ n.Vars2.State←0
 
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form

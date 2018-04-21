@@ -1,4 +1,4 @@
- (rc objHits noOfObj noOfContainers)←RunSearch flag;list;_;buffer;Performs;toggleStatusWas
+ (rc objHits noOfObj noOfContainers)←RunSearch n;flag;list;_;buffer;Performs;toggleStatusWas
 ⍝ Performs the actual search.
 ⍝ If "flag" is 1 then either the workspace or ⎕SE is scanned.
 ⍝ If "flag" is zero then only the current hit list is scanned.
@@ -7,12 +7,12 @@
 ⍝ rc might become ¯1 one day when we allow the user to cancel a search operation.
 ⍝ `objHits` reports objects that carry a hit.
  rc←1 ⋄ objHits←'' ⋄ noOfObj←0
+ flag←~n.ReuseSearch.State
  toggleStatusWas←ToggleAutoStatus 0
- (0⊃⎕SI)⎕STOP⍨(⎕STOP 0⊃⎕SI){StopInSearch:⍺,⍵ ⋄ ⍺~⍵}1+0⊃⎕LC
  :If 0=G.(Code+Vars)
      (list noOfContainers)←GetNames flag
  :Else
-     (list noOfContainers)←GetList flag 1
+     (list noOfContainers)←GetList n flag 1
  :EndIf
  :If 0∊⍴list
      GUI.ResetHitList noOfObj,noOfContainers

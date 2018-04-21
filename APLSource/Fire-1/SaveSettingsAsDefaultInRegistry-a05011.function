@@ -1,10 +1,12 @@
  SaveSettingsAsDefaultInRegistry←{
      p←GetFireRegistryKey
      _←R.PutString(p,'Case')(⍕GUI.n.Case.(State Active))
-     _←R.PutString(p,'APL_Name')(⍕GUI.n.APL_Name.State)  ⍝ NOT "Active"!
+     _←R.PutString(p,'Case2')(⍕GUI.n.Case2.Active)
+     _←R.PutString(p,'APL_Name')(⍕GUI.n.APL_Name.State)  ⍝ Do not add "Active"!
      _←R.PutString(p,'Code')(⍕GUI.n.Code.(State Active))
+     _←R.PutString(p,'Code2')(⍕GUI.n.Code2.State)
      _←R.PutString(p,'Vars')(⍕GUI.n.Vars.(State Active))
-     _←R.PutString(p,'NamesOnly')(⍕GUI.n.NamesOnly.(State Active))
+     _←R.PutString(p,'Vars2')(⍕GUI.n.Vars2.State)
      _←R.PutString(p,'APL_Code')(⍕GUI.n.APL_Code.(State Active))
      _←R.PutString(p,'Comments')(⍕GUI.n.Comments.(State Active))
      _←R.PutString(p,'Text')(⍕GUI.n.Text.(State Active))
@@ -12,5 +14,8 @@
      _←R.PutString(p,'DotAll')(⍕GUI.n.DotAll.(State Active))
      _←R.PutString(p,'Greedy')(⍕GUI.n.Greedy.(State Active))
      _←R.PutString(p,'UCP')(⍕GUI.n.UCP.(State Active))
+     _←R.PutString(p,'Text')(⍕GUI.n.Text.(State Active))
+     _←R.PutString(p,'SearchIsRegEx2')(⍕GUI.n.SearchIsRegEx2.(State Active))
+     _←R.PutString(p,'UCP2')(⍕GUI.n.UCP2.(State Active))
      ⍬
  }

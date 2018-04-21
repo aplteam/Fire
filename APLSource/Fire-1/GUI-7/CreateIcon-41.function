@@ -1,5 +1,6 @@
- CreateIcon;∆;fn
+ n←CreateIcon n;∆;fn
  fn←##.Icon.GetFilename
  ∆←⊂'Icon'
  ∆,←⊂'File'fn
  n.TheIcon←⍎'TheIcon'⎕WC ∆
+⍝Done

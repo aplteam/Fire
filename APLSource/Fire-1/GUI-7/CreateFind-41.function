@@ -1,4 +1,4 @@
- CreateFind;∆;rf;msg
+ n←CreateFind n;∆;rf;msg
 ⍝
 
  ∆←⊂'Label'

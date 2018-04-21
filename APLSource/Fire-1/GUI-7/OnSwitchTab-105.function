@@ -1,0 +1,5 @@
+ OnSwitchTab←{
+     n←GetRefTo_n↑,⍵
+     n.ReplaceBtn.Active←0
+     1
+ }

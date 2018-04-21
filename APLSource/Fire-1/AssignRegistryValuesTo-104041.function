@@ -14,11 +14,8 @@
  :EndIf
 
  G.Case←0⊃⍎'0 1'R.GetString p,'Case'
+ G.Case2←⍎'0'R.GetString p,'Case2'
  G.APL_Name←1↑⍎'0'R.GetString p,'APL_Name' ⍝ Not "Active"
-
- G.Code←0⊃⍎'1 1'R.GetString p,'Code'
- G.Vars←0⊃⍎'1 1'R.GetString p,'Vars'
- G.NamesOnly←1↑⍎'1 0'R.GetString p,'NamesOnly'
 
  G.APL_Code←0⊃⍎'1 1'R.GetString p,'APL_Code'
  G.Comments←0⊃⍎'1 1'R.GetString p,'Comments'
@@ -28,6 +25,9 @@
  G.DotAll←0⊃(⍎'0 0'R.GetString p,'DotAll'),0
  G.Greedy←0⊃(⍎'0 0'R.GetString p,'Greedy'),0
  G.UCP←0⊃(⍎'0 0'R.GetString p,'UCP'),0
+
+ G.SearchIsRegEx2←0⊃(⍎'0 1'R.GetString p,'SearchIsRegEx2'),0
+ G.UCP2←0⊃(⍎'0 0'R.GetString p,'UCP2'),0
 
 ⍝ Replace dialog
  G.ReplaceBy←''R.GetString p,'ReplaceBy'

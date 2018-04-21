@@ -1,4 +1,4 @@
- CreateMainForm(debugFlag n);∆;height;size;posn
+ n←CreateMainForm(debugFlag n);∆;height;size;posn
 
  height←690 330    ⍝ [0]: Initial value; [1]: Used when F8 is pressed
  size←(355,minWidth)⌈GetSizeFromWinReg ⍬

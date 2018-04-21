@@ -42,20 +42,14 @@
          :EndSelect
      :EndIf
  :EndIf
- :If n.NamesOnly.State
- :AndIf ~n.SearchIsRegEx.State
+ :If IsNamesOnlySearch n
+ :AndIf ~n.SearchIsRegEx2.State
  :AndIf 0≠(⎕NS'').⎕NC n.SearchFor.Text
-     msg←'The "Name list only (⎕NL)" option is ticked but ' '"Search for" does not contain a valid APL name.'
-     msg,←'' 'Shall Fire tick "Fns && opr && scripts" and un-tick the'
-     msg,←⊂' "Name list only" option and tick the "Scan" group  for you?'
-     :Select ##.Question.YesNoCancel msg
-     :Case 1
-         n.NamesOnly.State←0
-         n.Code.(Visible Active State)←1
-         n.Vars.(Visible Active)←1
-         n.(APL_Code Comments Text).(Visible Active State)←1
-     :Case 2
-         r←1
-     :EndSelect
+     msg←⊂'"Search for" does not contain a valid APL name.'
+     :If ∨/'^$[].*{}\|+()-'∊n.SearchFor.Text
+         msg,←⊂''
+         msg,←⊂'(Maybe this is supposed to be a RegEx search?!)'
+     :EndIf
+     ##.Question.ShowMsg msg
  :EndIf
 ⍝Done

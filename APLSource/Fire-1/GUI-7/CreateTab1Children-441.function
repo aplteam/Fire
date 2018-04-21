@@ -1,0 +1,6 @@
+ n←CreateTab1Children n
+ n←CreateRegEx n
+ n←CreateOptions n
+ n←CreateObjectTypes n
+ n←CreateScan n
+⍝Done

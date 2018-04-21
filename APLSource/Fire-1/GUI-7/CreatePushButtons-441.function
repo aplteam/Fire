@@ -1,11 +1,11 @@
- CreatePushButtons;∆;btnWidth;msg
+ n←CreatePushButtons n;∆;btnWidth;msg
 ⍝
  btnWidth←80
 
  ∆←⊂'Button'
  ∆,←⊂'Caption' 'Find'
  ∆,←⊂'Size'(⍬ btnWidth)
- ∆,←⊂'Posn'((15+0⊃PosnPlusSize n.APL_Code.##),10)
+ ∆,←⊂'Posn'((15+0⊃PosnPlusSize n.TabCtrl),10)
  ∆,←⊂'Default' 1
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'TipObj'n.TipObj

@@ -1,12 +1,12 @@
- CreateOptions;∆;rf;tip;msg
+ n←CreateOptions n;∆;rf;tip;msg
 ⍝
 
  ∆←⊂'Group'
  ∆,←⊂'Caption' 'Options'
- ∆,←⊂'Posn'((15+0⊃PosnPlusSize n.LookIn),10)
- ∆,←⊂'Size'(130 160)
+ ∆,←⊂'Posn'((n.SearchIsRegEx.##.Posn[0]),(10+1⊃PosnPlusSize n.SearchIsRegEx.##))
+ ∆,←⊂'Size'(110 160)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
- rf←⍎'OptionsGroup'n.Form.⎕WC ∆
+ rf←⍎'OptionsGroup'n.SF1.⎕WC ∆
 
  ∆←⊂'Button'
  ∆,←⊂'Caption' '&Match case'

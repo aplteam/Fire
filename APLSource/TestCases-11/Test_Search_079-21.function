@@ -23,8 +23,11 @@
  ∆Process n.Form
  →GoToTidyUp 5≠#._Fire.Fire.G.NoOfObjects
 
- n.(ReuseSearch Negate NamesOnly Case).State←1
- n.(Code Vars).State←0
+ n.(ReuseSearch Negate Case2).State←1
+ ⎕NQ n.Tab2'Select'
+ ∆Process n.Form
+ n.(ReuseSearch Negate).State←1
+ n.(Code2 Vars2).State←0
  n.SearchFor.Text←'Universe'
 
  {}∆Select n.StartBtn

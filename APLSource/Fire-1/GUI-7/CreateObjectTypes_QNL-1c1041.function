@@ -1,10 +1,10 @@
- n←CreateObjectTypes n;∆;rf;tip;msg
+ n←CreateObjectTypes_QNL n;∆;rf;tip;msg
  ∆←⊂'Group'
  ∆,←⊂'Caption' 'Object types'
- ∆,←⊂'Posn'((n.Case.##.Posn[0])),(10+1⊃PosnPlusSize n.Case.##)
+ ∆,←⊂'Posn'((n.Case2.##.Posn[0])),(10+1⊃PosnPlusSize n.Case2.##)
  ∆,←⊂'Size'((0⊃n.Case.##.Size),280)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
- rf←⍎'ScanGroup'n.SF1.⎕WC ∆
+ rf←⍎'ScanGroup'n.SF2.⎕WC ∆
 
  ∆←⊂'Button'
  ∆,←⊂'Caption' '&Fns, opr and scripts'
@@ -13,9 +13,9 @@
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'TipObj'n.TipObj
  ∆,←⊂'Tip'(Split'Functions, operators, classes, interfaces and scripted namespaces.')
- n.Code←⍎'Code'rf.⎕WC ∆
- n.Code.onSelect←'OnObjectType'
- n.Code.onKeyPress←'OnKeyPressStandard'
+ n.Code2←⍎'Code'rf.⎕WC ∆
+ n.Code2.onSelect←'OnObjectType'
+ n.Code2.onKeyPress←'OnKeyPressStandard'
 
  ∆←⊂'Button'
  ∆,←⊂'Caption' '&Variables'
@@ -29,9 +29,20 @@
  msg,←'works only on specific types of variables:⌹'
  msg,←'Simple text vectors and vectors of text vectors.'
  ∆,←⊂'Tip'(Split msg)
- n.Vars←⍎'Vars'rf.⎕WC ∆
- n.Vars.onSelect←'OnObjectType'
- n.Vars.onKeyPress←'OnKeyPressStandard'
+ n.Vars2←⍎'Vars'rf.⎕WC ∆
+ n.Vars2.onSelect←'OnObjectType'
+ n.Vars2.onKeyPress←'OnKeyPressStandard'
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' 'Container'
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'Posn'(75 10)
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ ∆,←⊂'State' 1
+ ∆,←⊂'TipObj'n.TipObj
+ msg←'Container are non-scripted namespaces.'
+ ∆,←⊂'Tip'msg
+ n.Container←⍎'Container'rf.⎕WC ∆
 
  {}PolishWidth rf
 ⍝ Done

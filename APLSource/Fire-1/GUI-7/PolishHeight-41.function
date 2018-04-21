@@ -1,7 +1,0 @@
- PolishHeight←{
-⍝ Takes a ref (⍵; typically a group) and re-calculates the size by taking
-⍝ all children into account plus 10 pixels.
-     rf←⍵
-     rf.Size[0]←5+⌈/{↑+⌿⊃⍵.(Posn Size)}¨⎕WN n.Code.##
-     ⍬
- }

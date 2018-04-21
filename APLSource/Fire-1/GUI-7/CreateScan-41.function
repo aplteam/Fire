@@ -1,12 +1,12 @@
- CreateScan;∆;rf;rf2;msg
+ n←CreateScan n;∆;rf;rf2;msg
 ⍝
 
  ∆←⊂'Group'
  ∆,←⊂'Caption' 'Scan...'
- ∆,←⊂'Posn'((15+0⊃PosnPlusSize n.LookIn)),(10+1⊃PosnPlusSize n.Vars.##)
+ ∆,←⊂'Posn'((n.Case.##.Posn[0]),10+1⊃PosnPlusSize n.Vars.##)
  ∆,←⊂'Size'((0⊃n.Case.##.Size)205)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
- rf←⍎'CodeGroup'n.Form.⎕WC ∆
+ rf←⍎'CodeGroup'n.SF1.⎕WC ∆
 
  ∆←⊂'Button'
  ∆,←⊂'Caption' 'A&PL'
@@ -27,7 +27,6 @@
  ∆,←⊂'Style' 'Check'
  ∆,←⊂'Posn'(50 10)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
- ∆,←⊂'Active'(~##.G.SearchIsRegEx)
  ∆,←⊂'TipObj'n.TipObj
  ∆,←⊂'Tip'(Split'Scan comments. Not applicable to variables.')
  n.Comments←⍎'Comments'rf.⎕WC ∆
@@ -39,7 +38,6 @@
  ∆,←⊂'Style' 'Check'
  ∆,←⊂'Posn'(75 10)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
- ∆,←⊂'Active'(~##.G.SearchIsRegEx)
  ∆,←⊂'TipObj'n.TipObj
  msg←''
  msg,←'Scan text; that''s everything between quotes.⌹'
@@ -52,5 +50,4 @@
  n.Text.onKeyPress←'OnKeyPressStandard'
 
  {}PolishWidth rf
- {}PolishHeight rf
 ⍝ Done

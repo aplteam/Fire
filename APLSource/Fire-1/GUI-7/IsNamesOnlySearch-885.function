@@ -1,0 +1,4 @@
+ IsNamesOnlySearch←{
+     n←⍵
+     n.Tab2≡n.TabCtrl.TabObj
+ }

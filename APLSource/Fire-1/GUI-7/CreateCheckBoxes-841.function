@@ -1,4 +1,4 @@
- CreateCheckBoxes;∆;tip
+ n←CreateCheckBoxes n;∆;tip
 ⍝
  ∆←⊂'Button'
  ∆,←⊂'Caption' '&Negate search'

@@ -2,21 +2,11 @@
  rf←0⊃,msg
  n←GetRefTo_n rf
  n.(ReplaceBtn ReportHits).Active←0
- :If n.SearchIsRegEx.State
-     n.DotAll.Active←~n.NamesOnly.State
-     n.Greedy.Active←1
-     n.UCP.Active←##.IsVersion16OrBetter
-     n.Vars.Active←~n.NamesOnly.State
-     :If n.APL_Name.State
-         msg←⊂'"Match APL name" is ticked but is ignored when "Is RegEx"'
-         msg,←⊂'is ticked; it is therefore un-ticked by Fire for you.'
-         '"Match APL name"'##.Question.ShowMsg msg
-         n.APL_Name.State←0
-     :EndIf
- :Else
-     n.DotAll.Active←n.SearchIsRegEx.State∧~n.NamesOnly.State
-     n.DotAll.State←~n.NamesOnly.State
-     n.(Greedy UCP).Active←0
-     n.(APL_Name Negate NamesOnly).Active←1
+ :If n.TabCtrl.TabObj≡n.Tab1
+ :AndIf n.APL_Name.State
+     msg←⊂'"Match APL name" is ticked but is ignored when "Is RegEx"'
+     msg,←⊂'is ticked; it is therefore un-ticked by Fire for you.'
+     '"Match APL name"'##.Question.ShowMsg msg
+     n.APL_Name.State←0
  :EndIf
- {}CheckStartButton ⍬
+ {}CheckStartButton n

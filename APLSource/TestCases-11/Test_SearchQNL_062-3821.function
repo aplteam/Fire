@@ -1,4 +1,4 @@
- R←Test_Search_062(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search
+ R←Test_SearchQNL_062(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search
 ⍝ Search for a string with "Names list only" (⎕NL) ticked with RegEx.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  R←∆Failed
@@ -19,9 +19,10 @@
  ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'^Hello'
  n.LookIn.Text←'#.TEMP'
- n.NamesOnly.State←1
- n.(Code Vars).State←0
- n.SearchIsRegEx.State←1
+ ⎕NQ n.Tab2'Select'
+ ∆Process n.Form
+ n.Vars2.State←0
+ n.SearchIsRegEx2.State←1
 
  {}∆Select n.StartBtn
  ∆Process n.Form

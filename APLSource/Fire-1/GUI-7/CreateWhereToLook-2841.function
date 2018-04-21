@@ -1,4 +1,4 @@
- CreateWhereToLook;∆;rf;ind;tip;msg
+ n←CreateWhereToLook n;∆;rf;ind;tip;msg
 ⍝
 
  ∆←⊂'Label'

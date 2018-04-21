@@ -1,4 +1,4 @@
- R←Test_Search_061(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search
+ R←Test_SearchQNL_061(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search
 ⍝ Search for a string with "Names list only" (⎕NL) ticked.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  R←∆Failed
@@ -19,8 +19,8 @@
  ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'Hello'
  n.LookIn.Text←'#.TEMP'
- n.NamesOnly.State←1
- n.(Code Vars).State←0
+ 2 ⎕NQ n.Tab2'Select'
+ n.Vars2.State←0
 
  {}∆Select n.StartBtn
  ∆Process n.Form

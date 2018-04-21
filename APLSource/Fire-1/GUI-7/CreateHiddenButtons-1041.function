@@ -1,4 +1,4 @@
- CreateHiddenButtons;rf;p
+ n←CreateHiddenButtons n;rf;p
 ⍝ These buttons all remain invisible but establish certain Accelerator keys
  p←'Button'('Posn'(¯5 ¯5))('Size'(0 0))
  n.HiddenBtns←rf←⍎'CopyNameBtn'n.Form.⎕WC p,⊂('Accelerator'(117 0))      ⍝ F6

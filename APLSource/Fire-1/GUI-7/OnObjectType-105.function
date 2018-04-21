@@ -1,23 +1,7 @@
- {r}←OnObjectType msg
+ {r}←OnObjectType msg;n
 ⍝ Check "State" and "Active" dependencies.
  r←⍬
+ n←GetRefTo_n↑,msg
  n.(ReplaceBtn ReportHits).Active←0
- :If n.NamesOnly≡↑msg
-     n.(Code Vars APL_Code Comments Text).(Active Visible)←~n.NamesOnly.State
-     :If n.NamesOnly.State
-         :If n.SearchIsRegEx.State
-             n.DotAll.(Active State)←0
-         :Else
-             n.(DotAll Greedy).Active←1
-         :EndIf
-     :Else
-         n.SearchIsRegEx.Active←1
-         :If n.SearchIsRegEx.State
-             n.(DotAll Greedy).Active←1
-         :EndIf
-     :EndIf
- :Else
-     n.APL_Name.Active←∨/n.(Code Vars).State
- :EndIf
- {}CheckStartButton ⍬
+ {}CheckStartButton n
 ⍝Done

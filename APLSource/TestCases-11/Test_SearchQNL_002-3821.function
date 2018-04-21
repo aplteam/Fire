@@ -1,5 +1,5 @@
- R←Test_RegExSearch_022(stopFlag batchFlag);n;⎕TRAP
-⍝ Search for "_" anywhere within names ("Names only").
+ R←Test_SearchQNL_002(stopFlag batchFlag);n;⎕TRAP
+⍝ Search for "_" anywhere within names ("Names only"). Does not find an empty namespace because "Container" is not ticked.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  R←∆Failed
 
@@ -27,6 +27,7 @@
  #.TEMP.Sub_3.⎕FIX':Namespace Sub3NS1' '∇r←Sub3HelloNS1' 'r←''Sub3NS1''' '∇' '∇r←Sub3HelloNS_2' 'r←''Sub3NS_2''' '∇' ':EndNamespace'
  'Sub_4'#.TEMP.⎕NS''
  #.TEMP.Sub_4.⎕FIX':Class Sub4Foo1' '∇r←Sub4HelloFoo1' 'r←''Sub4Foo_1''' '∇' ':EndClass'
+ 'Sub_5'#.TEMP.⎕NS''   ⍝ Is empty, but we want to see it anyway!
 
  1 #._Fire.Fire.Run 0
  n←#._Fire.Fire.GUI.n
@@ -34,13 +35,13 @@
 
  n.SearchFor.Text←'.*_.*'
  n.LookIn.Text←'#.TEMP'
- n.NamesOnly.State←1
- n.(Code Vars).State←0
- n.SearchIsRegEx.State←1
+ ⎕NQ n.Tab2'Select'
+ n.(Vars2 Container).State←0
+ n.SearchIsRegEx2.State←1
 
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form
- →GoToTidyUp~n.HitList.Items ∆LazyMatch'Foo_2' 'Hello_2' 'Sub1Hello_2' 'Sub1Foo_2' 'Sub2Hello_2' 'Sub2Foo_2' 'Sub3_Hello2' 'Sub3HelloNS_2' 'Sub_3' 'Sub_4'
+ →GoToTidyUp~n.HitList.Items ∆LazyMatch'Foo_2' 'Hello_2' 'Sub1Hello_2' 'Sub1Foo_2' 'Sub2Hello_2' 'Sub2Foo_2' 'Sub3_Hello2' 'Sub3HelloNS_2'
  R←∆OK
 
 ∆TidyUp:

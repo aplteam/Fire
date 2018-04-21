@@ -1,0 +1,34 @@
+ n←CreateRegEx_QNL n;∆;rf;tip;msg
+⍝
+
+ ∆←⊂'Group'
+ ∆,←⊂'Caption' 'RegEx'
+ ∆,←⊂'Posn'(7 10)
+ ∆,←⊂'Size'(110 160)
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ rf←⍎'OptionsGroup2'n.SF2.⎕WC ∆
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' 'Is RegE&x'
+ ∆,←⊂'Posn'(20 10)
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'Attach'('Top' 'Right' 'Top' 'Right')
+ ∆,←⊂'TipObj'n.TipObj
+ ∆,←⊂'Tip'(Split'Interpret "Search for" as a regular expression.')
+ n.SearchIsRegEx2←⍎'SearchIsRegEx'rf.⎕WC ∆
+ n.SearchIsRegEx2.onSelect←'OnToggleSearchIsRegEx'
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' '&UCP'
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'Posn'(40 25)
+ ∆,←⊂'Attach'('Top' 'Right' 'Top' 'Right')
+ ∆,←⊂'TipObj'n.TipObj
+ ∆,←⊂'Tip'(Split'Use Unicode properties to classify characters.')
+ ∆,←⊂'Visible'##.IsVersion16OrBetter
+ ∆,←⊂'Active'##.IsVersion16OrBetter
+ n.UCP2←⍎'UCP'rf.⎕WC ∆
+ n.UCP2.onSelect←'OnToggleSearchIsRegEx'
+
+ {}PolishWidth rf
+ ⍝ Done

@@ -1,0 +1,23 @@
+ n←CreateOptions_QNL n;∆;rf;tip;msg
+⍝
+
+ ∆←⊂'Group'
+ ∆,←⊂'Caption' 'Options'
+ ∆,←⊂'Posn'((n.SearchIsRegEx2.##.Posn[0]),(10+1⊃PosnPlusSize n.SearchIsRegEx2.##))
+ ∆,←⊂'Size'(110 156)
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ rf←⍎'OptionsGroup2'n.SF2.⎕WC ∆
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' '&Match case'
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'Posn'(25 10)
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ ∆,←⊂'TipObj'n.TipObj
+ ∆,←⊂'Tip'(Split'Makes the search case sensitive.')
+ n.Case2←⍎'Case'rf.⎕WC ∆
+ n.Case2.onSelect←'OnCase'
+ n.Case2.onKeyPress←'OnKeyPressStandard'
+
+ ⍝ {}PolishWidth rf  ⍝ No, because they are different on the two TABs.
+ ⍝ Done

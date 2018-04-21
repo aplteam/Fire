@@ -1,4 +1,8 @@
  History
+⍝ * 6.6.?
+⍝   * Scanning the WS and scanning ⎕NL require different parameters and a search strategy and have
+⍝     different results. Rather than trying to work around this somehow the two things are now
+⍝     separated on two different TABs, "Workspace" and "[]NL". That should calrify things.
 ⍝ * 6.?.?
 ⍝   * Deleting an object from the Fire GUI is now reporting any acre activities.
 ⍝ * 6.5.0

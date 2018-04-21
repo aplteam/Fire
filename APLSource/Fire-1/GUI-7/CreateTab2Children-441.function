@@ -1,0 +1,5 @@
+ n←CreateTab2Children n
+ n←CreateRegEx_QNL n
+ n←CreateOptions_QNL n
+ n←n←CreateObjectTypes_QNL n
+⍝Done

@@ -1,6 +1,5 @@
- CreateHitList;∆
+ n←CreateHitList n;∆
 ⍝
-
  ∆←⊂'ListView'
  ∆,←⊂'Posn'((10+0⊃PosnPlusSize n.StartBtn),0)
  ∆,←⊂'Size'(n.Form.Size-(n.SB.Size[0]+5+10+0⊃PosnPlusSize n.StartBtn),0)
@@ -24,5 +23,4 @@
  n.HitList.onGotFocus←'OnHitListGotFocus'
  n.HitList.colWidth←↑∘⍴∘,¨n.HitList.ColTitles
  n.HitList.Posn[1]←0
-
  ⍝Done
