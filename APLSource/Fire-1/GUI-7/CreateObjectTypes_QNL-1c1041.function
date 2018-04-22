@@ -12,7 +12,7 @@
  ∆,←⊂'Posn'(25 10)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'TipObj'n.TipObj
- ∆,←⊂'Tip'(Split'Functions, operators, classes, interfaces and scripted namespaces.')
+ ∆,←⊂'Tip'('Functions, operators, classes,' 'interfaces and scripted namespaces.')
  n.Code2←⍎'Code'rf.⎕WC ∆
  n.Code2.onSelect←'OnObjectType'
  n.Code2.onKeyPress←'OnKeyPressStandard'
@@ -23,12 +23,13 @@
  ∆,←⊂'Posn'(50 10)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'TipObj'n.TipObj
- msg←'Search variables.⌹'
- msg,←'Note that although all variables are searched⌹'
- msg,←'(and possibly reported), the "Replace" option⌹'
- msg,←'works only on specific types of variables:⌹'
- msg,←'Simple text vectors and vectors of text vectors.'
- ∆,←⊂'Tip'(Split msg)
+ msg←⊂'Search variables.'
+ msg←''
+ msg,←⊂'Note that although all variables are searched'
+ msg,←⊂'(and possibly reported), the "Replace" option'
+ msg,←⊂'works only on specific types of variables:'
+ msg,←⊂'Simple text vectors and vectors of text vectors.'
+ ∆,←⊂'Tip'msg
  n.Vars2←⍎'Vars'rf.⎕WC ∆
  n.Vars2.onSelect←'OnObjectType'
  n.Vars2.onKeyPress←'OnKeyPressStandard'
