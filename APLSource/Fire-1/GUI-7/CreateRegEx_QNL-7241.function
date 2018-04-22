@@ -4,7 +4,7 @@
  ∆←⊂'Group'
  ∆,←⊂'Caption' 'RegEx'
  ∆,←⊂'Posn'(7 10)
- ∆,←⊂'Size'(110 160)
+ ∆,←⊂'Size'(110(n.SearchIsRegEx.##.Size[1]))
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  rf←⍎'OptionsGroup2'n.SF2.⎕WC ∆
 
@@ -30,5 +30,5 @@
  n.UCP2←⍎'UCP'rf.⎕WC ∆
  n.UCP2.onSelect←'OnToggleSearchIsRegEx'
 
- {}PolishWidth rf
+ ⍝TODO⍝  {}PolishWidth rf
  ⍝ Done

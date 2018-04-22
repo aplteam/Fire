@@ -9,23 +9,9 @@
  rf←⍎'CodeGroup'n.SF1.⎕WC ∆
 
  ∆←⊂'Button'
- ∆,←⊂'Caption' 'A&PL'
- ∆,←⊂'Style' 'Check'
- ∆,←⊂'Posn'(25 10)
- ∆,←⊂'Attach'(4⍴'Top' 'Left')
- ∆,←⊂'TipObj'n.TipObj
- msg←''
- msg,←'Scans the APL code; that''s everything but text and comments.⌹'
- msg,←'Not applicable to variables.'
- ∆,←⊂'Tip'(Split msg)
- n.APL_Code←⍎'APL_Code'rf.⎕WC ∆
- n.APL_Code.onSelect←'OnScanChild'
- n.APL_Code.onKeyPress←'OnKeyPressStandard'
-
- ∆←⊂'Button'
  ∆,←⊂'Caption' '&Comments'
  ∆,←⊂'Style' 'Check'
- ∆,←⊂'Posn'(50 10)
+ ∆,←⊂'Posn'(25 10)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'TipObj'n.TipObj
  ∆,←⊂'Tip'(Split'Scan comments. Not applicable to variables.')
@@ -36,7 +22,7 @@
  ∆←⊂'Button'
  ∆,←⊂'Caption' '&Text'
  ∆,←⊂'Style' 'Check'
- ∆,←⊂'Posn'(75 10)
+ ∆,←⊂'Posn'(50 10)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'TipObj'n.TipObj
  msg←''
@@ -48,6 +34,20 @@
  n.Text←⍎'Text'rf.⎕WC ∆
  n.Text.onSelect←'OnScanChild'
  n.Text.onKeyPress←'OnKeyPressStandard'
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' '&Everything else'
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'Posn'(75 10)
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ ∆,←⊂'TipObj'n.TipObj
+ msg←''
+ msg,←'Everything that is neither text nor a comment: the APL code as such⌹'
+ msg,←'Not applicable to variables.'
+ ∆,←⊂'Tip'(Split msg)
+ n.APL_Code←⍎'APL_Code'rf.⎕WC ∆
+ n.APL_Code.onSelect←'OnScanChild'
+ n.APL_Code.onKeyPress←'OnKeyPressStandard'
 
  {}PolishWidth rf
 ⍝ Done

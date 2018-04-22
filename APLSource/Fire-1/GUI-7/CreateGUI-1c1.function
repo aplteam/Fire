@@ -1,7 +1,7 @@
  n←CreateGUI debugFlag;minWidth
 ⍝
  n←##.CreateGuiRefContainer
- minWidth←655
+ minWidth←685
  n←CreateIcon n
  n←CreateMainForm debugFlag n
  n←CreateHiddenButtons n

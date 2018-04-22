@@ -3,13 +3,13 @@
 
  ∆←⊂'Label'
  ∆,←⊂'Caption' '&Search for:'
- ∆,←⊂'Posn'(10 13)
+ ∆,←⊂'Posn'(10 8)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  n.L_SearchFor←⍎'L_SearchFor'n.Form.⎕WC ∆
 
  ∆←⊂'Combo'
- ∆,←⊂'Posn'(35 10)
- ∆,←⊂'Size'(⍬(minWidth-20))
+ ∆,←⊂'Posn'(35 5)
+ ∆,←⊂'Size'(⍬ 665)
  ∆,←⊂'FontObj'n.APL_Font
  ∆,←⊂'Style' 'DropEdit'
  ∆,←⊂'Attach'('Top' 'Left' 'Top' 'Left')

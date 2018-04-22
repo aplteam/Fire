@@ -3,7 +3,7 @@
 
  ∆←⊂'Label'
  ∆,←⊂'Caption' 'Start &looking here:'
- ∆,←⊂'Posn'((8+0⊃PosnPlusSize n.SearchFor),13)
+ ∆,←⊂'Posn'((8+0⊃PosnPlusSize n.SearchFor),8)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  n.L_LookIn←⍎'LookIn_L'n.Form.⎕WC ∆
 

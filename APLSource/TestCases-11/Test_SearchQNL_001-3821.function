@@ -1,5 +1,5 @@
  R←Test_SearchQNL_001(stopFlag batchFlag);n;⎕TRAP
-⍝ Search for "_" anywhere within names ("Names only"). Finds an empty namespace fullfilling the search criteria.
+⍝ Search for "_" anywhere within names ("Names only"). Finds an empty namespace fulfilling the search criteria.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  R←∆Failed
 

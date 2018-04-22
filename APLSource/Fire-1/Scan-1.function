@@ -1,4 +1,4 @@
- r←{nc}Scan data;data1;data2
+ r←{nc}Scan data;data1;data2;isRegExSearch
 ⍝ Performs search on "data".
 ⍝ "data" must be a vector of text vectors.
 ⍝ Returns a vector of start indices for all hits found.
@@ -42,16 +42,17 @@
              data{b←⍵≠' ' ⋄ a←⍺ ⋄ (b/a)←b/⍵ ⋄ a}¨←data2
          :EndSelect
      :EndIf
+     isRegExSearch←G.NamesOnly⊃G.(SearchIsRegEx SearchIsRegEx2)
      :If 2≡⌊nc
      :AndIf 2>≡data
-         :If G.SearchIsRegEx
+         :If isRegExSearch
              r←{0∊⍴⍵:⍵ ⋄ ↓⍉⊃⍵}RegExSearch data
          :Else
              r←Where G.SearchFor2⍷data
              r←r(↑⍴,G.SearchFor)    ⍝ Length is the same for all hits, so we specify a scalar.
          :EndIf
      :Else
-         :If G.SearchIsRegEx
+         :If isRegExSearch
              :If 0∊⍴r←{0∊⍴⍵:⍵ ⋄ ↓⍉⊃⍵}RegExSearch 1↓Simplify CR,¨data
                  r←r r
              :EndIf

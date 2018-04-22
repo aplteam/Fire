@@ -19,12 +19,17 @@
  n.SearchIsRegEx.onSelect←'OnToggleSearchIsRegEx'
 
  ∆←⊂'Button'
- ∆,←⊂'Caption' 'Dot&All'
+ ∆,←⊂'Caption' '&Dot all'
  ∆,←⊂'Style' 'Check'
  ∆,←⊂'Posn'(40 25)
  ∆,←⊂'Attach'('Top' 'Right' 'Top' 'Right')
  ∆,←⊂'TipObj'n.TipObj
- ∆,←⊂'Tip'(Split'Specifies whether the dot (‘.’) character in⌹search patterns matches line ending characters.')
+ msg←''
+ msg,←⊂'Specifies whether the dot (‘.’) character in'
+ msg,←⊂'search patterns matches evertyhing including'
+ msg,←⊂'line ending characters.'
+ msg,←⊂''
+ ∆,←⊂'Tip'msg
  n.DotAll←⍎'DotAll'rf.⎕WC ∆
  n.DotAll.onSelect←'OnToggleSearchIsRegEx'
 

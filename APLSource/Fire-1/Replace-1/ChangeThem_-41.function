@@ -1,4 +1,4 @@
- r←ChangeThem_ batchFlag;i;noOf;oldCode;objName;newCode;rc;ind;objLocation;objType;objFullname;msg;nc;varsReport;fixRemaining;data;objNC;ac;length;cursorWas
+ r←ChangeThem_ batchFlag;i;noOf;oldCode;objName;newCode;rc;ind;objLocation;objType;objFullname;msg;nc;varsReport;fixRemaining;data;objNC;ac;length;cursorWas;isRegExSearch
 ⍝ Processes all the objects.
 ⍝ Returns 0 if the user cancels, otherwise 1.
  r←1
@@ -21,7 +21,8 @@
      :If 0∊⍴oldCode
          :Continue
      :EndIf
-     :If ##.G.SearchIsRegEx
+     isRegExSearch←##.G.NamesOnly⊃##.G.(SearchIsRegEx SearchIsRegEx2)
+     :If isRegExSearch
          (rc newCode)←(objLocation.⎕NC⊂objName)ChangeItByRegEx oldCode  ⍝ ¯1: an error has occurred.
          :If 0≠rc
              r←0

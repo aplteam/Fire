@@ -7,7 +7,7 @@
  rf←⍎'ScanGroup'n.SF1.⎕WC ∆
 
  ∆←⊂'Button'
- ∆,←⊂'Caption' '&Fns, opr and scripts'
+ ∆,←⊂'Caption' '&APL code'
  ∆,←⊂'Style' 'Check'
  ∆,←⊂'Posn'(25 10)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
@@ -32,6 +32,15 @@
  n.Vars←⍎'Vars'rf.⎕WC ∆
  n.Vars.onSelect←'OnObjectType'
  n.Vars.onKeyPress←'OnKeyPressStandard'
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' 'Containers'
+ ∆,←⊂'Posn'(50 10)
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'Visible' 0
+ ∆,←⊂'Active' 0
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ 'dummy'rf.⎕WC ∆   ⍝ Only used for calculating the width correctly
 
  {}PolishWidth rf
 ⍝ Done

@@ -2,7 +2,7 @@
 
  ∆←⊂'TabControl'
  ∆,←⊂'Posn'((10+↑PosnPlusSize n.LookIn)5)
- ∆,←⊂'Size'(155,(n.Form.Size[1]-10))
+ ∆,←⊂'Size'(155 675)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'FontObj'n.APL_Font
  n.TabCtrl←⍎'TabCtrl'n.Form.⎕WC ∆

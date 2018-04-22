@@ -7,7 +7,7 @@
  rf←⍎'ScanGroup'n.SF2.⎕WC ∆
 
  ∆←⊂'Button'
- ∆,←⊂'Caption' '&Fns, opr and scripts'
+ ∆,←⊂'Caption' '&APL code'
  ∆,←⊂'Style' 'Check'
  ∆,←⊂'Posn'(25 10)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
@@ -34,7 +34,7 @@
  n.Vars2.onKeyPress←'OnKeyPressStandard'
 
  ∆←⊂'Button'
- ∆,←⊂'Caption' 'Container'
+ ∆,←⊂'Caption' '&Containers'
  ∆,←⊂'Style' 'Check'
  ∆,←⊂'Posn'(75 10)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')

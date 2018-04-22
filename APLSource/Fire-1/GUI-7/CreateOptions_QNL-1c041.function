@@ -4,7 +4,7 @@
  ∆←⊂'Group'
  ∆,←⊂'Caption' 'Options'
  ∆,←⊂'Posn'((n.SearchIsRegEx2.##.Posn[0]),(10+1⊃PosnPlusSize n.SearchIsRegEx2.##))
- ∆,←⊂'Size'(110 156)
+ ∆,←⊂'Size'(110(n.Case.##.Size[1]))
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  rf←⍎'OptionsGroup2'n.SF2.⎕WC ∆
 
