@@ -16,5 +16,5 @@
  ⎕NQ n.Tab1'Select'
  :If 0=+/testFlags
      ⎕DL 0.05
-     2 ⎕NQ GUI.n.SearchFor'GotFocus'
+     ⎕NQ GUI.n.SearchFor'GotFocus'
  :EndIf
