@@ -1,10 +1,16 @@
  History
-⍝ * 6.6.?
-⍝   * Scanning the WS and scanning ⎕NL require different parameters and a search strategy and have
+⍝ * 6.6.0
+⍝   * Scanning the WS and scanning ⎕NL require different parameters and search strategies and have
 ⍝     different results. Rather than trying to work around this somehow the two things are now
-⍝     separated on two different TABs, "Workspace" and "[]NL". That should calrify things.
-⍝ * 6.?.?
-⍝   * Deleting an object from the Fire GUI is now reporting any acre activities.
+⍝     separated on two different TABs, "Workspace" and "[]NL". That should clarify things.
+⍝   * No check box settings are saved any more Fire is closed and not restored when Fire is opened again.
+⍝     Instead Fire always comes up with (the same) default settings.
+⍝   * Bug fixes
+⍝     * When a search had no hits at all and F8 was pressed and then the Fire GUI closed, re-opening
+⍝       made it crash because the size was negative.
+⍝     * Deleting an object from the Fire GUI is now reporting acre activities, if any.
+⍝     * Link in the "About" dialog fixed.
+⍝     * Number of objects and number of hits was under special circumstances incorrect.
 ⍝ * 6.5.0
 ⍝   * Fire 6.5 is compatible with acre 4.2 and better only. If you use an older version of
 ⍝     acre then you should only update after you've moved to acre 4.2.0 or better. This is due
@@ -31,5 +37,3 @@
 ⍝     * Entering `#.` into "Start looking here" positioned the cursor at the beginning of the line.
 ⍝     * When "Compare one-by-one" (Replace) was selected and acre 4 active then there was a problem.
 ⍝     * Right-click on "Search for" crashed Fire.
-⍝ * 6.3.0
-⍝   * Fire is now compatible with acre 2, 3 and 4.0

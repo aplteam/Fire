@@ -3,41 +3,46 @@
 ⍝ These results are stored in ##.G.(SearchFor ReplaceBy ReplaceType).
 ⍝ Result "rc" gets 1 for "carry on" and 0 if the user wants to cancel.
  r←⍬
- (0⊃⎕SI)⎕STOP⍨(⎕STOP 0⊃⎕SI){StopInReplace:⍺,⍵ ⋄ ⍺~⍵}1+0⊃⎕LC
-⍝ ##.GUI.n.Form.Active←0  ⍝ I would love to do that but it stops the test cases from working!
+ ⍝ ##.GUI.n.Form.Active←0  ⍝ I would love to do that but it stops the test cases from working!
  hl←##.GUI.n.HitList
- :If 0<noOfInstances←+/~bool←(⊂'Class Instance')≢¨hl.ReportInfo[;1]  ⍝ We cannot change class !instances
-     ##.G.NoOfHits-←noOfInstances
-     hl.Data←bool⌿hl.Data
-     hl.Items←bool/hl.Items
-     hl.ReportInfo←bool⌿hl.ReportInfo
-     ##.G.Hits←bool⌿##.G.Hits
- :EndIf
- :If 0<noOfContainers←+/~bool←hl.ReportInfo[;1]≢¨⊂'NS'
-     ##.G.NoOfHits-←noOfContainers
-     hl.Data←bool⌿hl.Data
-     hl.Items←bool/hl.Items
-     hl.ReportInfo←bool⌿hl.ReportInfo
-     ##.G.Hits←bool⌿##.G.Hits
- :EndIf
- :If 0=##.G.NoOfHits
-     msg←''
-     msg,←⊂'After removing stuff that cannot'
-     msg,←⊂'be changed there is nothing left!'
-     'Replace'##.Question.ShowMsg msg
- :Else
-     0 ##.GUI.ReportHitsInStatusbar ##.G.(NoOfHits NoOfObjects NoOfObjects),⊂⍬
-     {}##.GUI.CopyGuiToGlobal ⍬
-     n←##.CreateGuiRefContainer   ⍝ DO NOT localize "n"!
-     n←CreateReplaceGUI n
-     n.ReplaceBy.SelText←1,1+⍴,n.ReplaceBy.Text
-     ##.GUI.TheForm.saveProps←##.GUI.SaveDynamicProps ##.GUI.TheForm
-     {}##.GUI.n.Form.onGotFocus
-     n.Form.n←n
-     :If ##.G.TestFlag
-         ⎕NQ n.ReplaceBy'GotFocus'
+ NoOfReplacements←0
+ :If ~0∊⍴hl.ReportInfo
+     :If 0<noOfInstances←+/~bool←(⊂'Class Instance')≢¨hl.ReportInfo[;1]  ⍝ We cannot change class instances!
+         ##.G.NoOfObjects-←noOfInstances
+         hl.Data←bool⌿hl.Data
+         hl.Items←bool/hl.Items
+         hl.ReportInfo←bool⌿hl.ReportInfo
+         ##.G.Hits←bool⌿##.G.Hits
+     :EndIf
+     ⍝ If the last change was a ⎕NL search then (and only then) may the hit list carry the names
+     ⍝ of ordinary namespaces which can of course not be changed, so we have to check for them.
+     :If 0<noOfContainers←+/~bool←hl.ReportInfo[;1]≢¨⊂'NS'  ⍝ Namespaces
+         bool∨←{0::0 ⋄ 1⊣⎕SRC⍎⍵}¨⊃¨{⍺,'.',⍵}/¨↓hl.(Items,ReportInfo)[;1 0]
+     :AndIf 0<noOfContainers←+/~bool
+         ##.G.NoOfObjects-←noOfContainers
+         hl.Data←bool⌿hl.Data
+         hl.Items←bool/hl.Items
+         hl.ReportInfo←bool⌿hl.ReportInfo
+         ##.G.Hits←bool⌿##.G.Hits
+     :EndIf
+     ##.G.NoOfHits←⍴∊##.G.Hits[;5]
+     :If 0=##.G.NoOfHits
+         msg←'After removing stuff that cannot be changed there is nothing left!'
+         'Replace'##.Question.ShowMsg msg
      :Else
-         ⎕NQ n.ReplaceBy'GotFocus' ⋄ r←DQ n.Form
+         0 ##.GUI.ReportHitsInStatusbar ##.G.(NoOfHits NoOfObjects NoOfObjects),⊂⍬
+         {}##.GUI.CopyGuiToGlobal ⍬
+         n←##.CreateGuiRefContainer   ⍝ DO NOT localize "n"!
+         n←CreateReplaceGUI n
+         n.ReplaceBy.SelText←1,1+⍴,n.ReplaceBy.Text
+         ##.GUI.TheForm.saveProps←##.GUI.SaveDynamicProps ##.GUI.TheForm
+         {}##.GUI.n.Form.onGotFocus
+         n.Form.n←n
+         :If ##.G.TestFlag
+             ⎕NQ n.ReplaceBy'GotFocus'
+         :Else
+             ⎕NQ n.ReplaceBy'GotFocus' ⋄ r←DQ n.Form
+         :EndIf
      :EndIf
  :EndIf
 ⍝Done

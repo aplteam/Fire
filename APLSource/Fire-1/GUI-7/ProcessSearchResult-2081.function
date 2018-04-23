@@ -9,7 +9,7 @@
  :Else
      n.HitList.ColTitles←n.HitList.colWidth↑¨n.HitList.ColTitles
      ##.G.NoOfObjects←0⊃⍴hits
-     ##.G.Hits←hits[;0 1 3 4 5] ⍝ Used in "Report details"
+     ##.G.Hits←hits[;0 1 3 4 5 2]   ⍝ Used in "Report details"
      :If (0=flag)∨##.∆CANCEL=1
          ##.∆CANCEL←0
          {}{HandleControlDependencies 1}##.SetCursorObj cursorWas

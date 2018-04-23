@@ -1,5 +1,6 @@
  ResetHitList←{
-⍝ Resets the hit list and wipes out the stabus bar information regarding hits
+⍝ Resets the hit list - and any related pieces of information) and
+⍝ wipes out the stabus bar information regarding hits.
      (noOfObj noOfContainers)←⍵
      ##.G.(NoOfObjects NoOfHits)←0
      n.HitList.Data←0 4⍴⍬

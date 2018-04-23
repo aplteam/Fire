@@ -1,21 +1,23 @@
  n←SetStateAndActive n;p;exec
  p←##.GetFireRegistryKey
  exec←{↑(//)⎕VFI ⍵}
- n.SearchIsRegEx.State←↑(exec'0'##.R.GetString p,'SearchIsRegEx'),0
- n.DotAll.State←↑(exec'0'##.R.GetString p,'DotAll'),0
- n.Greedy.State←↑(exec'0'##.R.GetString p,'Greedy'),0
- n.UCP.State←↑(exec'0'##.R.GetString p,'UCP'),0
- n.UCP2.State←↑(exec'0'##.R.GetString p,'UCP2'),0
- n.Case.State←↑exec'0'##.R.GetString p,'Case'
- n.Case2.State←↑exec'0'##.R.GetString p,'Case2'
- n.APL_Name.State←1↑exec'0'##.R.GetString p,'APL_Name'   ⍝ NOT "Active"!
- n.Code.State←↑exec'1'##.R.GetString p,'Code'
- n.Code2.State←exec'1'##.R.GetString p,'Code2'
- n.Vars.State←↑exec'1'##.R.GetString p,'Vars'
- n.Vars2.State←exec'1'##.R.GetString p,'Vars2'
- n.APL_Code.State←↑exec'1'##.R.GetString p,'APL_Code'
- n.Comments.State←↑exec'1'##.R.GetString p,'Comments'
- n.Text.State←↑exec'1'##.R.GetString p,'Text'
+⍝ ↓↓↓↓↓↓↓↓↓↓↓ We don not do this any more
+⍝ n.SearchIsRegEx.State←↑(exec'0'##.R.GetString p,'SearchIsRegEx'),0
+⍝ n.DotAll.State←↑(exec'0'##.R.GetString p,'DotAll'),0
+⍝ n.Greedy.State←↑(exec'0'##.R.GetString p,'Greedy'),0
+⍝ n.UCP.State←↑(exec'0'##.R.GetString p,'UCP'),0
+⍝ n.UCP2.State←↑(exec'0'##.R.GetString p,'UCP2'),0
+⍝ n.Case.State←↑exec'0'##.R.GetString p,'Case'
+⍝ n.Case2.State←↑exec'0'##.R.GetString p,'Case2'
+⍝ n.APL_Name.State←1↑exec'0'##.R.GetString p,'APL_Name'   ⍝ NOT "Active"!
+⍝ n.Code.State←↑exec'1'##.R.GetString p,'Code'
+⍝ n.Code2.State←exec'1'##.R.GetString p,'Code2'
+⍝ n.Vars.State←↑exec'1'##.R.GetString p,'Vars'
+⍝ n.Vars2.State←exec'1'##.R.GetString p,'Vars2'
+⍝ n.APL_Code.State←↑exec'1'##.R.GetString p,'APL_Code'
+⍝ n.Comments.State←↑exec'1'##.R.GetString p,'Comments'
+⍝ n.Text.State←↑exec'1'##.R.GetString p,'Text'
+⍝ ↑↑↑↑↑↑↑↑↑↑↑
  :If n.SearchIsRegEx.State
      n.Negate.(Active State)←0
  :EndIf

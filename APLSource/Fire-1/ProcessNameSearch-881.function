@@ -1,4 +1,4 @@
- hits←ProcessNameSearch list;b;names;bool;buffer;options;msg
+ hits←ProcessNameSearch list;b;names;bool;buffer;options;msg;result
 ⍝ Search names only
  {}'Searching...'EnableProgressbar 10
  ⎕DL 0.1
@@ -8,14 +8,16 @@
      :If G.SearchIsRegEx2
          options←(⊂'IC'(~G.Case2)),IsVersion16OrBetter/⊂'UCP'G.UCP2
          :Trap 11
-             b←{~0∊∘⍴¨⍵}{G.SearchFor2 ⎕S 0⍠options⊣⍵}¨⍕¨names
+             b←{~0∊∘⍴¨⍵}result←{G.SearchFor2 ⎕S 0⍠options⊣⍵}¨⍕¨names
+             (b/result)←↑∘⍴¨b/result
          :Else
              msg←A.dmb{0=+/b←':'=⍵:⍵ ⋄ (~b)⊂⍵}⎕DMX.Message
              'Regular Expression error'Question.ShowMsg msg
              ⎕SIGNAL 988
          :EndTrap
      :Else
-         b←∨/G.SearchFor2⍷IfLower⊃{~'.'∊⍵:⍵ ⋄ ##.APLTreeUtils.Last ⍵}∘⍕¨names
+         b←∨/result←G.SearchFor2⍷IfLower⊃{~'.'∊⍵:⍵ ⋄ ##.APLTreeUtils.Last ⍵}∘⍕¨names
+         result←+/result
      :EndIf
      :If 0<+/b
          hits←b⌿list
@@ -28,7 +30,7 @@
          hits,←⊂⍬
          hits,←0
          hits[;6]←hits[;3]
-         hits[;2]←1                                 ⍝ No of hits
+         hits[;2]←b/result                          ⍝ No of hits
          hits[;3]←{{↑⍺.⎕NC⊂⍵}/⍵}¨↓hits[;0 1]        ⍝ Detailed name class
      :EndIf
  :EndIf

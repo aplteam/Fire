@@ -1,4 +1,4 @@
- R←Test_Search_079(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search
+ R←Test_SearchQNL_063(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search
 ⍝ Ordinary search, then a search on the hit list with "Negate" & "Names only" & "Case" ticked.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  R←∆Failed

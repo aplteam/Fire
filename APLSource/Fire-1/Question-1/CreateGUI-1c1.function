@@ -29,6 +29,7 @@
      ∆,←⊂'Caption'this
      ∆,←⊂'Posn'((15+i×5+0⊃ff.GetTextSize'W'),10)
      :If 'http://'{⍺≡(⍴⍺)↑⍵}this
+     :OrIf 'https://'{⍺≡(⍴⍺)↑⍵}this
          ∆,←⊂'FCol'(0 0 255)  ⍝ It's a link
          ∆,←⊂'FontObj' 'LinkFnt'
          flag←1

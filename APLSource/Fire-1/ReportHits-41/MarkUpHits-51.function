@@ -1,4 +1,4 @@
- r←rn MarkUpHits(ref name qnc ind length);bool;body;bool2;buff;l;items;fullName
+ r←rn MarkUpHits(ref name qnc ind length noOfHits);bool;body;bool2;buff;l;items;fullName
  ⍝ rn = running number
  r←''
  :If 2=⌊qnc

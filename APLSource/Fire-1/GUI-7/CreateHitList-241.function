@@ -2,7 +2,7 @@
 ⍝
  ∆←⊂'ListView'
  ∆,←⊂'Posn'((10+0⊃PosnPlusSize n.StartBtn),0)
- ∆,←⊂'Size'(n.Form.Size-(n.SB.Size[0]+5+10+0⊃PosnPlusSize n.StartBtn),0)
+ ∆,←⊂'Size'(80⌈n.Form.Size-(n.SB.Size[0]+5+10+0⊃PosnPlusSize n.StartBtn),0)
  ∆,←⊂'View' 'Report'
  ∆,←⊂'ColTitles'('Name' 'Location' 'Type' '⎕NC' 'Hits' 'Modified by' 'Modified on')
  ∆,←⊂'Attach'('Top' 'Left' 'Bottom' 'Right')

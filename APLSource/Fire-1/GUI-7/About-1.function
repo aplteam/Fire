@@ -4,6 +4,6 @@
      msg,←⊂''
      msg,←⊂'Written by Kai Jaeger ⋄ APL Software Ltd'
      msg,←⊂''
-     msg,←⊂'http://aplwiki.com/Fire'
+     msg,←⊂'https://github.com/aplteam/Fire'
      ##.Question.ShowMsg msg
  }

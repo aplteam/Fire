@@ -1,4 +1,6 @@
  SaveSettingsAsDefaultInRegistry←{
+     ⍬
+     ⍝ We don't do this any more
      p←GetFireRegistryKey
      _←R.PutString(p,'Case')(⍕GUI.n.Case.(State Active))
      _←R.PutString(p,'Case2')(⍕GUI.n.Case2.Active)

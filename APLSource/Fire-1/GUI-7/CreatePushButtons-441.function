@@ -23,7 +23,6 @@
  ∆,←⊂'Tip'(Split'Interrupts a "Search" operation.')
  ∆,←⊂'Active' 0
  ∆,←⊂'Visible' 0
- ∆,←⊂'Default' 1
  ∆,←⊂'Cancel' 1
  n.CancelSearchBtn←n.Form.⎕NEW'Button'∆
  n.CancelSearchBtn.onSelect←'OnCancelSearch&'

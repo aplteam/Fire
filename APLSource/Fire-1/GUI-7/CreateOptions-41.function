@@ -13,6 +13,7 @@
  ∆,←⊂'Style' 'Check'
  ∆,←⊂'Posn'(25 10)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ ∆,←⊂'State' 1
  ∆,←⊂'TipObj'n.TipObj
  ∆,←⊂'Tip'(Split'Makes the search case sensitive.')
  n.Case←⍎'Case'rf.⎕WC ∆

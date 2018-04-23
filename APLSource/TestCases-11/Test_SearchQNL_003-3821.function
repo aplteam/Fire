@@ -1,4 +1,4 @@
- R←Test_SearchQNL_003(stopFlag batchFlag);n;n2;⎕TRAP
+ R←Test_SearchQNL_003(stopFlag batchFlag);n;⎕TRAP
  ⍝ Find with "Names only" and do a "Replace" when an ordinary namespace has a hit.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  R←∆Failed
@@ -27,11 +27,7 @@
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
 
- n2←#._Fire.Fire.Replace.n
- ∆InitialyzeFireReplaceGUI_Settings n2
- n2.ReplaceBy.Text←'APL and J and K'
-
- {}∆Select n2.StartBtn
+ →GoToTidyUp 0<#._Fire.Fire.Replace.⎕NC'n'
  →GoToTidyUp 0≠#._Fire.Fire.Replace.NoOfReplacements
 
  R←∆OK

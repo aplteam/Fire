@@ -1,4 +1,4 @@
- r←runningNumber MarkUpRegExHits(ref name qnc ind length);bool2;bool;body;orig;plus;options;ss;rs;body2
+ r←runningNumber MarkUpRegExHits(ref name qnc ind length noOfHits);bool2;bool;body;orig;plus;options;ss;rs;body2
  r←''
  :If 2=⌊qnc
      r←runningNumber MarkupRegExHitsInVars(ref name qnc ind length)
