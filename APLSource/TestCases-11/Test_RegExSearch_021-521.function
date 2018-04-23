@@ -16,7 +16,6 @@
  'Temp_RegExSearch_021'#.⎕NS''
  #.Temp_RegExSearch_021.⎕FX'Fns' 'txt←''Thisßthat'''
 
- ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'\bThis\b'
  n.LookIn.Text←'#.Temp_RegExSearch_021'
  n.SearchIsRegEx.State←1

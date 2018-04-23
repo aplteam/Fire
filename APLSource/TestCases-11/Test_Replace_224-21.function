@@ -14,7 +14,6 @@
  1 #._Fire.Fire.Run 0
  n←#._Fire.Fire.GUI.n
 
- ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'abc←123'
  n.LookIn.Text←'#.TEMP'
  n.(Vars Comments Text).State←0
@@ -28,7 +27,6 @@
  ∆Process n.Form
 
  n2←#._Fire.Fire.Replace.n
- ∆InitialyzeFireReplaceGUI_Settings n2
  n2.ReplaceBy.Text←'abcd←2000'
 
  {}∆Select n2.StartBtn

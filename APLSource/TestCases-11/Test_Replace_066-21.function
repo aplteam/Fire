@@ -48,7 +48,6 @@
  buffer,←⊂':EndNamespace'
  #.TEMP.⎕FIX buffer
 
- ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'World'
  n.LookIn.Text←'#.TEMP'
  n.(Case APL_Name).State←1
@@ -61,7 +60,6 @@
  ∆Process n.Form
 
  n2←#._Fire.Fire.Replace.n
- ∆InitialyzeFireReplaceGUI_Settings n2
  n2.ReplaceBy.Text←'whole damn world'
 
  {}∆Select n2.StartBtn

@@ -17,7 +17,6 @@
      mydt←⎕NEW DateTime(2008 4 30)
  :EndWith
 
- ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'is text  ⌹'
  n.LookIn.Text←'#.TEMP'
  n.Case.State←1

@@ -10,7 +10,6 @@
  '#.TEMP'⎕NS''
  #.TEMP.vars←⊂⊂⊂'' 'This and that'(1 6⍴'aaa')
 
- ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'a'
  n.LookIn.Text←'#.TEMP'
  ∆Process n.Form
@@ -25,7 +24,6 @@
  ∆Process n.Form
 
  n2←#._Fire.Fire.Replace.n
- ∆InitialyzeFireReplaceGUI_Settings n2
  n2.ReplaceBy.Text←'Does not matter'
 
  {}∆Select n2.StartBtn

@@ -11,8 +11,8 @@
  firstFlag←1
  k←0
  drop←(G.MarkChangeType=1)×⍴,G.MarkChangesWith
- searchFor←##.IfLower G.SearchFor
- replaceBy←##.A.dlb ##.IfLower G.ReplaceBy
+ searchFor←##.G.NamesOnly ##.IfLower G.SearchFor
+ replaceBy←##.A.dlb ##.G.NamesOnly ##.IfLower G.ReplaceBy
  realSequence←⊃¨{(⍕⍺),'.',⍵}/¨↓(##.GetSortedHitListData ⍬)[;0 1]
  wantedSequence←⊃¨{(⍕⍺),'.',⍵}/¨↓##.G.Hits[;0 1]
  :Repeat

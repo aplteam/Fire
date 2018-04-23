@@ -11,7 +11,6 @@
  'TMP'#.⎕NS''
  #.TMP.⎕FIX'⍝ Leading comment "Foo"' ':Namespace Test1' 'Hello←{' '''world''' '}' ':EndNamespace'
 
- ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'"Foo"'
  n.LookIn.Text←'#.TMP'
 

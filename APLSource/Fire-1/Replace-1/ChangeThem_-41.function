@@ -29,7 +29,7 @@
              :Leave
          :EndIf
      :Else
-         (ind length)←nc ##.Scan ##.IfLower oldCode
+         (ind length)←nc ##.Scan ##.G.NamesOnly ##.IfLower oldCode
          newCode←(objLocation.⎕NC⊂objName)ChangeIt oldCode ind
      :EndIf
      :If batchFlag

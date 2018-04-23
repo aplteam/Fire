@@ -31,9 +31,9 @@
 
  n.SearchFor.Text←'Foo'
  n.LookIn.Text←'#.TMP'
+ n.Case.State←0
 
 ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ Search everywhere: APL code, comments, text
- ∆InitialyzeFireMainGUI_Settings n
  {}∆Select n.StartBtn
  ∆Process n.Form
  →PassesIf 14=⍴n.HitList.Items
@@ -41,10 +41,8 @@
  →PassesIf 27=#._Fire.Fire.G.NoOfHits
  →PassesIf 27=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
 
- ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ Search just Code
- ∆InitialyzeFireMainGUI_Settings n
- n.(Comments Text).State←0
- n.Vars.(Active State)←0
+ ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ Search just Code, no Vars
+ n.(Comments Text Vars).State←0
  {}∆Select n.StartBtn
  ∆Process n.Form
  →PassesIf 7=⍴n.HitList.Items
@@ -53,8 +51,8 @@
  →PassesIf 7=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
 
 ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ Search just Comments
- ∆InitialyzeFireMainGUI_Settings n
  n.(APL_Code Text).State←0
+ n.Comments.State←1
  {}∆Select n.StartBtn
  ∆Process n.Form
  →PassesIf 7=⍴n.HitList.Items
@@ -63,8 +61,9 @@
  →PassesIf 9=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
 
 ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ Search just Text
- ∆InitialyzeFireMainGUI_Settings n
  n.(APL_Code Comments).State←0
+ n.Text.State←1
+ n.Vars.State←1
  {}∆Select n.StartBtn
  ∆Process n.Form
  →PassesIf 10=⍴n.HitList.Items
@@ -73,9 +72,8 @@
  →PassesIf 11=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
 
 ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ Search just Code and Comments
- ∆InitialyzeFireMainGUI_Settings n
- n.Text.State←0
- n.Vars.(Active State)←0
+ n.(Text Vars).State←0
+ n.(APL_Code Comments).State←1
  {}∆Select n.StartBtn
  ∆Process n.Form
  →PassesIf 10=⍴n.HitList.Items                              ⍝ Because the namespace and the fns within the namespace...
@@ -84,8 +82,9 @@
  →PassesIf 16=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
 
 ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ Search just Code and Text
- ∆InitialyzeFireMainGUI_Settings n
- n.Comments.State←0
+ n.(Comments Text).State←0
+ n.(Code Text).State←1
+ n.Vars.State←1
  {}∆Select n.StartBtn
  ∆Process n.Form
  →PassesIf 12=⍴n.HitList.Items
@@ -94,8 +93,8 @@
  →PassesIf 18=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
 
 ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ Search just Comments and Text
- ∆InitialyzeFireMainGUI_Settings n
  n.APL_Code.State←0
+ n.(Comments Text).State←1
  {}∆Select n.StartBtn
  ∆Process n.Form
  →PassesIf 13=⍴n.HitList.Items                              ⍝ Because the namespace and the fns within the namespace...

@@ -23,7 +23,6 @@
  1 #._Fire.Fire.Run 0
  n←#._Fire.Fire.GUI.n
 
- ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'APL is great'
  n.LookIn.Text←'#.TEMP'
  n.Case.State←1
@@ -38,7 +37,6 @@
  ∆Process n.Form
 
  n2←#._Fire.Fire.Replace.n
- ∆InitialyzeFireReplaceGUI_Settings n2
  n2.ReplaceBy.Text←'APL is really great'
 
  {}∆Select n2.StartBtn

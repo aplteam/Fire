@@ -44,7 +44,7 @@
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'State' 1
  ∆,←⊂'TipObj'n.TipObj
- msg←'Container are non-scripted namespaces.'
+ msg←'Containers are non-scripted namespaces.'
  ∆,←⊂'Tip'msg
  n.Container←⍎'Container'rf.⎕WC ∆
 

@@ -7,11 +7,11 @@
  1 #._Fire.Fire.Run 0
  n←#._Fire.Fire.GUI.n
 
- ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'Uppercase'
  n.LookIn.Text←'#.A2'
  n.Comments.State←0
  n.APL_Name.State←1
+ n.Case.State←0
 
  {}∆Select n.StartBtn
  ∆Process n.Form

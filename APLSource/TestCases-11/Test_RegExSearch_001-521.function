@@ -13,7 +13,6 @@
  #.Temp_RegExSearch_001.⎕FX'Hello2←{' 'f←1' '⍝ First comment' '   ⍝ Second comment' 'a←1 ⍝ Third comment' '}'
  #.Temp_RegExSearch_001.⎕FIX':Namespace NS1' '  ⍝ First comment' '∇ Hello3' '⍝ First C' '  ⍝ Second C' 'a←1 ⍝ Third C' '∇' ':EndNamespace'
 
- ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'^\s{0,}⍝.*'
  n.LookIn.Text←'#.Temp_RegExSearch_001'
  n.SearchIsRegEx.State←1

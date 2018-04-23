@@ -11,7 +11,6 @@
  'Temp_RegExSearch_017'#.⎕NS''
  #.Temp_RegExSearch_017.⎕FX'Fns' 'Start' 'abc←1' 'End' 'Start' 'xyz←2' 'End'
 
- ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'Start.*End'
  n.LookIn.Text←'#.Temp_RegExSearch_017'
  n.SearchIsRegEx.State←1

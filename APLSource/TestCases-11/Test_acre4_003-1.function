@@ -20,7 +20,6 @@
 
  1 #._Fire.Fire.Run 0
  n←#._Fire.Fire.GUI.n
- ∆InitialyzeFireMainGUI_Settings n
 
  n.SearchFor.Text←'Hello'
  n.LookIn.Text←'#.FireAcreTest'
@@ -33,7 +32,6 @@
  ∆Process n.Form
 
  n2←#._Fire.Fire.Replace.n
- ∆InitialyzeFireReplaceGUI_Settings n2
  n2.ReplaceBy.Text←'Hello,'
 
  {}∆Select n2.StartBtn

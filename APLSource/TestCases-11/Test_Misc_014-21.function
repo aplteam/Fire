@@ -20,7 +20,6 @@
 
  1 #._Fire.Fire.Run 0
  n←#._Fire.Fire.GUI.n
- ∆InitialyzeFireMainGUI_Settings n
 
  ref←#._Fire.Fire.ReportGosts.Run #.FireReportGhost
  ⎕DL 0.05

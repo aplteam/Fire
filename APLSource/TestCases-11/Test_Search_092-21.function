@@ -14,7 +14,6 @@
  #.TEMP.⎕FIX':Namespace MyNS' '∇r←Hello2' 'a←123 ⍝ This is a comment  ⌹' 'r''World2''' '∇' ':EndNamespace'
  #.TEMP.⎕FX'r←Hello3' '⍝ This is a comment  ⌹' 'r''World3'''
 
- ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'is a comment  ⌹'
  n.LookIn.Text←'#.TEMP'
  n.Case.State←1

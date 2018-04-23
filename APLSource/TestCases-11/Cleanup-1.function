@@ -5,7 +5,6 @@
  #.⎕EX'TestData'
  ⎕EX'∆ExecuteAcreTests'
  n←##.Fire.Run 0
- ∆InitialyzeFireMainGUI_Settings n ⍝ Restore defaults
  1 ⎕NQ n.Form'Close'
  :If ∆IsAcre2Or3
      {}⎕SE.UCMD'acre.SetProperty Fire displaymethod ""'

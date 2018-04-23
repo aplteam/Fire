@@ -34,13 +34,13 @@
 
  1 #._Fire.Fire.Run 0
  n←#._Fire.Fire.GUI.n
- ∆InitialyzeFireMainGUI_Settings n
 
  n.SearchFor.Text←'world'
  n.LookIn.Text←'#.FireAcreTest'
 
  n.Negate.State←0
  n.ReuseSearch.State←0
+ n.Case.State←0
 
  {}∆Select n.StartBtn
  ∆Process n.Form

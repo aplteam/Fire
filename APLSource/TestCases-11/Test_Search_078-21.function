@@ -15,9 +15,9 @@
  1 #._Fire.Fire.Run 0
  n←#._Fire.Fire.GUI.n
 
- ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'Hello'
  n.LookIn.Text←'#.TEMP'
+ n.Case.State←0
 
  {}∆Select n.StartBtn
  ∆Process n.Form

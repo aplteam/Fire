@@ -19,7 +19,6 @@
 
  1 #._Fire.Fire.Run 0
  n←#._Fire.Fire.GUI.n
- ∆InitialyzeFireMainGUI_Settings n
 
  n.SearchFor.Text←'world'''
  n.LookIn.Text←'#.TEMP'
@@ -32,7 +31,6 @@
  ∆Process n.Form
 
  n2←#._Fire.Fire.Replace.n
- ∆InitialyzeFireReplaceGUI_Settings n2
  n2.ReplaceBy.Text←'world and universe'''
 
  {}∆Select n2.StartBtn

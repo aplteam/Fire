@@ -14,7 +14,6 @@
  #.Temp_RegExSearch_002.AndThisOne←'   ⍝ This & That'
  #.Temp_RegExSearch_002.AlsoThisOne←'⍝ Line 1' 'Line 2' 'Line 3' '   ⍝ Line 4'
 
- ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'^\s{0,}⍝.*'
  n.LookIn.Text←'#.Temp_RegExSearch_002'
  n.SearchIsRegEx.State←1

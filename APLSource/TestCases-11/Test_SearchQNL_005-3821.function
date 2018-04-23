@@ -11,7 +11,6 @@
  1 #._Fire.Fire.Run 0
  n←#._Fire.Fire.GUI.n
 
- ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'QAN'
  n.LookIn.Text←'#.TestData.TicToc'
  ⎕NQ n.Tab2'Select'

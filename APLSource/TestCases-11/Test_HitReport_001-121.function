@@ -5,7 +5,6 @@
 
  1 #._Fire.Fire.Run 0
  n←#._Fire.Fire.GUI.n
- ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'⎕IO'
  n.LookIn.Text←'#._Fire.Fire'
  n.Vars.State←0

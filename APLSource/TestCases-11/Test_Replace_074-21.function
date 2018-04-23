@@ -9,7 +9,6 @@
  'Test_74'#.TestData.⎕NS{(⊂'.',⍨⍕⍵),¨⍵.⎕NL-3 4}#.TestData.A3
  #.TestData.A3 ∆CopyClassesTo #.TestData.Test_74
 
- ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'b←'
  n.LookIn.Text←'#.TestData.Test_74'
  n.Case.State←1
@@ -23,7 +22,6 @@
  ∆Process n.Form
 
  n2←#._Fire.Fire.Replace.n
- ∆InitialyzeFireReplaceGUI_Settings n2
  n2.ReplaceBy.Text←'B←'
  n2.MarkChanges.(Active State)←1
  n2.MarkChangesText.(Active BCol)←1 0

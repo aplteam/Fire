@@ -12,7 +12,6 @@
 
  1 #._Fire.Fire.Run 0
  n←#._Fire.Fire.GUI.n
- ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'after'
  n.LookIn.Text←'#.TEMP'
  n.Vars.State←0

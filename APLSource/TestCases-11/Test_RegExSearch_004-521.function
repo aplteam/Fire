@@ -12,7 +12,6 @@
  #.Temp_RegExSearch_004.vars1←'a←1' 'b←2 ''This is' 'text that' 'runs over' 'several lines.'' c←3' 'd←4' 'e←5 ''Holy shit!!!!'' ⋄ g←6' '''a''' '' '123'
  #.Temp_RegExSearch_004.vars2←'a←1' 'b←20' 'c←30' 'd←40' 'e←50'
 
- ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'''.*?'''
  n.LookIn.Text←'#.Temp_RegExSearch_004'
  n.SearchIsRegEx.State←1

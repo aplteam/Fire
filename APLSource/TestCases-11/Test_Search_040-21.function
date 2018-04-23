@@ -10,7 +10,6 @@
  '#.TEMP'⎕NS''
  #.TEMP.varsEmpty←⊂''
 
- ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'a'
  n.LookIn.Text←'#.TEMP'
  ∆Process n.Form

@@ -13,7 +13,6 @@
  1 #._Fire.Fire.Run 0
  n←#._Fire.Fire.GUI.n
 
- ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'⎕IO'
  n.LookIn.Text←'#.TEMP'
  n.ReuseSearch.State←0
@@ -27,7 +26,6 @@
  ∆Process n.Form
 
  n2←#._Fire.Fire.Replace.n
- ∆InitialyzeFireReplaceGUI_Settings n2
  {}∆Select n2.StartBtn
  ∆Process n.Form
 

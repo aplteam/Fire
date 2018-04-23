@@ -16,7 +16,7 @@
              ⎕SIGNAL 988
          :EndTrap
      :Else
-         b←∨/result←G.SearchFor2⍷IfLower⊃{~'.'∊⍵:⍵ ⋄ ##.APLTreeUtils.Last ⍵}∘⍕¨names
+         b←∨/result←(IfLower G.SearchFor2)⍷IfLower⊃{~'.'∊⍵:⍵ ⋄ ##.APLTreeUtils.Last ⍵}∘⍕¨names
          result←+/result
      :EndIf
      :If 0<+/b

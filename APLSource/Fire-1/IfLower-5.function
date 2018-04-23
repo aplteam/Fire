@@ -1,6 +1,16 @@
- IfLower←{
-⍝ Return ⍵ as lowercase if G.Case is zero
-     G.SearchIsRegEx:⍵
-     G.Case:⍵
-     A.Lowercase ⍵
- }
+ txt←{isNamesOnly}IfLower txt
+⍝ Return ⍵ as lowercase if G.Case (or G.Case2) is zero
+ :If 0=⎕NC'isNamesOnly'
+     isNamesOnly←GUI.IsNamesOnlySearch n
+ :EndIf
+ :If isNamesOnly
+     :If ~G.SearchIsRegEx2
+     :AndIf ~G.Case2
+         txt←A.Lowercase txt
+     :EndIf
+ :Else
+     :If ~G.SearchIsRegEx
+     :AndIf ~G.Case
+         txt←A.Lowercase txt
+     :EndIf
+ :EndIf

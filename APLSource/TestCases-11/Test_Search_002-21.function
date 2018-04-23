@@ -15,7 +15,6 @@
  #.Temp_Search_002.⎕FX'Hello4' 'a.f←1'
  #.Temp_Search_002.⎕FX⍉⍪'Hello5←{f←1}'
 
- ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'f'
  n.LookIn.Text←'#.Temp_Search_002'
  n.APL_Name.State←1

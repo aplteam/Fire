@@ -2,7 +2,7 @@
  r←⍬
  (name New)←⎕FREAD G.compareFileTieNo,recNo
  (name2 Old)←⎕FREAD G.fileOldTieNo,recNo
- (new old)←##.IfLower¨New Old
+ (new old)←##.G.NamesOnly ##.IfLower¨New Old
  data←((~firstFlag)/⊂'</div>'),⊂'<div class="container" id="no',(⍕i+1),'">'  ⍝ This allows us to CSS this object
  nc←i⊃G.NameClasses
  lns←nc{((⌊⍺)∊3 4):⍳⍵ ⋄ 2≠⌊nc:(⊂''),(1↓¯1↓⍳⍵),⊂'' ⋄ ⍬}⍴New

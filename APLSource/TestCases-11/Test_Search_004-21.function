@@ -6,7 +6,6 @@
 ⍝ Preconditions
  1 #._Fire.Fire.Run 0
  n←#._Fire.Fire.GUI.n
- ∆InitialyzeFireMainGUI_Settings n
 
  n.SearchFor.Text←'Uppercase'
  n.LookIn.Text←'#.A2'

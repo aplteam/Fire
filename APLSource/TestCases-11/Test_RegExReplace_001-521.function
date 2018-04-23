@@ -11,7 +11,6 @@
  'Temp_RegExReplace_001'#.⎕NS''
  #.Temp_RegExReplace_001.⎕FX'Fns' 'Start ⋄ ''this is'' ⋄ End ⋄ Start ⋄ ''this really is'' ⋄ End'
 
- ∆InitialyzeFireMainGUI_Settings n
  n.SearchFor.Text←'Start.*End'
  n.LookIn.Text←'#.Temp_RegExReplace_001'
  n.SearchIsRegEx.State←1
@@ -25,7 +24,6 @@
  ∆Process n.Form
 
  n2←#._Fire.Fire.Replace.n
- ∆InitialyzeFireReplaceGUI_Settings n2
  n2.ReplaceBy.Text←'This REALLY is'
 
  {}∆Select n2.StartBtn
