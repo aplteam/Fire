@@ -25,6 +25,7 @@
 
  n2←#._Fire.Fire.Replace.n
  n2.ReplaceBy.Text←'This REALLY is'
+ n2.BatchMode.State←1
 
  {}∆Select n2.StartBtn
  ∆Process n.Form
