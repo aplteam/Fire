@@ -1,10 +1,12 @@
  History
+⍝⍝ Contains information regarding the last couple of releases. A full history is avialble on GitHub. (This is line ignored)
 ⍝ * 6.6.0
-⍝   * Scanning the WS and scanning ⎕NL require different parameters and search strategies and have
+⍝   * Scanning the WS and scanning `⎕NL` require different parameters and search strategies and have
 ⍝     different results. Rather than trying to work around this somehow the two things are now
 ⍝     separated on two different TABs, `Workspace` and `⎕NL`. That should clarify things.
-⍝   * No check box settings are saved any more Fire is closed and not restored when Fire is opened again.
-⍝     Instead Fire always comes up with (the same) default settings.
+⍝   * Any check box settings etc. are saved only for the duration of a session. Therefore the settings
+⍝     remain the same when Fire is restarted during a session. Only when a new instance of Dyalog is
+⍝     created or `]Fire -fl` (force load) is used are the defaults used.
 ⍝   * Bug fixes
 ⍝     * When a search had no hits at all and F8 was pressed and then the Fire GUI closed, re-opening
 ⍝       made it crash because the size was negative.
