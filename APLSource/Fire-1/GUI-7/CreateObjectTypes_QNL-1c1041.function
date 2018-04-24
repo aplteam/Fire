@@ -10,7 +10,7 @@
  ∆,←⊂'Caption' '&APL code'
  ∆,←⊂'Style' 'Check'
  ∆,←⊂'Posn'(25 10)
- ∆,←⊂'State' 1
+ ∆,←⊂'State'##.G.Code2
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'TipObj'n.TipObj
  ∆,←⊂'Tip'('Functions, operators, classes,' 'interfaces and scripted namespaces.')
@@ -22,7 +22,7 @@
  ∆,←⊂'Caption' '&Variables'
  ∆,←⊂'Style' 'Check'
  ∆,←⊂'Posn'(50 10)
- ∆,←⊂'State' 1
+ ∆,←⊂'State'##.G.Vars2
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'TipObj'n.TipObj
  msg←⊂'Search variables.'
@@ -40,9 +40,8 @@
  ∆,←⊂'Caption' '&Containers'
  ∆,←⊂'Style' 'Check'
  ∆,←⊂'Posn'(75 10)
- ∆,←⊂'State' 1
+ ∆,←⊂'State'##.G.Container
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
- ∆,←⊂'State' 1
  ∆,←⊂'TipObj'n.TipObj
  msg←'Containers are non-scripted namespaces.'
  ∆,←⊂'Tip'msg

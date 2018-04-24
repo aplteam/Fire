@@ -2,7 +2,7 @@
 ⍝ * 6.6.0
 ⍝   * Scanning the WS and scanning ⎕NL require different parameters and search strategies and have
 ⍝     different results. Rather than trying to work around this somehow the two things are now
-⍝     separated on two different TABs, "Workspace" and "[]NL". That should clarify things.
+⍝     separated on two different TABs, `Workspace` and `⎕NL`. That should clarify things.
 ⍝   * No check box settings are saved any more Fire is closed and not restored when Fire is opened again.
 ⍝     Instead Fire always comes up with (the same) default settings.
 ⍝   * Bug fixes

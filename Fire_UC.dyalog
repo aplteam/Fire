@@ -5,12 +5,13 @@
 ⍝ If this is not the case then Fire is copied into []SE from
 ⍝ the same directory the User Command stems from and then started.
 ⍝ Kai Jaeger ⋄ APL Team Ltd
+⍝ Version 2.0.1 - 2018-04-23
+⍝ * Minor change regarding the documentation.
 ⍝ Version 2.0.0 - 2017-07-10
 ⍝  * Massive changes: compatible only with Fire 6.0 and later.
 ⍝  * Accepts `.` as an argument. Treated as "Copy current namespace into `Start looking here:`"
 ⍝ Version 1.3.1 - 2017-02-24
 ⍝  * Bug fix for the CommandFolder/WinReg key/separator problem
-⍝ Version 1.3.0 - 2016-09-19
 
     ∇ r←List;⎕IO;⎕ML ⍝ this function usually returns 1 or more namespaces (here only 1)
       :Access Shared Public
@@ -66,15 +67,13 @@
       ⎕IO←0 ⋄ ⎕ML←3
       :Access Shared Public
       r←⊂'Starts Fire (FInd & REplace).'
-      r,←⊂'Loads Fire (and some stuff needed by Fire) into ⎕SE'
-      r,←⊂'and starts it. When you call Fire again it is started'
-      r,←⊂'from ⎕SE without further ado.'
-      r,←⊂'However, you can force a reload into ⎕SE by specifying'
-      r,←⊂'the optional switch -fl (force load)'
+      r,←⊂'Loads Fire (and some stuff needed by Fire) into ⎕SE and starts it.'
+      r,←⊂'When you call Fire again it is started from ⎕SE without further ado.'
+      r,←⊂'However, you can force a reload into ⎕SE by specifying the optional'
+      r,←⊂'switch -fl (force load)'
       r,←⊂''
-      r,←⊂'If you are somewhere different from # then you can force'
-      r,←⊂'Fire to put the current namespace path into "Start looking here"'
-      r,←⊂'by providing a dot as right argument:'
+      r,←⊂'If you are somewhere different from # then you can force Fire to start'
+      r,←⊂'the next search from that namespace by providing a dot as argument:'
       r,←⊂']Fire .'
     ∇
 

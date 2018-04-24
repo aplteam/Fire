@@ -1,20 +1,32 @@
  {n}←{testFlags}Run debugFlag;TheCounterForm
-⍝ debugFlag=1 and you get some Developer-specific options _
-⍝ making it easier to debug Fire.
-⍝ testFlags:
-⍝ [0]: Replace does not execute ⎕DQ, CompareIt! is not _
-⍝      really called, you named it. Used only when the test cases _
-⍝      are executed.
-⍝ [1]: 1: Pretend that CompareIt! is not available
-⍝ Home page: http://aplwiki.com/Fire
+⍝ Fire's main function.\\
+⍝ `debugFlag←1` and you get some Developer-specific options making it easier to debug Fire.\\
+⍝ `testFlags`, if specified, must be a Boolean vector with two items:
+⍝ 1. Replace does not execute ⎕DQ, CompareIt! is not really called, you named it.
+⍝
+⍝    Used only when the test cases are executed.
+⍝ 2. Pretend that CompareIt! is not available.
+⍝ Usually `testFlags` is specified by the test cases, not by a user.\\
+⍝ Note that the `G` (for "Globals") namespace is re-used when it exists.\\
+⍝ This means that a user gets the defaults when Fire is calledfor the very first time
+⍝ but can carry on with the last settings during that session or until either Fire
+⍝ is started with the `-fl` (force load) setting or `⎕SE.Fire.Reset` is called.\\
+⍝ However, when `0<+/testFlags` then `Reset` is always called in order to make
+⍝ sure that the test cases always start with the defaults.\\
+⍝ Home page: <https://github.com/aplteam/Fire>
  testFlags←2↑{0<⎕NC ⍵:(⍎⍵),0 0 ⋄ 0 0}'testFlags'
  {}Cleanup
- :If debugFlag ⋄ #.FilesAndDirs.PolishCurrentDir ⋄ :EndIf
+ :If debugFlag
+     #.FilesAndDirs.PolishCurrentDir
+ :EndIf
  Init testFlags
- G.HelpPath←FindFireReadMe ⍬
+ :If 0=⎕NC'G'
+ :OrIf 0<+/testFlags
+     G←Populate_G testFlags
+     G.HelpPath←FindFireReadMe ⍬
+ :EndIf
  n←GUI.n←GUI.CreateGUI debugFlag
- ⎕NQ n.Tab1'Select'
+ ⎕NQ(G.NamesOnly⊃n.(Tab1 Tab2))'Select'
  :If 0=+/testFlags
-     ⎕DL 0.05
-     ⎕NQ GUI.n.SearchFor'GotFocus'
+     ⎕DL 0.05 ⋄ ⎕NQ GUI.n.SearchFor'GotFocus'
  :EndIf

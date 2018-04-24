@@ -13,7 +13,7 @@
  ∆,←⊂'Style' 'Check'
  ∆,←⊂'Posn'(25 10)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
- ∆,←⊂'State' 1
+ ∆,←⊂'State'##.G.Comments
  ∆,←⊂'TipObj'n.TipObj
  ∆,←⊂'Tip'(Split'Scan comments. Not applicable to variables.')
  n.Comments←⍎'Comments'rf.⎕WC ∆
@@ -24,7 +24,7 @@
  ∆,←⊂'Caption' '&Text'
  ∆,←⊂'Style' 'Check'
  ∆,←⊂'Posn'(50 10)
- ∆,←⊂'State' 1
+ ∆,←⊂'State'##.G.Text
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'TipObj'n.TipObj
  msg←''
@@ -41,7 +41,7 @@
  ∆,←⊂'Caption' '&Everything else'
  ∆,←⊂'Style' 'Check'
  ∆,←⊂'Posn'(75 10)
- ∆,←⊂'State' 1
+ ∆,←⊂'State'##.G.APL_Code
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'TipObj'n.TipObj
  msg←''

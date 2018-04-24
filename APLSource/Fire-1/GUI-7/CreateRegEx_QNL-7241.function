@@ -12,6 +12,7 @@
  ∆,←⊂'Caption' 'Is RegE&x'
  ∆,←⊂'Posn'(20 10)
  ∆,←⊂'Style' 'Check'
+ ∆,←⊂'State'##.G.SearchIsRegEx2
  ∆,←⊂'Attach'('Top' 'Right' 'Top' 'Right')
  ∆,←⊂'TipObj'n.TipObj
  ∆,←⊂'Tip'(Split'Interpret "Search for" as a regular expression.')
@@ -22,12 +23,12 @@
  ∆,←⊂'Caption' '&UCP'
  ∆,←⊂'Style' 'Check'
  ∆,←⊂'Posn'(40 25)
+ ∆,←⊂'State'##.G.UCP2
  ∆,←⊂'Attach'('Top' 'Right' 'Top' 'Right')
  ∆,←⊂'TipObj'n.TipObj
  ∆,←⊂'Tip'(Split'Use Unicode properties to classify characters.')
  ∆,←⊂'Visible'##.IsVersion16OrBetter
  ∆,←⊂'Active'##.IsVersion16OrBetter
- ∆,←⊂'State'##.IsVersion16OrBetter
  n.UCP2←⍎'UCP'rf.⎕WC ∆
  n.UCP2.onSelect←'OnToggleSearchIsRegEx'
 

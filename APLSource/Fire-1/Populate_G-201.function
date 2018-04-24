@@ -1,9 +1,10 @@
- Populate_G testFlags
+ G←Populate_G testFlags
 ⍝ Creates namespace "G" (for "Globals") and populates it
  G←⎕NS''    ⍝ Holds Globals. GUI data is copied into this
  G.TestFlag←testFlags[0]
  G.DontUseCompareIt←testFlags[1]
  G←AssignRegistryValuesTo G
+ G←EstablishDefaultSettings G
  :If 0∊⍴G.LookIn
      G.LookIn←#
  :EndIf

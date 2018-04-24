@@ -1,0 +1,4 @@
+ Reset
+⍝ Calls [`Cleanup`](#) and deletes the `G` (= globals) namespace.
+ Cleanup
+ ⎕EX'G'

@@ -15,6 +15,7 @@
      no←1+⍴n.HitList.Items                          ⍝ Number of rows plus col titles; we add one to be on the save side
      nh←no×1+GetListViewItemHeight n.HitList        ⍝ Needed height of the list
      nh+←15×no<6
+     nh⌈←120
      h←n.Form.height[1]+⌊nh÷scale
      :If (h<moh-n.Form.Posn[0])
          newPosn←n.Form.Posn

@@ -13,6 +13,7 @@
  ∆,←⊂'Posn'(20 10)
  ∆,←⊂'Style' 'Check'
  ∆,←⊂'Attach'('Top' 'Right' 'Top' 'Right')
+ ∆,←⊂'State'##.G.SearchIsRegEx
  ∆,←⊂'TipObj'n.TipObj
  ∆,←⊂'Tip'(Split'Interpret "Search for" as a regular expression.')
  n.SearchIsRegEx←⍎'SearchIsRegEx'rf.⎕WC ∆
@@ -22,6 +23,7 @@
  ∆,←⊂'Caption' '&Dot all'
  ∆,←⊂'Style' 'Check'
  ∆,←⊂'Posn'(40 25)
+ ∆,←⊂'State'##.G.DotAll
  ∆,←⊂'Attach'('Top' 'Right' 'Top' 'Right')
  ∆,←⊂'TipObj'n.TipObj
  msg←''
@@ -37,6 +39,7 @@
  ∆,←⊂'Caption' '&Greedy'
  ∆,←⊂'Style' 'Check'
  ∆,←⊂'Posn'(59 25)
+ ∆,←⊂'State'##.G.Greedy
  ∆,←⊂'Attach'('Top' 'Right' 'Top' 'Right')
  ∆,←⊂'TipObj'n.TipObj
  ∆,←⊂'Tip'(Split'Specifies whether the RegEx is greedy.')
@@ -47,12 +50,12 @@
  ∆,←⊂'Caption' '&UCP'
  ∆,←⊂'Style' 'Check'
  ∆,←⊂'Posn'(78 25)
+ ∆,←⊂'State'##.G.UCP
  ∆,←⊂'Attach'('Top' 'Right' 'Top' 'Right')
  ∆,←⊂'TipObj'n.TipObj
  ∆,←⊂'Tip'(Split'Use Unicode properties to classify characters.')
  ∆,←⊂'Visible'##.IsVersion16OrBetter
  ∆,←⊂'Active'##.IsVersion16OrBetter
- ∆,←⊂'State'##.IsVersion16OrBetter
  n.UCP←⍎'UCP'rf.⎕WC ∆
  n.UCP.onSelect←'OnToggleSearchIsRegEx'
 

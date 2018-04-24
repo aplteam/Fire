@@ -7,6 +7,7 @@
  :Trap 0 ⋄ {}⎕SE.UCMD'acre.Projects' ⋄ :EndTrap
  :Trap 0 ⋄ {}⎕SE.UCMD'acre.ListProjects' ⋄ :EndTrap
  ∆IsAcre2Or3←IsAcre2Or3
+ ##.Fire.Reset
  :If ∆IsAcre2Or3
      {}⎕SE.UCMD'acre.SetProperty Fire displaymethod NULL'
  :Else

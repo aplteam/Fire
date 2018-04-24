@@ -13,7 +13,7 @@
  ∆,←⊂'Style' 'Check'
  ∆,←⊂'Posn'(25 10)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
- ∆,←⊂'State' 1
+ ∆,←⊂'State'##.G.Case
  ∆,←⊂'TipObj'n.TipObj
  ∆,←⊂'Tip'(Split'Makes the search case sensitive.')
  n.Case←⍎'Case'rf.⎕WC ∆
@@ -24,6 +24,7 @@
  ∆,←⊂'Caption' 'Match valid names &only'
  ∆,←⊂'Style' 'Check'
  ∆,←⊂'Posn'(50 10)
+ ∆,←⊂'State'##.G.APL_Name
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'TipObj'n.TipObj
  msg←'Makes the search strict in terms of identifier boundaries.'

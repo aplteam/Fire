@@ -1,0 +1,27 @@
+ G←EstablishDefaultSettings G
+⍝ Search
+ G.APL_Code←1
+ G.APL_Name←0
+ G.Case←1
+ G.Case2←1
+ G.Code←1
+ G.Code2←1
+ G.Comments←1
+ G.Container←1
+ G.Greedy←0
+ G.DotAll←0
+ G.APL_Name←0
+ G.ReuseSearch←0
+ G.NamesOnly←0
+ G.Negate←0
+ G.SearchIsRegEx←0
+ G.SearchIsRegEx2←0
+ G.Text←1
+ G.UCP←IsVersion16OrBetter
+ G.UCP2←IsVersion16OrBetter
+ G.Vars←1
+ G.Vars2←1
+⍝ Replace
+ G.ReplaceBy←''
+ G.DetailedReport←0
+ G.SimpleReport←1

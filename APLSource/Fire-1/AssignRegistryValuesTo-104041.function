@@ -4,7 +4,6 @@
 ⍝ [2] is "Active"
  p←GetFireRegistryKey
  wsid←1⊃A.SplitPath ⎕WSID
-
 ⍝ Main GUI
  G.LookForList←''R.GetString p,wsid,'\LookForList'
  :If (,'#')≢G.LookIn←,''R.GetString p,wsid,'\LookIn'
@@ -12,25 +11,4 @@
  :AndIf 0≥⎕NC G.LookIn
      G.LookIn←''
  :EndIf
-
- G.Case←0⊃⍎'0 1'R.GetString p,'Case'
- G.Case2←⍎'0'R.GetString p,'Case2'
- G.APL_Name←1↑⍎'0'R.GetString p,'APL_Name' ⍝ Not "Active"
-
- G.APL_Code←0⊃⍎'1 1'R.GetString p,'APL_Code'
- G.Comments←0⊃⍎'1 1'R.GetString p,'Comments'
- G.Text←0⊃⍎'1 1'R.GetString p,'Text'
-
- G.SearchIsRegEx←0⊃(⍎'0 1'R.GetString p,'SearchIsRegEx'),0
- G.DotAll←0⊃(⍎'0 0'R.GetString p,'DotAll'),0
- G.Greedy←0⊃(⍎'0 0'R.GetString p,'Greedy'),0
- G.UCP←0⊃(⍎'0 0'R.GetString p,'UCP'),0
-
- G.SearchIsRegEx2←0⊃(⍎'0 1'R.GetString p,'SearchIsRegEx2'),0
- G.UCP2←0⊃(⍎'0 0'R.GetString p,'UCP2'),0
-
-⍝ Replace dialog
- G.ReplaceBy←''R.GetString p,'ReplaceBy'
- G.DetailedReport←0 R.GetValue p,'DetailedReport'
- G.SimpleReport←1 R.GetValue p,'SimpleReport'
 ⍝Done

@@ -1,4 +1,11 @@
  ADOC_Doc
-⍝ How to install Fire
-⍝
-⍝ There is a file "HowToInstall.html" with details.
+⍝ # Fire
+⍝ ## Overview
+⍝ Fire stands for FInd and REplace. It's a powerful utility that allows you to search either the workspace
+⍝ or the names in all ordinary (=non-scripted) namespaces and also to replace any hits by something else.\\
+⍝ Fire is hosted on GitHub, see <https://github.com/aplteam/Fire>
+⍝ ## Supported platforms
+⍝ Fire is a Windows-only tool.
+⍝ ## How to install Fire
+⍝ Fire is designed to be installed as a Dyalog user command. It requires version 15.0 Unicode or later.\\
+⍝ There is a file "HowToInstall.html" available with details.

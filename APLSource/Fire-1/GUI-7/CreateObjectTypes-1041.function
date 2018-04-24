@@ -11,7 +11,7 @@
  ∆,←⊂'Style' 'Check'
  ∆,←⊂'Posn'(25 10)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
- ∆,←⊂'State' 1
+ ∆,←⊂'State'##.G.Code
  ∆,←⊂'TipObj'n.TipObj
  ∆,←⊂'Tip'(Split'Functions, operators, classes, interfaces and scripted namespaces.')
  n.Code←⍎'Code'rf.⎕WC ∆
@@ -22,7 +22,7 @@
  ∆,←⊂'Caption' '&Variables'
  ∆,←⊂'Style' 'Check'
  ∆,←⊂'Posn'(50 10)
- ∆,←⊂'State' 1
+ ∆,←⊂'State'##.G.Vars
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'TipObj'n.TipObj
  msg←'Search variables.⌹'
