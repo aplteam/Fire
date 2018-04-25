@@ -9,6 +9,7 @@
          res←#.acre.Erase GetFullPath¨rows
      :EndIf
      :If ~0∊⍴∊res
+     :AndIf ~##.G.TestFlag
          ⎕←'Acre confirmed deletion for:'
          ⎕←⍪res
      :EndIf

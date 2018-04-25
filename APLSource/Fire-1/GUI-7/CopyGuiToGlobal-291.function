@@ -22,6 +22,7 @@
      ##.G.UCP2←n.UCP2.State
      ##.G.NamesOnly←IsNamesOnlySearch n
      ##.G.Container←n.Container.State
+     ##.G.LookForList←((30⌊⍴n.SearchFor.Items)↑n.SearchFor.Items)
    ⍝ G.SearchFor2 might or might not be lowercase version of G.SearchFor depending
    ⍝      ↓↓↓↓↓↓↓↓↓↓   on user preferences. That's why this must be done late.
      ##.G.SearchFor2←##.G.NamesOnly ##.IfLower ##.G.SearchFor
