@@ -5,11 +5,10 @@
  :If ##.IsAnyAcreAround
      :If 0<⎕NC'⎕SE.acre'
          res←{⎕SE.UCMD'acre.Erase ',⍵,' -messages=''off'''}¨GetFullPath¨rows
-     :EndIf
-     :If 0<⎕NC'#.acre'
+     :ElseIf 0<⎕NC'#.acre'
          res←#.acre.Erase GetFullPath¨rows
      :EndIf
-     :If ~0∊⍴res
+     :If ~0∊⍴∊res
          ⎕←'Acre confirmed deletion for:'
          ⎕←⍪res
      :EndIf

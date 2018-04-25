@@ -13,6 +13,7 @@
 ⍝     * Deleting an object from the Fire GUI is now reporting acre activities, if any.
 ⍝     * Link in the "About" dialog fixed.
 ⍝     * Number of objects and number of hits was under special circumstances incorrect.
+⍝     * Deleting an object would fail if acre is an open acre project.
 ⍝ * 6.5.0
 ⍝   * Fire 6.5 is compatible with acre 4.2 and better only. If you use an older version of
 ⍝     acre then you should only update after you've moved to acre 4.2.0 or better. This is due

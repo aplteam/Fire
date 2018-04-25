@@ -8,6 +8,7 @@
 
 ⍝ First we check whether "Version" returns a valid result:
  (n v d)←rf.Version
+ v←{⍵/⍨3>+\'.'=⍵}v
  f1←({⍵↓⍨2×'#.'≡2⍴⍵}n)≢1↓↑¯1↑⎕NPARTS⍕rf
  f1∨←~5≤⍴v
  f1∨←2≠'.'+.=v

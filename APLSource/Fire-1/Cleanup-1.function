@@ -7,4 +7,7 @@
  ⎕EX¨'AWR'
  ⎕EX¨'GUI.n' 'GUI.TheIcon'
  (⍎¨⎕NL-9).(⎕EX¨⎕WN'')
+ :If 9=⎕NC'G'
+     G.⎕EX'Hits'  ⍝ Otherwise )CLEAR etc. would not work
+ :EndIf
 ⍝Done
