@@ -18,8 +18,6 @@
      ##.G.SearchIsRegEx2←n.SearchIsRegEx2.State
      ##.G.DotAll←n.DotAll.State
      ##.G.Greedy←n.Greedy.State
-     ##.G.UCP←n.UCP.State
-     ##.G.UCP2←n.UCP2.State
      ##.G.NamesOnly←IsNamesOnlySearch n
      ##.G.Container←n.Container.State
      ##.G.LookForList←((30⌊⍴n.SearchFor.Items)↑n.SearchFor.Items)

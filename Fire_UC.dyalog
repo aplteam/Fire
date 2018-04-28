@@ -5,6 +5,8 @@
 ⍝ If this is not the case then Fire is copied into []SE from
 ⍝ the same directory the User Command stems from and then started.
 ⍝ Kai Jaeger ⋄ APL Team Ltd
+⍝ Version 2.1.0 - 2018-04-26
+⍝ * Tidied up.
 ⍝ Version 2.0.1 - 2018-04-23
 ⍝ * Minor change regarding the documentation.
 ⍝ Version 2.0.0 - 2017-07-10
@@ -24,7 +26,7 @@
       r.Parse←'1s -fl'                      ⍝ Takes one optional switch: force load
     ∇
 
-    ∇ r←Run(Cmd Args);⎕IO;⎕ML;rk;paths;thisPath;flag;l;tbc;dne;bool;regData;n
+    ∇ r←Run(Cmd Args);⎕IO;⎕ML;paths;thisPath;flag;l;tbc;dne;bool;regData;n
       :Access Shared Public
       ⎕IO←0 ⋄ ⎕ML←3 ⋄ ⎕WX←3
       r←0 0⍴''
@@ -36,20 +38,8 @@
           ⎕SE.⎕EX'Fire'
       :EndIf
       :If 1∊dne
-          rk←'HKEY_CURRENT_USER\Software\Dyalog\Dyalog APL/W'
-          rk,←('64'≡¯2↑0⊃'.'⎕WG'APLVersion')/'-64'
-          rk,←' ',{⍵/⍨2>+\'.'=⍵}1⊃'.'⎕WG'APLVersion'
-          rk,←(80=⎕DR' ')/' Unicode'
-          rk,←'\SALT\CommandFolder'
-          regData←ReadRegKey rk
-          ((regData∊'∘°')/regData)←';'
-          paths←';'Split regData
-          :For thisPath :In paths
-              :Trap 11
-                  (⊃dne/tbc)⎕SE.⎕CY thisPath,'\Fire\Fire.dws'
-                  :Leave
-              :EndTrap
-          :EndFor
+      :AndIf 0=ScanPathsFor⊃dne/tbc
+          'Could not find Fire'⎕SIGNAL 6
       :EndIf
       :If ∨/bool←0=↑∘⎕SE.⎕NC¨tbc
           ⎕←'Copy operation failed:'
@@ -96,5 +86,33 @@
           ⍺←⎕UCS 13 10 ⍝ Default is CR+LF
           (⍴,⍺)↓¨⍺{⍵⊂⍨⍺⍷⍵}⍺,⍵
       }
+
+      GetRegistryKey←{
+          rk←'HKEY_CURRENT_USER\Software\Dyalog\Dyalog APL/W'
+          rk,←('64'≡¯2↑0⊃'.'⎕WG'APLVersion')/'-64'
+          rk,←' ',{⍵/⍨2>+\'.'=⍵}1⊃'.'⎕WG'APLVersion'
+          rk,←(80=⎕DR' ')/' Unicode'
+          rk,'\SALT\CommandFolder'
+      }
+
+    ∇ paths←GetPaths regKey;regData
+      regData←ReadRegKey regKey
+      ((regData∊'∘°')/regData)←';'
+      ((regData='\')/regData)←'/'
+      paths←';'Split regData
+    ∇
+
+    ∇ success←ScanPathsFor objects;paths;regKey;thisPath
+      success←0
+      regKey←GetRegistryKey ⍬
+      paths←GetPaths regKey
+      :For thisPath :In paths
+          :Trap 11
+              objects ⎕SE.⎕CY thisPath,'\Fire\Fire.dws'
+              success←1
+              :Leave
+          :EndTrap
+      :EndFor
+    ∇
 
 :EndClass

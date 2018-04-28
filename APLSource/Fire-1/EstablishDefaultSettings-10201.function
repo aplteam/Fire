@@ -17,8 +17,6 @@
  G.SearchIsRegEx←0
  G.SearchIsRegEx2←0
  G.Text←1
- G.UCP←IsVersion16OrBetter
- G.UCP2←IsVersion16OrBetter
  G.Vars←1
  G.Vars2←1
 ⍝ Replace

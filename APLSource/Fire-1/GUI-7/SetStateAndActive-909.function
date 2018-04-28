@@ -5,8 +5,6 @@
 ⍝ n.SearchIsRegEx.State←↑(exec'0'##.R.GetString p,'SearchIsRegEx'),0
 ⍝ n.DotAll.State←↑(exec'0'##.R.GetString p,'DotAll'),0
 ⍝ n.Greedy.State←↑(exec'0'##.R.GetString p,'Greedy'),0
-⍝ n.UCP.State←↑(exec'0'##.R.GetString p,'UCP'),0
-⍝ n.UCP2.State←↑(exec'0'##.R.GetString p,'UCP2'),0
 ⍝ n.Case.State←↑exec'0'##.R.GetString p,'Case'
 ⍝ n.Case2.State←↑exec'0'##.R.GetString p,'Case2'
 ⍝ n.APL_Name.State←1↑exec'0'##.R.GetString p,'APL_Name'   ⍝ NOT "Active"!

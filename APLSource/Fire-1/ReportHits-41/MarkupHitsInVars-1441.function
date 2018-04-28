@@ -6,7 +6,7 @@
          :If (1=≡data)∧1=⍴⍴data
              r,←MarkupHitsInSimpleVars data name rn ref
          :Else
-             options←('IC'(~##.G.Case))('Greedy' 0)('EOL' 'CR'),##.IsVersion16OrBetter/⊂('UCP'##.G.UCP)
+             options←('IC'(~##.G.Case))('Greedy' 0)('EOL' 'CR'),##.IsVersion16OrBetter/⊂('UCP' 1)
              ss←rs←'' ⍝ ss:Search String; rs=Replace string
              :If ~##.G.Text
                  ss,←⊂'''\N*?'''

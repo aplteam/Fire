@@ -1,7 +1,7 @@
  r←MarkupHitsInSimpleVars(data name rn ref);options;ss;rs;data;fullName
  r←↑RestrictLengthOfVarsForHTML⊂data
  data←↑,/ExchangeHtmlChars data
- options←('IC'(~##.G.Case))('Greedy' 0)('EOL' 'CR'),##.IsVersion16OrBetter/⊂('UCP'##.G.UCP)
+ options←('IC'(~##.G.Case))('Greedy' 0)('EOL' 'CR'),##.IsVersion16OrBetter/⊂('UCP' 1)
  ss←rs←'' ⍝ ss:Search String; rs=Replace string
  :If ~##.G.Text
      ss,←⊂'''.*?''\N'

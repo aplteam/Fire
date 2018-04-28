@@ -19,18 +19,4 @@
  n.SearchIsRegEx2←⍎'SearchIsRegEx'rf.⎕WC ∆
  n.SearchIsRegEx2.onSelect←'OnToggleSearchIsRegEx'
 
- ∆←⊂'Button'
- ∆,←⊂'Caption' '&UCP'
- ∆,←⊂'Style' 'Check'
- ∆,←⊂'Posn'(40 25)
- ∆,←⊂'State'##.G.UCP2
- ∆,←⊂'Attach'('Top' 'Right' 'Top' 'Right')
- ∆,←⊂'TipObj'n.TipObj
- ∆,←⊂'Tip'(Split'Use Unicode properties to classify characters.')
- ∆,←⊂'Visible'##.IsVersion16OrBetter
- ∆,←⊂'Active'##.IsVersion16OrBetter
- n.UCP2←⍎'UCP'rf.⎕WC ∆
- n.UCP2.onSelect←'OnToggleSearchIsRegEx'
-
- ⍝TODO⍝  {}PolishWidth rf
  ⍝ Done

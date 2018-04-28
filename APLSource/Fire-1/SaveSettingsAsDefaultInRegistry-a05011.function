@@ -16,9 +16,7 @@
      _←R.PutString(p,'SearchIsRegEx')(⍕GUI.n.SearchIsRegEx.(State Active))
      _←R.PutString(p,'DotAll')(⍕GUI.n.DotAll.(State Active))
      _←R.PutString(p,'Greedy')(⍕GUI.n.Greedy.(State Active))
-     _←R.PutString(p,'UCP')(⍕GUI.n.UCP.(State Active))
      _←R.PutString(p,'Text')(⍕GUI.n.Text.(State Active))
      _←R.PutString(p,'SearchIsRegEx2')(⍕GUI.n.SearchIsRegEx2.(State Active))
-     _←R.PutString(p,'UCP2')(⍕GUI.n.UCP2.(State Active))
      ⍬
  }

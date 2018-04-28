@@ -1,5 +1,7 @@
  History
 ⍝⍝ Contains information regarding the last couple of releases. A full history is avialble on GitHub. (This is line ignored)
+⍝ * 6.6.1
+⍝   * `UCP` option removed from RegEx. You want to use this if it is available (16.0 and better).
 ⍝ * 6.6.0
 ⍝   * Scanning the WS and scanning `⎕NL` require different parameters and search strategies and have
 ⍝     different results. Rather than trying to work around this somehow the two things are now

@@ -10,7 +10,7 @@
 
  ∆←⊂'Button'
  ∆,←⊂'Caption' 'Is RegE&x'
- ∆,←⊂'Posn'(20 10)
+ ∆,←⊂'Posn'(25 10)
  ∆,←⊂'Style' 'Check'
  ∆,←⊂'Attach'('Top' 'Right' 'Top' 'Right')
  ∆,←⊂'State'##.G.SearchIsRegEx
@@ -22,7 +22,7 @@
  ∆←⊂'Button'
  ∆,←⊂'Caption' '&Dot all'
  ∆,←⊂'Style' 'Check'
- ∆,←⊂'Posn'(40 25)
+ ∆,←⊂'Posn'(50 25)
  ∆,←⊂'State'##.G.DotAll
  ∆,←⊂'Attach'('Top' 'Right' 'Top' 'Right')
  ∆,←⊂'TipObj'n.TipObj
@@ -38,26 +38,13 @@
  ∆←⊂'Button'
  ∆,←⊂'Caption' '&Greedy'
  ∆,←⊂'Style' 'Check'
- ∆,←⊂'Posn'(59 25)
+ ∆,←⊂'Posn'(75 25)
  ∆,←⊂'State'##.G.Greedy
  ∆,←⊂'Attach'('Top' 'Right' 'Top' 'Right')
  ∆,←⊂'TipObj'n.TipObj
  ∆,←⊂'Tip'(Split'Specifies whether the RegEx is greedy.')
  n.Greedy←⍎'Greedy'rf.⎕WC ∆
  n.Greedy.onSelect←'OnToggleSearchIsRegEx'
-
- ∆←⊂'Button'
- ∆,←⊂'Caption' '&UCP'
- ∆,←⊂'Style' 'Check'
- ∆,←⊂'Posn'(78 25)
- ∆,←⊂'State'##.G.UCP
- ∆,←⊂'Attach'('Top' 'Right' 'Top' 'Right')
- ∆,←⊂'TipObj'n.TipObj
- ∆,←⊂'Tip'(Split'Use Unicode properties to classify characters.')
- ∆,←⊂'Visible'##.IsVersion16OrBetter
- ∆,←⊂'Active'##.IsVersion16OrBetter
- n.UCP←⍎'UCP'rf.⎕WC ∆
- n.UCP.onSelect←'OnToggleSearchIsRegEx'
 
  {}PolishWidth rf
  ⍝ Done
