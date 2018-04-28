@@ -1,5 +1,6 @@
  R←Test_RegExSearch_015(stopFlag batchFlag);n;⎕TRAP;n2;html;expected
-⍝ Search for Text (anything between quyotes in functions. (Greedy=1)
+⍝ Search for Text (anything between quotes in functions. (Greedy=1)
+
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  R←∆Failed
 

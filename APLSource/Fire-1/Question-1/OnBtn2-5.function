@@ -1,6 +1,7 @@
  OnBtn2←{
 ⍝ Set RESULT and quit
      ⎕THIS.RESULT←2
+     ff←(↑⍵).##
      ⎕THIS.FIXREMAINING←ff.{0<⎕NC ⍵:⍵⍎'State' ⋄ 0}'fixRemainingChanges'
      _←⎕NQ(0⊃⍵)9999
      _←2 ⎕NQ((0⊃⍵).##)'Close'

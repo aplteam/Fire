@@ -16,10 +16,11 @@
      :EndIf
      ⍝ If the last change was a ⎕NL search then (and only then) may the hit list carry the names
      ⍝ of ordinary namespaces which can of course not be changed, so we have to check for them.
-     :If 0<noOfContainers←+/~bool←hl.ReportInfo[;1]≢¨⊂'NS'  ⍝ Namespaces
-         bool∨←{0::0 ⋄ 1⊣⎕SRC⍎⍵}¨⊃¨{⍺,'.',⍵}/¨↓hl.(Items,ReportInfo)[;1 0]
-     :AndIf 0<noOfContainers←+/~bool
+     :If 0<noOfContainers←+/bool←hl.ReportInfo[;1]≡¨⊂'NS'  ⍝ Namespaces
+         bool←bool\{0::1 ⋄ 0⊣⎕SRC⍎⍵}¨⊃¨{⍺,'.',⍵}/¨↓bool⌿hl.(Items,ReportInfo)[;1 0]
+     :AndIf 0<noOfContainers←+/bool
          ##.G.NoOfObjects-←noOfContainers
+         bool←~bool
          hl.Data←bool⌿hl.Data
          hl.Items←bool/hl.Items
          hl.ReportInfo←bool⌿hl.ReportInfo
