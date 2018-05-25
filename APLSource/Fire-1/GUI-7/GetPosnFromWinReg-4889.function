@@ -1,4 +1,0 @@
- r←GetPosnFromWinReg;p
- p←##.GetFireRegistryKey    ⍝ Path to the proper Registry key
- r←⍎'⍬ ⍬'##.R.GetString p,'Posn'
-⍝Done

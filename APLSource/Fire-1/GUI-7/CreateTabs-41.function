@@ -9,10 +9,12 @@
 
  ∆←⊂'TabButton'
  ∆,←⊂'Caption' 'Workspace'
+ ∆,←⊂'Tip' 'For scanning functions, operators, namespaces and scripts of all flavours'
  n.Tab1←⍎'Tab1'n.TabCtrl.⎕WC ∆
 
  ∆←⊂'TabButton'
  ∆,←⊂'Caption' '⎕NL'
+ ∆,←⊂'Tip' 'For scanning the names produced by ⎕NL ⍳16'
  n.Tab2←⍎'Tab2'n.TabCtrl.⎕WC ∆
 
  ∆←⊂'SubForm'

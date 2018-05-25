@@ -4,9 +4,5 @@
      _←##.R.PutString(p,'ReplaceBy')##.G.ReplaceBy
      _←##.R.PutValue(p,'DetailedReport')##.G.DetailedReport
      _←##.R.PutValue(p,'SimpleReport')##.G.SimpleReport
-     posn←n.Form.Posn
-     posn[0]-←n.heightCorrection
-     _←##.R.PutString(p,'Posn')(⍕posn)
-     _←##.R.PutString(p,'Size')(⍕n.Form.Size)
      ⍬
  }

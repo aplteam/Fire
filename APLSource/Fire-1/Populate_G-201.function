@@ -15,3 +15,5 @@
  G.ChangedSaltedScript←''           ⍝ Used to remember the names of all the SALTed scripts changed by a "Replace"
  G.HaveShownNoTextWarning←0
  G.saveCurcorObj←GetCursorObj
+ G.Posn←⍬ ⍬
+ G.Size←440 685

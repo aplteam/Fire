@@ -1,5 +1,8 @@
  History
-⍝⍝ Contains information regarding the last couple of releases. A full history is avialble on GitHub. (This is line ignored)
+⍝⍝ Contains information regarding the last couple of releases. A full history is availble on GitHub. (This is line ignored)
+⍝ * 6.6.2
+⍝   * Fire now longer attempts to save and restore Posn/Size because that caused issues on multi-monitor systems.
+⍝     However, during a session Fire still remembers both, Posn and Size, and uses them to restore its GUI.
 ⍝ * 6.6.1
 ⍝   * `UCP` option removed from RegEx. You want to use this if it is available (16.0 and better).
 ⍝   * Bug fix: in case the user did perform a `⎕NL` search and ended up with some non-scripted namespaces

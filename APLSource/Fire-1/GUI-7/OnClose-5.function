@@ -5,6 +5,8 @@
      _←SaveValues ⍬
      _←SaveSettings ⍬
      _←CheckSALTedScripts ⍬
+     ##.G.(Posn Size)←(↑,⍵).(Posn Size)
      _←##.Cleanup
+     0::1
      1
  }
