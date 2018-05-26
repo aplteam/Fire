@@ -5,6 +5,8 @@
 ⍝ If this is not the case then Fire is copied into []SE from
 ⍝ the same directory the User Command stems from and then started.
 ⍝ Kai Jaeger ⋄ APL Team Ltd
+⍝ Version 2.1.1 - 2018-05-26
+⍝ The -fl option did not get rid of the GUI if Fire was already running.
 ⍝ Version 2.1.0 - 2018-04-26
 ⍝ * Tidied up.
 ⍝ Version 2.0.1 - 2018-04-23
@@ -35,6 +37,7 @@
       dne←0=↑∘⎕SE.⎕NC¨tbc                                                       ⍝ do not exist (dne)
       :If flag
           dne[tbc⍳⊂'Fire']←1                                                    ⍝ Enforce a load
+          :Trap 6 ⋄ ⎕SE.Fire.Cleanup ⋄ :EndTrap                                 ⍝ Get rid of any GUI
           ⎕SE.⎕EX'Fire'
       :EndIf
       :If 1∊dne
