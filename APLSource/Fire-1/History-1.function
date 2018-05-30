@@ -1,5 +1,8 @@
  History
 ⍝⍝ Contains information regarding the last couple of releases. A full history is availble on GitHub. (This is line ignored)
+⍝ * 6.6.3
+⍝   * Under special circumstances Fire did not appear on any monitor on a multi-monitor system under special
+⍝     circumstances. This is a Dyalog bug (<01511>) but this version comes with a work around.
 ⍝ * 6.6.2
 ⍝   * Fire now longer attempts to save and restore Posn/Size because that caused issues on multi-monitor systems.
 ⍝     However, during a session Fire still remembers both, Posn and Size, and uses them to restore its GUI.
