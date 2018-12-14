@@ -1,0 +1,6 @@
+ SelectAllInHitList←{
+     n←⍵
+     0=≢n.HitList.SelItems:0
+     n.HitList.SelItems←(⍴,n.HitList.Items)⍴1
+     0
+ }

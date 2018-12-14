@@ -1,0 +1,9 @@
+ {r}←ShowReadMe dummy;f;msg
+ ⍝ Load the Markdown-based HTML document and show it in the default browser.
+ r←⍬
+ :If F.Exists{0∊⍴⍵:0 ⋄ ⍺⍺ ⍵}G.HelpPath
+     A.GoToWebPage'file://',G.HelpPath
+ :Else
+     msg←⊂'Could not find the document.'
+     'ReadMe.html'Question.ShowMsg msg
+ :EndIf

@@ -20,7 +20,7 @@
  msg,←'used search terms (WSID specific).'
  ∆,←⊂'Tip'(Split msg)
  n.SearchFor←⍎'SearchFor'n.Form.⎕WC ∆
- n.SearchFor.onContextMenu←'SuppressContextMenu'
+ n.SearchFor.onContextMenu←'OnContextMenuInSearchFor'
  n.SearchFor.onKeyPress←'OnKeyPressInSearchFor'
  n.SearchFor.Event,←⊂Events.CheckForChangeInSearchFor'OnCheckForChangeInSearchFor'
 ⍝ Done

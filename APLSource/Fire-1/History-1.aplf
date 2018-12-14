@@ -1,5 +1,13 @@
  History
-⍝⍝ Contains information regarding the last couple of releases. A full history is availble on GitHub. (This is line ignored)
+⍝⍝ Contains information regarding the last couple of releases. A full history is available on GitHub. (This line is ignored)
+⍝ * 6.7.0
+⍝   * Remembering Posn improved.
+⍝   * Form is a bit taller now when Fire is started. Was too small.
+⍝   * Ctrl+A now works in the "Search for" edit control and the hit list and in "Start looking here".
+⍝   * Ctrl+C now works in the "Search for" edit control and in "Start looking here".
+⍝   * "Select all" was removed from the "Edit" menu.
+⍝   * Bug fix: in case Fire was installed in a non-default folder then none of the HTML files offered
+⍝     in the "Help" menu were found due to a missing folder separator.
 ⍝ * 6.6.3
 ⍝   * Under special circumstances Fire did not appear on any monitor on a multi-monitor system under special
 ⍝     circumstances. This is a Dyalog bug (<01511>) but this version comes with a work around.

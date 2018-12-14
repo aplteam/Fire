@@ -9,7 +9,6 @@
      n.StartBtn.Active←1
      n.(ReplaceBtn ReportHits).Active←0<⍴n.HitList.Items
      n.EditCmd.Active←1
-     n.SelectAllCmd.Active←1
      n.InvertSelectionCmd.Active←1
      {}'Group' 'Combo'SetActivePropTo¨1
      :If 0∊⍴n.HitList.Items
@@ -22,7 +21,6 @@
      n.HiddenBtns.Active←0
      n.(SearchFor LookIn).Active←0
      n.EditCmd.Active←0
-     n.SelectAllCmd.Active←0
      n.InvertSelectionCmd.Active←0
      n.StartBtn.Active←0
      n.(ReportHits ReplaceBtn).Active←0

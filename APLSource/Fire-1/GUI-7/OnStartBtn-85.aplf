@@ -20,12 +20,15 @@
          hits←CheckHitList hits
          ProcessSearchResult flag hits noOfObj noOfContainers ref_____.parms_____.cursorWas_____
      :EndIf
-     :If 0∊⍴n.HitList.ReportInfo
+     :If 0=≢n.HitList.ReportInfo
          n.SearchFor.SelText←2⍴1+⍴,n.SearchFor.Text
          ⎕NQ n.SearchFor'GotFocus'
      :Else
          n.ReportHits.Active←~IsNamesOnlySearch n
      :EndIf
+ :EndIf
+ :If 0≠≢n.HitList.ReportInfo
+     n.(EditCmd InvertSelectionCmd).Active←0
  :EndIf
  :Return
 

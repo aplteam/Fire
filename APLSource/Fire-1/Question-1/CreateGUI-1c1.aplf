@@ -1,4 +1,4 @@
- ff←cs CreateGUI caption;∆;i;flag;this;rf;btnWidth;LinkFnt
+ ff←cs CreateGUI caption;∆;i;flag;this;rf;btnWidth;LinkFnt;noOf
  ∆←⊂'Form'
  :If 0∊⍴cs.addToCaption
      ∆,←⊂'Caption'(##.AddPidToCaption'Fire')

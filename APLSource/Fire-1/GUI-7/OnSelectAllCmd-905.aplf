@@ -1,0 +1,9 @@
+ r←OnSelectAllCmd msg;hasFocus
+ hasFocus←n.Form.GetFocus
+ :If n.SearchFor≡hasFocus
+     .
+ :ElseIf n.HitList≡hasFocus
+     .
+     n.HitList.SelItems←(⍴n.HitList.Items)⍴1
+ :EndIf
+⍝Done

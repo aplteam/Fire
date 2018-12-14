@@ -1,0 +1,10 @@
+ {r}←ShowReleaseNotes n;body
+⍝ Takes the comments in the function `History` and displays it.
+ r←⍬
+ body←1↓⎕NR'History'
+ body/⍨←~∧\'⍝⍝'∘≡¨2↑¨body
+ body←2↓¨body
+ body←(+/∧\'*'≠↑¨1↓body)↑1↓body
+ body←{⍵,⍨' '⍴⍨+/∧\' '=⍵}¨body
+ 'Release notes'Question.ShowMsg body
+⍝Done

@@ -16,4 +16,4 @@
  G.HaveShownNoTextWarning←0
  G.saveCurcorObj←GetCursorObj
  G.Posn←⍬ ⍬
- G.Size←440 685
+ G.Size←500 685

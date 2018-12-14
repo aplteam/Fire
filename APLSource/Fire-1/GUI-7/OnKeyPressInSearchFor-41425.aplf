@@ -6,6 +6,7 @@
      (⍵[4 5]≡46 2):0⊣DropCurrentFromComboList rf    ⍝ Ctrl+DEL?!
      (⍵[4 5]≡9 2):⎕NQ'⎕SE' 'GotFocus'               ⍝ Ctrl+Tab?!
      (⍵[4 5]≡39 0):1                                ⍝ <CursorRight>?! Let it pass
+     (⍵[4 5]≡65 2):SelectAllInSearchFor n
      ('F1'≡2⊃⍵):OnHelp(⍵[0])'Select'                ⍝ Help?! (we should not get here since F1 is a hot-key but we do get here at times anyway
      (HandlePageDown ⍵):0
      (27 0≡⍵[4 5]):0⊣SendCloseToForm ⍬              ⍝ Escape?! Get out!

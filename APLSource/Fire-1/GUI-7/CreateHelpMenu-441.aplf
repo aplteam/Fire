@@ -2,14 +2,19 @@
  rf←⍎'MB.TheHelpMenu'n.Form.⎕WC'Menu' 'Help'
 
  ∆←⊂'MenuItem'
- ∆,←⊂'Caption' 'ReadMe'
+ ∆,←⊂'Caption' 'View ReadMe'
  n.ReadMe←⍎'ReadMe'rf.⎕WC ∆
  n.ReadMe.onSelect←'OnShowReadMe'
 
  ∆←⊂'MenuItem'
- ∆,←⊂'Caption' 'Useful RegExes'
+ ∆,←⊂'Caption' 'View useful RegExes'
  n.UsefulRegExes←⍎'ReadMe'rf.⎕WC ∆
  n.UsefulRegExes.onSelect←'OnShowUsefulRegExes'
+
+ ∆←⊂'MenuItem'
+ ∆,←⊂'Caption' 'View release notes'
+ n.ReleaseNotes←⍎'ReadMe'rf.⎕WC ∆
+ n.ReleaseNotes.onSelect←'OnShowReleaseNotes'
 
  's1'rf.⎕WC'Separator'
 

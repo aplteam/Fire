@@ -5,6 +5,10 @@
  kc←y[4 5]                                      ⍝ Key code
  :If 4=1⊃kc                                     ⍝ Was the "Alt" key pressed?
      r←1
+ :ElseIf 65 2≡kc                                ⍝ Select all?
+     ref.SelText←1,1+⍴,ref.Text
+ :ElseIf 67 2≡kc                                ⍝ Ctrl+C
+     2 ⎕NQ ref'KeyPress' 'CP'
  :Else
      flag←1+r←0
      specialKeys←(38 0)(40 0)(40 4)(33 0)(34 0)(39 0)(13 0)(35 0)(36 0)(27 0)(9 0)(9 1)(9 2)(114 0)(8 2)(46 0)(8 0)

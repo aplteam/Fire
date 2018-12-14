@@ -1,0 +1,10 @@
+ {r}←OnContextMenuInSearchFor msg;res
+⍝ Offers context menu for the "Search for" edit control
+ r←0
+ :If ~0=≢n.SearchFor.Text
+     {}'mm'⎕WC'Menu'
+     {}'mm.selectAll'⎕WC'MenuItem'('Select all',##.TAB,'Ctrl+A')('Event' 'Select' 1)
+     res←⎕DQ'mm'
+ :AndIf 0≠≢res
+     n.SearchFor.SelText←1,1+⍴,n.SearchFor.Text
+ :EndIf

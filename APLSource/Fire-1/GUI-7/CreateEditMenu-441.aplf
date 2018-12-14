@@ -12,13 +12,6 @@
  's1'rf.⎕WC'Separator'
 
  ∆←⊂'MenuItem'
- ∆,←⊂'Caption'('Select all',##.TAB,'Ctrl+A')
- ∆,←⊂'Accelerator'(65 2)
- ∆,←⊂'Active' 0
- n.SelectAllCmd←⍎'SelectAllCmd'rf.⎕WC ∆
- n.SelectAllCmd.onSelect←'OnSelectAllCmd'
-
- ∆←⊂'MenuItem'
  ∆,←⊂'Caption'('Invert selection',##.TAB,'Ctrl+Shift+A')
  ∆,←⊂'Accelerator'(65 3)
  ∆,←⊂'Active' 0

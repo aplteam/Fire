@@ -1,4 +1,4 @@
- OnDelKey msg;hasFocus
+ OnDelKey msg;hasFocus;ind
  hasFocus←2 ⎕NQ #'GetFocusObj'
  :Select hasFocus
  :Case n.SearchFor

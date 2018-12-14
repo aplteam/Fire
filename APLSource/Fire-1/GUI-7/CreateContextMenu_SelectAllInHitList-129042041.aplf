@@ -1,0 +1,2 @@
+ CreateContextMenu_SelectAllInHitList dummy;c;_
+ {}'mm.selectAll'⎕WC'MenuItem'('Select all',##.TAB,'Ctrl+A')('Event' 'Select' 1)

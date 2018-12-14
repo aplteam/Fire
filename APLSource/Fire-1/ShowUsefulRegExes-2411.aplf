@@ -1,9 +1,11 @@
- {r}←ShowUsefulRegExes dummy;filename
+ {r}←ShowUsefulRegExes dummy;filename;msg
  ⍝ Load the Markdown-based HTML document and show it in the default browser.
+ r←⍬
  :If ~0∊⍴G.HelpPath
      filename←(↑⎕NPARTS G.HelpPath),'\UsefulRegExes.html'
- :AndIf F.Exists filename
+ :AndIf F.Exists{0∊⍴⍵:0 ⋄ ⍺⍺ ⍵}filename
      A.GoToWebPage'file://',filename
  :Else
-     'Show "UsefulRegExes.html"'Question.ShowMsg'Could not find the document.'
+     msg←⊂'Could not find the document.'
+     'UsefulRegExes.html'Question.ShowMsg msg
  :EndIf

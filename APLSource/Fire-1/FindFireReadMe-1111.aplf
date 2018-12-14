@@ -1,4 +1,4 @@
- p←FindFireReadMe dummy;rk;v;thisPath;if;regData
+ p←FindFireReadMe dummy;rk;v;thisPath;installFolder;regData
 ⍝ Returns the path to the Fire ReadMe.html file or an empty vector.
 ⍝ Don't use refs pointing to APLTreeUtils, WinReg and FilesAndDirs here: this stops a certain test case!
  p←''
@@ -10,14 +10,15 @@
      ((regData∊'∘°')/regData)←';'
      v←';'##.APLTreeUtils.Split regData
      :For thisPath :In v
-         :If ##.FilesAndDirs.Exists thisPath,'Fire/ReadMe.html'
-             p←thisPath,'Fire/ReadMe.html'
+         :If ##.FilesAndDirs.Exists thisPath,'/Fire/ReadMe.html'
+             p←thisPath,'/Fire/ReadMe.html'
              :Leave
          :EndIf
      :EndFor
      :If 0∊⍴p
-         if←2 ⎕NQ'.' 'GetEnvironment' 'dyalog'      ⍝ Get the install folder
-         :If ~##.FilesAndDirs.Exists p←if,'/Fire/ReadMe.html'
+         installFolder←2 ⎕NQ'.' 'GetEnvironment' 'dyalog'      ⍝ Get the install folder
+         p←installFolder,'/Fire/ReadMe.html'
+         :If ~##.FilesAndDirs.Exists p
              rk←GetFireRegistryKey,'HelpFileFolder'
              p←##.WinReg.GetString rk
          :EndIf

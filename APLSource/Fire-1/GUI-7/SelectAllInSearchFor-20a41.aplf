@@ -1,0 +1,4 @@
+ {r}←SelectAllInSearchFor n
+ r←0
+ n.SearchFor.SelText←1,1+⍴n.SearchFor.Text
+⍝Done

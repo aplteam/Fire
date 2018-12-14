@@ -1,6 +1,0 @@
- ShowReadMe←{
- ⍝ Load the Markdown-based HTML document and show it in the default browser.
-     f←F.Exists{0∊⍴⍵:0 ⋄ ⍺⍺ ⍵}G.HelpPath
-     0=f:⍬⊣'Show "ReadMe.html"'Question.ShowMsg'Could not find the document.'
-     A.GoToWebPage'file://',G.HelpPath
- }
