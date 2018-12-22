@@ -1,8 +1,11 @@
  History
 ⍝⍝ Contains information regarding the last couple of releases. A full history is available on GitHub. (This line is ignored)
 ⍝ * 6.7.1
-⍝   * Version 6.7.0 accidentally made the "Edit" command from the menubar permanently inactive, and therefore
-⍝     also the Ctrl+E keyboard shortcut.
+⍝   * Menu command "Check for updates" added to the Help menu.
+⍝   * Menu command "Show Fire on GitHub" added to the Help menu.
+⍝   * Bug fixes:
+⍝     * Version 6.7.0 accidentally made the "Edit" command from the menubar permanently inactive, and therefore
+⍝       also the Ctrl+E keyboard shortcut.
 ⍝ * 6.7.0
 ⍝   * Remembering Posn improved.
 ⍝   * Form is a bit taller now when Fire is started. Was too small.

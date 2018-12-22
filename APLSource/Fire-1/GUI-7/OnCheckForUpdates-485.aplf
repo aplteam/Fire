@@ -1,0 +1,13 @@
+ OnCheckForUpdates←{
+     #.CursorObj←¯1
+     n←GetRefTo_n↑⍵
+     url←'api.github.com/repos/aplteam/fire/releases/latest'
+     version←1⊃##.Version
+     (gitVersion msg url)←CheckForNewVersion url version
+     ∨/'Error'⍷∊msg:0⊣TellErrorWhileCheckingForBetterVersion msg
+     0=≢gitVersion:0⊣TellFireIsUp2Date n
+     msg←'There is a better version available on GitHub: ',gitVersion
+     #.CursorObj←0
+     _←'Check for updates'##.Question.ShowMsg msg
+     0
+ }

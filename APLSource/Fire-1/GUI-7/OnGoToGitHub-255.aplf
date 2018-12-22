@@ -1,0 +1,3 @@
+ OnGoToGitHub←{
+     ##.A.GoToWebPage'https://github.com/aplteam/Fire'
+ }

@@ -13,10 +13,22 @@
 
  ∆←⊂'MenuItem'
  ∆,←⊂'Caption' 'View release notes'
- n.ReleaseNotes←⍎'ReadMe'rf.⎕WC ∆
+ n.ReleaseNotes←⍎'ReleaseNotes'rf.⎕WC ∆
  n.ReleaseNotes.onSelect←'OnShowReleaseNotes'
 
  's1'rf.⎕WC'Separator'
+
+ ∆←⊂'MenuItem'
+ ∆,←⊂'Caption' 'Show Fire on GitHub'
+ n.GoToGitHub←⍎'GoToGitHub'rf.⎕WC ∆
+ n.GoToGitHub.onSelect←'OnGoToGitHub'
+
+ ∆←⊂'MenuItem'
+ ∆,←⊂'Caption' 'Check for updates'
+ n.CheckForUpdates←⍎'ReadMe'rf.⎕WC ∆
+ n.CheckForUpdates.onSelect←'OnCheckForUpdates'
+
+ 's2'rf.⎕WC'Separator'
 
  ∆←⊂'MenuItem'
  ∆,←⊂'Caption' 'About...'
