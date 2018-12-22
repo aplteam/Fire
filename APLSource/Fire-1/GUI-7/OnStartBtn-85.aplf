@@ -27,9 +27,7 @@
          n.ReportHits.Active←~IsNamesOnlySearch n
      :EndIf
  :EndIf
- :If 0≠≢n.HitList.ReportInfo
-     n.(EditCmd InvertSelectionCmd).Active←0
- :EndIf
+ n.(EditCmd InvertSelectionCmd).Active←0≠≢n.HitList.ReportInfo
  :Return
 
 ⍝⍝⍝ Error trapping routine ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
