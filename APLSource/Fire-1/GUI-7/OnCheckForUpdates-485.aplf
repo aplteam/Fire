@@ -1,13 +1,16 @@
  OnCheckForUpdates←{
-     #.CursorObj←¯1
      n←GetRefTo_n↑⍵
-     url←'api.github.com/repos/aplteam/fire/releases/latest'
-     version←1⊃##.Version
-     (gitVersion msg url)←CheckForNewVersion url version
-     ∨/'Error'⍷∊msg:0⊣TellErrorWhileCheckingForBetterVersion msg
-     0=≢gitVersion:0⊣TellFireIsUp2Date n
-     msg←'There is a better version available on GitHub: ',gitVersion
+     16>+/1 0.1×2↑⊃(//)'.'⎕VFI 1⊃# ⎕WG'APLVersion':TellAboutVersion n
+     #.CursorObj←¯1
+     GH←##.##.GitHubAPIv3
+     myAPI←⎕NEW GH(,⊂'aplteam')
+     (rc more latest)←myAPI.GetLatestRelease'Fire'
+     0≠rc:TellErrorWhileCheckingForBetterVersion more
+     (GH.CastTagname2Number latest.tag_name)≤(⌊GH.CastTagname2Number 1⊃##.Version):0⊣TellFireIsUp2Date n
+     msg←⊂'There is a better version available on GitHub: ',1↓latest.tag_name
+     msg,←'' 'Would you like to download it?'
      #.CursorObj←0
-     _←'Check for updates'##.Question.ShowMsg msg
+     0='Check for updates'##.Question.YesOrNo msg:0
+     _←##.A.GoToWebPage latest.zipball_url
      0
  }

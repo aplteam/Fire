@@ -7,6 +7,6 @@
      noOf←+/n.HitList.SelItems
      CreateContextMenu noOf
      res←⎕DQ'mm'
-     →(0∊⍴res)/0
+     →(0=≢res)/0
      r←ExecuteContextCommand(0⊃res)ind
  :EndIf

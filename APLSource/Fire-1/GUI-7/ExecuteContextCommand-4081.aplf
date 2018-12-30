@@ -6,7 +6,7 @@
  :Case 'mm.cancel'
      :Return
  :Case 'mm.edit'
-     {}EditCmd ⍬
+     ⎕NQ n.EditCmd'Select'  ⍝ Calling the appropriate function makes the focus go away from the Edit window!
  :Case 'mm.remove'
      {}RemoveFromHitList rows
  :Case 'mm.delete'

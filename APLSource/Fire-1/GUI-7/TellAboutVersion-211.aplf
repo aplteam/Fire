@@ -1,0 +1,6 @@
+ TellAboutVersion←{
+     n←⍵
+     msg←'This feature is only available in Dyalog 16.0 and better.'
+     _←'Check for updates'##.Question.ShowMsg msg
+     ⍬
+ }

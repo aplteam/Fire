@@ -1,16 +1,13 @@
  History
 ⍝⍝ Contains information regarding the last couple of releases. A full history is available on GitHub. (This line is ignored)
-⍝ * 6.7.1
+⍝ * 6.8.0
 ⍝   * Menu command "Check for updates" added to the Help menu.
 ⍝   * Menu command "Show Fire on GitHub" added to the Help menu.
+⍝   * When Fire is started while its main Form is still visible it is now recreated in the center of the main monitor.\\
+⍝     That helps in case you move the Fire Form to a secondary monitor and then unplug that monitor: a simple restart
+⍝     of Fire will bring the GUI back.
 ⍝   * Bug fixes:
 ⍝     * Version 6.7.0 accidentally made the "Edit" command from the menubar permanently inactive, and therefore
 ⍝       also the Ctrl+E keyboard shortcut.
-⍝ * 6.7.0
-⍝   * Remembering Posn improved.
-⍝   * Form is a bit taller now when Fire is started. Was too small.
-⍝   * Ctrl+A now works in the "Search for" edit control and the hit list and in "Start looking here".
-⍝   * Ctrl+C now works in the "Search for" edit control and in "Start looking here".
-⍝   * "Select all" was removed from the "Edit" menu.
-⍝   * Bug fix: in case Fire was installed in a non-default folder then none of the HTML files offered
-⍝     in the "Help" menu were found due to a missing folder separator.
+⍝ \\
+⍝ For information regarding older version see <https://github.com/aplteam/Fire/releases>

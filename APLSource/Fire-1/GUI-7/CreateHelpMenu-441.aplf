@@ -2,17 +2,17 @@
  rf←⍎'MB.TheHelpMenu'n.Form.⎕WC'Menu' 'Help'
 
  ∆←⊂'MenuItem'
- ∆,←⊂'Caption' 'View ReadMe'
+ ∆,←⊂'Caption' 'View "ReadMe"'
  n.ReadMe←⍎'ReadMe'rf.⎕WC ∆
  n.ReadMe.onSelect←'OnShowReadMe'
 
  ∆←⊂'MenuItem'
- ∆,←⊂'Caption' 'View useful RegExes'
+ ∆,←⊂'Caption' 'View "Useful RegExes"'
  n.UsefulRegExes←⍎'ReadMe'rf.⎕WC ∆
  n.UsefulRegExes.onSelect←'OnShowUsefulRegExes'
 
  ∆←⊂'MenuItem'
- ∆,←⊂'Caption' 'View release notes'
+ ∆,←⊂'Caption' 'View "Release Notes"'
  n.ReleaseNotes←⍎'ReleaseNotes'rf.⎕WC ∆
  n.ReleaseNotes.onSelect←'OnShowReleaseNotes'
 
@@ -24,7 +24,7 @@
  n.GoToGitHub.onSelect←'OnGoToGitHub'
 
  ∆←⊂'MenuItem'
- ∆,←⊂'Caption' 'Check for updates'
+ ∆,←⊂'Caption' 'Check for updates...'
  n.CheckForUpdates←⍎'ReadMe'rf.⎕WC ∆
  n.CheckForUpdates.onSelect←'OnCheckForUpdates'
 

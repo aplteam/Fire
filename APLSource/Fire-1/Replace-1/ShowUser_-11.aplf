@@ -1,0 +1,6 @@
+ r←ShowUser_ y
+ :If 0
+
+ :Else
+     r←ShowUserViaCompareIt y
+ :EndIf

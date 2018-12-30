@@ -1,0 +1,6 @@
+ TellProblem←{
+     n←⍺
+     (title msg)←⍵
+     _←title ##.Question.ShowMsg msg
+     0
+ }

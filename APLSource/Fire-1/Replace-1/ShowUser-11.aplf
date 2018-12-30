@@ -8,5 +8,5 @@
  :OrIf ##.G.DontUseCompareIt
      r←##.HomeMadeCompare.Run y
  :Else
-     r←ShowUserViaCompareIt y
+     r←ShowUser_ y
  :EndIf
