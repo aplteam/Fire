@@ -31,5 +31,5 @@
  n←GUI.n←GUI.CreateGUI debugFlag
  ⎕NQ(G.NamesOnly⊃n.(Tab1 Tab2))'Select'
  :If 0=+/testFlags
-     ⎕DL 0.05 ⋄ ⎕NQ GUI.n.SearchFor'GotFocus'
+     :Trap 6 ⋄ ⎕DL 0.05 ⋄ ⎕NQ GUI.n.SearchFor'GotFocus' ⋄ :EndTrap
  :EndIf

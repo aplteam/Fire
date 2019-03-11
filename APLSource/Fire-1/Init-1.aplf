@@ -10,7 +10,11 @@
  SetScaledPixels ⍬
  EstablishNamedIbeams ⍬
  CompileFireFunctions ⍬
- ##.CompareSimple.pathToBeyondCompare←##.CompareSimple.FindBeyondCompare 0
- ##.CompareSimple.pathToCompareIt←##.CompareSimple.FindCompareIt 0
+ :Trap 11
+     ##.CompareSimple.pathToBeyondCompare←##.CompareSimple.FindBeyondCompare 0
+ :EndTrap
+ :Trap 11
+     ##.CompareSimple.pathToCompareIt←##.CompareSimple.FindCompareIt 0
+ :EndTrap
  {}EnsureAcre ⍬
 ⍝Done
