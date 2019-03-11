@@ -1,5 +1,7 @@
  History
 ⍝⍝ Contains information regarding the last couple of releases. A full history is available on GitHub. (This line is ignored)
+⍝ * 6.9.1
+⍝   * Bug fix: on a system that had neither "Beyond Compare" nor "CompareIt!" installed Fire crashed.
 ⍝ * 6.9.0
 ⍝   * Only acre 4 and later is supported now.
 ⍝   * In case acre is installed and not in `⎕SE` yet it is loaded.
