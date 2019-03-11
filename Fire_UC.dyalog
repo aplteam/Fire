@@ -5,6 +5,8 @@
 ⍝ If this is not the case then Fire is copied into []SE from
 ⍝ the same directory the User Command stems from and then started.
 ⍝ Kai Jaeger ⋄ APL Team Ltd
+⍝ Version 2.2.0 - 2019-03-11
+⍝ * `GitHubAPIv3` added to the list of to-be-copied stuff.
 ⍝ Version 2.1.1 - 2018-05-26
 ⍝ The -fl option did not get rid of the GUI if Fire was already running.
 ⍝ Version 2.1.0 - 2018-04-26
@@ -33,8 +35,8 @@
       ⎕IO←0 ⋄ ⎕ML←3 ⋄ ⎕WX←3
       r←0 0⍴''
       flag←Args.Switch'fl'
-      tbc←'APLTreeUtils' 'Fire' 'CompareSimple' 'FilesAndDirs' 'OS' 'WinReg'    ⍝ to be copied (tbc)
-      dne←0=↑∘⎕SE.⎕NC¨tbc                                                       ⍝ do not exist (dne)
+      tbc←'APLTreeUtils' 'Fire' 'CompareSimple' 'FilesAndDirs' 'OS' 'WinReg' 'GitHubAPIv3'  ⍝ to be copied (tbc)
+      dne←0=↑∘⎕SE.⎕NC¨tbc                                                                   ⍝ do not exist (dne)
       :If flag
           dne[tbc⍳⊂'Fire']←1                                                    ⍝ Enforce a load
           :Trap 6 ⋄ ⎕SE.Fire.Cleanup ⋄ :EndTrap                                 ⍝ Get rid of any GUI
