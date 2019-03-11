@@ -1,4 +1,4 @@
- {n}←Run testFlag;ind;name;body;report;bool;bool2;htmlFilename;write;data;buffer;msg;b
+ {n}←Run testFlag;htmlFilename;write;data;msg;buffer
 ⍝
  n←⍬
  htmlFilename←##.GetTempFileName'htm'

@@ -1,4 +1,4 @@
  SortHits←{
  ⍝ ⍵ ist a vector with hits. Returns the same stuff but sorted by (full) name.
-     ⍵[SortAlph⍋⊃⍵[;1];]     ⍝ Sort by name, not by path
+     ⍵[SortAlph⍋⊃⍕¨⍵[;1];]     ⍝ Sort by name, not by path
  }

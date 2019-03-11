@@ -1,4 +1,4 @@
- {r}←DeleteFromWorkspaceAndList rows;b;msg;_;ans
+ {r}←DeleteFromWorkspaceAndList rows;b;msg;_;ans;question
 ⍝ Deletes the selected objects from both, the workspace and the hit list.
 ⍝ Also: tell acre.
  r←⍬
@@ -17,7 +17,9 @@
      :EndIf
      rows←(~b)/rows
  :Else
-     :If 0=##.Question.YesOrNo'Sure that you want delete ',(⍕⍴rows),' object',((1<⍴rows)/'s'),' from the workspace?'
+     question←⊂'Sure that you want delete ',(⍕⍴rows),' object',((1<⍴rows)/'s'),' from the workspace'
+     question,←⊂'and potentially from any acre project?'
+     :If 0=##.Question.YesOrNo question
          :Return
      :EndIf
  :EndIf

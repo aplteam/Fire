@@ -10,7 +10,6 @@
      {}WriteInfo'Search cancelled'
  :Else
      ⎕TRAP←(988 'C' '→∆RegExFailed')(0 'S')
-     CopyGuiToGlobal n
      ref_____←⎕NS''              ⍝ Trick to hide `parms` from Fire itself.
      ref_____.parms_____←PrepareSearch ⍬
      :If 0≠ref_____.parms_____.successFlag_____

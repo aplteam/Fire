@@ -1,5 +1,5 @@
  CopyTestData
  #.⎕EX'#.TestData'
  '#.TestData'⎕NS''
- #.TestData.⎕CY'C:\T\Projects\APL-cation\Fire\Fire_Test'
+ #.TestData.⎕CY'Fire_Test'
  'A2'#.⎕CY'Fire_Test'

@@ -14,6 +14,7 @@
      :If 0∊⍴n.HitList.Items
          n.ReuseSearch.(Active State)←0
          n.LookIn.BCol←0
+         n.LookIn.Text{0=≢⍺:⍵ ⋄ ⍺}←'#'
      :Else
          n.ReuseSearch.Active←1
      :EndIf

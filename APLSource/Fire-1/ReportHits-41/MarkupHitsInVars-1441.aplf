@@ -1,4 +1,4 @@
- r←rn MarkupHitsInVars(ref name qnc ind length);body;rs;ss;options;data;fullName
+ r←rn MarkupHitsInVars(ref name qnc ind length);rs;ss;options;data;fullName
 ⍝ rn=Running number
  r←''
  :If ~0∊⍴data←ref.{6::'' ⋄ ⍎⍵}name

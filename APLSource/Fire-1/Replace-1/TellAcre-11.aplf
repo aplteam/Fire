@@ -5,10 +5,7 @@
  :If ~0∊⍴name
  :AndIf ##.IsAnyAcreAround
      :If 9=⎕SE.⎕NC'acre'
-     ⍝ We should catch acre's messages here and then restore the original settings but we cannot do this with the current version of acre.
-         flag←~0∊⍴' '~⍨⎕SE.UCMD'Acre.SetChanged ',(∊name),' -messages=''off'''
-     :ElseIf 9=#.⎕NC'acre'
-         flag←~0∊⍴' '~⍨#.acre.SetChanged name
+         flag←~0∊⍴' '~⍨⎕SE.UCMD'Acre.SetChanged ',(∊name)
      :EndIf
      :If flag∧0=testFlag
          ⎕←'acre was told successfully about ',name

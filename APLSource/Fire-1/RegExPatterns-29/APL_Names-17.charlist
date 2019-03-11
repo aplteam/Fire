@@ -1,9 +1,0 @@
-(?x)           # ignore spaces and comments   
-# define what the Leading character of a name and what an APL ID is
-(?(DEFINE)(?<L1>[_A-Z∆a-z⍙ÁÂÃÇÈÊËÌÍÎÏÐÒÓÔÕÙÚÛÝþãìðòõÀÄÅÆÉÑÖØÜßàáâäåæçèéêëíîïñóôöøùúûü]) )
-(?:            # do not capture
-(?<!\s:|::)    # not preceded by space: or ::
-(?<!(?&L1))    # not preceded by any of the characters above
-(?&L1)         # must start with one of them
-(?:(?&L1)|\d)* # followed by 1 of them or a digit 0 or more times
-|⍺⍺|⍺|⍵⍵|⍵)    # or any of those

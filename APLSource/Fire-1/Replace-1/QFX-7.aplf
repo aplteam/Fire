@@ -10,13 +10,14 @@
          :If 3=⎕NC'#.acre.Erase'
              {}#.acre.Erase(⍕ref),'.',name
          :ElseIf 9=⎕NC'⎕SE.acre'
-             {}⎕SE.UCMD'acre.Erase ',(⍕ref),'.',name,' -messages=''off'''
+             {}⎕SE.UCMD'acre.Erase ',(⍕ref),'.',name
          :Else
              . ⍝ Huuh?! Acre is around and isn't?!
          :EndIf
      :EndIf
  :Else
 ∆Fix:
+     code←{(⎕UCS 13)Split ⍵}⍣((⎕UCS 13)∊code)⊣code
      l←ref.⎕FX code
      flag←0
      :Repeat

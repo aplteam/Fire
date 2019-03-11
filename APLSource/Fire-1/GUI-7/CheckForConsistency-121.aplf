@@ -30,7 +30,8 @@
      :EndSelect
  :EndIf
  :If n.APL_Name.State
-     :If 0≠(⎕NS'').⎕NC n.SearchFor.Text
+     :If ~IsNamesOnlySearch n
+     :AndIf 0≠(⎕NS'').⎕NC n.SearchFor.Text
      :AndIf ('⎕'≠↑n.SearchFor.Text)∨0≠(⎕NS'').⎕NC 1↓n.SearchFor.Text
          msg←'"Search for" does not contain a valid APL name' 'but the option "Match APL name" is ticked.'
          msg,←'' 'Shall Fire switch "Match APL name" off for you?'

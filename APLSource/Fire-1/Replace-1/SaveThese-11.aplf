@@ -7,16 +7,18 @@
      fno←filename ⎕FCREATE 0
      :For thisLoc thisObj thisType thisNC :In ↓data
          name←(⍕thisLoc),{(0∊⍴⍵):⍵ ⋄ '.',⍵}thisObj
-         :Select ⌊↑thisNC
-         :Case 2
-             code←thisLoc.⍎thisObj      ⍝ VALUE ERROR?! The object has disappeared since "Find" was triggered
-         :CaseList 3 4
-             code←thisLoc.⎕NR thisObj
-         :Case 9
-             code←⎕SRC thisLoc⍎thisObj  ⍝ VALUE ERROR?! The object has disappeared since "Find" was triggered
-         :Else
-             . ⍝ Huuh?!
-         :EndSelect
-         name code ⎕FAPPEND fno
+         :If 0<thisLoc.⎕NC thisObj
+             :Select ⌊↑thisNC
+             :Case 2
+                 code←thisLoc.⍎thisObj
+             :CaseList 3 4
+                 code←thisLoc.⎕NR thisObj
+             :Case 9
+                 code←⎕SRC thisLoc⍎thisObj
+             :Else
+                 . ⍝ Huuh?!
+             :EndSelect
+             name code ⎕FAPPEND fno
+         :EndIf
      :EndFor
  :EndIf

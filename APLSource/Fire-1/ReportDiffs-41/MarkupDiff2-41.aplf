@@ -3,14 +3,14 @@
 ⍝ tx1a & tx1b are lines of code
 ⍝ tx2a & tx2b are G.SearchFor & G.ReplaceBy or vice versa
  r←''
- (tx1b tx2b)←∊¨tx1b tx2b
- (l1 l2)←↑∘⍴¨tx1b tx2b
- :If ∨/0∊↑∘⍴¨tx1b tx2b~¨' '                         ⍝ Replace by nothing?
+ (tx1b tx2b)←{{1↓↑,/(⎕UCS 13),¨⍵}⍣(1<≡⍵)⊣⍵}¨tx1b tx2b
+ (l1 l2)←≢¨tx1b tx2b
+ :If ∨/0∊≢¨tx1b tx2b~¨' '                         ⍝ Replace by nothing?
      r←tx1a
  :Else
-     equal2←+/∧\↑=/{(⌊/↑∘⍴¨⍵)↑¨⍵}tx1b tx2b          ⍝ "searchFor" and "replaceBy" might by equal to some extent
+     equal2←+/∧\↑=/{(⌊/≢¨⍵)↑¨⍵}tx1b tx2b          ⍝ "searchFor" and "replaceBy" might by equal to some extent
      :While (~0∊⍴tx2a)
-         equal←+/∧\⊃=/{(⌊/↑∘⍴¨⍵)↑¨⍵}tx1a tx2a
+         equal←+/∧\⊃=/{(⌊/≢¨⍵)↑¨⍵}tx1a tx2a
          :If 0<equal
              r,←ReplaceSpecialChars equal↑tx1a
              (tx1a tx2a)←equal↓¨tx1a tx2a

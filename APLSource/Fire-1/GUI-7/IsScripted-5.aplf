@@ -1,0 +1,8 @@
+ IsScripted←{
+     (parent name nc)←⍵
+     nc∊9.4 9.5:1                       ⍝ Clases and Interfaces are scripted by definition
+     (⌊nc)∊2 3 4:0                      ⍝ Varriables, functions and operators are not scripted by definition
+     0=≢name:{2::0 ⋄ 1⊣⎕SRC ⍵}parent    ⍝ Only parent is defined
+     0=≢parent:{2::0 ⋄ 1⊣⎕SRC ⍵}name    ⍝ Only name is defined
+     parent ##.IsScripted name
+ }

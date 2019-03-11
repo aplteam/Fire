@@ -11,6 +11,9 @@
      {(0=10|⍵):##.GUI.n.PB.Thumb←⍵}i+1
      (objLocation objName objType objNC)←data[i;]
      objFullname←(⍕objLocation),'.',objName
+     :If 0=⎕NC objFullname
+         :Continue
+     :EndIf
      :If 2=⌊objNC
      :AndIf NonReplaceVars⍎objFullname
          (objFullname ⍬)⎕FAPPEND G.compareFileTieNo

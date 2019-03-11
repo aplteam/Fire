@@ -6,6 +6,7 @@
  ⍝ ##.GUI.n.Form.Active←0  ⍝ I would love to do that but it stops the test cases from working!
  hl←##.GUI.n.HitList
  NoOfReplacements←0
+ hl←RemoveUnknown hl
  :If ~0∊⍴hl.ReportInfo
      :If 0<noOfInstances←+/~bool←(⊂'Class Instance')≢¨hl.ReportInfo[;1]  ⍝ We cannot change class instances!
          ##.G.NoOfObjects-←noOfInstances

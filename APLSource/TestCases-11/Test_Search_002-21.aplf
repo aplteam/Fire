@@ -21,7 +21,7 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp 4≠0⊃⍴n.HitList.ReportInfo
+ →GoToTidyUp 4≠≢n.HitList.ReportInfo
  R←∆OK
 
 ∆TidyUp:

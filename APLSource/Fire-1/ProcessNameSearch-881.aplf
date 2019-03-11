@@ -6,7 +6,7 @@
  :If ~0∊⍴list
  :AndIf ~0∊⍴names←↑¨{0∊⍴⍺:{⍵↑⍨-(⌽⍵)⍳'.'}⍕⍵ ⋄ ⍵}/¨↓list[;0 1]
      :If G.SearchIsRegEx2
-         options←(⊂'IC'(~G.Case2)),IsVersion16OrBetter/⊂'UCP' 1
+         options←('IC'(~G.Case2))('Greedy' 0),IsVersion16OrBetter/⊂'UCP' 1
          :Trap 11
              b←{~0∊∘⍴¨⍵}result←{G.SearchFor2 ⎕S 0⍠options⊣⍵}¨⍕¨names
              (b/result)←↑∘⍴¨b/result

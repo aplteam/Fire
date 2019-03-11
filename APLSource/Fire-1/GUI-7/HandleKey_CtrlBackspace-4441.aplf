@@ -2,7 +2,7 @@
 ⍝ Takes action when the user has pressed Ctrl+Backspace which means:
 ⍝ "delete the right-most branch".
  r←⍬
- was←n.LookIn.Text
+ was{0=≢⍵:⍺ ⋄ ⍵}←n.LookIn.Text
  :If n.LookIn.(SelText≡2⍴1+⍴,Text)                      ⍝ Cursor is at the end of the input field...
  :AndIf 0<⍴,n.LookIn.Text                               ⍝ ... and the field is not empty...
      :If '.'∊n.LookIn.Text                              ⍝ ... and there is at least one branch!
