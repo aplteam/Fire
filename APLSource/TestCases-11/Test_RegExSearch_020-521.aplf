@@ -14,7 +14,7 @@
  n.SearchFor.Text←'Start.*End'
  n.LookIn.Text←'#.Temp_RegExSearch_020'
  n.SearchIsRegEx.State←1
- n.(DotAll Greedy).(Active State)←1
+ n.Greedy.(Active State)←1
 
  {}∆Select n.StartBtn
  ∆Process n.Form

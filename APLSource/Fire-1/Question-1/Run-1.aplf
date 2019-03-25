@@ -1,4 +1,4 @@
- RESULT←{cs}Run caption;default;ff;_;res;f;defaultBtn;cursorWas
+ RESULT←{cs}Run caption;default;ff;_;res;f;defaultBtn;cursorWas;WARN_AGAIN
  ⍝ Asks a question and returns either 0 or 1. In case "caption2" is not empty
  ⍝ however there are three buttons and the result is 0 for the left-most,
  ⍝ 1 for the right-most and 2 for the  middle (additional) one.
@@ -10,11 +10,19 @@
  'Invalid parameter ; check left argument'⎕SIGNAL f/11
  ff←cs CreateGUI caption
  RESULT←0
- :If ~0∊⍴cs.cancelCaption
+ :If 0<≢cs.regKey
+     cs.regKey/⍨←1 ##.R.GetValue cs.regKey
+ :EndIf
+ :If 0≠≢cs.cancelCaption
      defaultBtn←('OK' 'CANCEL'⍳⊂##.A.Uppercase cs.defaultBtn)⊃ff.(ok cancel) ⍝ Index Error? Invalid "defaultBtn"
  :Else
      defaultBtn←ff.ok
  :EndIf
  ##.SetCursorObj cursorWas
  ⎕NQ defaultBtn'GotFocus' ⋄ res←⎕DQ ff
- ⍝ "RESULT" is re-assigned in OnOkay if appropriate
+ :If 0<≢cs.regKey
+ :AndIf 0<⎕NC'WARN_AGAIN'
+ :AndIf 0=WARN_AGAIN
+     ##.R.PutValue cs.regKey 0
+ :EndIf
+ ⍝ "RESULT" is re-assigned in OnOkay if appropriate, and so is WARN_AGAIN in case cs.regKey is not empty.

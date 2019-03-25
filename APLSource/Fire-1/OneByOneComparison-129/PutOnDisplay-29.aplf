@@ -1,0 +1,8 @@
+ PutOnDisplay←{
+     n←⍺
+     row←⍵
+     0∊⍴n.List.ReportInfo:⍬
+     url←'file:///',n.∆HtmlFilename,'#',⍕row
+     _←n{6::⍬ ⋄ ⍺.Browser.Navigate⊂⍵}url
+     ⍬
+ }

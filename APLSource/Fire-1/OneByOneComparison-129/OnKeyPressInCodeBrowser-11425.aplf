@@ -1,0 +1,5 @@
+ OnKeyPressInCodeBrowser←{
+     (ref key)←⍵[0 2]
+     key≢'EP':1
+     1 ⎕NQ ref.##'Close'
+ }

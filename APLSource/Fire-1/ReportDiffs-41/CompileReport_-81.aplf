@@ -1,6 +1,7 @@
- {r}←CompileReport_(i recNo compressType firstFlag G);name;New;Old;name2;new;old;data;nc;lns;h1;diffs;data11;data22;noOf;data2;data1;TAB
+ {r}←CompileReport_(i recNo firstFlag G);name;New;Old;name2;new;old;data;nc;lns;h1;diffs;data11;data22;noOf;data2;data1;TAB
  r←⍬
  (name New)←⎕FREAD G.compareFileTieNo,recNo
+⍝ {⍵:.}∨/'Vars1'⍷name
  (name2 Old)←⎕FREAD G.fileOldTieNo,recNo
  (new old)←##.G.NamesOnly ##.IfLower¨New Old
  data←((~firstFlag)/⊂'</div>'),⊂'<div class="container" id="no',(⍕i+1),'">'  ⍝ This allows us to CSS this object
@@ -24,39 +25,35 @@
              :Return
          :EndIf
      :EndIf
-     WriteReport'<div class="deleted">' '<pre>'
+     WriteReport⊂'<div class="deleted">'
      data←##.ReplaceSpecialChars¨diffs/Old
-     data←##.A.dlb⊃data
-     WriteReport↓data
-     WriteReport¨'</div>' '</pre>'(,⎕UCS 13)
+     data←'p class="deleted"'∘Tag¨({'<span class="lineno">[',(⍕⍵),'] '}¨##.A.Where diffs),¨data
+     WriteReport data
+     WriteReport¨⊂'</div>'(,##.CR)
  :ElseIf 2=⌊nc
  :AndIf 1=≡new
-     data11←TAB,TAB,Tag 1 MarkupDiff2 Old New G.SearchFor G.ReplaceBy
-     data22←TAB,TAB,Tag 2 MarkupDiff2 New Old G.ReplaceBy G.SearchFor
-     data←TAB,({0=⍵:⍬ ⋄ '<span class="lineno">[',(⍕⍵),']<br />'}↑lns),TAB,'div class="comp"'Tag data11,data22
-     WriteReport data,⎕UCS 13
+     :If Old≢New
+         data11←TAB,TAB,Tag 1 MarkupDiff2 Old New G.SearchFor G.ReplaceBy
+         data22←TAB,TAB,Tag 2 MarkupDiff2 New Old G.ReplaceBy G.SearchFor
+         data←TAB,({0=⍵:⍬ ⋄ '<span class="lineno">[',(⍕⍵),']<br>'}↑lns),TAB,'div class="comp"'Tag data11,data22
+         WriteReport data,##.CR
+     :EndIf
      Drop G.DeleteLineFlag 1 1
  :Else
      :Repeat
          noOf←+/∧\(⍳⍴new)=old⍳new
          :If 0<noOf
-             :If 2=compressType                         ⍝ We write those only in case of "Full Report" ...
-             :AndIf 2≠⌊nc                               ⍝ ... and if it is not a variable!
-                 data←ReplaceSpecialChars¨noOf↑New
-                 data←↑{,TAB,TAB,⍺,NL,'<br>',TAB,TAB,NL,⍵}/data
-                 data←(⊂'<div class="match">'),(⊂data),⊂'</div>'
-                 WriteReport data,⎕UCS 13
-             :EndIf
              Drop G.DeleteLineFlag noOf noOf
          :Else
-             data1←RemoveMarkupForReport G.MarkChanges G.MarkChangeType G.MarkChangesWith New
+             data1←{(1=⍴⍵):∊⍵ ⋄ 1↓↑,/##.CR,¨⍵}{A.dlb ⍵}¨1↑New
              data2←##.A.dlb{2=≡⍵:0⊃⍵ ⋄ ⍵}Old
-             data11←TAB,TAB,Tag 1 MarkupDiff2 data2 data1 G.SearchFor G.ReplaceBy
-             data22←TAB,TAB,Tag 2 MarkupDiff2 data1 data2 G.ReplaceBy G.SearchFor
-             data←TAB,({(0∊⍴,⍵)∨(,0)≡,⍵:'' ⋄ '<span class="lineno">[',(⍕⍵),']</span><br />'}↑lns),TAB,'div class="comp"'Tag data11,data22
-             WriteReport data,⎕UCS 13
+             data11←TAB,TAB,'p'Tag 1 MarkupDiff2 data2 data1 G.SearchFor G.ReplaceBy
+             data22←TAB,TAB,'p'Tag 2 MarkupDiff2 data1 data2 G.ReplaceBy G.SearchFor
+             data←TAB,({(0∊⍴,⍵)∨(,0)≡,⍵:'' ⋄ '<span class="lineno">[',(⍕⍵),']</span><br>'}↑lns),TAB,'div class="comp"'Tag data11,data22
+             WriteReport data,##.CR
              noOf←1
-             Drop G.DeleteLineFlag((G.MarkChangeType∊1 3)+noOf)1
+             Drop G.DeleteLineFlag noOf 1
          :EndIf
      :Until 0∊⍴New
  :EndIf
+⍝Done

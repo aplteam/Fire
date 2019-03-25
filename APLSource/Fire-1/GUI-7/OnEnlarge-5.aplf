@@ -25,6 +25,10 @@
          newPosn←(meh+moh-h2+meh),n.Form.Posn[1]
          newSize←h2,n.Form.Size[1]                  ⍝ Enlarge
      :EndIf
+     :If 0<≢n.HitList.Items
+         newSize[1]←{+/⍵,10×2+≢⍵}{1⊃⊣2 ⎕NQ n.HitList'GetTextSize'⍵}¨(⌈⌿≢¨n.HitList.(ColTitles⍪Items,ReportInfo))⍴¨'W'
+     :EndIf
+     2 ⎕NQ n.Form'Configure',newPosn,newSize
+     n.HitList.{SetColSize ⍵ ¯3}¨1+⍳7
  :EndIf
- 2 ⎕NQ n.Form'Configure',newPosn,newSize
-⍝Done  2
+⍝Done

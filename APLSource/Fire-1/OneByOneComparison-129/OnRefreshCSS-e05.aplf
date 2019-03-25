@@ -1,0 +1,12 @@
+ OnRefreshCSS←{
+ ⍝ Rewrite the CSS and then refreshs the browser.
+ ⍝ Used to display either the old or the new text.
+     b←IsTicked n2
+     ⎕THIS.wasTicked←b
+     _←RewriteCSS b
+     _←WriteStatusMsg n
+     _←{0::⍬ ⋄ n.Browser.Refresh ⍵}⍬
+     _←⎕DL 0.1
+     _←⎕NQ n.List'GotFocus'
+     0
+ }

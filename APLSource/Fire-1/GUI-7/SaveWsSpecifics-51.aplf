@@ -1,9 +1,0 @@
- SaveWsSpecifics←{
-⍝ Save stuff that depends on the current workspace
-     ('CLEAR WS'≡⎕WSID):⍬
-     p←##.GetFireRegistryKey,(1⊃##.A.SplitPath ⎕WSID),'\'
-     _←##.R.PutString(p,'LookForList')((30⌊⍴n.SearchFor.Items)↑n.SearchFor.Items)
-     _←##.R.PutString(p,'LookIn')##.G.LookIn
-     _←##.R.PutString(p,'LastSaveDate')(⍕100⊥3↑⎕TS)
-     ⍬
- }

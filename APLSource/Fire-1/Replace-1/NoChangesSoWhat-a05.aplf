@@ -2,7 +2,6 @@
      msg←''
      msg,←⊂'"Search for" and "Replace by" are identical, therefore the "Replace"'
      msg,←⊂'operation is not carried out: nothing would change anyway.'
-     msg,←{⍵:'' '(You''ve ticked "Mark changes" but there are no changes!)' ⋄ ''}n.MarkChanges.State
      _←##.Question.ShowMsg msg
      ⍬
  }

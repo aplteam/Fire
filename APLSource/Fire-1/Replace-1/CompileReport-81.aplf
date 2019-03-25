@@ -1,17 +1,11 @@
  G←CompileReport G;A;buf1;buf2;cursorWas
 ⍝ Compiles the report.
- :If ##.G.CompressType∊1 2
-     cursorWas←##.SetCursorObj 1
-     G.htmlFilename←##.GetTempFileName'htm'
-     G.cssFilename←##.GetTempFileName'css'
-     G.SearchFor←##.Replace.n.SearchFor.Text
-     G.ReplaceBy←##.Replace.n.ReplaceBy.Text
-     G.DeleteLineFlag←n.DeleteLine.State
-     G.MarkChanges←n.MarkChanges.State
-     G.MarkChangesWith←n.MarkChanges.State/n.MarkChangesText.Text
-     G.MarkChangeType←n.MarkChanges.State×1+##.Where n.MarkChangesType.SelItems
-     {}##.ReportDiffs.CompileReport G ##.G.CompressType
-     ##.SetCursorObj cursorWas
- :Else
-     'Invalid "CompressType"'⎕SIGNAL 11
- :EndIf
+ cursorWas←##.SetCursorObj 1
+ G.htmlFilename←##.GetTempFileName'htm'
+ G.cssFilename←##.GetTempFileName'css'
+ G.SearchFor←##.Replace.n.SearchFor.Text
+ G.ReplaceBy←##.Replace.n.ReplaceBy.Text
+ G.DeleteLineFlag←n.DeleteLine.State
+ {}##.ReportDiffs.CompileReport G
+ ##.SetCursorObj cursorWas
+⍝Done

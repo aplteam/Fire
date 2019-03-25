@@ -1,0 +1,18 @@
+ TopOfDoc←{
+     cssFilename←⍵
+     r←''
+     r,←⊂'<!DOCTYPE html>'
+     r,←⊂'<html lang="en" style="scroll-behavior:smooth">'
+     r,←⊂''
+     r,←⊂'<head>'
+     r,←⊂##.TAB,'<meta http-equiv="X-UA-Compatible" content="IE=edge" />'
+     r,←⊂##.TAB,'<meta charset="utf-8">'
+     r,←⊂##.TAB,'<meta name="language" content="en" />'
+     r,←⊂##.TAB,'<title>Replace Report</title>'
+     r,←⊂##.TAB,'<link rel="stylesheet" media="screen" href="',(##.F.EnforceSlash cssFilename),'" />'
+     r,←GetCss
+     r,←⊂'</head>'
+     r,←⊂''
+     r,←⊂'<body>'
+     r
+ }

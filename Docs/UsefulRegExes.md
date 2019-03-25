@@ -38,9 +38,9 @@ If on the other hand you want to find all references to `#.` but **not** `##.` a
 
 Let's analyze `(?<![#.])#\.(?!#)` :
 
-1. The first thing a regular expression engine does is t look to the left of the current position. This is called  a look-behind. That's what `(?<` is doing, together with the closing `)`.
+1. `(?<` together with the closing `)` forces the regular expression engine to look to the left of the current position. This is called  a look-behind.
 
-   The `![#.]` part reads "neither a `.` nor a `#`". Only when this condition is met would the RegEx engine carry on trying to find a match, otherwise it would give up and move one character forward and start to try again.
+   The `![#.]` part reads "neither a `.` nor a `#`". Only when this condition is met would the RegEx engine carry on trying to find a match, otherwise it would give up and move one character forward and start again.
 
 2. It then tries to find a match for `#`. Only if this is true would the RegEx engine keep trying.
 
@@ -50,7 +50,7 @@ Let's analyze `(?<![#.])#\.(?!#)` :
 
 5. If that's successfull the RegEx engine would perform a look-ahead. That means it looks one character ahead without actually moving the current position, no matter whether it's a match or not. It's the `(?` part (together with the closing `)`) that does this.
 
-   The `!#! bit reads "is not a `#`. 
+   The `!#!` bit reads "is not a `#`". 
 
 Only if all these checks are successful will the engine finally signal a hit.
 
@@ -85,9 +85,9 @@ This can be achieved with this regular expression:
 
 What is this doing:
 
-1. When the regular expression engine checks a particular position first it does a look-behind, that is it looks to the character to the left of the current position. That's what `(?<` is doing. 
+1. `(?<` together with the closing `)` forces the regular expression to check the position to the left of the current position; that's called a look-behind.
 
-2. It then performs three checks defined by what's between the two square brackets: 
+   It then performs three checks defined by what's between the two square brackets: 
 
    * `0-9` stands for all digits from 0 to 9
 
@@ -101,7 +101,7 @@ What is this doing:
 
 4. If there is a match then the engine checks whether there is a `1` at the current position. If that's the case then it moves on to the next character and checks for a "2" etc. until it has matched the `3`.
 
-5. Finally it checks whether the next character is either an end of line character (that's what the `$` stands for) or not a digit.
+5. Finally it checks whether the next character is either not a digit (`[^0-9]`) or (logical OR is represented by the `|` symbol) an end of line character; that's what the `$` stands for.
 
 
 ### Tests{#2}
@@ -140,7 +140,7 @@ However, by default word boundaries are defined by the ANSI character set. That 
 1
 ~~~
 
-`ß` is a Unicode but not an ANSI character; it is therefore considered a word boundary by the RegEx engine. Luckily with version 16.0 a new version of the underlying PCRE library is shipped, and this version offers the option to use Unicode properties for word boundaries.
+`ß` is a Unicode but not an ANSI character; it is therefore considered a word boundary by the RegEx engine. Luckily with version 16.0 of Dyalog APL a new version of the underlying PCRE library is shipped, and this version offers the option to use Unicode properties for word boundaries.
 
 This new feature can be switched on and off with "UCP" option which was introduced in version 16.0:
 
@@ -149,4 +149,4 @@ This new feature can be switched on and off with "UCP" option which was introduc
 0
 ~~~
 
-The default is 0 in order to make sure that the behaviour does not change but naturally when using the Unicode version of Dyalog you will almost certainly change it to 1.
+The default is 0 in order to make sure that the behaviour does not change but naturally when using the Unicode version of Dyalog you will almost certainly change it to 1. Fire does in fact use 1 as the default and does not show the option at all because the Classic version of Dyalog APL is not supported anyway.

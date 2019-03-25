@@ -10,10 +10,6 @@
  rf.onSelect←'OnCopyPathToStartLookingHere'
  rf.onGotFocus←'OnHiddenButtonGotFocus'
 
- n.HiddenBtns,←rf←⍎'RemoveFromList'n.Form.⎕WC p,⊂('Accelerator'(46 0))   ⍝ Del
- rf.onSelect←'OnRemoveFromList'
- rf.onGotFocus←'OnHiddenButtonGotFocus'
-
  n.HiddenBtns,←rf←⍎'DeleteFromWS'n.Form.⎕WC p,⊂('Accelerator'(46 2))     ⍝ Ctrl+Del
  rf.onSelect←'OnDelKey'
  rf.onGotFocus←'OnHiddenButtonGotFocus'

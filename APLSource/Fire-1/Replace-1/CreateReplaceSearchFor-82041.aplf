@@ -11,13 +11,16 @@
  ∆,←⊂'Attach'('Top' 'Left' 'Top' 'Right')
  ∆,←⊂'FontObj'##.GUI.n.APL_Font
  ∆,←⊂'Size'((##.GUI.n.SearchFor.Size[0])(n.Form.Size[1]-20))
+ ∆,←⊂'Active' 0
  :If ##.G.SearchIsRegEx
-     ∆,←⊂'Tip'(Split'This is going to be the left argument of the ⎕R operator.⌹You cannot change this here.')
+     ∆,←⊂'Tip'(Split'This is going to be the left argument of the ⎕R operator.')
  :Else
-     ∆,←⊂'Tip'(Split'This is what you''ve searched for.⌹You cannot change this here.')
+     ∆,←⊂'Tip'(Split'This is what you''ve searched for.')
  :EndIf
  ∆,←⊂'Text'##.G.SearchFor
- ∆,←⊂'ReadOnly' 1
  ∆,←⊂'TipObj'n.TipObj
  n.SearchFor←⍎'SearchFor'n.Form.⎕WC ∆
  n.SearchFor.onKeyPress←'OnKeyPressStandard'
+ n.SearchFor.onGotFocus←'OnSearchForGotFocus'
+ n.SearchFor.onLostFocus←'OnSearchForLostFocus'
+⍝Done

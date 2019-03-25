@@ -1,0 +1,4 @@
+ OnQuit←{
+     n←##.GUI.GetRefTo_n↑,⍵
+     ⍬⊣⎕NQ n.TheForm'Close'
+ }

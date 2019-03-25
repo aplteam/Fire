@@ -1,0 +1,34 @@
+ r←CleanUpScriptedNamespaces batchFlag;G;scriptsNames;parms;msg;bool2;bool1;bool3;showWarning
+⍝ This function removes everything from the hit list that is not a namespace script but belongs to a namespace script.
+⍝ It's relevant only if batchFlag is 0, meaning that one object after the other is processed.
+⍝ Because namespace scripts are then processed as a unit there is no need to also process their functions and operators.
+⍝ The function will also warn the user who might get confused otherwise.
+⍝ Note that when this function is called all ordinary namespaces have already vanished from the hit list.
+ r←1
+ G←##.GUI
+ :If ~batchFlag
+ :AndIf ~0∊⍴G.n.HitList.Data
+ :AndIf 0<+/bool1←9.1=G.n.HitList.Data[;3]
+     scriptsNames←bool1⌿G.n.HitList.Data[;1]
+     bool2←~({⍵↓⍨1+1⍳⍨+\⍵='.'}∘⍕¨G.n.HitList.Data[;0])∊scriptsNames
+     bool3←bool2∨bool1
+     G.n.HitList.Data←bool3⌿G.n.HitList.Data
+     ##.G.Hits←bool3⌿##.G.Hits
+     :If 0<+/bool2
+         parms←##.Question.CreateDefaultParms
+         parms.addToCaption←'Warning!'
+         parms.regKey←##.GetRepeatScriptedNamespacesWarningRegKey
+         showWarning←GetShowWarning parms
+     :AndIf showWarning
+         msg←''
+         msg,←⊂'You''ve decided to process all objects one by one.'
+         msg,←⊂'Among those objects ',((1<+/bool2)⊃'is a' 'are'),' scripted namespace',((1≠+/bool2)/'s'),'.'
+         msg,←⊂''
+         msg,←⊂'Because scripted namespaces are processed as a unit, all'
+         msg,←⊂'functions and operators belonging to scripted namespaces'
+         msg,←⊂'have been removed from the list of objects to be processed.'
+         msg,←⊂'Any scripted namespaces are processed in their entirety.'
+         r←parms ##.Question.Run msg
+     :EndIf
+ :EndIf
+⍝Done

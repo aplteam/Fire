@@ -1,0 +1,8 @@
+ Down←{
+     0=+/n.List.SelItems:⍬
+     row←n.List.SelItems⍳1
+     row=≢n.List.SelItems:⍬
+     n.List.SelItems[]←0
+     n.List.SelItems[row]←1
+     1:r←⍬
+ }

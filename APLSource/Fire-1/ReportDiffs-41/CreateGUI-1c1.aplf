@@ -1,4 +1,4 @@
- n←CreateGUI noOf;∆;rf;b;cursorWas
+ n←CreateGUI noOf;∆;rf;b;cursorWas;ref
  ⍝ Returns a 1 for "carry on" or a 0 for "cancel"
  cursorWas←##.GetCursorObj
  n←⎕NS''
@@ -6,21 +6,21 @@
  ∆,←⊂'Caption'(##.AddPidToCaption'Fire - Replace Report')
  ∆,←⊂'Coord' 'Pixel'
  ∆,←⊂'Icon'##.GUI.n.TheIcon
+ ∆,←⊂'Posn'(##.GUI.n.Form.Size ##.GUI.CenterIn ##.GUI.n.Form)
  n.TheForm←⍎'ff'##.Replace.n.Form.⎕WC ∆
- n.TheForm.onKeyPress←'OnKeyPressInForm'
  n.TheForm.onContextMenu←'OnContextMenu'
  n.TheForm.n←n
 
- ∆←⊂'Button'
- ∆,←⊂'Caption' 'Browse Code'
- ∆,←⊂'Posn'(¯3 ¯3)
- ∆,←⊂'Size'(1 1)
- ∆,←⊂'Accelerator'(69 2)
- rf←⍎'BrowseCode'n.TheForm.⎕WC ∆
- rf.onSelect←'OnBrowseCode'
-
  n.APL_Font←⍎'fnt'n.TheForm.⎕WC'Font' 'APL385 Unicode' 18
  'e1'n.TheForm.⎕WC'Edit'('Posn'(¯5 ¯5))('Size'(2 2))('Font'n.APL_Font) ⍝ For GetTextsSize only
+
+ ref←⍎'MB'n.TheForm.⎕WC⊂'Menubar'
+ n.QuitMenu←⍎'QuitMenu'ref.⎕WC'Menu'('Caption' '&Quit')
+ n.Quit←⍎'Quit'n.QuitMenu.⎕WC'MenuItem'('Caption' 'Quit')
+ n.Quit.onSelect←'OnClose'
+ n.EditMenu←⍎'EditMenu'ref.⎕WC'Menu'('Caption' '&Edit')
+ n.BrowseCode←⍎'BrowseCode'n.EditMenu.⎕WC'MenuItem'('Caption'('Browse code...',##.TAB,'Ctrl+B'))('Accelerator'(66 2))
+ n.BrowseCode.onSelect←'OnBrowseCode'
 
  'SB'n.TheForm.⎕WC'Statusbar'('Coord' 'Prop')
  n.Statusbar←⍎'SB.sf'n.TheForm.⎕WC'StatusField'('Size'(⍬ 99))
@@ -49,7 +49,7 @@
  n.List←⍎'list'n.MainSubForm.⎕WC ∆
  {n.List.SetColSize ⍵ ¯3}¨⍳3
  n.List.Event,←⊂##.GUI.Events.RefreshCSS'OnRefreshCSS'
- n.List.onKeyPress←'OnBrowseCode'
+ n.List.onKeyPress←'OnKeyPressInList'
  n.List.on9994←'On9994'
  n.List.onItemUp←'OnItemUpInListView'
 

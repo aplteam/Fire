@@ -1,6 +1,7 @@
  {n}←CreateReplaceReplaceBy n;∆;height;msg
 ⍝
  ∆←⊂'Label'
+⍝ ∆,←⊂'Posn'((10+0⊃PosnPlusSize n.SearchIsRegEx),12)
  ∆,←⊂'Posn'((10+0⊃PosnPlusSize n.SearchFor),12)
  ∆,←⊂'Caption' '&Replace by:'
  ∆,←⊂'Attach'(4⍴'Top' 'Left')

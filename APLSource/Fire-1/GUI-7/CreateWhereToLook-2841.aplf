@@ -12,12 +12,12 @@
  ∆,←⊂'Size'n.SearchFor.Size
  ∆,←⊂'FontObj'n.APL_Font
  ∆,←⊂'Attach'('Top' 'Left' 'Top' 'Left')
- ∆,←⊂'Text'(⍕##.G.LookIn)
  ∆,←⊂'TipObj'n.TipObj
- msg←'Specify a namespace in order to restrict the search⌹'
- msg,←'to just that namespace.⌹'
+ msg←'Specify a namespace in order to restrict the search accordingly.⌹'
  msg,←'Autocomplete will support you while you are typing.⌹'
- msg,←'Press <DEL> to delete the full path.'
+ msg,←'- Press <DEL> to delete the full path.⌹'
+ msg,←'- Press <Ctrl+Backspace> to delete one level of the path.⌹'
+ msg,←'- Press <Backspace> to delete a single character.'
  ∆,←⊂'Tip'(Split msg)
  n.LookIn←⍎'LookIn'n.Form.⎕WC ∆
  n.LookIn.∆Tip←n.LookIn.Tip

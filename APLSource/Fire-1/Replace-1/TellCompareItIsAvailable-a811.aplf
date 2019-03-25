@@ -1,7 +1,0 @@
- TellCompareItIsAvailable←{
-     pathToCompareIt←{0::'' ⋄ ##.##.CompareSimple.FindCompareIt 0}⍬
-     (~0∊⍴pathToCompareIt):0
-     msg←⊂'Sorry, apparently CompareIt is not available on this machine.'
-     msg,←'' 'Therefore this feature is not available.'
-     1⊣##.Question.ShowMsg msg
- }

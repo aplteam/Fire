@@ -1,0 +1,5 @@
+ OnToggleRegEx←{
+     n←##.GUI.GetRefTo_n↑,⍵
+     n.BatchMode.Active←0=n.SearchIsRegEx.State
+     0
+ }

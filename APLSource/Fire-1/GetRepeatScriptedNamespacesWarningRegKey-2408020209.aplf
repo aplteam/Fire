@@ -1,0 +1,2 @@
+ r←GetRepeatScriptedNamespacesWarningRegKey
+ r←GetFireRegistryKey,⎕AN,'\Warnings\OneByOne'

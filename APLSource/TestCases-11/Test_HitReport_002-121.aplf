@@ -1,5 +1,4 @@
  R←Test_HitReport_002(stopFlag batchFlag);n;n2;⎕TRAP;ref;expected;rg;GUI;html;body
-⍝ Exercise the "Hit" report with data that once was not processed correctly (DotAll!).
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  R←∆Failed
 
@@ -16,7 +15,6 @@
  n.LookIn.Text←'#.TEMP'
  n.Vars.State←0
  n.SearchIsRegEx.State←1
- n.DotAll.State←1
  n.Comments.State←0
  n.Text.State←0
  {}∆Select n.StartBtn

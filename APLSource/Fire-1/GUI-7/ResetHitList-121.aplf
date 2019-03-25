@@ -1,12 +1,15 @@
  ResetHitList←{
 ⍝ Resets the hit list - and any related pieces of information) and
-⍝ wipes out the stabus bar information regarding hits.
+⍝ wipes out the status bar information regarding hits.
+     ⍺←1            ⍝ Default is: write info to status bar
      (noOfObj noOfContainers)←⍵
      ##.G.(NoOfObjects NoOfHits)←0
      n.HitList.Data←0 4⍴⍬
      n.HitList.Items←''
      n.HitList.ReportInfo←(0,1↓⍴n.HitList.ReportInfo)⍴''
      ##.G.Hits←0 4⍴⍬
+     ##.G.ProcessingTime←0
+     ~⍺:WriteInfo''
      ##.G.ProcessingTime←{0.01×⌊100×⍵}(⎕AI[1]-##.∆AI)÷1000
      ReportHitsInStatusbar ##.G.NoOfHits,##.G.NoOfObjects,noOfObj,noOfContainers
  }

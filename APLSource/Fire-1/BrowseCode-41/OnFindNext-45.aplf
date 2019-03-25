@@ -1,0 +1,4 @@
+ OnFindNext←{
+     n←##.GUI.GetRefTo_n↑,⍵
+     FindNext n
+ }

@@ -1,0 +1,4 @@
+ {r}←BrowseCode n
+⍝ Takes a fully qualified name of an APL object and displays it (fns/opr/all scripts)
+ r←##.BrowseCode.Run n.∆Name n
+⍝Done

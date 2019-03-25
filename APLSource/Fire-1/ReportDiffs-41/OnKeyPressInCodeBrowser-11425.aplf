@@ -1,5 +1,0 @@
- OnKeyPressInCodeBrowser←{
-⍝ Catches Escape and make the Browser close.
-     ('EP'≢2⊃⍵):1
-     (0⊃⍵).##.Close
- }

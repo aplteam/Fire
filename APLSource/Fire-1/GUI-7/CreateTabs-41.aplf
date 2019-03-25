@@ -29,5 +29,5 @@
  n.Tab2.TabObj←n.SF2
 
  2 ⎕NQ n.Tab1'Select'
- n.Tab1.onSelect←'OnSwitchTab'
+ n.(Tab1 Tab2).onSelect←⊂'OnSwitchTab'
 ⍝Done

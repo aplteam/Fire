@@ -45,12 +45,22 @@
  :EndIf
  :If IsNamesOnlySearch n
  :AndIf ~n.SearchIsRegEx2.State
- :AndIf 0≠(⎕NS'').⎕NC n.SearchFor.Text
-     msg←⊂'"Search for" does not contain a valid APL name.'
-     :If ∨/'^$[].*{}\|+()-'∊n.SearchFor.Text
-         msg,←⊂''
-         msg,←⊂'(Maybe this is supposed to be a RegEx search?!)'
+     :If 0=≢n.SearchFor.Text
+         msg←⊂'"Search for" is empty?!'
+         ##.Question.ShowMsg msg
+         r←1
+     :ElseIf 0=≢n.SearchFor.Text~' '
+         msg←⊂'"Search for" contains just spaces?!'
+         ##.Question.ShowMsg msg
+         r←1
+     :ElseIf 0≠(⎕NS'').⎕NC n.SearchFor.Text
+         msg←⊂'"Search for" does not contain a valid APL name.'
+         :If ∨/'^$[].*{}\|+()-'∊n.SearchFor.Text
+             msg,←⊂''
+             msg,←⊂'(Maybe this is supposed to be a RegEx search?!)'
+         :EndIf
+         ##.Question.ShowMsg msg
+         r←1
      :EndIf
-     ##.Question.ShowMsg msg
  :EndIf
 ⍝Done

@@ -1,0 +1,92 @@
+ ns←CreateBowseGUI nb;∆;ref;fontRef;mainForm
+ ns←⎕NS''
+ ∆←⊂'Form'
+ ∆,←⊂'Caption'(##.AddPidToCaption'Fire: Find in Code')
+ ∆,←⊂'Size'(240 400)
+ ns.Form←⍎'FindForm'nb.TheForm.⎕WC ∆
+ ns.Form.Posn←ns.Form.Size ##.GUI.CenterIn nb.TheForm
+ ns.Form.n←ns
+
+ ∆←⊂'Label'
+ ∆,←⊂'Posn'(15 15)
+ ∆,←⊂'Caption' '&Search for:'
+ ∆,←⊂'Attach'('Top' 'Left' 'Top' 'Left')
+ ref←⍎'SearchFor_L'ns.Form.⎕WC ∆
+
+ fontRef←⍎'MyFont'nb.TheForm.⎕WC'Font' 'APL385 Unicode'('Size' 16)
+ mainForm←##.GUI.GetRefTo_n nb.TheForm.##.##.##
+
+ ∆←⊂'Edit'
+ ∆,←⊂'Posn'((5+0⊃##.GUI.PosnPlusSize ref)15)
+ ∆,←⊂'Size'(⍬(ns.Form.Size[1]-30))
+ ∆,←⊂'FontObj'fontRef
+ :If nb.∆FirstFlag
+     ∆,←⊂'Text'mainForm.SearchFor.Text
+     ∆,←⊂'SelText'(1,1+≢mainForm.SearchFor.Text)
+ :Else
+     ∆,←⊂'Text'nb.∆SearchFor
+     ∆,←⊂'SelText'(1,1+≢nb.∆SearchFor)
+ :EndIf
+ ∆,←⊂'Attach'('Top' 'Left' 'Top' 'Right')
+ ns.SearchFor←⍎'SearchFor'ns.Form.⎕WC ∆
+ ns.SearchFor.∆SelText←1,1+≢mainForm.SearchFor.Text
+ ns.SearchFor.onLostFocus←'OnSearchForLostFocus'
+ ns.SearchFor.onGotFocus←'OnSearchForGotFocus'
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' '&Match case'
+ ∆,←⊂'Posn'((15+0⊃##.GUI.PosnPlusSize ns.SearchFor),15)
+ ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
+ ∆,←⊂'Style' 'Check'
+ :If nb.∆FirstFlag
+     ∆,←⊂'State'((##.GUI.GetRefTo_n nb.TheForm.##.##.##).Case.State)
+ :Else
+     ∆,←⊂'State'nb.∆MatchCase
+ :EndIf
+ ns.Case←⍎'Case'ns.Form.⎕WC ∆
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' 'RegE&x'
+ ∆,←⊂'Posn'((15+0⊃##.GUI.PosnPlusSize ns.Case),15)
+ ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
+ ∆,←⊂'Style' 'Check'
+ :If nb.∆FirstFlag
+     ∆,←⊂'State'((##.GUI.GetRefTo_n nb.TheForm.##.##.##).SearchIsRegEx.State)
+ :Else
+     ∆,←⊂'State'nb.∆RegEx
+ :EndIf
+ ns.RegEx←⍎'RegEx'ns.Form.⎕WC ∆
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' '&Greedy'
+ ∆,←⊂'Posn'((5+0⊃##.GUI.PosnPlusSize ns.RegEx),25)
+ ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
+ ∆,←⊂'Style' 'Check'
+ :If nb.∆FirstFlag
+     ∆,←⊂'State'((##.GUI.GetRefTo_n nb.TheForm.##.##.##).Greedy.State)
+ :Else
+     ∆,←⊂'State'nb.∆Greedy
+ :EndIf
+ ns.Greedy←⍎'Greedy'ns.Form.⎕WC ∆
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' '&OK'
+ ∆,←⊂'Size'(⍬ 120)
+ ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
+ ∆,←⊂'Default' 1
+ ns.OK←⍎'OK'ns.Form.⎕WC ∆
+ ns.OK.Size[0]×←1.1
+ ns.OK.Posn←(ns.Form.Size[0]-ns.OK.Size[0]+15),15
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' '&Cancel'
+ ∆,←⊂'Size'(⍬ 120)
+ ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
+ ∆,←⊂'Cancel' 1
+ ns.Cancel←⍎'Cancel'ns.Form.⎕WC ∆
+ ns.Cancel.Size[0]×←1.1
+ ns.Cancel.Posn←(ns.OK.Posn[0]),15+1⊃##.GUI.PosnPlusSize ns.OK
+
+ ns.Cancel.onSelect←1
+ ns.OK.onSelect←'OnOkInFind'
+⍝Done

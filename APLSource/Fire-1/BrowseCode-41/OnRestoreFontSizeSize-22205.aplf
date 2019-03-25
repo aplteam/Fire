@@ -1,0 +1,6 @@
+ OnRestoreFontSizeSize←{
+     n←##.GUI.GetRefTo_n↑,⍵
+     ref←n.Browse.FontObj
+     ref.Size←n.Browse.∆DefaultFontSize
+     1:r←1
+ }

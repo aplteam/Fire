@@ -1,0 +1,1 @@
+ OnReplaceByGotFocusGotFocus←{n←##.GUI.GetRefTo_n↑,⍵ ⋄ n.ReplaceBy.SelText←(1 1)((1+≢n.ReplaceBy.Text),1+≢↑¯1↑n.ReplaceBy.Text) ⋄ 1}

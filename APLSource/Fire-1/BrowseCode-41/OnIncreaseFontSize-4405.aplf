@@ -1,0 +1,10 @@
+ OnIncreaseFontSize←{
+     n←##.GUI.GetRefTo_n↑,⍵
+     ref←n.Browse.FontObj
+     current←n.∆FontSizes⍳ref.Size
+     new←0⌈(¯1+≢n.∆FontSizes)⌊current+1
+     current≡new:1
+     ref.Size←new⊃n.∆FontSizes
+     n.Browse.SelText←n.Browse.SelText  ⍝ Bring back into sight
+     1:r←1
+ }

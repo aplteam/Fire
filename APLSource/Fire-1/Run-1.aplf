@@ -1,19 +1,18 @@
- {n}←{testFlags}Run debugFlag;TheCounterForm
+ {n}←{testFlag}Run debugFlag;TheCounterForm
 ⍝ Fire's main function.\\
 ⍝ Set `debugFlag` to 1 and you get some developer-specific options making it easier to debug Fire.\\
-⍝ `testFlags`, if specified, must be a Boolean vector with two items:
-⍝ 1. Replace does not execute `⎕DQ`, the comparison tool is not really called etc.\\
-⍝    Used only when the test cases are executed.
-⍝ 2. Pretend that the comparison tool is not available.
-⍝ Usually `testFlags` is specified by the test cases, not by a user.\\
+⍝ `testFlag`, if specified, must be a Boolean. If it is true then a number of things are different:
+⍝ Replace does not execute `⎕DQ`, the comparison tool is not really called etc. Used only when the\\
+⍝ test cases are executed.\\
+⍝ Usually `testFlag` is specified by the test cases, not by a user.\\
 ⍝ Note that the `G` (for "Globals") namespace is re-used when it exists.\\
 ⍝ This means that a user gets the defaults when Fire is called for the very first time
 ⍝ but can carry on with the last settings during that session or until either Fire
 ⍝ is started with the `-fl` (force load) setting or `⎕SE.Fire.Reset` is called.\\
-⍝ However, when `0<+/testFlags` then `Reset` is always called in order to make
+⍝ However, when `0<+/testFlag` then `Reset` is always called in order to make
 ⍝ sure that the test cases always start with the defaults.\\
 ⍝ Home page: <https://github.com/aplteam/Fire>
- testFlags←2↑{0<⎕NC ⍵:(⍎⍵),0 0 ⋄ 0 0}'testFlags'
+ testFlag←↑{0<⎕NC ⍵:(⍎⍵),0 ⋄ 0}'testFlag'
  :If 9=⎕NC'G'
  :AndIf 9=⎕NC'GUI.n.Form'
      G.Posn←⍬ ⍬
@@ -22,14 +21,15 @@
  :If debugFlag
      #.FilesAndDirs.PolishCurrentDir
  :EndIf
- Init testFlags
+ Init ⍬
  :If 0=⎕NC'G'
- :OrIf 0<+/testFlags
-     G←Populate_G testFlags
-     G.HelpPath←FindFireReadMe ⍬
+ :OrIf testFlag
+     G←Populate_G testFlag
  :EndIf
+ G.HelpPath←FindFireReadMe ⍬
  n←GUI.n←GUI.CreateGUI debugFlag
+ ResetCertainRegKeySettings ⍬
  ⎕NQ(G.NamesOnly⊃n.(Tab1 Tab2))'Select'
- :If 0=+/testFlags
+ :If ~testFlag
      :Trap 6 ⋄ ⎕DL 0.05 ⋄ ⎕NQ GUI.n.SearchFor'GotFocus' ⋄ :EndTrap
  :EndIf

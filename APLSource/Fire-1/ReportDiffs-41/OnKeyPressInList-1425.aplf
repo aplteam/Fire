@@ -1,0 +1,29 @@
+ r←OnKeyPressInList msg;k;key;name;n;ref;row;flags
+⍝ Handles hot key for "Browse code"
+ r←1
+ ref←↑msg
+ n←##.GUI.GetRefTo_n ref
+ k←⎕NS''
+ k.Escape←27 0          ⍝ Quit
+ k.Ctrl_B←66 2          ⍝ Browse
+ k.Space←32 0           ⍝ Tick current row
+ k.Ctrl_N←78 2          ⍝ Un-tick all
+ k.Ctrl_A←65 2          ⍝ Tick all
+ (k.CursorUp k.CursorDown k.Home k.End k.PgUp k.PgDown)←(38 0)(40 0)(36 0)(35 0)(33 0)(34 0)
+ key←2↑4↓msg
+ :Select key
+ :Case k.Escape
+     n←CloseReportForm n
+     r←1
+ :Case k.Ctrl_B
+     BrowseCode n
+ :Case k.Space
+     ToggleCurrentRowsCheckbox ref n
+ :Case k.Ctrl_N
+     UntickAllCheckBoxes n.List
+ :Case k.Ctrl_A
+     TickAllCheckBoxes n.List
+ :Else
+     ⎕NQ ref 9994
+ :EndSelect
+⍝Done

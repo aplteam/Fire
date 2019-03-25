@@ -1,0 +1,13 @@
+ G←CollectData(oldCode newCode lineNumbers ind nc)
+ G←⎕NS''
+ G.SearchFor←##.Replace.n.SearchFor.Text
+ G.ReplaceBy←##.Replace.n.ReplaceBy.Text
+ G.DeleteLineFlag←##.G.DeleteLines
+ G.OldCode←oldCode
+ G.NewCode←newCode
+ G.LineNumbers←lineNumbers
+ G.Hits←ind
+ G.Length←≢G.SearchFor
+ G.Case←##.G.Case
+ G.NC←nc
+⍝Done

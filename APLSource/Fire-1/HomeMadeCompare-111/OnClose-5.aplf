@@ -1,6 +1,0 @@
- OnClose←{
-     ref←(0⊃⍵).##
-     ref.p.newCode←{(2=⍴⍴⍵):↓⍵ ⋄ (0 1∊⍨≡⍵):⊂⍵ ⋄ ⍵}ref.n.Left.Text
-     p.ac←(ref.p.(i noOf))##.Question.ConfirmFix ref.p.name
-     1
- }

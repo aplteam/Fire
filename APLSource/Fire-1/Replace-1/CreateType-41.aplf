@@ -1,4 +1,4 @@
- {n}←CreateType n;∆;rf
+ {n}←CreateType n;∆;rf;msg
 ⍝
  ∆←⊂'Group'
  ∆,←⊂'Caption' 'Change objects'
@@ -9,23 +9,32 @@
 
  ∆←⊂'Button'
  ∆,←⊂'Style' 'Radio'
- ∆,←⊂'Caption' '&all in one go '
+ ∆,←⊂'Caption' '&All in one go '
  ∆,←⊂'Posn'(25 15)
  ∆,←⊂'State'(~##.G.SearchIsRegEx)
  ∆,←⊂'Active'(~##.G.SearchIsRegEx)
  ∆,←⊂'TipObj'n.TipObj
- ∆,←⊂'Tip'(Split'Prepare a report, then make the⌹decison whether to fix them all⌹or forget about it.')
+ msg←''
+ msg,←'This allows you to exclude certain objects from the coming⌹'
+ msg,←'"Replace" operation, but the smallest unit of operation is the⌹'
+ msg,←'object, so either all hits or none in any given object will be changed'
+ ∆,←⊂'Tip'(Split msg)
  ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
  n.BatchMode←⍎'R1'rf.⎕WC ∆
  n.BatchMode.onSelect←'OnBatchMode'
 
  ∆←⊂'Button'
  ∆,←⊂'Style' 'Radio'
- ∆,←⊂'Caption' '&one by one'
+ ∆,←⊂'Caption' '&One by one'
  ∆,←⊂'Posn'(50 15)
  ∆,←⊂'State'(~n.BatchMode.State)
  ∆,←⊂'TipObj'n.TipObj
- ∆,←⊂'Tip'(Split'Check and fix (or skip) one⌹object after the other.')
+ msg←''
+ msg,←'Check and fix (or skip) one object after the other. For every ⌹'
+ msg,←'object you can exclude any single hit with a mouse click.⌹'
+ msg,←'The smallest unit of operation is any given hit.⌹'
+ msg,←'In case of a RegEx search this is the only option.'
+ ∆,←⊂'Tip'(Split msg)
  ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
  n.OneByOneMode←⍎'R2'rf.⎕WC ∆
  n.OneByOneMode.onSelect←'OnOneByOneMode'

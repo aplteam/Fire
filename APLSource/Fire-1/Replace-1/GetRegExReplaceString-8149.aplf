@@ -1,0 +1,11 @@
+ rs←GetRegExReplaceString(G ss nc)
+ rs←''
+ :If ~G.Text
+     rs,←⊂,'&'
+ :EndIf
+ :If 2≠⌊nc
+ :AndIf ~G.Comments
+     rs,←⊂,'&'
+ :EndIf
+ rs,←⊂⍣(1<≡ss)⊣{1=⍴,⍵:↑⍵ ⋄ 1↓↑,/(⎕UCS 13),¨⍵}G.ReplaceBy
+⍝Done

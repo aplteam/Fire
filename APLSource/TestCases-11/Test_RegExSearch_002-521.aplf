@@ -17,7 +17,6 @@
  n.SearchFor.Text←'^\s{0,}⍝.*'
  n.LookIn.Text←'#.Temp_RegExSearch_002'
  n.SearchIsRegEx.State←1
- n.DotAll.(Visible State)←1 0
  n.Greedy.(Active State)←1 0
 
  {}∆Select n.StartBtn

@@ -1,0 +1,11 @@
+ ss←GetRegExSearchString(G nc)
+ ss←''
+ :If ~G.Text
+     ss,←⊂'''\N*?'''
+ :EndIf
+ :If 2≠⌊nc
+ :AndIf ~G.Comments
+     ss,←⊂'⍝.*$'
+ :EndIf
+ ss,←⊂⍣(1<≡ss)⊣G.SearchFor
+⍝Done

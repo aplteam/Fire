@@ -1,10 +1,12 @@
- {n}←CreateDeleteHitLines n;∆;rf;msg;flags
+ {n}←CreateDeleteHitLines n;∆;rf;msg;flags;title
 ⍝
  ∆←⊂'Button'
  flags←##.G.(Code Vars)
- ∆,←⊂'Caption'('&Delete ',((flags[0])/'lines'),((∧/flags)/'/'),((flags[1])/'items'),' with hits')
+ title←'&Delete ',((flags[0])/'lines'),((∧/flags)/'/'),((flags[1])/'items'),' with hits'
+ title,←##.G.SearchIsRegEx/' (not with RegEx)'
+ ∆,←⊂'Caption'title
  ∆,←⊂'Style' 'Check'
- ∆,←⊂'Posn'((10+0⊃PosnPlusSize n.BatchMode.##),10)
+ ∆,←⊂'Posn'((n.BatchMode.##.Posn[0]),40+1⊃PosnPlusSize n.BatchMode.##)
  ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
  ∆,←⊂'TipObj'n.TipObj
  msg←'All lines containing a hit will be deleted from the⌹'

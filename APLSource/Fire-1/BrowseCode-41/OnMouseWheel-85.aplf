@@ -1,0 +1,11 @@
+ OnMouseWheel←{
+     n←##.GUI.GetRefTo_n↑,⍵
+     ⍵[5]≠2:0  ⍝ We support only MouseWheel + <Ctrl> key
+     direction←×6⊃⍵
+     ref←n.Browse.FontObj
+     current←n.∆FontSizes⍳ref.Size
+     new←0⌈(¯1+≢n.∆FontSizes)⌊current+direction
+     current≡new:1
+     ref.Size←new⊃n.∆FontSizes
+     1
+ }

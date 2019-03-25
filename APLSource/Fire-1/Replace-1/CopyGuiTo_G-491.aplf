@@ -1,8 +1,11 @@
  {n}←CopyGuiTo_G n;G
-⍝ Copies values from the GUI to the "Globals" namespace G
+⍝ Copies values from the "Replace" GUI to the "Globals" namespace `G`
  G←##.G
- G.CompressType←n.CompareCompressed.State⊃2 1
  G.ReplaceBy←{2=⍴⍴⍵:↓⍵ ⋄ 0 1∊⍨≡⍵:,⊂⍵ ⋄ ,⍵}n.ReplaceBy.Text
- G.SearchFor2←G.NamesOnly ##.IfLower G.SearchFor←n.SearchFor.Text
+⍝ G.SearchFor2←G.NamesOnly ##.IfLower G.SearchFor←n.SearchFor.Text
  G.DeleteLines←n.DeleteLine.State
- ##.GUI.n.SearchFor.Text←n.SearchFor.Text
+⍝ G.SearchIsRegEx←n.SearchIsRegEx.State
+⍝ G.Greedy←n.Greedy.State
+⍝ G.Case←n.Case.State
+⍝ G.APL_Name←n.APL_Name.State
+⍝Done

@@ -1,0 +1,6 @@
+ {r}←Run(name n);nb
+⍝ Takes a fully qualified name of an APL object and displays it (fns/opr/class/interface)
+ r←⍬
+ nb←CreateGUI n name
+ ⎕NQ nb.Browse'GotFocus' ⋄ ⎕DQ nb.TheForm
+⍝Done

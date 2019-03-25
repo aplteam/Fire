@@ -1,7 +1,7 @@
  {n}←CreateReplacePushButtons n;∆
 ⍝
  ∆←⊂'Button'
- ∆,←⊂'Caption' '&Preview'
+ ∆,←⊂'Caption'(##.G.SearchIsRegEx⊃'&Preview' '&Process')
  ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
  ∆,←⊂'Size'(⍬ 110)
  ∆,←⊂'Event' 'Select' 1

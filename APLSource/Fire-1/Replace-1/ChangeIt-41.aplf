@@ -38,8 +38,5 @@
          newCode←1↓Simplify ##.CR,¨oldCode
          newCode←Replace newCode ##.G.SearchFor2 ##.G.ReplaceBy ind
          newCode←##.CR ##.A.Split newCode
-         :If 2≠⌊nc
-             newCode(MarkChanges)←oldCode
-         :EndIf
      :EndIf
  :EndIf

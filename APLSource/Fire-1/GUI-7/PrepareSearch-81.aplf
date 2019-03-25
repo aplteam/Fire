@@ -10,7 +10,7 @@
      ResetHitList 0 0
  :Else
      {}HandleCombo n.SearchFor
-     →(CheckLookIn)/0
+     →(CheckLookIn ⍬)/0
      {}HandleControlDependencies 0
      {}CopyGuiToGlobal ⍬
      ##.SetCursorObj 1  ⍝ Is reset by caller

@@ -1,0 +1,12 @@
+ OnKeyPressInCodeBrowser←{
+     (ref key)←⍵[0 2]
+     n←##.GUI.GetRefTo_n↑,⍵
+     Ctrl_F←70 2 ⋄ F3←114 0 ⋄ bigger←107 2 ⋄ smaller←109 2 ⋄ Ctrl_0←96 2
+     Ctrl_F≡⍵[4 5]:Find n
+     bigger≡⍵[4 5]:OnIncreaseFontSize 1↑⍵
+     smaller≡⍵[4 5]:OnDecreaseFontSize 1↑⍵
+     Ctrl_0≡⍵[4 5]:OnRestoreFontSizeSize 1↑⍵
+     F3≡⍵[4 5]:FindNext n
+     'EP'≡key:0⊣⎕NQ ref.##'Close'
+     1
+ }

@@ -3,7 +3,7 @@
  rf←⍎'MB.TheReportMenu'n.Form.⎕WC'Menu' 'Reports'
 
  ∆←⊂'MenuItem'
- ∆,←⊂'Caption'('Detailed hits',(⎕UCS 9),'F2')
+ ∆,←⊂'Caption'('Detailed hits...',##.TAB,'F2')
  ∆,←⊂'HintObj'n.Info
  ∆,←⊂'Active' 0         ⍝ We don't have anything to report yet
  ∆,←⊂'Accelerator'(113 0)
@@ -12,14 +12,14 @@
  n.ReportHits.onSelect←'OnReportHits'
 
  ∆←⊂'MenuItem'
- ∆,←⊂'Caption'('Ghosts')
+ ∆,←⊂'Caption' 'Ghosts...'
  ∆,←⊂'HintObj'n.Info
  ∆,←⊂'Hint' 'Report contents in any ghostly namespace⌹associated with instances'
  n.ReportGhosts←⍎'ReportGhosts'rf.⎕WC ∆
  n.ReportGhosts.onSelect←'OnReportGosts'
 
  ∆←⊂'MenuItem'
- ∆,←⊂'Caption'('References')
+ ∆,←⊂'Caption' 'References...'
  ∆,←⊂'HintObj'n.Info
  ∆,←⊂'Hint' 'Report any references accept⌹those pointing the fns, oprs and idioms.⌹See help file for details'
  n.References←⍎'ReportReferences'rf.⎕WC ∆
@@ -27,15 +27,16 @@
 
  's1'rf.⎕WC'Separator'
 
- ∆←⊂'MenuItem'
- ∆,←⊂'Caption'('Calling counter...')
- ∆,←⊂'HintObj'n.Info
- ∆,←⊂'Hint' 'Takes a vector of strings and treats them as names. Results in a list reporting the number of calls.'
- n.CallingCmd←⍎'CallingCmd'rf.⎕WC ∆
- n.CallingCmd.onSelect←'OnCallingCmd'
+⍝ Deactivated with version 7.0 -- anybody shouting? If not remove soon!  ⍝TODO⍝
+⍝ ∆←⊂'MenuItem'
+⍝ ∆,←⊂'Caption'('Calling counter...')
+⍝ ∆,←⊂'HintObj'n.Info
+⍝ ∆,←⊂'Hint' 'Takes a vector of strings and treats them as names. Results in a list reporting the number of calls.'
+⍝ n.CallingCmd←⍎'CallingCmd'rf.⎕WC ∆
+⍝ n.CallingCmd.onSelect←'OnCallingCmd'
 
  ∆←⊂'MenuItem'
- ∆,←⊂'Caption'('SALTed scripts')
+ ∆,←⊂'Caption' 'SALTed scripts...'
  ∆,←⊂'HintObj'n.Info
  ∆,←⊂'Hint' 'Lists all scripts managed by SALT that got changed by a "Replace" operation'
  n.ListSALTedChangedScripts←⍎'CallingCmd'rf.⎕WC ∆

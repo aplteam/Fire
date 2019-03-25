@@ -1,0 +1,5 @@
+ OnSearchForGotFocus←{
+     n←##.GUI.GetRefTo_n↑,⍵
+     n.SearchFor.SelText←n.SearchFor.∆SelText
+     1
+ }

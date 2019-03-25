@@ -1,0 +1,3 @@
+ status←statusTellNoHits dummy
+ 'No hits'##.Question.ShowMsg'No hits were found at all for:' ''##.G.SearchFor
+⍝Done

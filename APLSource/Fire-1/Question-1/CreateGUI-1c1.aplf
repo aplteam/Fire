@@ -5,7 +5,7 @@
  :Else
      ∆,←⊂'Caption'(##.AddPidToCaption'Fire : ',cs.addToCaption)
  :EndIf
- ∆,←⊂'Size'((140+30×~0∊⍴cs.checkBoxCaption)500)
+ ∆,←⊂'Size'((140+(30×0≠≢cs.checkBoxCaption)+30×0≠≢cs.regKey)500)
  ∆,←⊂'Coord' 'Pixel'
  ∆,←⊂'MinButton' 0
  ∆,←⊂'MaxButton' 0
@@ -86,12 +86,18 @@
      'cancel'ff.⎕WC ∆
      ff.cancel.onSelect←'OnCancel'
  :EndIf
- :If ~0∊⍴cs.checkBoxCaption
+ :If 0≠≢cs.checkBoxCaption
      ∆←⊂'Button'
      ∆,←⊂'Caption'cs.checkBoxCaption
      ∆,←⊂'Style' 'Check'
      'fixRemainingChanges'ff.⎕WC ∆
      ff.fixRemainingChanges.Posn←(ff.ok.Posn[0]-10+ff.fixRemainingChanges.Size[0]),10
+ :ElseIf 0≠≢cs.regKey
+     ∆←⊂'Button'
+     ∆,←⊂'Caption' '&Do not show this again'
+     ∆,←⊂'Style' 'Check'
+     'Warning_Again'ff.⎕WC ∆
+     ff.Warning_Again.Posn←(ff.ok.Posn[0]-10+ff.Warning_Again.Size[0]),10
  :EndIf
  :If 2=+/(↑0=ff.⎕NC'btn2')(↑0=ff.⎕NC'cancel')
      ff.ok.Posn[1]←⌊0.5×ff.Size[1]-ff.ok.Size[1]

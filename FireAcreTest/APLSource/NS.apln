@@ -1,0 +1,13 @@
+:Namespace NS ⍝ ∆∆∆
+ myNamespaceDfns2←{
+
+ }
+ myNamespaceTop2←{
+
+ }
+    ∇ r←TfnsOneLiner3
+    ∇
+    ∇ r←Survive2;∆∆∆
+     a←1
+    ∇
+:EndNamespace ⍝ ∆∆∆

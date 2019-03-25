@@ -3,13 +3,13 @@
  {}'Searching...'EnableProgressbar 10
  ⎕DL 0.1
  hits←0 7⍴''
- :If ~0∊⍴list
- :AndIf ~0∊⍴names←↑¨{0∊⍴⍺:{⍵↑⍨-(⌽⍵)⍳'.'}⍕⍵ ⋄ ⍵}/¨↓list[;0 1]
+ :If 0≠≢list
+ :AndIf 0≠≢names←↑¨{0=≢⍺:{⍵↑⍨-(⌽⍵)⍳'.'}⍕⍵ ⋄ ⍵}/¨↓list[;0 1]
      :If G.SearchIsRegEx2
          options←('IC'(~G.Case2))('Greedy' 0),IsVersion16OrBetter/⊂'UCP' 1
          :Trap 11
              b←{~0∊∘⍴¨⍵}result←{G.SearchFor2 ⎕S 0⍠options⊣⍵}¨⍕¨names
-             (b/result)←↑∘⍴¨b/result
+             (b/result)←≢¨b/result
          :Else
              msg←A.dmb{0=+/b←':'=⍵:⍵ ⋄ (~b)⊂⍵}⎕DMX.Message
              'Regular Expression error'Question.ShowMsg msg
@@ -22,7 +22,7 @@
      :If 0<+/b
          hits←b⌿list
      :EndIf
-     :If ~0∊⍴hits
+     :If 0≠≢hits
          :If 1∊bool←~↑∘⍴∘,¨hits[;0]
              hits[Where bool;0 1]←⊃{⍵.##(1⊃'.'A.SplitPath⍕⍵)}¨bool⌿hits[;1]
          :EndIf

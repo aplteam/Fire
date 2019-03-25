@@ -1,0 +1,8 @@
+ {r}←ResetCertainRegKeySettings dummy
+ r←⍬
+ :If ⎕AN≡'kai'
+ :AndIf '⎕'≠↑↑⎕XSI      ⍝ Running in development?
+ :AndIf R.DoesValueExist GetRepeatScriptedNamespacesWarningRegKey
+ :AndIf Question.NoOrYes'Delete:'GetRepeatScriptedNamespacesWarningRegKey
+     R.DeleteValue GetRepeatScriptedNamespacesWarningRegKey
+ :EndIf

@@ -28,6 +28,6 @@ Here is what you would do:
 1. Check the hit list and remove any functions that do not fit with the DEL key. You can also press F2 to get the hit report to make sure that you've got what you are looking for.
 1. Click the "Replace" button.
 1. Enter `R←∆OK` into the "Replace by" box.
-1. Click the "Preview" button.
+1. Click the "Process" button.
 
 That way you will replace `R←0` everywhere by `R←∆OK`.

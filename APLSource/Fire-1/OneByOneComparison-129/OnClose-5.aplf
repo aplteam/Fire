@@ -1,0 +1,6 @@
+ OnClose←{
+     n←##.GUI.GetRefTo_n 0⊃,⍵
+     parms←⍺
+     parms.(Size Posn)←n.TheForm.(Size Posn)
+     1
+ }

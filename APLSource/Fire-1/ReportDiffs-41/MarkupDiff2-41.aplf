@@ -12,12 +12,12 @@
      :While (~0∊⍴tx2a)
          equal←+/∧\⊃=/{(⌊/≢¨⍵)↑¨⍵}tx1a tx2a
          :If 0<equal
-             r,←ReplaceSpecialChars equal↑tx1a
+             r,←##.ReplaceSpecialChars equal↑tx1a
              (tx1a tx2a)←equal↓¨tx1a tx2a
          :ElseIf 0∊⍴0∊⍴tx2b
-             r,←'<span class="diff',(⍕type),'">',(ReplaceSpecialChars equal2↓tx2b),'</span>'
+             r,←'<span class="diff',(⍕type),'">',(##.ReplaceSpecialChars equal2↓tx2b),'</span>'
          :Else
-             r,←'<span class="diff',(⍕type),'">',(ReplaceSpecialChars equal2↓tx2b),'</span>'
+             r,←'<span class="diff',(⍕type),'">',(##.ReplaceSpecialChars equal2↓tx2b),'</span>'
              tx1a←(l1-equal2)↓tx1a
              tx2a←(l2-equal2)↓tx2a
          :EndIf

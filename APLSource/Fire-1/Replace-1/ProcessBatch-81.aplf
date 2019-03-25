@@ -1,6 +1,5 @@
  ProcessBatch←{
 ⍝ Checks whether the user input is okay and then performs a "batch" replace.
-     n←CopyGuiTo_G n
      0=Warning_ReplaceIsEmpty⍣((0=n.DeleteLine.State)∧0∊⍴n.ReplaceBy.Text)⊣1:⍬
      0=CheckUserInput:⍬
      n.(StartBtn Cancel).Active←0

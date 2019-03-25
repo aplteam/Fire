@@ -3,6 +3,7 @@
      ⎕THIS.RESULT←1
      rf←(↑⍵).##
      ⎕THIS.FIXREMAINING←rf.{0<⎕NC ⍵:⍵⍎'State' ⋄ 0}'fixRemainingChanges'
+     ⎕THIS.WARN_AGAIN←~rf.{0<⎕NC ⍵:⍵⍎'State' ⋄ 0}'Warning_Again'
      _←⎕NQ rf 9999
      _←2 ⎕NQ rf'Close'
      0

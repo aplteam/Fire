@@ -4,7 +4,8 @@
  htmlFilename←##.GetTempFileName'htm'
  ##.A.WriteUtf8File htmlFilename(TopOfDoc GetCss ⍬)
  write←'append'∘{⍺ ##.A.WriteUtf8File htmlFilename ⍵}
- :If ~0∊⍴data←##.G.Hits
+ :If 0≠≢data←##.G.Hits
+     {}'Compile report...'##.EnableProgressbar 1+≢data
      :If ##.G.Negate
          :If 0=testFlag
              msg←'Nothing to report!' 'The last search was performed with "Negate" ticked.'
@@ -22,4 +23,5 @@
          n←testFlag Display htmlFilename data
          n.∆Filename←htmlFilename
      :EndIf
+     ##.DisableProgressbar ⍬
  :EndIf

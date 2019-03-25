@@ -1,0 +1,24 @@
+:Namespace Foo
+f0←{'⍝'}
+ f1←{abcd←2000
+more←'hello world' ⋄ a{⍺×⍵}x←2}
+abcd←2000
+more←'hello world'
+ f2←{
+     abcd←2000
+more←'hello world'
+     abc←456 ⋄ a←1
+     abc←789
+     abcd←2000
+more←'hello world' ⋄ b←2}⍝ my comment
+f3←{⍺×⍵}
+t2←'More te}xt' ⍝ comment
+    ∇ r←f4
+     abcd←2000
+    more←'hello world'
+     r←'Hello Universe'
+     abcd←2000
+    more←'hello world' ⋄ abc←987 ⋄ abcd←2000
+    more←'hello world'
+    ∇
+:EndNamespace

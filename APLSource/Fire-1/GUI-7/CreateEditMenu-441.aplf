@@ -17,4 +17,9 @@
  ∆,←⊂'Active' 0
  n.InvertSelectionCmd←⍎'InvertSelectionCmd'rf.⎕WC ∆
  n.InvertSelectionCmd.onSelect←'OnInvertSelectionCmd'
+
+ ∆←⊂'MenuItem'
+ ∆,←⊂'Caption'('Amend window size',##.TAB,'F8')
+ ∆,←⊂'Active' 1
+ n.AmendWindowSize←⍎'AmendWindowSize'rf.⎕WC ∆
  ⍝Done

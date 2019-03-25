@@ -1,9 +1,7 @@
  PutOnDisplay←{
      n←⍺
      row←⍵
-     0∊⍴n.List.ReportInfo:⍬
-     name←↑n.List.ReportInfo[row;]
-     url←'file:///',n.TheForm.filenameHTML,'#',name
-     _←n{6::⍬ ⋄ ⍺.Browser.Navigate⊂⍵}url
+     0=≢n.List.ReportInfo:⍬
+     _←n.Browser{6::⍬ ⋄ ,⍺.Navigate2⊂'file:///',⍵}n.TheForm.filenameHTML,'#h',⍕row+1
      ⍬
  }

@@ -16,7 +16,7 @@
  n.SearchFor.Text←'''.*?'''
  n.LookIn.Text←'#.Temp_RegExSearch_015'
  n.SearchIsRegEx.State←1
- n.(DotAll Greedy).(Active State)←1
+ n.Greedy.(Active State)←1
 
  {}∆Select n.StartBtn
  ∆Process n.Form
@@ -29,11 +29,11 @@
  →GoToTidyUp'HTML Document'≢n2.Browser.Type
  html←#.APLTreeUtils.Lowercase'flat'#.APLTreeUtils.ReadUtf8File n2.∆Filename
  expected←''
- expected,←⊂'<h2>1. #.temp_regexsearch_015.fns1</h2>'
- expected,←⊂'<div class="comp">⍝ <span class="diff">''apl''</span></div><div class="comp">     <span class="diff">''cobol''</span></div><div class="comp">     <span class="diff">''q''</span> <span class="diff">''k''</span> <span class="diff">''a''</span> <span class="diff">''j''</span> <span class="diff">''apl''</span></div>'
- expected,←⊂'<h2>2. #.temp_regexsearch_015.fns2</h2>'
- expected,←⊂'<div class="comp">⍝ <span class="diff">''apl''</span></div><div class="comp"> <span class="diff">''cobol''</span></div><div class="comp"> <span class="diff">''q''</span> <span class="diff">''k''</span> <span class="diff">''a''</span> <span class="diff">''j''</span> <span class="diff">''apl''</span></div>'
- →GoToTidyUp~∧/∨/¨expected⍷¨⊂html
+ expected,←⊂'<div class="obj"><h2 id="h1">1. #.temp_regexsearch_015.fns1 (3.2)</h2>'
+ expected,←⊂'<span class=lineno">[1]</span> ⍝ <span class="diff">''apl''</span><br><span class=lineno">[2]</span> <span class="diff">''cobol''</span><br><span class=lineno">[3]</span> <span class="diff">''q''</span> <span class="diff">''k''</span> <span class="diff">''a''</span> <span class="diff">''j''</span> <span class="diff">''apl''</span><br></div>'
+ expected,←⊂'<div class="obj"><h2 id="h2">2. #.temp_regexsearch_015.fns2 (3.1)</h2>'
+ expected,←⊂'<span class=lineno">[1]</span> ⍝ <span class="diff">''apl''</span><br><span class=lineno">[2]</span> <span class="diff">''cobol''</span><br><span class=lineno">[3]</span> <span class="diff">''q''</span> <span class="diff">''k''</span> <span class="diff">''a''</span> <span class="diff">''j''</span> <span class="diff">''apl''</span><br></div>'
+ →GoToTidyUp~∧/∨/¨expected⍷¨⊂∊#.APLTreeUtils.dmb html
  R←∆OK
 
 ∆TidyUp:

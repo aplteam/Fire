@@ -1,0 +1,80 @@
+ nb←CreateGUI(n name);∆;size;ref;parent;cs;msg;name;sel;fontRef;body;noOf
+ nb←⎕NS''
+ nb.∆FontSizes←GetAllAPL385FontSizes ⍬
+ :If (⎕NC name)∊3 4
+     parent←¯1↓0⊃'.'##.##.APLTreeUtils.SplitPath name
+ :AndIf ##.IsScripted⍎parent
+     cs←##.Question.CreateDefaultParms
+     cs.addToCaption←##.AddPidToCaption name
+     cs.okCaption←'Script'
+     cs.caption2←(3 4⍳⎕NC name)⊃'Function' 'Operator'
+     msg←'What do you want to look at?'
+     →(0=sel←cs ##.Question.ThreeButton msg)/0      ⍝ Cancelled
+     name←(sel-1)⊃parent name
+ :EndIf
+ size←400 700
+ ∆←⊂'Form'
+ ∆,←⊂'Caption'(##.AddPidToCaption'Fire - ',name)
+ ∆,←⊂'Coord' 'Pixel'
+ ∆,←⊂'Size'size
+ ∆,←⊂'Posn'(size ##.GUI.CenterIn n.TheForm)
+ ∆,←⊂'Icon'##.GUI.TheIcon
+ ∆,←⊂'ContextMenu' 0
+ nb.TheForm←⍎'TheForm'n.TheForm.⎕WC ∆
+ nb.TheForm.n←nb
+ nb.∆FirstFlag←1
+ nb.(∆SearchFor ∆MatchCase ∆RegEx ∆Greedy)←⊂⍬
+
+ ref←⍎'SB'nb.TheForm.⎕WC⊢'Statusbar'
+ nb.Info←⍎'Info'ref.⎕WC'StatusField'('Coord' 'Prop')('Size'(⍬ 99))
+
+ ref←⍎'MB'nb.TheForm.⎕WC⊂'Menubar'
+ nb.FileMenu←⍎'FileMenu'ref.⎕WC'Menu'('Caption' '&File')
+ nb.Quit←⍎'Quit'nb.FileMenu.⎕WC'MenuItem'('Caption' '&Quit')
+ nb.Quit.onSelect←'OnQuit'
+ nb.EditMenu←⍎'EditMenu'ref.⎕WC'Menu'('Caption' '&Edit')
+ nb.Find←⍎'Find'nb.EditMenu.⎕WC'MenuItem'('Caption'('Find',##.TAB,'Ctrl+F'))('Accelerator'(70 2))
+ nb.Find.onSelect←'OnFind'
+ nb.FindNext←⍎'FindNext'nb.EditMenu.⎕WC'MenuItem'('Caption'('Find next',##.TAB,'F3'))('Accelerator'(114 0))('Active' 0)
+ nb.FindNext.onSelect←'OnFindNext'
+ 'sep4'nb.EditMenu.⎕WC⊂'Separator'
+ nb.BiggerFont←⍎'BiggerFont'nb.EditMenu.⎕WC'MenuItem'('Caption'('Increase font size',##.TAB,'Ctrl++'))('Accelerator'(107 2))
+ nb.BiggerFont.onSelect←'OnIncreaseFontSize'
+ nb.SmallerFont←⍎'SmallerFont'nb.EditMenu.⎕WC'MenuItem'('Caption'('Decrease font size',##.TAB,'Ctrl+-'))('Accelerator'(109 2))
+ nb.SmallerFont.onSelect←'OnDecreaseFontSize'
+ nb.RestoreFontSize←⍎'RestoreFontSize'nb.EditMenu.⎕WC'MenuItem'('Caption'('Restore font size',##.TAB,'Ctrl+0'))('Accelerator'(96 2))
+ nb.RestoreFontSize.onSelect←'OnRestoreFontSizeSize'
+
+ fontRef←⍎'MyFont'nb.TheForm.⎕WC'Font' 'APL385 Unicode'('Size' 16)
+
+ :Select ↑⎕NC name
+ :CaseList 3 4
+     body←⎕VR name
+     body←(⎕UCS 13)##.##.APLTreeUtils.Split body
+ :Case 2
+     body←⍎name
+ :Else
+     body←{⍵{'[',(⍕⍵),'] ',⍺}¨⍳⍴⍵}⎕SRC⍎name
+ :EndSelect
+
+ ∆←⊂'Edit'
+ ∆,←⊂'Coord' 'Prop'
+ ∆,←⊂'Posn'(0 0)
+ ∆,←⊂'Size'(100 100)
+ ∆,←⊂'ReadOnly' 1
+ ∆,←⊂'Style' 'Multi'
+ ∆,←⊂'FontObj'fontRef
+ ∆,←⊂'Text'body
+ ∆,←⊂'VScroll' ¯1
+ ∆,←⊂'HScroll' ¯1
+ ∆,←⊂'Attach'('Top' 'Left' 'Bottom' 'Right')
+ nb.Browse←⍎'Browse'nb.TheForm.⎕WC ∆
+ nb.Browse.onKeyPress←'OnKeyPressInCodeBrowser'
+ nb.Browse.onMouseWheel←'OnMouseWheel'
+ nb.Browse.Coord←'Pixel'
+ nb.Browse.Size[0]-←1+nb.Info.##.Size[0]
+ nb.Browse.∆DefaultFontSize←fontRef.Size
+ nb.Browse.onContextMenu←'OnContextMenu'
+
+ noOf←(≢body)-(,'∇')≡,{⍵~' '}↑¯1↑body
+ nb.Info.Caption←(⍕noOf),' line',((1<noOf)/'s')

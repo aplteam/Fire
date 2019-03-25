@@ -1,4 +1,4 @@
- r←ChangeThem_ batchFlag;i;noOf;oldCode;objName;newCode;rc;ind;objLocation;objType;objFullname;msg;nc;varsReport;fixRemaining;data;objNC;ac;length;cursorWas;isRegExSearch
+ (r counter)←ChangeThem_ batchFlag;i;noOf;oldCode;objName;newCode;rc;ind;objLocation;objType;objFullname;msg;nc;varsReport;fixRemaining;data;objNC;ac;length;cursorWas;isRegExSearch;parms;changedFlags
 ⍝ Processes all the objects.
 ⍝ Returns 0 if the user cancels, otherwise 1.
  r←1
@@ -7,9 +7,15 @@
  fixRemaining←0
  noOf←↑⍴data←##.GetSortedHitListData ⍬
  {}'Prepare changes...'##.EnableProgressbar 1+noOf
+ parms←⎕NS''
+ parms.Size←⍬ ⍬
+ parms.Posn←⍬ ⍬
+ counter←0
+ changedFlags←noOf⍴0
  :For i :In ⍳noOf
      {(0=10|⍵):##.GUI.n.PB.Thumb←⍵}i+1
      (objLocation objName objType objNC)←data[i;]
+⍝     {⍵:.}objName≡'Vars1'
      objFullname←(⍕objLocation),'.',objName
      :If 0=⎕NC objFullname
          :Continue
@@ -26,16 +32,18 @@
      :EndIf
      isRegExSearch←##.G.NamesOnly⊃##.G.(SearchIsRegEx SearchIsRegEx2)
      :If isRegExSearch
-         (rc newCode)←(objLocation.⎕NC⊂objName)ChangeItByRegEx oldCode  ⍝ ¯1: an error has occurred.
+         (rc newCode ind length)←(objLocation.⎕NC⊂objName)ChangeItByRegEx oldCode  ⍝ ¯1: an error has occurred.
          :If 0≠rc
              r←0
              :Leave
          :EndIf
      :Else
-         (ind length)←nc ##.Scan ##.G.NamesOnly ##.IfLower oldCode
+         (ind length)←nc ##.Scan(##.G.NamesOnly ##.IfLower oldCode)batchFlag
          newCode←(objLocation.⎕NC⊂objName)ChangeIt oldCode ind
      :EndIf
      :If batchFlag
+         counter+←1
+         changedFlags[i]←1
          {}SaveOn_G objLocation objName objFullname newCode
          :Trap 1
              (objFullname newCode)⎕FAPPEND G.compareFileTieNo
@@ -45,18 +53,26 @@
              :Leave
          :EndTrap
      :Else
+         :If oldCode≡newCode   ⍝ No change?
+             :Continue
+         :EndIf
+         counter+←1
+         changedFlags[i]←1
          :If 0=fixRemaining
              cursorWas←##.SetCursorObj 0
-             (ac fixRemaining newCode)←ShowUser objLocation objName oldCode newCode i noOf
+             (ac fixRemaining newCode)←parms ShowUser objLocation objName oldCode newCode i noOf ind length(objLocation.⎕NC⊂objName)n.DeleteLine.State
              ##.SetCursorObj cursorWas
+             ⎕NQ n.Form'GotFocus'
          :EndIf
-         :If 0=ac                   ⍝ Cancelled by user?!
+         :If 0=ac                  ⍝ Cancelled by user?!
              r←0
-             {}##.DisableProgressbar ⍬
+             n.(StartBtn Cancel).Active←1
+             n.Form.Active←1
              :Leave
          :ElseIf ac=1               ⍝ Fix this one
              {}Fix objLocation objName(objLocation.⎕NC objName)newCode i noOf
              ⎕THIS.NoOfReplacements+←1
+             firstFlag←0
          :ElseIf 2=ac
                                     ⍝ This one is skipped but we carry on
          :Else ⋄.                   ⍝ Huuh?!
@@ -76,4 +92,10 @@
      :EndIf
  :EndFor
  ##.GUI.n.PB.Thumb←i+2
+ ⎕DL 0.2
+ :If 0=counter
+     TellNoHits ##.G.SearchFor
+     r←0
+ :EndIf
+ {}##.DisableProgressbar ⍬
 ⍝Done

@@ -1,0 +1,3 @@
+ OnClose←{
+     1 ⎕NQ(↑⍵).##'Close'
+ }

@@ -3,5 +3,5 @@
      (~G.Text):⍬                    ⍝ Scan text at all?!
      text←⍵
      (0=+/↑,/⍴¨text~¨' '):⍬ 0       ⍝ No contents?
-     Scan text
+     Scan text 1
  }

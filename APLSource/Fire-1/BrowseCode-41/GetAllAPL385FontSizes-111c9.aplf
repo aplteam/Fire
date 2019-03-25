@@ -1,0 +1,4 @@
+ GetAllAPL385FontSizes←{
+     ref←⎕NEW'Form'(('Visible' 0)('Active' 0))
+     1↓∪ref{name←'n',⍕⍵ ⋄ ref←⍎name ⎕WC'Font'('PName' 'APL385 Unicode')('Size'⍵) ⋄ ref.Size}¨12↓⍳48
+ }

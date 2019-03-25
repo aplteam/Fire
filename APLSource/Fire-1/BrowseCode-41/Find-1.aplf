@@ -1,0 +1,11 @@
+ {r}←Find nb;∆;ns;ref;result;fontRef;mainForm
+ r←0
+ nb.∆Hits←⍬
+ nb.Info.Text←''
+ ns←CreateBowseGUI nb
+ result←ns.SearchFor DQ ns.Form
+ :If 0∊⍴result
+ :OrIf ns.Cancel≡↑result
+     :Trap 0 ⋄ 2 ⎕NQ ns.Form'Close' ⋄ :EndTrap
+ :EndIf
+⍝Done

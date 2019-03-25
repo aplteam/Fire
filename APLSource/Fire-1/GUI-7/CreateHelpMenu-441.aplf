@@ -19,7 +19,7 @@
  's1'rf.⎕WC'Separator'
 
  ∆←⊂'MenuItem'
- ∆,←⊂'Caption' 'Show Fire on GitHub'
+ ∆,←⊂'Caption' 'Visit Fire on GitHub'
  n.GoToGitHub←⍎'GoToGitHub'rf.⎕WC ∆
  n.GoToGitHub.onSelect←'OnGoToGitHub'
 

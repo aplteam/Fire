@@ -12,10 +12,6 @@
  :AndIf ##.G.Case
      msg←⊂'"Search for" and "Replace by" do equal.'
      msg,←⊂'Carrying out a "Replace" would not change anything.'
-     :If n.MarkChanges.State
-         msg,←⊂''
-         msg,←⊂'(You''ve ticked "Mark changes" but nothing would change!)'
-     :EndIf
      _←##.Question.ShowMsg msg
      r←0
  :ElseIf ~##.G.Case
@@ -24,16 +20,6 @@
      msg,←⊂'That does not make too much sense, right?'
      _←##.Question.ShowMsg msg
      r←0
- :ElseIf n.MarkChanges.State
-     :If 0∊⍴n.MarkChangesText.Text
-         msg←⊂'You have not specified a text for marking up the changes.'
-         _←##.Question.ShowMsg msg
-         r←0
-     :EndIf
-     :If '⍝'≠1⍴n.MarkChangesText.Text
-         n.MarkChangesText.Text←'⍝ ',n.MarkChangesText.Text
-     :EndIf
-     r←1
  :ElseIf ##.G.SearchIsRegEx
  :AndIf (,'&')≡,n.ReplaceBy.Text
      msg←⊂'Replacing the search pattern by itself does not make too much sense?!'

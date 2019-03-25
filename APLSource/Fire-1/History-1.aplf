@@ -1,24 +1,23 @@
  History
 ⍝⍝ Contains information regarding the last couple of releases. A full history is available on GitHub. (This line is ignored)
-⍝ * 6.9.1
-⍝   * Bug fix: on a system that had neither "Beyond Compare" nor "CompareIt!" installed Fire crashed.
-⍝ * 6.9.0
-⍝   * Only acre 4 and later is supported now.
-⍝   * In case acre is installed and not in `⎕SE` yet it is loaded.
-⍝   * The message presented in case something was deleted from the workspace is more precise now (acre).
-⍝   * Bug fixes
-⍝     * Auto-resizing Fire's GUI (F8) according to the size of the hit list often got it wrong: it was too small. Now it's
-⍝       better to make it a bit too large rather than a bit too small.
-⍝     * Searching for a single letter and then trying to replace it by multiple letters with the first one being the
-⍝       searched-for letter led to an endless loop.
-⍝     * Under certain circumstances a replace operation on a one-liner could go wrong (repeatedly refusing to fix although
-⍝       the code is just fine).
-⍝     * A multi-line replacement was sometimes reported wrongly as a single line in the Preview while the actual replace
-⍝       was fine.
-⍝     * Pressing <home> in "Search for" crashed Fire in case the list was empty.
-⍝     * In case of a name-only search (Tab "NL") the setting of "Match valid names only" was wrongly taken into account.
-⍝     * Under certain (rare) circumstances a names-only search might crash.
-⍝     * Under some cirumstances (involving both "Search hit list" and "Negate search" the "Start looking here" box
-⍝       could end up empty. It's now falling back to `#`.
+⍝ * 7.0.0
+⍝   * Fire now comes with a build-in comparison tool for one-by-one replace operations.\\
+⍝     This allows a one-hit-at-the-time selection before the "Replace", including "Delete lines with hits".
+⍝   * "Report all hits" has been beautified.
+⍝   * Marking up changes has been removed. In times of version control systems this is an outdated feature.
+⍝   * The option to create a full report has been removed. All reports are now compressed (hits only).\\
+⍝     However, you might be able to view the code of any given object (Ctrl+B for "Browse").
+⍝   * The "DotAll" option in the RegEx group has been removed. It has very little use but complicates matters a lot.
+⍝   * The newly introduced menu command "Edit > Amend windows size" resizes the window so that all data is visisble,
+⍝     if that is possibe at all.
+⍝   * The "Calling counter" report has been removed. Anybody shouting?!
+⍝   * The list of items searched for as well as "Look into" are only remembered during the current session now.
+⍝   * Bug fixes:
+⍝     * A RegEx search that spanned several lines was not reported properly (missing <br>).
+⍝     * When swithings TABs ("Workspace" and "⎕NL") the hit list needs to be reset.
+⍝     * When the "⎕NL" tab is active the "Replace" button must be inactive.
+⍝     * "Start looking here" could be empty or "#." etc. when <escape> was pressed with this field having those values.
+⍝     * In the hit list, navigating to a particular object did not work.
+⍝     * In the hit report no line numbers were shown.
 ⍝ \\
 ⍝ For information regarding older version see <https://github.com/aplteam/Fire/releases>

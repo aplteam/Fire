@@ -15,7 +15,6 @@
  n.SearchFor.Text←'''.*?'''
  n.LookIn.Text←'#.Temp_RegExSearch_005'
  n.SearchIsRegEx.State←1
- n.DotAll.(Active State)←1
  n.Greedy.(Active State)←1
 
  {}∆Select n.StartBtn
@@ -29,14 +28,8 @@
  →GoToTidyUp'HTML Document'≢n2.Browser.Type
  html←#.APLTreeUtils.Lowercase'flat'#.APLTreeUtils.ReadUtf8File n2.∆Filename
  html←((⎕UCS 10)≠html)/html
- expected←''
- expected,←⊂'<div class="comp">b←2 <span class="diff">''this is</div>'
- expected,←⊂'<div class="comp">text that</div>'
- expected,←⊂'<div class="comp">runs over</div>'
- expected,←⊂'<div class="comp">several lines.''</span> c←3</div>'
- expected,←⊂'<div class="comp">e←5 <span class="diff">''holy shit!!!!''</span> ⋄ g←6</div>'
- expected,←⊂'<div class="comp"><span class="diff">''a''</span></div>'
- →GoToTidyUp~∧/∨/¨expected⍷¨⊂html
+ expected←'<div class="obj">e←5 <span class="diff">''holy shit!!!!''</span> ⋄ g←6<span class="diff">''a''</span></div>'
+ →GoToTidyUp~∧/∨/expected⍷∊html
  R←∆OK
 
 ∆TidyUp:

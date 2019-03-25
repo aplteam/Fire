@@ -1,9 +1,6 @@
  OnClose←{
 ⍝
      _←CopyGuiToGlobal ⍬
-     _←SaveWsSpecifics ⍬
-     _←SaveValues ⍬
-     _←SaveSettings ⍬
      _←CheckSALTedScripts ⍬
      ##.G.(Posn Size)←(↑,⍵).(Posn Size)
      _←##.Cleanup

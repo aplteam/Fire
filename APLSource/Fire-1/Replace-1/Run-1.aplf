@@ -36,7 +36,6 @@
          {}##.GUI.CopyGuiToGlobal ⍬
          n←##.CreateGuiRefContainer   ⍝ DO NOT localize "n"!
          n←CreateReplaceGUI n
-         n.ReplaceBy.SelText←1,1+⍴,n.ReplaceBy.Text
          ##.GUI.TheForm.saveProps←##.GUI.SaveDynamicProps ##.GUI.TheForm
          {}##.GUI.n.Form.onGotFocus
          n.Form.n←n

@@ -1,0 +1,5 @@
+ n←CloseForm n
+ :Trap 0
+     1 ⎕NQ n.TheForm'Close'
+ :EndTrap
+⍝Done

@@ -1,0 +1,18 @@
+ {ns}←ns ReplaceForDisplay code;fns;html;i;id;lineNumbers;replBy
+⍝ Not very efficient but it's one-by-one, so it does not matter much.
+ code←1↓↑,/##.NL,¨code
+ code[ns.hits∘.+1↓⍳≢ns.ss]←⊂''
+ html←''
+ :For i :In ⍳≢ns.IDs
+     id←i⊃ns.IDs
+     replBy←{1=≢⍵:0⊃⍵ ⋄ (≢'<br>')↓↑,/'<br>'∘,¨⍵}ns.rs
+     html,←⊂'<span class="diff-old" id="n',id,'-old">',ns.ss,'</span><span class="diff-new" id="n',id,'-new">',replBy,'</span>'
+ :EndFor
+ code[ns.hits]←html
+ code←↑,/code
+ code←##.A.dlb ##.NL ##.A.Split code
+ lineNumbers←∪(⍳≢code)[ns.lineNumbers]
+ code←code[lineNumbers]
+ html←lineNumbers{'<div class="line"><span class="lineno">[',(⍕⍺),']</span><p> ',⍵,'</p></div>'}¨code
+ ns.html←html
+⍝Done

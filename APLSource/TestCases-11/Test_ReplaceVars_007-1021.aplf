@@ -15,8 +15,6 @@
  ∆Process n.Form
 
  {}∆Select n.StartBtn
- ⎕DL 0.2
- {}∆Select n.StartBtn               ⍝ Clicked twice in order to overcome bug <00517>
  ∆Process n.Form
  →GoToTidyUp~1=⍴n.HitList.Items
 
@@ -26,6 +24,9 @@
  n2←#._Fire.Fire.Replace.n
  n2.ReplaceBy.Text←'Does not matter'
 
+ {}∆Select n2.StartBtn
+ ∆Process n.Form
+ ⎕DL 0.2
  {}∆Select n2.StartBtn
  ∆Process n.Form
  →GoToTidyUp'Namespace'≢'n2.Form'⎕WG'Type'

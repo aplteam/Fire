@@ -1,0 +1,19 @@
+ {r}←RewriteCSS ticked;fn;CSS;nos;IDs
+ r←⍬
+ fn←n2.∆CssFilename
+ CSS←''
+ :If 0<≢nos←ticked/⍳≢ticked
+     IDs←'new'∘GetIDs¨↓n2.List.(Items,ReportInfo)[nos;]
+     CSS,←⊂(↑,/{⍺,',',⍵}/IDs),' {display:inline;}'
+     IDs←'old'∘GetIDs¨↓n2.List.(Items,ReportInfo)[nos;]
+     CSS,←⊂(↑,/{⍺,',',⍵}/IDs),' {display:none;}'
+ :EndIf
+ nos←(~ticked)/⍳≢ticked
+ :If 0<≢nos
+     IDs←'new'∘GetIDs¨↓n2.List.(Items,ReportInfo)[nos;]
+     CSS,←⊂(↑,/{⍺,',',⍵}/IDs),' {display:none;}'
+     IDs←'old'∘GetIDs¨↓n2.List.(Items,ReportInfo)[nos;]
+     CSS,←⊂(↑,/{⍺,',',⍵}/IDs),' {display:inline;}'
+ :EndIf
+ ##.A.WriteUtf8File fn CSS
+⍝Done

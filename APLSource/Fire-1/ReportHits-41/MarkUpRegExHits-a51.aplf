@@ -1,14 +1,16 @@
- r←runningNumber MarkUpRegExHits(ref name qnc ind length noOfHits);bool2;bool;body;orig;plus;options;ss;rs;body2
+ r←runningNumber MarkUpRegExHits(ref name qnc ind length noOfHits);bool2;bool;body;orig;plus;options;ss;rs;body2;hits;fullname;type
  r←''
  :If 2=⌊qnc
      r←runningNumber MarkupRegExHitsInVars(ref name qnc ind length)
  :Else
      orig←0⊃ref ##.GetCode name
-     :If ~0∊⍴orig
-         r←⊂'<h2>',(⍕runningNumber),'. ',(⍕ref),'.',name,'</h2>'
-         body←∊¨ExchangeHtmlChars orig
-         options←('Mode' 'M')('IC'(~##.G.Case))('Greedy'##.G.Greedy)('EOL' 'CR')('DotAll'##.G.DotAll),##.IsVersion16OrBetter/⊂('UCP' 1)
-         ss←rs←'' ⍝ ss:Search String; rs=Replace string
+     :If 0≠≢orig
+         fullname←(⍕ref),'.',name
+         type←' (',(⍕⎕NC⊂fullname),')'
+         r←⊂'<div class="obj"><h2 ID="h',(⍕runningNumber),'">',(⍕runningNumber),'. ',fullname,type,'</h2>'
+         body←∊¨##.ReplaceSpecialChars¨orig
+         options←('Mode' 'L')('IC'(~##.G.Case))('Greedy'##.G.Greedy)('EOL' 'CR'),##.IsVersion16OrBetter/⊂('UCP' 1)
+         ss←rs←'' ⍝ ss:Search String; rs:Replace string
          :If ~##.G.Text
              ss,←⊂'''([^'']*)'''
              rs,←⊂,'&'
@@ -19,10 +21,12 @@
          :EndIf
          ss,←{⊂⍣(~1=≡ss)⊣{1↓↑,/(⎕UCS 13),¨⍵}⍣(↑1<≡⍵)⊣⍵}##.G.SearchFor
          rs,←⊂⍣(~1=≡ss)⊣'<span class="diff">&</span>'
-         body2←ss ⎕R rs⍠options⊣body
-         body2←(∨/¨'<span class="diff">'∘⍷¨body2)/body2
-         body2←{'<div class="comp">',⍵,'</div>'}¨body2
-       ⍝  body2,¨←⊂'</br>'
-         r,←⊂↑,/body2
+         body2←ss ⎕R rs⍠options⊣1↓↑,/##.NL,¨body
+         body2←##.NL ##.A.Split body2
+         hits←'<span class="diff">.*</span>'⎕S 2⍠options⊣body2
+         body2←({'<span class=lineno">[',(⍕⍵),']</span> '}¨⍳≢body2),¨body2
+         body2←body2[∪hits]
+         body2←body2,¨⊂'<br>'
+         r,←⊂(↑,/body2),'</div>'
      :EndIf
  :EndIf

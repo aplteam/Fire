@@ -1,0 +1,6 @@
+ r←(fns Hello2)y;A
+ b←0
+ c←¯1
+ A←1 ⋄ A←2
+ A←3
+ A←4

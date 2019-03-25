@@ -1,13 +1,10 @@
- G←Populate_G testFlags
+ G←Populate_G testFlag
 ⍝ Creates namespace "G" (for "Globals") and populates it
  G←⎕NS''    ⍝ Holds Globals. GUI data is copied into this
- G.TestFlag←testFlags[0]
- G.DontUseCompareIt←testFlags[1]
- G←AssignRegistryValuesTo G
+ G.TestFlag←testFlag
+ G.LookForList←''
+ G.LookIn←'#'
  G←EstablishDefaultSettings G
- :If 0∊⍴G.LookIn
-     G.LookIn←#
- :EndIf
  G.ColSort←0 0  ⍝ Column number, sort direction (0=⍋, 1=⍒)
  G.LastSearchedFor←''
  G.NoOfHits←⍬                       ⍝ This can differ from the item in hits list as the list is not reduced when nothing was found!
@@ -16,4 +13,5 @@
  G.HaveShownNoTextWarning←0
  G.saveCurcorObj←GetCursorObj
  G.Posn←⍬ ⍬
- G.Size←500 685
+ G.Size←600 850
+ G.ReplaceBy_was←''

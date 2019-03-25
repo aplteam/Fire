@@ -1,52 +1,10 @@
- {r}←BrowseCode(name parentForm);FF;∆;body;rf;fontRef;size;cs;parent;msg;sel
-⍝ Takes a fully qualified name of an APL object and displays it (fns/opr/class/interface)
- r←⍬
- :If (⎕NC name)∊3 4
-     parent←¯1↓0⊃'.'##.##.APLTreeUtils.SplitPath name
- :AndIf ##.IsScripted⍎parent
-     cs←##.Question.CreateDefaultParms
-     cs.addToCaption←name
-     cs.okCaption←'Script'
-     cs.caption2←(3 4⍳⎕NC name)⊃'Function' 'Operator'
-     msg←'What do you want to look at?'
-     →(0=sel←cs ##.Question.ThreeButton msg)/0      ⍝ Cancelled
-     name←(sel-1)⊃parent name
- :EndIf
- size←300 700
- ∆←⊂'Form'
- ∆,←⊂'Caption'('Fire - ',name)
- ∆,←⊂'Coord' 'Pixel'
- ∆,←⊂'Size'size
- ∆,←⊂'Posn'(size ##.GUI.CenterIn parentForm)
- ∆,←⊂'Icon'##.GUI.TheIcon
- 'FF'parentForm.⎕WC ∆
-
- 'MyFont'parentForm.FF.⎕WC'Font' 'APL385 Unicode'('Size' 16)
- fontRef←parentForm.FF.MyFont
-
- :Select ↑⎕NC name
- :CaseList 3 4
-     body←⎕VR name
-     body←(⎕UCS 13)##.##.APLTreeUtils.Split body
- :Case 2
-     body←⍎name
+ {r}←{name}BrowseCode n;FF;∆;body;rf;fontRef;size;cs;parent;msg;sel;name
+⍝ Takes a fully qualified name of an APL object and displays it (fns/opr/all scripts)
+ :If 0<+/n.List.SelItems
+     name←{0<⎕NC ⍵:⍎⍵ ⋄ 0⊃n.List.(ReportInfo[SelItems⍳1;])}'name'
+     r←##.BrowseCode.Run name n
  :Else
-     body←{⍵{'[',(⍕⍵),'] ',⍺}¨⍳⍴⍵}⎕SRC⍎name
- :EndSelect
-
- ∆←⊂'Edit'
- ∆,←⊂'Coord' 'Prop'
- ∆,←⊂'Posn'(0 0)
- ∆,←⊂'Size'(100 100)
- ∆,←⊂'ReadOnly' 1
- ∆,←⊂'Style' 'Multi'
- ∆,←⊂'FontObj'fontRef
- ∆,←⊂'Text'body
- ∆,←⊂'VScroll' ¯1
- ∆,←⊂'HScroll' ¯1
- 'FF.TheEdit'parentForm.⎕WC ∆
- rf←parentForm.FF.TheEdit
- rf.onKeyPress←'OnKeyPressInCodeBrowser'
-
- ⎕NQ rf'GotFocus' ⋄ ⎕DQ parentForm.FF
+     ##.Question.ShowMsg'Nothing selected?'
+     r←⍬
+ :EndIf
 ⍝Done

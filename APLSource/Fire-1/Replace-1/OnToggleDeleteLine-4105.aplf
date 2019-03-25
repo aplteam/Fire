@@ -5,11 +5,7 @@
      n.ReplaceBy.Active←0
      n.ReplaceBy.Text←''
      n.ReplaceBy.BCol←¯1
-     n.MarkChanges.(Active State)←0
-     n.MarkChangesText.Active←0
-     n.MarkChangesType.Active←0
  :Else
      n.ReplaceBy.Active←1
      n.ReplaceBy.BCol←0
-     n.MarkChanges.Active←1
  :EndIf

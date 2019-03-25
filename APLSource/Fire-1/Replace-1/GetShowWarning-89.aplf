@@ -1,0 +1,6 @@
+ r←GetShowWarning parms
+ :If 0=r←0=≢parms.regKey
+ :AndIf 0=r←0=##.R.DoesValueExist parms.regKey
+     r←##.R.GetValue parms.regKey
+ :EndIf
+⍝Done

@@ -1,0 +1,14 @@
+ OnKeyPressInList←{
+     (ref key)←⍵[0 2]
+     n←##.GUI.GetRefTo_n ref
+     2 66 2≡⍵[3 4 5]:ShowCode n ⍝ Ctrl+B ?  (Browse the code)
+     14 78 2≡⍵[3 4 5]:0⊣UntickAllCheckBoxes n.List
+     1 65 2≡⍵[3 4 5]:0⊣TickAllCheckBoxes n.List
+     0=≢key:1
+     'DC'≡key:Down n                ⍝ Line down
+     'UC'≡key:Up n                  ⍝ Line up
+     ' '≡key:ToggleCheckbox n
+     'RL'≡key:GoToEnd n             ⍝ End
+     'LL'≡key:GoToTop n             ⍝ Home
+     'EP'≡key                       ⍝ Suppress everything but <escape>. Needed becase ('Cancel' 1) for the cancel button is ignored!
+ }

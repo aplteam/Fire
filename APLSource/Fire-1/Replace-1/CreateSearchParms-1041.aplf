@@ -1,0 +1,35 @@
+ {n}←CreateSearchParms n;∆;height;msg
+⍝
+ ∆←⊂'Button'
+ ∆,←⊂'Posn'((10+0⊃PosnPlusSize n.SearchFor),12)
+ ∆,←⊂'Caption' 'Is RegE&x'
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ ∆,←⊂'State'##.G.SearchIsRegEx
+ n.SearchIsRegEx←⍎'SearchIsRegEx'n.Form.⎕WC ∆
+ n.SearchIsRegEx.onSelect←'OnToggleRegEx'
+
+ ∆←⊂'Button'
+ ∆,←⊂'Posn'(n.SearchIsRegEx.Posn[0],1⊃PosnPlusSize n.SearchIsRegEx)
+ ∆,←⊂'Caption' '&Greedy'
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'State'##.G.Greedy
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ n.Greedy←⍎'Greedy'n.Form.⎕WC ∆
+
+ ∆←⊂'Button'
+ ∆,←⊂'Posn'(n.SearchIsRegEx.Posn[0],10+1⊃PosnPlusSize n.Greedy)
+ ∆,←⊂'Caption' '&Match case'
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'State'##.G.Case
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ n.Case←⍎'Case'n.Form.⎕WC ∆
+
+ ∆←⊂'Button'
+ ∆,←⊂'Posn'(n.SearchIsRegEx.Posn[0],10+1⊃PosnPlusSize n.Case)
+ ∆,←⊂'Caption' '&Match valid names &only'
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'State'##.G.APL_Name
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ n.APL_Name←⍎'APL_Name'n.Form.⎕WC ∆
+⍝Done

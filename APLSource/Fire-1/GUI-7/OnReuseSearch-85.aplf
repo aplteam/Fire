@@ -2,6 +2,7 @@
 ⍝ Toggle "Active" and contents of the "Start looking here"
 ⍝ field depending on the "Search hit list" check box.
  :If TheForm.ReuseSearch.State
+     n.LookIn.was←n.LookIn.Text
      n.LookIn.Text←''
      n.LookIn.Active←0
      n.LookIn.BCol←¯16

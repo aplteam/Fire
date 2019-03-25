@@ -1,4 +1,4 @@
- {r}←ChangeThem batchFlag;G;_;yes;these;cursorWas
+ {r}←ChangeThem batchFlag;G;_;yes;these;cursorWas;noOfChangedObjects;status
 ⍝ Let the user change the objects either...
 ⍝ * one by one with the help of CompareIt! (batchFlag=0)
 ⍝ * all in one go (batchFlag=1)
@@ -20,18 +20,22 @@
      G.filenameCompare←0 ##.GetTempFileName'.dcf'       ⍝ Native file used to write the changed source code for comparison
      G.compareFileTieNo←G.filenameCompare ⎕FCREATE 0    ⍝ Create and open the report file
 
-     :If 0=r←ChangeThem_ batchFlag                      ⍝ ←←← workhorse
+     (status noOfChangedObjects)←ChangeThem_ batchFlag       ⍝ ←←← workhorse
+
+     :If 0=status
          r←¯1
-         :Return                                        ⍝ User has cancelled or a serious error like WS FULL has occured
+         ⎕NQ n.Form'GotFocus'
+         :Return                                        ⍝ Nothing found or user has cancelled or a serious error like WS FULL has occured
      :EndIf
 
      :If batchFlag
-         :If IsThereAnyChange G.compareFileTieNo
+         :If 0<noOfChangedObjects
              G←CompileReport G
-             {}##.DisableProgressbar ⍬
              (yes these)←ReportAllChanges G
              :If yes
                  ⎕THIS.NoOfReplacements←Establish these G.compareFileTieNo
+             :Else
+                 ##.GUI.n.(StartBtn ReplaceBtn).Active←1
              :EndIf
          :Else
              ##.Question.ShowMsg'No changes'
@@ -43,4 +47,5 @@
  :Else
      {}⍬(##.Question.ShowMsg ##.HonorTestFlag)'Nothing selected?!'
  :EndIf
- ⎕NQ n.Form'GotFocus'
+ :Trap 6 ⋄ ⎕NQ n.Form'GotFocus' ⋄ :EndTrap
+⍝Done

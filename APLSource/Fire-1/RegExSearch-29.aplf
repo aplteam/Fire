@@ -3,7 +3,7 @@
      :If G.NamesOnly
          options←(⊂'IC'(~G.Case)),IsVersion16OrBetter/⊂('UCP' 1)
      :Else
-         options←('Mode' 'M')('IC'(~G.Case))('DotAll'G.DotAll)('Greedy'G.Greedy),IsVersion16OrBetter/⊂('UCP' 1)
+         options←('Mode' 'M')('IC'(~G.Case))('Greedy'G.Greedy),IsVersion16OrBetter/⊂('UCP' 1)
      :EndIf
      r←G.SearchFor2 ⎕S 0 1⍠options⊣data
  :Else

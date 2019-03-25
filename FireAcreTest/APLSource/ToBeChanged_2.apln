@@ -1,0 +1,12 @@
+:Namespace ToBeChanged_2
+⍝ Contains dfns and doprs only
+
+ Hello←{
+     'whole damn world'
+ }
+
+    Hello2←{⍵ ⍺⍺ 'Universe'}
+
+ Hello3←{{'Hello whole damn world'}⍬}
+
+:EndNamespace

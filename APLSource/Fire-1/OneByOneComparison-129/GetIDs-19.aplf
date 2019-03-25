@@ -1,0 +1,9 @@
+ GetIDs←{
+⍝ ⍵ is ReportInfo from the GUI list, something like [67] (2): line 67, second hit.
+⍝ ← becomes #67-2-[old|new] which is later used to show/hide the original text or the replacement text.
+     (line no)←⍵
+     line~←'[]'
+     no~←'.'
+     no←{0=≢⍵:'1' ⋄ ⍵}no
+     '#n',line,'-',no,'-',⍺
+ }

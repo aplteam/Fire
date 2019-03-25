@@ -1,8 +1,0 @@
- SaveValues←{
-⍝ Saves particular values in the registry
-     p←##.GetFireRegistryKey    ⍝ Path to the proper Registry key
-     _←##.R.PutString(p,'ReplaceBy')##.G.ReplaceBy
-     _←##.R.PutValue(p,'DetailedReport')##.G.DetailedReport
-     _←##.R.PutValue(p,'SimpleReport')##.G.SimpleReport
-     ⍬
- }

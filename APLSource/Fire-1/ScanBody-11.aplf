@@ -24,7 +24,7 @@
  :Else
      :If G.Comments                                 ⍝ Comments?
          buffer←1⊃GetCommentsAndRest body
-         (ind length)←Scan buffer
+         (ind length)←Scan buffer 1
          :If 0<noOf←⍴,ind
              :If 0∊⍴name
                  hits,←⊂ref name noOf 9 ind length

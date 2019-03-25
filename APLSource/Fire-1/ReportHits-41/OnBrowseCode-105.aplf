@@ -1,6 +1,0 @@
- OnBrowseCode←{
-     n←⍺
-     (0=+/b←n.List.SelItems):⍬
-⍝     {ShowCode&⍵}¨n.List.ReportInfo[##.Where b;0]  ⍝ "Browse" replaced by "Edit" 2014-07-16
-     EditCode n.List.ReportInfo[##.Where b;0]
- }

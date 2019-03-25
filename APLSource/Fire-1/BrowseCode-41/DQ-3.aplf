@@ -1,0 +1,3 @@
+ {r}←focusTo DQ ref
+ ⎕NQ focusTo'GotFocus' ⋄ r←⎕DQ ref
+⍝Done

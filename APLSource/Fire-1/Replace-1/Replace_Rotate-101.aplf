@@ -1,5 +1,5 @@
  r←Replace_Rotate(line old new ind);new2;i;drop;max;length
-⍝ Replace ##.G.SearchFor by "new" at all "ind" positions.
+⍝ Replace "old" by "new" in "line" at all "ind" positions.
 ⍝ Note that since version 1.4 "new" is a) always nested and b) may
 ⍝ have a length greater than one.
  r←line

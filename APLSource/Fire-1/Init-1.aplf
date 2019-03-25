@@ -1,4 +1,4 @@
- {r}←Init testFlags;_
+ {r}←Init dummy;_
  r←⍬
  (⎕IO ⎕ML)←0 3
  CreateRefs
@@ -10,11 +10,5 @@
  SetScaledPixels ⍬
  EstablishNamedIbeams ⍬
  CompileFireFunctions ⍬
- :Trap 6
-     ##.CompareSimple.pathToBeyondCompare←##.CompareSimple.FindBeyondCompare 0
- :EndTrap
- :Trap 6
-     ##.CompareSimple.pathToCompareIt←##.CompareSimple.FindCompareIt 0
- :EndTrap
  {}EnsureAcre ⍬
 ⍝Done

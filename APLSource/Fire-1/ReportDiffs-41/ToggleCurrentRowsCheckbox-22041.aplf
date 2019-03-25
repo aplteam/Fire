@@ -1,0 +1,9 @@
+ {r}←ToggleCurrentRowsCheckbox(ref n);row;flags
+ r←⍬
+ :If 0<+/n.List.SelItems
+     row←n.List.SelItems⍳1
+     flags←⌽(16⍴2)⊤n.List.GetItemState row
+     flags[12]←~flags[12]
+     n.List.SetItemState row(2⊥⌽flags)
+     ⎕NQ ref'ItemUp'row
+ :EndIf

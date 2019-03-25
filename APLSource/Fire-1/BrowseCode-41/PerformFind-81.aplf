@@ -1,0 +1,38 @@
+ r←PerformFind ns;n;body;ind;b;noOf;options;length;currentPos;where
+ r←0
+ n←##.GUI.GetRefTo_n ns.Form.##
+ body←n.Browse.Text
+ currentPos←1⊃n.Browse.SelText
+ :If ns.RegEx.State
+     options←('IC'(~ns.Case.State))('Mode' 'L')('Greedy'ns.Greedy.State)
+     :If 0∊⍴ind←ns.SearchFor.Text ⎕S 2 0 1⍠options⊣1↓↑,/##.NL,¨body
+         n.Info.Text←'; no hits found'
+         n.∆Hits←⍬
+         n.FindNext.Active←0
+         :Return
+     :EndIf
+     length←(2⊃¨ind)
+     ind←{(⍵[0]+1),¨(⍵[1]+1)(1++/1↓⍵)}¨ind
+ :Else
+     b←(IfLower ns.SearchFor.Text)∘⍷¨IfLower body
+     :If 0=+/∊b
+         n.Info.Text←'; no hits found'
+         n.∆Hits←⍬
+         n.FindNext.Active←0
+         :Return
+     :Else
+         ind←↑,/{↑,/⍵}¨¨(((⍳≢b),¨≢ns.SearchFor.Text){0=+/⍵:⍬ ⋄ ⍺∘{((⍺[0]+1),¨⍵+1)((⍺[0]+1),¨⍵+⍺[1]+1)}¨##.A.Where ⍵}¨b)~⊂⍬
+         length←≢ns.SearchFor.Text
+     :EndIf
+ :EndIf
+ where←((1⊃¨ind)<¨⊂currentPos)⍳⊂0 0
+ :If where=⍴ind
+     where←0
+ :EndIf
+ n.∆Hits←(where)(length)(ind)
+ n.Browse.SelText←where⊃ind
+ noOf←≢ind
+ n.Info.Text←'; hit ',(⍕where+1),' of ',(⍕noOf)
+ n.FindNext.Active←1
+ ⎕NQ ns.Form'Close'
+⍝Done

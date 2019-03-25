@@ -1,0 +1,5 @@
+ GoToTop←{
+     n←⍵
+     n.List.SelItems←(≢n.List.SelItems)↑1
+     1:r←⍬
+ }

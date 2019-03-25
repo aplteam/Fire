@@ -6,7 +6,7 @@
     :Implements Constructor
     (⎕IO ⎕ML)←0 3
     A←ref.APLTreeUtils
-    NL←⎕UCS 13
+    NL←⎕UCS 10
   ∇
 
   ∇ r←UpperCase y

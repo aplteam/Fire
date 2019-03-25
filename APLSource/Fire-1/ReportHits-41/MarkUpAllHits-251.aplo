@@ -1,5 +1,7 @@
  r←(fns MarkUpAllHits)data;i;var
  r←''
  :For i var :InEach (1+⍳0⊃⍴data)data
+     {(0=10|⍵):##.GUI.n.PB.Thumb←⍵}i+1
      r,←i fns var
  :EndFor
+⍝Done

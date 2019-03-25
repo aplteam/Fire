@@ -1,0 +1,10 @@
+ ToggleCheckbox←{
+     n←⍵
+     0=+/n.List.SelItems:⍬
+     row←n.List.SelItems⍳1
+     b←⊃{{⌽(32⍴2)⊤⍵}n.List.GetItemState ⍵}row
+     b[12]←~b[12]
+     _←b{n.List.SetItemState ⍵((32⍴2)⊥⌽⍺)}row
+     _←⎕NQ n.List ##.GUI.Events.RefreshCSS       ⍝ Send a "RefreshCSS" event to itself.
+     1:r←⍬
+ }

@@ -1,3 +1,0 @@
- n←CreateEdit1 n;∆
- ∆←⊂'Edit'
- ∆,←⊂'

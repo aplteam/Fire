@@ -5,12 +5,6 @@
      yes←these←1
  :Else
      noOf←NoOfCandidatesForChange ⍬
-     :If ~0∊⍴G.MarkChangesWith
-         msg←⊂'You''ve decided to let Fire mark your changes.'
-         msg,←⊂'Please note that the mark-up is NOT shown in the change report.'
-         msg,←'' 'It WILL however appear in the changed objects.'
-         {}'Replace mark-up'##.Question.ShowMsg msg
-     :EndIf
      :If G.DeleteLineFlag
          msg←⊂'You''ve ticked the "delete lines/item with hits" check box.'
          msg,←⊂'Note that the report will show just the items/lines that are going to be deleted.'

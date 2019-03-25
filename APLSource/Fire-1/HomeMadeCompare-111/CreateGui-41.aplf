@@ -1,6 +1,0 @@
- n←CreateGui ps;∆
- n←CreateForm ps
- n←CreateLeft n
- n←CreateRight n
- n←CreateSplitter n
-⍝Done

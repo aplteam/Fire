@@ -8,4 +8,6 @@
      n.SF2.Visible←0
      _←{0::⍬ ⋄ n.Browser.Refresh ⍵}⍬
      n.SF2.Visible←1
+     _←⎕NQ n.List'GotFocus'
+     1:r←0
  }

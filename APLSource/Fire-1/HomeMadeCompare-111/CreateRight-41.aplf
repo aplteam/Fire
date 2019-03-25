@@ -1,9 +1,0 @@
- n←CreateRight n;∆
- ∆←⊂'Edit'
- ∆,←⊂'Style' 'Multi'
- ∆,←⊂'ReadOnly' 1
- ∆,←⊂'Attach'('Top' 'Left' 'Bottom' 'Right')
- ∆,←⊂'HScroll' ¯1
- ∆,←⊂'VScroll' ¯1
- n.Right←⍎'Right'n.Form.⎕WC ∆
- n.Right.onKeyPress←'OnKeyPress'

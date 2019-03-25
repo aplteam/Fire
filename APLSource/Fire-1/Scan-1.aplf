@@ -1,4 +1,4 @@
- r←{nc}Scan data;data1;data2;isRegExSearch
+ r←{nc}Scan(data batchFlag);data1;data2;isRegExSearch
 ⍝ Performs search on "data".
 ⍝ "data" must be a vector of text vectors.
 ⍝ Returns a vector of start indices for all hits found.
@@ -15,6 +15,7 @@
      :EndIf
  :EndIf
  :If 9.1≡nc
+ :AndIf batchFlag
      data←RemoveFnsAndOpr data
  :EndIf
  :If G.APL_Name

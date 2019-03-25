@@ -2,6 +2,7 @@
 ⍝ This function should make a difference only when Fire scans itself: variables might disappear then.
 ⍝ Manipulates the GUI but also `##.G.Hits` and `GUI.n.HitList.Data`!
      hl←⍵
+     0=≢hl.Items:hl
      0=+/~bool←0<{↑(⍎⍺).⎕NC ⍵}/¨↓hl.(Items,ReportInfo)[;1 0]:hl
      hl.Visible←0
      hl.Items←bool/hl.Items

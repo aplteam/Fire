@@ -1,6 +1,6 @@
  n←CreateMainForm(debugFlag n);∆;height
 
- height←600 330    ⍝ [0]: Initial value; [1]: Used when F8 is pressed
+ height←600 330    ⍝ [1]: Initial value; [2]: Used when F8 is pressed
 
  ∆←⊂'Form'
  ∆,←⊂'Caption'(##.AddPidToCaption'Fire - ',##.WSID)

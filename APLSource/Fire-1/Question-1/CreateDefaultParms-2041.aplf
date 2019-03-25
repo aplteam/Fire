@@ -8,4 +8,5 @@
  r.caption2←''              ⍝ If this is not empty then there are three buttons
  r.escape←1                 ⍝ Is <Escape> key leaving?
  r.checkBoxCaption←''
+ r.regKey←''                ⍝ If this is not empty the "ShowMsg" function will have a user-specific check box "Don't show again"
  r.⎕FX'r←List' 'r←{⍵,[0.5]⍎¨⍵}⎕nl -2'

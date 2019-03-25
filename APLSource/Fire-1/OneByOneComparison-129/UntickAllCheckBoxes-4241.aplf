@@ -1,0 +1,10 @@
+ UntickAllCheckBoxes←{
+     rf←⍵
+     noOf←⍴rf.Items
+     b←⊃{{⌽(32⍴2)⊤⍵}rf.GetItemState ⍵}¨⍳noOf
+     b[;12]←0
+     b←↓b
+     _←b{rf.SetItemState ⍵((32⍴2)⊥⌽⍺)}¨⍳noOf
+     _←⎕NQ rf ##.GUI.Events.RefreshCSS       ⍝ Send a "RefreshCSS" event to itself.
+     ⍬
+ }

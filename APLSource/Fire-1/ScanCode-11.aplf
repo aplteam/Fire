@@ -4,5 +4,5 @@
 ⍝ ⍵ must not contain either text or comments.
      (0∊⍴code←⍵):⍬ ⍬
      (0=+/↑,/⍴¨code~¨' '):⍬ ⍬                  ⍝ No code? Done!
-     Scan code
+     Scan code 1
  }

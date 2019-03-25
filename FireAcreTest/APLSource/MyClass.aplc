@@ -1,0 +1,6 @@
+:Class MyClass
+∇r←HelloWorld
+:Access Public Shared
+r←'Universe'
+∇
+:EndClass

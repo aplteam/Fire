@@ -1,0 +1,9 @@
+ On9994←{
+     ref←↑⍵
+     n←##.GUI.GetRefTo_n ref
+     0=+/bool←n.List.SelItems:⍬
+     row←bool⍳1
+     id←{1↓⍵↑⍨⍵⍳']'}row⊃n.List.ReportInfo[;0]
+     _←n PutOnDisplay id
+     ⍬
+ }

@@ -1,0 +1,10 @@
+ r←CalculateNextPos n;currentPos;hits
+ currentPos←0 1+1⊃n.Browse.SelText
+ hits←1⊃¨2⊃n.∆Hits
+ r←currentPos{(⍺[0]=0⊃¨⍵)∧⍺[1]<1⊃¨⍵}hits
+ r∨←currentPos{⍺[0]<0⊃¨⍵}hits
+ r⍳←1
+ :If r=≢hits
+     r←0
+ :EndIf
+⍝Done

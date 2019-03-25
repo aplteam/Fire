@@ -1,0 +1,114 @@
+ n←parms CreateGUI(name lineNumbers i noOfObjs deleteLines);∆;rf;b;wasTicked;noOf;ref
+ noOf←≢lineNumbers
+ n←⎕NS''
+ ∆←⊂'Form'
+ ∆,←⊂'Caption'(##.AddPidToCaption'Fire - Replace one by one')
+ ∆,←⊂'Coord' 'Pixel'
+ ∆,←⊂'Icon'##.GUI.n.TheIcon
+ ∆,←⊂'Size'parms.Size
+ :If parms.Posn≡⍬ ⍬
+     ∆,←⊂'Posn'(##.GUI.n.Form.Size ##.GUI.CenterIn ##.GUI.n.Form)
+ :Else
+     ∆,←⊂'Posn'parms.Posn
+ :EndIf
+ n.TheForm←⍎'ff'##.Replace.n.Form.⎕WC ∆
+ n.TheForm.n←n
+ n.TheForm.onClose←'OnClose'parms
+ n.∆Name←name
+
+ ref←⍎'MB'n.TheForm.⎕WC⊂'Menubar'
+ n.FileMenu←⍎'FileMenu'ref.⎕WC'Menu'('Caption' '&File')
+ n.Quit←⍎'Quit'n.FileMenu.⎕WC'MenuItem'('Caption' 'Quit')
+ n.Quit.onSelect←'OnClose'
+ n.EditMenu←⍎'EditMenu'ref.⎕WC'Menu'('Caption' '&Edit')
+ n.Browse←⍎'Browse'n.EditMenu.⎕WC'MenuItem'('Caption'('Browse object...',(##.TAB),'Ctrl+B'))⍝('Accelerator'(66 2))
+ n.Browse.onSelect←'OnBrowseCode'
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' 'Browse Code'
+ ∆,←⊂'Posn'(¯3 ¯3)
+ ∆,←⊂'Size'(1 1)
+ ∆,←⊂'Accelerator'(66 2)
+ rf←⍎'BrowseCode'n.TheForm.⎕WC ∆
+ rf.onSelect←'OnBrowseCode'
+
+ n.APL_Font←⍎'fnt'n.TheForm.⎕WC'Font' 'APL385 Unicode' 18
+ 'e1'n.TheForm.⎕WC'Edit'('Posn'(¯5 ¯5))('Size'(2 2))('Font'n.APL_Font) ⍝ For GetTextsSize only
+
+ 'SB'n.TheForm.⎕WC'Statusbar'('Coord' 'Prop')
+ n.Statusbar←⍎'SB.sf'n.TheForm.⎕WC'StatusField'('Size'(⍬ 99))
+
+ ∆←⊂'SubForm'
+ ∆,←⊂'Posn'(0 0)
+ ∆,←⊂'Size'(n.TheForm.Size-70 0)
+ ∆,←⊂'Attach'('Top' 'Left' 'Bottom' 'Right')
+ n.MainSubForm←⍎'sf1'n.TheForm.⎕WC ∆
+
+ ∆←⊂'ListView'
+ ∆,←⊂'ColTitles'('No' 'Name' 'Type')
+ ∆,←⊂'Items'('[',¨(⍕¨∪⍣deleteLines⊣lineNumbers),¨']')
+ wasTicked←noOf⍴1           ⍝ Global used to identify changes in the check box
+ ∆,←⊂'ReportInfo'(CompileReportInfo∪⍣deleteLines⊣lineNumbers)
+ ∆,←⊂'View' 'Report'
+ ∆,←⊂'Checkboxes' 1
+ ∆,←⊂'Posn'(0 0)
+ ∆,←⊂'Size'(n.MainSubForm.Size[0],160)
+ ∆,←⊂'Font'n.APL_Font
+ ∆,←⊂'FullRowSelect' 1
+ ∆,←⊂'Style' 'Single'
+ n.List←⍎'list'n.MainSubForm.⎕WC ∆
+ {n.List.SetColSize ⍵ ¯3}¨⍳3
+ n.List.Event,←⊂##.GUI.Events.RefreshCSS'OnRefreshCSS'
+ n.List.onKeyPress←'OnKeyPressInList'
+ n.List.on9994←'On9994'
+ n.List.onItemUp←'OnItemUpInListView'
+
+ TickAllCheckBoxes n.List
+ ##.GUI.SetFocusTo n.List 0
+
+ ∆←⊂'SubForm'
+ ∆,←⊂'Posn'(0,n.List.Size[1]+5)
+ ∆,←⊂'Size'((n.TheForm.Size[0]-80)(100+n.TheForm.Size[1]-n.List.Size[1]+5))
+ n.SF2←⍎'sf2'n.MainSubForm.⎕WC ∆
+
+ rf←⍎'WEBBROWSER'n.TheForm.⎕WC'OCXClass' 'Microsoft Web Browser'
+
+ ∆←⊂⍕rf ⍝ 'WEBBROWSER'
+ ∆,←⊂'Coord' 'Prop'
+ ∆,←⊂'Size' 100 100
+ ∆,←⊂'Posn' 0 0
+ ∆,←⊂'QueueEvents' 1
+ n.Browser←⍎'wb'n.SF2.⎕WC ∆
+
+ ∆←⊂'Splitter'
+ ∆,←⊂'Posn'(0,n.List.Size[1]+1)
+ ∆,←⊂'SplitObj1'n.List
+ ∆,←⊂'SplitObj2'n.SF2
+ ∆,←⊂'Align' 'Left'
+ n.Splitter←⍎'splitter'n.MainSubForm.⎕WC ∆
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' '&Fix confirmed changes'
+ ∆,←⊂'Posn'((n.TheForm.Size[0]-55),10)
+ ∆,←⊂'Size'(⍬ 180)
+ ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
+ n.OK←⍎'ok'n.TheForm.⎕WC ∆
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' '&Skip'
+ ∆,←⊂'Posn'((n.OK.Posn[0]),10+1⊃##.GUI.PosnPlusSize n.OK)
+ ∆,←⊂'Size'(⍬ 110)
+ ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
+ n.Skip←⍎'skip'n.TheForm.⎕WC ∆
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' '&Quit'
+ ∆,←⊂'Posn'((n.OK.Posn[0]),10+1⊃##.GUI.PosnPlusSize n.Skip)
+ ∆,←⊂'Size'(⍬ 110)
+ ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
+ ∆,←⊂'Cancel' 1
+ n.Cancel←⍎'cancel'n.TheForm.⎕WC ∆
+ n.(OK Skip Cancel).onSelect←1
+
+ i noOfObjs WriteStatusMsg n
+⍝Done

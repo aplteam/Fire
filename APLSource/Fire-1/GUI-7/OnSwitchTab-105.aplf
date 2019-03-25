@@ -1,5 +1,12 @@
- OnSwitchTab←{
-     n←GetRefTo_n↑,⍵
+ r←OnSwitchTab msg;ref;n
+ ref←↑,msg
+ n←GetRefTo_n ref
+ :If ref≢n.Tab1
      n.ReplaceBtn.Active←0
-     1
- }
+     {}1 ResetHitList 0 0
+     n.ReuseSearch.(Active Visible)←0
+ :Else
+     n.ReuseSearch.(Active Visible)←1
+ :EndIf
+ r←1
+⍝Done

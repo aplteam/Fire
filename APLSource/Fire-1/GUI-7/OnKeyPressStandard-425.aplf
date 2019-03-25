@@ -6,7 +6,6 @@
      (9 2≡⍵[4 5]):⎕NQ'⎕SE' 'GotFocus'               ⍝ Ctrl+Tab?!
      (27 0≡⍵[4 5]):0⊣SendCloseToForm ⍬              ⍝ Escape?! Get out!
      (13 0≡⍵[4 5]):ClickFindButton ⍬                ⍝ Enter?! CLick "Find"
-     (46 0≡⍵[4 5]):RemoveFromList ⍬                 ⍝ DEL key
      (0 82 4≡⍵[3 4 5]):0⊣##.Replace.Run             ⍝ Alt+R = "Replace" button via keyboard
      (HandlePageDown ⍵):0
      ~⍺

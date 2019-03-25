@@ -1,12 +1,8 @@
- r←ShowUser y;tool
-⍝ Takes ⍵ (name,oldCode,NewCode) and displayes it with CompareIt!
+ r←parms ShowUser y;tool;parms;answer
+⍝ Takes ⍵ (name,oldCode,NewCode) and shows them to the user
 ⍝ Returns:
 ⍝ [0]: 1 in case the object shall get fixed; 2=skip this one, 0=cancel
 ⍝ [1]: Boolean; 1=fix remaining ones in one go, 0=carry on one-by-one
 ⍝ [2]: New (and maybe changed by the user, too) code
- :If 0=≢tool←##.##.CompareSimple.{0<≢FindBeyondCompare 0:'BeyondCompare' ⋄ 0≠≢FindCompareIt 0 'CompareIt!' ⋄ ''}⍬
- :OrIf ##.G.DontUseCompareIt
-     r←##.HomeMadeCompare.Run y
- :Else
-     r←tool ShowUserViaCompareTool y
- :EndIf
+ r←parms ##.OneByOneComparison.Run y
+⍝Done

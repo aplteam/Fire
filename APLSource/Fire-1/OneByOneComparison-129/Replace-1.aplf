@@ -1,0 +1,30 @@
+ code←Replace G;ns;fns;hits
+ :If ##.G.SearchIsRegEx
+     ns←⎕NS''
+     ns.options←##.Replace.GetRegExOptions G.OldCode ##.G
+     ns.ss←##.Replace.GetRegExSearchString ##.G G.NC                ⍝ Search string
+     ns.rs←##.Replace.GetRegExReplaceString ##.G ns.ss G.NC         ⍝ Replace string
+     ns.i←0
+     ns.these←G.These
+     ns.lines←ns.ss ⎕S 2⍠(ns.options,⊂'Mode' 'L')⊣oldCode
+     fns←ns∘{
+         ns←⍺
+         code←(ns.i∊ns.these)⊃⍵.Match ns.rs
+         ns.i+←1
+         code
+     }
+     code←G.OldCode
+     code[∪ns.lines]←ns.ss ⎕R fns⍠ns.options⊣code[∪ns.lines]
+ :Else
+     :If G.DeleteFlag
+         code←G.OldCode[(⍳≢G.OldCode)~G.LineNumbers[G.These]]
+     :Else
+         hits←G.Hits[G.These]
+         code←1↓↑,/##.NL,¨G.OldCode
+         code[hits∘.+1↓⍳≢G.SearchFor]←⊂''
+         code[hits]←⊂1↓↑,/##.NL,¨G.ReplaceBy
+         code←↑,/code
+         code←##.NL ##.A.Split code
+     :EndIf
+ :EndIf
+⍝Done

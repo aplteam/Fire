@@ -1,5 +1,0 @@
- n←CreateSplitter n;∆
- ∆←⊂'Splitter'
- ∆,←⊂'SplitObj1'n.Left
- ∆,←⊂'SplitObj2'n.Right
- n.Splitter←⍎'Splitter'n.Form.⎕WC ∆

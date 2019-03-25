@@ -1,0 +1,4 @@
+ {r}←ShowCode n
+ r←⍬
+ n.∆Name ##.ReportDiffs.BrowseCode n
+⍝Done

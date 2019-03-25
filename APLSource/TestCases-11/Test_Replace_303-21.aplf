@@ -29,11 +29,6 @@
  n2←#._Fire.Fire.Replace.n
  n2.ReplaceBy.Text←''
  n2.DeleteLine.State←1
- n2.MarkChanges.(Active State)←1 0
- n2.MarkChangesText.Text←''
- n2.MarkChangesText.(Active BCol)←1 0
- n2.MarkChangesType.Active←1
- n2.MarkChangesType.SelItems←0 1 0
 
  {}∆Select n2.StartBtn
  ∆Process n2.Form

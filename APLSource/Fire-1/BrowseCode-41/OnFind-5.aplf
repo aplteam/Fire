@@ -1,0 +1,4 @@
+ OnFind←{
+     nb←##.GUI.GetRefTo_n 0⊃,⍵
+     Find nb
+ }

@@ -3,7 +3,7 @@
  ∆,←⊂'Posn'((0⊃PosnPlusSize n.L_ReplaceBy),10)
  ∆,←⊂'Size'(##.GUI.n.SearchFor.Size[0],n.Form.Size[1]-20)
  ∆,←⊂'FontObj'##.GUI.n.APL_Font
- ∆,←⊂'Text'(##.G.SearchIsRegEx/'&')
+ ∆,←⊂'Text'##.G.ReplaceBy_was
  ∆,←⊂'TipObj'n.TipObj
  ∆,←⊂'HScroll' ¯2
  :If ##.G.SearchIsRegEx
@@ -16,10 +16,13 @@
  ∆,←⊂'Style' 'Multi'
  ∆,←⊂'VScroll' ¯1
  ∆,←⊂'WantsReturn' 0
- height←3×##.GUI.n.SearchFor.Size[0]       ⍝ We want three lines
+ height←4×##.GUI.n.SearchFor.Size[0]       ⍝ We want 4 lines
  msg,←'⌹Use <Ctrl+Enter> to separate lines.'
  ∆,←⊂'Tip'(Split msg)
  n.ReplaceBy←⍎'ReplaceBy'n.Form.⎕WC ∆
  n.ReplaceBy.Size[0]←height
  n.ReplaceBy.onContextMenu←'OnContextMenuInReplaceBy'
  n.ReplaceBy.onKeyPress←'OnKeyPressStandard'
+ n.ReplaceBy.onGotFocus←'OnReplaceByGotFocusGotFocus'
+ n.ReplaceBy.onLostFocus←'OnReplaceByLostFocusLostFocus'
+⍝Done

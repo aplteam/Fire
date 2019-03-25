@@ -1,0 +1,6 @@
+ r←OnBrowseCode msg;obj;n
+ r←1
+ obj←↑msg
+ n←##.GUI.GetRefTo_n obj
+ BrowseCode n
+⍝Done

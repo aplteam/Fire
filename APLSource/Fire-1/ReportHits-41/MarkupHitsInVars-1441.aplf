@@ -1,4 +1,4 @@
- r←rn MarkupHitsInVars(ref name qnc ind length);rs;ss;options;data;fullName
+ r←rn MarkupHitsInVars(ref name qnc ind length);rs;ss;options;data;fullName;props
 ⍝ rn=Running number
  r←''
  :If ~0∊⍴data←ref.{6::'' ⋄ ⍎⍵}name
@@ -17,12 +17,24 @@
              data←ref.⍎name
              r←ss ⎕R rs⍠options⊣data
              r←(∨/¨'<span class="diff"'∘⍷¨r)/r
-             r←'div class="comp"'∘Tag¨r
              fullName←(⍕ref),'.',name
-             r←(⊂'<a href="#',fullName,'" id="',fullName,'"</a><h2>',(⍕rn),'. ',fullName,'</h2></a>'),r
+             r←(⊂'<h2 id="h',(⍕rn),'">',(⍕rn),'. ',fullName,'</h2>'),r,⊂'</div>'
+             r←(⊂'<div class="obj">'),r,⊂'</div>'
          :EndIf
      :Else
          fullName←(⍕ref),'.',name
-         r←(⊂'<a href="#',fullName,'" id="',fullName,'"</a><h2>',(⍕rn),'. ',fullName,' (not changeable variable)</h2></a>'),r
+         props←{'Shape: ',(⍕⍴⍵),'; Rank: ',(⍕⍴⍴⍵),'; Depth: ',(⍕≡⍵)}⍎fullName
+         props,←'; Data type: '
+         :Select {(∪1↑¨0⍴¨∊⍵)≡¨,¨' ' 0}⍎fullName
+         :Case 1 0
+             props,←'Char'
+         :Case 0 1
+             props,←'Numeric'
+         :Else
+             props,←'Mixed'
+         :EndSelect
+         r←⊂('h2 id="h',(⍕rn),'"')Tag(⍕rn),'. ',fullName
+         r,←⊂'p'Tag props
+         r←(⊂'<div class="obj">'),r,⊂'</div>'
      :EndIf
  :EndIf

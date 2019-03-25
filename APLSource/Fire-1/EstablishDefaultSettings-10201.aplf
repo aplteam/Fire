@@ -9,7 +9,6 @@
  G.Comments←1
  G.Container←1
  G.Greedy←0
- G.DotAll←0
  G.APL_Name←0
  G.ReuseSearch←0
  G.NamesOnly←0

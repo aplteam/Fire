@@ -1,0 +1,11 @@
+ OnOkInFind←{
+     ns←##.GUI.GetRefTo_n 0⊃,⍵
+     nb←##.GUI.GetRefTo_n ns.Form.##
+     nb.∆FirstFlag←0
+     nb.∆SearchFor←ns.SearchFor.Text
+     nb.∆MatchCase←ns.Case.State
+     nb.∆RegEx←ns.RegEx.State
+     nb.∆Greedy←ns.Greedy.State
+     0=≢ns.SearchFor.Text:0
+     PerformFind ns
+ }

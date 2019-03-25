@@ -3,14 +3,14 @@
      n←(0⊃⍵).n
      _←'mm'⎕WC'Menu'
      f←0<+/n.List.SelItems
-     _←'mm.EditCode'⎕WC'MenuItem'('Edit',##.TAB,'Ctrl+E')('Event' 'Select' 1)
+     _←'mm.EditCode'⎕WC'MenuItem'('Edit...',##.TAB,'Ctrl+E')('Event' 'Select' 1)
      caption←'Print name',((1<+/n.List.SelItems)/'s'),' to session',##.TAB,'F4'
      _←'mm.PrintName'⎕WC'MenuItem'caption('Event' 'Select' 1)
      _←'mm.Sep2'⎕WC'Separator'
      _←'mm.RemoveFromList'⎕WC'MenuItem'('Remove from hit list',##.TAB,'Del')('Event' 'Select' 1)
      (0∊⍴res←⎕DQ'mm'):⍬
      ('mm.Cancel'≡0⊃res):⍬
-     ('mm.EditCode'≡0⊃res):EditCode n.List.ReportInfo[##.Where n.List.SelItems;0]
+     ('mm.EditCode'≡0⊃res):EditCode(n.List.ReportInfo[##.Where n.List.SelItems;0])(##.Where n.List.SelItems)
      ('mm.RemoveFromList'≡0⊃res):RemoveFromList n
      ('mm.PrintName'≡0⊃res):PrintName¨n.List.ReportInfo[##.Where n.List.SelItems;0]
  }

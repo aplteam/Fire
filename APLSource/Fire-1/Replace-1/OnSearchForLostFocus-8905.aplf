@@ -1,0 +1,1 @@
+ OnSearchForLostFocus←{n←##.GUI.GetRefTo_n↑,⍵ ⋄ n.SearchFor.SelText←1 1 ⋄ 1}

@@ -1,4 +1,4 @@
- n←CreateGUI dummy;∆;rf;b;cursorWas;buff
+ n←CreateGUI dummy;∆;rf;b;cursorWas;buff;ref
  cursorWas←##.GetCursorObj
  n←⎕NS''
  n.firstFlag←1
@@ -14,20 +14,19 @@
  n.TheForm.Posn←n.TheForm.Size ##.GUI.CenterIn ##.GUI.n.Form
  n.TheForm.n←n
 
- 'MB'n.TheForm.⎕WC'Menubar'
+ ref←⍎'MB'n.TheForm.⎕WC'Menubar'
+ n.FileMenu←⍎'File'ref.⎕WC'Menu'('Caption' '&File')
+ n.Quit←⍎'Quit'n.FileMenu.⎕WC'MenuItem'('Caption'('&Quit',##.TAB,'Escape'))
+ n.Quit.onSelect←'OnClose'
+ n.EditMenu←⍎'EditMenu'ref.⎕WC'Menu'('Caption' '&Edit')
+ n.EditCode←⍎'EditCode'n.EditMenu.⎕WC'MenuItem'('Caption'('Edit code...',##.TAB,'Ctrl+E'))('Accelerator'(69 2))
+ n.EditCode.onSelect←'OnEditCode'
+
  :If ##.G.APL_Name
      'CMDs'n.TheForm.MB.⎕WC'Menu'('Caption' 'Special')
      rf←⍎'NameList'n.TheForm.MB.CMDs.⎕WC'MenuItem'('Caption' 'Show list of names')('Active'##.G.APL_Name)
      rf.onSelect←'OnNameList'
  :EndIf
-
- ∆←⊂'Button'
- ∆,←⊂'Caption' 'Browse Code'
- ∆,←⊂'Posn'(¯3 ¯3)
- ∆,←⊂'Size'(1 1)
- ∆,←⊂'Accelerator'(69 2)
- rf←⍎'BrowseCode'n.TheForm.⎕WC ∆
- rf.onSelect←'OnBrowseCode'n
 
  ∆←⊂'Button'
  ∆,←⊂'Caption' 'Remove from hit list'

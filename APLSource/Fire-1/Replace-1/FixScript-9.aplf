@@ -24,7 +24,7 @@
          msg,←⊂'   ',name
          msg,←⊂'(no. ',(⍕i+1),' of ',(⍕noOf),')'
          msg,←⊂'did not work.'
-         msg,←⊂'Let me edit it and then try fixing it again.'
+         msg,←⊂'Do you want to edit it and then try fixing it again?'
          cs←##.Question.CreateDefaultParms
          cs.okCaption←'Yes'
          cs.cancelCaption←'Skip this one'
