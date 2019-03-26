@@ -1,5 +1,8 @@
  History
 ⍝⍝ Contains information regarding the last couple of releases. A full history is available on GitHub. (This line is ignored)
+⍝ * 7.0.1
+⍝   * Under some (rare) circumstances a variable can crash Fire in any "Replace" operation.
+⍝   * Layout of "One-by-one" improved.
 ⍝ * 7.0.0
 ⍝   * Fire now comes with a build-in comparison tool for one-by-one replace operations.\\
 ⍝     This allows a one-hit-at-the-time selection before the "Replace", including "Delete lines with hits".

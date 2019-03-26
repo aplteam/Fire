@@ -25,14 +25,14 @@
      :If 0=G.APL_Code                                   ⍝ No APL code?
          :Select G.(Text Comments)
          :Case 1 0                                      ⍝ Just text
-             :If nc≢2                                   ⍝ Because variables are by definition text
+             :If 2≢⌊nc                                  ⍝ Because variables are by definition text
                  data←{(⍴⍵)↑⍵↑⍨'⍝'⍳⍨Replace.MaskText ⍵}¨data
                  data←{w←⍵ ⋄ w[Where~{⍵∨≠\⍵}w='''']←' ' ⋄ w}¨data
              :EndIf
          :Case 0 1                                      ⍝ Just comments
              data←{{(~'⍝'∊⍵):(⍴⍵)⍴' ' ⋄ ⍵{(⍵⍴' '),⍵↓⍺}⍵⍳'⍝'}Replace.MaskText ⍵}¨data
          :Case 1 1                                      ⍝ Just Text and comments
-             :If nc≢2
+             :If 2≢⌊nc
                  data1←{w←⍵ ⋄ w[Where~{⍵∨≠\⍵}w='''']←' ' ⋄ w}¨data
              :Else
                  data1←data

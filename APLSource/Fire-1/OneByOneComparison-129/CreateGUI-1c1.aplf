@@ -45,7 +45,7 @@
  n.MainSubForm←⍎'sf1'n.TheForm.⎕WC ∆
 
  ∆←⊂'ListView'
- ∆,←⊂'ColTitles'('No' 'Name' 'Type')
+ ∆,←⊂'ColTitles'('Row no' 'No. of hits ' ' ')
  ∆,←⊂'Items'('[',¨(⍕¨∪⍣deleteLines⊣lineNumbers),¨']')
  wasTicked←noOf⍴1           ⍝ Global used to identify changes in the check box
  ∆,←⊂'ReportInfo'(CompileReportInfo∪⍣deleteLines⊣lineNumbers)

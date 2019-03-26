@@ -12,7 +12,11 @@ Other features are:
 
 * You can search either the workspace or just the list of names (`⎕NL`).
 
-* You can search any combination of the APL source code; that's everything but stuff within quotes (text) and comments.
+* You can search any combination of...
+
+  * comments
+  * text 
+  * APL source code (that's everything but comments and the stuff between quotes (text).
 
 * Negate a search ("all objects that do **not** contain...").
 
@@ -21,7 +25,7 @@ Other features are:
 
 ## Difference between Dyalog's built-in Search tool and Fire
 
-* Fire handles circular references correctly (thanks to PhilLast)
+* Fire handles circular references correctly (thanks to Phil Last)
 
 * Fire reports a WS FULL only when it is reasonable to do so 
 
@@ -37,12 +41,12 @@ Specifying anything in the "Start looking here" control is supported by autocomp
 
 ![](Images/Fire_02.png)
 
-After having performed a search one might want to look at the lines carrying the hits. This can be achieved by selecting the "Report hits" menu command from the "Report" menu:
+After having performed a search one might want to check the hits. This can be achieved by selecting the "Report hits" menu command from the "Report" menu:
 
 
 ![](Images/HitReport.png)
 
-The report offers a context menu on the items of the left:
+The report offers a context menu on the items in the left pane:
 
 ![](Images/ReportHitsContextMenu.png)
 
@@ -55,8 +59,8 @@ The Replace feature allows you to change the workspace on a global level:
 
 There are two modes available:
 
-* "All in one go" allows you to check all changes first and then either accept or discard them.
-* "One-by-one" allows you to compare and edit one object after the other. 
+* "All in one go" allows you to check all changes in a single document. 
+* "One-by-one" allows you to compare and edit one object after the other.
 
 
 #### "All in one go" mode
@@ -65,21 +69,17 @@ When you select the "Preview" button you get this:
 
 ![](Images/Batch_02.png)
 
-This allows you to check whether everything is okay or not. Here we see a "compressed" report: it contains only the lines which would change plus the object names plus the headers for all traditional functions and operators in order to make checking local variables easy. You cannot change anything at this stage but you can exclude certain objects from the "Replace" operation by un-ticking the check box.
+This allows you to check whether everything is okay or not. In this example the second object is excluded from the replace.
 
 This is the second and last step:
 
 ![](Images/Batch_03.png)
 
-This allows you to either change and fix all objects or not.
-
 
 #### One by one
 
-In one-by-one mode you can check and edit a single object:
+In one-by-one mode every object is shown on its own. You can skip an object entirely or accept some or all of the changes. 
 
 ![](Images/OneByOne_01.png)
 
-In the next step you can either fix the changes or skip this object and carry on with the next one or cancel the whole operation:
-
-![](Images/OneByOne_02.png)
+Unticking a check box brings back the original text which is "Hello" in this example.
