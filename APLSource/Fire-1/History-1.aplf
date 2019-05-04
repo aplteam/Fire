@@ -3,24 +3,6 @@
 ⍝ * 7.0.1
 ⍝   * Under some (rare) circumstances a variable can crash Fire in any "Replace" operation.
 ⍝   * Layout of "One-by-one" improved.
-⍝ * 7.0.0
-⍝   * Fire now comes with a build-in comparison tool for one-by-one replace operations.\\
-⍝     This allows a one-hit-at-the-time selection before the "Replace", including "Delete lines with hits".
-⍝   * "Report all hits" has been beautified.
-⍝   * Marking up changes has been removed. In times of version control systems this is an outdated feature.
-⍝   * The option to create a full report has been removed. All reports are now compressed (hits only).\\
-⍝     However, you might be able to view the code of any given object (Ctrl+B for "Browse").
-⍝   * The "DotAll" option in the RegEx group has been removed. It has very little use but complicates matters a lot.
-⍝   * The newly introduced menu command "Edit > Amend windows size" resizes the window so that all data is visisble,
-⍝     if that is possibe at all.
-⍝   * The "Calling counter" report has been removed. Anybody shouting?!
-⍝   * The list of items searched for as well as "Look into" are only remembered during the current session now.
-⍝   * Bug fixes:
-⍝     * A RegEx search that spanned several lines was not reported properly (missing <br>).
-⍝     * When swithings TABs ("Workspace" and "⎕NL") the hit list needs to be reset.
-⍝     * When the "⎕NL" tab is active the "Replace" button must be inactive.
-⍝     * "Start looking here" could be empty or "#." etc. when <escape> was pressed with this field having those values.
-⍝     * In the hit list, navigating to a particular object did not work.
-⍝     * In the hit report no line numbers were shown.
+⍝   * Under rare circumstances PgUp and PgDown in Fire's Main GUI can crash Fire.
 ⍝ \\
 ⍝ For information regarding older version see <https://github.com/aplteam/Fire/releases>

@@ -1,5 +1,7 @@
  (r flag)←HandlePgDown rl
- rl.SelItems[]←0
- rl.Index←(rl.Index+10)⌊¯10+0⊃⍴rl.Items
- rl.SelItems[rl.Index]←1
  r←flag←0
+ :If 0<≢rl.SelItems
+     rl.SelItems[]←0
+     rl.Index←(rl.Index+10)⌊¯10+0⊃⍴rl.Items
+     rl.SelItems[rl.Index]←1
+ :EndIf
