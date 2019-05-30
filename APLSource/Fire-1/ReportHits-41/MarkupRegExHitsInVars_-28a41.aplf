@@ -1,14 +1,14 @@
- r←MarkupRegExHitsInVars_(data ind length);items
+ data←MarkupRegExHitsInVars_(data ind length);items
 ⍝ Called by `MarkupRegExHitsInVars`, no independent value.
- r←1↓↑,/##.NL,¨data
+ data←1↓↑,/##.NL,¨data
  (ind length)←(length>0)∘/¨ind length   ⍝ A RegEx search can find something with the length of 0, like ^\s{0,}
- items←##.Where data ##.WhichItemsOrRows ind length
- r←##.ReplaceSpecialChars r
- r[ind]←'<span class="diff">'∘,¨MakeBlanksVisible¨r[ind]
- r[¯1+ind+length]←r[¯1+ind+length],¨⊂'</span>'
- r←↑,/r
- r←##.NL ##.A.Split r
- r←r[items]
- r←↑,/r
- r←⊂'div class="obj"'Tag r
+ items←##.Where(##.NL ##.A.Split data)##.WhichItemsOrRows ind length
+ data←0 ##.ReplaceSpecialChars data
+ data[ind]←'<span class="diff">'∘,¨MakeBlanksVisible¨data[ind]
+ data[¯1+ind+length]←data[¯1+ind+length],¨⊂'</span>'
+ data←↑,/data
+ data←##.NL ##.A.Split data
+ data←data[items]
+ data←'<br>'{(≢⍺)↓↑,/⍺∘,¨⍵}data
+ data←⊂'div class="obj"'Tag data
 ⍝Done

@@ -1,10 +1,10 @@
  r←runningNumber MarkupRegExHitsInVars(ref name qnc ind length);data;items
  r←''
- :If ~0∊⍴data←ref{6::⍬ ⋄ ⍺.⍎⍵}name
+ :If 0≠≢data←ref{6::⍬ ⋄ ⍺.⍎⍵}name
  :AndIf ~##.Replace.NonReplaceVars data
      :If 1=≡data
          :If ##.CR∊data
-             data←##.CR ##.A.Split data
+             data←##.CR ##.A.Split data  ⍝ Yes, this IS required because CR would become <br> too early
              r,←MarkupRegExHitsInVars_ data ind length
          :Else
              r,←MarkupRegExHitsInSimpleVars data

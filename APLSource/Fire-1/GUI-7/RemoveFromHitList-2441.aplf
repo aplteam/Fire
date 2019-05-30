@@ -4,13 +4,14 @@
 ⍝ * List of indices into the Hit list.
 ⍝ * Empty vector. In that case SelItems of the Hit list rules.
      rows←{##.A.Where n.HitList.SelItems}⍣(0=≢⍵)⊣⍵
+     _←{{⍺.⎕EX ⍵}/⍵}¨↓n.HitList.Data[rows;0 1]
      (~∧/rows∊all←⍳≢n.HitList.Items):'Invalid right argument'⎕SIGNAL 11
      remain←all~rows
      n.HitList.Items←n.HitList.Items[remain]
      n.HitList.ReportInfo←n.HitList.ReportInfo[remain;]
      n.HitList.Data←n.HitList.Data[remain;]
      n.HitList.SelItems←(≢remain)⍴0
-     _←WriteInfo(⍕≢n.HitList.Items),' remaining hits'
+     _←WriteInfo(⍕≢n.HitList.Items),' remaining hit',(1<≢n.HitList.Items)/'s'
      ##.G.Hits←##.G.Hits[remain;]
      (0=≢n.HitList.Items):HandleControlDependencies 1
      ind←rows⌊¯1+≢n.HitList.Items

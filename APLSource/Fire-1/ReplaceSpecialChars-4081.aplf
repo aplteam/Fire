@@ -11,7 +11,7 @@
      (b2/str)←⊂'&lt;'
      (b3/str)←⊂'&gt;'
  :EndIf
- :If 1∊b←CR=str
+ :If 1∊b←∧/¨CR=str
      (b/str)←⊂'<br>'
  :EndIf
  str←∊⍣(⊃flatten)⊣str

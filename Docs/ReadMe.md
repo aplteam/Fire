@@ -6,7 +6,7 @@
 
 # Fire
 
-Note that FiRe stands for FInd and REplace.
+Note that FiRe stands for FInd and REplace. Fire is a Windows0only application.
 
 
 ## Features
@@ -49,8 +49,13 @@ Fire also overcomes a couple of problems that Dyalog's built-in Search tool is s
 
 ## Installing Fire
 
-See the document ["HowToInstallFire.html"](./HowToInstall.html).
+Since version 7.1.0 Fire comes with its own installer. Just double-click it and your are done. It does not require admin rights.
 
+The installer installs Fire into `%USERPROFILE%\Documents\MyUCMDs` which translates to `C:\Users\{userid}\Documents\MyUCMDs` with a default Windows installation. This folder, it it exists, is scanned by Dyalog for user commands.
+
+However, if you have used Fire before version 7.1 then you might have installed it somewhere different. If this is the case then your are advised to remove Fire from that folder.
+
+Note that installing into `%USERPROFILE%` means that you have to install it separately for every user who wants to use Fire.
 
 ## Running Fire
 
@@ -85,12 +90,14 @@ However, when a new version of Fire comes along you need a way to load this new 
 1. Unnamed namespaces.
 1. Class instances.
 1. GUI instances which have `KeepOnClose←0`.
-1. Ghostly namespace.
+1. Ghostly namespaces.
 
 
 ## Ghostly namespaces
 
-Note that Fire does not search ghostly namespaces. These are namespaces which exist together with GUI objects as well as classes. If you did not know about ghostly namespaces then it might be best to ignore them: they can be quite confusing. Ghostly namespaces exist for a very long time but until OO was introduced to Dyalog APL they were kept hidden from users.
+Note that Fire does not search ghostly namespaces. These are namespaces which exist together with GUI objects as well as classes. If you did not know about ghostly namespaces then it might be best to ignore them: they can be quite confusing. 
+
+Ghostly namespaces exist for a very long time but until OO was introduced to Dyalog APL they were kept hidden from users.
 
 If you would like to know more then consider this code:
 
@@ -176,9 +183,9 @@ VALUE ERROR
      ∧
 ~~~
      
-has the same effect: the `⎕EX` statement did actually remove the "Hello2" function from the namespace but not from the script. 
+has a similar effect: the `⎕EX` statement did actually remove the `Hello2` function from the namespace but not from the script. 
 
-Note that Fire investigates the script rather than the namespace. "`Hello2`" therefore would not pop up in Fire because it's not part of the script. If you find this confusing - so do I.
+Note that Fire investigates the script rather than the namespace. `Hello2` therefore would not pop up in Fire because it's not part of the script. If you find this confusing - so do I.
 
 If you now think: "Hang on, if `⎕FX` does not change a script at all, then surely a "Replace" operation with Fire must fail, right?" then luckily you would be wrong: Fire is smart enough to recognize the situation and manipulates - and finally fixes - the script rather than individual functions.
 
@@ -193,7 +200,7 @@ The "Replace" dialog has a check box "Delete lines/items with hits". That seems 
 
 1. The first and the last line of any script is never deleted, no matter whether they carry a hit or not.
 
-1. The first line of any function or operator is never deleted, no matter whether they carry a hit or not.
+1. The first line of any function or operator is never deleted, no matter whether they carry a hit or not. However, be aware of 6.
 
 1. If a simple variable carries a hit it is going to be an empty vector.
 
@@ -266,9 +273,9 @@ There is a separate document `UsefulRegExes.html` available --- see there.
 
 ## acre and Fire
 
-[acre on GitHub](https://github.com/the-carlisle-group/Acre-Desktop) is an Open Source source code management systen written in Dyalog APL by [Phil Last](http://aplwiki.com/PhilLast).
+Acre --- which [lives on GitHub](https://github.com/the-carlisle-group/Acre-Desktop) --- is an APL project manager systen written in Dyalog APL by [Phil Last](http://aplwiki.com/PhilLast).
 
-Whether you are using acre 2, 3 or 4, as soon as Fire finds acre in the workspace (acre 2) or in `⎕SE` (acre 3 and 4) it will tell acre about all change and delete operations. acre will work out what project the object in question belongs to and take action, if any. In other words, Fire and acre are fully integrated.
+When Fire finds acre in `⎕SE` it will tell acre about all change and delete operations. Acre will then work out what project the object in question belongs to and take action, if any. In other words, Fire and acre are fully integrated.
 
 
 ## Salt and Fire
@@ -284,7 +291,9 @@ The Simple APL Library Toolkit (SALT) which is supplied with Dyalog APL is suppo
 
 and others. SALT uses them for its own purposes.
 
-When a script is re-fixed with `⎕FIX` then the namespace SALT_Data disappears. However, Fire works out whether a script is managed by SALT and restores the namespace SALT_Data after having re-fixed it as part of a "Replace" operation. Therefore the script continues to be managed by SALT.
+When a script is re-fixed with `⎕FIX` then the namespace SALT_Data disappears. 
+
+However, Fire works out whether a script is managed by SALT and restores the namespace SALT_Data after having re-fixed it as part of a "Replace" operation. Therefore the script continues to be managed by SALT.
 
 What Fire does not do is actually saving any object via a SALT command. The simple reason is that when you change an object in the workspace it does not necessarily mean that you want to save those changes on disk. It's completely up to the programmer to make that decision. 
 

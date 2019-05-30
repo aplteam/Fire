@@ -3,6 +3,6 @@
 ⍝ and works out from this which items (vars) or rows (fns etc) in ⍺ contain actual hits.
      (start length)←⍵
      txt←⍺
-     allLengths←{(0,¯1↓+\⍵)+⍳¨⍵}{⍵+~1↑⍨⍴⍵}↑∘⍴¨,¨txt
+     allLengths←{(0,¯1↓+\⍵)+⍳¨⍵}{⍵+~1↑⍨⍴⍵}≢¨txt
      ∨/¨allLengths∊¨⊂∊(start+¨⍳¨length)
  }

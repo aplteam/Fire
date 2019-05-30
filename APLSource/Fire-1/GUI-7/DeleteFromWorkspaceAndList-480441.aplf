@@ -1,4 +1,4 @@
- {r}←DeleteFromWorkspaceAndList rows;b;msg;_;ans;question
+ {r}←DeleteFromWorkspaceAndList rows;b;msg;ans;question
 ⍝ Deletes the selected objects from both, the workspace and the hit list.
 ⍝ Also: tell acre.
  r←⍬
@@ -24,4 +24,5 @@
      :EndIf
  :EndIf
  LetAcreDelete rows
- _←RemoveFromHitList rows
+ {}RemoveFromHitList rows
+⍝Done

@@ -1,5 +1,5 @@
  {n}←Run testFlag;htmlFilename;write;data;msg;buffer
-⍝
+⍝ Creates a report with all hits
  n←⍬
  htmlFilename←##.GetTempFileName'htm'
  ##.A.WriteUtf8File htmlFilename(TopOfDoc GetCss ⍬)

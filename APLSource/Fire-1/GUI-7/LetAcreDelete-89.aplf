@@ -11,9 +11,4 @@
          ⎕←'Acre confirmed deletion for:'
          ⎕←⍪res
      :EndIf
-    ⍝ We need to make sure that stuff inside unnamed namespaces and instances (Forms etc, not classes)
-    ⍝ is properly deleted as well since acre is not dealing with them by definition.
-     {{⍺.⎕EX ⍵}/⍵}¨↓n.HitList.Data[rows;0 1]
- :Else
-     {{⍺.⎕EX ⍵}/⍵}¨↓n.HitList.Data[rows;0 1]
  :EndIf
