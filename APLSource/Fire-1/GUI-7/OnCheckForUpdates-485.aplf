@@ -11,6 +11,6 @@
      msg,←'' 'Would you like to download it?'
      #.CursorObj←0
      0='Check for updates'##.Question.YesOrNo msg:0
-     _←##.A.GoToWebPage latest.zipball_url
+     _←##.A.GoToWebPage'https://github.com/aplteam/Fire/releases'
      0
  }

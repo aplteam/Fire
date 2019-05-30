@@ -1,5 +1,8 @@
  History
 ⍝⍝ Contains information regarding the last couple of releases. A full history is available on GitHub. (This line is ignored)
+⍝ * 7.1.1
+⍝   * "Check for updates" was unreliable. In fact it is impossible to download a binary via the REST API.
+⍝     The best we can do is direct the user to the "Releases" page, if she wishes so.
 ⍝ * 7.1.0
 ⍝   * Fire has now its own installer.
 ⍝ \\

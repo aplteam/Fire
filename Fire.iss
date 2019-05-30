@@ -1,6 +1,6 @@
 ; This script is best executed by Fire's "Make" utility.
 
-#define MyAppVersion "7.1.0.75"
+#define MyAppVersion "7.1.1.76"
 #define MyAppName "Fire"
 #define MyAppExeName "Fire.dws"
 #define MyAppPublisher "APL Team Ltd"
