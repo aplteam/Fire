@@ -1,0 +1,20 @@
+ (rc httpCode httpMsg)←{gitUserID}GetUpdate(name tag);html;tagName;searchFor;buff;offset;length;itemNo;url
+⍝
+ gitUserID←{0<⎕NC ⍵:⍎⍵ ⋄ 'aplteam'}'gitUserID'
+ rc←0
+ .
+ (httpCode httpMsg html)←##.HTTPGet'https://github.com/aplteam/Fire/releases/tag/',tag
+ :If 200=httpCode
+ :OrIf 0<≢html
+     tagName←{b←'.'=w←⍵ ⋄ (b/w)←⊂'\.' ⋄ ⊃,/w}ns.tag_name~'v'
+     searchFor←{'"/aplteam/Fire/releases/download/v',⍵,'/SetUp_Fire_',⍵,'[.\]*.[0-9]{0,6}\.exe\"'}tagName
+     buff←searchFor ⎕S 0 1 2⍠('Greedy' 0)⊣html
+     :If 1≠≢buff
+         rc←1
+
+     :Else
+         (offset length itemNo)←⊃buff
+         url←¯1↓1↓length↑offset↓(itemNo+1)⊃(⎕UCS 10)##.APLTreeUtils.Split html
+         ##.APLTreeUtils.GoToWebPage'https://github.com/',url
+     :EndIf
+ :EndIf

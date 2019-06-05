@@ -1,16 +1,42 @@
- OnCheckForUpdates←{
-     n←GetRefTo_n↑⍵
-     16>+/1 0.1×2↑⊃(//)'.'⎕VFI 1⊃# ⎕WG'APLVersion':TellAboutVersion n
-     #.CursorObj←¯1
-     GH←##.##.GitHubAPIv3
-     myAPI←⎕NEW GH(,⊂'aplteam')
-     (rc more latest)←myAPI.GetLatestRelease'Fire'
-     0≠rc:TellErrorWhileCheckingForBetterVersion more
-     (GH.CastTagname2Number latest.tag_name)≤(⌊GH.CastTagname2Number 1⊃##.Version):0⊣TellFireIsUp2Date n
-     msg←⊂'There is a better version available on GitHub: ',1↓latest.tag_name
-     msg,←'' 'Would you like to download it?'
-     #.CursorObj←0
-     0='Check for updates'##.Question.YesOrNo msg:0
-     _←##.A.GoToWebPage'https://github.com/aplteam/Fire/releases'
-     0
- }
+ OnCheckForUpdates msg;n;code;tag;mcu;gitVersionNo;thisVersionNo;rc
+ #.CursorObj←1
+ n←GetRefTo_n↑,msg
+ :If 16>+/1 0.1×2↑⊃(//)'.'⎕VFI 1⊃# ⎕WG'APLVersion'   ⍝ That's when Fire started to have its own installer
+     TellAboutVersion n
+ :Else
+     mcu←⎕NEW ##.##.Check4Updates(,⊂'Fire')
+     :If '⎕SE'{⍺≡(≢⍺)↑⍵}↑⎕XSI
+         mcu.path2GitHubRestApi←⎕SE._Fire
+         mcu.path2Rumba←⎕SE._Fire
+     :Else
+         mcu.path2GitHubRestApi←#._Fire
+         mcu.path2Rumba←#._Fire
+     :EndIf
+     :Trap 0
+         tag←mcu.GetLatestTag
+     :Else
+         →∆Exit,TellErrorWhileCheckingForBetterVersion''
+     :EndTrap
+     gitVersionNo←⌊##.##.GitHubAPIv3.CastTagname2Number tag
+     thisVersionNo←⌊##.##.GitHubAPIv3.CastTagname2Number 1⊃##.Version
+     :If gitVersionNo≤thisVersionNo
+         TellFireIsUp2Date n
+     :Else
+         msg←⊂'There is a better version available on GitHub: ',tag~'v'
+         msg,←'' 'Would you like to download this version?'
+         :If ##.Question.YesOrNo msg
+             :Trap 0
+                 rc←mcu.GetExe tag
+             :Else
+                 →∆Exit,TellErrorWhileCheckingForBetterVersion''
+             :EndTrap
+             :If rc
+                 TellErrorWhileDownloading ⍬
+             :EndIf
+         :EndIf
+     :EndIf
+ :EndIf
+
+∆Exit:
+ #.CursorObj←0
+⍝Done

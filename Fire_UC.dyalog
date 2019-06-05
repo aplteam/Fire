@@ -5,6 +5,9 @@
 ⍝ If this is not the case then Fire is copied into []SE from
 ⍝ the same directory the User Command stems from and then started.
 ⍝ Kai Jaeger ⋄ APL Team Ltd
+⍝ Version 2.3.0 - 2019-06-04
+⍝ * Fire now goes into `⎕SE._Fire.Fire` while all stuff that is needed but does not exist in ⎕SE
+⍝   goes into `⎕SE._Fire`. For stuff that exists in `⎕SE` refs are created in `⎕SE._Fire`.
 ⍝ Version 2.2.0 - 2019-03-11
 ⍝ * `GitHubAPIv3` added to the list of to-be-copied stuff.
 ⍝ Version 2.1.1 - 2018-05-26
@@ -35,23 +38,27 @@
       ⎕IO←0 ⋄ ⎕ML←3 ⋄ ⎕WX←3
       r←0 0⍴''
       flag←Args.Switch'fl'
-      tbc←'APLTreeUtils' 'Fire' 'CompareSimple' 'FilesAndDirs' 'OS' 'WinReg' 'GitHubAPIv3'  ⍝ to be copied (tbc)
-      dne←0=↑∘⎕SE.⎕NC¨tbc                                                                   ⍝ do not exist (dne)
+      tbc←'APLTreeUtils' 'Fire' 'CompareSimple' 'FilesAndDirs' 'OS' 'WinReg' 'GitHubAPIv3' 'Check4Updates' ⍝ to be copied (tbc)
+      '_Fire'⎕SE.⎕NS''
+      dne←0=↑∘⎕SE.⎕NC¨tbc                                                       ⍝ do not exist (dne)
       :If flag
           dne[tbc⍳⊂'Fire']←1                                                    ⍝ Enforce a load
-          :Trap 6 ⋄ ⎕SE.Fire.Cleanup ⋄ :EndTrap                                 ⍝ Get rid of any GUI
-          ⎕SE.⎕EX'Fire'
+          :Trap 6 ⋄ ⎕SE._Fire.Fire.Cleanup ⋄ :EndTrap                           ⍝ Get rid of any GUI
+          ⎕SE.⎕EX'_Fire'
+          '_Fire'⎕SE.⎕NS''
       :EndIf
       :If 1∊dne
-      :AndIf 0=ScanPathsFor⊃dne/tbc
-          'Could not find Fire'⎕SIGNAL 6
+          :If 0=ScanPathsFor⊃dne/tbc
+              'Could not find Fire'⎕SIGNAL 6
+          :EndIf
+          CreateRefs(~dne)/tbc
       :EndIf
-      :If ∨/bool←0=↑∘⎕SE.⎕NC¨tbc
+      :If ∨/bool←0=↑∘⎕SE._Fire.⎕NC¨tbc
           ⎕←'Copy operation failed:'
           ⎕←⍪' ',¨bool/tbc
           'Fire cannot be started'⎕SIGNAL 11
       :EndIf
-      n←⎕SE.Fire.Run 0
+      n←⎕SE._Fire.Fire.Run 0
       :If 1=⍴↑Args.Arguments
       :AndIf (,'.')≡,↑Args.Arguments
           n.LookIn.Text←(⎕SI⍳⊂'UCMD')⊃⎕NSI
@@ -113,10 +120,17 @@
       paths←GetPaths regKey
       :For thisPath :In paths
           :Trap 11
-              objects ⎕SE.⎕CY thisPath,'\Fire\Fire.dws'
+              objects ⎕SE._Fire.⎕CY thisPath,'\Fire\Fire.dws'
               success←1
               :Leave
           :EndTrap
+      :EndFor
+    ∇
+
+    ∇ {r}←CreateRefs list;this
+      r←⍬
+      :For this :In list
+          ⍎'⎕SE._Fire.',this,'←','⎕SE.',this
       :EndFor
     ∇
 

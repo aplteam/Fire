@@ -1,0 +1,16 @@
+ (code tag)←{gitUserID}(versionFunction CheckForUpdates)(name refToGitHubAPI);MyGitAPI;rc;more;ns;gitVersion
+ gitUserID←{0<⎕NC ⍵:⍎⍵ ⋄ 'aplteam'}'gitUserID'
+ MyGitAPI←⎕NEW refToGitHubAPI(,⊂gitUserID)
+ code←0
+ (rc more ns)←MyGitAPI.GetLatestRelease name
+ :If ∨/'Error'⍷∊more
+     code←2
+ :Else
+     tag←ns.tag_name
+     gitVersion←refToGitHubAPI.CastTagname2Number tag
+     :If gitVersion≤⌊refToGitHubAPI.CastTagname2Number 1⊃versionFunction
+         code←1
+     :Else
+         code←3
+     :EndIf
+ :EndIf

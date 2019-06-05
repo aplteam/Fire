@@ -3,5 +3,5 @@
      msg←'Fire is up to date.'
      #.CursorObj←0
      _←'Check for updates'##.Question.ShowMsg msg
-     ⍬
+     1:shy←⍬
  }

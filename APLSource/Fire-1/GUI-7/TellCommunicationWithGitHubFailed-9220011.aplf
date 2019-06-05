@@ -1,0 +1,12 @@
+ TellCommunicationWithGitHubFailed←{
+     ⍺←¯1
+     (httpCode html)←⍺
+     msg←⊂'The attempt to communicate with GitHub in order to check for a new version of ',⍵,' failed.'
+     msg,←''
+     msg,←(flag1←httpCode≢¯1)/⊂'HTTP code is ',(⍕httpCode),'.'
+     msg,←(flag2←(0=≢html)∧html≢¯1)/⊂'Requested GitHub page is empty.'
+     msg,←(0=flag1+flag2)/'' 'Please try again later.'
+     #.CursorObj←0
+     _←'Update check'##.Question.ShowMsg msg
+     1:shy←0
+ }

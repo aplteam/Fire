@@ -1,6 +1,6 @@
  TellErrorWhileCheckingForBetterVersion←{
-     msg←'Checking for updates failed due to an unexpected error:'(↑1↓⍵)
+     msg←'Checking for updates failed due to an unexpected error.'
      #.CursorObj←0
-     _←'Check for updates'##.Question.ShowMsg msg
-     ⍬
+     _←'Fire Check for updates'##.Question.ShowMsg msg
+     1:shy←⍬
  }

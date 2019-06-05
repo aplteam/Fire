@@ -1,4 +1,4 @@
- r←{addToCaption}YesOrNo caption;cs
+ r←{addToCaption}YesOrNo question;cs
 ⍝ Ask a Question with two buttons: "Yes" and "No"
  :If ##.G.TestFlag
      r←1
@@ -9,5 +9,5 @@
      :If 0<⎕NC'addToCaption'
          cs.addToCaption←addToCaption
      :EndIf
-     r←cs Run caption
+     r←cs Run question
  :EndIf

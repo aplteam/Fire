@@ -1,9 +1,6 @@
  History
 ⍝⍝ Contains information regarding the last couple of releases. A full history is available on GitHub. (This line is ignored)
-⍝ * 7.1.1
-⍝   * "Check for updates" was unreliable. In fact it is impossible to download a binary via the REST API.
-⍝     The best we can do is direct the user to the "Releases" page, if she wishes so.
-⍝ * 7.1.0
-⍝   * Fire has now its own installer.
+⍝ * 7.1.2
+⍝   * "Check for updates" downloads the EXE now. Done by analyzing the HTML page in order to find the proper URL.
 ⍝ \\
 ⍝ For information regarding older version see <https://github.com/aplteam/Fire/releases>

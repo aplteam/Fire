@@ -1,5 +1,12 @@
- {r}←ShowReleaseNotes n;body
+ {r}←ShowReleaseNotes n;body;msg;path;filename
 ⍝ Takes the comments in the function `History` and displays it.
  r←⍬
- ##.APLTreeUtils.GoToWebPage'https://github.com/aplteam/Fire/releases'
+ :If 0<≢path←↑⎕NPARTS G.HelpPath
+     filename←path,'ReleaseNotes.html'
+ :AndIf F.Exists filename
+     A.GoToWebPage'file://',filename
+ :Else
+     msg←⊂'Could not find the document.'
+     'ReleaseNotes.html'Question.ShowMsg msg
+ :EndIf
 ⍝Done

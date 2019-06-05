@@ -19,6 +19,11 @@
  's1'rf.⎕WC'Separator'
 
  ∆←⊂'MenuItem'
+ ∆,←⊂'Caption' 'View release notes on GitHub'
+ n.AllReleaseNotes←⍎'ReleaseNotes'rf.⎕WC ∆
+ n.AllReleaseNotes.onSelect←'OnShowAllReleaseNotes'
+
+ ∆←⊂'MenuItem'
  ∆,←⊂'Caption' 'Visit Fire on GitHub'
  n.GoToGitHub←⍎'GoToGitHub'rf.⎕WC ∆
  n.GoToGitHub.onSelect←'OnGoToGitHub'

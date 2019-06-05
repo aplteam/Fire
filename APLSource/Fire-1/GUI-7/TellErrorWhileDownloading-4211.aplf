@@ -1,0 +1,6 @@
+ TellErrorWhileDownloading←{
+     msg←'Downloading new version failed.'
+     #.CursorObj←0
+     _←'Fire Check for updates'##.Question.ShowMsg msg
+     1:shy←⍬
+ }
