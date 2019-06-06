@@ -1,6 +1,6 @@
  History
 ⍝⍝ Contains information regarding the last couple of releases. A full history is available on GitHub. (This line is ignored)
-⍝ * 7.1.2
-⍝   * "Check for updates" downloads the EXE now. Done by analyzing the HTML page in order to find the proper URL.
+⍝ * 7.1.3
+⍝   * Bug fix: whith instantiated classes Fire might crash.
 ⍝ \\
 ⍝ For information regarding older version see <https://github.com/aplteam/Fire/releases>
