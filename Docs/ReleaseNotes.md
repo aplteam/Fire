@@ -1,5 +1,9 @@
 # Release Notes
 
+## 7.1.3
+
+Version 7.1.2 probably did only run one one machine: mine!
+
 ## 7.1.2
 
 This version comes with an improved "Check for updates..." menu command: in case a better version is found on GitHub Fire now downloads this version automatically via your default browser after getting permission from the user.

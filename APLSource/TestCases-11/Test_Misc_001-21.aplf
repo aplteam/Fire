@@ -1,0 +1,18 @@
+ R←Test_Misc_001(stopFlag batchFlag);⎕TRAP;script;list;xml;needed;bool
+⍝ Check whether the user command script defines/loads/uses the correct modules
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+ script←'flat'##.APLTreeUtils.ReadUtf8File'Fire_uc.dyalog'
+ list←{⍵↑⍨¯1+⌊/⍵⍳'⍝',⎕UCS 10 13}'neededModules←'{(≢⍺)↓⍵{⍵↓⍺}1⍳⍨⍺⍷⍵}script
+ list←¯1↓¨1↓¨' '##.APLTreeUtils.Split list
+ list~←⊂''
+ xml←⎕XML'flat'##.APLTreeUtils.ReadUtf8File'publish.config'
+ needed←{⍵⌿⍨⍵[;1]≡¨⊂'script'}{⍵⌿⍨⍵[;0]=2}(1+xml[;1]⍳⊂'needs')↓xml
+ needed⌿⍨←{0=≢⍵:1 ⋄ ind←⍵[;0]⍳⊂'development' ⋄ ind=≢⍵:1 ⋄ 'true'≢1⊃⍵[ind;]}¨needed[;3]
+ needed←needed[;2],⊂'Fire'
+ →PassesIf 0=+/bool←~list∊needed
+ →PassesIf 0=+/bool←~needed∊list
+
+ R←∆OK
+⍝Done

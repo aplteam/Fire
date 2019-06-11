@@ -5,6 +5,8 @@
 ⍝ If this is not the case then Fire is copied into []SE from
 ⍝ the same directory the User Command stems from and then started.
 ⍝ Kai Jaeger ⋄ APL Team Ltd
+⍝ Version 2.4.0 - 2019-06-10
+⍝ * In case a requiered module is not found an detail error report is provided.
 ⍝ Version 2.3.0 - 2019-06-04
 ⍝ * Fire now goes into `⎕SE._Fire.Fire` while all stuff that is needed but does not exist in ⎕SE
 ⍝   goes into `⎕SE._Fire`. For stuff that exists in `⎕SE` refs are created in `⎕SE._Fire`.
@@ -33,29 +35,30 @@
       r.Parse←'1s -fl'                      ⍝ Takes one optional switch: force load
     ∇
 
-    ∇ r←Run(Cmd Args);⎕IO;⎕ML;paths;thisPath;flag;l;tbc;dne;bool;regData;n
+    ∇ r←Run(Cmd Args);⎕IO;⎕ML;paths;thisPath;flag;l;dne;bool;regData;n;msg;success;neededModules
       :Access Shared Public
       ⎕IO←0 ⋄ ⎕ML←3 ⋄ ⎕WX←3
       r←0 0⍴''
       flag←Args.Switch'fl'
-      tbc←'APLTreeUtils' 'Fire' 'CompareSimple' 'FilesAndDirs' 'OS' 'WinReg' 'GitHubAPIv3' 'Check4Updates' ⍝ to be copied (tbc)
+      neededModules←'APLTreeUtils' 'Fire' 'FilesAndDirs' 'OS' 'WinReg' 'GitHubAPIv3'  ⍝ to be copied
       '_Fire'⎕SE.⎕NS''
-      dne←0=↑∘⎕SE.⎕NC¨tbc                                                       ⍝ do not exist (dne)
+      dne←0=↑∘⎕SE.⎕NC¨neededModules                                             ⍝ do not exist (dne)
       :If flag
-          dne[tbc⍳⊂'Fire']←1                                                    ⍝ Enforce a load
+          dne[neededModules⍳⊂'Fire']←1                                          ⍝ Enforce a load
           :Trap 6 ⋄ ⎕SE._Fire.Fire.Cleanup ⋄ :EndTrap                           ⍝ Get rid of any GUI
           ⎕SE.⎕EX'_Fire'
           '_Fire'⎕SE.⎕NS''
       :EndIf
       :If 1∊dne
-          :If 0=ScanPathsFor⊃dne/tbc
-              'Could not find Fire'⎕SIGNAL 6
+          (success msg)←ScanPathsFor⊃dne/neededModules
+          :If 0=success
+              msg ⎕SIGNAL 6
           :EndIf
-          CreateRefs(~dne)/tbc
+          CreateRefs(~dne)/neededModules
       :EndIf
-      :If ∨/bool←0=↑∘⎕SE._Fire.⎕NC¨tbc
+      :If ∨/bool←0=↑∘⎕SE._Fire.⎕NC¨neededModules
           ⎕←'Copy operation failed:'
-          ⎕←⍪' ',¨bool/tbc
+          ⎕←⍪' ',¨bool/neededModules
           'Fire cannot be started'⎕SIGNAL 11
       :EndIf
       n←⎕SE._Fire.Fire.Run 0
@@ -114,16 +117,29 @@
       paths←';'Split regData
     ∇
 
-    ∇ success←ScanPathsFor objects;paths;regKey;thisPath
+    ∇ (success msg)←ScanPathsFor objects;paths;regKey;thisPath;object
       success←0
       regKey←GetRegistryKey ⍬
       paths←GetPaths regKey
+      msg←'Cannot find the Fire workspace anywhere'
       :For thisPath :In paths
-          :Trap 11
-              objects ⎕SE._Fire.⎕CY thisPath,'\Fire\Fire.dws'
-              success←1
+          :If ⎕NEXISTS thisPath,'\Fire\Fire.dws'
+              :Trap 11
+                  objects ⎕SE._Fire.⎕CY thisPath,'\Fire\Fire.dws'
+                  success←1
+                  msg←''
+                  :Leave
+              :Else
+                  :For object :In ' '~¨⍨↓objects
+                      :Trap 11
+                          object ⎕SE._Fire.⎕CY thisPath,'\Fire\Fire.dws'
+                      :Else
+                          msg←'Module <',object,'> not found in ',thisPath,'\Fire\Fire.dws'
+                      :EndTrap
+                  :EndFor
+              :EndTrap
               :Leave
-          :EndTrap
+          :EndIf
       :EndFor
     ∇
 

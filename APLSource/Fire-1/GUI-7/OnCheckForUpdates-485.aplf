@@ -1,38 +1,33 @@
- OnCheckForUpdates msg;n;code;tag;mcu;gitVersionNo;thisVersionNo;rc
+ OnCheckForUpdates msg;n;code;tag;api;flag;name;url
  #.CursorObj←1
+ name←'Fire'
  n←GetRefTo_n↑,msg
  :If 16>+/1 0.1×2↑⊃(//)'.'⎕VFI 1⊃# ⎕WG'APLVersion'   ⍝ That's when Fire started to have its own installer
      TellAboutVersion n
  :Else
-     mcu←⎕NEW ##.##.Check4Updates(,⊂'Fire')
-     :If '⎕SE'{⍺≡(≢⍺)↑⍵}↑⎕XSI
-         mcu.path2GitHubRestApi←⎕SE._Fire
-         mcu.path2Rumba←⎕SE._Fire
-     :Else
-         mcu.path2GitHubRestApi←#._Fire
-         mcu.path2Rumba←#._Fire
-     :EndIf
+     api←⎕NEW ##.##.#._Fire.GitHubAPIv3(,⊂'aplteam')
      :Trap 0
-         tag←mcu.GetLatestTag
+         tag←api.GetLatestTag name
      :Else
          →∆Exit,TellErrorWhileCheckingForBetterVersion''
      :EndTrap
-     gitVersionNo←⌊##.##.GitHubAPIv3.CastTagname2Number tag
-     thisVersionNo←⌊##.##.GitHubAPIv3.CastTagname2Number 1⊃##.Version
-     :If gitVersionNo≤thisVersionNo
+     :Trap 11
+         flag←api.CheckForUpdate name(1⊃##.Version)
+     :Else
+         →∆Exit,TellErrorWhileCheckingForBetterVersion''
+     :EndTrap
+     :If ~flag
          TellFireIsUp2Date n
      :Else
          msg←⊂'There is a better version available on GitHub: ',tag~'v'
          msg,←'' 'Would you like to download this version?'
          :If ##.Question.YesOrNo msg
-             :Trap 0
-                 rc←mcu.GetExe tag
+             :Trap 11
+                 url←api.GetRelease name'EXE'
              :Else
                  →∆Exit,TellErrorWhileCheckingForBetterVersion''
              :EndTrap
-             :If rc
-                 TellErrorWhileDownloading ⍬
-             :EndIf
+             ##.A.GoToWebPage⍣(0<≢url)⊣url
          :EndIf
      :EndIf
  :EndIf
