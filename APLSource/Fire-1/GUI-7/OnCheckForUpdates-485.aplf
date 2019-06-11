@@ -5,7 +5,7 @@
  :If 16>+/1 0.1×2↑⊃(//)'.'⎕VFI 1⊃# ⎕WG'APLVersion'   ⍝ That's when Fire started to have its own installer
      TellAboutVersion n
  :Else
-     api←⎕NEW ##.##.#._Fire.GitHubAPIv3(,⊂'aplteam')
+     api←⎕NEW ##.##.GitHubAPIv3(,⊂'aplteam')
      :Trap 0
          tag←api.GetLatestTag name
      :Else
