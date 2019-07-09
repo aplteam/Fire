@@ -1,9 +1,9 @@
 
-WORK IN PROGRESS - it would be nice to have this working properly one day
+WORK IN PROGRESS - it would be nice to have this working properly one day{style="color:red;"}
 
 # Fire and Regular Expression
 
-Fire supports Regular Expressions (RegEx). If your have never used them before you need to invest some time in order to master them. Be warned, it is everything but easy, but you will be rewared: RegEx are extremely powerful and allow you to do things with Fire that cannot be achieved by other means.
+Fire supports Regular Expressions (RegEx). If you have never used them before you need to invest some time in order to master them. Be warned, it is everything but easy, but you will be rewared: RegEx are extremely powerful and allow you to do things with Fire that cannot be achieved by other means.
 
 ## Case Study I: Variables assignment 
 

@@ -142,7 +142,7 @@ However, by default word boundaries are defined by the ANSI character set. That 
 
 `ß` is a Unicode but not an ANSI character; it is therefore considered a word boundary by the RegEx engine. Luckily with version 16.0 of Dyalog APL a new version of the underlying PCRE library is shipped, and this version offers the option to use Unicode properties for word boundaries.
 
-This new feature can be switched on and off with "UCP" option which was introduced in version 16.0:
+This new feature can be switched on and off with the "UCP" option which was introduced in version 16.0:
 
 ~~~
       ⍴'\bit\b'⎕S 0⍠('UCP' 1)⊣'itßelf'

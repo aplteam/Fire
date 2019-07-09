@@ -3,6 +3,8 @@
      ##.G.Case←n.Case.State
      ##.G.Case2←n.Case2.State
      ##.G.APL_Name←n.APL_Name.State
+     ##.G.IgnoreRefs←n.IgnoreRefs.State
+     ##.G.IgnoreRefs2←n.IgnoreRefs2.State
      ##.G.Code←n.Code.State
      ##.G.Code2←n.Code2.State
      ##.G.Vars←n.Vars.State

@@ -6,7 +6,7 @@
 
 ## Features
 
-Fire's main feature is the "Replace" command which allows you in an easy yet powerful way to replace certain strings in all or selected objects.
+Fire's main feature is the "Replace" command which allows you in an easy yet powerful way to replace certain strings in all or selected objects in the workspace.
 
 Other features are:
 
@@ -23,7 +23,7 @@ Other features are:
 * Search only the hits of the last search. 
 
 
-## Difference between Dyalog's built-in Search tool and Fire
+## Difference between Dyalog's built-in search tool and Fire
 
 * Fire handles circular references correctly (thanks to Phil Last)
 
@@ -41,7 +41,7 @@ Specifying anything in the "Start looking here" control is supported by autocomp
 
 ![](Images/Fire_02.png)
 
-After having performed a search one might want to check the hits. This can be achieved by selecting the "Report hits" menu command from the "Report" menu:
+After having performed a search one might want to check the hits. This can be achieved by selecting the "Report hits" menu command from the "Report" menu or by pressing F2:
 
 
 ![](Images/HitReport.png)
@@ -53,14 +53,14 @@ The report offers a context menu on the items in the left pane:
 
 ### The "Replace" feature
 
-The Replace feature allows you to change the workspace on a global level:
+The "Replace" feature allows you to change the workspace on a global level:
 
 ![](Images/Replace.png)
 
 There are two modes available:
 
-* "All in one go" allows you to check all changes in a single document. 
-* "One-by-one" allows you to compare and edit one object after the other.
+* "All in one go" allows you to check all changes in a single document before actually committing the changes.
+* "One-by-one" allows you to compare and edit one object after the other, and commit changes independently from each other.
 
 
 #### "All in one go" mode

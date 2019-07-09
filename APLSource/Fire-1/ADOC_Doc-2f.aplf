@@ -7,5 +7,4 @@
 ⍝ ## Supported platforms
 ⍝ Fire is a Windows-only tool.
 ⍝ ## How to install Fire
-⍝ Fire is designed to be installed as a Dyalog user command. It requires version 15.0 Unicode or later.\\
-⍝ There is a file "HowToInstall.html" available with details.
+⍝ Sincee version 7 Fire comes with its own installer. Just double-click it and you are done.

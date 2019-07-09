@@ -1,6 +1,6 @@
  History
 ⍝⍝ Contains information regarding the last couple of releases. A full history is available on GitHub. (This line is ignored)
-⍝ * 7.1.4
-⍝   * The HTML files offered via the "Help" menu crashed Fire in case there was a space somewere on the fully qualified filename.
+⍝ * 7.2.0
+⍝   * New option "Ignore references" introduced.\\
 ⍝ \\
 ⍝ For information regarding older version see <https://github.com/aplteam/Fire/releases>

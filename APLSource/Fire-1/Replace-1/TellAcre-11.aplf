@@ -2,10 +2,11 @@
 ⍝ Tells acre that ⍵ (fully qualified name) got changed.
 ⍝ Returns 0 in case acre did not take action and 1 otherwise
  r←⍬
+ flag←0
  :If ~0∊⍴name
  :AndIf ##.IsAnyAcreAround
      :If 9=⎕SE.⎕NC'acre'
-         flag←~0∊⍴' '~⍨⎕SE.UCMD'Acre.SetChanged ',(∊name)
+         flag←0≠≢' '~⍨⎕SE.UCMD'Acre.SetChanged ',(∊name)
      :EndIf
      :If flag∧0=testFlag
          ⎕←'acre was told successfully about ',name

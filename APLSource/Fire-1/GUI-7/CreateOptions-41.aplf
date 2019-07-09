@@ -33,5 +33,17 @@
  n.APL_Name.onSelect←'OnAPL_Name'
  n.APL_Name.onKeyPress←'OnKeyPressStandard'
 
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' '&Ignore references'
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'Posn'(75 10)
+ ∆,←⊂'State'##.G.IgnoreRefs
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ ∆,←⊂'TipObj'n.TipObj
+ msg←'Without ticking this refs are treated exactly like the originals'
+ ∆,←⊂'Tip'(Split msg)
+ n.IgnoreRefs←⍎'IgnoreRefs'rf.⎕WC ∆
+ n.IgnoreRefs.onKeyPress←'OnKeyPressStandard'
+
  {}PolishWidth rf
  ⍝ Done
