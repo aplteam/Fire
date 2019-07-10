@@ -1,4 +1,4 @@
- R←Test_acre4_002(stopFlag batchFlag);n;n2;oldPath;⎕TRAP;openAcreProjects;acreTestProjectName;changeFilesFolder;acreTestProjectFolder
+ R←Test_acre4_002(stopFlag batchFlag);n;n2;oldPath;⎕TRAP;openAcreProjects;acreTestProjectName;changeFilesFolder;acreTestProjectFolder;more;en;rc
 ⍝ Check whether acre 4 reacts correctly when an object is deleted by Fire and there are self-refs around.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
 
@@ -29,7 +29,8 @@
  #.FireAcreTest.MyForm.⎕FX'r←Universe' 'r←''Includes world'''
  {}#.FireAcreTest.⎕NEW #.FireAcreTest.MyClass
  acreTestProjectName←'FireAcreTestTemp'
- #.FilesAndDirs.RmDir'..\',acreTestProjectName
+ (rc en more)←#.FilesAndDirs.RmDir'.\',acreTestProjectName
+ more Assert 0=rc
  {}⎕SE.UCMD'acre.CreateProject ',acreTestProjectName,' #.FireAcreTest -casecod=''on'' -keephistory=''on'''
 
  1 #._Fire.Fire.Run 0

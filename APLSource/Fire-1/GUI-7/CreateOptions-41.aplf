@@ -37,9 +37,11 @@
  ∆,←⊂'Caption' '&Ignore references'
  ∆,←⊂'Style' 'Check'
  ∆,←⊂'Posn'(75 10)
- ∆,←⊂'State'##.G.IgnoreRefs
+ ∆,←⊂'State' 0  ⍝ ##.G.IgnoreRefs
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'TipObj'n.TipObj
+ ∆,←⊂'Active' 0
+ ∆,←⊂'Visible' 0
  msg←'Without ticking this refs are treated exactly like the originals'
  ∆,←⊂'Tip'(Split msg)
  n.IgnoreRefs←⍎'IgnoreRefs'rf.⎕WC ∆

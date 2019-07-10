@@ -1,7 +1,7 @@
 [parm]:toc            = 3
 [parm]:numberHeaders  = 2 3 4
 [parm]:collapsibleTOC = 1
-
+[parm]:saveHTML       = 0 
 
 
 # Fire
@@ -51,9 +51,9 @@ Fire also overcomes a couple of problems that Dyalog's built-in Search tool is s
 
 Since version 7.1.0 Fire comes with its own installer. Just double-click it and your are done. It does not require admin rights.
 
-The installer installs Fire into `%USERPROFILE%\Documents\MyUCMDs` which translates to `C:\Users\{userid}\Documents\MyUCMDs` with a default Windows installation. This folder, it it exists, is scanned by Dyalog for user commands.
+The installer installs Fire into `%USERPROFILE%\Documents\MyUCMDs` which translates to `C:\Users\{userid}\Documents\MyUCMDs` with a default Windows installation. This folder, if it exists, is scanned by Dyalog for user commands.
 
-However, if you have used Fire before version 7.1 then you might have installed it somewhere different. If this is the case then your are advised to remove Fire from that folder.
+However, if you have used Fire before version 7.1 then you might have installed it somewhere different. If this is the case then your are advised to remove Fire from that folder before running the installer.
 
 Note that installing into `%USERPROFILE%` means that you have to install it separately for every user who wants to use Fire.
 
@@ -66,9 +66,8 @@ After having installed Fire you can start it by executing:
 ~~~
 
 The User Command checks whether Fire is already available in `⎕SE`. If that is not the case then it is copied into `⎕SE`. From now on it is started directly from `⎕SE` which you might find significantly faster than loading it into `⎕SE` first depending on where Fire is copied from in your environment.
-Of course you can make that change persistent by saving your session.
 
-However, when a new version of Fire comes along you need a way to load this new version. This can be achieved by specifying an optional parameter:
+Of course you can make that change persistent by saving your session. However, when a new version of Fire comes along you need a way to load this new version. This can be achieved by specifying an optional parameter:
 
 ~~~
 ]Fire -fl
@@ -91,6 +90,7 @@ However, when a new version of Fire comes along you need a way to load this new 
 1. Class instances.
 1. GUI instances which have `KeepOnClose←0`.
 1. Ghostly namespaces.
+1. References
 
 
 ## Ghostly namespaces
@@ -124,7 +124,7 @@ This statement does not throw an error, so somehow it was successful. Referencin
 ~~~
 However, `⎕IO` **must** be a private property of the class, so it can **never** be set or even referenced directly: you cannot specify anywhere an "Access Public" statement for `⎕IO`.
 
-But since we managed to execute these statements successfully (`⎕FX 'code'` and `⎕IO←0`) the question is where they have been executed. Well, in the ghostly namespace which exists together with the class script, sharing the same name. 
+But since we managed to execute these statements successfully (`⎕FX 'Hello'` and `⎕IO←0`) the question is where they have been executed. Well, in the ghostly namespace which exists together with the class script, sharing the same name. 
 
 Even if Fire would show the function `Hello` in the hit list there is another anomaly: executing `Test.⎕ed 'Hello'` doesn't allow you to edit it. That means that Fire does not have the means to allow you editing the code.
 
@@ -193,12 +193,11 @@ By the way, if for any reason you want to know whether there is code somewhere i
 
 Note that code that exists in a ghostly namespace associated with an external object (Like an Excel workbook) is not reported; Fire cares about APL objects only.
 
-
 ## Deleting stuff
 
 The "Replace" dialog has a check box "Delete lines/items with hits". That seems to be easy enough: any lines that carry the search string are going to be deleted. However, there are details you need to be aware of:
 
-1. The first and the last line of any script is never deleted, no matter whether they carry a hit or not.
+1. The first and the last line of any script is never deleted, no matter whether they carry a hit or not. It should be obvious why that is.
 
 1. The first line of any function or operator is never deleted, no matter whether they carry a hit or not. However, be aware of 6.
 
@@ -221,7 +220,7 @@ Avoiding `⎕DQ` works well in many circumstances but it might cause problems wh
 
 ### Editing
 
-When you edit one or more APL objects from Fire you can double-click another APL object in an Edit window successfully. You can also go to the session and add another Edit window to those which are already open. However, you are advised to use this feature with care. 
+When you edit one or more APL objects from Fire you can double-click another APL object in an Edit window successfully. You can also go to the session and add another Edit window to those which are already open. However, you are advised to use this with care. 
 
 
 ### Report hits

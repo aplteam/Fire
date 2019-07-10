@@ -1,9 +1,10 @@
  RemoveClones←{
-     0=(n.Tab1≡n.IgnoreRefs2.##.##.##.TabObj)⊃G.(IgnoreRefs IgnoreRefs2):⍵
+ ⍝ Remove all references pointing elsewhere: we don't want objects to appear twice,
+ ⍝ or in a different place than specified in G.LookIn
      list←⍵
-     (⊂⍕G.LookIn)∊'#' '⎕SE':list
      names←⍕¨list[;0]
-     b1←names≡¨⊂G.LookIn
-     b2←(0=≢¨names)∨(G.LookIn,'.'){⍺∘≡¨(≢⍺)↑¨⍵}names
-     (b1∨b2)⌿list
+     b1←names≡¨⊂G.LookIn                                ⍝ Get rid of those who live elsewhere
+     b2←(0=≢¨names)∨(G.LookIn,'.'){⍺∘≡¨(≢⍺)↑¨⍵}names    ⍝ When not empty then they must live in G.LookIn
+     b3←names∊,¨'#' '⎕SE'                               ⍝ Make exceptions for root objects, or will loose scripts
+     (b3∨b1∨b2)⌿list
  }

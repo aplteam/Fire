@@ -3,8 +3,6 @@
 ⍝ 1: Returns a list of references with all (always!) named namespaces in "ref"
 ⍝    and optionally (depending on G.Instances) also instances of forms, sockets
 ⍝    etc. but NOT classes.
-⍝    Note that instances of classes can also be scanned but by ticking the
-⍝    "Class instances" option in the "Object types" group.
 ⍝ 2: Return abnomalies
 ⍝ Semi-global ∆buffer is used to to collect results while running recursively
  type←↑{(0<⎕NC ⍵):⍎⍵ ⋄ 1}'type'

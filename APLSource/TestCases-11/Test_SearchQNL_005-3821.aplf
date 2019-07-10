@@ -1,6 +1,16 @@
  R←Test_SearchQNL_005(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search
 ⍝ Search for "QAN" in #.TicToc with a ref pointing to a non-existing script.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+
+ :If 1
+    ⍝ This test case is not activce because we have not allowed the user (yet?!)
+    ⍝ to un-tick the "Ugnore references" check box. The reason is that the user
+    ⍝ is probably not interested in references ever.
+     R←∆Inactive
+     :Return
+ :EndIf
+
+
  R←∆Failed
 
 ⍝ Preconditions
