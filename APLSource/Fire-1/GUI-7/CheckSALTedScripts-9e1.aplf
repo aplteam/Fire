@@ -1,5 +1,6 @@
  CheckSALTedScripts←{
-⍝
+⍝ Check whether any SALT managed scripts got changed and if so report them.
+⍝ This is because Fire changes thenm in the WS but does NOT tell SALT about it.
      (0∊no←⍴##.G.ChangedSaltedScript):⍬
      m←⊂(⍕no),' script',((1<no)/'s'),' managed by SALT got changed,'
      m,←⊂' Would you like to get ',((1=no)/'a '),'SALT "Save" command',((1<no)/'s'),' printed to []SE?'

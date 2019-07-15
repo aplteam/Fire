@@ -1,5 +1,9 @@
 [parm]:saveHTML = 0 
 
+# Release Notes 7.2.1
+
+The combo box "Search for" did not carry the search terms any more from earlier searches.
+
 # Release Notes 7.2
 
 This release changes the way Fire processes references pointing to namespaces.

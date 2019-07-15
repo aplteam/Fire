@@ -5,24 +5,26 @@
 ⍝ If this is not the case then Fire is copied into []SE from
 ⍝ the same directory the User Command stems from and then started.
 ⍝ Kai Jaeger ⋄ APL Team Ltd
-⍝ Version 2.4.0 - 2019-06-10
-⍝ * In case a requiered module is not found an detail error report is provided.
-⍝ Version 2.3.0 - 2019-06-04
-⍝ * Fire now goes into `⎕SE._Fire.Fire` while all stuff that is needed but does not exist in ⎕SE
-⍝   goes into `⎕SE._Fire`. For stuff that exists in `⎕SE` refs are created in `⎕SE._Fire`.
-⍝ Version 2.2.0 - 2019-03-11
-⍝ * `GitHubAPIv3` added to the list of to-be-copied stuff.
-⍝ Version 2.1.1 - 2018-05-26
-⍝ The -fl option did not get rid of the GUI if Fire was already running.
-⍝ Version 2.1.0 - 2018-04-26
-⍝ * Tidied up.
-⍝ Version 2.0.1 - 2018-04-23
-⍝ * Minor change regarding the documentation.
-⍝ Version 2.0.0 - 2017-07-10
-⍝  * Massive changes: compatible only with Fire 6.0 and later.
-⍝  * Accepts `.` as an argument. Treated as "Copy current namespace into `Start looking here:`"
-⍝ Version 1.3.1 - 2017-02-24
-⍝  * Bug fix for the CommandFolder/WinReg key/separator problem
+⍝ * Version 2.4.1 - 2019-07-15
+⍝   * Bug fix: File was always loaded since the introduction of the ⎕SE._Fire level.
+⍝ * Version 2.4.0 - 2019-06-10
+⍝   * In case a requiered module is not found an detail error report is provided.
+⍝ * Version 2.3.0 - 2019-06-04
+⍝   * Fire now goes into `⎕SE._Fire.Fire` while all stuff that is needed but does not exist in ⎕SE
+⍝     goes into `⎕SE._Fire`. For stuff that exists in `⎕SE` refs are created in `⎕SE._Fire`.
+⍝ * Version 2.2.0 - 2019-03-11
+⍝   * `GitHubAPIv3` added to the list of to-be-copied stuff.
+⍝ * Version 2.1.1 - 2018-05-26
+⍝   The -fl option did not get rid of the GUI if Fire was already running.
+⍝ * Version 2.1.0 - 2018-04-26
+⍝   * Tidied up.
+⍝ * Version 2.0.1 - 2018-04-23
+⍝   * Minor change regarding the documentation.
+⍝ * Version 2.0.0 - 2017-07-10
+⍝   * Massive changes: compatible only with Fire 6.0 and later.
+⍝   * Accepts `.` as an argument. Treated as "Copy current namespace into `Start looking here:`"
+⍝ * Version 1.3.1 - 2017-02-24
+⍝   * Bug fix for the CommandFolder/WinReg key/separator problem
 
     ∇ r←List;⎕IO;⎕ML ⍝ this function usually returns 1 or more namespaces (here only 1)
       :Access Shared Public
@@ -40,11 +42,10 @@
       ⎕IO←0 ⋄ ⎕ML←3 ⋄ ⎕WX←3
       r←0 0⍴''
       flag←Args.Switch'fl'
-      neededModules←'APLTreeUtils' 'Fire' 'FilesAndDirs' 'OS' 'WinReg' 'GitHubAPIv3'  ⍝ to be copied
+      neededModules←'APLTreeUtils' 'FilesAndDirs' 'OS' 'WinReg' 'GitHubAPIv3'   ⍝ to be copied
       '_Fire'⎕SE.⎕NS''
       dne←0=↑∘⎕SE.⎕NC¨neededModules                                             ⍝ do not exist (dne)
       :If flag
-          dne[neededModules⍳⊂'Fire']←1                                          ⍝ Enforce a load
           :Trap 6 ⋄ ⎕SE._Fire.Fire.Cleanup ⋄ :EndTrap                           ⍝ Get rid of any GUI
           ⎕SE.⎕EX'_Fire'
           '_Fire'⎕SE.⎕NS''
@@ -55,6 +56,12 @@
               msg ⎕SIGNAL 6
           :EndIf
           CreateRefs(~dne)/neededModules
+      :EndIf
+      :If 0=⎕SE._Fire.⎕NC'Fire'
+          (success msg)←ScanPathsFor'Fire'
+          :If 0=success
+              msg ⎕SIGNAL 6
+          :EndIf
       :EndIf
       :If ∨/bool←0=↑∘⎕SE._Fire.⎕NC¨neededModules
           ⎕←'Copy operation failed:'

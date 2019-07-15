@@ -1,0 +1,12 @@
+ R←Test_ZZZ_996(stopFlag batchFlag);⎕TRAP;rn;buff;searchFor
+⍝ Check the "ReleaseNotes.md" for carrying the correct version
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+ rn←#.APLTreeUtils.ReadUtf8File'Docs\ReleaseNotes.md'
+ searchFor←'# Release Notes '
+ buff←rn⊃⍨1⍳⍨searchFor∘{⍺≡(≢⍺)↑⍵}¨rn
+ buff←(≢searchFor)↓buff
+ →PassesIf buff≡{⍵/⍨3>+\'.'=⍵}1⊃##.Fire.Version
+
+ R←∆OK

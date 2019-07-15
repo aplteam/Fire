@@ -21,7 +21,11 @@
      ##.G.Greedy←n.Greedy.State
      ##.G.NamesOnly←IsNamesOnlySearch n
      ##.G.Container←n.Container.State
-     ##.G.LookForList←⌽∪⌽##.G.LookForList,(n.SearchFor.Items,⊂n.SearchFor.Text)~⊂''
+     txt←n.SearchFor.Text
+     ##.G.LookForList←⌽∪⌽##.G.LookForList,(n.SearchFor.Items,⊂txt)~⊂''
+     n.SearchFor.Items←##.G.LookForList
+     n.SearchFor.SelItems[]←0
+     _←{0=≢⍵:⍬ ⋄ n.SearchFor.SelItems[##.G.LookForList⍳⊂⍵]←1}txt
      0∊≢¨##.G.LookForList:.
    ⍝ G.SearchFor2 might or might not be lowercase version of G.SearchFor depending
    ⍝      ↓↓↓↓↓↓↓↓↓↓   on user preferences. That's why this must be done late.
