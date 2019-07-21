@@ -1,5 +1,12 @@
 [parm]:saveHTML = 0 
 
+# Release Notes 7.2.2
+* When an object was removed from the hit list then the message in the status bar was not changed accordingly.
+* When an object was removed from the hit via "Report Hits" then the context menu should not offer "Remove" again.
+* A "Hit report" windows should be closed automatically when the user hits either "Find" or "Replace".
+* A "Replace" operation should clear the hit list because it might well be outdated.
+* Information provided in the status bar improved.
+
 # Release Notes 7.2.1
 
 The combo box "Search for" did not carry the search terms any more from earlier searches.

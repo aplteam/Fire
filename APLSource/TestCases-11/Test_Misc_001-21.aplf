@@ -9,8 +9,7 @@
  list~←⊂''
  xml←⎕XML'flat'##.APLTreeUtils.ReadUtf8File'publish.config'
  needed←{⍵⌿⍨⍵[;1]≡¨⊂'script'}{⍵⌿⍨⍵[;0]=2}(1+xml[;1]⍳⊂'needs')↓xml
- needed⌿⍨←{0=≢⍵:1 ⋄ ind←⍵[;0]⍳⊂'development' ⋄ ind=≢⍵:1 ⋄ 'true'≢1⊃⍵[ind;]}¨needed[;3]
- needed←needed[;2],⊂'Fire'
+ needed←({0=≢⍵:1 ⋄ ind←⍵[;0]⍳⊂'development' ⋄ ind=≢⍵:1 ⋄ 'true'≢1⊃⍵[ind;]}¨needed[;3])⌿needed[;2]
  →PassesIf 0=+/bool←~list∊needed
  →PassesIf 0=+/bool←~needed∊list
 

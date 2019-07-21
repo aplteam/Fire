@@ -2,8 +2,8 @@
 ⍝ Writes ⍵ to the "Text" field of the status bar field "info"
      ⍺←0
      n.Info.Text←⍵
-     (0=⍺):⍬
-     n.Info.Text,←' in ',(⍕##.G.ProcessingTime),' seconds processing time'
+     (0=⍺):shy←⍬
+     n.Info.Text,←';  processing time: ',(⍕##.G.ProcessingTime),' seconds'
      ##.∆AI←0
-     ⍬
+     1:shy←⍬
  }

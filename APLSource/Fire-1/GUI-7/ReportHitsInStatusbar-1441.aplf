@@ -1,12 +1,14 @@
- ReportHitsInStatusbar←{
-⍝
-     ⍺←1
-     reportCPU_time←⍺
-     (noOfHits noOfNames noOfScannedObjs noOfContainers)←⍵
+ {r}←{reportCPU_time}ReportHitsInStatusbar(noOfHits noOfNames noOfScannedObjs noOfContainers);tx
+ r←⍬
+ reportCPU_time←{0<⎕NC ⍵:⍎⍵ ⋄ 1}'reportCPU_time'
+ :If 0=noOfHits
+     tx←'No hits found'
+ :Else
      tx←(⍕noOfHits),' hit',((1≠noOfHits)/'s')
      tx,←' found in ',(⍕noOfNames)
-     tx,←' of ',(⍕noOfScannedObjs),' APL object',(1≠noOfScannedObjs)/'s'
-     tx,←{0∊⍴⍵:'' ⋄ ' from ',(⍕⍵),' container',((1≠⍵)/'s')}noOfContainers
-     _←reportCPU_time WriteInfo tx
-     1:r←⍬
- }
+     tx,←{(0<⍵)/' of ',⍕⍵}noOfScannedObjs
+     tx,←' APL object',(1≠noOfScannedObjs)/'s'
+     tx,←{(0<≢⍵)/' from ',(⍕⍵),' container',((1≠⍵)/'s')}noOfContainers
+ :EndIf
+ reportCPU_time WriteInfo tx
+⍝Done

@@ -29,7 +29,7 @@
  n.SearchFor.Text←'#.UTILS.#.UTILS.'
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp #._Fire.Fire.G.NoOfObjects≠⍴list
+ →GoToTidyUp #._Fire.Fire.G.NoOfObjects≠⍴list    ⍝ Error? Try again!
  R←∆OK
 
 ∆TidyUp:

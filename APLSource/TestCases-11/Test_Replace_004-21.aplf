@@ -32,7 +32,7 @@
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form
  list←'#.TestData.Replacements' '#.TestData.Replacements.ns_1' '#.TestData.Replacements.ns_3'
- →GoToTidyUp~list{(∧/⍺∊⍵)∧(∧/⍵∊⍺)}∪n.HitList.ReportInfo[;0]
+ →GoToTidyUp~list{(∧/⍺∊⍵)∧(∧/⍵∊⍺)}∪n.HitList.ReportInfo[;0]  ⍝ Error? Try again!
  list←'InText' 'class_1' 'class_3' 'fns1' 'fns1' 'fns1' 'fns3' 'interface_1' 'opr1'
  →GoToTidyUp~n.HitList.Items ∆LazyMatch list
  ss←'r←#.UTILS.#.UTILS.DAB''aaa'''   ⍝ Search string

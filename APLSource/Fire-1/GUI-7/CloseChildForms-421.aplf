@@ -1,0 +1,12 @@
+ CloseChildForms←{
+⍝ Close all children of type "Form" of ⍵, usually the main GUI of Fire.
+⍝ This avoids a "Hit Report" staying on with outdated information
+     ⍺←⍬
+     without←⍺
+     6::1
+     form←⍵
+     list←('Form'⎕WN form)~without
+     0=≢list:shy←1
+     _←{2::⍬ ⋄ ⍵.Close}¨list
+     1:shy←1
+ }

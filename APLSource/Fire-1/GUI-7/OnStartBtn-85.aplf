@@ -9,6 +9,7 @@
  :If CheckForConsistency n
      {}WriteInfo'Search cancelled'
  :Else
+     CloseChildForms n.Form
      ⎕TRAP←(988 'C' '→∆RegExFailed')(0 'S')
      ref_____←⎕NS''              ⍝ Trick to hide `parms` from Fire itself.
      ref_____.parms_____←PrepareSearch ⍬
