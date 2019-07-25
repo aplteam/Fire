@@ -93,7 +93,24 @@ Of course you can make that change persistent by saving your session. However, w
 1. References
 
 
-## Ghostly namespaces
+## Anomalies
+
+### Scripted versus non-scripted namespaces
+
+Scripted namespace are in some ways an anomaly in Dyalog APL. For example, if there is a function `foo` in a namespace `NS` then the statement `NS.⎕EX 'foo'` deletes the function from an ordinary (non-scripted) namespace but _not_ from a scripted namespace, though it _is_ removed from the namespace that is connected to the script. `⎕FX` behaves similarly strange.
+
+Fire processes functions and operators in scripted namespaces in the same way as in ordinary namespaces. That means that a function that carries a hit is listed on its own in both cases. 
+
+A namespace script is _only_ listed in the hit list when it carries variable definitions or comments with hits.
+
+However, this is inconsistent with what Fire does with functions and operators: in ordinary namespaces a variable is listed on it's own only when its value --- not the name! --- carries a hit. For scripted namespaces it's listed on its own when the value _or_ the name carries a hit.
+
+The reason for this inconsistency is that is is very difficult for Fire to tell function assignments (like `fns←+/`) from variable assignments.
+
+Since "Replace" is only available for variables of certain types anyway, this seemed still the best way to deal with the problem.
+
+
+### Ghostly namespaces
 
 Note that Fire does not search ghostly namespaces. These are namespaces which exist together with GUI objects as well as classes. If you did not know about ghostly namespaces then it might be best to ignore them: they can be quite confusing. 
 
@@ -122,7 +139,7 @@ This statement does not throw an error, so somehow it was successful. Referencin
       #.Test.⎕IO
 1
 ~~~
-However, `⎕IO` **must** be a private property of the class, so it can **never** be set or even referenced directly: you cannot specify anywhere an "Access Public" statement for `⎕IO`.
+However, `⎕IO` _must_ be a private property of the class, so it can _never_ be set or even referenced directly: you cannot specify anywhere an "Access Public" statement for `⎕IO`.
 
 But since we managed to execute these statements successfully (`⎕FX 'Hello'` and `⎕IO←0`) the question is where they have been executed. Well, in the ghostly namespace which exists together with the class script, sharing the same name. 
 
@@ -133,7 +150,7 @@ The final obstacle: making a change to the class `Test` will make `Hello` disapp
 Therefore it seems to be best to ignore ghostly namespaces altogether.
 
 
-### GUI objects and ghostly namespaces
+#### GUI objects and ghostly namespaces
 
 Investigate this code:
 
@@ -145,7 +162,7 @@ Investigate this code:
 Note that strictly speaking this is the same thing: There is a GUI object called "MyForm" but there is also a ghostly namespace holding the "Hello" function. However, Dyalog APL perfectly keeps that as a secret: it has always been that way since GUI objects were introduced into Dyalog APL a long time ago, yet nobody ever realized this because Dyalog APL behaved in a way that makes that actually impossible.
 
 
-### Semi-ghostly namespaces
+#### Semi-ghostly namespaces
 
 Note that this code:
 

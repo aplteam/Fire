@@ -55,7 +55,7 @@
  ∆Process n.Form
  →GoToTidyUp 7≠#._Fire.Fire.Replace.NoOfReplacements
  code←1↓↑,/(⎕UCS 13),¨⎕SRC #.TEMP.Foo
- →GoToTidyUp 12≠+/'abcd←2000'⍷code
+ →GoToTidyUp 11≠+/'abcd←2000'⍷code
  R←∆OK
 
 ∆TidyUp:

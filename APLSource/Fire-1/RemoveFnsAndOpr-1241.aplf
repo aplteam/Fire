@@ -1,41 +1,25 @@
- body←RemoveFnsAndOpr body;mask;b1;b2;b;split;ind;buffer;hits;part;start;length;buff
+ body←RemoveFnsAndOpr body;masked;tradFns;b1;b0;b;isCR
 ⍝ Remove all functions and operators from script code ⍵.
 ⍝ This is necessary because fns and opr are dealt with already as if
 ⍝ they were members of an ordinary namespace, so we just need to focus
 ⍝ on stuff outside functions and operators, typically comments and the
 ⍝ assignment of any variables.
 ⍝ We must ignore "∇{}" inside comments and text, and we must be able to
-⍝ deal with both, multiline dfns and interlocked dfns.
- mask←Replace.MaskText¨body
- mask←{((⍴⍵)=i←⍵⍳'⍝'):⍵ ⋄ (⍴⍵)↑i↑⍵}¨mask
- (body mask)←{1↓Simplify CR,¨⍵}¨body mask
- b1←'{'=mask
- b2←'}'=mask
- b←(CR≠mask)∧b2∨0≠(+\b1)-+\b2
- (b1/b)←0                           ⍝ Let the "{" survive - we need this later
+⍝ deal with both, multiline dfns, nested dfns and dfns without a name.
+ masked←Replace.MaskText¨body
+ masked←{((⍴⍵)=i←⍵⍳'⍝'):⍵ ⋄ (⍴⍵)↑i↑⍵}¨masked            ⍝ Remove comments from `masked`
+ (body masked)←{1↓Simplify CR,¨⍵}¨body masked           ⍝ We need a simple vector from now an
+ isCR←body=CR                                           ⍝ CR must survive to keep the original structure intact
+ tradFns←{⍵∨≠\⍵}'∇'=masked                              ⍝ Where are trad fns?
+ (tradFns/body)←' '                                     ⍝ Remove...
+ (tradFns/masked)←' '                                   ⍝ ...them!
+ b1←'{'=masked                                          ⍝ Opening curlies
+ b0←'}'=masked                                          ⍝ Closing curlies
+ b←(masked≠CR)∧b0∨0≠(+\b1)-+\b0                         ⍝ Where are the (possibly nested) dfns?
+ (b1/b)←0                                               ⍝ Let the "{" survive - we need this later for removing the dfn names
  (b/body)←' '
- (b/mask)←' '
- body[Where(CR≠mask)∧({⍵∨≠\⍵}'∇'=mask)]←' '
- ((mask='}')/mask)←' '
+ body←'\w{1,}←\{'⎕R ReplaceAssignedDfnNameBySpace⊣body  ⍝ Get rid of "name←{"
+ (('{'=masked)/body)←' '                                ⍝ Get rid of opening curlies (lambdas)
+ (isCR/body)←CR                                         ⍝ Brings the CRs back for sure (those tfns might have been replaced by spaces)
  body←CR A.Split body
- mask←CR A.Split mask
- b1←∨/¨mask='{'
- b2←~'⋄'∊¨b1/mask                   ⍝ Those in b1 have no "⋄"
- ind←b2/Where b1                  ⍝ Transform into index
- mask[ind]←(↑∘⍴¨mask[ind])⍴¨' '     ⍝ ...therefore they are getting blanks.
- b1[b2/Where b1]←0                ⍝ Forget those
- :If 0<+/b1                         ⍝ Are there any "⋄" at all?
-     split←{1,'⋄'=⍵}¨b1/mask
-     buffer←split{⎕IO←⎕ML←1 ⋄ ⍺⊂'⋄',⍵}¨b1/body
- :AndIf 0<+/b2←∊{∨/'←{'⍷⍵}¨¨buffer
-     (b2/buffer)←{1↓↑,/{(∨/'←{'⍷⍵):(⍴,⍵)⍴' ' ⋄ ⍵}¨⍵}¨b2/buffer
-     (b1/body)←buffer
- :EndIf
- ⍝ Get rid of "name←{"
- hits←⌽'\w{1,}←\{'⎕S 2 0 1⊣body
- :For part start length :In hits
-     buff←part⊃body
-     buff←(-start)⌽(length⍴' '),length↓start⌽buff
-     (part⊃body)←buff
- :EndFor
 ⍝Done

@@ -13,7 +13,7 @@
          :Return
      :EndTrap
      →(0∊⍴body)/0
-     body←1↓##.Simplify ##.NL,¨body
+     body←(1↓##.Simplify ##.NL,¨body),' '
      body←0 ##.ReplaceSpecialChars¨body
      body[ind]←'<span class="diff">'∘,¨body[ind]
      bool2←(⍴body)⍴1

@@ -1,5 +1,13 @@
 [parm]:saveHTML = 0 
 
+# Release Notes 7.2.3
+* Bug fixes:
+  * With commit from 2019-05-30 a serious bug was introduced regarding removing any items from the hit list.
+
+    Rather than just removing the selected items the objects were also deleted from the workspace. However, acre was **not** told to delete them, so after re-opening the project everything was back again.
+* The assignment of a variable in a namespace script was ignored when on the same line a dfn was defined and the next function was a trad fun that carried the definition of a dfns.
+
+
 # Release Notes 7.2.2
 * When an object was removed from the hit list then the message in the status bar was not changed accordingly.
 * When an object was removed from the hit via "Report Hits" then the context menu should not offer "Remove" again.

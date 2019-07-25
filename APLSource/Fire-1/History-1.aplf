@@ -1,12 +1,11 @@
  History
 ⍝⍝ Contains information regarding the last release. A full history is available on GitHub. (This line is ignored)
-⍝ * 7.2.2
-⍝   * When an object was removed from the hit list then the message in the status bar was not changed accordingly.
-⍝   * When an object was removed from the hit via "Report Hits" then the context menu should not offer "Remove" again.
-⍝   * A "Hit report" windows should be closed automatically when the user hits either "Find" or "Replace".
-⍝   * A "Replace" operation should clear the hit list because it might well be outdated.
-⍝   * Information provided in the status bar improved.
-⍝ * 7.2.1
-⍝   * Bug fix: the "Search for" field lost its memory ot one stage.
+⍝ * 7.2.3
+⍝   * Bug fixes:
+⍝     * With commit from 2019-05-30 a serious bug was introduced regarding removing any items from the hit list.\\
+⍝       Rather than just removing the selected items the objects were also deleted from the workspace. However,
+⍝       acre was **not** told to delete them, so after re-opening the project everything was back again.
+⍝     * The assignment of a variable in a namespace script was ignored when on the same line a dfn was defined
+⍝       and the next function was a trad fun that carried the definition of a dfns.
 ⍝ \\
 ⍝ For information regarding older version see <https://github.com/aplteam/Fire/releases>

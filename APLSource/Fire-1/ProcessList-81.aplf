@@ -18,7 +18,6 @@
          buff←ScanScripts container name type
      :EndIf
      r,←buff
-     ⍎(0∊⍴¨,¨r)/'.'  ⍝ There was once a strange bug, so we check just in case...
      :If ∆CANCEL
          :Leave
      :EndIf

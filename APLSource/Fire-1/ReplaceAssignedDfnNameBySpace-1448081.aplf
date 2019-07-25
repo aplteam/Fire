@@ -1,0 +1,4 @@
+ ReplaceAssignedDfnNameBySpace←{
+     ns←⍵
+     ns.Lengths⍴' '
+ }

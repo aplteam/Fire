@@ -4,7 +4,6 @@
 ⍝ * List of indices into the Hit list.
 ⍝ * Empty vector. In that case SelItems of the Hit list rules.
      rows←{##.A.Where n.HitList.SelItems}⍣(0=≢⍵)⊣⍵
-     _←{{⍺.⎕EX ⍵}/⍵}¨↓n.HitList.Data[rows;0 1]
      (~∧/rows∊all←⍳≢n.HitList.Items):'Invalid right argument'⎕SIGNAL 11
      remain←all~rows
      n.HitList.Items←n.HitList.Items[remain]
