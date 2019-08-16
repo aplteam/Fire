@@ -1,5 +1,5 @@
  hits←ScanBody(ref name body);noOf;ind;length;buffer;buff
-⍝ Scans fnsOprName for the search string.
+⍝ Scans `body` for the search string.
 ⍝ Returns vector of vectors; each item contains:
 ⍝ [1] Parent
 ⍝ [2] Name
@@ -11,11 +11,11 @@
  length←⍬
  hits←0/⊂6⍴⍬
  :If G.APL_Code                                 ⍝ APL_Code?
-     →(0∊⍴buff←ScanCode body)/0
+     →(0=≢buff←ScanCode body)/0
      (ind length)←buff
-     :If 0<⍴,ind
-         noOf←⍴,ind
-         :If 0∊⍴name
+     :If 0<≢ind
+         noOf←≢ind
+         :If 0=≢name
              hits←,⊂ref name noOf 9 ind length
          :Else
              hits←,⊂ref name noOf(ref.⎕NC⊂name)ind length

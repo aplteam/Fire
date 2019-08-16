@@ -1,5 +1,5 @@
  R←Test_Replace_008(stopFlag batchFlag);n;ref;n2;⎕TRAP;body
-⍝ Replace "42" by 2.14". This was once a bug: it crashed on "Find" and, after fixing that, caused an endless loop in "Replace"
+⍝ Replace "42" by 3.14". This was once a bug: it crashed on "Find" and, after fixing that, caused an endless loop in "Replace"
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  R←∆Failed
 
@@ -20,13 +20,15 @@
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
  n2←#._Fire.Fire.Replace.n
- n2.ReplaceBy.Text←'2.14'
+ n2.ReplaceBy.Text←'3.14'
 
  {}∆Select n2.StartBtn
  ∆Process n.Form
  body←1↓↑,/(⎕UCS 13),¨⎕SRC #.TEMP.NS
- →GoToTidyUp 3≠+/'2.14'⍷body
+ →GoToTidyUp 3≠+/'3.14'⍷body
  →GoToTidyUp 0≠+/'42'⍷body
+
+ R←∆OK
 
 ∆TidyUp:
  CloseFire

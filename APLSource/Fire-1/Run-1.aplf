@@ -26,6 +26,7 @@
  :OrIf testFlag
      G←Populate_G testFlag
  :EndIf
+ G.TestFlag←testFlag
  G.HelpPath←FindFireReadMe ⍬
  n←GUI.n←GUI.CreateGUI debugFlag
  ResetCertainRegKeySettings ⍬

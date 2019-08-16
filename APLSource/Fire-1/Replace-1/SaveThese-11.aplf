@@ -2,7 +2,7 @@
 ⍝ Write source code of all objects in ##.GUI.n.HitList.Data to a native file
  width←80
  data←##.GetSortedHitListData ⍬
- :If ~0∊⍴data
+ :If 0≠≢data
      filename←0 ##.GetTempFileName'.dcf'
      fno←filename ⎕FCREATE 0
      :For thisLoc thisObj thisType thisNC :In ↓data

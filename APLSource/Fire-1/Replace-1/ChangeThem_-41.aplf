@@ -27,7 +27,7 @@
          :Continue
      :EndIf
      (oldCode nc)←objLocation ##.GetCode objName
-     :If 0∊⍴oldCode
+     :If 0=≢oldCode
          :Continue
      :EndIf
      isRegExSearch←##.G.NamesOnly⊃##.G.(SearchIsRegEx SearchIsRegEx2)

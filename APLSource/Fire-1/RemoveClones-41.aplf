@@ -2,6 +2,7 @@
  ⍝ Remove all references pointing elsewhere: we don't want objects to appear twice,
  ⍝ or in a different place than specified in G.LookIn
      list←⍵
+     G.ReuseSearch:list                                 ⍝ Not in case of "Search hit list"
      names←⍕¨list[;0]
      b1←names≡¨⊂G.LookIn                                ⍝ Get rid of those who live elsewhere
      b2←(0=≢¨names)∨(G.LookIn,'.'){⍺∘≡¨(≢⍺)↑¨⍵}names    ⍝ When not empty then they must live in G.LookIn

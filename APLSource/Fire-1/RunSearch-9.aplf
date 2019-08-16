@@ -39,11 +39,11 @@
                  :EndIf
              :EndIf
          :EndIf
-         :If ~0∊⍴objHits
+         :If 0≠≢objHits
              objHits←SortHits objHits
          :EndIf
      :EndIf
-     :If ~0∊⍴objHits
+     :If 0≠≢objHits
          objHits←DropDoublesFromHitList objHits
      :EndIf
  :EndIf

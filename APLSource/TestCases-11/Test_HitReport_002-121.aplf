@@ -1,4 +1,5 @@
- R←Test_HitReport_002(stopFlag batchFlag);n;n2;⎕TRAP;ref;expected;rg;GUI;html;body
+ R←Test_HitReport_002(stopFlag batchFlag);n;n2;⎕TRAP;expected;rg;GUI;html;body
+⍝ Search for a text but ignore comments and anything between quotes.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  R←∆Failed
 
@@ -20,8 +21,7 @@
  {}∆Select n.StartBtn
  ∆Process n.Form
 
- ref←#._Fire.Fire.ReportHits.Run 1
- html←'flat'#.APLTreeUtils.ReadUtf8File ref.∆Filename
+ html←∊1 #._Fire.Fire.ReportHits.Run 1
  →GoToTidyUp n.##.##.G.NoOfHits≠+/'<span class="diff">after</span>'⍷html
 
  R←∆OK

@@ -6,7 +6,7 @@
 
 # Fire
 
-Note that FiRe stands for FInd and REplace. Fire is a Windows0only application.
+Note that FiRe stands for FInd and REplace. Fire is a Windows-only application.
 
 
 ## Features
@@ -49,13 +49,31 @@ Fire also overcomes a couple of problems that Dyalog's built-in Search tool is s
 
 ## Installing Fire
 
+General information
+
 Since version 7.1.0 Fire comes with its own installer. Just double-click it and your are done. It does not require admin rights.
 
-The installer installs Fire into `%USERPROFILE%\Documents\MyUCMDs` which translates to `C:\Users\{userid}\Documents\MyUCMDs` with a default Windows installation. This folder, if it exists, is scanned by Dyalog for user commands.
-
-However, if you have used Fire before version 7.1 then you might have installed it somewhere different. If this is the case then your are advised to remove Fire from that folder before running the installer.
+The installer installs Fire by default into `%USERPROFILE%\Documents\MyUCMDs` which translates to `C:\Users\{userid}\Documents\MyUCMDs` with a default Windows installation. This folder, if it exists, is scanned by Dyalog for user commands.
 
 Note that installing into `%USERPROFILE%` means that you have to install it separately for every user who wants to use Fire.
+
+### Get rid of pre-installer versions of Fire
+
+If you have used Fire before version 7.1 then you might have installed it somewhere different. If this is the case then your are strongly advised to remove Fire (both the script `Fire_uc.dyalog` and the folder `Fire\` from that folder before running the installer.
+
+Without doing this the old installation will continue to exist, and depending on the sequence of folders Dyalog scans for user commands Dyalog might continue to execute the older version, because the first one wins.
+
+### Installing Fire somewhere else
+
+If for some reason you decide to install Fire not in the default location but somewhere else then that's fine. Of course the hosting folder must be among the folders scanned by Dyalog for user commands; see the "User Command" tab in the Configuration dialog.
+
+If you want to change the installation folder later when you install Fire again then it is strongly recommended that you un-install it first: execute this EXE in order to achieve that:
+
+```
+%USERPROFILE%\Documents\MyUCMDs\Fire\unins000.exe
+```
+
+Without doing this the old installation will continue to exist, and depending on the sequence of folders Dyalog scans for user commands Dyalog might continue to execute the older version, because the first one wins.
 
 ## Running Fire
 
@@ -109,6 +127,96 @@ The reason for this inconsistency is that is is very difficult for Fire to tell 
 
 Since "Replace" is only available for variables of certain types anyway, this seemed still the best way to deal with the problem.
 
+
+### Nested scripted namespaces
+
+If you attempt to change a function or operator that lives in a scripted namespace which itself lives in a scripted namespace then Fire _**cannot**_ perform the change. 
+
+For example, given this script:
+
+```
+:Namespace Outer
+    :Namespace Inner
+        ∇ r←PI
+          r←3.14
+        ∇
+    :EndNamespace
+:EndNamespace
+```
+
+If you attempt to replace `3.14` by `3.14159265359` with Fire then that would fail; Fire will tell you BTW.
+
+Here is why:
+
+```
+      ⍪c←⎕nr '#.Outer.Inner.PI'
+  r←PI   
+  r←3.14 
+      2⊃c
+ r←3.14
+      (2⊃c)←'r←3.14159265359'
+      #.Outer.Inner.⎕FX c
+      ⍪#.Outer.Inner.⎕NR 'PI'
+  r←PI            
+  r←3.14159265359 
+      #.Outer.Inner.PI
+3.14159265359
+      ⍪⎕SRC #.Outer.Inner
+     :Namespace Inner 
+         ∇ r←PI       
+           r←3.14     
+         ∇            
+     :EndNamespace    
+```
+
+As you can see, by now the code in the namespace associated with the script (that's what gets executed!) is no longer in sync with the script.
+
+Now this is in accordance with the documentation. When you want to change a function in a script you need to use `⎕FIX` and it will work. Fire is actually doing this behind the scenes, and it works well _unless scripted namespaces are nested_!
+
+To illustrate the problem let's start again with this script:
+
+```
+:Namespace Outer
+    :Namespace Inner
+        ∇ r←PI
+          r←3.14
+        ∇
+    :EndNamespace
+:EndNamespace
+```
+
+This time we modify not the function but the inner script:
+
+```
+      ⍪c←⎕src Outer.Inner
+     :Namespace Inner 
+         ∇ r←PI       
+           r←3.14     
+         ∇            
+     :EndNamespace    
+      3⊃c
+          r←3.14
+      (3⊃c)←'r←3.14159265359'
+      Outer.⎕fix c
+      3⊃⎕src Outer.Inner
+          r←3.14159265359
+      Outer.Inner.PI
+3.14159265359
+      ⍪⎕SRC Outer
+ :Namespace Outer     
+     :Namespace Inner 
+         ∇ r←PI       
+           r←3.14     
+         ∇            
+     :EndNamespace    
+ :EndNamespace        
+
+```
+
+I don't think this cannot be declared a feature, and for two reasons:
+
+1. `⎕FIX` and `⎕SRC` should be the inverse of each other; they are not.
+1. As a programmer I do not have other means than `⎕FIX` for modifying `Inner`, but that does not work.
 
 ### Ghostly namespaces
 

@@ -3,5 +3,5 @@
      ⍵.Items←(⊂⍵.Text),⍵.Items~⊂⍵.Text
      ⍵.Text←''
      ⍵.SelItems←(⍴⍵.Items)↑1
-     ⍬
+     1:shy←⍬
  }

@@ -15,10 +15,16 @@
      :ElseIf 4=nc
          body←ref.⎕NR name
      :Else
-         body←{0::⍬ ⋄ ⎕SRC ⍵}ref
-         :If 0∊⍴body
+         :If 0=≢name
+             body←ref.{0::⍬ ⋄ ⎕SRC ⍵}ref
+         :Else
+             :If ⍬≡body←ref{0::⍬ ⋄ ⎕SRC ⍺⍎⍵}name
+                 body←ref.{0::⍬ ⋄ ⎕SRC ⍵}name
+             :EndIf
+         :EndIf
+         :If 0=≢body
              :Trap 0
-                 :If 0∊⍴name  ⍝ If ⍵ is empty then ⍵ is a class instance
+                 :If 0=≢name  ⍝ If ⍵ is empty then ⍵ is a class instance
                      (body nc)←(⎕SRC 0 0⊃⎕CLASS ref)9.2
                  :Else
                      body←{0::⍬ ⋄ ⎕SRC 0 0⊃⎕CLASS ⍵}ref

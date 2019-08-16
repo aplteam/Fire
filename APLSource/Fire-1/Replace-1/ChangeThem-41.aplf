@@ -10,7 +10,7 @@
 ⍝ In case of an error r gets ¯1.
  r←⍬
  G←⎕NS''
- :If 0<0⊃⍴##.GUI.n.HitList.Data
+ :If 0<≢##.GUI.n.HitList.Data
      G.(NameClasses Names FullNames Refs filenameOld fileOldTieNo)←⊂⍬
      :If batchFlag
          cursorWas←##.SetCursorObj 1

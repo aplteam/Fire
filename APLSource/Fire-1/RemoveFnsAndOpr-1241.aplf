@@ -5,14 +5,14 @@
 ⍝ on stuff outside functions and operators, typically comments and the
 ⍝ assignment of any variables.
 ⍝ We must ignore "∇{}" inside comments and text, and we must be able to
-⍝ deal with both, multiline dfns, nested dfns and dfns without a name.
+⍝ deal with both, multiline dfns, nested dfns, dfns without a name and recursive calls (∇).
  masked←Replace.MaskText¨body
  masked←{((⍴⍵)=i←⍵⍳'⍝'):⍵ ⋄ (⍴⍵)↑i↑⍵}¨masked            ⍝ Remove comments from `masked`
+ tradFns←{⍵∨≠\⍵}'∇'={⍵[;0]}{⍵⌽⍨+/∧\' '=⍵}⊃masked        ⍝ Where do tradFns start/end?
+ (tradFns/body)←(≢¨tradFns/body)⍴¨' '                   ⍝ Replace them by a vector of spaces with the same length
+ (tradFns/masked)←tradFns/body                          ⍝ Dito
  (body masked)←{1↓Simplify CR,¨⍵}¨body masked           ⍝ We need a simple vector from now an
  isCR←body=CR                                           ⍝ CR must survive to keep the original structure intact
- tradFns←{⍵∨≠\⍵}'∇'=masked                              ⍝ Where are trad fns?
- (tradFns/body)←' '                                     ⍝ Remove...
- (tradFns/masked)←' '                                   ⍝ ...them!
  b1←'{'=masked                                          ⍝ Opening curlies
  b0←'}'=masked                                          ⍝ Closing curlies
  b←(masked≠CR)∧b0∨0≠(+\b1)-+\b0                         ⍝ Where are the (possibly nested) dfns?

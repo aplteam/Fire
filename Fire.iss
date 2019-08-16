@@ -1,6 +1,6 @@
 ; This script is best executed by Fire's "Make" utility.
 
-#define MyAppVersion "7.2.3.112"
+#define MyAppVersion "7.3.0.120"
 #define MyAppName "Fire"
 #define MyAppExeName "Fire.dws"
 #define MyAppPublisher "APL Team Ltd"
@@ -29,6 +29,9 @@ Compression=lzma
 SolidCompression=yes
 SetupIconFile={#MyAppIcoName}
 PrivilegesRequired=Lowest
+AlwaysShowDirOnReadyPage=yes
+DisableWelcomePage=no
+DisableDirPage=no
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"; LicenseFile: "License";
@@ -43,17 +46,6 @@ Source: "{#TargetDir}\Fire\FireAndRegularExpressions.html"; DestDir: "{app}";
 Source: "{#TargetDir}\Fire\ReleaseNotes.html"; DestDir: "{app}";
 Source: "{#TargetDir}\Fire\ReadMe.html"; DestDir: "{app}";
 Source: "{#TargetDir}\Fire\UsefulRegExes.html"; DestDir: "{app}";
-
-; The .NET file are needed for the "Check for updates" menu command
-Source: "bridge170_unicode.dll"; DestDir: "{app}";
-Source: "dyalognet.dll"; DestDir: "{app}"     
-
-; The Conga DLLs are needed for "Check for updates"
-;Source: "conga31ssl64.dll"; DestDir: "{app}";
-;Source: "conga31_64.dll"; DestDir: "{app}";
-;Source: "conga31ssl32.dll"; DestDir: "{app}";
-;Source: "conga31_32.dll"; DestDir: "{app}";
-
 Source: "{#TargetDir}\Fire\{#MyAppExeName}"; DestDir: "{app}"
 Source: "LICENSE"; DestDir: "{app}"
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files

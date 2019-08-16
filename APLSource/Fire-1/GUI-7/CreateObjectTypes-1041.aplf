@@ -29,7 +29,9 @@
  msg,←'Note that although all variables are searched⌹'
  msg,←'(and possibly reported), the "Replace" option⌹'
  msg,←'works only on specific types of variables:⌹'
- msg,←'Simple text vectors and vectors of text vectors.'
+ msg,←'Simple text vectors and vectors of text vectors.⌹'
+ msg,←'Note that variables in scripted namespaces are⌹'
+ msg,←'scanned in any case.'
  ∆,←⊂'Tip'(Split msg)
  n.Vars←⍎'Vars'rf.⎕WC ∆
  n.Vars.onSelect←'OnObjectType'

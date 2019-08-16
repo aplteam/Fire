@@ -8,7 +8,7 @@
  n←#._Fire.Fire.GUI.n
  #.⎕SHADOW'TEMP'
  'TEMP'#.⎕NS''
- ref←#.TEMP.⎕FIX':Namespace MyNamespace' 'MyDfn←{''foo''} ⋄ pi←2.14' '' ':EndNamespace'
+ ref←#.TEMP.⎕FIX':Namespace MyNamespace' 'MyDfn←{''foo''} ⋄ pi←3.14' '' ':EndNamespace'
  Assert'foo'≡ref.MyDfn ⍬
  n.LookIn.Text←'#.TEMP'
  n.SearchFor.Text←'foo'
@@ -26,6 +26,7 @@
  ∆Process n.Form
 
  →GoToTidyUp 1≠+/'''_GOO_'''⍷1↓↑,/(⎕UCS 13),¨⎕SRC ref
+ R←∆OK
 
 ∆TidyUp:
  CloseFire

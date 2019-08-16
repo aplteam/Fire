@@ -10,6 +10,7 @@
      _←⎕EX⍕n.Form
      _←⎕EX'n'
      _←⎕NQ G.n.Form'GotFocus'
+     ##.G.TestFlag:1
      _←0 G.ResetHitList 0 0
      1
  }

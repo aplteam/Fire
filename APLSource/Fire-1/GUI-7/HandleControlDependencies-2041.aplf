@@ -12,7 +12,7 @@
      n.EditCmd.Active←1
      n.InvertSelectionCmd.Active←1
      {}'Group' 'Combo'SetActivePropTo¨1
-     :If 0∊⍴n.HitList.Items
+     :If 0=≡n.HitList.Items
          n.ReuseSearch.(Active State)←0
          n.LookIn.BCol←0
          n.LookIn.Text{0=≢⍺:⍵ ⋄ ⍺}←'#'

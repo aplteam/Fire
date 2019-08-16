@@ -30,7 +30,5 @@
  R←∆OK
 
 ∆TidyUp:
- :Trap 0
-     ##.FilesAndDirs.DeleteFile n2.∆Filename
- :EndTrap
+ :Trap 0 ⋄ ##.FilesAndDirs.DeleteFile n2.∆Filename ⋄ :EndTrap
  CloseFire

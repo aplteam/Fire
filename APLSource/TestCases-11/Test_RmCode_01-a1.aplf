@@ -1,0 +1,12 @@
+ R←Test_RmCode_01(stopFlag batchFlag);n;⎕TRAP;body;buff
+⍝ Remove code from scripted namespace: nested namespace structure
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+ body←':Namespace Mine' 'Foo_1←{42}' ':Namespace Mine_2' 'Foo_2←{42}' 'a←1' ':EndNamespace' ':EndNamespace'
+ buff←##.Fire.RemoveFnsAndOpr body
+ buff←(buff~¨' ')~⊂''
+ →PassesIf 5=≢buff
+ →PassesIf(⊂'a←1')∊buff
+
+ R←∆OK

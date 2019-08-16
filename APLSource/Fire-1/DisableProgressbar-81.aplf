@@ -2,5 +2,5 @@
      GUI.n.PB.Visible←0
      GUI.n.PB_Text.Visible←0
      GUI.n.Info.Visible←1
-     1:r←⍬
+     1:shy←⍬
  }

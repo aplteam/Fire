@@ -6,10 +6,10 @@
  parms_____.successFlag_____←0
  parms_____.cursorWas_____←##.GetCursorObj
  {}HideAutoComplete ⍬
- :If 0∊⍴n.SearchFor.Text
+ :If 0=≢n.SearchFor.Text
      ResetHitList 0 0
  :Else
-     {}HandleCombo n.SearchFor
+     HandleCombo n.SearchFor
      →(CheckLookIn ⍬)/0
      {}HandleControlDependencies 0
      {}CopyGuiToGlobal ⍬

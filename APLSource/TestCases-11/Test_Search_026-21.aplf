@@ -13,10 +13,9 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →PassesIf n.HitList.Items ∆LazyMatch'Sendß' 'fns01' 'fns02' 'fns03' 'fns04' 'fns05' 'fns10' 'fns11' 'fns12'
- →PassesIf(,⊂'#.TestData.LookForNames')≡∪n.HitList.ReportInfo[;0]
-
-⍝ Tidy up
- CloseFire
-
+ →GoToTidyUp~n.HitList.Items ∆LazyMatch'Sendß' 'fns01' 'fns02' 'fns03' 'fns04' 'fns05' 'fns10' 'fns11' 'fns12'
+ →GoToTidyUp(,⊂'#.TestData.LookForNames')≢∪n.HitList.ReportInfo[;0]
  R←∆OK
+
+∆TidyUp:
+ CloseFire

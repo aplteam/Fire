@@ -4,31 +4,50 @@
  :If 9=ref.##.⎕NC ##.A.Last⍕ref
      ref←ref.##
  :EndIf
-∆Fix:
- :Trap 0
-     ref.⎕FIX script
-     rc←0
- :Else
-     rc←1
- :EndTrap
- :If rc
-     msg←⊂'Sorry, but fixing the code of this namespace script:'
-     msg,←⊂'   ',¯1↓{('.'∊⍵):0⊃'.'##.A.SplitPath ⍵ ⋄ ⍵}name
-     msg,←⊂'did not work; please check in editor now.'
-     msg,←⊂'Would you like to investigate in ⎕ED and then try fixing it again?'
+ :If ##.IsScripted ref
+ ⍝ We get here in case a scripted namespace within a scripted namespace got changed.
+ ⍝ In such a case ⎕FIX pretends to work, but all it does is updating the code in the
+ ⍝ workspace while the actual script is left untouched, meaning that the two are
+ ⍝ from then on out of sync. Worse, ⎕SRC would return the updated version.
+ ⍝ This is <01652> from 2019-08. We need clarification from Dyalog whether this is a bug or not.
+     msg←⊂''
+     msg,←⊂'You are trying to change a function or operator in a scripted namespace'
+     msg,←⊂'that is embedded in a scripted namespace.'
+     msg,←⊂''
+     msg,←⊂'Unfortunately this won''t work due to a bug in Dyalog APL, therefore the'
+     msg,←⊂'object "',name,'" is left unchanged in ',⍕ref
      cs←##.Question.CreateDefaultParms
-     cs.okCaption←'Yes'
-     cs.cancelCaption←'Skip this one'
-     cs.caption2←'Cancel operation'
-     :Select cs ##.Question.Run msg
-     :Case 1
-         ⎕ED'script'
-         →∆Fix
-     :Case 0
-         :Return
-     :Case 2
-         r←1 ⋄ :Return
-     :EndSelect
+     cs.okCaption←'Noted'
+     cs.cancelCaption←''
+     cs ##.Question.Run msg
+ :Else
+∆Fix:
+     :Trap 0
+         ref.⎕FIX script
+         rc←0
+     :Else
+         rc←1
+     :EndTrap
+     :If rc
+         msg←⊂''
+         msg,←⊂'Sorry, but fixing the code of this namespace script:'
+         msg,←⊂'   ',¯1↓{('.'∊⍵):0⊃'.'##.A.SplitPath ⍵ ⋄ ⍵}name
+         msg,←⊂'did not work; please check in editor now.'
+         msg,←⊂'Would you like to investigate in ⎕ED and then try fixing it again?'
+         cs←##.Question.CreateDefaultParms
+         cs.okCaption←'Yes'
+         cs.cancelCaption←'Skip this one'
+         cs.caption2←'Cancel operation'
+         :Select cs ##.Question.Run msg
+         :Case 1
+             ⎕ED'script'
+             →∆Fix
+         :Case 0
+             :Return
+         :Case 2
+             r←1 ⋄ :Return
+         :EndSelect
+     :EndIf
  :EndIf
  ##.G.TestFlag TellAcre(⍕ref),'.',{⍵↑⍨⍵⍳' '}(⍴':Namespace ')↓0⊃script
  ⍝Done

@@ -1,4 +1,4 @@
  {r}←TellNoHits searchFor
  r←⍬
- 'No hits'##.Question.ShowMsg'No hits were found at all for:' ''
+ 'No hits'##.Question.ShowMsg'No hits were found at all for:' ''searchFor
 ⍝Done

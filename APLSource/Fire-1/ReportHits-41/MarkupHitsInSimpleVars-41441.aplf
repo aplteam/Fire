@@ -11,6 +11,6 @@
  rs,←⊂⍣(~1=≡ss)⊣'<span class="diff">&</span>'
  data←ss ⎕R rs⍠options⊣{300>⍴,⍵:⍵ ⋄ (300↑⍵),'...'}data
  fullName←(⍕ref),'.',name
- r←⊂'<a href="#',fullName,'" id="',fullName,'"> <h2>',(⍕rn),'. ',fullName,'</h2></a><span class="diff">',r,'</span>'
+ r←⊂'<a href="#',fullName,'" id="',fullName,'"> <h2>',(⍕rn),'. ',fullName,'</h2></a>',data
  r←(⊂'<div class="obj">'),r,⊂'</div>'
 ⍝Done

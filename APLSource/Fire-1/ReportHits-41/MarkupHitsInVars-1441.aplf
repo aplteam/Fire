@@ -1,7 +1,7 @@
  r←rn MarkupHitsInVars(ref name qnc ind length);rs;ss;options;data;fullName;props
 ⍝ rn=Running number
  r←''
- :If ~0∊⍴data←ref.{6::'' ⋄ ⍎⍵}name
+ :If 0≠≢data←ref.{6::'' ⋄ ⍎⍵}name
      :If ~##.Replace.NonReplaceVars data
          :If (1=≡data)∧1=⍴⍴data
              r,←MarkupHitsInSimpleVars data name rn ref

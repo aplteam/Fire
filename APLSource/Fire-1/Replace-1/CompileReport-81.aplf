@@ -6,6 +6,8 @@
  G.SearchFor←##.Replace.n.SearchFor.Text
  G.ReplaceBy←##.Replace.n.ReplaceBy.Text
  G.DeleteLineFlag←n.DeleteLine.State
- {}##.ReportDiffs.CompileReport G
+
+ {}##.ReportDiffs.CompileReport G   ⍝ <== work horse
+
  ##.SetCursorObj cursorWas
 ⍝Done

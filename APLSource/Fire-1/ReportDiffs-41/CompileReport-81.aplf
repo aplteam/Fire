@@ -15,7 +15,7 @@
  realSequence←⊃¨{(⍕⍺),'.',⍵}/¨↓(##.GetSortedHitListData ⍬)[;0 1]
  wantedSequence←⊃¨{(⍕⍺),'.',⍵}/¨↓##.G.Hits[;0 1]
  :Repeat
-     {(0=5|k):##.GUI.n.PB.Thumb←⍵}k
+     {(0=5|k):##.GUI.n.PB.Thumb←⍵}k+1
      CompileReport_ k(1+realSequence⍳wantedSequence[k])firstFlag G
      firstFlag←0
  :Until noOfItems=k←k+1

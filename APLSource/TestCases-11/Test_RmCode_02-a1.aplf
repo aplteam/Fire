@@ -1,0 +1,12 @@
+ R←Test_RmCode_02(stopFlag batchFlag);n;⎕TRAP;body;buff
+⍝ Remove code from scripted namespace: Tfns and dfns with recursive call
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+ body←':Namespace Mine' 'a←1' 'Foo_1←{∇ +/⍵}' 'b←2' '   ∇r←Foo_2' '⍝∇' 'r←42' '   ∇' 'c←3' ':EndNamespace'
+ buff←##.Fire.RemoveFnsAndOpr body
+ buff←(buff~¨' ')~⊂''
+ →PassesIf 5=≢buff
+ →PassesIf∧/'a←1' 'b←2' 'c←3'∊buff
+
+ R←∆OK

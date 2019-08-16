@@ -2,6 +2,10 @@
 ⍝ & gets &amp;
 ⍝ < gets &lt;
 ⍝ > gets &gt;
+⍝ `str` must be a simple text vector.
+⍝ By default the result is a vector with any replacement strings being being injected as scalars.
+⍝ As a consequence any index pointing into `str` at a hit would still be valid.\\
+⍝ By providing a 1 as left argument the result will be flattened.
  flatten←{0<⎕NC ⍵:⍎⍵ ⋄ 1}'flatten'
  b1←'&'=str
  b2←'<'=str

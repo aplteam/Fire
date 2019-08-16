@@ -1,4 +1,4 @@
- r←rn MarkUpHits(ref name qnc ind length noOfHits);bool;body;bool2;buff;fullName
+ r←rn MarkUpHits(ref name qnc ind length noOfHits);bool;body;bool2;buff;fullName;where
  ⍝ rn = running number
  r←''
  :If 2=⌊qnc
@@ -12,19 +12,22 @@
          r,←⊂'<b>>>> The code for this object could not be resolved!</b>'
          :Return
      :EndTrap
-     →(0∊⍴body)/0
-     body←(1↓##.Simplify ##.NL,¨body),' '
-     body←0 ##.ReplaceSpecialChars¨body
-     body[ind]←'<span class="diff">'∘,¨body[ind]
-     bool2←(⍴body)⍴1
-     bool2[(⍴bool2)⌊ind∘.+length]←⊂0 1
-     bool2←↑,/bool2
-     body←bool2\body
-     body[##.Where~bool2]←⊂'</span>'
-     body←∊body
-     body←##.NL ##.A.Split body
-     bool←∨/¨'<span class="diff">'∘⍷¨body
-     body←bool/body
-     r,←(##.A.Where bool){'[',(⍕⍺),'] ',⍵}¨body,¨⊂'<br>'
-     r,←⊂'</div>'
+     :If 0<≢body
+         body←(1↓##.Simplify ##.NL,¨body),' '
+         :If 0<+/where←body∊'<>&',##.CR
+             (where/body)←##.ReplaceSpecialChars¨where/body
+         :EndIf
+         body[ind]←'<span class="diff">'∘,¨body[ind]
+         bool2←(⍴body)⍴1
+         bool2[(⍴bool2)⌊ind∘.+length]←⊂0 1
+         bool2←↑,/bool2
+         body←bool2\body
+         body[##.Where~bool2]←⊂'</span>'
+         body←∊body
+         body←##.NL ##.A.Split body
+         bool←∨/¨'<span class="diff">'∘⍷¨body
+         body←bool/body
+         r,←(##.A.Where bool){'[',(⍕⍺),'] ',⍵}¨body,¨⊂'<br>'
+         r,←⊂'</div>'
+     :EndIf
  :EndIf

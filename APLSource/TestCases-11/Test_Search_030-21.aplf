@@ -36,29 +36,29 @@
 ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ Search everywhere: APL code, comments, text
  {}∆Select n.StartBtn
  ∆Process n.Form
- →PassesIf 14=⍴n.HitList.Items
- →PassesIf 14=#._Fire.Fire.G.NoOfObjects
- →PassesIf 27=#._Fire.Fire.G.NoOfHits
- →PassesIf 27=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
+ GoToTidyUp~14=⍴n.HitList.Items
+ GoToTidyUp~14=#._Fire.Fire.G.NoOfObjects
+ GoToTidyUp~27=#._Fire.Fire.G.NoOfHits
+ GoToTidyUp~27=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
 
  ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ Search just Code, no Vars
  n.(Comments Text Vars).State←0
  {}∆Select n.StartBtn
  ∆Process n.Form
- →PassesIf 7=⍴n.HitList.Items
- →PassesIf 7=#._Fire.Fire.G.NoOfObjects
- →PassesIf 7=#._Fire.Fire.G.NoOfHits
- →PassesIf 7=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
+ GoToTidyUp~7=⍴n.HitList.Items
+ GoToTidyUp~7=#._Fire.Fire.G.NoOfObjects
+ GoToTidyUp~7=#._Fire.Fire.G.NoOfHits
+ GoToTidyUp~7=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
 
 ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ Search just Comments
  n.(APL_Code Text).State←0
  n.Comments.State←1
  {}∆Select n.StartBtn
  ∆Process n.Form
- →PassesIf 7=⍴n.HitList.Items
- →PassesIf 7=#._Fire.Fire.G.NoOfObjects
- →PassesIf 9=#._Fire.Fire.G.NoOfHits
- →PassesIf 9=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
+ GoToTidyUp~7=⍴n.HitList.Items
+ GoToTidyUp~7=#._Fire.Fire.G.NoOfObjects
+ GoToTidyUp~9=#._Fire.Fire.G.NoOfHits
+ GoToTidyUp~9=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
 
 ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ Search just Text
  n.(APL_Code Comments).State←0
@@ -66,20 +66,20 @@
  n.Vars.State←1
  {}∆Select n.StartBtn
  ∆Process n.Form
- →PassesIf 10=⍴n.HitList.Items
- →PassesIf 10=#._Fire.Fire.G.NoOfObjects
- →PassesIf 11=#._Fire.Fire.G.NoOfHits
- →PassesIf 11=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
+ GoToTidyUp~10=⍴n.HitList.Items
+ GoToTidyUp~10=#._Fire.Fire.G.NoOfObjects
+ GoToTidyUp~11=#._Fire.Fire.G.NoOfHits
+ GoToTidyUp~11=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
 
 ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ Search just Code and Comments
  n.(Text Vars).State←0
  n.(APL_Code Comments).State←1
  {}∆Select n.StartBtn
  ∆Process n.Form
- →PassesIf 10=⍴n.HitList.Items                              ⍝ Because the namespace and the fns within the namespace...
- →PassesIf 10=#._Fire.Fire.G.NoOfObjects                    ⍝ ... count twice because there is text outside fns/opr!
- →PassesIf 16=#._Fire.Fire.G.NoOfHits
- →PassesIf 16=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
+ GoToTidyUp~10=⍴n.HitList.Items                              ⍝ Because the namespace and the fns within the namespace...
+ GoToTidyUp~10=#._Fire.Fire.G.NoOfObjects                    ⍝ ... count twice because there is text outside fns/opr!
+ GoToTidyUp~16=#._Fire.Fire.G.NoOfHits
+ GoToTidyUp~16=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
 
 ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ Search just Code and Text
  n.(Comments Text).State←0
@@ -87,22 +87,22 @@
  n.Vars.State←1
  {}∆Select n.StartBtn
  ∆Process n.Form
- →PassesIf 12=⍴n.HitList.Items
- →PassesIf 12=#._Fire.Fire.G.NoOfObjects
- →PassesIf 18=#._Fire.Fire.G.NoOfHits
- →PassesIf 18=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
+ →GoToTidyUp~12=⍴n.HitList.Items
+ →GoToTidyUp~12=#._Fire.Fire.G.NoOfObjects
+ →GoToTidyUp~18=#._Fire.Fire.G.NoOfHits
+ →GoToTidyUp~18=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
 
 ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ Search just Comments and Text
  n.APL_Code.State←0
  n.(Comments Text).State←1
  {}∆Select n.StartBtn
  ∆Process n.Form
- →PassesIf 13=⍴n.HitList.Items                              ⍝ Because the namespace and the fns within the namespace...
- →PassesIf 13=#._Fire.Fire.G.NoOfObjects                    ⍝ ... count twice because there is text outside fns/opr!
- →PassesIf 20=#._Fire.Fire.G.NoOfHits
- →PassesIf 20=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
+ →GoToTidyUp~13=⍴n.HitList.Items                              ⍝ Because the namespace and the fns within the namespace...
+ →GoToTidyUp~13=#._Fire.Fire.G.NoOfObjects                    ⍝ ... count twice because there is text outside fns/opr!
+ →GoToTidyUp~20=#._Fire.Fire.G.NoOfHits
+ →GoToTidyUp~20=↑+/n.HitList.ReportInfo[;#._Fire.Fire.GUI.hc.Hits]
 
-⍝ Tidy up
+∆TidyUp:
  CloseFire
 
  R←∆OK

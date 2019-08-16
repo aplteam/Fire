@@ -14,8 +14,7 @@
  {}∆Select n.StartBtn
  ∆Process n.Form
  →GoToTidyUp 0≠#._Fire.Fire.G.NoOfObjects
+ R←∆OK
 
 ∆TidyUp:
  CloseFire
-
- R←∆OK

@@ -1,20 +1,24 @@
- R←Test_HitReport_001(stopFlag batchFlag);n;n2;⎕TRAP;ref;expected;rg;GUI;html
-⍝ Exercise the "Hit" report.
+ R←Test_HitReport_001(stopFlag batchFlag);n;n2;⎕TRAP
+⍝ Exercise the "Hit Report". This test makes sure that the GUI shows and is what we expect.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  R←∆Failed
 
+⍝ Preconditions
  1 #._Fire.Fire.Run 0
  n←#._Fire.Fire.GUI.n
+
  n.SearchFor.Text←'⎕IO'
- n.LookIn.Text←'#._Fire.Fire'
- n.Vars.State←0
+ n.LookIn.Text←'#'
+ n.(Case APL_Name).State←1
+ n.Comments.State←0
+
  {}∆Select n.StartBtn
+ 0.2 ∆Process n.Form
+ #._Fire.Fire.G.TestFlag←1
+ n2←#._Fire.Fire.ReportHits.Run 1
  ∆Process n.Form
-
- ref←#._Fire.Fire.ReportHits.Run 1
- html←'flat'#.APLTreeUtils.ReadUtf8File ref.∆Filename
- →GoToTidyUp n.##.##.G.NoOfHits≠+/'<span class="diff">⎕IO</span>'⍷html
-
+ →GoToTidyUp 0≥≢n2.List.Items
+ →GoToTidyUp'HTML Document'≢n2.Browser.Type
  R←∆OK
 
 ∆TidyUp:

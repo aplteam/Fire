@@ -14,10 +14,9 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →PassesIf n.HitList.Items≡,⊂'fns03'
- →PassesIf(,⊂'#.TestData.LookForNames')≡∪n.HitList.ReportInfo[;0]
-
-⍝ Tidy up
- CloseFire
-
+ →GoToTidyUp n.HitList.Items≢,⊂'fns03'
+ →GoToTidyUp(,⊂'#.TestData.LookForNames')≢∪n.HitList.ReportInfo[;0]
  R←∆OK
+
+∆TidyUp:
+ CloseFire

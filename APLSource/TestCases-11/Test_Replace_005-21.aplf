@@ -26,6 +26,7 @@
  ∆Process n.Form
 
  →GoToTidyUp 1≠+/'a←''_GOO_'''⍷1↓↑,/(⎕UCS 13),¨⎕SRC ref
+ R←∆OK
 
 ∆TidyUp:
  CloseFire

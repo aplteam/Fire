@@ -16,7 +16,7 @@
  :Else
      masked←##.A.dlb masked
      fnsNames←{⍵↑⍨¯1+⍵⍳'{'}¨({∨/'←{'⍷⍵}¨masked)/¨masked
-     'Something is very wrong here!'Assert(⍴fnsNames)≠ind←fnsNames⍳⊂name
+     'Something is very wrong here!'##.Assert(⍴fnsNames)≠ind←fnsNames⍳⊂name
      :If 1<⍴code                                ⍝ Replaced by a muli-line definition?!
          :If 1=⍴tl
              tl←0⊃tl
