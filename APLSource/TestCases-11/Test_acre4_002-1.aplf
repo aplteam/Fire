@@ -1,5 +1,5 @@
  R←Test_acre4_002(stopFlag batchFlag);n;n2;oldPath;⎕TRAP;openAcreProjects;acreTestProjectName;changeFilesFolder;acreTestProjectFolder;more;en;rc
-⍝ Check whether acre 4 reacts correctly when an object is deleted by Fire and there are self-refs around.
+⍝ Check whether acre 4 (or later) reacts correctly when an object is deleted by Fire and there are self-refs around.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
 
  :If IsAcre2Or3

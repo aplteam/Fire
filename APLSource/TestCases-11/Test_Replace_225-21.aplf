@@ -41,7 +41,7 @@
  ∆Process n.Form
  →PassesIf 1=#._Fire.Fire.Replace.NoOfReplacements
  code←⎕SRC #.TEMP.Outer
- →PassesIf 1=+/'3.14159265359∇'⍷∊code  ⍝ Fails due to bug <01652> from 2019-08-07
+ →PassesIf 1=+/'3.14159265359∇'⍷∊code  ⍝ Fails due to bug <01652> from 2019-08-07; Fire shows a warning
  R←∆OK
 
 ∆TidyUp:

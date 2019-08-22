@@ -1,5 +1,5 @@
  R←Test_acre4_003(stopFlag batchFlag);⎕TRAP;n;n2;acreTestProjectName;changeFilesFolder
-⍝ Check whether acre 4 reacts correctly when a variable is changed by Fire.
+⍝ Check whether acre 4 (or later) reacts correctly when a variable is changed by Fire.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
 
  :If IsAcre2Or3

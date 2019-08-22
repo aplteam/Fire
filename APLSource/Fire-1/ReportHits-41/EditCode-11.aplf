@@ -2,6 +2,7 @@
  r←⍬
  names←{0 1∊⍨≡⍵:,⊂,⍵ ⋄ ⍵}names
  i←0
+ ##.PrePopulateSearchBox ⍬
  :For name :In names
      i+←1
      old←GetCode name

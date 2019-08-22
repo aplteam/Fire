@@ -1,5 +1,5 @@
  R←Test_acre4_004(stopFlag batchFlag);n;n2;⎕TRAP;body;acreTestProjectName
-⍝ Check whether an acre 4 managed script remains acre managed after a "Replace" operation
+⍝ Check whether an acre 4 (or later) managed script remains acre managed after a "Replace" operation
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
 
  R←∆Failed

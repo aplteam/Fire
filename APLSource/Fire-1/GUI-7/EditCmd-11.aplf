@@ -1,10 +1,10 @@
  EditCmd←{
      where←##.Where n.HitList.SelItems
-     0∊⍴where:⍬
+     0=≢where:⍬
      m←'You cannot edit class instances.'
      bool←4=↑¨n.HitList.Data[where;2]
      _←({##.Question.YesOrNo m}⍣(⊃1∊bool))⊣⍬
-     (0∊⍴where←(~bool)/where):⍬
+     (0=≢where←(~bool)/where):⍬
      m←'You are about to open ',(⍕⍴where),' edit windows - are you sure?!'
      (m{⍵:~##.Question.YesOrNo ⍺ ⋄ 0}25<⍴where):⍬
      ⍬⊣Edit n.HitList.Data[where;0 1]

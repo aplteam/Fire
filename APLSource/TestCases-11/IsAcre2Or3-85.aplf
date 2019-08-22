@@ -5,7 +5,7 @@
  :If 0=r←9=#.⎕NC'acre'
  :AndIf 9=⎕SE.⎕NC'acre'
      :Trap 6
-         {}⎕SE.acre._code.getVersion ⍬                    ⍝ This works just in acre 4
+         {}⎕SE.acre._code.getVersion ⍬                    ⍝ This works just in acre 4 and later
          r←0
      :Else
          r←1

@@ -5,6 +5,8 @@
 ⍝ If this is not the case then Fire is copied into []SE from
 ⍝ the same directory the User Command stems from and then started.
 ⍝ Kai Jaeger ⋄ APL Team Ltd
+⍝ * Version 2.5.1 - 2019-08-22
+⍝   * Bug fix: Fire was copied each and every time, therefore forgetting former search tokens.
 ⍝ * Version 2.5.0 - 2019-07-28
 ⍝   * The script now simply assumes that the folder Fire\ is a sibling of this script.
 ⍝   * Changed to groups "WS".
@@ -34,8 +36,16 @@
           '_Fire'⎕SE.⎕NS''
       :EndIf
       :If 1∊dne
-          CopyThese(dne/neededModules),⊂'Fire'
+          CopyThese(dne/neededModules)
           CreateRefs(~dne)/neededModules
+      :EndIf
+      :If forceLoadFlag
+      :OrIf 0=⎕SE._Fire.⎕NC'Fire'
+          :Trap 11
+              'Fire'⎕SE._Fire.⎕CY(0⊃⎕NPARTS ##.SourceFile),'\Fire\Fire.dws'
+          :Else
+              'Could not copy Fire'⎕SIGNAL 11
+          :EndTrap
       :EndIf
       n←⎕SE._Fire.Fire.Run 0
       :If 1=≢↑Args.Arguments

@@ -1,12 +1,12 @@
  {r}←LetAcreDelete rows;res
-⍝ In case acre 2.x or 3.x or 4.x is around acre will be told.
+⍝ In case acre it will be told.
 ⍝ Note that acre is smart enough to work out which project an object belongs to.
  r←⍬
  :If ##.IsAnyAcreAround
      :If 0<⎕NC'⎕SE.acre'
          res←{⎕SE.UCMD'acre.Erase ',⍵}¨GetFullPath¨rows
      :EndIf
-     :If ~0∊⍴∊res
+     :If 0≠≢∊res
      :AndIf ~##.G.TestFlag
          ⎕←'Acre confirmed deletion for:'
          ⎕←⍪res

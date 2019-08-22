@@ -1,5 +1,5 @@
  R←Test_acre4_001(stopFlag batchFlag);n;n2;⎕TRAP;acreTestProjectName;changeFilesFolder;expected
-⍝ Check whether acre reacts correctly when objects are changed by Fire that partly belong to an open acre 4 project
+⍝ Check whether acre reacts correctly when objects are changed by Fire that partly belong to an open acre 4 (or later) project
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
 
  :If IsAcre2Or3

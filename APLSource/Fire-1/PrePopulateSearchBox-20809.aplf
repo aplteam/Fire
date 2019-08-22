@@ -1,0 +1,10 @@
+ {r}←PrePopulateSearchBox dummy;options
+ r←⍬
+ :If 16>{↑↑(//)⎕VFI ⍵/⍨2>+\'.'=⍵}1⊃# ⎕WG'APLVersion'
+     ⍝ 13.2 and later only: populate the IDE's "Search" field:
+     {}G.SearchIsRegEx{0::⍬ ⋄ ⍺:⍬ ⋄ ⍵(4454⌶)1}G.SearchFor
+ :Else
+     ⍝ 16.0 and later: populate "Search" & "Replace" fields and toggle RegEx:
+     options←G.Case+4×G.SearchIsRegEx
+     {}{0::⍬ ⋄ ⍵(4454⌶)1}G.SearchFor''options
+ :EndIf

@@ -1,18 +1,11 @@
- {r}←Edit objects;msg;flag;quitFlag;i;ind;options
+ {r}←Edit objects;msg;flag;quitFlag;i;ind
 ⍝ Edit objects. ⍵ is supposed to be a vector with fully qualified workspace objects,
 ⍝ Returns 1 in case the object really got changed.
 ⍝ Copies "Search for", "Match case" and "RegEx" from Fire to the editor's settings.
  r←⍬
  {}CopyGuiToGlobal ⍬
- :If 16>{↑↑(//)⎕VFI ⍵/⍨2>+\'.'=⍵}1⊃# ⎕WG'APLVersion'
-     ⍝ 13.2 and later only: populate the IDE's "Search" field:
-     {}##.G.SearchIsRegEx{0::⍬ ⋄ ⍺:⍬ ⋄ ⍵(4454⌶)1}##.G.SearchFor
- :Else
-     ⍝ 16.0 and later: populate "Search" & "Replace" fields and toggle RegEx:
-     options←##.G.Case+4×##.G.SearchIsRegEx
-     {}{0::⍬ ⋄ ⍵(4454⌶)1}##.G.SearchFor''options
- :EndIf
- :If ~0∊⍴ind←##.Where 0=↑∘⍴¨objects[;1]
+ ##.PrePopulateSearchBox ⍬
+ :If 0≠≢ind←##.Where 0=↑∘⍴¨objects[;1]
      objects[ind;]←⊃{#,⊂⍕0⊃⍵}¨↓objects[ind;]
  :EndIf
  (objects[;0]).⎕ED&objects[;1]
