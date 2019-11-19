@@ -1,0 +1,22 @@
+ R←Test_Search_007(stopFlag batchFlag);n;⎕TRAP
+⍝ Search case sensitive for name "Uppercase" in #.A2 without comments
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+
+ n.SearchFor.Text←'Uppercase'
+ n.LookIn.Text←'#.A2'
+ n.Comments.State←0
+ n.APL_Name.State←1
+ n.Case.State←0
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →GoToTidyUp 9≠#.Fire.Fire.G.NoOfObjects
+ R←∆OK
+
+∆TidyUp:
+ CloseFire

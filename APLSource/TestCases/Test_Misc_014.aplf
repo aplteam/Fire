@@ -1,0 +1,44 @@
+ R←Test_Misc_014(stopFlag batchFlag);n;n2;⎕TRAP;ref;expected;rg;GUI
+⍝ Exercise the "Ghost" report
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ #.⎕EX'FireReportGhost'
+ 'FireReportGhost'#.⎕NS''
+ #.FireReportGhost.⎕FIX #.⎕SRC ##.APLTreeUtils
+ #.FireReportGhost.⎕FIX #.⎕SRC ##.FilesAndDirs
+ #.FireReportGhost.APLTreeUtils.⎕FX'r←Hello' 'r←''Worlds'''  ⍝ This is NOT a ghost!
+ #.FireReportGhost.FilesAndDirs.⎕FX'r←Hello' 'r←''World'''
+ #.FireReportGhost.FilesAndDirs.⎕FX'r←Hello2' 'r←''World2'''
+ #.FireReportGhost.FilesAndDirs.⎕FX'r←Hello3' 'r←''World3'''
+ #.FireReportGhost.FilesAndDirs.⎕FIX':Class MyClass' '∇r←Hello' ':Access Public Shared' 'r←''Universe''' '∇' ':EndClass'
+ #.FireReportGhost.⎕FIX':Interface InterfaceFoo' '∇r←Hello arg' '∇' ':EndInterface'
+ #.FireReportGhost.InterfaceFoo.⎕FX'r←∆Hello10' 'r←''World10'''
+ '#.FireReportGhost.MyGUI'⎕WC'Form'('Visible' 0)('KeepOnClose' 1)
+ #.FireReportGhost.MyGUI.⎕FX'r←Hello' 'r←''Milky Way'''
+
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+
+ ref←#.Fire.Fire.ReportGosts.Run #.FireReportGhost
+ ⎕DL 0.05
+
+⍝ Checks
+ expected←'#.FireReportGhost.MyGUI' 'Hello' '#.FireReportGhost.FilesAndDirs' 'Hello' 'Hello2' 'Hello3' '#.FireReportGhost.InterfaceFoo' '∆Hello10'
+ →GoToTidyUp ref.TV.Items≢expected
+ rg←#.Fire.Fire.ReportGosts
+ ref.TV.SelItems←0 0 0 0 1 0 0 0
+ 1 rg.DeleteGhost ref.TV
+ →GoToTidyUp 0=∨/'deleted'⍷4⊃ref.TV.Items
+ →GoToTidyUp 0≠#.FireReportGhost.APLTreeUtils.⎕NC'Hello2'
+ ref.TV.SelItems←0 0 0 0 1 0 0 0
+ →GoToTidyUp~0∊⍴1 rg.GetCode ref.TV
+ ref.TV.SelItems←0 0 0 1 0 0 0 0
+ →GoToTidyUp 0∊⍴1 rg.GetCode ref.TV
+ ref.TV.SelItems←0 0 0 0 0 0 0 1
+ →GoToTidyUp 0∊⍴1 rg.GetCode ref.TV
+ R←∆OK
+
+∆TidyUp:
+ CloseFire

@@ -1,0 +1,20 @@
+ R←Test_Search_025(stopFlag batchFlag);n;⎕TRAP
+⍝ Search for string "send" in #.TestData.LookForNames with "Match case" everywhere
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+
+ n.SearchFor.Text←'send'
+ n.LookIn.Text←'#.TestData.LookForNames'
+ n.Case.State←1
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →GoToTidyUp 0≠#.Fire.Fire.G.NoOfObjects
+ R←∆OK
+
+∆TidyUp:
+ CloseFire

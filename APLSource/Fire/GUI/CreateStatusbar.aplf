@@ -1,0 +1,20 @@
+ CreateStatusbar;∆
+⍝
+
+ n.SB←⍎'SB'n.Form.⎕WC'Statusbar'('Attach'('Bottom' 'Left' 'Bottom' 'Right'))('Coord' 'Pixel')
+
+ ∆←⊂'StatusField'
+ ∆,←⊂'Size'(⍬(n.Form.Size[1]-160))
+ ∆,←⊂'Attach'('Bottom' 'Left' 'Bottom' 'Right')
+ n.Info←⍎'SB.Info'n.Form.⎕WC ∆
+
+ ∆←⊂'StatusField'
+ ∆,←⊂'Size'(⍬ 150)
+ ∆,←⊂'Posn'(⍬(n.Info.Size[1]+7))
+ ∆,←⊂'Attach'('Bottom' 'Right' 'Bottom' 'Right')
+ n.Version←⍎'SB.Version'n.Form.⎕WC ∆
+ n.Version.Text←(1⊃##.Version),'  ',2⊃##.Version
+
+ CreateProgressbar
+
+ ⍝Done

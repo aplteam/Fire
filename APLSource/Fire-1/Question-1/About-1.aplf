@@ -1,9 +1,0 @@
- About←{
-⍝ Show the "About" information
-     msg←⊂'Fire (FInd and REplace version ',↑{⍺,' - ',⍵}/##.Version
-     msg,←⊂''
-     msg,←⊂'Written by Kai Jaeger'
-     msg,←⊂''
-     msg,←⊂'http://aplwiki.com/APLTree/Fire'
-     ##.Question.ShowMsg msg
- }

@@ -1,0 +1,5 @@
+ CheckStatusOfButtons←{
+     n←⍵
+     n.(OK AllRemaining).Active←∨/IsTicked n
+     1:shy←0
+ }

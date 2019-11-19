@@ -1,0 +1,62 @@
+ R←Test_Replace_222(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search;code
+⍝ Replace "abc←1" everywhere but comments
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ #.⎕SHADOW'TEMP'
+ 'TEMP'#.⎕NS''
+ buffer←⊂':Namespace Foo  ⍝ abc←1'
+ buffer,←⊂'⍝ abc←1'
+ buffer,←⊂'⍝ Another comment'
+ buffer,←⊂'abc←1  ⍝ global assignment'
+ buffer,←⊂'txt←''abc←1''  ⍝ text'
+ buffer,←⊂'txt←''dfns←{}''  ⍝ text'
+ buffer,←⊂'∇r←hello;abc'
+ buffer,←⊂' abc←1'
+ buffer,←⊂' xyz←''∇'''
+ buffer,←⊂' ⍝∇'
+ buffer,←⊂'∇'
+ buffer,←⊂'hello2←{abc←1 ⋄ x←abc×⍵ ⋄ x}'
+ buffer,←⊂'hello3←{'
+ buffer,←⊂'⍝ abc←1'
+ buffer,←⊂'}'
+ buffer,←⊂'hello4←{'
+ buffer,←⊂'x←{abc←1 ⋄ b←''∇'' ⋄ ⍵×⍺×abc} 1  ⍝ This is a dfns, really; abc←1'
+ buffer,←⊂'    qwer←8} ⍝ This exits a dfns definition; abc←1'
+ buffer,←⊂'hello5←{'
+ buffer,←⊂'x←{abc←1 ⋄ b←''}'' ⋄ ⍵×⍺×abc} 1  ⍝ {{'
+ buffer,←⊂'y←''Foo{'''
+ buffer,←⊂'} ⍝ This exits a dfns definition; abc←1'
+ buffer,←⊂'hello6←{⍺←1 ⋄ abc←1 ⋄ (1000>⍵):⍵ ⋄ ⍺ ∇ ⍵×⍺}'
+ buffer,←⊂'t1←''te{xt'' ⋄ hello7←{abc←1 ⋄ x←abc×⍵ ⋄ x}⋄t2←''More te}xt'''
+ buffer,←⊂':EndNamespace ⍝ abc←1'
+ #.TEMP.⎕FIX buffer
+
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+
+ n.SearchFor.Text←'abc←1'
+ n.LookIn.Text←'#.TEMP'
+ n.(Vars Comments).State←0
+
+ {}∆Select n.StartBtn
+ 0.2 ∆Process n.Form
+ →GoToTidyUp 7≠#.Fire.Fire.G.NoOfObjects
+ →GoToTidyUp~n.HitList.Items Match'Foo' 'hello' 'hello2' 'hello4' 'hello5' 'hello6' 'hello7'
+
+ {}∆Select n.ReplaceBtn
+ ∆Process n.Form
+
+ n2←#.Fire.Fire.Replace.n
+ n2.ReplaceBy.Text←'abcd←2000'
+
+ {}∆Select n2.StartBtn
+ ∆Process n.Form
+ →GoToTidyUp 7≠#.Fire.Fire.Replace.NoOfReplacements
+ code←1↓↑,/(⎕UCS 13),¨⎕SRC #.TEMP.Foo
+ →GoToTidyUp 8≠+/'abcd←2000'⍷code
+ R←∆OK
+
+∆TidyUp:
+ CloseFire

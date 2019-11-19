@@ -1,0 +1,15 @@
+ {r}←RewriteCSS notTicked;fn;CSS;IDs
+ r←⍬
+ fn←G.cssFilename
+ CSS←''
+ IDs←notTicked/1+⍳≢notTicked
+ :If 0≠≢IDs
+     CSS,←⊂' {',⍨¯1↓∊'#no-div'∘,¨(⍕¨IDs),¨','
+     CSS,←⊂##.TAB,'color:#b0b0b0;background-color:f1f1f1;'
+     CSS,←⊂'}'
+     CSS,←⊂' {',⍨¯1↓∊'#no-h1'∘,¨(⍕¨IDs),¨','
+     CSS,←⊂##.TAB,'color:#b0b0b0;'
+     CSS,←⊂'}'
+ :EndIf
+ ##.A.WriteUtf8File fn CSS
+⍝Done

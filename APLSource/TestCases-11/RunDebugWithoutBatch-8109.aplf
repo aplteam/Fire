@@ -1,4 +1,0 @@
- {r}←RunDebugWithoutBatch stopFlag
-⍝ Run all test cases with DEBUG flag on
-⍝ If ""stopFlag"" is 1 then ""RunDebug"" stops just before executing the test case
- r←stopFlag #.Tester.RunDebugWithoutBatch ⎕THIS

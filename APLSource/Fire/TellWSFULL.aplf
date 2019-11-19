@@ -1,0 +1,5 @@
+ {r}←{addToCaption}TellWSFULL msg;parms
+ r←⍬
+ addToCaption←{0<⎕NC ⍵:⍎⍵ ⋄ ''}'addToCaption'
+ addToCaption Question.ShowMsg msg
+⍝Done

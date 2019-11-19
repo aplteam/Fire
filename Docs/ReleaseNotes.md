@@ -1,10 +1,23 @@
 [parm]:saveHTML = 0 
 
-# Release Notes 7.4.0
+# Release Notes 7.5.0
 
-* Now compatibale with acre 6.0
-* Bug fixes
-  * In case of a change of a nested script acre was informed about a change but there is no change. This
-    bug causes no harm, the call is just superfluous and the message in the session confusing.
-  * When executed via the user command script Fire forgot all search phrases after a restart.
-  * When a function was edited from the "Hit" report the search box was not properly populated.
+* The "Detailed hits" report now removes everything from the Preview pane that was removed 
+  from the hit list by the user, be it with the <DEL> key or via the context menu.
+
+* The "Replace one-by-one" dialog now has a "Fix this and all remaining objects" button.
+
+* The "Replace-one-by-one" dialog now starts with check boxes unticked. It therefore initially 
+  shows what has been searched for rather than the result after the replace.
+
+* The TreeView on the "Replace-one-by-one" dialog now supports Ctrl+A (for ticking all check boxes)
+  and Ctrl+N (for un-ticking all check boxes).
+
+* The "Replace-one-by-one" list has now a context menu ("Select all" & "Deselect all")
+
+* Bug fixes:
+  * The "Replace one-by-one" dialog moved down by the height of the menubar with every object.
+  * The report in the statusbar of the "Replace one-by-one" wa sometimes mutilated.
+  * The "Skip" button was active even when there were no more objects waiting ("Replace one-by-one").
+
+* Internally: new test framework `Tester2` is now used.

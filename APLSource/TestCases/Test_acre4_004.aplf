@@ -1,0 +1,43 @@
+ R←Test_acre4_004(stopFlag batchFlag);n;n2;⎕TRAP;body;acreTestProjectName
+⍝ Check whether an acre 4 (or later) managed script remains acre managed after a "Replace" operation
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+
+ R←∆Failed
+
+⍝ Preconditions
+ acreTestProjectName←'FireAcreTest'
+ ##.FilesAndDirs.RmDir acreTestProjectName
+ #.⎕SHADOW'TEMP'
+ 'TEMP'#.⎕NS''
+ #.TEMP.⎕FX'r←Hello' 'r←''Hello world'''
+ #.TEMP.⎕FIX':Class Foo' '∇r←Hello' 'r←''Hello world''' '∇' ':EndClass'
+ {}⎕SE.UCMD'acre.CreateProject ',acreTestProjectName,' #.TEMP'
+
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+
+ n.SearchFor.Text←'world'''
+ n.LookIn.Text←'#.TEMP'
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →GoToTidyUp 2≠#.Fire.Fire.G.NoOfObjects
+
+ {}∆Select n.ReplaceBtn
+ ∆Process n.Form
+
+ n2←#.Fire.Fire.Replace.n
+ n2.ReplaceBy.Text←'world and universe'''
+
+ {}∆Select n2.StartBtn
+ ∆Process n.Form
+
+ body←⎕SRC #.TEMP.Foo
+ →GoToTidyUp 1≠+/∨/¨'world and universe'''∘⍷¨body
+ body←⎕CR'#.TEMP.Hello'
+ →GoToTidyUp 1≠+/∨/'world and universe'''⍷body
+ R←∆OK
+
+∆TidyUp:
+ ##.FilesAndDirs.RmDir acreTestProjectName
+ CloseFire

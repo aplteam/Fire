@@ -1,0 +1,26 @@
+ OnContextMenu msg;n;f;caption;res
+⍝
+ n←(0⊃msg).n
+ 'mm'⎕WC'Menu'
+ f←0<+/n.List.SelItems
+ 'mm.EditCode'⎕WC'MenuItem'('Edit...',##.TAB,'Ctrl+E')('Event' 'Select' 1)
+ caption←'Print name',((1<+/n.List.SelItems)/'s'),' to session',##.TAB,'F4'
+ 'mm.PrintName'⎕WC'MenuItem'caption('Event' 'Select' 1)
+ 'mm.Sep2'⎕WC'Separator'
+ :If ∨/'remove'⍷2⊃n.List.(ReportInfo[SelItems⍳1;])
+     'mm.RemoveFromList'⎕WC'MenuItem'('Remove from hit list',##.TAB,'Del')('Active' 0)
+ :Else
+     'mm.RemoveFromList'⎕WC'MenuItem'('Remove from hit list',##.TAB,'Del')('Event' 'Select' 1)
+ :EndIf
+ :If 0≠≢res←⎕DQ'mm'
+ :AndIf 'mm.Cancel'≢0⊃res
+     :Select 0⊃res
+     :Case 'mm.EditCode'
+         EditCode(n.List.ReportInfo[##.Where n.List.SelItems;0])(##.Where n.List.SelItems)
+     :Case 'mm.RemoveFromList'
+         RemoveFromList n
+     :Case 'mm.PrintName'
+         PrintName¨n.List.ReportInfo[##.Where n.List.SelItems;0]
+     :EndSelect
+ :EndIf
+⍝Done

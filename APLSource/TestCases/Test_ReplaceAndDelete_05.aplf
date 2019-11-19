@@ -1,0 +1,35 @@
+ R←Test_ReplaceAndDelete_05(stopFlag batchFlag);n;n2;⎕TRAP
+⍝ Replace "universe" in a tfns: delete all lines containing hits (first line!)
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ #.⎕EX'TEMP'
+ 'TEMP'#.⎕NS''
+ #.TEMP.⎕FX'r←myTfns' 'r←''universe''' 'r←''universe''' 'r←''world''' 'r←''universe'''
+
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+
+ n.SearchFor.Text←'universe'
+ n.LookIn.Text←'#.TEMP'
+ n.Case.State←0
+
+ {}∆Select n.StartBtn
+ 0.2 ∆Process n.Form
+ →GoToTidyUp~n.HitList.Items ∆LazyMatch'myTfns'
+
+ {}∆Select n.ReplaceBtn
+ ∆Process n.Form
+
+ n2←#.Fire.Fire.Replace.n
+ n2.DeleteLine.State←1
+
+ {}∆Select n2.StartBtn
+ ∆Process n.Form
+ →GoToTidyUp 1≠#.Fire.Fire.Replace.NoOfReplacements
+ →GoToTidyUp('r←myTfns' 'r←''world''')≢##.APLTreeUtils.dlb #.TEMP.⎕NR'myTfns'
+ R←∆OK
+
+∆TidyUp:
+ CloseFire

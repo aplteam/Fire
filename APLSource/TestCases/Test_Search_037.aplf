@@ -1,0 +1,22 @@
+ R←Test_Search_037(stopFlag batchFlag);n;n2;⎕TRAP
+⍝ Search string "APL_Name" with standard search everywhere as an APL name case sensitive.
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+
+ n.SearchFor.Text←'My_APL_Name'
+ n.LookIn.Text←'#.TestData.AAAA'
+ n.(APL_Name Case).State←1
+
+ {}∆Select n.StartBtn
+ ⎕DL 0.05
+ {}∆Select n.StartBtn               ⍝ Clicked twice in order to overcome bug <00517>
+ ∆Process n.Form
+ →GoToTidyUp n.HitList.Items≢'AnotherVars' 'AnotherVars2' 'Complex' 'Mixed'
+ R←∆OK
+
+∆TidyUp:
+ CloseFire

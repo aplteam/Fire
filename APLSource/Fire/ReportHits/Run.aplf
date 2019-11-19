@@ -1,0 +1,13 @@
+ {r}←{noGui}Run testFlag;htmlFilename
+⍝ Creates a report with all hits.
+⍝ Usually `r` is the `n` namespace of the "Hit report" GUI. However, in case the (optional)
+⍝ left argument is 1 no GUI is shown at all. Instead the HTML is returnd. This is for test cases only.
+ r←⍬
+ noGui←{0<⎕NC ⍵:⍎⍵ ⋄ 0}'noGui'
+ :Trap 1 ⍝ WS FULL
+     r←noGui Run_ testFlag
+ :Else
+     :Trap 0 ⋄ {}{##.DisableProgressbar ⍵}⍣(0=noGui)⊣⍬ ⋄ :EndTrap
+     :Trap 0 ⋄ ##.F.DeleteFile htmlFilename ⋄ :EndTrap
+     '"Hit" report'##.TellWSFULL'Sorry, there is not enough memory available for compiling the report'
+ :EndTrap

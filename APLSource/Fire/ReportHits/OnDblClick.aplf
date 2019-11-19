@@ -1,0 +1,7 @@
+ OnDblClick←{
+     n←(0⊃⍵).##.##.n
+⍝     ShowCode n(0⊃n.List.ReportInfo[n.List.SelItems⍳1;])   ⍝ By definition just one  >>> Changed to "Edit" 2019-10-27
+     (0=+/b←n.List.SelItems):⍬
+     row←b⍳1                                                ⍝ By definition just one
+     EditCode n.List.ReportInfo[row;0]row
+ }

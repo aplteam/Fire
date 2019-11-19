@@ -1,0 +1,37 @@
+ R←Test_ReplaceVars_007(stopFlag batchFlag);n;Text;n2;⎕TRAP;buffer
+⍝ Replace string. The variable is a nested vector with one element that is a matrix, so it must remain unchanged. Was once a bug.
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+ #.⎕SHADOW'TEMP'
+ '#.TEMP'⎕NS''
+ #.TEMP.vars←⊂⊂⊂'' 'This and that'(1 6⍴'aaa')
+
+ n.SearchFor.Text←'a'
+ n.LookIn.Text←'#.TEMP'
+ ∆Process n.Form
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →GoToTidyUp~1=⍴n.HitList.Items
+
+ {}∆Select n.ReplaceBtn
+ ∆Process n.Form
+
+ n2←#.Fire.Fire.Replace.n
+ n2.ReplaceBy.Text←'Does not matter'
+
+ {}∆Select n2.StartBtn
+ ∆Process n.Form
+ ⎕DL 0.2
+ {}∆Select n2.StartBtn
+ ∆Process n.Form
+ →GoToTidyUp'Namespace'≢'n2.Form'⎕WG'Type'
+
+ R←∆OK
+
+∆TidyUp:
+ CloseFire

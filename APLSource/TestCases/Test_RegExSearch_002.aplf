@@ -1,0 +1,34 @@
+ R←Test_RegExSearch_002(stopFlag batchFlag);n;⎕TRAP;n2;html
+⍝ Search for variables with items that start with a lamp.
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+
+ #.⎕SHADOW'Temp_RegExSearch_002'
+ 'Temp_RegExSearch_002'#.⎕NS''
+ #.Temp_RegExSearch_002.NotThisOne←' This ⍝ That'
+ #.Temp_RegExSearch_002.ButThisOne←'⍝ This & That'
+ #.Temp_RegExSearch_002.AndThisOne←'   ⍝ This & That'
+ #.Temp_RegExSearch_002.AlsoThisOne←'⍝ Line 1' 'Line 2' 'Line 3' '   ⍝ Line 4'
+
+ n.SearchFor.Text←'^\s{0,}⍝.*'
+ n.LookIn.Text←'#.Temp_RegExSearch_002'
+ n.SearchIsRegEx.State←1
+ n.Greedy.(Active State)←1 0
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →GoToTidyUp 3≠↑⍴n.HitList.ReportInfo
+ →GoToTidyUp 4≠↑+/⍴¨n.Form.##.##.G.Hits[;3]
+
+ {}#.Fire.Fire.GUI.CopyGuiToGlobal ⍬
+ n2←#.Fire.Fire.ReportHits.Run 1
+ html←##.APLTreeUtils.ReadUtf8File n2.∆Filename
+ R←∆OK
+
+∆TidyUp:
+ :Trap 0 ⋄ ##.FilesAndDirs.DeleteFile n2.∆Filename ⋄ :EndTrap
+ CloseFire

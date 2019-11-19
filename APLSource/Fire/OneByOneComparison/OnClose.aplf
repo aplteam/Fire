@@ -1,0 +1,10 @@
+ OnClose←{
+     n←##.GUI.GetRefTo_n 0⊃,⍵
+     parms←⍺
+     parms.Size←n.TheForm.Size
+     posn←n.TheForm.Posn
+     mh←##.GUI.GetSystemMetrics 15             ⍝ Menu height in pixels; 15=SM_CYMENU.
+     posn[0]-←mh
+     parms.Posn←posn
+     1
+ }

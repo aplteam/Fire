@@ -1,0 +1,28 @@
+ R←Test_Search_002(stopFlag batchFlag);n;⎕TRAP
+⍝ Search for name "f" (scalar!)
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+
+ #.⎕SHADOW'Temp_Search_002'
+ 'Temp_Search_002'#.⎕NS''
+ #.Temp_Search_002.⎕FX'Hello1' 'f←1'
+ #.Temp_Search_002.⎕FX'Hello2' '⍝f←1'
+ #.Temp_Search_002.⎕FX'Hello3' 'f1←1'
+ #.Temp_Search_002.⎕FX'Hello4' 'a.f←1'
+ #.Temp_Search_002.⎕FX⍉⍪'Hello5←{f←1}'
+
+ n.SearchFor.Text←'f'
+ n.LookIn.Text←'#.Temp_Search_002'
+ n.APL_Name.State←1
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →GoToTidyUp 4≠≢n.HitList.ReportInfo
+ R←∆OK
+
+∆TidyUp:
+ CloseFire

@@ -1,0 +1,47 @@
+ R←Test_SearchQNL_001(stopFlag batchFlag);n;⎕TRAP
+⍝ Search for "_" anywhere within names ("Names only"). Finds an empty namespace fulfilling the search criteria.
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ #.⎕SHADOW'TEMP'
+ 'TEMP'#.⎕NS''
+ #.TEMP.⎕FX'r←Hello1' 'r←''World_1'''
+ #.TEMP.⎕FX'r←lskmlksdmclsdkmclskdc2' 'r←''World_2'''
+ #.TEMP.⎕FIX':Class Foo1' '∇r←HelloFoo1' 'r←''Foo_1''' '∇' ':EndClass'
+ #.TEMP.⎕FIX':Class Foo_2' '∇r←HelloFoo_2' 'r←''Foo_2''' '∇' ':EndClass'
+ 'Sub1'#.TEMP.⎕NS''
+ #.TEMP.Sub1.⎕FX'r←Sub1Hello1' 'r←''Sub1World_1'''
+ #.TEMP.Sub1.⎕FX'r←Sub1lskmlksdmclsdkmclskdc2' 'r←''Sub1World_2'''
+ #.TEMP.Sub1.⎕FIX':Class Sub1Foo1' '∇r←Sub1HelloFoo1' 'r←''Sub1Foo_1''' '∇' ':EndClass'
+ #.TEMP.Sub1.⎕FIX':Class Sub1Foo_2' '∇r←Sub1HelloFoo_2' 'r←''Sub1Foo_2''' '∇' ':EndClass'
+ 'Sub2'#.TEMP.⎕NS''
+ #.TEMP.Sub2.⎕FX'r←Sub2Hello1' 'r←''Sub2World_1'''
+ #.TEMP.Sub2.⎕FX'r←Sub2lskmlksdmclsdkmclskdc2' 'r←''Sub2World_2'''
+ #.TEMP.Sub2.⎕FIX':Class Sub2Foo1' '∇r←Sub2HelloFoo1' 'r←''Sub2Foo_1''' '∇' ':EndClass'
+ #.TEMP.Sub2.⎕FIX':Class Sub2Foo_2' '∇r←Sub2HelloFoo_2' 'r←''Sub2Foo_2''' '∇' ':EndClass'
+ 'Sub_3'#.TEMP.⎕NS''
+ #.TEMP.Sub_3.⎕FX'r←Sub3Hello1' 'r←''Sub3World_1'''
+ #.TEMP.Sub_3.⎕FX'r←Sub3_Hello2' 'r←''Sub3World2'''
+ #.TEMP.Sub_3.⎕FIX':Class Sub3Foo1' '∇r←Sub3HelloFoo1' 'r←''Sub3Foo_1''' '∇' ':EndClass'
+ #.TEMP.Sub_3.⎕FIX':Namespace Sub3NS1' '∇r←Sub3HelloNS1' 'r←''Sub3NS1''' '∇' '∇r←Sub3HelloNS_2' 'r←''Sub3NS_2''' '∇' ':EndNamespace'
+ 'Sub_4'#.TEMP.⎕NS''
+ #.TEMP.Sub_4.⎕FIX':Class Sub4Foo1' '∇r←Sub4HelloFoo1' 'r←''Sub4Foo_1''' '∇' ':EndClass'
+ 'Sub_5'#.TEMP.⎕NS''   ⍝ Is empty, but we want to see it anyway!
+
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+
+ n.SearchFor.Text←'.*_.*'
+ n.LookIn.Text←'#.TEMP'
+ ⎕NQ n.Tab2'Select'
+ ⎕DL 0.2
+ n.SearchIsRegEx2.State←1
+
+ {}∆Select n.StartBtn
+ 0.2 ∆Process n.Form
+ →GoToTidyUp~(⊂'Sub_5')∊n.HitList.Items
+ R←∆OK
+
+∆TidyUp:
+ CloseFire

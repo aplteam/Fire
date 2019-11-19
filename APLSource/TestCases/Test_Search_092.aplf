@@ -1,0 +1,28 @@
+ R←Test_Search_092(stopFlag batchFlag);n;⎕TRAP
+⍝ Search for string "⍝ This is a comment  ⌹" with "comments only".
+⍝ This was buggy until 2014-07 when the last char in a comment carrying a hit was also the last char in the search string
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+
+ #.⎕SHADOW'TEMP'
+ 'TEMP'#.⎕NS''
+ #.TEMP.⎕FIX':Class MyClass' '∇r←Hello1' '⍝ This is a comment  ⌹' 'r''World1''' '∇' ':EndClass'
+ #.TEMP.⎕FIX':Namespace MyNS' '∇r←Hello2' 'a←123 ⍝ This is a comment  ⌹' 'r''World2''' '∇' ':EndNamespace'
+ #.TEMP.⎕FX'r←Hello3' '⍝ This is a comment  ⌹' 'r''World3'''
+
+ n.SearchFor.Text←'is a comment  ⌹'
+ n.LookIn.Text←'#.TEMP'
+ n.Case.State←1
+ n.(APL_Code Text).State←0
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →GoToTidyUp n.HitList.Items≢'Hello3' 'Hello2' 'MyClass'
+ R←∆OK
+
+∆TidyUp:
+ CloseFire

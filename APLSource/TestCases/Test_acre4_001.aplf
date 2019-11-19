@@ -1,0 +1,64 @@
+ R←Test_acre4_001(stopFlag batchFlag);n;n2;⎕TRAP;acreTestProjectName;changeFilesFolder;expected
+⍝ Check whether acre reacts correctly when objects are changed by Fire that partly belong to an open acre 4 (or later) project
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+
+ :If IsAcre2Or3
+     →0,R←∆Inactive
+ :EndIf
+
+ R←∆Failed
+
+⍝ Preconditions
+ #.⎕SHADOW'FireAcreTest'
+ 'FireAcreTest'#.⎕NS''
+ #.FireAcreTest.⎕FX'r←Doe' 'r←''Johnny ''' 'r,←''in the world'''
+ #.FireAcreTest.⎕FIX':Class MyClass' '∇r←Hello' ':Access Public Shared' 'r←''World11''' '∇' '∇co' ':Implements constructor' ':Access Public' '∇' ':EndClass'
+ #.FireAcreTest.⎕FIX':Namespace MyNamespace' '∇r←Hello3' ':Access Public Shared' 'r←''World''' '∇' 'Hello4←{''world''}' ':EndNamespace'
+ #.FireAcreTest.MyVars←'Oh dear world'
+ #.FireAcreTest.(myRef←⎕NS'')
+ #.FireAcreTest.myRef.⎕FX'r←Hello2' 'r←''World'''
+ 'MyNamedNS'#.FireAcreTest.myRef.⎕NS''
+ #.FireAcreTest.myRef.MyNamedNS.⎕FX'r←Dear' 'r←''my glorious world'''
+ #.FireAcreTest.myInstance←#.FireAcreTest.(⎕NEW MyClass)
+ 'myForm'#.FireAcreTest.myRef.⎕WC'Form'('Visible' 0)('KeepOnClose' 1)
+ #.FireAcreTest.myRef.myForm.⎕FX'r←Hello5' 'r←''world12'''
+ acreTestProjectName←'FireAcreTestTemp'
+ :If (⊂acreTestProjectName)∊⎕SE.UCMD'acre.Projects'
+     {}⎕SE.UCMD'acre.close ',acreTestProjectName
+ :EndIf
+ ##.FilesAndDirs.RmDir acreTestProjectName
+ {}⎕SE.UCMD'acre.CreateProject ',acreTestProjectName,' #.FireAcreTest -casecod=''on'' -keephistory=''on'''
+
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+
+ n.SearchFor.Text←'world'
+ n.LookIn.Text←'#.FireAcreTest'
+ n.Case.State←0
+
+ {}∆Select n.StartBtn
+ 0.2 ∆Process n.Form
+ →PassesIf 5=#.Fire.Fire.G.NoOfObjects   ⍝ The one in the unnamed namepace is not found!
+
+ {}∆Select n.ReplaceBtn
+ ∆Process n.Form
+
+ n2←#.Fire.Fire.Replace.n
+ n2.ReplaceBy.Text←'Universe'
+
+ {}∆Select n2.StartBtn
+ 0.2 ∆Process n.Form
+
+ →GoToTidyUp~'Johnny in the Universe'≡#.FireAcreTest.Doe
+ →GoToTidyUp~'Universe11'≡#.FireAcreTest.MyClass.Hello
+ →GoToTidyUp~'Universe'≡#.FireAcreTest.MyNamespace.Hello3
+ →GoToTidyUp~'Universe'≡#.FireAcreTest.MyNamespace.Hello4 ⍬
+ changeFilesFolder←'expand'##.FilesAndDirs.NormalizePath acreTestProjectName,'\.acre\changes\'
+ expected←'Doe' 'MyClass' 'MyNamespace' 'MyVars'
+ →GoToTidyUp~expected≡{⍵↑⍨⍵⍳'-'}¨{0⊃'.'##.APLTreeUtils.Split ⍵}¨{1⊃⎕NPARTS ⍵}¨↑##.FilesAndDirs.Dir changeFilesFolder
+ R←∆OK
+
+∆TidyUp:
+ #.⎕EX'FireAcreTest'
+ ##.FilesAndDirs.RmDir acreTestProjectName
+ CloseFire

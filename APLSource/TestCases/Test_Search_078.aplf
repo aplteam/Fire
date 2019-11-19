@@ -1,0 +1,36 @@
+ R←Test_Search_078(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search
+⍝ Ordinary search, then a search on the hit list with "Negate" & "Case" ticked.
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ #.⎕SHADOW'TEMP'
+ 'TEMP'#.⎕NS''
+ #.TEMP.⎕FX'r←hello' 'r←''Universe'''
+ #.TEMP.⎕FX'r←Hello1' 'r←''Universe1'''
+ #.TEMP.⎕FX'r←Hello2' 'r←''Universe2'''
+ #.TEMP.⎕FX'r←Hello3' 'r←''Universe3'''
+ #.TEMP.⎕FIX':Class Hello' '∇r←Hello' 'r←''Universe9''' '∇' ':EndClass'
+
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+
+ n.SearchFor.Text←'Hello'
+ n.LookIn.Text←'#.TEMP'
+ n.Case.State←0
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →GoToTidyUp 5≠#.Fire.Fire.G.NoOfObjects
+
+ n.(ReuseSearch Negate).State←1
+ n.Case.State←1
+ n.SearchFor.Text←'Hello'
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →GoToTidyUp 1≠#.Fire.Fire.G.NoOfObjects
+ R←∆OK
+
+∆TidyUp:
+ CloseFire

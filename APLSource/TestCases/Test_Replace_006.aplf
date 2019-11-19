@@ -1,0 +1,32 @@
+ R←Test_Replace_006(stopFlag batchFlag);n;ref;n2;⎕TRAP
+⍝ Replace string "foo" in a namespace script that contains a ⋄-separated fns assignment and a vars assignment on a single line
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+ #.⎕SHADOW'TEMP'
+ 'TEMP'#.⎕NS''
+ ref←#.TEMP.⎕FIX':Namespace MyNamespace' 'MyDfn←{''foo''} ⋄ pi←3.14' '' ':EndNamespace'
+ Assert'foo'≡ref.MyDfn ⍬
+ n.LookIn.Text←'#.TEMP'
+ n.SearchFor.Text←'foo'
+
+ {}∆Select n.StartBtn
+ 0.2 ∆Process n.Form
+ →GoToTidyUp n.HitList.Items≢,⊂'MyDfn'
+
+ {}∆Select n.ReplaceBtn
+ ∆Process n.Form
+ n2←#.Fire.Fire.Replace.n
+ n2.ReplaceBy.Text←'_GOO_'
+
+ {}∆Select n2.StartBtn
+ ∆Process n.Form
+
+ →GoToTidyUp 1≠+/'''_GOO_'''⍷1↓↑,/(⎕UCS 13),¨⎕SRC ref
+ R←∆OK
+
+∆TidyUp:
+ CloseFire

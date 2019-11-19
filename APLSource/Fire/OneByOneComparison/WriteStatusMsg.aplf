@@ -1,0 +1,21 @@
+ {r}←{x}WriteStatusMsg n;b;noOf;i
+⍝ Write the appropriate message to the status bar, depending on the tickings.
+ r←⍬
+ x←{0<⎕NC ⍵:⍎⍵ ⋄ ''}'x'
+ :If 0≠≢x
+     (i noOf)←x
+     n.Statusbar.Caption←'Object ',(⍕i+1),' of ',(⍕noOf),'  --  '
+ :EndIf
+ :If ∧/b←IsTicked n
+     :If 1=⍴b
+         n.Statusbar.Text←'one hit is ticked'
+     :Else
+         n.Statusbar.Text←'all ',(⍕⍴b),' hit',((1<⍴b)⊃' is' 's are'),' ticked'
+     :EndIf
+ :Else
+     :If 1=⍴b
+         n.Statusbar.Text←'no hit is ticked'
+     :Else
+         n.Statusbar.Text←(⍕+/~b),' of ',(⍕⍴b),' hit',((1<+/~b)⊃' is' 's are'),' not ticked'
+     :EndIf
+ :EndIf

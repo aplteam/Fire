@@ -1,0 +1,23 @@
+ R←Test_Misc_002(stopFlag batchFlag);n;n2;⎕TRAP
+⍝ Check whether name recognition works well on "Foo".
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+
+ n.SearchFor.Text←'Foo'
+ n.LookIn.Text←'#.TestData.APL_Names'
+
+ n.APL_Name.State←1
+
+ {}∆Select n.StartBtn
+ ⎕DL 0.05
+ {}∆Select n.StartBtn               ⍝ Clicked twice in order to overcome bug <00517>
+ ∆Process n.Form
+ →GoToTidyUp n.HitList.Items≢,'Foo' 'MyClass'
+ R←∆OK
+
+∆TidyUp:
+ CloseFire

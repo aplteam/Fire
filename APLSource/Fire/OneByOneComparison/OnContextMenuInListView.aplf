@@ -1,0 +1,13 @@
+ OnContextMenuInListView←{
+     n←##.GUI.GetRefTo_n 0⊃,⍵
+     n2←⎕NS''
+     n2.Menu←⍎'mm'n.TheForm.⎕WC'Menu'
+     n2.SelectAll←⍎'SelectAll'n2.Menu.⎕WC'MenuItem'('Caption'('Select All',##.TAB,'Ctrl+A'))('Event' 'Select' 1)
+     n2.SelectNone←⍎'SelectNone'n2.Menu.⎕WC'MenuItem'('Caption'('Deselect All',##.TAB,'Ctrl+N'))('Event' 'Select' 1)
+     res←⎕DQ n2.Menu
+     0=≢res:0
+     ref←⍎↑res
+     n2.SelectAll≡ref:0⊣TickAllCheckBoxes n.List
+     n2.SelectNone≡ref:0⊣0 TickAllCheckBoxes n.List
+     0
+ }

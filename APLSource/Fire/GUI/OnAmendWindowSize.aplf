@@ -1,0 +1,3 @@
+ OnAmendWindowSize←{
+     OnEnlarge,0⊃⍵
+ }

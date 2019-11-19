@@ -1,0 +1,25 @@
+ R←Test_Search_040(stopFlag batchFlag);n;n2;⎕TRAP
+⍝ Search string "a" on a variable that is nested but ultimately empty. Must not find anything. Was once a bug.
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+ #.⎕SHADOW'TEMP'
+ '#.TEMP'⎕NS''
+ #.TEMP.varsEmpty←⊂''
+
+ n.SearchFor.Text←'a'
+ n.LookIn.Text←'#.TEMP'
+ ∆Process n.Form
+
+ {}∆Select n.StartBtn
+ ⎕DL 0.2
+ {}∆Select n.StartBtn               ⍝ Clicked twice in order to overcome bug <00517>
+ ∆Process n.Form
+ →GoToTidyUp~0∊⍴n.HitList.Items
+ R←∆OK
+
+∆TidyUp:
+ CloseFire

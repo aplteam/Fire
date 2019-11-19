@@ -1,0 +1,56 @@
+ R←Test_Replace_301(stopFlag batchFlag);n;n2;⎕TRAP;rf;code
+ ⍝ Find and delete lines. This test focuses on deleting objects in a class
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ #.⎕SHADOW'TEMP'
+ 'TEMP'#.⎕NS''
+ code←⊂':Class Foo ⍝ ∆∆∆'                       ⍝ Despite comments being part of the search, the first and last line of a script is never deleted!
+ code,←⊂'∆∆∆←1'
+ code,←⊂'⍝ ∆∆∆∆'
+ code,←⊂'myClassDfns1←{∆∆∆←∆∆∆+1}'              ⍝ To be deleted: just a one-liner.
+ code,←⊂'myClassDfns2←{'
+ code,←⊂'∆∆∆←∆∆∆+1'                             ⍝ This will survive because after the removal of line 2 there are still 3 lines left.
+ code,←⊂''
+ code,←⊂'}'
+ code,←⊂'myClassTop1←{'
+ code,←⊂'∆∆∆←⍺⍺ ∆∆∆+1'                          ⍝ This will survive because after the removal of line 2 there are still 3 lines left.
+ code,←⊂''
+ code,←⊂'}'
+ code,←⊂'∇r←TfnsOneLiner2;∆∆∆'                  ⍝ Not to be deleted because it's a class script.
+ code,←⊂'∇'
+ code,←⊂'∇r←TfnsOneLiner3;∆∆∆'                  ⍝ Not to be deleted because it's a class script.
+ code,←⊂'∆∆∆←1'
+ code,←⊂'∇'
+ code,←⊂'∇r←Survive;∆∆∆'                        ⍝ Untouched: line 1 remains untouched except in one-liners.
+ code,←⊂'a←1'
+ code,←⊂'∇'
+ code,←⊂':EndClass  ⍝ ∆∆∆'                      ⍝ Despite comments being part of the search, the first and last line of a script is never deleted!
+ #.TEMP.⎕FIX code←,¨code
+
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+
+ n.SearchFor.Text←'∆∆∆'
+ n.LookIn.Text←'#.TEMP'
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →GoToTidyUp 1≠#.Fire.Fire.G.NoOfObjects ⍝ Since version 3.5 the scripts as such DO count!
+
+ {}∆Select n.ReplaceBtn
+ ∆Process n.Form
+
+ n2←#.Fire.Fire.Replace.n
+ n2.ReplaceBy.Text←''
+ n2.DeleteLine.State←1
+
+ {}∆Select n2.StartBtn
+ ∆Process n2.Form
+ →PassesIf 1=#.Fire.Fire.Replace.NoOfReplacements
+ →PassesIf 15=⍴#.TEMP.⎕SRC #.TEMP.Foo
+ R←∆OK
+
+∆TidyUp:
+ CloseFire

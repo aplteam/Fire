@@ -1,0 +1,44 @@
+ R←Test_Replace_302(stopFlag batchFlag);n;n2;⎕TRAP;rf
+ ⍝ Find and delete lines. This test focuses on deleting objects in dfns/dops and tfns/tops.
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ #.⎕SHADOW'TEMP'
+ 'TEMP'#.⎕NS''
+ ⍎(' '≠1↑0⍴#.TEMP.⎕FX'r←Hello;∆∆∆' '⍙←⍙+1' '∆∆∆←∆∆∆+1')/'.'
+ ⍎(' '≠1↑0⍴#.TEMP.⎕FX,⊂'r←TfnsOneLiner1;∆∆∆')/'.'
+ ⍎(' '≠1↑0⍴#.TEMP.⎕FX,⊂'r←(fns TopsOneLiner1)y;∆∆∆')/'.'
+ ⍎(' '≠1↑0⍴#.TEMP.⎕FX'r←TfnsMultipleLiner1;∆∆∆' '∆∆∆←1')/'.'
+ ⍎(' '≠1↑0⍴#.TEMP.⎕FX,⊂'r←Survive;a')/'.'
+ #.TEMP.dfns←{∆∆∆←∆∆∆+1 ⋄ ⍙←⍙+1}
+
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+
+ n.SearchFor.Text←'∆∆∆'
+ n.LookIn.Text←'#.TEMP'
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+
+ {}∆Select n.ReplaceBtn
+ ∆Process n.Form
+
+ n2←#.Fire.Fire.Replace.n
+ n2.ReplaceBy.Text←''
+ n2.DeleteLine.State←1
+
+ {}∆Select n2.StartBtn
+ ∆Process n2.Form
+ →PassesIf 5=#.Fire.Fire.Replace.NoOfReplacements
+ →PassesIf 2=⍴#.TEMP.⎕NR'Hello'
+ →PassesIf 0=#.TEMP.⎕NC'TfnsOneLiner'
+ →PassesIf 0=#.TEMP.⎕NC'TopsOneLiner1'
+ →PassesIf 0=#.TEMP.⎕NC'TfnsMultipleLiner1'
+ →PassesIf 1=⍴#.TEMP.⎕NR'Survive'
+ →PassesIf 0=#.TEMP.⎕NC'dfns'
+ R←∆OK
+
+∆TidyUp:
+ CloseFire

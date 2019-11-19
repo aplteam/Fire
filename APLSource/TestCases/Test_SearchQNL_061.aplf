@@ -1,0 +1,33 @@
+ R←Test_SearchQNL_061(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search
+⍝ Search for a string in ⎕NL.
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+⍝ Preconditions
+ #.⎕SHADOW'TEMP'
+ 'TEMP'#.⎕NS''
+ #.TEMP.⎕FX'r←hello' 'r←''Universe'''
+ #.TEMP.⎕FX'r←Hello1' 'r←''Universe1'''
+ #.TEMP.⎕FX'r←Hello2' 'r←''Universe2'''
+ #.TEMP.⎕FX'r←Hello3' 'r←''Universe3'''
+ #.TEMP.⎕FX'r←BigHello' 'r←''Universe4'''
+ #.TEMP.⎕FIX':Class Hello' '∇r←Hello' 'r←''Universe9''' '∇' ':EndClass'
+
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+
+ n.SearchFor.Text←'Hello'
+ n.LookIn.Text←'#.TEMP'
+ ⎕NQ n.Tab2'Select'
+ ∆Process n.Form
+ n.Vars2.State←0
+ n.Case2.State←0
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →GoToTidyUp 6≠⍴n.HitList.Items
+ →GoToTidyUp'#.TEMP'≢0⊃n.HitList.ReportInfo[0;]
+ R←∆OK
+
+∆TidyUp:
+ CloseFire

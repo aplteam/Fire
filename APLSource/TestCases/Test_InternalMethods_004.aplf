@@ -1,0 +1,17 @@
+ R←Test_InternalMethods_004(stopFlag batchFlag);H;code;mask;NL;⎕TRAP;body;body2
+⍝ Exercise the "RemoveFnsAndOpr" method. Was once a bug
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←∆Failed
+
+ #.⎕SHADOW'TEMP'
+ 'TEMP'#.⎕NS''
+ body←':Namespace Foo' 'Hello←{' 'vars←''Hello''' '}' '⍝ Hello' 'abc←''Hello''' 'Goo←{' 'vars2←''Hello''' '}'
+ body,←'Boo←{vars3←''Hello''} ⋄ Koo←{vars4←''Hello''}' '' '∇r←Fns1' 'r←''Hello''' '∇'
+ body,←⊂':EndNamespace'
+ #.TEMP.⎕FIX body
+
+ body←#.⎕SRC #.TEMP.Foo
+ body2←#.Fire.Fire.RemoveFnsAndOpr body
+ →FailsIf∨/'←{'⍷↑,/body2
+
+ R←∆OK

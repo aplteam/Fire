@@ -1,0 +1,40 @@
+ r←parms Run(ref name oldCode newCode i noOf ind length nc deleteFlag);res;lineNumbers;G;cursorWas;n2;buff;rc
+⍝ Returns:
+⍝ [0]: 1 in case the object shall get fixed; 2=skip this one, 3=fix this one and all remaining ones as well, 0=cancel
+⍝ [1]: Boolean; 1=fix remaining ones in one go
+⍝ [2]: New (and potentially changed) code
+ r←⍬
+ lineNumbers←(⊃,/(1+≢¨oldCode)⍴¨⍳≢oldCode)[ind]
+ cursorWas←##.GetCursorObj
+ n2←parms CreateGUI((⍕ref),'.',name)lineNumbers i noOf ##.G.DeleteLines
+ n2.∆HtmlFilename←##.F.EnforceSlash ##.GetTempFileName'html'
+ n2.∆CssFilename←##.GetTempFileName'css'
+ n2.TheForm.CursorObj←1
+ :If ##.G.SearchIsRegEx
+     G←CompileRegExReport((⍕ref),'.',name)oldCode newCode lineNumbers ind length nc n2 deleteFlag
+ :Else
+     G←CompileReport((⍕ref),'.',name)oldCode newCode lineNumbers ind nc n2 deleteFlag
+ :EndIf
+ ##.SetCursorObj cursorWas
+ RewriteCSS IsTicked n2
+ n2.Browser.Navigate⊂'file:///',n2.∆HtmlFilename
+ n2.TheForm.CursorObj←0
+ buff←DQ n2
+ :If 0=≢buff
+     res←n2.Cancel
+ :Else
+     res←↑buff
+ :EndIf
+ :Select res
+ :CaseList n2.(OK AllRemaining)
+     G.These←##.A.Where IsTicked n2
+     newCode←Replace G
+     r←1(res≡n2.AllRemaining)newCode
+ :Case n2.Skip
+     r←2 0 ''
+ :Case n2.Cancel
+     r←0 0 ''
+ :EndSelect
+ ##.F.DeleteFile n2.(∆HtmlFilename ∆CssFilename)
+ n2←CloseForm n2
+⍝Done

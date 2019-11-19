@@ -1,0 +1,59 @@
+ {r}←CompileReport_(i recNo firstFlag G);name;New;Old;name2;new;old;data;nc;lns;h1;diffs;data11;data22;noOf;data2;data1;TAB
+ r←⍬
+ (name New)←⎕FREAD G.compareFileTieNo,recNo
+⍝ {⍵:.}∨/'Vars1'⍷name
+ (name2 Old)←⎕FREAD G.fileOldTieNo,recNo
+ (new old)←##.G.NamesOnly ##.IfLower¨New Old
+ data←((~firstFlag)/⊂'</div>'),⊂'<div class="container" id="no-div',(⍕i+1),'">'  ⍝ This allows us to CSS this object
+ nc←i⊃G.NameClasses
+ lns←nc{((⌊⍺)∊3 4):⍳⍵ ⋄ 2≠⌊nc:(⊂''),(1↓¯1↓⍳⍵),⊂'' ⋄ ⍬}⍴New
+ h1←(⍕i+1),'. ',name,' (',(⍕nc),') '
+ data,←⊂{('a id="no-h1',⍵,'"')Tag'h1'Tag h1}⍕i+1
+ TAB←##.TAB
+ WriteReport data
+ :If G.DeleteLineFlag                                   ⍝ Simply delete all lines with hits?
+     :If 2=⌊nc
+         :If 2=≡new
+             diffs←~old∊new
+         :Else
+             diffs←1
+         :EndIf
+         Old←A.Nest Old
+     :Else
+         diffs←0,1↓nc{(⍺∊9.4 9.5):0,⍨¯1↓⍵ ⋄ ⍵}~old∊new  ⍝ First line is NEVER deleted, last line only if it's not a class or Interface
+         :If 0=+/diffs                                  ⍝ Happens when only the header line contains the search string, or the first/last line of a class or interface
+             :Return
+         :EndIf
+     :EndIf
+     WriteReport⊂'<div class="deleted">'
+     data←##.ReplaceSpecialChars¨diffs/Old
+     data←'p class="deleted"'∘Tag¨({'<span class="lineno">[',(⍕⍵),'] '}¨##.A.Where diffs),¨data
+     WriteReport data
+     WriteReport¨⊂'</div>'(,##.CR)
+ :ElseIf 2=⌊nc
+ :AndIf 1=≡new
+     :If Old≢New
+         data11←TAB,TAB,Tag 1 MarkupDiff2 Old New G.SearchFor G.ReplaceBy
+         data22←TAB,TAB,Tag 2 MarkupDiff2 New Old G.ReplaceBy G.SearchFor
+         data←TAB,({0=⍵:⍬ ⋄ '<span class="lineno">[',(⍕⍵),']<br>'}↑lns),TAB,'div class="comp"'Tag data11,data22
+         WriteReport data,##.CR
+     :EndIf
+     Drop G.DeleteLineFlag 1 1
+ :Else
+     :Repeat
+         noOf←+/∧\(⍳⍴new)=old⍳new
+         :If 0<noOf
+             Drop G.DeleteLineFlag noOf noOf
+         :Else
+             data1←{(1=⍴⍵):∊⍵ ⋄ 1↓↑,/##.CR,¨⍵}{A.dlb ⍵}¨1↑New
+             data2←##.A.dlb{2=≡⍵:0⊃⍵ ⋄ ⍵}Old
+             data11←TAB,TAB,'p'Tag 1 MarkupDiff2 data2 data1 G.SearchFor G.ReplaceBy
+             data22←TAB,TAB,'p'Tag 2 MarkupDiff2 data1 data2 G.ReplaceBy G.SearchFor
+             data←TAB,({(0∊⍴,⍵)∨(,0)≡,⍵:'' ⋄ '<span class="lineno">[',(⍕⍵),']</span><br>'}↑lns),TAB,'div class="comp"'Tag data11,data22
+             WriteReport data,##.CR
+             noOf←1
+             Drop G.DeleteLineFlag noOf 1
+         :EndIf
+     :Until 0∊⍴New
+ :EndIf
+⍝Done

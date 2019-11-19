@@ -1,0 +1,3 @@
+ r←Version
+ ⍝ See also `History`
+ r←(1↓↑¯1↑⎕NPARTS⍕⎕THIS)'7.5.0.127' '2019-11-19'

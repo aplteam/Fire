@@ -1,0 +1,12 @@
+ OnItemUpInListView←{
+⍝ This lets "OnRefreshCSS" rewrite the CSS file and then executes a "Refresh" command on the web browser.
+     (obj row)←⍵[0 2]
+     n←##.GUI.GetRefTo_n obj
+     n.∆NextId←⍕1⌈¯5+↑(//)⎕VFI{1↓⍵↑⍨⍵⍳']'}row⊃obj.ReportInfo[;0]
+     n.List.SelItems[]←0
+     n.List.SelItems[row]←1
+     _←##.GUI.SetFocusTo obj row
+     _←⎕NQ(0⊃⍵)##.GUI.Events.RefreshCSS       ⍝ Send a "RefreshCSS" event to itself.
+     _←CheckStatusOfButtons n
+     ⍬
+ }
