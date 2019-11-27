@@ -1,7 +1,7 @@
  R←Test_Search_049(stopFlag batchFlag);n;⎕TRAP
 ⍝ Test search for expressions like ''⎕NS'' (conflict with text search!)
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  1 #.Fire.Fire.Run 0
@@ -12,8 +12,8 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp 3≠#.Fire.Fire.G.NoOfObjects
- R←∆OK
+ →T.GoToTidyUp 3≠#.Fire.Fire.G.NoOfObjects
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

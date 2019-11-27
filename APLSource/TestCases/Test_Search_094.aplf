@@ -1,7 +1,7 @@
  R←Test_Search_094(stopFlag batchFlag);n;⎕TRAP
 ⍝ Search for string "is text  ⌹" with "text only" but with a .NET object in #.TEMP
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  1 #.Fire.Fire.Run 0
@@ -24,8 +24,8 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp n.HitList.Items≢'Hello3' 'Hello2' 'MyClass'
- R←∆OK
+ →T.GoToTidyUp n.HitList.Items≢'Hello3' 'Hello2' 'MyClass'
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

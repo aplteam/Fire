@@ -1,7 +1,7 @@
  R←Test_HitReport_001(stopFlag batchFlag);n;n2;⎕TRAP
 ⍝ Exercise the "Hit Report". This test makes sure that the GUI shows and is what we expect.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  1 #.Fire.Fire.Run 0
@@ -17,9 +17,9 @@
  #.Fire.Fire.G.TestFlag←1
  n2←#.Fire.Fire.ReportHits.Run 1
  ∆Process n.Form
- →GoToTidyUp 0≥≢n2.List.Items
- →GoToTidyUp'HTML Document'≢n2.Browser.Type
- R←∆OK
+ →T.GoToTidyUp 0≥≢n2.List.Items
+ →T.GoToTidyUp'HTML Document'≢n2.Browser.Type
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

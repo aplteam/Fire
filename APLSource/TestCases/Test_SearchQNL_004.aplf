@@ -1,7 +1,7 @@
  R←Test_SearchQNL_004(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search
 ⍝ Search for "QAN" in #.TicToc (bug fix)
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  1 #.Fire.Fire.Run 0
@@ -16,8 +16,8 @@
 
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form
- →GoToTidyUp 3≠#.Fire.Fire.G.NoOfObjects
- R←∆OK
+ →T.GoToTidyUp 3≠#.Fire.Fire.G.NoOfObjects
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

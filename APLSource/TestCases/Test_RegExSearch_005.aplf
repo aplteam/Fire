@@ -1,7 +1,7 @@
  R←Test_RegExSearch_005(stopFlag batchFlag);n;⎕TRAP;n2;html;expected
 ⍝ Search for Text (anything between ') in a simple vars that stretches over several lines (CRs). (Greedy=1)
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  1 #.Fire.Fire.Run 0
@@ -19,18 +19,18 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp 1≠↑⍴n.HitList.ReportInfo
- →GoToTidyUp'vars1'≢⊃n.Form.##.##.G.Hits[0;1]
+ →T.GoToTidyUp 1≠↑⍴n.HitList.ReportInfo
+ →T.GoToTidyUp'vars1'≢⊃n.Form.##.##.G.Hits[0;1]
 
  n2←#.Fire.Fire.ReportHits.Run 1
  ∆Process n.Form
- →GoToTidyUp 1≠⍴n2.List.Items
- →GoToTidyUp'HTML Document'≢n2.Browser.Type
+ →T.GoToTidyUp 1≠⍴n2.List.Items
+ →T.GoToTidyUp'HTML Document'≢n2.Browser.Type
  html←##.APLTreeUtils.Lowercase'flat'##.APLTreeUtils.ReadUtf8File n2.∆Filename
  html←((⎕UCS 10)≠html)/html
  expected←'<div class="obj">e←5 <span class="diff">''holy shit!!!!''</span> ⋄ g←6<br><span class="diff">''a''</span></div>'
- →GoToTidyUp~∧/∨/expected⍷∊html
- R←∆OK
+ →T.GoToTidyUp~∧/∨/expected⍷∊html
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

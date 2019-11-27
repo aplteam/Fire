@@ -1,7 +1,7 @@
  R←Test_HitReport_003(stopFlag batchFlag);n;n2;⎕TRAP;expected;rg;GUI;html
 ⍝ Search for `⎕IO` within Fire and checks the mark-wup in the "Hit report"
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
  1 #.Fire.Fire.Run 0
  n←#.Fire.Fire.GUI.n
@@ -12,9 +12,9 @@
  ∆Process n.Form
 
  html←∊1 #.Fire.Fire.ReportHits.Run 1
- →GoToTidyUp n.##.##.G.NoOfHits≠+/'<span class="diff">⎕IO</span>'⍷html
+ →T.GoToTidyUp n.##.##.G.NoOfHits≠+/'<span class="diff">⎕IO</span>'⍷html
 
- R←∆OK
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

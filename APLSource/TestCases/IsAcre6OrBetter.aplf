@@ -1,0 +1,11 @@
+ r←IsAcre6OrBetter
+⍝ Returns a 1 in case acre 6 or better is available
+⍝ Used by some test cases in order to decide whether they should run or not.
+ :If r←9=⎕SE.⎕NC'acre'
+     :Trap 6
+         {}⎕SE.acre._code.Version ⍬                    ⍝ This works just in acre 6 and later
+         r←1
+     :Else
+         r←0
+     :EndTrap
+ :EndIf

@@ -1,8 +1,8 @@
- R←Test_acre4_004(stopFlag batchFlag);n;n2;⎕TRAP;body;acreTestProjectName
+ R←Test_acre_004(stopFlag batchFlag);n;n2;⎕TRAP;body;acreTestProjectName
 ⍝ Check whether an acre 4 (or later) managed script remains acre managed after a "Replace" operation
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
 
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  acreTestProjectName←'FireAcreTest'
@@ -21,7 +21,7 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp 2≠#.Fire.Fire.G.NoOfObjects
+ →T.GoToTidyUp 2≠#.Fire.Fire.G.NoOfObjects
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -33,10 +33,10 @@
  ∆Process n.Form
 
  body←⎕SRC #.TEMP.Foo
- →GoToTidyUp 1≠+/∨/¨'world and universe'''∘⍷¨body
+ →T.GoToTidyUp 1≠+/∨/¨'world and universe'''∘⍷¨body
  body←⎕CR'#.TEMP.Hello'
- →GoToTidyUp 1≠+/∨/'world and universe'''⍷body
- R←∆OK
+ →T.GoToTidyUp 1≠+/∨/'world and universe'''⍷body
+ R←T._OK
 
 ∆TidyUp:
  ##.FilesAndDirs.RmDir acreTestProjectName

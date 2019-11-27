@@ -11,8 +11,12 @@
 ⍝   * The "Replace-one-by-one" list has now a context menu ("Select all" & "Deselect all")
 ⍝   * Bug fixes:
 ⍝     * The "Replace one-by-one" dialog moved down by the height of the menubar with every object.
-⍝     * The report in the statusbar of the "Replace one-by-one" wa sometimes mutilated.
-⍝     * The "Skip" button was active even when there were no more objects waiting ("Replace one-by-one").
+⍝     * The report in the statusbar of the "Replace one-by-one" was sometimes mutilated.
+⍝     * The "Skip" button in the "Replace one-by-one" dialog was active even when there were no more objects
+⍝       waiting.
+⍝     * The cause for the spurious "xyz cannot own abc" message in the status windows has been removed.
+⍝     * Some acre-related test were not executed any more because they concluded (wrongly) that the version of
+⍝       acre to be found in ⎕SE was outdated when in fact it was "too good".
 ⍝   * Internally: new test framework `Tester2` is now used.
 ⍝ \\
 ⍝ For information regarding older version see <https://github.com/aplteam/Fire/releases>

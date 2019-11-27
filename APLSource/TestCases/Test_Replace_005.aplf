@@ -1,7 +1,7 @@
  R←Test_Replace_005(stopFlag batchFlag);n;ref;n2;⎕TRAP
 ⍝ Replace string "foo" in a namespace script that contains nested dfns.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  1 #.Fire.Fire.Run 0
@@ -15,7 +15,7 @@
 
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form
- →GoToTidyUp n.HitList.Items≢,⊂'MyDfn'
+ →T.GoToTidyUp n.HitList.Items≢,⊂'MyDfn'
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -25,8 +25,8 @@
  {}∆Select n2.StartBtn
  ∆Process n.Form
 
- →GoToTidyUp 1≠+/'a←''_GOO_'''⍷1↓↑,/(⎕UCS 13),¨⎕SRC ref
- R←∆OK
+ →T.GoToTidyUp 1≠+/'a←''_GOO_'''⍷1↓↑,/(⎕UCS 13),¨⎕SRC ref
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

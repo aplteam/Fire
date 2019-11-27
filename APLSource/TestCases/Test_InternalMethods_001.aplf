@@ -1,130 +1,130 @@
  R←Test_InternalMethods_001(stopFlag batchFlag);⎕TRAP;code;CR;ss
 ⍝ Exercise Fire's "IsName" method.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
  CR←⎕UCS 13
 
  code←'name←''path2ride'''
- →FailsIf 1≠⍴#.Fire.Fire.IsName code'ride'
- →FailsIf 1≠⍴#.Fire.Fire.IsName code'ride'
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code'ride'
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code'ride'
 
  code←'Header;NL;A'
- →FailsIf 1≠⍴#.Fire.Fire.IsName code'NL'
- →FailsIf 1≠⍴#.Fire.Fire.IsName code'NL'
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code'NL'
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code'NL'
 
  code←'Header;NL;A;NL;NLNL'
- →FailsIf 2≠⍴#.Fire.Fire.IsName code'NL'
- →FailsIf 2≠⍴#.Fire.Fire.IsName code'NL'
+ →T.FailsIf 2≠⍴#.Fire.Fire.IsName code'NL'
+ →T.FailsIf 2≠⍴#.Fire.Fire.IsName code'NL'
 
  code←'Header;⎕NL;A'
- →FailsIf~0∊⍴#.Fire.Fire.IsName code'NL'
- →FailsIf~0∊⍴#.Fire.Fire.IsName code'NL'
+ →T.FailsIf~0∊⍴#.Fire.Fire.IsName code'NL'
+ →T.FailsIf~0∊⍴#.Fire.Fire.IsName code'NL'
 
  code←'Header;X;Y;Z;',CR,'#.A.BB.C.NL.A←1'
- →FailsIf 1≠⍴#.Fire.Fire.IsName code'NL'
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code'NL'
 
  code←'Header;X;Y;Z;',CR,'BB.C.NL.A←1'
- →FailsIf 1≠⍴#.Fire.Fire.IsName code'NL'
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code'NL'
 
  code←'Header;X;Y;Z;',CR,'BB.C.NL←1'
- →FailsIf 1≠⍴#.Fire.Fire.IsName code'NL'
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code'NL'
 
  code←'Header;X;Y;Z;',CR,'⎕NL 3'
- →FailsIf~0∊⍴#.Fire.Fire.IsName code'NL'
- →FailsIf~0∊⍴#.Fire.Fire.IsName code'NL'
+ →T.FailsIf~0∊⍴#.Fire.Fire.IsName code'NL'
+ →T.FailsIf~0∊⍴#.Fire.Fire.IsName code'NL'
 
  code←'Header;X;Y;Z;',CR,'NLNLNL←1'
- →FailsIf~0∊⍴#.Fire.Fire.IsName code'NL'
- →FailsIf~0∊⍴#.Fire.Fire.IsName code'NL'
+ →T.FailsIf~0∊⍴#.Fire.Fire.IsName code'NL'
+ →T.FailsIf~0∊⍴#.Fire.Fire.IsName code'NL'
 
  code←'#.Foo.This←#.Foo.Fns 2'
- →FailsIf 2≠⍴#.Fire.Fire.IsName code'Foo'
+ →T.FailsIf 2≠⍴#.Fire.Fire.IsName code'Foo'
 
  ss←'.Foo'
  code←'#.Foo.This←#.Foo.Fns 2'
- →FailsIf 2≠⍴#.Fire.Fire.IsName code ss
+ →T.FailsIf 2≠⍴#.Fire.Fire.IsName code ss
  ss←'Foo.'
- →FailsIf 2≠⍴#.Fire.Fire.IsName code ss
+ →T.FailsIf 2≠⍴#.Fire.Fire.IsName code ss
  ss←'.Foo.'
- →FailsIf 2≠⍴#.Fire.Fire.IsName code ss
+ →T.FailsIf 2≠⍴#.Fire.Fire.IsName code ss
 
  ss←'Fns'
- →FailsIf 1≠⍴#.Fire.Fire.IsName code ss
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code ss
  ss←'.Fns'
- →FailsIf 1≠⍴#.Fire.Fire.IsName code ss
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code ss
  ss←'Fns.'
- →FailsIf~0∊⍴#.Fire.Fire.IsName code ss
- →FailsIf~0∊⍴#.Fire.Fire.IsName code ss
+ →T.FailsIf~0∊⍴#.Fire.Fire.IsName code ss
+ →T.FailsIf~0∊⍴#.Fire.Fire.IsName code ss
  ss←'.Fns.'
- →FailsIf~0∊⍴#.Fire.Fire.IsName code ss
- →FailsIf~0∊⍴#.Fire.Fire.IsName code ss
+ →T.FailsIf~0∊⍴#.Fire.Fire.IsName code ss
+ →T.FailsIf~0∊⍴#.Fire.Fire.IsName code ss
 
  code←'#.Foo.This←#.Foo.Fns 2'
- →FailsIf 2≠⍴#.Fire.Fire.IsName code'#'
+ →T.FailsIf 2≠⍴#.Fire.Fire.IsName code'#'
 
  code←'#.Foo.This←#.Foo.Fns 2'
- →FailsIf 2≠⍴#.Fire.Fire.IsName code'#.'
+ →T.FailsIf 2≠⍴#.Fire.Fire.IsName code'#.'
 
  code←'#.Foo.This←#.Foo.Fns 2'
 
  code←'abc.cd.Foo.This←#.Foo.Fns 2'
- →FailsIf 1≠⍴#.Fire.Fire.IsName code'cd'
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code'cd'
 
  code←'abc.cd.Foo.This←#.Foo.Fns 2'
- →FailsIf 1≠⍴#.Fire.Fire.IsName code'abc'
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code'abc'
 
  code←'abc.cd.Foo.This←#.Foo.Fns 2'
- →FailsIf 2≠⍴#.Fire.Fire.IsName code'Foo'
+ →T.FailsIf 2≠⍴#.Fire.Fire.IsName code'Foo'
 
  code←'abc.cd.Foo.⍙←#.Foo.Fns 2'
- →FailsIf 1≠⍴#.Fire.Fire.IsName code(,'⍙')
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code(,'⍙')
 
  code←'abc.cd.Foo.⍙⍙←#.Foo.Fns 2'
- →FailsIf~0∊⍴#.Fire.Fire.IsName code(,'⍙')
- →FailsIf~0∊⍴#.Fire.Fire.IsName code(,'⍙')
+ →T.FailsIf~0∊⍴#.Fire.Fire.IsName code(,'⍙')
+ →T.FailsIf~0∊⍴#.Fire.Fire.IsName code(,'⍙')
 
  code←'abc.cd.Foo.∆←#.Foo.Fns 2'
- →FailsIf 1≠⍴#.Fire.Fire.IsName code(,'∆')
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code(,'∆')
 
  code←'abc.cd.∆∆.Foo←#.Foo.Fns 2'
- →FailsIf~0∊⍴#.Fire.Fire.IsName code(,'∆')
- →FailsIf~0∊⍴#.Fire.Fire.IsName code(,'∆')
+ →T.FailsIf~0∊⍴#.Fire.Fire.IsName code(,'∆')
+ →T.FailsIf~0∊⍴#.Fire.Fire.IsName code(,'∆')
 
  code←'abc.cd.Foo.This←#.Foo.Fns 2'
- →FailsIf 1≠⍴#.Fire.Fire.IsName code'cd.Foo'
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code'cd.Foo'
 
  code←'##.##.Foo.This←#.Foo.Fns 2'
- →FailsIf 1≠⍴#.Fire.Fire.IsName code'#.'
- →FailsIf 1≠⍴#.Fire.Fire.IsName code'##.##.'
- →FailsIf 1≠⍴#.Fire.Fire.IsName code'##.##'
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code'#.'
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code'##.##.'
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code'##.##'
 
  code←'vars←⎕SE.Foo←2'
- →FailsIf 1≠⍴#.Fire.Fire.IsName code'⎕SE'
- →FailsIf 1≠⍴#.Fire.Fire.IsName code'⎕SE'
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code'⎕SE'
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code'⎕SE'
 
  code←'vars←⎕SE.Foo←⎕SE.MyFns 2'
- →FailsIf 2≠⍴#.Fire.Fire.IsName code'⎕SE'
- →FailsIf 2≠⍴#.Fire.Fire.IsName code'⎕SE'
+ →T.FailsIf 2≠⍴#.Fire.Fire.IsName code'⎕SE'
+ →T.FailsIf 2≠⍴#.Fire.Fire.IsName code'⎕SE'
 
  code←'vars←⎕SE.Foo←⎕SE'
- →FailsIf 1≠⍴#.Fire.Fire.IsName code'⎕SE.Foo'
- →FailsIf 1≠⍴#.Fire.Fire.IsName code'⎕SE.Foo'
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code'⎕SE.Foo'
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code'⎕SE.Foo'
 
  code←'vars←⎕FREAD tno'
- →FailsIf 1≠⍴#.Fire.Fire.IsName code'⎕FREAD'
- →FailsIf 1≠⍴#.Fire.Fire.IsName code'⎕FREAD'
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code'⎕FREAD'
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code'⎕FREAD'
 
  code←'vars←⎕FOO tno'
- →FailsIf 1≠⍴#.Fire.Fire.IsName code'⎕FOO'
- →FailsIf 1≠⍴#.Fire.Fire.IsName code'⎕FOO'
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code'⎕FOO'
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code'⎕FOO'
 
  code←'f1'
- →FailsIf~0∊⍴#.Fire.Fire.IsName code(,'f')
- →FailsIf~0∊⍴#.Fire.Fire.IsName code(,'f')
+ →T.FailsIf~0∊⍴#.Fire.Fire.IsName code(,'f')
+ →T.FailsIf~0∊⍴#.Fire.Fire.IsName code(,'f')
 
  code←'#.abc.de'
- →FailsIf 1≠⍴#.Fire.Fire.IsName code code
- →FailsIf 1≠⍴#.Fire.Fire.IsName code code
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code code
+ →T.FailsIf 1≠⍴#.Fire.Fire.IsName code code
 
- R←∆OK
+ R←T._OK

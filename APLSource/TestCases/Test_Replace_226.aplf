@@ -1,7 +1,7 @@
  R←Test_Replace_226(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search;code
 ⍝ Replace a string within two single-line dfns both defined on separate lines by a multi-line replacement
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  #.⎕SHADOW'TEMP'
@@ -25,8 +25,8 @@
 
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form
- →GoToTidyUp 3≠#.Fire.Fire.G.NoOfObjects
- →GoToTidyUp~n.HitList.Items Match'Foo' 'f1' 'f2'
+ →T.GoToTidyUp 3≠#.Fire.Fire.G.NoOfObjects
+ →T.GoToTidyUp~n.HitList.Items Match'Foo' 'f1' 'f2'
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -36,10 +36,10 @@
 
  {}∆Select n2.StartBtn
  ∆Process n.Form
- →GoToTidyUp 3≠#.Fire.Fire.Replace.NoOfReplacements
+ →T.GoToTidyUp 3≠#.Fire.Fire.Replace.NoOfReplacements
  code←⎕SRC #.TEMP.Foo
- →GoToTidyUp~(+/'abcd←2000'⍷1↓↑,/(⎕UCS 13),¨code)=3
- R←∆OK
+ →T.GoToTidyUp~(+/'abcd←2000'⍷1↓↑,/(⎕UCS 13),¨code)=3
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

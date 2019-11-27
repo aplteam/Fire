@@ -1,7 +1,7 @@
  R←Test_Search_081(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search
 ⍝ Search for a name in name only with "Match case" and "Match APL name" ticked.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  #.⎕SHADOW'TEMP'
@@ -21,9 +21,9 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp(,⊂'Hello2')≢n.HitList.Items
- →GoToTidyUp'#.TEMP'≢0⊃n.HitList.ReportInfo[0;]
- R←∆OK
+ →T.GoToTidyUp(,⊂'Hello2')≢n.HitList.Items
+ →T.GoToTidyUp'#.TEMP'≢0⊃n.HitList.ReportInfo[0;]
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

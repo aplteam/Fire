@@ -1,7 +1,7 @@
  R←Test_Replace_228(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search;code
 ⍝ Replace a string in multi-line functions with multiple strings
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  #.⎕SHADOW'TEMP'
@@ -35,8 +35,8 @@
 
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form
- →GoToTidyUp 4≠#.Fire.Fire.G.NoOfObjects
- →GoToTidyUp~n.HitList.Items Match'Foo' 'f1' 'f2' 'f4'
+ →T.GoToTidyUp 4≠#.Fire.Fire.G.NoOfObjects
+ →T.GoToTidyUp~n.HitList.Items Match'Foo' 'f1' 'f2' 'f4'
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -46,16 +46,16 @@
 
  {}∆Select n2.StartBtn
  ∆Process n.Form
- →GoToTidyUp 4≠#.Fire.Fire.Replace.NoOfReplacements
+ →T.GoToTidyUp 4≠#.Fire.Fire.Replace.NoOfReplacements
  code←⎕SRC #.TEMP.Foo
- →GoToTidyUp(+/'abcd←2000'⍷1↓↑,/(⎕UCS 13),¨code)≠+/'abc←123'⍷1↓↑,/(⎕UCS 13),¨buffer
- →GoToTidyUp 2≠+/'abcd←2000'⍷1↓↑,/(⎕UCS 13),¨#.TEMP.Foo.⎕NR'f2'
- →GoToTidyUp 2≠+/'more←''hello world'''⍷1↓↑,/(⎕UCS 13),¨#.TEMP.Foo.⎕NR'f2'
- →GoToTidyUp 1≠+/'abcd←2000'⍷1↓↑,/(⎕UCS 13),¨#.TEMP.Foo.⎕NR'f1'
- →GoToTidyUp 1≠+/'more←''hello world'''⍷1↓↑,/(⎕UCS 13),¨#.TEMP.Foo.⎕NR'f1'
- →GoToTidyUp 3≠+/'abcd←2000'⍷1↓↑,/(⎕UCS 13),¨#.TEMP.Foo.⎕NR'f4'
- →GoToTidyUp 3≠+/'more←''hello world'''⍷1↓↑,/(⎕UCS 13),¨#.TEMP.Foo.⎕NR'f4'
- R←∆OK
+ →T.GoToTidyUp(+/'abcd←2000'⍷1↓↑,/(⎕UCS 13),¨code)≠+/'abc←123'⍷1↓↑,/(⎕UCS 13),¨buffer
+ →T.GoToTidyUp 2≠+/'abcd←2000'⍷1↓↑,/(⎕UCS 13),¨#.TEMP.Foo.⎕NR'f2'
+ →T.GoToTidyUp 2≠+/'more←''hello world'''⍷1↓↑,/(⎕UCS 13),¨#.TEMP.Foo.⎕NR'f2'
+ →T.GoToTidyUp 1≠+/'abcd←2000'⍷1↓↑,/(⎕UCS 13),¨#.TEMP.Foo.⎕NR'f1'
+ →T.GoToTidyUp 1≠+/'more←''hello world'''⍷1↓↑,/(⎕UCS 13),¨#.TEMP.Foo.⎕NR'f1'
+ →T.GoToTidyUp 3≠+/'abcd←2000'⍷1↓↑,/(⎕UCS 13),¨#.TEMP.Foo.⎕NR'f4'
+ →T.GoToTidyUp 3≠+/'more←''hello world'''⍷1↓↑,/(⎕UCS 13),¨#.TEMP.Foo.⎕NR'f4'
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

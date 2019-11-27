@@ -1,7 +1,7 @@
  R←Test_ReplaceAndDelete_01(stopFlag batchFlag);n;n2;⎕TRAP
 ⍝ Replace "class" in a class script: delete all lines containing hits; first and last line must survive this!
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  #.⎕EX'TEMP'
@@ -17,7 +17,7 @@
 
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form
- →GoToTidyUp~n.HitList.Items ∆LazyMatch'MyClass'
+ →T.GoToTidyUp~n.HitList.Items ∆LazyMatch'MyClass'
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -28,9 +28,9 @@
 
  {}∆Select n2.StartBtn
  ∆Process n.Form
- →GoToTidyUp 1≠#.Fire.Fire.Replace.NoOfReplacements
- →GoToTidyUp(,¨':Class MyClass' '∇r←Hello' 'r←''World''' '∇' ':EndClass')≢⎕SRC #.TEMP.MyClass
- R←∆OK
+ →T.GoToTidyUp 1≠#.Fire.Fire.Replace.NoOfReplacements
+ →T.GoToTidyUp(,¨':Class MyClass' '∇r←Hello' 'r←''World''' '∇' ':EndClass')≢⎕SRC #.TEMP.MyClass
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

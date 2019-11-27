@@ -4,7 +4,8 @@
      ~(≡⍵)∊1 2:1
      ~(⍴⍴⍵)∊0 1:1
      ~∧/(↑∘⍴∘⍴¨⍵)∊0 1:1
+     {⍵≢⍕⍵}↑⍵:1                 ⍝ It's a reference it seems!
      ⍝ Most throw a NONCE but some a DOMAIN ERROR and even a LENGTH ERROR (!) was seen:
-     ⍝ This is caused by an overtake on a class instance where the constructor requires data
+     ⍝ This is caused by an overtake on something like a class instance where the constructor requires just data
      (,⊂,' ')≢∪{5 11 16::⍬ ⋄ 1↑0⍴⍵}¨⍵
  }

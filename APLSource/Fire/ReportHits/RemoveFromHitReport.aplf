@@ -11,10 +11,10 @@
      bool[↑,/rows2+¨1+⍳¨length]←0
      buffer/⍨←bool
      _←##.A.WriteUtf8File file buffer
-     0∊⍴##.G.Hits:⍬
+     0=≢##.G.Hits:⍬
      bool←~({(⍕↑⍵),'.',1⊃⍵}¨↓##.G.Hits)∊n.List.ReportInfo[rows;0]
      ##.G.Hits←bool⌿##.G.Hits
-     _←{#.G.NoOfHits←##.G.Negate⊃(+/+/↑¨⍵[;5])(≢⍵)}⍣(0<≢##.G.Hits)⊣##.G.Hits
+     _←{##.G.NoOfHits←##.G.Negate⊃(+/+/↑¨⍵[;5])(≢⍵)}⍣(0<≢##.G.Hits)⊣##.G.Hits
      ##.G.NoOfObjects←≢##.G.Hits
      _←0 ##.GUI.ReportHitsInStatusbar ##.G.(NoOfHits NoOfObjects),0 ''
      ⍬

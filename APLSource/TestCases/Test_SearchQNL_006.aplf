@@ -1,7 +1,7 @@
  R←Test_SearchQNL_006(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search
 ⍝ Search for "QAN" in #.TicToc with "Ignore refs" switched off.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  #.TestData.⎕FIX ⎕SRC #.TestData.KeepCode.OptimaUtils
@@ -20,9 +20,9 @@
 
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form
- →GoToTidyUp 3≠#.Fire.Fire.G.NoOfObjects
- →GoToTidyUp(⊂'#.TestData.OptimaUtils')∊n.HitList.ReportInfo[;0]
- R←∆OK
+ →T.GoToTidyUp 3≠#.Fire.Fire.G.NoOfObjects
+ →T.GoToTidyUp(⊂'#.TestData.OptimaUtils')∊n.HitList.ReportInfo[;0]
+ R←T._OK
 
 ∆TidyUp:
  #.TestData.TicToc.⎕EX'O'

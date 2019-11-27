@@ -1,7 +1,7 @@
  R←Test_Replace_001(stopFlag batchFlag);n;n2;⎕TRAP
 ⍝ Replace "abc" in #.TestData.APL_Names: delete all lines containing hits
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  1 #.Fire.Fire.Run 0
@@ -14,8 +14,8 @@
 
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form
- →GoToTidyUp n.HitList.Items≢'DeleteLinesFromThis2' 'DeleteLinesFromThis_abc' 'MyClass'
- →GoToTidyUp(,⊂'#.TestData.APL_Names')≢∪n.HitList.ReportInfo[;0]
+ →T.GoToTidyUp n.HitList.Items≢'DeleteLinesFromThis2' 'DeleteLinesFromThis_abc' 'MyClass'
+ →T.GoToTidyUp(,⊂'#.TestData.APL_Names')≢∪n.HitList.ReportInfo[;0]
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -25,11 +25,11 @@
 
  {}∆Select n2.StartBtn
  ∆Process n.Form
- →GoToTidyUp 3≠#.Fire.Fire.Replace.NoOfReplacements
- →GoToTidyUp~0=⍴##.APLTreeUtils.Where∨/¨'xyz←'∘⍷¨⎕NR'#.TestData.APL_Names.DeleteLinesFromThis2'
- →GoToTidyUp 1≠⍴##.APLTreeUtils.Where∨/¨'∇ r←DeleteLinesFromThis;a;b;c;abc;d;e;xyz;xyz2'∘⍷¨⎕SRC #.TestData.APL_Names.MyClass
- →GoToTidyUp 1≠⍴##.APLTreeUtils.Where∨/¨'xyz2'∘⍷¨⎕NR'#.TestData.APL_Names.DeleteLinesFromThis_abc'
- R←∆OK
+ →T.GoToTidyUp 3≠#.Fire.Fire.Replace.NoOfReplacements
+ →T.GoToTidyUp~0=⍴##.APLTreeUtils.Where∨/¨'xyz←'∘⍷¨⎕NR'#.TestData.APL_Names.DeleteLinesFromThis2'
+ →T.GoToTidyUp 1≠⍴##.APLTreeUtils.Where∨/¨'∇ r←DeleteLinesFromThis;a;b;c;abc;d;e;xyz;xyz2'∘⍷¨⎕SRC #.TestData.APL_Names.MyClass
+ →T.GoToTidyUp 1≠⍴##.APLTreeUtils.Where∨/¨'xyz2'∘⍷¨⎕NR'#.TestData.APL_Names.DeleteLinesFromThis_abc'
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

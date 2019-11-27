@@ -1,7 +1,7 @@
  R←Test_Replace_054(stopFlag batchFlag);n;n2;ss;code;list;⎕TRAP
 ⍝ Replace "#.UTILS." in "#.TestData.Replacements" by "#.UTILS.#.UTILS." in comments only. See also Tests 29,53,55
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  1 #.Fire.Fire.Run 0
@@ -15,7 +15,7 @@
  {}∆Select n.StartBtn
  ∆Process n.Form
  list←'class_3' 'fns1' 'fns3' 'interface_1'
- →GoToTidyUp~n.HitList.Items ∆LazyMatch list
+ →T.GoToTidyUp~n.HitList.Items ∆LazyMatch list
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -25,13 +25,13 @@
 
  {}∆Select n2.StartBtn
  ∆Process n.Form
- →GoToTidyUp #.Fire.Fire.Replace.NoOfReplacements≠⍴list
+ →T.GoToTidyUp #.Fire.Fire.Replace.NoOfReplacements≠⍴list
 
  n.SearchFor.Text←'#.UTILS.#.UTILS.'
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp #.Fire.Fire.G.NoOfObjects≠⍴list   ⍝ Error?! Try again!
- R←∆OK
+ →T.GoToTidyUp #.Fire.Fire.G.NoOfObjects≠⍴list   ⍝ Error?! Try again!
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

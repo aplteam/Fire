@@ -1,7 +1,7 @@
  R←Test_ReplaceVars_002(stopFlag batchFlag);n;Text;n2;⎕TRAP;buffer
 ⍝ Replace string in string & in vector of vectors by shorter string. Other variables must remain unchanged.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  1 #.Fire.Fire.Run 0
@@ -19,7 +19,7 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp 4≠⍴n.HitList.Items
+ →T.GoToTidyUp 4≠⍴n.HitList.Items
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -29,12 +29,12 @@
 
  {}∆Select n2.StartBtn
  ∆Process n.Form
- →GoToTidyUp 2≠#.Fire.Fire.Replace.NoOfReplacements
- →GoToTidyUp'APL is great' 'It really is!' 'Yes, APL is great'≢#.TEMP.varsNested
- →GoToTidyUp'APL is great'≢#.TEMP.varsSimple
- →GoToTidyUp(⊃'APL is REALLY great' 'It really is!' 'Yes, APL is REALLY great')≢#.TEMP.varsMatrix
- →GoToTidyUp'APL is REALLY great' 'It really is!' 'Yes, APL is REALLY great' 1≢#.TEMP.varsMixed
- R←∆OK
+ →T.GoToTidyUp 2≠#.Fire.Fire.Replace.NoOfReplacements
+ →T.GoToTidyUp'APL is great' 'It really is!' 'Yes, APL is great'≢#.TEMP.varsNested
+ →T.GoToTidyUp'APL is great'≢#.TEMP.varsSimple
+ →T.GoToTidyUp(⊃'APL is REALLY great' 'It really is!' 'Yes, APL is REALLY great')≢#.TEMP.varsMatrix
+ →T.GoToTidyUp'APL is REALLY great' 'It really is!' 'Yes, APL is REALLY great' 1≢#.TEMP.varsMixed
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

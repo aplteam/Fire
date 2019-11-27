@@ -3,23 +3,23 @@
  ⎕IO←0 ⋄ ⎕ML←3
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
 
- R←∆OK
+ R←T._OK
 
  report←''
 
  xml←⎕XML'flat'##.APLTreeUtils.ReadUtf8File'publish.config'
  source←2⊃xml[xml[;1]⍳⊂'container';]
- buff←source FindSpecialString'⍝CHECK⍝'
+ buff←T.FindSpecialString'⍝CHECK⍝'
  buff←(buff[;0]≢¨⎕XSI[0])⌿buff ⍝ remove caller
- :If ~0∊⍴buff
+ :If 0≠≢buff
      report,←↓(⊂' ⍝CHECK⍝ found:'),(⊂'   '),¨buff
  :EndIf
- buff←source FindSpecialString'⍝TODO⍝'
+ buff←T.FindSpecialString'⍝TODO⍝'
  buff←(buff[;0]≢¨⎕XSI[0])⌿buff ⍝ remove caller
- :If ~0∊⍴buff
+ :If 0≠≢buff
      report,←↓(⊂' ⍝TODO⍝ found:'),(⊂'   '),¨buff
  :EndIf
- :If 1=⍴,report
+ :If 1=≢report
      report,←⊂'    Nothing found!'
  :Else
      ⎕←'Checking for ⍝TODO⍝ and ⍝CHECK⍝ '{⍵↑,'--- ',⍺,' ',⍵⍴'-'}80⌊⎕PW-1

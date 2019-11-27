@@ -1,7 +1,7 @@
  R←Test_Search_050(stopFlag batchFlag);n;⎕TRAP
 ⍝ Test search for <⎕DQ'F'> but ignore comments
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  1 #.Fire.Fire.Run 0
@@ -13,8 +13,8 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp n.HitList.Items≢,⊂'Fns1'
- R←∆OK
+ →T.GoToTidyUp n.HitList.Items≢,⊂'Fns1'
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

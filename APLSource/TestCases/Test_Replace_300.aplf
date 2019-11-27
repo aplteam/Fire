@@ -1,7 +1,7 @@
  R←Test_Replace_300(stopFlag batchFlag);n;n2;⎕TRAP;rf;code
  ⍝ Find and delete lines. This test focuses on deleting objects in a namespace script
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  #.⎕SHADOW'TEMP'
@@ -40,7 +40,7 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp 8≠#.Fire.Fire.G.NoOfObjects ⍝ Since version 3.5 the scripts as such DO count!
+ →T.GoToTidyUp 8≠#.Fire.Fire.G.NoOfObjects ⍝ Since version 3.5 the scripts as such DO count!
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -51,8 +51,8 @@
 
  {}∆Select n2.StartBtn
  ∆Process n2.Form
- →PassesIf 13=⍴#.TEMP.⎕SRC #.TEMP.NS
- R←∆OK
+ →T.PassesIf 13=⍴#.TEMP.⎕SRC #.TEMP.NS
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

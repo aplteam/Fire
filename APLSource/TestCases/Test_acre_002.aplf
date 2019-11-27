@@ -1,12 +1,12 @@
- R←Test_acre4_002(stopFlag batchFlag);n;n2;oldPath;⎕TRAP;openAcreProjects;acreTestProjectName;changeFilesFolder;acreTestProjectFolder;more;en;rc
+ R←Test_acre_002(stopFlag batchFlag);n;n2;oldPath;⎕TRAP;openAcreProjects;acreTestProjectName;changeFilesFolder;acreTestProjectFolder;more;en;rc
 ⍝ Check whether acre 4 (or later) reacts correctly when an object is deleted by Fire and there are self-refs around.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
 
- :If IsAcre2Or3
-     →0,R←∆Inactive
+ :If ~IsAcre6OrBetter
+     →0,R←T._Inactive
  :EndIf
 
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  #.⎕EX'FireAcreTest'
@@ -45,16 +45,16 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp 6≠#.Fire.Fire.G.NoOfObjects
+ →T.GoToTidyUp 6≠#.Fire.Fire.G.NoOfObjects
 
  n.HitList.SelItems←n.HitList.Items∊'Doe' 'Foe'
  {}#.Fire.Fire.GUI.LetAcreDelete n.HitList.Items⍳'Doe' 'Foe'
  0.2 ∆Process n.Form
 
- →GoToTidyUp~∧/~'Doe' 'Foe'∊#.FireAcreTest.⎕NL-⍳16
+ →T.GoToTidyUp~∧/~'Doe' 'Foe'∊#.FireAcreTest.⎕NL-⍳16
  changeFilesFolder←'expand'##.FilesAndDirs.NormalizePath acreTestProjectName,'\.acre\changes\'
- →GoToTidyUp~'delete' 'delete'≡##.APLTreeUtils.Last¨↑##.FilesAndDirs.Dir changeFilesFolder
- R←∆OK
+ →T.GoToTidyUp~'delete' 'delete'≡##.APLTreeUtils.Last¨↑##.FilesAndDirs.Dir changeFilesFolder
+ R←T._OK
 
 ∆TidyUp:
  #.⎕EX'FireAcreTest'

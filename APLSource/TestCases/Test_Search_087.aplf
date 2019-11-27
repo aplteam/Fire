@@ -1,7 +1,7 @@
  R←Test_Search_087(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search;expected
 ⍝ Ordinary search, then a second search on the hit list without any changes but the search string.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  #.⎕SHADOW'TEMP'
@@ -31,19 +31,19 @@
 
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form
- →GoToTidyUp 11≠#.Fire.Fire.G.NoOfObjects
+ →T.GoToTidyUp 11≠#.Fire.Fire.G.NoOfObjects
  expected←'Foo1' 'Foo2' 'FormFns2' 'Hello1' 'Hello2' 'Hello3' 'Hello4' 'IF1' 'IF2' 'myFns2' 'myFns1'
- →GoToTidyUp~expected ∆LazyMatch n.HitList.Items
+ →T.GoToTidyUp~expected ∆LazyMatch n.HitList.Items
  expected←'#.TEMP' '#.TEMP' '#.TEMP.form2' '#.TEMP' '#.TEMP' '#.TEMP' '#.TEMP' '#.TEMP' '#.TEMP' '#.TEMP.NS2' '#.TEMP.NS1'
- →GoToTidyUp~expected ∆LazyMatch n.HitList.ReportInfo[;0]
+ →T.GoToTidyUp~expected ∆LazyMatch n.HitList.ReportInfo[;0]
 
  n.ReuseSearch.State←1
  n.SearchFor.Text←'extra'
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp 6≠#.Fire.Fire.G.NoOfObjects
- R←∆OK
+ →T.GoToTidyUp 6≠#.Fire.Fire.G.NoOfObjects
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

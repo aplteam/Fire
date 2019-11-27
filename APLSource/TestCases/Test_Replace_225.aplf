@@ -1,10 +1,10 @@
  R←Test_Replace_225(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search;code
 ⍝ Replace a string within the inner of two nested namespace script. Fails for the time being due to bug <01652> (2019-08-07)
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
  :If 1
-     R←∆Inactive   ⍝ See bug <01652>
+     R←T._Inactive   ⍝ See bug <01652>
      :Return
  :EndIf
 
@@ -28,8 +28,8 @@
 
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form
- →GoToTidyUp 1≠#.Fire.Fire.G.NoOfObjects
- →GoToTidyUp~n.HitList.Items Match,⊂'PI'
+ →T.GoToTidyUp 1≠#.Fire.Fire.G.NoOfObjects
+ →T.GoToTidyUp~n.HitList.Items Match,⊂'PI'
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -39,10 +39,10 @@
 
  {}∆Select n2.StartBtn
  ∆Process n.Form
- →PassesIf 1=#.Fire.Fire.Replace.NoOfReplacements
+ →T.PassesIf 1=#.Fire.Fire.Replace.NoOfReplacements
  code←⎕SRC #.TEMP.Outer
- →PassesIf 1=+/'3.14159265359∇'⍷∊code  ⍝ Fails due to bug <01652> from 2019-08-07; Fire shows a warning
- R←∆OK
+ →T.PassesIf 1=+/'3.14159265359∇'⍷∊code  ⍝ Fails due to bug <01652> from 2019-08-07; Fire shows a warning
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

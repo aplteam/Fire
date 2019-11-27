@@ -1,6 +1,4 @@
-1. The occasional error reported in the status windows ("A xyz cannot own...") needs fixing
-
-2. Add flags and options to the `]Fire` user command:
+1. Add flags and options to the `]Fire` user command:
 
    * -regex      0
    * -greedy     0

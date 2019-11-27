@@ -3,7 +3,7 @@
 ⍝ Such a recursive call once caused a bug problem when there nothing to the left of ∇, mis-interpreting
 ⍝ this as the beginning of a tfns.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  #.⎕SHADOW'TEMP'
@@ -29,9 +29,9 @@
 
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form
- →GoToTidyUp(↑⍴#.TEMP.⎕NL 2)≠#.Fire.Fire.G.NoOfObjects
- →GoToTidyUp~n.HitList.Items Match'vars'∘,¨⍕¨1+⍳↑⍴#.TEMP.⎕NL 2
- →GoToTidyUp 2 1 3 1 1 1≢↑¨n.HitList.ReportInfo[;3]
+ →T.GoToTidyUp(↑⍴#.TEMP.⎕NL 2)≠#.Fire.Fire.G.NoOfObjects
+ →T.GoToTidyUp~n.HitList.Items Match'vars'∘,¨⍕¨1+⍳↑⍴#.TEMP.⎕NL 2
+ →T.GoToTidyUp 2 1 3 1 1 1≢↑¨n.HitList.ReportInfo[;3]
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -41,14 +41,14 @@
 
  {}∆Select n2.StartBtn
  0.2 ∆Process n.Form
- →PassesIf 3=#.Fire.Fire.Replace.NoOfReplacements
- →GoToTidyUp~∨/'APL is really great'⍷∊#.TEMP.vars1
- →GoToTidyUp~∨/'APL is really great'⍷∊#.TEMP.vars2
- →GoToTidyUp(⊃'Note: APL is great.' 'Note: APL is great.' 'Note: APL is great.')≢#.TEMP.vars3
- →GoToTidyUp(1 'I repeat:APL is great!')≢#.TEMP.vars4
- →GoToTidyUp'I repeat:APL is great!'('aaa' 'qwe')≢#.TEMP.vars5
- →GoToTidyUp~∨/'APL is really great!'⍷∊#.TEMP.vars6
- R←∆OK
+ →T.PassesIf 3=#.Fire.Fire.Replace.NoOfReplacements
+ →T.GoToTidyUp~∨/'APL is really great'⍷∊#.TEMP.vars1
+ →T.GoToTidyUp~∨/'APL is really great'⍷∊#.TEMP.vars2
+ →T.GoToTidyUp(⊃'Note: APL is great.' 'Note: APL is great.' 'Note: APL is great.')≢#.TEMP.vars3
+ →T.GoToTidyUp(1 'I repeat:APL is great!')≢#.TEMP.vars4
+ →T.GoToTidyUp'I repeat:APL is great!'('aaa' 'qwe')≢#.TEMP.vars5
+ →T.GoToTidyUp~∨/'APL is really great!'⍷∊#.TEMP.vars6
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

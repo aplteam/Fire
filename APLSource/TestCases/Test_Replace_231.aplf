@@ -3,7 +3,7 @@
 ⍝ Such a recursive call once caused a bug problem when there nothing to the left of ∇, mis-interpreting
 ⍝ this as the beginning of a tfns.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
  #.⎕SHADOW'TEMP'
  'TEMP'#.⎕NS''
@@ -34,8 +34,8 @@
 
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form
- →GoToTidyUp 1≠#.Fire.Fire.G.NoOfObjects
- →GoToTidyUp~n.HitList.Items Match⊂'Foo'
+ →T.GoToTidyUp 1≠#.Fire.Fire.G.NoOfObjects
+ →T.GoToTidyUp~n.HitList.Items Match⊂'Foo'
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -45,10 +45,10 @@
 
  {}∆Select n2.StartBtn
  ∆Process n.Form
- →GoToTidyUp 1≠#.Fire.Fire.Replace.NoOfReplacements
+ →T.GoToTidyUp 1≠#.Fire.Fire.Replace.NoOfReplacements
  code←⎕SRC #.TEMP.Foo
- →GoToTidyUp 3≠+/'⎕io←0'∘≡¨code~¨' '
- R←∆OK
+ →T.GoToTidyUp 3≠+/'⎕io←0'∘≡¨code~¨' '
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

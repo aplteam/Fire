@@ -1,7 +1,7 @@
  R←Test_Search_096(stopFlag batchFlag);n;⎕TRAP;n2;html;expected
 ⍝ Search within a namespace script that has comments **before** the `:Namespace` statement.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  1 #.Fire.Fire.Run 0
@@ -20,8 +20,8 @@
  ∆Process n.Form
  html←##.APLTreeUtils.ReadUtf8File n2.∆Filename
  expected←'<div class="obj" id="div-no-1"><h2 id="h1">1. #.TMP.Test1</h2></a>[0] ⍝ Leading comment <span class="diff">"Foo"</span><br></div>'
- →GoToTidyUp 1≠+/expected⍷∊html
- R←∆OK
+ →T.GoToTidyUp 1≠+/expected⍷∊html
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

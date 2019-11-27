@@ -1,7 +1,7 @@
  R←Test_ReplaceAndDelete_06(stopFlag batchFlag);n;n2;⎕TRAP
 ⍝ Replace "universe" in a top: delete all lines containing hits (first & last line!)
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  #.⎕EX'TEMP'
@@ -16,7 +16,7 @@
 
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form
- →GoToTidyUp~n.HitList.Items ∆LazyMatch'myTop'
+ →T.GoToTidyUp~n.HitList.Items ∆LazyMatch'myTop'
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -26,9 +26,9 @@
 
  {}∆Select n2.StartBtn
  ∆Process n.Form
- →GoToTidyUp 1≠#.Fire.Fire.Replace.NoOfReplacements
- →GoToTidyUp('r←(f myTop)x' 'r←''world''')≢##.APLTreeUtils.dlb #.TEMP.⎕NR'myTop'
- R←∆OK
+ →T.GoToTidyUp 1≠#.Fire.Fire.Replace.NoOfReplacements
+ →T.GoToTidyUp('r←(f myTop)x' 'r←''world''')≢##.APLTreeUtils.dlb #.TEMP.⎕NR'myTop'
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

@@ -1,12 +1,12 @@
- R←Test_acre4_001(stopFlag batchFlag);n;n2;⎕TRAP;acreTestProjectName;changeFilesFolder;expected
+ R←Test_acre_001(stopFlag batchFlag);n;n2;⎕TRAP;acreTestProjectName;changeFilesFolder;expected
 ⍝ Check whether acre reacts correctly when objects are changed by Fire that partly belong to an open acre 4 (or later) project
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
 
- :If IsAcre2Or3
-     →0,R←∆Inactive
+ :If ~IsAcre6OrBetter
+     →0,R←T._Inactive
  :EndIf
 
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  #.⎕SHADOW'FireAcreTest'
@@ -38,7 +38,7 @@
 
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form
- →PassesIf 5=#.Fire.Fire.G.NoOfObjects   ⍝ The one in the unnamed namepace is not found!
+ →T.PassesIf 5=#.Fire.Fire.G.NoOfObjects   ⍝ The one in the unnamed namepace is not found!
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -49,14 +49,14 @@
  {}∆Select n2.StartBtn
  0.2 ∆Process n.Form
 
- →GoToTidyUp~'Johnny in the Universe'≡#.FireAcreTest.Doe
- →GoToTidyUp~'Universe11'≡#.FireAcreTest.MyClass.Hello
- →GoToTidyUp~'Universe'≡#.FireAcreTest.MyNamespace.Hello3
- →GoToTidyUp~'Universe'≡#.FireAcreTest.MyNamespace.Hello4 ⍬
+ →T.GoToTidyUp~'Johnny in the Universe'≡#.FireAcreTest.Doe
+ →T.GoToTidyUp~'Universe11'≡#.FireAcreTest.MyClass.Hello
+ →T.GoToTidyUp~'Universe'≡#.FireAcreTest.MyNamespace.Hello3
+ →T.GoToTidyUp~'Universe'≡#.FireAcreTest.MyNamespace.Hello4 ⍬
  changeFilesFolder←'expand'##.FilesAndDirs.NormalizePath acreTestProjectName,'\.acre\changes\'
  expected←'Doe' 'MyClass' 'MyNamespace' 'MyVars'
- →GoToTidyUp~expected≡{⍵↑⍨⍵⍳'-'}¨{0⊃'.'##.APLTreeUtils.Split ⍵}¨{1⊃⎕NPARTS ⍵}¨↑##.FilesAndDirs.Dir changeFilesFolder
- R←∆OK
+ →T.GoToTidyUp~expected≡{⍵↑⍨⍵⍳'-'}¨{0⊃'.'##.APLTreeUtils.Split ⍵}¨{1⊃⎕NPARTS ⍵}¨↑##.FilesAndDirs.Dir changeFilesFolder
+ R←T._OK
 
 ∆TidyUp:
  #.⎕EX'FireAcreTest'

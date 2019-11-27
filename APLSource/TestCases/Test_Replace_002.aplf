@@ -1,7 +1,7 @@
  R←Test_Replace_002(stopFlag batchFlag);n;n2;ss;code;list;⎕TRAP
 ⍝ Replace "#.UTILS." in "#.TestData.Replacements" by "#.UTILS.#.UTILS." in code without comments. See also Tests 53,54,55
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  1 #.Fire.Fire.Run 0
@@ -15,8 +15,8 @@
  {}∆Select n.StartBtn
  ∆Process n.Form
  list←'#.TestData.Replacements.'∘,¨'InText' 'class_1' 'fns1' 'ns_1.fns1' 'opr1'
- →GoToTidyUp~#.Fire.Fire.G.NoOfObjects≡0⊃⍴list
- →GoToTidyUp~list ∆LazyMatch ∆GetFullName ⍬
+ →T.GoToTidyUp~#.Fire.Fire.G.NoOfObjects≡0⊃⍴list
+ →T.GoToTidyUp~list ∆LazyMatch ∆GetFullName ⍬
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -26,17 +26,17 @@
 
  {}∆Select n2.StartBtn
  ∆Process n.Form
- →GoToTidyUp(⍴list)≠#.Fire.Fire.Replace.NoOfReplacements
+ →T.GoToTidyUp(⍴list)≠#.Fire.Fire.Replace.NoOfReplacements
 
  n.SearchFor.Text←'#.UTILS.#.UTILS.'
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp(⍴list)≠#.Fire.Fire.G.NoOfObjects  ⍝ Error?! Re-execute and it probably will be fine (timing issue)
- →GoToTidyUp(⍴list)≠#.Fire.Fire.G.NoOfObjects
+ →T.GoToTidyUp(⍴list)≠#.Fire.Fire.G.NoOfObjects  ⍝ Error?! Re-execute and it probably will be fine (timing issue)
+ →T.GoToTidyUp(⍴list)≠#.Fire.Fire.G.NoOfObjects
  ss←'r←#.UTILS.#.UTILS.DAB''aaa'''   ⍝ Search string
  code←1↓↑,/(⎕UCS 13),¨⎕SRC #.TestData.Replacements.class_1
- →GoToTidyUp 1≠+/ss⍷code
- R←∆OK
+ →T.GoToTidyUp 1≠+/ss⍷code
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

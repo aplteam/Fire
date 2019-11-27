@@ -8,15 +8,15 @@
          :If 0∊⍴∊data←ref.⍎varsName
              :Return
          :EndIf
-         :If ~Replace.NonReplaceVars data
-             data←IfLower data
-             :If 0<⍴buff←2 Scan(⊂⍣(2>≡ref⍎varsName)⊣data)1
+         :If Replace.NonReplaceVars data
+             data←IfLower ⎕FMT data
+             buff←2 Scan(↓data)1
+             :If 0<⍴buff←{0=≢⍵:⍵ ⋄ ⍵}buff
                  (ind length)←buff
              :EndIf
          :Else
-             data←IfLower ⎕FMT data
-             buff←2 Scan(↓data)1
-             :If 0<⍴buff←{0∊⍴⍵:⍵ ⋄ ⍵}buff
+             data←IfLower data
+             :If 0<⍴buff←2 Scan(⊂⍣(2>≡ref⍎varsName)⊣data)1
                  (ind length)←buff
              :EndIf
          :EndIf

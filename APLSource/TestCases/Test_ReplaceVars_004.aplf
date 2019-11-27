@@ -1,7 +1,7 @@
  R←Test_ReplaceVars_004(stopFlag batchFlag);n;Text;n2;⎕TRAP;buffer
 ⍝ Search for a string with "Delete items with hits" ticked. Non-conforming variables must remain unchanged.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  1 #.Fire.Fire.Run 0
@@ -21,7 +21,7 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp 4≠⍴n.HitList.Items
+ →T.GoToTidyUp 4≠⍴n.HitList.Items
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -31,12 +31,12 @@
 
  {}∆Select n2.StartBtn
  ∆Process n.Form
- →GoToTidyUp 2≠#.Fire.Fire.Replace.NoOfReplacements
- →GoToTidyUp(,⊂'It really is!')≢#.TEMP.varsNested
- →GoToTidyUp''≢#.TEMP.varsSimple
- →GoToTidyUp(⊃'APL is REALLY great' 'It really is!' 'Yes, APL is REALLY great')≢#.TEMP.varsMatrix
- →GoToTidyUp'APL is REALLY great' 'It really is!' 'Yes, APL is REALLY great' 1≢#.TEMP.varsMixed
- R←∆OK
+ →T.GoToTidyUp 2≠#.Fire.Fire.Replace.NoOfReplacements
+ →T.GoToTidyUp(,⊂'It really is!')≢#.TEMP.varsNested
+ →T.GoToTidyUp''≢#.TEMP.varsSimple
+ →T.GoToTidyUp(⊃'APL is REALLY great' 'It really is!' 'Yes, APL is REALLY great')≢#.TEMP.varsMatrix
+ →T.GoToTidyUp'APL is REALLY great' 'It really is!' 'Yes, APL is REALLY great' 1≢#.TEMP.varsMixed
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

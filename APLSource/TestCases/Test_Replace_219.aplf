@@ -1,7 +1,7 @@
  R←Test_Replace_219(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search;code
 ⍝ Replace "abc←1" everywhere in functions and the body of a namespace script
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  #.⎕SHADOW'TEMP'
@@ -41,8 +41,8 @@
 
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form
- →GoToTidyUp 8≠#.Fire.Fire.G.NoOfObjects
- →GoToTidyUp~n.HitList.Items Match'Foo' 'hello' 'hello2' 'hello3' 'hello4' 'hello5' 'hello6' 'hello7'
+ →T.GoToTidyUp 8≠#.Fire.Fire.G.NoOfObjects
+ →T.GoToTidyUp~n.HitList.Items Match'Foo' 'hello' 'hello2' 'hello3' 'hello4' 'hello5' 'hello6' 'hello7'
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -52,10 +52,10 @@
 
  {}∆Select n2.StartBtn
  ∆Process n.Form
- →GoToTidyUp 8≠#.Fire.Fire.Replace.NoOfReplacements
+ →T.GoToTidyUp 8≠#.Fire.Fire.Replace.NoOfReplacements
  code←1↓↑,/(⎕UCS 13),¨⎕SRC #.TEMP.Foo
- →GoToTidyUp(+/'abc←1'⍷1↓↑,/(⎕UCS 13),¨buffer)≠+/'abcd←2000'⍷code
- R←∆OK
+ →T.GoToTidyUp(+/'abc←1'⍷1↓↑,/(⎕UCS 13),¨buffer)≠+/'abcd←2000'⍷code
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

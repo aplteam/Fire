@@ -1,7 +1,7 @@
  R←Test_Search_020(stopFlag batchFlag);n;⎕TRAP
 ⍝ Search for string "Send" in #.TestData.LookForNames as name (comments only)
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  1 #.Fire.Fire.Run 0
@@ -13,9 +13,9 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp n.HitList.Items≢,⊂'fns10'
- →GoToTidyUp(,⊂'#.TestData.LookForNames')≢∪n.HitList.ReportInfo[;0]
- R←∆OK
+ →T.GoToTidyUp n.HitList.Items≢,⊂'fns10'
+ →T.GoToTidyUp(,⊂'#.TestData.LookForNames')≢∪n.HitList.ReportInfo[;0]
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

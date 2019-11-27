@@ -1,7 +1,7 @@
  R←Test_Replace_222(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search;code
 ⍝ Replace "abc←1" everywhere but comments
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  #.⎕SHADOW'TEMP'
@@ -42,8 +42,8 @@
 
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form
- →GoToTidyUp 7≠#.Fire.Fire.G.NoOfObjects
- →GoToTidyUp~n.HitList.Items Match'Foo' 'hello' 'hello2' 'hello4' 'hello5' 'hello6' 'hello7'
+ →T.GoToTidyUp 7≠#.Fire.Fire.G.NoOfObjects
+ →T.GoToTidyUp~n.HitList.Items Match'Foo' 'hello' 'hello2' 'hello4' 'hello5' 'hello6' 'hello7'
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -53,10 +53,10 @@
 
  {}∆Select n2.StartBtn
  ∆Process n.Form
- →GoToTidyUp 7≠#.Fire.Fire.Replace.NoOfReplacements
+ →T.GoToTidyUp 7≠#.Fire.Fire.Replace.NoOfReplacements
  code←1↓↑,/(⎕UCS 13),¨⎕SRC #.TEMP.Foo
- →GoToTidyUp 8≠+/'abcd←2000'⍷code
- R←∆OK
+ →T.GoToTidyUp 8≠+/'abcd←2000'⍷code
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

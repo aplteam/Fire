@@ -1,7 +1,7 @@
  R←Test_Replace_301(stopFlag batchFlag);n;n2;⎕TRAP;rf;code
  ⍝ Find and delete lines. This test focuses on deleting objects in a class
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  #.⎕SHADOW'TEMP'
@@ -37,7 +37,7 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp 1≠#.Fire.Fire.G.NoOfObjects ⍝ Since version 3.5 the scripts as such DO count!
+ →T.GoToTidyUp 1≠#.Fire.Fire.G.NoOfObjects ⍝ Since version 3.5 the scripts as such DO count!
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -48,9 +48,9 @@
 
  {}∆Select n2.StartBtn
  ∆Process n2.Form
- →PassesIf 1=#.Fire.Fire.Replace.NoOfReplacements
- →PassesIf 15=⍴#.TEMP.⎕SRC #.TEMP.Foo
- R←∆OK
+ →T.PassesIf 1=#.Fire.Fire.Replace.NoOfReplacements
+ →T.PassesIf 15=⍴#.TEMP.⎕SRC #.TEMP.Foo
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

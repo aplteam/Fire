@@ -1,7 +1,7 @@
  R←Test_Replace_008(stopFlag batchFlag);n;ref;n2;⎕TRAP;body
 ⍝ Replace "42" by 3.14". This was once a bug: it crashed on "Find" and, after fixing that, caused an endless loop in "Replace"
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  1 #.Fire.Fire.Run 0
@@ -15,7 +15,7 @@
 
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form
- →GoToTidyUp n.HitList.Items≢'Fns' 'f1' 'NS' 'PI'
+ →T.GoToTidyUp n.HitList.Items≢'Fns' 'f1' 'NS' 'PI'
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -25,10 +25,10 @@
  {}∆Select n2.StartBtn
  ∆Process n.Form
  body←1↓↑,/(⎕UCS 13),¨⎕SRC #.TEMP.NS
- →GoToTidyUp 3≠+/'3.14'⍷body
- →GoToTidyUp 0≠+/'42'⍷body
+ →T.GoToTidyUp 3≠+/'3.14'⍷body
+ →T.GoToTidyUp 0≠+/'42'⍷body
 
- R←∆OK
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

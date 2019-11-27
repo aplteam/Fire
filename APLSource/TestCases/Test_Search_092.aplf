@@ -2,7 +2,7 @@
 ⍝ Search for string "⍝ This is a comment  ⌹" with "comments only".
 ⍝ This was buggy until 2014-07 when the last char in a comment carrying a hit was also the last char in the search string
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  1 #.Fire.Fire.Run 0
@@ -21,8 +21,8 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp n.HitList.Items≢'Hello3' 'Hello2' 'MyClass'
- R←∆OK
+ →T.GoToTidyUp n.HitList.Items≢'Hello3' 'Hello2' 'MyClass'
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

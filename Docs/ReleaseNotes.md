@@ -17,7 +17,7 @@
 
 * Bug fixes:
   * The "Replace one-by-one" dialog moved down by the height of the menubar with every object.
-  * The report in the statusbar of the "Replace one-by-one" wa sometimes mutilated.
-  * The "Skip" button was active even when there were no more objects waiting ("Replace one-by-one").
+  * The report in the statusbar of the "Replace one-by-one" was sometimes mutilated.
+  * The "Skip" button in the "Replace one-by-one" dialog was active even when there were no more objects to be processed.
 
 * Internally: new test framework `Tester2` is now used.

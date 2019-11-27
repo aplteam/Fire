@@ -1,7 +1,7 @@
  R←Test_InternalMethods_004(stopFlag batchFlag);H;code;mask;NL;⎕TRAP;body;body2
 ⍝ Exercise the "RemoveFnsAndOpr" method. Was once a bug
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
  #.⎕SHADOW'TEMP'
  'TEMP'#.⎕NS''
@@ -12,6 +12,6 @@
 
  body←#.⎕SRC #.TEMP.Foo
  body2←#.Fire.Fire.RemoveFnsAndOpr body
- →FailsIf∨/'←{'⍷↑,/body2
+ →T.FailsIf∨/'←{'⍷↑,/body2
 
- R←∆OK
+ R←T._OK

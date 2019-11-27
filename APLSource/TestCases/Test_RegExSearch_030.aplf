@@ -2,7 +2,7 @@
 ⍝ Search in code but not in text with an overlapping RegEx.
 ⍝ We cannot real do something about this, but we aim to warn the user.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  1 #.Fire.Fire.Run 0
@@ -19,9 +19,9 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp 1≠↑⍴n.HitList.ReportInfo
+ →T.GoToTidyUp 1≠↑⍴n.HitList.ReportInfo
 
- R←∆OK
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

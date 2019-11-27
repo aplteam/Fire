@@ -1,7 +1,7 @@
  R←Test_Misc_014(stopFlag batchFlag);n;n2;⎕TRAP;ref;expected;rg;GUI
 ⍝ Exercise the "Ghost" report
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  #.⎕EX'FireReportGhost'
@@ -26,19 +26,19 @@
 
 ⍝ Checks
  expected←'#.FireReportGhost.MyGUI' 'Hello' '#.FireReportGhost.FilesAndDirs' 'Hello' 'Hello2' 'Hello3' '#.FireReportGhost.InterfaceFoo' '∆Hello10'
- →GoToTidyUp ref.TV.Items≢expected
+ →T.GoToTidyUp ref.TV.Items≢expected
  rg←#.Fire.Fire.ReportGosts
  ref.TV.SelItems←0 0 0 0 1 0 0 0
  1 rg.DeleteGhost ref.TV
- →GoToTidyUp 0=∨/'deleted'⍷4⊃ref.TV.Items
- →GoToTidyUp 0≠#.FireReportGhost.APLTreeUtils.⎕NC'Hello2'
+ →T.GoToTidyUp 0=∨/'deleted'⍷4⊃ref.TV.Items
+ →T.GoToTidyUp 0≠#.FireReportGhost.APLTreeUtils.⎕NC'Hello2'
  ref.TV.SelItems←0 0 0 0 1 0 0 0
- →GoToTidyUp~0∊⍴1 rg.GetCode ref.TV
+ →T.GoToTidyUp~0∊⍴1 rg.GetCode ref.TV
  ref.TV.SelItems←0 0 0 1 0 0 0 0
- →GoToTidyUp 0∊⍴1 rg.GetCode ref.TV
+ →T.GoToTidyUp 0∊⍴1 rg.GetCode ref.TV
  ref.TV.SelItems←0 0 0 0 0 0 0 1
- →GoToTidyUp 0∊⍴1 rg.GetCode ref.TV
- R←∆OK
+ →T.GoToTidyUp 0∊⍴1 rg.GetCode ref.TV
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

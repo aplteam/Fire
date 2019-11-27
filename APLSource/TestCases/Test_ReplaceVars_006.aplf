@@ -1,7 +1,7 @@
  R←Test_ReplaceVars_006(stopFlag batchFlag);n;Text;n2;⎕TRAP;buffer
 ⍝ Replace string. One variable is a scalar and one is deeply nested, so they remain unchanged
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  1 #.Fire.Fire.Run 0
@@ -19,7 +19,7 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp 3≠⍴n.HitList.Items
+ →T.GoToTidyUp 3≠⍴n.HitList.Items
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -29,12 +29,12 @@
 
  {}∆Select n2.StartBtn
  ∆Process n.Form
- →GoToTidyUp 1≠#.Fire.Fire.Replace.NoOfReplacements
- →GoToTidyUp'APL and J and KPL is greAPL and J and Kt'≢#.TEMP.varsSimple
- →GoToTidyUp'APL is great'('APL is great' 'APL is great')'APL is great'≢#.TEMP.varsDeeplyNested
- →GoToTidyUp'A'≢#.TEMP.varsScalar
+ →T.GoToTidyUp 1≠#.Fire.Fire.Replace.NoOfReplacements
+ →T.GoToTidyUp'APL and J and KPL is greAPL and J and Kt'≢#.TEMP.varsSimple
+ →T.GoToTidyUp'APL is great'('APL is great' 'APL is great')'APL is great'≢#.TEMP.varsDeeplyNested
+ →T.GoToTidyUp'A'≢#.TEMP.varsScalar
 
- R←∆OK
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

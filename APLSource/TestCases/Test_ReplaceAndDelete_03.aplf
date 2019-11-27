@@ -1,7 +1,7 @@
  R←Test_ReplaceAndDelete_03(stopFlag batchFlag);n;n2;⎕TRAP
 ⍝ Replace "universe" in a dfns: delete all lines containing hits (first & last line!)
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  #.⎕EX'TEMP'
@@ -19,7 +19,7 @@
 
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form
- →GoToTidyUp~n.HitList.Items ∆LazyMatch'myDfns'
+ →T.GoToTidyUp~n.HitList.Items ∆LazyMatch'myDfns'
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -30,9 +30,9 @@
 
  {}∆Select n2.StartBtn
  ∆Process n.Form
- →GoToTidyUp 1≠#.Fire.Fire.Replace.NoOfReplacements
- →GoToTidyUp('myDfns←{a←''universe''' 'b←''world''' 'c←''universe''}')≢##.APLTreeUtils.dlb #.TEMP.⎕NR'myDfns'
- R←∆OK
+ →T.GoToTidyUp 1≠#.Fire.Fire.Replace.NoOfReplacements
+ →T.GoToTidyUp('myDfns←{a←''universe''' 'b←''world''' 'c←''universe''}')≢##.APLTreeUtils.dlb #.TEMP.⎕NR'myDfns'
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

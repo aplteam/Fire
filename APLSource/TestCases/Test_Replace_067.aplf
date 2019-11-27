@@ -1,7 +1,7 @@
  R←Test_Replace_067(stopFlag batchFlag);n;Text;n2;⎕TRAP;expected
 ⍝ Replace string in operator located in a scripted namespace
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  1 #.Fire.Fire.Run 0
@@ -13,9 +13,9 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp(2⍴⊂'Hello2')≢n.HitList.Items
+ →T.GoToTidyUp(2⍴⊂'Hello2')≢n.HitList.Items
  expected←'#.TestData.ScriptedNamespaces.ToBeChanged_2' '#.TestData.ScriptedNamespaces.ToBeChanged_1'
- →GoToTidyUp expected≢n.HitList.ReportInfo[;0]
+ →T.GoToTidyUp expected≢n.HitList.ReportInfo[;0]
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -25,10 +25,10 @@
 
  {}∆Select n2.StartBtn
  ∆Process n.Form
- →GoToTidyUp 2≠#.Fire.Fire.Replace.NoOfReplacements
- →GoToTidyUp 1≠+/'whole Universe'⍷∊⎕SRC #.TestData.ScriptedNamespaces.ToBeChanged_1
- →GoToTidyUp 1≠+/'whole Universe'⍷∊⎕SRC #.TestData.ScriptedNamespaces.ToBeChanged_2
- R←∆OK
+ →T.GoToTidyUp 2≠#.Fire.Fire.Replace.NoOfReplacements
+ →T.GoToTidyUp 1≠+/'whole Universe'⍷∊⎕SRC #.TestData.ScriptedNamespaces.ToBeChanged_1
+ →T.GoToTidyUp 1≠+/'whole Universe'⍷∊⎕SRC #.TestData.ScriptedNamespaces.ToBeChanged_2
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

@@ -1,7 +1,7 @@
  R←Test_HitReport_002(stopFlag batchFlag);n;n2;⎕TRAP;expected;rg;GUI;html;body
 ⍝ Search for a text but ignore comments and anything between quotes.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
  #.⎕SHADOW'TEMP'
  'TEMP'#.⎕NS''
@@ -22,9 +22,9 @@
  ∆Process n.Form
 
  html←∊1 #.Fire.Fire.ReportHits.Run 1
- →GoToTidyUp n.##.##.G.NoOfHits≠+/'<span class="diff">after</span>'⍷html
+ →T.GoToTidyUp n.##.##.G.NoOfHits≠+/'<span class="diff">after</span>'⍷html
 
- R←∆OK
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

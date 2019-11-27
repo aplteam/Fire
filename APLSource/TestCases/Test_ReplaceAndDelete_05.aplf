@@ -1,7 +1,7 @@
  R←Test_ReplaceAndDelete_05(stopFlag batchFlag);n;n2;⎕TRAP
 ⍝ Replace "universe" in a tfns: delete all lines containing hits (first line!)
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  #.⎕EX'TEMP'
@@ -17,7 +17,7 @@
 
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form
- →GoToTidyUp~n.HitList.Items ∆LazyMatch'myTfns'
+ →T.GoToTidyUp~n.HitList.Items ∆LazyMatch'myTfns'
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -27,9 +27,9 @@
 
  {}∆Select n2.StartBtn
  ∆Process n.Form
- →GoToTidyUp 1≠#.Fire.Fire.Replace.NoOfReplacements
- →GoToTidyUp('r←myTfns' 'r←''world''')≢##.APLTreeUtils.dlb #.TEMP.⎕NR'myTfns'
- R←∆OK
+ →T.GoToTidyUp 1≠#.Fire.Fire.Replace.NoOfReplacements
+ →T.GoToTidyUp('r←myTfns' 'r←''world''')≢##.APLTreeUtils.dlb #.TEMP.⎕NR'myTfns'
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

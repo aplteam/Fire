@@ -1,7 +1,7 @@
  R←Test_SearchQNL_061(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search
 ⍝ Search for a string in ⎕NL.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  #.⎕SHADOW'TEMP'
@@ -25,9 +25,9 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp 6≠⍴n.HitList.Items
- →GoToTidyUp'#.TEMP'≢0⊃n.HitList.ReportInfo[0;]
- R←∆OK
+ →T.GoToTidyUp 6≠⍴n.HitList.Items
+ →T.GoToTidyUp'#.TEMP'≢0⊃n.HitList.ReportInfo[0;]
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

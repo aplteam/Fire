@@ -1,7 +1,7 @@
  R←Test_Search_004(stopFlag batchFlag);n;⎕TRAP
 ⍝ Search case sensitive for "Uppercase" in #.A2 without further restriction.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  1 #.Fire.Fire.Run 0
@@ -13,8 +13,8 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp 11≠#.Fire.Fire.G.NoOfObjects
- R←∆OK
+ →T.GoToTidyUp 11≠#.Fire.Fire.G.NoOfObjects
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

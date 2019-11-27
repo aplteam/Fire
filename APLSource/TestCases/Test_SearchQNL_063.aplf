@@ -1,7 +1,7 @@
  R←Test_SearchQNL_063(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search
 ⍝ Ordinary search, then a search on the hit list with "Negate" & "Names only" & "Case" ticked.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  #.⎕SHADOW'TEMP'
@@ -21,14 +21,14 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp 5≠#.Fire.Fire.G.NoOfObjects
+ →T.GoToTidyUp 5≠#.Fire.Fire.G.NoOfObjects
 
  n.(ReuseSearch Negate Case2).State←1
  ⎕NQ n.Tab2'Select'
  ∆Process n.Form
- →GoToTidyUp 0≠#.Fire.Fire.G.NoOfObjects ⍝ (!)
+ →T.GoToTidyUp 0≠#.Fire.Fire.G.NoOfObjects ⍝ (!)
 
- R←∆OK
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

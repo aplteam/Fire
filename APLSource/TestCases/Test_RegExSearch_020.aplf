@@ -1,7 +1,7 @@
  R←Test_RegExSearch_020(stopFlag batchFlag);n;⎕TRAP;n2;html;expected
 ⍝ Search for Text with "Greedy←1"
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  1 #.Fire.Fire.Run 0
@@ -18,9 +18,9 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp 1≠↑⍴n.HitList.ReportInfo
+ →T.GoToTidyUp 1≠↑⍴n.HitList.ReportInfo
 
- R←∆OK
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

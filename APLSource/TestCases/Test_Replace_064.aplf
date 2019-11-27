@@ -1,43 +1,43 @@
  R←Test_Replace_064(stopFlag batchFlag);F;this;⎕TRAP
 ⍝ Exercise the #.Fire.Fire.Replace.GetNameFromDelLine function
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
  F←#.Fire.Fire.Replace
 
  :For this :In '' '∇ '
  ⍝ Functions
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'{(a b)}←{opt}foo(a b c);a;v ⍝ any comment'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'(a b)←{opt}foo(a b c);a;v ⍝ any comment'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'(a b)←{opt}foo(a b c);a;v ⍝ any comment'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'{opt}foo(a b c);a;v ⍝ any comment'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'a←opt foo(a b c);a;v ⍝ any comment'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'opt foo(a b c);a;v ⍝ any comment'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'a←foo(a b c);a;v ⍝ any comment'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'foo(a b c);a;v ⍝ any comment'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'a←foo a;a;v ⍝ any comment'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'{(a b)}←{opt}foo(a b c)'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'{(a b)}←{opt}foo right'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'r←left foo right'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'r←foo right'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'r←foo'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'foo'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'r←{cs}foo y;appName;versionNo;allowed;workspaces;loadThis;⎕ML;⎕IO'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'{(a b)}←{opt}foo(a b c);a;v ⍝ any comment'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'(a b)←{opt}foo(a b c);a;v ⍝ any comment'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'(a b)←{opt}foo(a b c);a;v ⍝ any comment'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'{opt}foo(a b c);a;v ⍝ any comment'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'a←opt foo(a b c);a;v ⍝ any comment'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'opt foo(a b c);a;v ⍝ any comment'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'a←foo(a b c);a;v ⍝ any comment'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'foo(a b c);a;v ⍝ any comment'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'a←foo a;a;v ⍝ any comment'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'{(a b)}←{opt}foo(a b c)'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'{(a b)}←{opt}foo right'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'r←left foo right'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'r←foo right'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'r←foo'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'foo'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'r←{cs}foo y;appName;versionNo;allowed;workspaces;loadThis;⎕ML;⎕IO'
   ⍝ Operators
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'{(a b)}←{opt}(f foo)(a b c);a;v ⍝ any comment'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'(a b)←{opt}(f foo)(a b c);a;v ⍝ any comment'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'(a b)←{opt}(f foo)(a b c);a;v ⍝ any comment'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'{opt}(f foo)(a b c);a;v ⍝ any comment'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'a←(f foo)(a b c);a;v ⍝ any comment'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'(f foo)(a b c);a;v ⍝ any comment'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'a←(f foo) a;a;v ⍝ any comment'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'{(a b)}←{opt}(f foo)(a b c)'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'{(a b)}←{opt}(f foo) right'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'r←left (f foo) right'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'{(a b)}←{opt}(f1 foo f2)(a b c);a;v ⍝ any comment'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'(f1 foo f2)(a b c);a;v ⍝ any comment'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'a←(f1 foo f2) a;a;v ⍝ any comment'
-     →PassesIf'foo'≡F.GetNameFromDelLine this,'{(a b)}←{opt}(f1 foo f2)(a b c)'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'{(a b)}←{opt}(f foo)(a b c);a;v ⍝ any comment'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'(a b)←{opt}(f foo)(a b c);a;v ⍝ any comment'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'(a b)←{opt}(f foo)(a b c);a;v ⍝ any comment'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'{opt}(f foo)(a b c);a;v ⍝ any comment'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'a←(f foo)(a b c);a;v ⍝ any comment'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'(f foo)(a b c);a;v ⍝ any comment'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'a←(f foo) a;a;v ⍝ any comment'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'{(a b)}←{opt}(f foo)(a b c)'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'{(a b)}←{opt}(f foo) right'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'r←left (f foo) right'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'{(a b)}←{opt}(f1 foo f2)(a b c);a;v ⍝ any comment'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'(f1 foo f2)(a b c);a;v ⍝ any comment'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'a←(f1 foo f2) a;a;v ⍝ any comment'
+     →T.PassesIf'foo'≡F.GetNameFromDelLine this,'{(a b)}←{opt}(f1 foo f2)(a b c)'
  :EndFor
 
- R←∆OK
+ R←T._OK

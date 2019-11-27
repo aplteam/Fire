@@ -1,7 +1,7 @@
  R←Test_Replace_066(stopFlag batchFlag);n;Text;n2;⎕TRAP;buffer
 ⍝ Replace string in dfns located in a scripted namespace
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  1 #.Fire.Fire.Run 0
@@ -54,7 +54,7 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp('Hello' 'Hello3')≢n.HitList.Items
+ →T.GoToTidyUp('Hello' 'Hello3')≢n.HitList.Items
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -64,10 +64,10 @@
 
  {}∆Select n2.StartBtn
  ∆Process n.Form
- →GoToTidyUp 2≠#.Fire.Fire.Replace.NoOfReplacements
- →GoToTidyUp 0≠+/'whole damn world'⍷∊⎕SRC #.TEMP.ToBeChanged_1
- →GoToTidyUp 2≠+/'whole damn world'⍷∊⎕SRC #.TEMP.ToBeChanged_2
- R←∆OK
+ →T.GoToTidyUp 2≠#.Fire.Fire.Replace.NoOfReplacements
+ →T.GoToTidyUp 0≠+/'whole damn world'⍷∊⎕SRC #.TEMP.ToBeChanged_1
+ →T.GoToTidyUp 2≠+/'whole damn world'⍷∊⎕SRC #.TEMP.ToBeChanged_2
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

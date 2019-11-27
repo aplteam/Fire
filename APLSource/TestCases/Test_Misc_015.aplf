@@ -1,7 +1,7 @@
  R←Test_Misc_015(stopFlag batchFlag);n;⎕TRAP;expected
 ⍝ Unnamed NSs & GUI instances are ignored.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  #.⎕EX'FireObjectTest'
@@ -18,8 +18,8 @@
  {}∆Select n.StartBtn
  ∆Process n.Form
  expected←'Doe' 'HelloNS' 'HelloinLevel2' 'HelloinLevel3' 'IF' 'MyClass1' 'MyClass2' 'HelloNS' 'MyInterface'
- →GoToTidyUp~expected ∆LazyMatch #.Fire.Fire.GUI.n.HitList.Items
- R←∆OK
+ →T.GoToTidyUp~expected ∆LazyMatch #.Fire.Fire.GUI.n.HitList.Items
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

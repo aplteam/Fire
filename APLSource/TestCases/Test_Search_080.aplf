@@ -1,7 +1,7 @@
  R←Test_Search_080(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search
 ⍝ Ordinary search, then a search on the hit list with "Negate" ticked.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  #.⎕SHADOW'TEMP'
@@ -21,15 +21,15 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp 5≠#.Fire.Fire.G.NoOfObjects
+ →T.GoToTidyUp 5≠#.Fire.Fire.G.NoOfObjects
 
  n.(ReuseSearch Negate).State←1
  n.SearchFor.Text←'XXXX'
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp 4≠#.Fire.Fire.G.NoOfObjects
- R←∆OK
+ →T.GoToTidyUp 4≠#.Fire.Fire.G.NoOfObjects
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

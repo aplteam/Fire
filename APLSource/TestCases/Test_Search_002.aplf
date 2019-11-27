@@ -1,7 +1,7 @@
  R←Test_Search_002(stopFlag batchFlag);n;⎕TRAP
 ⍝ Search for name "f" (scalar!)
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  1 #.Fire.Fire.Run 0
@@ -21,8 +21,8 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp 4≠≢n.HitList.ReportInfo
- R←∆OK
+ →T.GoToTidyUp 4≠≢n.HitList.ReportInfo
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

@@ -2,7 +2,7 @@
 ⍝ Replace string "#.UTILS.#.UTILS" in "#.TestData.Replacements" by "#.UTILS." in code without comments.
 ⍝ Note that such strings got injected by Test_029, so without running 29 first this one is bound to fail.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  1 #.Fire.Fire.Run 0
@@ -15,7 +15,7 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →GoToTidyUp 5≠#.Fire.Fire.G.NoOfObjects
+ →T.GoToTidyUp 5≠#.Fire.Fire.G.NoOfObjects
 
  {}∆Select n.ReplaceBtn
  ∆Process n.Form
@@ -25,22 +25,22 @@
 
  {}∆Select n2.StartBtn
  ∆Process n.Form
- →GoToTidyUp 5≠#.Fire.Fire.Replace.NoOfReplacements
+ →T.GoToTidyUp 5≠#.Fire.Fire.Replace.NoOfReplacements
 
  n.SearchFor.Text←'#.UTILS.#'
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form
- →GoToTidyUp 0≠#.Fire.Fire.G.NoOfObjects
+ →T.GoToTidyUp 0≠#.Fire.Fire.G.NoOfObjects
 
  n.SearchFor.Text←'#.UTILS.'
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form
- →GoToTidyUp 5≠#.Fire.Fire.G.NoOfObjects
- R←∆OK
+ →T.GoToTidyUp 5≠#.Fire.Fire.G.NoOfObjects
+ R←T._OK
 
 ∆TidyUp:
  CloseFire

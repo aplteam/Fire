@@ -1,7 +1,7 @@
  R←Test_InternalMethods_002(stopFlag batchFlag);H;code;mask;NL;⎕TRAP
 ⍝ Exercise the "GetTextMask" method of the "Helpers" class.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  H←⎕NEW #.Fire.Fire.Helpers ##
@@ -10,42 +10,42 @@
 ⍝ The tests
  code←'{{⍵/⍨2=+⌿0=⍵∘.|⍵}⍳⍵}'
  mask←H.GetTextMask code
- →PassesIf 0=+/mask                             ⍝ There is no text
+ →T.PassesIf 0=+/mask                             ⍝ There is no text
 
  code←'{{⍵/⍨2=+⌿0=⍵∘.|⍵}⍳⍵} ⍝ Comment'
  mask←H.GetTextMask code                        ⍝ There is no text but a comment
- →PassesIf 0=+/mask
+ →T.PassesIf 0=+/mask
 
  code←'a←''text'' (1 2 3) ''More text'' ⍝ Comment'
  mask←H.GetTextMask code
- →PassesIf'''text''''More text'''≡mask/code
+ →T.PassesIf'''text''''More text'''≡mask/code
 
  code←'a←''text'' (1 2 3) ''More text'' ⍝ Comment'
  mask←H.GetTextMask code                        ⍝ There is text
- →PassesIf'''text''''More text'''≡mask/code
+ →T.PassesIf'''text''''More text'''≡mask/code
 
  code←'a←''text'' (1 2 3) ''More ''text'' ⍝ Comment'
  mask←H.GetTextMask code                        ⍝ There is invalid text
- →PassesIf 1                                    ⍝ There is no solution but it should not break
+ →T.PassesIf 1                                    ⍝ There is no solution but it should not break
 
  code←'a←''text'' (1 2 3) ''More ⍝ text'' ⍝ comment'
  mask←H.GetTextMask code                        ⍝ There is text with a comment in it
- →PassesIf'''text''''More ⍝ text'''≡mask/code
+ →T.PassesIf'''text''''More ⍝ text'''≡mask/code
 
  code←'a←''text'' (1 2 3) ''More ⍝ text'' ⍝ author''s comments'
  mask←H.GetTextMask code                        ⍝ There is a comment with a single quote
- →PassesIf'''text''''More ⍝ text'''≡mask/code
+ →T.PassesIf'''text''''More ⍝ text'''≡mask/code
 
  code←''
  mask←H.GetTextMask code                        ⍝ Empty vector
- →PassesIf ⍬≡mask
+ →T.PassesIf ⍬≡mask
 
  code←'⍵'
  mask←H.GetTextMask code                        ⍝ Single char (scalar)
- →PassesIf(,0)≡mask
+ →T.PassesIf(,0)≡mask
 
  code←'⍝'
  mask←H.GetTextMask code                        ⍝ Single lamp (scalar)
- →PassesIf(,0)≡mask
+ →T.PassesIf(,0)≡mask
 
- R←∆OK
+ R←T._OK

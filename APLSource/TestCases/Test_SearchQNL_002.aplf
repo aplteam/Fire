@@ -1,7 +1,7 @@
  R←Test_SearchQNL_002(stopFlag batchFlag);n;⎕TRAP
 ⍝ Search for "_" anywhere within names ("Names only"). Does not find an empty namespace because "Container" is not ticked.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
- R←∆Failed
+ R←T._Failed
 
 ⍝ Preconditions
  #.⎕SHADOW'TEMP'
@@ -40,8 +40,8 @@
 
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form
- →GoToTidyUp(⊂'Sub_5')∊n.HitList.Items
- R←∆OK
+ →T.GoToTidyUp(⊂'Sub_5')∊n.HitList.Items
+ R←T._OK
 
 ∆TidyUp:
  CloseFire
