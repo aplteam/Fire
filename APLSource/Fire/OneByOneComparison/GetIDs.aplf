@@ -3,6 +3,7 @@
 ⍝ ← becomes #67-2-[old|new] which is later used to show/hide the original text or the replacement text.
      (line no)←⍵
      line~←'[]'
+     line←{'0'}⍣(0=≢line)⊣line
      no~←'.'
      no←{0=≢⍵:'1' ⋄ ⍵}no
      '#n',line,'-',no,'-',⍺

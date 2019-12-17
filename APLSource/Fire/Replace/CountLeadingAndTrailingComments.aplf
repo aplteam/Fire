@@ -1,0 +1,7 @@
+ CountLeadingAndTrailingComments←{
+⍝ Counts leading and trailing comments, with blank lines allowed in between, before and after.
+⍝ ⍵ is typically the body of a script (class, interface or namespace script)
+     empty←⍵∧.=¨' '
+     b←empty∨'⍝'=↑¨⍵
+     (+/∧\b)(+/∧\⌽b)
+ }

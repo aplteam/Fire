@@ -1,5 +1,5 @@
  R←Test_ReplaceAndDelete_06(stopFlag batchFlag);n;n2;⎕TRAP
-⍝ Replace "universe" in a top: delete all lines containing hits (first & last line!)
+⍝ Replace "universe" in a trad-operator: delete all lines containing hits (first & last line!)
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  R←T._Failed
 

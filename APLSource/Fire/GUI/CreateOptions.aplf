@@ -6,7 +6,7 @@
  ∆,←⊂'Posn'((n.SearchIsRegEx.##.Posn[0]),(10+1⊃PosnPlusSize n.SearchIsRegEx.##))
  ∆,←⊂'Size'(110 240)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
- rf←⍎'OptionsGroup'n.SF1.⎕WC ∆
+ rf←⍎'OptionsGroup'n.Form.⎕WC ∆
 
  ∆←⊂'Button'
  ∆,←⊂'Caption' '&Match case'
@@ -27,7 +27,7 @@
  ∆,←⊂'State'##.G.APL_Name
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'TipObj'n.TipObj
- msg←'Makes the search strict in terms of identifier boundaries.'
+ msg←'Makes the search strict in terms of identifier boundaries.⌹Use this to search for APL names in code,⌹but not for words in variables.'
  ∆,←⊂'Tip'(Split msg)
  n.APL_Name←⍎'APL_Name'rf.⎕WC ∆
  n.APL_Name.onSelect←'OnAPL_Name'

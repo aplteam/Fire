@@ -16,8 +16,8 @@
      :Else
          n.List.ReportInfo[rows;2]←⊂'Edited'
      :EndIf
-     :If 1<⍴names
-     :AndIf (i+1)<⍴names
+     :If 1<≢names
+     :AndIf (i+1)<≢names
      :AndIf 0=##.Question.YesOrNo'This was ',(⍕i),' of ',(⍕⍴names),' - do you want to continue?'
          :Leave
      :EndIf

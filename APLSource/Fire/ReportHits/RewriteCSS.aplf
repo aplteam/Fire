@@ -6,7 +6,7 @@
 ⍝     CSS,←⊂##.TAB,'color:#b0b0b0;background-color:f1f1f1;'
      CSS,←⊂##.TAB,'display:none;'
      CSS,←⊂'}'
-⍝     CSS,←⊂' {',⍨¯1↓∊'#no-h1'∘,¨(⍕¨IDs),¨','
+⍝     CSS,←⊂' {',⍨¯1↓∊'#no-h1-'∘,¨(⍕¨IDs),¨','
 ⍝     CSS,←⊂##.TAB,'color:#b0b0b0;'
 ⍝     CSS,←⊂'}'
  :EndIf

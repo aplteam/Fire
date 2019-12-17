@@ -1,4 +1,4 @@
- {r}←CompileReport G;A;fno;firstFlag;k;searchFor;replaceBy;realSequence;wantedSequence;noOfItems
+ {r}←CompileReport G;A;fno;firstFlag;k;searchFor;replaceBy;realSequence;wantedSequence;noOfItems;ind
 ⍝ Compiles a full report. Unchanged lines are shown once but enclosed with <div class="show">
 ⍝ so that we can hide them all in one go via CSS.
 ⍝ All changed lines are shown twice, with the changes emphasized, again via CSS.
@@ -10,13 +10,16 @@
  {}'Compile report...'##.EnableProgressbar noOfItems←-/⌽2↑⎕FSIZE G.compareFileTieNo
  firstFlag←1
  k←0
- searchFor←##.G.NamesOnly ##.IfLower G.SearchFor
- replaceBy←##.A.dlb ##.G.NamesOnly ##.IfLower G.ReplaceBy
+ searchFor←##.IfLower G.SearchFor
+ replaceBy←##.A.dlb ##.IfLower G.ReplaceBy
  realSequence←⊃¨{(⍕⍺),'.',⍵}/¨↓(##.GetSortedHitListData ⍬)[;0 1]
  wantedSequence←⊃¨{(⍕⍺),'.',⍵}/¨↓##.G.Hits[;0 1]
  :Repeat
      {(0=5|k):##.GUI.n.PB.Thumb←⍵}k+1
-     CompileReport_ k(1+realSequence⍳wantedSequence[k])firstFlag G
+     ind←1+realSequence⍳wantedSequence[k]
+
+     CompileReport_ k ind firstFlag(G.NameClasses[ind-1])G
+
      firstFlag←0
  :Until noOfItems=k←k+1
  'append'A.WriteUtf8File fno(⊂'</div>')

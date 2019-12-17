@@ -1,0 +1,5 @@
+ txt←n2 IfLower txt
+⍝ Return ⍵ as lowercase if n2.Case.State is zero
+ :If ~n2.Case.State
+     txt←##.##.A.Lowercase txt
+ :EndIf

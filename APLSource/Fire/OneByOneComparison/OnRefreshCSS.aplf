@@ -1,15 +1,21 @@
- OnRefreshCSS←{
+ r←OnRefreshCSS msg;b;was;ref;ID
  ⍝ Rewrite the CSS and then refreshs the browser.
  ⍝ Used to display either the old or the new text.
-     b←IsTicked n2
-     ⎕THIS.wasTicked←b
-     was←#.CursorObj
-     #.CursorObj←1
-     _←RewriteCSS b
-     _←WriteStatusMsg n
-     _←{0::⍬ ⋄ n.Browser.Refresh ⍵}⍬
-     _←⎕DL 0.1
-     #.CursorObj←was
-     _←⎕NQ n.List'GotFocus'
-     0
- }
+ (ref msg ID)←3↑msg,⊂''
+ b←IsTicked n
+ ⎕THIS.wasTicked←b
+ was←#.CursorObj
+ #.CursorObj←1
+ {}RewriteCSS b
+ {}WriteStatusMsg n
+ n.Browser.Size←0 0
+ :If 0<≢ID
+     {}n.Browser{6::shy←⍬ ⋄ 1:shy←⍺.Navigate2⊂'file:///',⍵}n.∆HtmlFilename,'#',ID
+ :EndIf
+ {}{0::⍬ ⋄ n.Browser.Refresh ⍵}⍬
+ ⎕DL 0.1
+ n.Browser.Size←100 100
+ #.CursorObj←was
+ {}⎕NQ n.List'GotFocus'
+ r←0
+⍝Done

@@ -17,11 +17,11 @@ Fire has a couple of features that Dyalog's built-in "Search" tool do not offer.
 
   This feature is particularly powerful since it allows you to inspect every single item that is going to be changed in a preview, and to exclude objects with a single click.
 
-* The scope of a search can be restricted to just code while comments or even text will be ignored. Or you search just in comments, or just in text, or just in the name list (`⎕NL`).
+* The scope of a search can be restricted to just code while comments or even text will be ignored. Or you search just in comments, or just in text.
 
 * A search result can become the source of another search.
 
-* Regular Expressions can be used for both "Search" as well as "Replace".
+* Regular Expressions can be used.
 
 Fire has however many more features:
 
@@ -34,6 +34,8 @@ Fire has however many more features:
   In conjunction with "Search hit list" this can effectively be used to exclude unwanted stuff before triggering a "Replace".
 
 * Built-in reports designed to help refurbishing code that has started to smell.
+
+* Search just the name list (`⎕NL`).
 
 
 ## Fire to the rescue
@@ -322,13 +324,11 @@ Note that code that exists in a ghostly namespace associated with an external ob
 
 The "Replace" dialog has a check box "Delete lines/items with hits". That seems to be easy enough: any lines that carry the search string are going to be deleted. However, there are details you need to be aware of:
 
+1. Variables of any type are ignored.
+
 1. The first and the last line of any script is never deleted, no matter whether they carry a hit or not. It should be obvious why that is.
 
 1. The first line of any function or operator is never deleted, no matter whether they carry a hit or not. However, be aware of 6.
-
-1. If a simple variable carries a hit it is going to be an empty vector.
-
-1. All items in a vector of text vectors that carry a hit are deleted from that vector. That means that after the conversion the new vector will be shorter than the original one.
 
 1. A one-line dfns that carries a hit is deleted.
 
@@ -348,9 +348,9 @@ Avoiding `⎕DQ` works well in many circumstances but it might cause problems wh
 When you edit one or more APL objects from Fire you can double-click another APL object in an Edit window successfully. You can also go to the session and add another Edit window to those which are already open. However, you are advised to use this with care. 
 
 
-### Report hits
+### Report "Detailed hits"
 
-After having performed a search "Report hits" allows you to check the hits in context. This is particularly useful in order to find out whether the hit list needs some fine tuning.
+After having performed a search the report "Detailed hits" allows you to check the hits in context. This is particularly useful in order to find out whether the hit list needs some fine tuning.
 
 
 ### Print object name(s) to the session

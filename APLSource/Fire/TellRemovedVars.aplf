@@ -1,0 +1,10 @@
+ {r}←{addToCaption}TellRemovedVars names;msg;parms;plural
+ r←⍬
+ msg←''
+ plural←1<≢names
+ msg,←⊂'The following variable',(plural/'s'),' cannot be changed and'
+ msg,←⊂(plural⊃'has' 'have'),' therefore been removed from the hit list:'
+ msg,←names
+ addToCaption←{0<⎕NC ⍵:⍎⍵ ⋄ 'Fire: unchangeable variables'}'addToCaption'
+ addToCaption Question.ShowMsg msg
+⍝Done

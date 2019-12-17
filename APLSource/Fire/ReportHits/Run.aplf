@@ -8,6 +8,5 @@
      r←noGui Run_ testFlag
  :Else
      :Trap 0 ⋄ {}{##.DisableProgressbar ⍵}⍣(0=noGui)⊣⍬ ⋄ :EndTrap
-     :Trap 0 ⋄ ##.F.DeleteFile htmlFilename ⋄ :EndTrap
      '"Hit" report'##.TellWSFULL'Sorry, there is not enough memory available for compiling the report'
  :EndTrap

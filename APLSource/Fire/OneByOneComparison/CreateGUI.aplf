@@ -1,5 +1,4 @@
- n←parms CreateGUI(name lineNumbers i noOfObjs deleteLines);∆;rf;b;wasTicked;noOf;ref
- noOf←≢lineNumbers
+ n←parms CreateGUI(name i noOfObjs);∆;rf;b;wasTicked;noOf;ref
  n←⎕NS''
  ∆←⊂'Form'
  ∆,←⊂'Caption'(##.AddPidToCaption'Fire - Replace one by one')
@@ -46,26 +45,19 @@
 
  ∆←⊂'ListView'
  ∆,←⊂'ColTitles'('Row no' 'Hit number' ' ')
- ∆,←⊂'Items'('[',¨(⍕¨∪⍣deleteLines⊣lineNumbers),¨']')
- wasTicked←noOf⍴0           ⍝ Global used to identify changes in the check box
- ∆,←⊂'ReportInfo'(CompileReportInfo∪⍣deleteLines⊣lineNumbers)
  ∆,←⊂'View' 'Report'
  ∆,←⊂'Checkboxes' 1
  ∆,←⊂'Posn'(0 0)
- ∆,←⊂'Size'(n.MainSubForm.Size[0],160)
+ ∆,←⊂'Size'(n.MainSubForm.Size[0],190)
  ∆,←⊂'Font'n.APL_Font
  ∆,←⊂'FullRowSelect' 1
  ∆,←⊂'Style' 'Single'
  n.List←⍎'list'n.MainSubForm.⎕WC ∆
- {n.List.SetColSize ⍵ ¯3}¨⍳3
  n.List.Event,←⊂##.GUI.Events.RefreshCSS'OnRefreshCSS'
  n.List.onKeyPress←'OnKeyPressInList'
  n.List.on9994←'On9994'
  n.List.onItemUp←'OnItemUpInListView'
  n.List.onContextMenu←'OnContextMenuInListView'
-
-⍝ TickAllCheckBoxes n.List
- ##.GUI.SetFocusTo n.List 0
 
  ∆←⊂'SubForm'
  ∆,←⊂'Posn'(0,n.List.Size[1]+5)
@@ -100,14 +92,14 @@
  ∆,←⊂'Caption' 'Fix &confirmed changes + all remaining objects'
  ∆,←⊂'Posn'((n.OK.Posn[0]),10+1⊃##.GUI.PosnPlusSize n.OK)
  ∆,←⊂'Size'(⍬ 320)
- ∆,←⊂'Active'((i+1)<noOfObjs)
+ ∆,←⊂'Active'(noOfObjs>i+1)
  ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
  n.AllRemaining←⍎'allremaining'n.TheForm.⎕WC ∆
 
  ∆←⊂'Button'
  ∆,←⊂'Caption' '&Skip this one'
  ∆,←⊂'Posn'((n.OK.Posn[0]),10+1⊃##.GUI.PosnPlusSize n.AllRemaining)
- ∆,←⊂'Active'((i+1)<noOfObjs)
+ ∆,←⊂'Active'(noOfObjs>i+1)
  ∆,←⊂'Size'(⍬ 120)
  ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
  n.Skip←⍎'skip'n.TheForm.⎕WC ∆
@@ -121,5 +113,6 @@
  n.Cancel←⍎'cancel'n.TheForm.⎕WC ∆
  n.(OK AllRemaining Skip Cancel).onSelect←1
 
- i noOfObjs WriteStatusMsg n
+ n.∆i←i
+ n.∆noOfObjs←noOfObjs
 ⍝Done

@@ -7,8 +7,8 @@
      n.(SearchFor LookIn).Active←1
      n.CancelSearchBtn.(Active Visible Default)←0
      n.StartBtn.Active←1
-     n.ReportHits.Active←0<⍴n.HitList.Items
-     n.ReplaceBtn.Active←(0<⍴n.HitList.Items)∧n.Tab2≠n.Tab1.##.TabObj
+     n.ReportHits.Active←0<≢n.HitList.Items
+     n.ReplaceBtn.Active←0<≢n.HitList.Items
      n.EditCmd.Active←1
      n.InvertSelectionCmd.Active←1
      {}'Group' 'Combo'SetActivePropTo¨1

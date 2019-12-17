@@ -1,4 +1,6 @@
  TickAllCheckBoxes←{
+⍝ Tick (default) or un-tick (⍺←0) all check boxes.
+⍝ `rf` must be reference to the TreeView.
      ⍺←1
      rf←⍵
      noOf←⍴rf.Items

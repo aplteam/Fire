@@ -1,4 +1,4 @@
- (r counter)←ChangeThem_ batchFlag;i;noOf;oldCode;objName;newCode;rc;ind;objLocation;objType;objFullname;msg;nc;varsReport;fixRemaining;data;objNC;ac;length;cursorWas;isRegExSearch;parms;changedFlags;⎕TRAP
+ (r counter)←ChangeThem_ batchFlag;i;noOf;oldCode;objName;newCode;rc;objLocation;objType;objFullname;msg;nc;varsReport;fixRemaining;data;objNC;ac;length;cursorWas;isRegExSearch;parms;changedFlags;⎕TRAP;offset
 ⍝ Processes all the objects.
 ⍝ Returns 0 if the user cancels, otherwise 1.
  r←1
@@ -22,25 +22,25 @@
          :Continue
      :EndIf
      :If 2=⌊objNC
-     :AndIf NonReplaceVars⍎objFullname
-         (objFullname ⍬)⎕FAPPEND G.compareFileTieNo
-         {}SaveOn_G objLocation objName objFullname ⍬
-         :Continue
+         :If NonReplaceVars⍎objFullname
+             (objFullname ⍬)⎕FAPPEND G.compareFileTieNo
+             {}SaveOn_G objLocation objName objFullname ⍬
+             :Continue
+         :EndIf
      :EndIf
      (oldCode nc)←objLocation ##.GetCode objName
      :If 0=≢oldCode
          :Continue
      :EndIf
-     isRegExSearch←##.G.NamesOnly⊃##.G.(SearchIsRegEx SearchIsRegEx2)
-     :If isRegExSearch
-         (rc newCode ind length)←(objLocation.⎕NC⊂objName)ChangeItByRegEx oldCode  ⍝ ¯1: an error has occurred.
+     :If ##.G.SearchIsRegEx
+         (rc newCode offset length)←(objLocation.⎕NC⊂objName)ChangeItByRegEx oldCode  ⍝ ¯1: an error has occurred.
          :If 0≠rc
              r←0
              :Leave
          :EndIf
      :Else
-         (ind length)←nc ##.Scan(##.G.NamesOnly ##.IfLower oldCode)batchFlag
-         newCode←(objLocation.⎕NC⊂objName)ChangeIt oldCode ind
+         (offset length)←nc ##.Scan(##.IfLower oldCode)batchFlag
+         newCode←(objLocation.⎕NC⊂objName)ChangeIt oldCode offset
      :EndIf
      :If batchFlag
          counter+←1
@@ -61,7 +61,7 @@
          changedFlags[i]←1
          :If 0=fixRemaining
              cursorWas←##.SetCursorObj 0
-             (ac fixRemaining newCode)←parms ShowUser objLocation objName oldCode newCode i noOf ind length(objLocation.⎕NC⊂objName)n.DeleteLine.State
+             (ac fixRemaining newCode)←parms ShowUser objLocation objName oldCode newCode i noOf offset length(objLocation.⎕NC⊂objName)n.DeleteLine.State
              ##.SetCursorObj cursorWas
              ⎕NQ n.Form'GotFocus'
          :EndIf
@@ -76,7 +76,7 @@
              firstFlag←0
          :ElseIf 2=ac
                                     ⍝ This one is skipped but we carry on
-         :Else ⋄.                  ⍝ Huuh?!
+         :Else ⋄ ∘∘∘                ⍝ Huuh?!
          :EndIf
          :If 1=fixRemaining
              msg←⊂'Are your sure that you want to fix all remaining object(s)'

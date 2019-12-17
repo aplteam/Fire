@@ -9,12 +9,12 @@
      r←tx1a
  :Else
      equal2←+/∧\↑=/{(⌊/≢¨⍵)↑¨⍵}tx1b tx2b          ⍝ "searchFor" and "replaceBy" might by equal to some extent
-     :While (~0∊⍴tx2a)
-         equal←+/∧\⊃=/{(⌊/≢¨⍵)↑¨⍵}tx1a tx2a
+     :While (0≠≢tx2a)
+         equal←+/∧\1↑↑↑=/{(⌊/≢¨⍵)↑¨⍵}tx1a tx2a
          :If 0<equal
              r,←##.ReplaceSpecialChars equal↑tx1a
              (tx1a tx2a)←equal↓¨tx1a tx2a
-         :ElseIf 0∊⍴0∊⍴tx2b
+         :ElseIf 0=≢tx2b
              r,←'<span class="diff',(⍕type),'">',(##.ReplaceSpecialChars equal2↓tx2b),'</span>'
          :Else
              r,←'<span class="diff',(⍕type),'">',(##.ReplaceSpecialChars equal2↓tx2b),'</span>'

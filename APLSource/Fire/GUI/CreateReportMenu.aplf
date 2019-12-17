@@ -3,6 +3,15 @@
  rf←⍎'MB.TheReportMenu'n.Form.⎕WC'Menu' 'Reports'
 
  ∆←⊂'MenuItem'
+ ∆,←⊂'Caption'('Search QNL...')
+ ∆,←⊂'HintObj'n.Info
+ ∆,←⊂'Hint' 'Search for names recursively.⌹Note that this is the only way⌹to find the name of a non-scripted namespace!'
+ n.SearchQNL←⍎'SearchQNL'rf.⎕WC ∆
+ n.SearchQNL.onSelect←'OnSearchQNL'
+
+ 's1'rf.⎕WC'Separator'
+
+ ∆←⊂'MenuItem'
  ∆,←⊂'Caption'('Detailed hits...',##.TAB,'F2')
  ∆,←⊂'HintObj'n.Info
  ∆,←⊂'Active' 0         ⍝ We don't have anything to report yet
@@ -25,21 +34,10 @@
  n.References←⍎'ReportReferences'rf.⎕WC ∆
  n.References.onSelect←'OnReportReferences'
 
- 's1'rf.⎕WC'Separator'
-
-⍝ Deactivated with version 7.0 -- anybody shouting? If not remove soon!  ⍝TODO⍝
-⍝ ∆←⊂'MenuItem'
-⍝ ∆,←⊂'Caption'('Calling counter...')
-⍝ ∆,←⊂'HintObj'n.Info
-⍝ ∆,←⊂'Hint' 'Takes a vector of strings and treats them as names. Results in a list reporting the number of calls.'
-⍝ n.CallingCmd←⍎'CallingCmd'rf.⎕WC ∆
-⍝ n.CallingCmd.onSelect←'OnCallingCmd'
-
  ∆←⊂'MenuItem'
  ∆,←⊂'Caption' 'SALTed scripts...'
  ∆,←⊂'HintObj'n.Info
  ∆,←⊂'Hint' 'Lists all scripts managed by SALT that got changed by a "Replace" operation'
  n.ListSALTedChangedScripts←⍎'CallingCmd'rf.⎕WC ∆
  n.ListSALTedChangedScripts.onSelect←'OnListSALTedChangedScripts'
-
  ⍝Done

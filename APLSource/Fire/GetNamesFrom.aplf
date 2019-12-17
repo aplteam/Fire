@@ -3,13 +3,13 @@
 ⍝ but takes the user's decisions into account.
      (ref type)←⍵
      em←0 3⍴''
-     NCs←G.Vars2/2.1
-     vars←em{~0∊⍴⍵:{ref,⍵,[0.4]ref.⎕NC¨⊂¨⍵}' '~¨⍨↓ref.⎕NL NCs ⋄ em}NCs
-     NCs←G.Code2/3.1 4.1 3.2 4.2 9.4 9.5
-     code←{~0∊⍴,⍵:{ref,⍵,[0.4]ref.⎕NC¨⊂¨⍵}' '~¨⍨↓ref.⎕NL NCs ⋄ em}NCs
+     NCs←2.1
+     vars←em{0≠≢⍵:{ref,⍵,[0.4]ref.⎕NC¨⊂¨⍵}' '~¨⍨↓ref.⎕NL NCs ⋄ em}NCs
+     NCs←3.1 4.1 3.2 4.2 9.4 9.5
+     code←{0≠≢⍵:{ref,⍵,[0.4]ref.⎕NC¨⊂¨⍵}' '~¨⍨↓ref.⎕NL NCs ⋄ em}NCs
      r←vars⍪code
      r,←type
-     (0∊⍴r):ref'' 9(|type){⍉⍪⍺}⍣(↑0=G.(Code+Vars))⊢r
+     (0=≢r):ref'' 9(|type){⍉⍪⍺}⍣(↑0=G.(Code+Vars))⊢r
      r[;2]←|r[;2]
      r
  }

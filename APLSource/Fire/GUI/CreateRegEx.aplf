@@ -3,10 +3,10 @@
 
  ∆←⊂'Group'
  ∆,←⊂'Caption' 'RegEx'
- ∆,←⊂'Posn'(7 10)
+ ∆,←⊂'Posn'((8+0⊃PosnPlusSize n.LookIn)10)
  ∆,←⊂'Size'(110 160)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
- rf←⍎'OptionsGroup'n.SF1.⎕WC ∆
+ rf←⍎'OptionsGroup'n.Form.⎕WC ∆
 
  ∆←⊂'Button'
  ∆,←⊂'Caption' 'Is RegE&x'

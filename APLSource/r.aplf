@@ -1,4 +1,4 @@
- r
+ {n}←r
  #.CursorObj←0
- Fire.Run 1
+ n←Fire.Run 1
 ⍝Done

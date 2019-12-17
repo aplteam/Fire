@@ -12,5 +12,5 @@
      :Else
          r,←MarkupRegExHitsInVars_ data ind length
      :EndIf
-     r←(⊂'<h2 id="h',(⍕runningNumber),'">',(⍕runningNumber),'. ',(⍕ref),'.',name,'</h2>'),r
+     r←(⊂'<h2 id="h-',(⍕runningNumber),'">',(⍕runningNumber),'. ',(⍕ref),'.',name,'</h2>'),r
  :EndIf

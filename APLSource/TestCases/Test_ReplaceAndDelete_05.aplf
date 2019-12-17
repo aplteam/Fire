@@ -1,5 +1,5 @@
  R←Test_ReplaceAndDelete_05(stopFlag batchFlag);n;n2;⎕TRAP
-⍝ Replace "universe" in a tfns: delete all lines containing hits (first line!)
+⍝ Replace "universe" in a trad-function: delete all lines containing hits (first line!)
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  R←T._Failed
 

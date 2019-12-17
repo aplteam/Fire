@@ -9,7 +9,12 @@
      bool1←{((↑∘⍴⍴⍵)∊0 1)∧(≡⍵)∊1 2}¨data            ⍝ Check depth and rank for being fine
      bool2←{(,' ')≡∪∊{⎕ML←0 ⋄ ∊⍵}⍵}¨bool1/data      ⍝ Mixed is invalid as well
      bool←(~exist)∨exist\bool1\bool2
+     ∧/bool:⍬
+     names←((~bool)/GUI.n.HitList.ReportInfo[;0]),¨'.',¨(~bool)/GUI.n.HitList.Items
      GUI.n.HitList.Data←bool⌿GUI.n.HitList.Data
      G.Hits←bool⌿G.Hits
+     GUI.n.HitList.Items←bool/GUI.n.HitList.Items
+     GUI.n.HitList.ReportInfo←bool⌿GUI.n.HitList.ReportInfo
+     _←TellRemovedVars names
      ⍬
  }

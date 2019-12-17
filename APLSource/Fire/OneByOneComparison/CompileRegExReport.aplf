@@ -1,22 +1,50 @@
- G←CompileRegExReport(name oldCode newCode lineNumbers ind length nc n2 deleteFlag);oldCode;length;ns;fns;html;tno
+ G←CompileRegExReport(name oldCode newCode lineNumbers ind length nc n2 deleteFlag);oldCode;length;ns;fns;html;tno;caption
 ⍝ Collect all the information needed and then call CompileReport_.
  G←CollectData oldCode newCode lineNumbers ind nc
  G.DeleteFlag←deleteFlag
  ##.F.DeleteFile n2.∆HtmlFilename
  tno←n2.∆HtmlFilename ⎕NCREATE 0
  tno WriteFile TopOfDoc n2.∆CssFilename
- tno WriteFile'<div id="title">',name,'  (',(⍕⎕NC⊂name),')</div>'
+ caption←name,'  (⎕NC=',(⍕nc)
+ :If 2=⌊nc
+     caption,←{0::'' ⋄ ', depth=',⍕⍵}≡⍎name
+     caption,←{0::'' ⋄ ', shape=',⍕⍵}⍴⍎name
+ :EndIf
+ caption,←')'
+ tno WriteFile'<div id="title">',caption,'</div>'
  ns←⎕NS''
  ns.options←##.Replace.GetRegExOptions oldCode ##.G
  ns.ss←##.Replace.GetRegExSearchString ##.G G.NC                ⍝ Search string
  ns.rs←##.Replace.GetRegExReplaceString ##.G ns.ss G.NC         ⍝ Replace string
- ns.lines←ns.ss ⎕S 2⍠(ns.options,⊂'Mode' 'L')⊣oldCode
+ ns.lines←∪lineNumbers
  ns.IDs←(⍕¨lineNumbers),¨'-',¨(⍕¨↑,/{1+⍳⍵}¨+⌿{⍵∘.=∪⍵}lineNumbers)
- ns.no←⍳⍴G.Length
- ns.i←0
- fns←ns∘{ns←⍺ ⋄ id←⍕ns.i⊃ns.IDs ⋄ ns.i+←1 ⋄ '<span class="diff-old" id="n',id,'-old">',⍵.Match,'</span><span class="diff-new" id="n',id,'-new">',ns.rs,'</span>'}
- html←ns.ss ⎕R fns⍠ns.options⊣##.A.dlb oldCode[∪ns.lines]
- html←(⍕¨∪lineNumbers){'<div class="line"><span class="lineno">[',⍺,']</span><code>',⍵,'</code></div>'}¨html
+ ns.no←⍳≢G.Length
+ oldCode←{##.CR ##.A.Split ⍵}⍣(##.CR∊oldCode)⊣oldCode
+ :If 2=≡oldCode
+ :AndIf 1=≢oldCode
+     oldCode←↑,/oldCode
+ :EndIf
+ :If 1=≡oldCode
+     ns.i←1
+     fns←ns∘{
+         ns←⍺
+         id←⍕ns.i
+         ns.i+←1
+         '<span class="diff-old" id="n-',id,'-old">',⍵.Match,'</span><span class="diff-new" id="n-',id,'-new">',ns.rs,'</span>'
+     }
+     html←ns.ss ⎕R fns⍠ns.options⊣##.A.dlb oldCode
+     html←'<div class="line"><code>',html,'</code></div>'
+ :Else
+     ns.i←0
+     fns←ns∘{
+         ns←⍺
+         id←⍕ns.i⊃ns.IDs
+         ns.i+←1
+         '<span class="diff-old" id="n',id,'-old">',⍵.Match,'</span><span class="diff-new" id="n',id,'-new">',ns.rs,'</span>'
+     }
+     html←ns.ss ⎕R fns⍠ns.options⊣##.A.dlb oldCode[∪ns.lines]
+     html←(⍕¨∪lineNumbers){'<div class="line"><span class="lineno">[',⍺,']</span><code>',⍵,'</code></div>'}¨html
+ :EndIf
  tno WriteFile html
  tno WriteFile BottomOfDoc
  ⎕NUNTIE tno

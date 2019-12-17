@@ -1,4 +1,4 @@
- r←{nc}Scan(data batchFlag);data1;data2;isRegExSearch
+ r←{nc}Scan(data batchFlag);data1;data2
 ⍝ Performs search on "data".
 ⍝ "data" must be a vector of text vectors.
 ⍝ Returns a vector of vectors:
@@ -11,9 +11,9 @@
  :If 0=G.Comments
  :AndIf 2≢nc                                            ⍝ n/a for variables
      :If (≡data)∊0 1
-         data←{(⍴⍵)↑⍵↑⍨'⍝'⍳⍨Replace.MaskText ⍵}data     ⍝ Remove comments from data but preserve length
+         data←{(≢⍵)↑⍵↑⍨'⍝'⍳⍨Replace.MaskText ⍵}data     ⍝ Remove comments from data but preserve length
      :Else
-         data←{(⍴⍵)↑⍵↑⍨'⍝'⍳⍨Replace.MaskText ⍵}¨data    ⍝ Remove comments from data but preserve length
+         data←{(≢⍵)↑⍵↑⍨'⍝'⍳⍨Replace.MaskText ⍵}¨data    ⍝ Remove comments from data but preserve length
      :EndIf
  :EndIf
  :If 9.1≡nc
@@ -22,7 +22,7 @@
  :EndIf
  :If G.APL_Name
      r←IsName(1↓Simplify CR,¨data)(,G.SearchFor2)
-     r←r((⍴r)⍴⍴,G.SearchFor)
+     r←r((≢r)⍴≢G.SearchFor)
  :Else
      :If 0=G.APL_Code                                   ⍝ No APL code?
          :Select G.(Text Comments)
@@ -45,17 +45,16 @@
              data{b←⍵≠' ' ⋄ a←⍺ ⋄ (b/a)←b/⍵ ⋄ a}¨←data2
          :EndSelect
      :EndIf
-     isRegExSearch←G.NamesOnly⊃G.(SearchIsRegEx SearchIsRegEx2)
      :If 2≡⌊nc
      :AndIf 2>≡data
-         :If isRegExSearch
+         :If G.SearchIsRegEx
              r←{0=≢⍵:⍵ ⋄ ↓⍉⊃⍵}RegExSearch data
          :Else
              r←Where G.SearchFor2⍷data
              r←r(↑⍴,G.SearchFor)    ⍝ Length is the same for all hits, so we specify a scalar.
          :EndIf
      :Else
-         :If isRegExSearch
+         :If G.SearchIsRegEx
              :If 0=≢r←{0=≢⍵:⍵ ⋄ ↓⍉⊃⍵}RegExSearch 1↓Simplify CR,¨data
                  r←r r
              :EndIf

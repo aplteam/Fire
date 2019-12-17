@@ -1,5 +1,5 @@
  IsTicked←{
-⍝ Return vector of Booleans for all rows in the object list that is currently tickes
+⍝ Return vector of Booleans for all rows in the object list that is currently ticked
      n←⍵
      noOf←⍴n.List.Items
      b←⊃{{⌽(32⍴2)⊤⍵}n.List.GetItemState ⍵}¨⍳noOf

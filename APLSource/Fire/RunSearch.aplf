@@ -14,7 +14,7 @@
  :Else
      (list noOfContainers)←GetList n flag 1
  :EndIf
- :If 0∊⍴list
+ :If 0=≢list
      GUI.ResetHitList noOfObj,noOfContainers
  :Else
      list←RemoveUnwanted list
@@ -23,16 +23,12 @@
          GUI.ResetHitList noOfObj,noOfContainers
          rc←0
      :Else
-         :If G.NamesOnly
-             objHits←ProcessNameSearch list
-         :Else
-             objHits←⊃ProcessList list
-         :EndIf
+         objHits←⊃ProcessList list
          :If G.Negate
-             :If 0∊⍴objHits
+             :If 0=≢objHits
                  objHits←list[;0 1],0,0,list[;2],(⊂⍬),list[;,3]
              :Else
-                 :If 0∊⍴buffer←((↓list[;0 1]){~⍺∊⍵}↓objHits[;0 1])⌿list
+                 :If 0=≢buffer←((↓list[;0 1]){~⍺∊⍵}↓objHits[;0 1])⌿list
                      objHits←0⍴⊂⊂''
                  :Else
                      objHits←buffer[;0 1],0,buffer[;2],0,(⊂⍬),buffer[;,3]

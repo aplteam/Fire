@@ -10,7 +10,7 @@
 ⍝ [7] type: 2=scripted namespace, 5=class, 6=interface, 0=everything else  (NOTE: added later!)
  length←⍬
  hits←0/⊂6⍴⍬
- :If G.APL_Code                                 ⍝ APL_Code?
+ :If G.APL_Code                                         ⍝ APL_Code?
      →(0=≢buff←ScanCode body)/0
      (ind length)←buff
      :If 0<≢ind
@@ -22,7 +22,7 @@
          :EndIf
      :EndIf
  :Else
-     :If G.Comments                                 ⍝ Comments?
+     :If G.Comments                                     ⍝ Comments?
          buffer←1⊃GetCommentsAndRest body
          (ind length)←Scan buffer 1
          :If 0<noOf←⍴,ind
@@ -33,11 +33,12 @@
              :EndIf
          :EndIf
      :EndIf
-     :If G.Text                                     ⍝ Text?
+     :If G.Text                                         ⍝ Text?
+         body←{(≢⍵)↑⍵↑⍨'⍝'⍳⍨Replace.MaskText ⍵}¨body    ⍝ Remove comments from data but preserve length
          buffer←GetTextOnly body
          (ind length)←ScanText buffer
          :If 0<noOf←⍴,ind
-             :If 0∊⍴name
+             :If 0=≢name
                  hits,←⊂ref name noOf 9 ind length
              :Else
                  hits,←⊂ref name noOf(ref.⎕NC⊂name)ind length

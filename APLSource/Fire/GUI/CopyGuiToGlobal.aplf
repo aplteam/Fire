@@ -1,14 +1,10 @@
  CopyGuiToGlobal←{
 ⍝ Copy all relevant data from the GUI to the "Globals" namespace
      ##.G.Case←n.Case.State
-     ##.G.Case2←n.Case2.State
      ##.G.APL_Name←n.APL_Name.State
      ##.G.IgnoreRefs←n.IgnoreRefs.State
-     ##.G.IgnoreRefs2←n.IgnoreRefs2.State
      ##.G.Code←n.Code.State
-     ##.G.Code2←n.Code2.State
      ##.G.Vars←n.Vars.State
-     ##.G.Vars2←n.Vars2.State
      ##.G.APL_Code←n.APL_Code.State
      ##.G.Comments←n.Comments.State
      ##.G.Text←n.Text.State
@@ -17,10 +13,7 @@
      ##.G.SearchFor←n.SearchFor.Text
      ##.G.LookIn←n.LookIn.Text
      ##.G.SearchIsRegEx←n.SearchIsRegEx.State
-     ##.G.SearchIsRegEx2←n.SearchIsRegEx2.State
      ##.G.Greedy←n.Greedy.State
-     ##.G.NamesOnly←IsNamesOnlySearch n
-     ##.G.Container←n.Container.State
      txt←n.SearchFor.Text
      ##.G.LookForList←⌽∪⌽##.G.LookForList,(n.SearchFor.Items,⊂txt)~⊂''
      n.SearchFor.Items←##.G.LookForList
@@ -29,6 +22,6 @@
      0∊≢¨##.G.LookForList:.
    ⍝ G.SearchFor2 might or might not be lowercase version of G.SearchFor depending
    ⍝      ↓↓↓↓↓↓↓↓↓↓   on user preferences. That's why this must be done late.
-     ##.G.SearchFor2←##.G.NamesOnly ##.IfLower ##.G.SearchFor
+     ##.G.SearchFor2←##.IfLower ##.G.SearchFor
      1:r←⍬
  }

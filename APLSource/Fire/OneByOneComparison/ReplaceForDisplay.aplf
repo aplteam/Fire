@@ -1,7 +1,8 @@
  {ns}←ns ReplaceForDisplay code;fns;html;i;id;lineNumbers;replBy
+⍝ This function handles everything but variables which are handled by `ReplaceInVarsForDisplay`.
 ⍝ Not very efficient but it's one-by-one, so it does not matter much.
  code←1↓↑,/##.NL,¨code
- code[ns.hits∘.+1↓⍳≢ns.ss]←⊂''
+ code[ns.hits∘.+1↓⍳≢ns.ss]←⊂''   ⍝ Remove everything of the search string but the first character
  html←''
  :For i :In ⍳≢ns.IDs
      id←i⊃ns.IDs

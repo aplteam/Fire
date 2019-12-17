@@ -1,5 +1,5 @@
  R←Test_ReplaceVars_004(stopFlag batchFlag);n;Text;n2;⎕TRAP;buffer
-⍝ Search for a string with "Delete items with hits" ticked. Non-conforming variables must remain unchanged.
+⍝ Search for a string with "Delete items with hits" ticked. All vaiables must remain unchanged (since version 7.6.0)
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  R←T._Failed
 
@@ -31,11 +31,15 @@
 
  {}∆Select n2.StartBtn
  ∆Process n.Form
- →T.GoToTidyUp 2≠#.Fire.Fire.Replace.NoOfReplacements
- →T.GoToTidyUp(,⊂'It really is!')≢#.TEMP.varsNested
- →T.GoToTidyUp''≢#.TEMP.varsSimple
- →T.GoToTidyUp(⊃'APL is REALLY great' 'It really is!' 'Yes, APL is REALLY great')≢#.TEMP.varsMatrix
- →T.GoToTidyUp'APL is REALLY great' 'It really is!' 'Yes, APL is REALLY great' 1≢#.TEMP.varsMixed
+ →T.GoToTidyUp 0≠#.Fire.Fire.Replace.NoOfReplacements
+
+⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ We might bring back deleting items from variables one day ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
+⍝ →T.GoToTidyUp(,⊂'It really is!')≢#.TEMP.varsNested
+⍝ →T.GoToTidyUp''≢#.TEMP.varsSimple
+⍝ →T.GoToTidyUp(⊃'APL is REALLY great' 'It really is!' 'Yes, APL is REALLY great')≢#.TEMP.varsMatrix
+⍝ →T.GoToTidyUp'APL is REALLY great' 'It really is!' 'Yes, APL is REALLY great' 1≢#.TEMP.varsMixed
+⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
+
  R←T._OK
 
 ∆TidyUp:

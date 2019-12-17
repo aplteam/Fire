@@ -25,3 +25,4 @@
  rf←⍎'Enlarge'n.Form.⎕WC p,⊂('Accelerator'(119 0))      ⍝ F8
  rf.onSelect←'OnEnlarge'
  rf.onGotFocus←'OnHiddenButtonGotFocus'
+⍝Done

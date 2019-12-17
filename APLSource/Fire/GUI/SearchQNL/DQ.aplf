@@ -1,0 +1,3 @@
+ r←obj DQ form
+ ⎕NQ obj'GotFocus' ⋄ r←⎕DQ form
+⍝Done

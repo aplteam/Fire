@@ -1,0 +1,29 @@
+ lineNumbers←n PopulateGUI(i noOf deleteLines data offset);bool;hits;buff;count
+ :If 2>≡data
+     data[3⊃##.G.Hits[i;]]←⎕AV[1]
+     bool←0<hits←+/¨⎕AV[1]=data
+     :If ∨/##.(NL CR)∊data
+         buff←((##.(NL CR)∊data)/##.(NL CR))##.A.Split data
+         bool←∨/¨⎕AV[1]=buff
+         count←0~⍨+/¨⎕AV[1]=buff
+         lineNumbers←count/##.A.Where bool
+         n.List.Items←'[',¨(⍕¨lineNumbers),¨']'
+         n.List.ReportInfo←⍕¨⍪∪⍣deleteLines⊣1+∊⍳¨count
+     :Else
+         lineNumbers←(+/hits~0)⍴1
+         n.List.ColTitles←(⊂''),1↓n.List.ColTitles
+         n.List.Items←(≢lineNumbers)⍴⊂''
+         count←+/⎕AV[1]=data
+         n.List.ReportInfo←⍕¨⍪∪⍣deleteLines⊣1+∊⍳¨count
+     :EndIf
+ :Else
+     lineNumbers←(⊃,/(1+≢¨data)⍴¨⍳≢data)[offset]
+     n.List.Items←'[',¨(⍕¨∪⍣deleteLines⊣lineNumbers),¨']'
+     n.List.ReportInfo←CompileReportInfo∪⍣deleteLines⊣lineNumbers
+     r←lineNumbers
+ :EndIf
+ TickAllCheckBoxes n.List
+ i noOf WriteStatusMsg n
+ {2 ⎕NQ n.List'SetColSize'⍵ ¯3}¨⍳3
+ ##.GUI.SetFocusTo n.List 0
+⍝Done

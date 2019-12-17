@@ -9,7 +9,7 @@
      caption,←tab,'Ctrl+B'
      _←'mm.Browse'⎕WC'MenuItem'caption('Event' 'Select' 1)('Active'f1)
      _←{⍵:'mm.GetUrl'⎕WC'MenuItem' 'Get URL'('Event' 'Select' 1) ⋄ ⍬}'*'∊1⊃##.Version
-     (0∊⍴res←⎕DQ'mm'):⍬
+     (0=≢res←⎕DQ'mm'):⍬
      ('mm.Browse'≡0⊃res):name BrowseCode n
      ⍬
  }

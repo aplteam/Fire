@@ -1,0 +1,14 @@
+ RemoveAllVars←{
+⍝ All variables are removed, typically because "Delete lines" is ticked (does not work on vars)
+     bool←2≠⌊GUI.n.HitList.ReportInfo[;2]
+     ∧/bool:⍬
+     names←((~bool)/GUI.n.HitList.ReportInfo[;0]),¨'.',¨(~bool)/GUI.n.HitList.Items
+     GUI.n.HitList.Data←bool⌿GUI.n.HitList.Data
+     G.Hits←bool⌿G.Hits
+     GUI.n.HitList.Items←bool/GUI.n.HitList.Items
+     GUI.n.HitList.ReportInfo←bool⌿GUI.n.HitList.ReportInfo
+     msg←(⍕≢+/~bool),' vars removed from the hit list ("Delete lines" does not work on vars).'
+     addToCaption←'Fire: remove variables'
+     _←addToCaption Question.ShowMsg msg
+     ⍬
+ }

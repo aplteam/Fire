@@ -8,7 +8,5 @@
  ∆CANCEL←0          ⍝ Used to cancel a search operation via the "Cancel" button
  GUI.hc.Init ⍬
  SetScaledPixels ⍬
- EstablishNamedIbeams ⍬
- CompileFireFunctions ⍬
  {}EnsureAcre ⍬
 ⍝Done

@@ -1,16 +1,17 @@
  ProcessBatch←{
 ⍝ Checks whether the user input is okay and then performs a "batch" replace.
+⍝ Returns 1 in case anything got changes, 0 if not and ¯1 in case of an error.
      0=Warning_ReplaceIsEmpty⍣((0=n.DeleteLine.State)∧0∊⍴n.ReplaceBy.Text)⊣1:⍬
      0=CheckUserInput:⍬
      n.(StartBtn Cancel).Active←0
      n.Form.Active←0
      batchFlag←1
 
-     _←ChangeThem batchFlag    ⍝ <============  work horse
+     rc←ChangeThem batchFlag    ⍝ <============  work horse
 
-     (0=⎕THIS.NoOfReplacements):0⊣n.(StartBtn Cancel).Active←n.Form.Active←1
+     (0=⎕THIS.NoOfReplacements):rc⊣n.(StartBtn Cancel).Active←n.Form.Active←1
      ty←{↑⍺.⎕NC ⍵}/¨↓##.GUI.n.HitList.Data[;0 1]
-     _←##.GUI.NotifyChangeFor(ty∊3 4)/⍳⍴ty
+     _←##.GUI.NotifyChangeFor(ty∊3 4)/⍳≢ty
      _←OnClose ⍬
-     ⍬
+     rc
  }

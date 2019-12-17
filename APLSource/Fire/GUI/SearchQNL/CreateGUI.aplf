@@ -1,0 +1,83 @@
+ n2←CreateGUI n;∆
+ n2←⎕NS''
+
+ ∆←⊂'Form'
+ ∆,←⊂'Caption'(##.##.AddPidToCaption'Fire - Search ⎕NL')
+ ∆,←⊂'Coord' 'Pixel'
+ ∆,←⊂'Size'(200 400)
+ ∆,←⊂'Posn'(n.Form.Posn+50)
+ ∆,←⊂'IconObj'n.TheIcon
+ n2.Form←⍎'TheForm'n.Form.⎕WC ∆
+ n2.Form.CursorObj←0
+ n2.Form.n←n2
+
+
+ ∆←⊂'Label'
+ ∆,←⊂'Posn'(10 10)
+ ∆,←⊂'Caption' '&Search for:'
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ n2.Label←⍎'Label'n2.Form.⎕WC ∆
+
+ ∆←⊂'Edit'
+ ∆,←⊂'Posn'((5+↑+⌿⊃n2.Label.(Posn Size)),10)
+ ∆,←⊂'Size'(⍬((1⊃n2.Form.Size)-2×10))
+ ∆,←⊂'FontObj'n.Form.FontObj
+ ∆,←⊂'Attach'('Top' 'Left' 'Top' 'Right')
+ n2.SearchFor←⍎'SearchFor'n2.Form.⎕WC ∆
+ n2.SearchFor.onKeyPress←'OnKeyPressInSearchFor'
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' '&Is RegEx'
+ ∆,←⊂'Posn'((9+↑+⌿⊃n2.SearchFor.(Posn Size)),11)
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ n2.IsRegEx←⍎'IsRegEx'n2.Form.⎕WC ∆
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' '&Case sensitive'
+ ∆,←⊂'Posn'((15+↑+⌿⊃n2.IsRegEx.(Posn Size)),11)
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ n2.Case←⍎'Case'n2.Form.⎕WC ∆
+
+ ∆←⊂'Group'
+ ∆,←⊂'Caption' 'Search...'
+ ∆,←⊂'Posn'((n2.IsRegEx.Posn[0]-2),(15+↑⌈/1⊃¨n2.(IsRegEx Case).Size))
+ ∆,←⊂'Size'(80 160)
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ n2.Group←⍎'Group'n2.Form.⎕WC ∆
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' '&full path'
+ ∆,←⊂'Posn'(20 10)
+ ∆,←⊂'Style' 'Radio'
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ n2.FullPath←⍎'FullPath'n2.Group.⎕WC ∆
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' '&last part only'
+ ∆,←⊂'Posn'((15+↑+/⊃n2.FullPath.(Posn Size)),10)
+ ∆,←⊂'Style' 'Radio'
+ ∆,←⊂'State' 1
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ n2.Last←⍎'Last'n2.Group.⎕WC ∆
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' '&OK'
+ ∆,←⊂'Default' 1
+ ∆,←⊂'Size'(⍬ 90)
+ ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
+ n2.OK←⍎'OK'n2.Form.⎕WC ∆
+ n2.OK.Posn←(n2.Form.Size[0]-n2.OK.Size[0]+10),10
+ n2.OK.onSelect←'OnOK'
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' '&Cancel'
+ ∆,←⊂'Cancel' 1
+ ∆,←⊂'Size'(⍬ 90)
+ ∆,←⊂'Attach'(4⍴'Bottom' 'Left')
+ n2.Cancel←⍎'Cancel'n2.Form.⎕WC ∆
+ n2.Cancel.Posn←n2.OK.Posn[0],10+1⊃+/⊃n2.OK.(Posn Size)
+ n2.Cancel.onSelect←1
+ n2.∆FirstFlag←1
+⍝Done

@@ -1,10 +1,6 @@
  r←RegExSearch data;msg;options
  :Trap 6 11
-     :If G.NamesOnly
-         options←(⊂'IC'(~G.Case)),IsVersion16OrBetter/⊂('UCP' 1)
-     :Else
-         options←('Mode' 'M')('IC'(~G.Case))('Greedy'G.Greedy),IsVersion16OrBetter/⊂('UCP' 1)
-     :EndIf
+     options←('Mode' 'M')('IC'(~G.Case))('Greedy'G.Greedy),IsVersion16OrBetter/⊂('UCP' 1)
      r←G.SearchFor2 ⎕S 0 1⍠options⊣data
  :Else
      msg←A.dmb{0=+/b←':'=⍵:⍵ ⋄ (~b)⊂⍵}⎕DMX.Message

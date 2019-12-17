@@ -19,7 +19,7 @@
  n2←#.Fire.Fire.GUI.OnReportHits ⍬
  ∆Process n.Form
  html←##.APLTreeUtils.ReadUtf8File n2.∆Filename
- expected←'<div class="obj" id="div-no-1"><h2 id="h1">1. #.TMP.Test1</h2></a>[0] ⍝ Leading comment <span class="diff">"Foo"</span><br></div>'
+ expected←'<div class="obj" id="div-no-1"><h2 id="h-1">1. #.TMP.Test1</h2></a>[0] ⍝ Leading comment <span class="diff">"Foo"</span><br></div>'
  →T.GoToTidyUp 1≠+/expected⍷∊html
  R←T._OK
 

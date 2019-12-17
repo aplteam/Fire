@@ -1,14 +1,11 @@
  fn←GetFilename;tno;p
- ⍝ Reads Icon filename from Registry. If that file does not exist then
+ ⍝ Creates a file `Fire_dyalog_apl.ico` in the Windows Temp Dir if it does not exist yet
+ ⍝ and creates it otherwise
  ⍝ a temporary file is created and filled with "IconData". The filename
  ⍝ is then written to the Registry.
- p←##.GetFireRegistryKey,'IconFile'       ⍝ Path to the proper Registry key
- fn←''##.R.GetString p
- :If 0∊⍴fn
- :OrIf ~##.F.Exists fn
-     fn←##.F.GetTempFilename''
-     tno←fn ⎕NTIE 0
+ fn←##.F.GetTempPath,'/Fire_dyalog_apl.ico'
+ :If ~##.F.Exists fn
+     tno←fn ⎕NCREATE 0
      IconData ⎕NAPPEND tno,163
      ⎕NUNTIE tno
-     ##.R.PutString p fn
  :EndIf

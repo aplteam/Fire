@@ -1,0 +1,10 @@
+ {r}←n UpdateHtmlForLine(ref row)
+⍝ This is called when the user moved the focus in the TreeView from one line to another, be it
+⍝ by a mouse click or the cursor keys {up} / {down}.
+ r←⍬
+ {}n.Browser{6::⍬ ⋄ ,⍺.Navigate2⊂'file:///',⍵}n.TheForm.htmlFile,'#no-h1-',⍕row+1
+ n.List.SelItems←(≢n.List.SelItems)⍴0
+ n.List.SelItems[row]←1
+ {}##.GUI.SetFocusTo ref row
+ {}⎕NQ ref ##.GUI.Events.RefreshCSS      ⍝ Send a "RefreshCSS" event to itself.
+⍝Done

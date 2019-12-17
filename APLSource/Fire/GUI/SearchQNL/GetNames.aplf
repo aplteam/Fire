@@ -1,0 +1,8 @@
+ GetNames←{
+⍝ Returns the names of all functions, operators and variables in ⍵
+     ref←⍵
+     0=≢list←ref.⎕NL 2 3 4:⊂,⍕ref
+     list←' '~¨⍨↓list
+     0=≢list←(1=×ref.⎕NC¨⊂¨list)/list:⊂,⍕ref
+     ((⍕ref),'.')∘,¨list
+ }

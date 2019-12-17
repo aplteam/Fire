@@ -1,6 +1,6 @@
  OnItemUpInListView←{
      n←##.GUI.GetRefTo_n↑⍵
      row←2⊃⍵
-     _←n.Browser{6::⍬ ⋄ ,⍺.Navigate2⊂'file:///',⍵}n.TheForm.filenameHTML,'#h',⍕row+1
+     _←n.Browser{6::⍬ ⋄ ,⍺.Navigate2⊂'file:///',⍵}n.TheForm.filenameHTML,'#h-',⍕row+1
      ⍬
  }

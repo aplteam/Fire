@@ -1,10 +1,14 @@
- {r}←OnStartReplace msg;txt
+ {r}←OnStartReplace msg;txt;rc
 ⍝ Start "Replace" either in Batch Moder or in One-by-one Mode
  r←0
  ##.G.ReplaceBy_was←n.ReplaceBy.Text
  n←CopyGuiTo_G n
  :If 0≠≢##.G.Hits          ⍝ In case the user presses "Replace" twice with no (remaining) hits
-     {}##.RemoveInvalidVars ⍬
+     :If ##.G.DeleteLines
+         {}##.RemoveAllVars ⍬
+     :Else
+         {}##.RemoveInvalidVars ⍬
+     :EndIf
      RemoveOrdinaryNamespaces ⍬
      :If 0=CleanUpScriptedNamespaces n.BatchMode.State
          :Return
@@ -12,7 +16,11 @@
      :If 0≠≢##.G.Hits
          :If n.BatchMode.State
              :Trap 918
-                 {}ProcessBatch ⍬
+                 rc←ProcessBatch ⍬
+                 :If 1≡rc
+                     ##.GUI.n.(ReplaceBtn ReportHits).Active←1  ⍝ Neither "Details" report nor the "Replace" button can be active now
+                     {}0 ##.GUI.ResetHitList 0 0
+                 :EndIf
              :Else
                  txt←⊂'It appears that you are trying to change Fire with Fire.'
                  txt,←⊂'Unfortunately there is a shadowed variable involved.'

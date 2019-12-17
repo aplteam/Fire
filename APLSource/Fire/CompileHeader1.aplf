@@ -1,0 +1,7 @@
+ r←CompileHeader1(name nc)
+ r←'QNC=',⍕nc
+ :If 2=⌊nc
+     r,←'; depth=',{0::'unknown' ⋄ ⍕⍎'≡',⍵}name
+     r,←'; shape=',{0::'unknown' ⋄ ⍕⍎'⍴',⍵}name
+ :EndIf
+ ⍝Done

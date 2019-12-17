@@ -1,0 +1,6 @@
+ {r}←Run n;n2
+ r←⍬
+ n2←CreateGUI n
+ {}n2.SearchFor DQ n2.Form
+ :Trap 6 ⋄ n2.Form.Close ⋄ :EndTrap
+⍝Done

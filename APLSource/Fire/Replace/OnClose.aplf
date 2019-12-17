@@ -1,16 +1,15 @@
  OnClose←{
 ⍝
-     G←##.GUI
-     _←G.RestoreDynamicProps ##.GUI.n.Form.saveProps
-     G.n.ReplaceBtn.Active←1
-     G.n.Form.Active←1
-     _←n.Form G.CloseChildForms n.Form.##
+     _←##.GUI.RestoreDynamicProps ##.GUI.n.Form.saveProps
+     ##.GUI.n.ReplaceBtn.Active←1
+     ##.GUI.n.Form.Active←1
+     _←n.Form ##.GUI.CloseChildForms n.Form.##
      _←n.Form.Close
-     _←⎕NQ G.n.Form 9955           ⍝ Allow test cases to ⎕DQ and quit that ⎕DQ
+     _←⎕NQ ##.GUI.n.Form 9955           ⍝ Allow test cases to ⎕DQ and quit that ⎕DQ
      _←⎕EX⍕n.Form
      _←⎕EX'n'
-     _←⎕NQ G.n.Form'GotFocus'
+     _←⎕NQ ##.GUI.n.Form'GotFocus'
      ##.G.TestFlag:1
-     _←0 G.ResetHitList 0 0
+     ##.GUI.n.ReportHits.Active←1
      1
  }

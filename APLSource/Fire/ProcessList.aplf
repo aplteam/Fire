@@ -8,6 +8,7 @@
  :For i :In ⍳noOf
      {}{⍵:GUI.n.PB.Thumb←1⌈i ⋄ ⍬}(i∊1 2 3)∨0=100|i
      (container name nc type)←list[↑i;]
+⍝     {⍵:.}'CheckForConsistency'≡name
      buff←''
      nc container.{0=⍺:⎕NC⊂⍵ ⋄ ⍺}←name
      :If 2.1=nc
@@ -22,7 +23,7 @@
          :Leave
      :EndIf
  :EndFor
- :If ~0∊⍴r
+ :If 0≠≢r
      r←{(0<⍴1⊃⍵):⍵ ⋄ ({⍵.##}0⊃⍵)(1⊃'.'A.SplitPath⍕0⊃⍵),2↓⍵}¨r
  :EndIf
  {}DisableProgressbar ⍬

@@ -1,18 +1,17 @@
- r←CleanUpScriptedNamespaces batchFlag;G;scriptsNames;parms;msg;bool2;bool1;bool3;showWarning
+ r←CleanUpScriptedNamespaces batchFlag;scriptsNames;parms;msg;bool2;bool1;bool3;showWarning
 ⍝ This function removes everything from the hit list that is not a namespace script but belongs to a namespace script.
 ⍝ It's relevant only if batchFlag is 0, meaning that one object after the other is processed.
 ⍝ Because namespace scripts are then processed as a unit there is no need to also process their functions and operators.
 ⍝ The function will also warn the user who might get confused otherwise.
 ⍝ Note that when this function is called all ordinary namespaces have already vanished from the hit list.
  r←1
- G←##.GUI
  :If ~batchFlag
- :AndIf ~0∊⍴G.n.HitList.Data
- :AndIf 0<+/bool1←9.1=G.n.HitList.Data[;3]
-     scriptsNames←bool1⌿G.n.HitList.Data[;1]
-     bool2←~({⍵↓⍨1+1⍳⍨+\⍵='.'}∘⍕¨G.n.HitList.Data[;0])∊scriptsNames
+ :AndIf 0≠≢##.GUI.n.HitList.Data
+ :AndIf 0<+/bool1←9.1=##.GUI.n.HitList.Data[;3]
+     scriptsNames←bool1⌿##.GUI.n.HitList.Data[;1]
+     bool2←~({⍵↓⍨1+1⍳⍨+\⍵='.'}∘⍕¨##.GUI.n.HitList.Data[;0])∊scriptsNames
      bool3←bool2∨bool1
-     G.n.HitList.Data←bool3⌿G.n.HitList.Data
+     ##.GUI.n.HitList.Data←bool3⌿##.GUI.n.HitList.Data
      ##.G.Hits←bool3⌿##.G.Hits
      :If 0<+/bool2
          parms←##.Question.CreateDefaultParms

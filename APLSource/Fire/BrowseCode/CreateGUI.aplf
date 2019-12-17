@@ -1,4 +1,4 @@
- nb←CreateGUI(n name);∆;size;ref;parent;cs;msg;name;sel;fontRef;body;noOf
+ nb←CreateGUI(n name);∆;size;ref;parent;cs;msg;name;sel;fontRef;body;noOf;sep
  nb←⎕NS''
  nb.∆FontSizes←GetAllAPL385FontSizes ⍬
  :If (⎕NC name)∊3 4
@@ -53,6 +53,12 @@
      body←(⎕UCS 13)##.##.APLTreeUtils.Split body
  :Case 2
      body←⍎name
+     :If 2>≡body
+     :AndIf 2>⍴⍴body
+     :AndIf ∨/⎕TC∊body
+         sep←↑(⎕TC∊body)/⎕TC
+         body←sep ##.##.APLTreeUtils.Split body
+     :EndIf
  :Else
      body←{⍵{'[',(⍕⍵),'] ',⍺}¨⍳⍴⍵}⎕SRC⍎name
  :EndSelect

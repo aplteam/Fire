@@ -1,0 +1,37 @@
+ R←Test_ReplaceAndDelete_09(stopFlag batchFlag);n;n2;⎕TRAP;expected;ref;body
+⍝ Replace "namespace" in a namespace script with several leading and trailing lines, empty & comments: delete all lines containing hits.
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←T._Failed
+
+⍝ Preconditions
+ #.⎕SHADOW'TEMP'
+ 'TEMP'#.⎕NS''
+ body←'⍝ comment 1' '' '⍝ comment 2' ':Namespace MyNS' '∇ r←Hello' 'r←''Namespace''' 'r←''World''' '∇' ':EndNamespace' '⍝ comment 3' '' '⍝ comment 4'
+ ref←#.TEMP.⎕FIX body
+
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+
+ n.SearchFor.Text←'Namespace'
+ n.LookIn.Text←'#.TEMP'
+ n.Case.State←0
+
+ {}∆Select n.StartBtn
+ 0.2 ∆Process n.Form
+ →T.GoToTidyUp~n.HitList.Items ∆LazyMatch'MyNS' 'Hello'
+
+ {}∆Select n.ReplaceBtn
+ ∆Process n.Form
+
+ n2←#.Fire.Fire.Replace.n
+ n2.ReplaceBy.Text←''
+ n2.DeleteLine.State←1
+
+ {}∆Select n2.StartBtn
+ ∆Process n.Form
+ expected←,¨'⍝ comment 1' '' '⍝ comment 2' ':Namespace MyNS' '∇ r←Hello' 'r←''World''' '∇' ':EndNamespace' '⍝ comment 3' '' '⍝ comment 4'
+ →T.GoToTidyUp expected≢##.APLTreeUtils.dlb ⎕SRC #.TEMP.MyNS
+ R←T._OK
+
+∆TidyUp:
+ CloseFire

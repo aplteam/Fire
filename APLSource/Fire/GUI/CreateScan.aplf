@@ -6,7 +6,7 @@
  ∆,←⊂'Posn'((n.Case.##.Posn[0]),10+1⊃PosnPlusSize n.Vars.##)
  ∆,←⊂'Size'((0⊃n.Case.##.Size)205)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
- rf←⍎'CodeGroup'n.SF1.⎕WC ∆
+ rf←⍎'CodeGroup'n.Form.⎕WC ∆
 
  ∆←⊂'Button'
  ∆,←⊂'Caption' '&Comments'

@@ -1,0 +1,28 @@
+ {ns}←ns ReplaceInVarsForDisplay code;fns;html;i;id;lineNumbers;replBy;depthFlag;depth2flag;lengths;buff
+⍝ This function handles just variables, everything else is handled by `ReplaceForDisplay`.
+⍝ Not very efficient but it's one-by-one, so it does not matter much.
+ :If depth2flag←1<≡code
+     lengths←≢¨code
+     code←↑,/code
+ :EndIf
+ code[ns.hits∘.+1↓⍳≢ns.ss]←⊂''
+ html←''
+ :For i :In ⍳≢ns.IDs
+     id←i⊃ns.IDs
+     replBy←{1=≢⍵:0⊃⍵ ⋄ (≢'<br>')↓↑,/'<br>'∘,¨⍵}ns.rs
+     html,←⊂'<span class="diff-old" id="n',id,'-old">',ns.ss,'</span><span class="diff-new" id="n',id,'-new">',replBy,'</span>'
+ :EndFor
+ code[ns.hits]←html
+ :If depth2flag
+     buff←code
+     code←''
+     :For i :In ⍳≢lengths
+         code,←(buff{⍵[1]↑⍵[0]↓⍺}(0,lengths)[i+0 1]),⊂'<br>'
+     :EndFor
+ :EndIf
+ code←↑,/code
+ ((##.CR=code)/code)←⊂'<br>'
+ code←↑,/code
+ html←'<div class="line"><p> ',code,'</p></div>'
+ ns.html←html
+⍝Done

@@ -1,11 +1,11 @@
  G←CompileReport(name oldCode newCode lineNumbers ind nc n2 deleteFlag);oldCode;length;ns;html;tno
-⍝ Collect all the information needed and then call CompileReport_.
+⍝ Collect all the information needed and then prepare the HTML.
  G←CollectData oldCode newCode lineNumbers ind nc
  G.DeleteFlag←deleteFlag
  ##.F.DeleteFile n2.∆HtmlFilename
  tno←n2.∆HtmlFilename ⎕NCREATE 0
  tno WriteFile TopOfDoc n2.∆CssFilename
- tno WriteFile'<h1>',name,'</h1>'
+ tno WriteFile'<h1>',name,' (',(##.CompileHeader1 name nc),')</h1>'
  :If G.DeleteFlag
      html←##.ReplaceSpecialChars¨oldCode[∪lineNumbers]
      html,¨←{' <span class="diff-old" id="n',⍵,'-1-old"> (<b>not</b> deleted)</span><span class="diff-new" id="n',⍵,'-1-new">(to be deleted)</span>'}¨⍕¨∪lineNumbers
@@ -16,9 +16,13 @@
      ns.ss←##.G.SearchFor
      ns.rs←##.G.ReplaceBy
      ns.lineNumbers←lineNumbers
-     ns.IDs←(⍕¨lineNumbers),¨'-',¨(⍕¨↑,/{1+⍳⍵}¨+⌿{⍵∘.=∪⍵}lineNumbers)
+     ns.IDs←(1↓¨¯1↓¨n2.List.Items){(⍕↑↑(//)⎕VFI ⍺),'-',⍵}¨n2.List.ReportInfo[;0]~¨'.'
      ns.hits←G.Hits
-     ns←ns ReplaceForDisplay oldCode
+     :If 2.1=nc
+         ns←ns ReplaceInVarsForDisplay oldCode
+     :Else
+         ns←ns ReplaceForDisplay oldCode
+     :EndIf
      tno WriteFile ns.html
  :EndIf
  tno WriteFile BottomOfDoc

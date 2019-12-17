@@ -35,8 +35,7 @@
          :EndSelect
      :EndIf
      :If n.APL_Name.State
-         :If ~IsNamesOnlySearch n
-         :AndIf 0≠(⎕NS'').⎕NC n.SearchFor.Text
+         :If 0≠(⎕NS'').⎕NC n.SearchFor.Text
          :AndIf ('⎕'≠↑n.SearchFor.Text)∨0≠(⎕NS'').⎕NC 1↓n.SearchFor.Text
              msg←'"Search for" does not contain a valid APL name' 'but the option "Match APL name" is ticked.'
              msg,←'' 'Shall Fire switch "Match APL name" off for you?'
@@ -46,26 +45,6 @@
              :Case 2
                  r←1
              :EndSelect
-         :EndIf
-     :EndIf
-     :If IsNamesOnlySearch n
-     :AndIf ~n.SearchIsRegEx2.State
-         :If 0=≢n.SearchFor.Text
-             msg←⊂'"Search for" is empty?!'
-             ##.Question.ShowMsg msg
-             r←1
-         :ElseIf 0=≢n.SearchFor.Text~' '
-             msg←⊂'"Search for" contains just spaces?!'
-             ##.Question.ShowMsg msg
-             r←1
-         :ElseIf 0≠(⎕NS'').⎕NC n.SearchFor.Text
-             msg←⊂'"Search for" does not contain a valid APL name.'
-             :If ∨/'^$[].*{}\|+()-'∊n.SearchFor.Text
-                 msg,←⊂''
-                 msg,←⊂'(Maybe this is supposed to be a RegEx search?!)'
-             :EndIf
-             ##.Question.ShowMsg msg
-             r←1
          :EndIf
      :EndIf
  :EndIf

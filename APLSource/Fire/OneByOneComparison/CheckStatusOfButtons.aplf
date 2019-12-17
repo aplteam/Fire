@@ -1,5 +1,6 @@
  CheckStatusOfButtons←{
      n←⍵
-     n.(OK AllRemaining).Active←∨/IsTicked n
+     n.OK.Active←flag←∨/IsTicked n
+     n.AllRemaining.Active←flag∧n.∆noOfObjs>n.∆i+1
      1:shy←0
  }

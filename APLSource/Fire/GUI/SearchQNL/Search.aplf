@@ -1,0 +1,26 @@
+ {r}←Search n2;list;containerList;bool;list2;searchFor
+ r←⍬
+ containerList←(##.##.CompileNamespaceList'#' 1)[;0]
+ list←1↓↑,/GetNames¨containerList
+ :If n2.Last.State
+     list2←##.##.A.Last¨list
+ :Else
+     list2←list
+ :EndIf
+ :If n2.IsRegEx.State
+     searchFor←,n2 IfLower n2.SearchFor.Text
+     bool←searchFor∘{≢⍺ ⎕S 0⍠('IC'(~n2.Case.State))⊣⍵}¨list2
+ :Else
+     list2←n2 IfLower list2
+     searchFor←,n2 IfLower n2.SearchFor.Text
+     bool←∨/¨searchFor∘⍷¨list2
+ :EndIf
+ list←bool/list
+ :If 0=≢list
+     'No hits'##.##.Question.ShowMsg'Nothing found'
+ :Else
+     list←↓⎕FMT list,[0.5]⍕¨⎕NC∘⊂¨list
+     list←⊃(⊂'*** Search for <',searchFor,'> yielded ',(⍕≢list),' hit',((1<≢list)/'s'),':'),list
+     ⎕←list
+ :EndIf
+⍝Done

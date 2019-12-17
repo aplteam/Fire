@@ -1,8 +1,8 @@
  PutOnDisplay←{
      n←⍺
      row←⍵
-     0∊⍴n.List.ReportInfo:⍬
-     url←'file:///',n.TheForm.htmlFile,'#',⍕row
+     0=≢n.List.ReportInfo:⍬
+     url←'file:///',n.TheForm.htmlFile,'#no-h1-',⍕row
      _←n{6::⍬ ⋄ ⍺.Browser.Navigate⊂⍵}url
      ⍬
  }

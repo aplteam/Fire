@@ -1,10 +1,11 @@
- {r}←ReplaceCodeInScript(ref name code);script
+ {r}←ReplaceCodeInScript(ref name code);script;nolc;notc
 ⍝ Replaces the old code for "name" in namespace script "ref" is pointing to _
 ⍝ against "code" which represents the new (changed) code.
 ⍝ Returns 1 in case the user has cancelled the process, otherwise 0
  r←0
  script←⎕SRC ref
- 'Something is very wrong here!'⎕SIGNAL 11/⍨~∨/':namespace '⍷##.A.Lowercase 0⊃script
+ (nolc notc)←CountLeadingAndTrailingComments ##.A.dlb script
+ 'Something is very wrong here!'⎕SIGNAL 11/⍨~∨/∨/¨':namespace '∘⍷¨##.A.Lowercase script
  :Select ref.⎕NC⊂name
  :CaseList 3.1 4.1
      script←ReplaceTfnsCodeInScript script code name

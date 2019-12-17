@@ -5,7 +5,7 @@
      r←rn MarkupHitsInVars(ref name qnc ind length)
  :Else
      fullName←(⍕ref),'.',name
-     r←⊂'<div class="obj" id="div-no-',(⍕rn),'"><h2 id="h',(⍕rn),'">',(⍕rn),'. ',fullName,'</h2></a>'
+     r←⊂'<div class="obj" id="div-no-',(⍕rn),'"><h2 id="h-',(⍕rn),'">',(⍕rn),'. ',fullName,'</h2></a>'
      :Trap 918
          body←0⊃ref ##.GetCode name
      :Else

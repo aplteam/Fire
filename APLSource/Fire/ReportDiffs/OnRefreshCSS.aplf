@@ -5,9 +5,10 @@
      ⎕THIS.wasTicked←b
      _←RewriteCSS~b
      _←WriteStatusMsg
-     n.SF2.Visible←0
+     n.Browser.Size←0 0
      _←{0::⍬ ⋄ n.Browser.Refresh ⍵}⍬
-     n.SF2.Visible←1
+     _←⎕DL 0.1
+     n.Browser.Size←100 100
      _←⎕NQ n.List'GotFocus'
      1:r←0
  }

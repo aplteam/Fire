@@ -12,7 +12,7 @@
  :Else
      msg←⊂'There seems to be a problem with the Regular Expression(s).'
      msg,←'' 'Error message:'
-     :If 0∊⍴⎕DMX.Message
+     :If 0=≢⎕DMX.Message
          msg,←⎕DM[0]
      :Else
          msg,←⊂⎕DMX.Message

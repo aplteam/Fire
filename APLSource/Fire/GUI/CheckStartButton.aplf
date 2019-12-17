@@ -1,5 +1,5 @@
  CheckStartButton←{
      n←⍵
-     n.StartBtn.Active←(IsNamesOnlySearch n)∨(0<+/n.(Code Vars).State)∧0<+/n.(APL_Code Comments Text).State
+     n.StartBtn.Active←(0<+/n.(Code Vars).State)∧0<+/n.(APL_Code Comments Text).State
      1:r←n
  }

@@ -6,9 +6,10 @@
  n←CreateHiddenButtons n
  n←CreateFind n
  n←CreateWhereToLook n
- n←CreateTabs n
- n←CreateTab1Children n
- n←CreateTab2Children n
+ n←CreateRegEx n
+ n←CreateOptions n
+ n←CreateObjectTypes n
+ n←CreateScan n
  n←CreatePushButtons n
  n←CreateCheckBoxes n
  n←CreateHitList n

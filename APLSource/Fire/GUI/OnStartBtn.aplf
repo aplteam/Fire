@@ -24,7 +24,7 @@
          n.SearchFor.SelText←2⍴1+⍴,n.SearchFor.Text
          ⎕NQ n.SearchFor'GotFocus'
      :Else
-         n.ReportHits.Active←~IsNamesOnlySearch n
+         n.ReportHits.Active←1
      :EndIf
  :EndIf
  n.(EditCmd InvertSelectionCmd).Active←0≠≢n.HitList.ReportInfo

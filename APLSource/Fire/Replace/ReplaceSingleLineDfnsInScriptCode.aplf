@@ -11,21 +11,22 @@
  :EndIf
  b2←{'⋄'=⍵}'⋄',masked                       ⍝ Break points
  (tl masked)←b2∘{⎕IO←⎕ML←1 ⋄ 1↓¨⍺⊂⍵}¨'⋄',¨tl masked  ⍝ Split both, "tl" and "masked" at ⋄
- :If 1=⍴tl                                  ⍝ No diamondized statement involved?
+ :If 1=≢tl                                  ⍝ No diamondized statement involved?
      script←(-sl)⌽code,1↓script
  :Else
      masked←##.A.dlb masked
      fnsNames←{⍵↑⍨¯1+⍵⍳'{'}¨({∨/'←{'⍷⍵}¨masked)/¨masked
-     'Something is very wrong here!'##.Assert(⍴fnsNames)≠ind←fnsNames⍳⊂name
-     :If 1<⍴code                                ⍝ Replaced by a muli-line definition?!
-         :If 1=⍴tl
+     ind←fnsNames⍳⊂name
+     'Something is very wrong here!'##.Assert ind≠≢fnsNames
+     :If 1<≢code                                ⍝ Replaced by a muli-line definition?!
+         :If 1=≢tl
              tl←0⊃tl
          :Else
              tl←SimplifyAndDiamondize¨(ind↑tl)(tl↑⍨ind+1)
-             tl←(⊂((0⊃tl)),' ⋄ ',0⊃code),(¯1↓1↓code),⊂((¯1+⍴code)⊃code),' ⋄ ',1⊃tl
+             tl←(⊂((0⊃tl)),' ⋄ ',0⊃code),(¯1↓1↓code),⊂((¯1+≢code)⊃code),' ⋄ ',1⊃tl
          :EndIf
      :Else                                      ⍝ No, it's a single line dfns
-         :If 1<⍴tl
+         :If 1<≢tl
              tl←ind{(-⍺)⌽code,1↓⍺⌽⍵}tl
              tl←⊂(SimplifyAndDiamondize tl),com
          :EndIf

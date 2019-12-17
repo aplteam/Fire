@@ -1,5 +1,6 @@
  OnClose←{
 ⍝
+     n←GetRefTo_n↑⍵
      _←CopyGuiToGlobal ⍬
      _←CheckSALTedScripts ⍬
      ##.G.(Posn Size)←(↑,⍵).(Posn Size)

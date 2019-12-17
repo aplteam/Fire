@@ -7,7 +7,7 @@
  hl←##.GUI.n.HitList
  NoOfReplacements←0
  hl←RemoveUnknown hl
- :If ~0∊⍴hl.ReportInfo
+ :If 0≠≢hl.ReportInfo
      :If 0<noOfInstances←+/~bool←(⊂'Class Instance')≢¨hl.ReportInfo[;1]  ⍝ We cannot change class instances!
          ##.G.NoOfObjects-←noOfInstances
          hl.Data←bool⌿hl.Data

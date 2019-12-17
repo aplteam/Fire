@@ -41,13 +41,13 @@
  ∆Process n.Form
 
  n2←#.Fire.Fire.Replace.n
- n2.ReplaceBy.Text←'⎕io←0'
+ n2.ReplaceBy.Text←'⎕IO←0'
 
  {}∆Select n2.StartBtn
  ∆Process n.Form
  →T.GoToTidyUp 1≠#.Fire.Fire.Replace.NoOfReplacements
  code←⎕SRC #.TEMP.Foo
- →T.GoToTidyUp 3≠+/'⎕io←0'∘≡¨code~¨' '
+ →T.GoToTidyUp 3≠+/'⎕IO←0'∘≡¨code~¨' '
  R←T._OK
 
 ∆TidyUp:
