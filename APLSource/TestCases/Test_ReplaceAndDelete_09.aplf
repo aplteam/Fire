@@ -1,5 +1,5 @@
  R←Test_ReplaceAndDelete_09(stopFlag batchFlag);n;n2;⎕TRAP;expected;ref;body
-⍝ Replace "namespace" in a namespace script with several leading and trailing lines, empty & comments: delete all lines containing hits.
+⍝ Replace "namespace" in namespace script that has leading & trailing lines (empty & comments), then delete lines with hits.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  R←T._Failed
 
@@ -13,7 +13,7 @@
  n←#.Fire.Fire.GUI.n
 
  n.SearchFor.Text←'Namespace'
- n.LookIn.Text←'#.TEMP'
+ n.StartSearchIn.Text←'#.TEMP'
  n.Case.State←0
 
  {}∆Select n.StartBtn

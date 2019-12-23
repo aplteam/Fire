@@ -29,11 +29,10 @@
  ##.FilesAndDirs.RmDir acreTestProjectName
  {}⎕SE.UCMD'acre.CreateProject ',acreTestProjectName,' #.FireAcreTest -casecod=''on'' -keephistory=''on'''
 
- 1 #.Fire.Fire.Run 0
- n←#.Fire.Fire.GUI.n
+ n←1 #.Fire.Fire.Run 0
 
  n.SearchFor.Text←'world'
- n.LookIn.Text←'#.FireAcreTest'
+ n.StartSearchIn.Text←'#.FireAcreTest'
  n.Case.State←0
 
  {}∆Select n.StartBtn

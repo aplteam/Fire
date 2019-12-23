@@ -3,11 +3,11 @@
 ⍝ Note that the function creates a GUI but does not execute ⎕DQ in it.
 ⍝ The result is a reference to the report's GUI.
  ref←⍬
- :If 0∊⍴tree←##.List startHere 1
+ :If 0=≢tree←##.List startHere 1
      candidates←##.Types.(GUI_Instance ClassInstance Class Interface)
- :OrIf 0∊⍴tree←(tree[;1]∊candidates)⌿tree           ⍝ These may have ghosts
+ :OrIf 0=≢tree←(tree[;1]∊candidates)⌿tree           ⍝ These may have ghosts
      (parents types contents)←↓⍉⊃GetContents tree
- :OrIf 0=+/bool←0<↑∘⍴¨contents
+ :OrIf 0=+/bool←0<≢¨contents
      {}##.Question.ShowMsg'No ghosts found'
  :Else
      (parents types contents)←bool∘/¨parents types contents

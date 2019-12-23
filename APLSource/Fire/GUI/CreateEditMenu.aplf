@@ -6,6 +6,8 @@
  ∆,←⊂'Caption'('Edit',##.TAB,'Ctrl+E')
  ∆,←⊂'Accelerator'(69 2)
  ∆,←⊂'Active' 0
+ ∆,←⊂'HintObj'n.Info
+ ∆,←⊂'Hint' ''
  n.EditCmd←⍎'MB.TheEditMenu.EditCmd'n.Form.⎕WC ∆
  n.EditCmd.onSelect←'OnEditCmd'
 
@@ -15,12 +17,16 @@
  ∆,←⊂'Caption'('Invert selection',##.TAB,'Ctrl+Shift+A')
  ∆,←⊂'Accelerator'(65 3)
  ∆,←⊂'Active' 0
+ ∆,←⊂'HintObj'n.Info
+ ∆,←⊂'Hint' ''
  n.InvertSelectionCmd←⍎'InvertSelectionCmd'rf.⎕WC ∆
  n.InvertSelectionCmd.onSelect←'OnInvertSelectionCmd'
 
  ∆←⊂'MenuItem'
  ∆,←⊂'Caption'('Amend window size',##.TAB,'F8')
  ∆,←⊂'Active' 1
+ ∆,←⊂'HintObj'n.Info
+ ∆,←⊂'Hint' ''
  n.AmendWindowSize←⍎'AmendWindowSize'rf.⎕WC ∆
  n.AmendWindowSize.onSelect←'OnAmendWindowSize'
  ⍝Done

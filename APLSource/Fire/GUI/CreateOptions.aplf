@@ -15,7 +15,7 @@
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'State'##.G.Case
  ∆,←⊂'TipObj'n.TipObj
- ∆,←⊂'Tip'(Split'Makes the search case sensitive.')
+ ∆,←⊂'Tip' 'Makes the search case sensitive.'
  n.Case←⍎'Case'rf.⎕WC ∆
  n.Case.onSelect←'OnCase'
  n.Case.onKeyPress←'OnKeyPressStandard'
@@ -27,8 +27,11 @@
  ∆,←⊂'State'##.G.APL_Name
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'TipObj'n.TipObj
- msg←'Makes the search strict in terms of identifier boundaries.⌹Use this to search for APL names in code,⌹but not for words in variables.'
- ∆,←⊂'Tip'(Split msg)
+ msg←''
+ msg,←⊂'Makes the search strict in terms of identifier boundaries.'
+ msg,←⊂'Use this to search for APL names in code,'
+ msg,←⊂'but not for words in variables.'
+ ∆,←⊂'Tip'msg
  n.APL_Name←⍎'APL_Name'rf.⎕WC ∆
  n.APL_Name.onSelect←'OnAPL_Name'
  n.APL_Name.onKeyPress←'OnKeyPressStandard'
@@ -43,7 +46,7 @@
  ∆,←⊂'Active' 0
  ∆,←⊂'Visible' 0
  msg←'Without ticking this refs are treated exactly like the originals'
- ∆,←⊂'Tip'(Split msg)
+ ∆,←⊂'Tip'msg
  n.IgnoreRefs←⍎'IgnoreRefs'rf.⎕WC ∆
  n.IgnoreRefs.onKeyPress←'OnKeyPressStandard'
 

@@ -11,7 +11,7 @@
  #.TEMP.vars←⊂⊂⊂'' 'This and that'(1 6⍴'aaa')
 
  n.SearchFor.Text←'a'
- n.LookIn.Text←'#.TEMP'
+ n.StartSearchIn.Text←'#.TEMP'
  ∆Process n.Form
 
  {}∆Select n.StartBtn

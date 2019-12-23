@@ -8,7 +8,7 @@
  n←#.Fire.Fire.GUI.n
 
  n.SearchFor.Text←'My_APL_Name'
- n.LookIn.Text←'#.TestData.AAAA'
+ n.StartSearchIn.Text←'#.TestData.AAAA'
  n.Case.State←0
 
  {}∆Select n.StartBtn

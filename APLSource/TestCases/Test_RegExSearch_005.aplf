@@ -13,7 +13,7 @@
  #.Temp_RegExSearch_005.vars2←1↓∊(⎕UCS 13),¨'a←1' 'b←20' 'c←30' 'd←40' 'e←50'
 
  n.SearchFor.Text←'''.*?'''
- n.LookIn.Text←'#.Temp_RegExSearch_005'
+ n.StartSearchIn.Text←'#.Temp_RegExSearch_005'
  n.SearchIsRegEx.State←1
  n.Greedy.(Active State)←1
 

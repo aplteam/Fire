@@ -8,17 +8,17 @@
          r←0⌿list2←(list[;2]∊nc)⌿list
          list2⍪←((list[;2]∊9 9.1)∨list[;3]=Types.ScriptedNamespace)⌿list
          :If G.Code
-         :AndIf ~0∊⍴list2
+         :AndIf 0≠≢list2
              r⍪←(~list2[;2]∊2.1 9)⌿list2
          :EndIf
          :If G.Vars
-         :AndIf ~0∊⍴list2
+         :AndIf 0≠≢list2
              r⍪←(list2[;2]=2.1)⌿list2
          :EndIf
      :Else
          r←list2←list
      :EndIf
-     :If ~0∊⍴list2
+     :If 0≠≢list2
      :AndIf 0=G.(Code+Vars)
          r⍪←(list2[;3]=Types.ScriptedNamespace)⌿list2
          ⍝ We need to add the namespace names as such, otherwise they won't be found at all:

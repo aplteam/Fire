@@ -13,7 +13,7 @@
  1 #.Fire.Fire.Run 0
  n←#.Fire.Fire.GUI.n
  n.SearchFor.Text←'after'
- n.LookIn.Text←'#.TEMP'
+ n.StartSearchIn.Text←'#.TEMP'
  n.Vars.State←0
  n.SearchIsRegEx.State←1
  n.Comments.State←0

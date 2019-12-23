@@ -49,7 +49,7 @@
  #.TEMP.⎕FIX buffer
 
  n.SearchFor.Text←'World'
- n.LookIn.Text←'#.TEMP'
+ n.StartSearchIn.Text←'#.TEMP'
  n.(Case APL_Name).State←1
 
  {}∆Select n.StartBtn

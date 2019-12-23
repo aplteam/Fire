@@ -1,0 +1,19 @@
+ r←parms PrintHitsToSession hits;name;noOfHits;type;ind;body;buff;rows
+ r←''
+ :For name noOfHits type ind :In ↓{⍵[;0 2 3 4]}hits
+     :If (⌊type)=9
+         :If 0=≢body←⎕SRC⍎name
+             :Continue
+         :EndIf
+     :Else
+         :If 0=≢body←⎕NR name
+             :Continue
+         :EndIf
+     :EndIf
+     buff←+\1+≢¨body
+     rows←∪+⌿buff∘.<ind
+     width←3+≢⍕⌈/rows  ⍝ Add three for "[]" and a trailinmg blank
+     r,←⊂'∇',name,'[⎕',(↑{⍺,' ',⍵}/⍕¨rows),']∇'
+     r,←width{(row body)←⍵ ⋄ (' ',⍺↑'[',(⍕row),']'),A.dlb body}¨(⊂¨rows),¨⊂¨(body[rows])
+ :EndFor
+⍝Done

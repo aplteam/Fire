@@ -2,12 +2,12 @@
 ⍝
      (n.ReuseSearch.State):⍬                        ⍝ No need for autocomplete on a hit list
      f←n.AutoCompleteForm.Visible                   ⍝ Flag: is autocompletion visible right now?
-     isQSE←'⎕SE'≡3↑##.A.Uppercase n.LookIn.Text     ⍝ Flag: is it pointing to ⎕SE?!
-     s←isQSE{⍺:⎕SE ⋄ ((0∊⍴⍵)∨'#'=1⍴,⍵):# ⋄ ⍬}n.LookIn.Text  ⍝ Determine source
+     isQSE←'⎕SE'≡3↑##.A.Uppercase n.StartSearchIn.Text     ⍝ Flag: is it pointing to ⎕SE?!
+     s←isQSE{⍺:⎕SE ⋄ ((0∊⍴⍵)∨'#'=1⍴,⍵):# ⋄ ⍬}n.StartSearchIn.Text  ⍝ Determine source
      (0∊⍴,s):HideAutoComplete ⍬
      _←CheckForQSE isQSE
      l←⊃⍕¨##.List s                                 ⍝ Get list of all items in either # or ⎕SE
-     l←({((⍴⍵)↑[1]l)∧.=⍵},n.LookIn.Text)⌿l          ⍝ Reduce the autocomplete list
+     l←({((⍴⍵)↑[1]l)∧.=⍵},n.StartSearchIn.Text)⌿l          ⍝ Reduce the autocomplete list
      0∊⍴l:⍬⊣n.AutoCompleteList.Items←''             ⍝ Empty?! Done!
      _←ShowAutoCompleteForm ⍬                       ⍝ Make the autocomplete form visible
      n.AutoCompleteList.Items←l

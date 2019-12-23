@@ -2,6 +2,6 @@
  ⍝ Make the autocomplete invisible (otherwise we are not getting here)
  ⍝ and transfer the selected item to "Where to look"
      _←HideAutoComplete ⍬
-     n.LookIn.Text←n.AutoCompleteList.((SelItems⍳1)⊃Items)
+     n.StartSearchIn.Text←n.AutoCompleteList.((SelItems⍳1)⊃Items)
      ⍬
  }

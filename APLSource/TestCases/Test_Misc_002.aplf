@@ -8,7 +8,7 @@
  n←#.Fire.Fire.GUI.n
 
  n.SearchFor.Text←'Foo'
- n.LookIn.Text←'#.TestData.APL_Names'
+ n.StartSearchIn.Text←'#.TestData.APL_Names'
 
  n.APL_Name.State←1
 

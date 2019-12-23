@@ -1,19 +1,1 @@
-1. Add flags and options to the `]Fire` user command:
 
-   * -regex      0
-   * -greedy     0
-   * -case       1
-   * -matchname  0
-   * -code       1
-   * -vars       1
-   * -comments   1
-   * -text       1
-   * -else       1
-   * -qnl        0
-                      
-   What is shown are the defaults. These are **not** necessarily what was specified via the GUI by the user.
-
-   Any argument that is not a `.` is treated as a search string. In order to search for a dot you must
-   specify any of the options.
-   
-   `-qnl` is special in so far as all options but `-regex` and `case` are ignored.

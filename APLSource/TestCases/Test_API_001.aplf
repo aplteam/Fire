@@ -1,0 +1,14 @@
+ R←Test_API_001(stopFlag batchFlag);⎕TRAP;ref;parms;buff
+⍝ Exercise the `CreateSearchParms` function
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←T._Failed
+
+ ref←##.Fire.API
+
+ parms←ref.CreateSearchParms
+ buff←parms.∆List
+ →T.PassesIf 2=⍴⍴buff
+ →T.PassesIf 2=1⊃⍴buff
+
+ R←T._OK
+⍝Done

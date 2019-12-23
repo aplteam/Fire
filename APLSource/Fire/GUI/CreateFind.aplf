@@ -16,11 +16,12 @@
  ∆,←⊂'Items'(⌽##.G.LookForList)
  ∆,←⊂'TipObj'n.TipObj
  ∆,←##.IsVersion16OrBetter/⊂'HasClearButton' 1
- msg←'Enter here what you want to search for.⌹'
- msg,←'Select from the combo box previously⌹'
- msg,←'used search terms (WSID specific).⌹'
- msg,←'Press <DEL> to clear the field.'
- ∆,←⊂'Tip'(Split msg)
+ msg←''
+ msg,←⊂'Enter here what you want to search for.'
+ msg,←⊂'Select from the combo box previously'
+ msg,←⊂'used search terms (WSID specific).'
+ msg,←⊂'Press <DEL> to clear the field.'
+ ∆,←⊂'Tip'msg
  n.SearchFor←⍎'SearchFor'n.Form.⎕WC ∆
  n.SearchFor.onContextMenu←'OnContextMenuInSearchFor'
  n.SearchFor.onKeyPress←'OnKeyPressInSearchFor'

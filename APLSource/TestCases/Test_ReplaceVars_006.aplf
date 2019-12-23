@@ -14,7 +14,7 @@
  #.TEMP.varsScalar←'A'
 
  n.SearchFor.Text←'a'
- n.LookIn.Text←'#.TEMP'
+ n.StartSearchIn.Text←'#.TEMP'
  n.Case.State←0
 
  {}∆Select n.StartBtn

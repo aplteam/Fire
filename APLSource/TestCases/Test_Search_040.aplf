@@ -11,7 +11,7 @@
  #.TEMP.varsEmpty←⊂''
 
  n.SearchFor.Text←'a'
- n.LookIn.Text←'#.TEMP'
+ n.StartSearchIn.Text←'#.TEMP'
  ∆Process n.Form
 
  {}∆Select n.StartBtn

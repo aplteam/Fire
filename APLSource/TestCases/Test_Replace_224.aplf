@@ -15,7 +15,7 @@
  n←#.Fire.Fire.GUI.n
 
  n.SearchFor.Text←'abc←123'
- n.LookIn.Text←'#.TEMP'
+ n.StartSearchIn.Text←'#.TEMP'
  n.(Vars Comments Text).State←0
 
  {}∆Select n.StartBtn

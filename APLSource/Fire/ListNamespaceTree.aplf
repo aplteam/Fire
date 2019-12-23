@@ -1,10 +1,8 @@
  r←{type}ListNamespaceTree(ref classFlag);levels;∆buffer;nc
-⍝ "type" may be 1 (the default) or 2.
-⍝ 1: Returns a list of references with all (always!) named namespaces in "ref"
-⍝    and optionally (depending on G.Instances) also instances of forms, sockets
-⍝    etc. but NOT classes.
-⍝ 2: Return abnomalies
-⍝ Semi-global ∆buffer is used to to collect results while running recursively
+⍝ "type" may be 1 (the default) or 2.\\
+⍝ 1: Returns a list of references with all named namespaces in "ref"\\
+⍝ 2: Return abnomalies\\
+⍝ Semi-global ∆buffer is used to to collect results while running recursively.
  type←↑{(0<⎕NC ⍵):⍎⍵ ⋄ 1}'type'
  :If 1≡type
      ∆buffer←ref
@@ -15,9 +13,10 @@
  :EndIf
  0 ListNamespaceTree_ ref type classFlag
  :If 2≡type
- :AndIf ~0∊⍴∆buffer←(1×ref∊# ⎕SE)↓∆buffer   ⍝ Drop ref if that's a top-most object
-     ∆buffer←{⍵⌿⍨{≢/¨⍕¨¨⍵}↓⍵[;0 1]}⊃∆buffer ⍝ Remove those which are okay
-     nc←{⍵[;1]{↑⍵.⎕NC ⍺}¨⍵[;2]}∆buffer      ⍝ Add nameclass
-     ∆buffer,←(' !')[0=nc]                  ⍝ Marke anomalies: these do not exist (fully)
+ :AndIf 0≠≢∆buffer←(1×ref∊# ⎕SE)↓∆buffer            ⍝ Drop ref if that's a top-most object
+ :AndIf 0≠≢∆buffer←{⍵⌿⍨{≢/¨⍕¨¨⍵}↓⍵[;0 1]}⊃∆buffer   ⍝ Remove those which are okay
+ :AndIf 0≠≢∆buffer←(~'['∊∘⍕¨∆buffer[;2])⌿∆buffer    ⍝ Remove refes pointing to unnamed namespaces
+     nc←{⍵[;1]{↑⍵.⎕NC ⍺}¨⍵[;2]}∆buffer              ⍝ Add nameclass
+     ∆buffer,←(' !')[0=nc]                          ⍝ Marke anomalies: these do not exist (fully)
  :EndIf
  r←∆buffer

@@ -2,7 +2,7 @@
 ⍝ "list" is a vector with references.
 ⍝ Returns a vector of integers with types of those.
  A←##.A
- :If ~0∊⍴r←(⍴list)⍴NamedNamespace                               ⍝ The default
+ :If 0≠≢r←(⍴list)⍴NamedNamespace                               ⍝ The default
      r[##.Where ##.IsUnnameNamespace¨list]←UnnamedNamespace
      types←list ⎕WG¨⊂'Type'
      bool←types≡¨⊂'Instance'

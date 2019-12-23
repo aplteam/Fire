@@ -17,24 +17,24 @@
      :Else
          (rf rl)←n.(AutoCompleteForm AutoCompleteList)
          :If 1=⍴,2⊃y
-             :If 0∊⍴,n.LookIn.Text
+             :If 0∊⍴,n.StartSearchIn.Text
                  r←0
                  :If '#'=2⊃y
-                     n.LookIn.Text←'#'
+                     n.StartSearchIn.Text←'#'
                  :ElseIf '⎕'=2⊃y
-                     n.LookIn.Text←'⎕SE'
+                     n.StartSearchIn.Text←'⎕SE'
                  :EndIf
              :Else
                  :If '.'=2⊃y
-                     :If '.'≠¯1↑n.LookIn.Text
-                         :Trap 2
-                             r←0<(⍎n.LookIn.Text).{↑⍴⎕NL ⍵}2 3 4 9
+                     :If '.'≠¯1↑n.StartSearchIn.Text
+                         :Trap 2 6
+                             r←0<(⍎n.StartSearchIn.Text).{↑⍴⎕NL ⍵}2 3 4 9
                          :Else
                              :Return
                          :EndTrap
                      :EndIf
                  :ElseIf ~0∊⍴rl.Items
-                     r←∨/rl.Items{((⍴⍵)↑[1]⍺)∧.=⍵}n.LookIn.Text,2⊃y
+                     r←∨/rl.Items{((⍴⍵)↑[1]⍺)∧.=⍵}n.StartSearchIn.Text,2⊃y
                  :EndIf
              :EndIf
          :EndIf

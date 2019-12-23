@@ -10,7 +10,7 @@
  'TEMP'#.⎕NS''
  ref←#.TEMP.⎕FIX':Namespace NS' 'f1←{r←⍺{PI←42 ⋄ ⍺+⍵}⍵ ⋄ 1+r} ⋄ f2←f1∘⌽' '∇ Fns y;a;b' 'PI←42' 'a←⍬ ⋄ b←{⍵}' '∇' 'PI←42' ':EndNamespace'
  Assert 42≡ref.PI
- n.LookIn.Text←'#.TEMP'
+ n.StartSearchIn.Text←'#.TEMP'
  n.SearchFor.Text←'42'
 
  {}∆Select n.StartBtn

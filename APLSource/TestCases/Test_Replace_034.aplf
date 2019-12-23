@@ -8,7 +8,7 @@
  n←#.Fire.Fire.GUI.n
 
  n.SearchFor.Text←'#.UTILS.#.UTILS.'
- n.LookIn.Text←'#.TestData.Replacements'
+ n.StartSearchIn.Text←'#.TestData.Replacements'
  n.Case.State←1
 
  {}∆Select n.StartBtn

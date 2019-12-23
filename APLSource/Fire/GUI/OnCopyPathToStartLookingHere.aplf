@@ -1,6 +1,6 @@
  OnCopyPathToStartLookingHere←{
 ⍝ If just one row is selected in the hit list copy path of that object to "Start looking here"
      (1≠+/n.HitList.SelItems):⍬
-     n.LookIn.Text←0⊃n.HitList.(ReportInfo[SelItems⍳1;])
+     n.StartSearchIn.Text←0⊃n.HitList.(ReportInfo[SelItems⍳1;])
      ⍬
  }

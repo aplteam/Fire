@@ -1,0 +1,16 @@
+ R←Test_API_002(stopFlag batchFlag);⎕TRAP;ref;buff
+⍝ Exercise the `Search` function without parameters
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←T._Failed
+
+ #.⎕SHADOW'TEMP'
+ ∆CreateFooNamespace ⍬
+
+ ref←##.Fire.API
+
+ buff←ref.Search'KaiThomas'
+ →T.PassesIf 2=⍴⍴buff
+ →T.PassesIf 0<≢buff
+
+ R←T._OK
+⍝Done

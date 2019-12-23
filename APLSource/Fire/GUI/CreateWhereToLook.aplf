@@ -5,35 +5,36 @@
  ∆,←⊂'Caption' 'Start &looking here:'
  ∆,←⊂'Posn'((8+0⊃PosnPlusSize n.SearchFor),8)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
- n.L_LookIn←⍎'LookIn_L'n.Form.⎕WC ∆
+ n.L_StartSearchIn←⍎'StartSearchIn_L'n.Form.⎕WC ∆
 
  ∆←⊂'Edit'
- ∆,←⊂'Posn'((25+0⊃n.L_LookIn.Posn),10)
+ ∆,←⊂'Posn'((25+0⊃n.L_StartSearchIn.Posn),10)
  ∆,←⊂'Size'n.SearchFor.Size
  ∆,←⊂'FontObj'n.APL_Font
  ∆,←⊂'Attach'('Top' 'Left' 'Top' 'Left')
  ∆,←⊂'TipObj'n.TipObj
- msg←'Specify a namespace in order to restrict the search accordingly.⌹'
- msg,←'Autocomplete will support you while you are typing.⌹'
- msg,←'- Press <DEL> to delete the full path.⌹'
- msg,←'- Press <Ctrl+Backspace> to delete one level of the path.⌹'
- msg,←'- Press <Backspace> to delete a single character.'
- ∆,←⊂'Tip'(Split msg)
- n.LookIn←⍎'LookIn'n.Form.⎕WC ∆
- n.LookIn.∆Tip←n.LookIn.Tip
- n.LookIn.Event←Events.Autocomplete'OnAutocompleteInWhereToLook'
- n.LookIn.onKeyPress←'OnKeyPressInLookIn'
- n.LookIn.onContextMenu←'SuppressContextMenu'
- n.LookIn.onGotFocus←'OnLookInGotFocus'
- n.LookIn.onLostFocus←'OnLookInLostFocus'
- n.LookIn.SelText←2⍴1+⍴##.G.LookIn
- n.LookIn.was←'#'
+ msg←''
+ msg,←⊂'Specify a namespace in order to restrict the search accordingly.'
+ msg,←⊂'Autocomplete will support you while you are typing.'
+ msg,←⊂'- Press <DEL> to delete the full path.'
+ msg,←⊂'- Press <Ctrl+Backspace> to delete one level of the path.'
+ msg,←⊂'- Press <Backspace> to delete a single character.'
+ ∆,←⊂'Tip'msg
+ n.StartSearchIn←⍎'StartSearchIn'n.Form.⎕WC ∆
+ n.StartSearchIn.∆Tip←n.StartSearchIn.Tip
+ n.StartSearchIn.Event←Events.Autocomplete'OnAutocompleteInWhereToLook'
+ n.StartSearchIn.onKeyPress←'OnKeyPressInLookIn'
+ n.StartSearchIn.onContextMenu←'SuppressContextMenu'
+ n.StartSearchIn.onGotFocus←'OnLookInGotFocus'
+ n.StartSearchIn.onLostFocus←'OnLookInLostFocus'
+ n.StartSearchIn.SelText←2⍴1+⍴##.G.StartSearchIn
+ n.StartSearchIn.was←'#'
 
  ∆←⊂'SubForm'
  ∆,←⊂'FontObj'n.SmallAplFont
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'Size'(180 240)
- ∆,←⊂'Posn'((0⊃PosnPlusSize n.LookIn),1⊃n.LookIn.Posn)
+ ∆,←⊂'Posn'((0⊃PosnPlusSize n.StartSearchIn),1⊃n.StartSearchIn.Posn)
  ∆,←⊂'Active' 0
  ∆,←⊂'Visible' 0
  n.AutoCompleteForm←⍎'AutoCompleteForm'n.Form.⎕WC ∆
@@ -48,5 +49,5 @@
  ∆,←⊂'Attach'('Top' 'Left' 'Bottom' 'Right')
  n.AutoCompleteList←⍎'AutoCompleteList'n.AutoCompleteForm.⎕WC ∆
  n.AutoCompleteList.onSelect←'OnAutoCompleteList'
- n.LookIn.Coord←'Pixel'
+ n.StartSearchIn.Coord←'Pixel'
 ⍝ Done

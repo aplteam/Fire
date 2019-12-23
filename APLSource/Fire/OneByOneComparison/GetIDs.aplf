@@ -1,10 +1,15 @@
- GetIDs←{
+ r←txt GetIDs(line no)
 ⍝ ⍵ is ReportInfo from the GUI list, something like [67] (2): line 67, second hit.
 ⍝ ← becomes #67-2-[old|new] which is later used to show/hide the original text or the replacement text.
-     (line no)←⍵
+ :If 0=≢line
+     no~←'.'
+     no←{0=≢⍵:'1' ⋄ ⍵}no
+     r←'#n-',no,'-',txt
+ :Else
      line~←'[]'
      line←{'0'}⍣(0=≢line)⊣line
      no~←'.'
      no←{0=≢⍵:'1' ⋄ ⍵}no
-     '#n',line,'-',no,'-',⍺
- }
+     r←'#n',line,'-',no,'-',txt
+ :EndIf
+⍝Done

@@ -2,10 +2,10 @@
 ⍝ Takes action when the user has pressed Ctrl+Backspace which means:
 ⍝ "delete the right-most branch".
  r←⍬
- :If n.LookIn.(SelText≡2⍴1+⍴,Text)                      ⍝ Cursor is at the end of the input field...
- :AndIf 0<⍴,n.LookIn.Text                               ⍝ ... and the field is not empty...
-     :If '.'∊n.LookIn.Text                              ⍝ ... and there is at least one branch!
-         n.LookIn.Text←¯1↓0⊃'.'##.A.SplitPath n.LookIn.Text ⍝ Kill last branch
-         n.LookIn.(SelText←2⍴1+⍴,Text)
+ :If n.StartSearchIn.(SelText≡2⍴1+⍴,Text)                      ⍝ Cursor is at the end of the input field...
+ :AndIf 0<⍴,n.StartSearchIn.Text                               ⍝ ... and the field is not empty...
+     :If '.'∊n.StartSearchIn.Text                              ⍝ ... and there is at least one branch!
+         n.StartSearchIn.Text←¯1↓0⊃'.'##.A.SplitPath n.StartSearchIn.Text ⍝ Kill last branch
+         n.StartSearchIn.(SelText←2⍴1+⍴,Text)
      :EndIf
  :EndIf

@@ -13,7 +13,7 @@
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'State'##.G.Code
  ∆,←⊂'TipObj'n.TipObj
- ∆,←⊂'Tip'(Split'Functions, operators, classes, interfaces and scripted namespaces.')
+ ∆,←⊂'Tip' 'Functions, operators, classes, interfaces and scripted namespaces.'
  n.Code←⍎'Code'rf.⎕WC ∆
  n.Code.onSelect←'OnObjectType'
  n.Code.onKeyPress←'OnKeyPressStandard'
@@ -25,26 +25,18 @@
  ∆,←⊂'State'##.G.Vars
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'TipObj'n.TipObj
- msg←'Search variables.⌹'
- msg,←'Note that although all variables are searched⌹'
- msg,←'(and possibly reported), the "Replace" option⌹'
- msg,←'works only on specific types of variables:⌹'
- msg,←'Simple text vectors and vectors of text vectors.⌹'
- msg,←'Note that variables in scripted namespaces are⌹'
- msg,←'scanned in any case.'
- ∆,←⊂'Tip'(Split msg)
+ msg←''
+ msg,←⊂'Search variables.'
+ msg,←⊂'Note that although all variables are searched'
+ msg,←⊂'(and possibly reported), the "Replace" option'
+ msg,←⊂'works only on specific types of variables:'
+ msg,←⊂'Simple text vectors and vectors of text vectors.'
+ msg,←⊂'Note that variables in scripted namespaces are'
+ msg,←⊂'scanned in any case.'
+ ∆,←⊂'Tip'msg
  n.Vars←⍎'Vars'rf.⎕WC ∆
  n.Vars.onSelect←'OnObjectType'
  n.Vars.onKeyPress←'OnKeyPressStandard'
-
- ∆←⊂'Button'
- ∆,←⊂'Caption' 'Containers'
- ∆,←⊂'Posn'(75 10)
- ∆,←⊂'Style' 'Check'
- ∆,←⊂'Visible' 0
- ∆,←⊂'Active' 0
- ∆,←⊂'Attach'(4⍴'Top' 'Left')
- 'dummy'rf.⎕WC ∆   ⍝ Only used for calculating the width correctly
 
  {}PolishWidth rf
 ⍝ Done

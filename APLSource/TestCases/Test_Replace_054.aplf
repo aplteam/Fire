@@ -8,7 +8,7 @@
  n←#.Fire.Fire.GUI.n
 
  n.SearchFor.Text←'#.UTILS.'
- n.LookIn.Text←'#.TestData.Replacements'
+ n.StartSearchIn.Text←'#.TestData.Replacements'
  n.(Case Comments).State←1
  n.(APL_Code Text).State←0
 

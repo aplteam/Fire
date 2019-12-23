@@ -10,7 +10,7 @@
  'TEMP'#.⎕NS''
  ref←#.TEMP.⎕FIX':Namespace MyNamespace' 'MyDfn←{' 'a←1' 'sub←{' 'a←''foo''' '}' '42' '}' ':EndNamespace'
  Assert 42≡ref.MyDfn ⍬
- n.LookIn.Text←'#.TEMP'
+ n.StartSearchIn.Text←'#.TEMP'
  n.SearchFor.Text←'foo'
 
  {}∆Select n.StartBtn

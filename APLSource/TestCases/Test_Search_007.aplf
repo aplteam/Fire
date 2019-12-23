@@ -8,7 +8,7 @@
  n←#.Fire.Fire.GUI.n
 
  n.SearchFor.Text←'Uppercase'
- n.LookIn.Text←'#.A2'
+ n.StartSearchIn.Text←'#.A2'
  n.Comments.State←0
  n.APL_Name.State←1
  n.Case.State←0

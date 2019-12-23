@@ -1,9 +1,10 @@
  G←Populate_G testFlag
 ⍝ Creates namespace "G" (for "Globals") and populates it
+⍝ If you make changes to this make sure to check `CreateParms` as well.
  G←⎕NS''    ⍝ Holds Globals. GUI data is copied into this
  G.TestFlag←testFlag
  G.LookForList←''
- G.LookIn←'#'
+ G.StartSearchIn←'#'
  G←EstablishDefaultSettings G
  G.ColSort←0 0  ⍝ Column number, sort direction (0=⍋, 1=⍒)
  G.LastSearchedFor←''

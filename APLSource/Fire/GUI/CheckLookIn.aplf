@@ -1,21 +1,21 @@
  {r}←{was}CheckLookIn dummy;andif;msg
-⍝ Checks whether the string in "LookIn" points to a namespace or script (0) or not (1).
+⍝ Checks whether the string in "StartSearchIn" points to a namespace or script (0) or not (1).
 ⍝ In case it is empty it becomes `#`
  r←0
  was←{0<⎕NC ⍵:⍎⍵ ⋄ ''}'was'
  :If 0=n.ReuseSearch.State
- :AndIf 9≠⎕NC n.LookIn.Text
-     :If r←0=≢n.LookIn.Text
+ :AndIf 9≠⎕NC n.StartSearchIn.Text
+     :If r←0=≢n.StartSearchIn.Text
          was←{⍵↓⍨-'.'=¯1↑⍵}was
          :If 9=⎕NC was
          :OrIf (⊂,was)∊'#' '⎕SE'
-             n.LookIn.Text←was
+             n.StartSearchIn.Text←was
          :Else
-             n.LookIn.Text←'#'
+             n.StartSearchIn.Text←'#'
          :EndIf
-     :ElseIf (,'#')≢,n.LookIn.Text
-     :AndIf '⎕SE'≢##.A.Uppercase n.LookIn.Text
-         {}##.Question.ShowMsg'Problem with "Start looking here":'('<',n.LookIn.Text,'>')'does not exist.'
+     :ElseIf (,'#')≢,n.StartSearchIn.Text
+     :AndIf '⎕SE'≢##.A.Uppercase n.StartSearchIn.Text
+         {}##.Question.ShowMsg'Problem with "Start looking here":'('<',n.StartSearchIn.Text,'>')'does not exist.'
          r←1
      :EndIf
  :EndIf

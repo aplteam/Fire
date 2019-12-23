@@ -16,5 +16,5 @@
  n←SetStateAndActive n
  n←CheckStartButton n
  n.Form.Posn←##.G.Posn
- (⍕##.G.LookIn)CheckLookIn ⍬
+ (⍕##.G.StartSearchIn)CheckLookIn ⍬
 ⍝Done

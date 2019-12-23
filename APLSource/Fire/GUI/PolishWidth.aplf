@@ -1,6 +1,6 @@
  PolishWidth←{
 ⍝ Takes a ref (⍵; typically a group) and re-calculates the size by taking
-⍝ all children into account plus 10 pixels.
+⍝ all children into account plus some pixels.
      rf←⍵
      rf.Size[1]←3+⌈/{1⊃+⌿⊃⍵.(Posn Size)}¨⎕WN rf
      ⍬

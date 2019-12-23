@@ -14,7 +14,7 @@
  #.TEMP.⎕FX'r←Hello3' 'a←''This is text  ⌹'' ⍝ This is a comment  ⌹' 'r''World3'''
 
  n.SearchFor.Text←'is text  ⌹'
- n.LookIn.Text←'#.TEMP'
+ n.StartSearchIn.Text←'#.TEMP'
  n.(Case).State←1
  n.(APL_Code Comments).State←0
 

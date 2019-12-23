@@ -1,1 +1,1 @@
- OnLookInGotFocus←{1⊣n.LookIn.SelText←2⍴1+⍴,n.LookIn.Text}
+ OnLookInGotFocus←{1⊣n.StartSearchIn.SelText←2⍴1+⍴,n.StartSearchIn.Text}

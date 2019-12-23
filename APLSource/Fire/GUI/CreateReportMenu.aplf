@@ -5,7 +5,7 @@
  ∆←⊂'MenuItem'
  ∆,←⊂'Caption'('Search QNL...')
  ∆,←⊂'HintObj'n.Info
- ∆,←⊂'Hint' 'Search for names recursively.⌹Note that this is the only way⌹to find the name of a non-scripted namespace!'
+ ∆,←⊂'Hint' 'Search for names recursively. Note that this is the only way to find the name of a non-scripted namespace!'
  n.SearchQNL←⍎'SearchQNL'rf.⎕WC ∆
  n.SearchQNL.onSelect←'OnSearchQNL'
 
@@ -23,14 +23,14 @@
  ∆←⊂'MenuItem'
  ∆,←⊂'Caption' 'Ghosts...'
  ∆,←⊂'HintObj'n.Info
- ∆,←⊂'Hint' 'Report contents in any ghostly namespace⌹associated with instances'
+ ∆,←⊂'Hint' 'Report contents in any ghostly namespace associated with instances'
  n.ReportGhosts←⍎'ReportGhosts'rf.⎕WC ∆
  n.ReportGhosts.onSelect←'OnReportGosts'
 
  ∆←⊂'MenuItem'
  ∆,←⊂'Caption' 'References...'
  ∆,←⊂'HintObj'n.Info
- ∆,←⊂'Hint' 'Report any references accept⌹those pointing the fns, oprs and idioms.⌹See help file for details'
+ ∆,←⊂'Hint' 'Report any references accept those pointing the fns, oprs, idioms and unnamed namespaces'
  n.References←⍎'ReportReferences'rf.⎕WC ∆
  n.References.onSelect←'OnReportReferences'
 

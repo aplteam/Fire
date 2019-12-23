@@ -8,7 +8,7 @@
  n←#.Fire.Fire.GUI.n
 
  n.SearchFor.Text←'World'
- n.LookIn.Text←'#.TestData.ScriptedNamespaces'
+ n.StartSearchIn.Text←'#.TestData.ScriptedNamespaces'
  n.Case.State←0
 
  {}∆Select n.StartBtn

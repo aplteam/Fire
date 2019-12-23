@@ -2,7 +2,7 @@
 ⍝ Scans the code in ⍵ if required by the user.
 ⍝ Returns indices of any hits or ⍬ if there aren't any.
 ⍝ ⍵ must not contain either text or comments.
-     (0∊⍴code←⍵):⍬ ⍬
+     (0=≢code←⍵):⍬ ⍬
      (0=+/↑,/⍴¨code~¨' '):⍬ ⍬                  ⍝ No code? Done!
      Scan code 1
  }

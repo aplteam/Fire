@@ -15,7 +15,7 @@
  #.TEMP.varsMixed←'APL is great' 'It really is!' 'Yes, APL is great' 1      ⍝ Mixed: no change
 
  n.SearchFor.Text←'is great'
- n.LookIn.Text←'#.TEMP'
+ n.StartSearchIn.Text←'#.TEMP'
 
  {}∆Select n.StartBtn
  ∆Process n.Form

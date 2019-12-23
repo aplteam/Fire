@@ -8,7 +8,7 @@
  n←#.Fire.Fire.GUI.n
 
  n.SearchFor.Text←'⎕IO'
- n.LookIn.Text←'#'
+ n.StartSearchIn.Text←'#'
  n.(Case APL_Name).State←1
  n.Comments.State←0
 

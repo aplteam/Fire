@@ -6,7 +6,7 @@
  1 #.Fire.Fire.Run 0
  n←#.Fire.Fire.GUI.n
  n.SearchFor.Text←'⎕IO'
- n.LookIn.Text←'#.Fire.Fire'
+ n.StartSearchIn.Text←'#.Fire.Fire'
  n.Vars.State←0
  {}∆Select n.StartBtn
  ∆Process n.Form

@@ -8,7 +8,7 @@
  n←#.Fire.Fire.GUI.n
 
  n.SearchFor.Text←'Uppercase'
- n.LookIn.Text←'#.A2'
+ n.StartSearchIn.Text←'#.A2'
  n.Case.State←1
 
  {}∆Select n.StartBtn

@@ -1,0 +1,40 @@
+ r←parms Search searchFor;doNotReuse;list;buffer;toggleStatusWas;report;noOfContainers;G;noOfObj
+⍝ Called by the API function `API.Search`.
+ r←''
+ doNotReuse←1
+ toggleStatusWas←ToggleAutoStatus 0
+ G←parms
+ G.ReuseSearch←0
+ G.SearchFor2←IfLower G.SearchFor←searchFor
+ :If 0=parms.(Code+Vars)
+     (list noOfContainers)←GetNames doNotReuse
+ :Else
+     (list noOfContainers)←GetList doNotReuse 1
+ :EndIf
+ :If 0<≢list
+     list←RemoveClones RemoveUnwanted list
+     :If 0≠≢noOfObj←≢list
+         (r report)←0 ProcessList list
+         :If 1=≢report
+             ⎕←'Variable "',(↑{⍵,'.',⍺}/1 0 1/0⊃report),'" was ignored due to a ',0 1⊃report
+         :ElseIf 1<≢report
+             ⎕←(⍕≢report),'variables have been ignored due to errors(',(↑{⍺,',',⍵}/∪1⊃¨report),')'
+         :EndIf
+         :If parms.Negate
+             :If 0=≢r
+                 r←list[;0 1],0,0,list[;2],(⊂⍬),list[;,3]
+             :Else
+                 :If 0=≢buffer←((↓list[;0 1]){~⍺∊⍵}↓r[;0 1])⌿list
+                     r←0⍴⊂⊂''
+                 :Else
+                     r←buffer[;0 1],0,buffer[;2],0,(⊂⍬),buffer[;,3]
+                 :EndIf
+             :EndIf
+         :EndIf
+         :If 0≠≢r
+             r←SortHits r
+         :EndIf
+     :EndIf
+     r←DropDoublesFromHitList⍣(0≠≢r)⊣r
+ :EndIf
+ ToggleAutoStatus toggleStatusWas

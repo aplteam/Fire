@@ -11,7 +11,7 @@
      ##.G.Negate←n.Negate.State
      ##.G.ReuseSearch←n.ReuseSearch.State
      ##.G.SearchFor←n.SearchFor.Text
-     ##.G.LookIn←n.LookIn.Text
+     ##.G.StartSearchIn←n.StartSearchIn.Text
      ##.G.SearchIsRegEx←n.SearchIsRegEx.State
      ##.G.Greedy←n.Greedy.State
      txt←n.SearchFor.Text

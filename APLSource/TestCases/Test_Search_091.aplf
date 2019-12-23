@@ -12,7 +12,7 @@
  n←#.Fire.Fire.GUI.n
 
  n.SearchFor.Text←'abc'
- n.LookIn.Text←'#.TEMP'
+ n.StartSearchIn.Text←'#.TEMP'
  n.Case.State←0
 
  {}∆Select n.StartBtn

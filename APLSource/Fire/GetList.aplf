@@ -1,9 +1,9 @@
- (objList noOfContainers)←GetList(n searchType classFlag);nsList;buffer
+ (objList noOfContainers)←GetList(searchType classFlag);nsList;buffer
 ⍝ "searchType" tells ordinary search (1) from searching the hit list (0).
 ⍝ classFlag=1=include classes and instances
  objList←0 4⍴''
  :If searchType
-     noOfContainers←≢nsList←CompileNamespaceList G.LookIn classFlag
+     noOfContainers←≢nsList←CompileNamespaceList G.StartSearchIn classFlag
      objList←{(0=≢⍵):⍬ ⋄ ↑⍪/GetNamesFrom¨↓⍵}(~nsList[;1]∊Types.(ClassInstance Class Interface))⌿nsList
      :If 0=≢objList
          :Return            ⍝ There are namespace(s) but they are all empty

@@ -12,7 +12,7 @@
  #.Temp_RegExReplace_001.⎕FX'Fns' 'Start ⋄ ''this is'' ⋄ End ⋄ Start ⋄ ''this really is'' ⋄ End'
 
  n.SearchFor.Text←'Start.*End'
- n.LookIn.Text←'#.Temp_RegExReplace_001'
+ n.StartSearchIn.Text←'#.Temp_RegExReplace_001'
  n.SearchIsRegEx.State←1
  n.Greedy.(Active State)←1
 

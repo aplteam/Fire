@@ -8,7 +8,7 @@
  n←#.Fire.Fire.GUI.n
 
  n.SearchFor.Text←'⎕DQ''F'''
- n.LookIn.Text←'#.TestData.Quotes'
+ n.StartSearchIn.Text←'#.TestData.Quotes'
  n.Comments.State←0
 
  {}∆Select n.StartBtn

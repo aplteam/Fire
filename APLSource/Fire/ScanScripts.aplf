@@ -8,7 +8,7 @@
  :EndIf
  :If ~0∊⍴body←IfLower body
      r←ScanBody ref scriptName body
- :AndIf ~0∊⍴r
+ :AndIf 0≠≢r
      (0 3⊃r)←nc
      :If Types.ClassInstance=type
          (0 1⊃r)←1⊃'.'A.SplitPath⍕0 0⊃⎕CLASS 0 0⊃r

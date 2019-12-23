@@ -13,7 +13,7 @@
  type2[##.Where hits[;6]=4]←⊂'Class Instance'
  fnsOprs←type1∊1 2
  isScript←IsScripted¨↓hits[;0 1 3]
- realNames←⍕¨##.IgnoreDisplayFormat¨locs
+ realNames←⍕¨##.GetDisplayFormat¨locs
  :If 0<+/fnsOprs
      (date by)←{0∊⍴⍵:'' '' ⋄ Get_QAT ⍵}↓fnsOprs⌿hits[;0 1]
      date←fnsOprs\↓##.FormatDateTime⊃date

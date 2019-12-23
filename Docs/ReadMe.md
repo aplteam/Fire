@@ -1,7 +1,8 @@
 [parm]:toc            = 3
 [parm]:numberHeaders  = 2 3 4
 [parm]:collapsibleTOC = 1
-[parm]:saveHTML       = 0 
+[parm]:saveHTML       = 1
+[parm]:title          = 'Fire'
 
 
 # Fire
@@ -121,13 +122,32 @@ Scripted namespace are in some ways an anomaly in Dyalog APL. For example, if th
 
 Fire processes functions and operators in scripted namespaces in the same way as in ordinary namespaces. That means that a function that carries a hit is listed on its own in both cases. 
 
-A namespace script is _only_ listed in the hit list when it carries variable definitions or comments with hits.
+A namespace script as such is _only_ listed in the hit list when it carries variable definitions or comments with hits.
 
 However, this is inconsistent with what Fire does with functions and operators: in ordinary namespaces a variable is listed on it's own only when its value --- not the name! --- carries a hit. For scripted namespaces it's listed on its own when the value _or_ the name carries a hit.
 
-The reason for this inconsistency is that is is very difficult for Fire to tell function assignments (like `fns←+/`) from variable assignments.
+The reason for this inconsistency is that is no good way to tell function assignments (like `fns←+/`) from variable assignments.
 
-Since "Replace" is only available for variables of certain types anyway, this seemed still the best way to deal with the problem.
+Since "Replace" is only available for variables of certain types anyway, this still seemed the best way to deal with the problem.
+
+
+### References
+
+There are two different flavours of references to be considered:
+
+* References pointing to classes, interfaces or namespaces.
+
+  These are simply ignored by Fire.
+
+* References pointing to functions, either traditional ones or dfns.
+
+It **is** possible to tell a reference pointing to a tfn from that tfn, but with a large number of functions it would slow down Fire siginificantly.
+
+Worse, there is no way to tell a reference pointing to a dfn from that dfn.
+
+Therefore Fire does not even attempt to identify such references. That could result in the same function listed twice in the hit list, once under its real name and once under the name of the reference.
+
+That should never pose a problem, even if you perform a "Replace" operation: Fire would carry out the same operation twice, wasting a bit of time but delivering the desired result.
 
 
 ### Nested scripted namespaces
@@ -215,10 +235,14 @@ This time we modify not the function but the inner script:
 
 ```
 
-I don't think this cannot be declared a feature, and for two reasons:
+This is unfortunate for two reasons:
 
 1. `⎕FIX` and `⎕SRC` should be the inverse of each other; they are not.
 1. As a programmer I do not have other means than `⎕FIX` for modifying `Inner`, but that does not work.
+
+However, for the time being all Fire can do when it finds a hit in an inner namespace is to tell you, the user, that it will not be able to carry out any changes in that inner namespace.
+
+Hopefully using nested namespaces will not become popular...
 
 ### Ghostly namespaces
 
@@ -390,6 +414,65 @@ If the hit list is too big to display all hits try pressing F8. This will enhanc
 This might not work too well on multiple-monitor systems when the screen sizes of the monitors involved are different.
 
 
+## Fire's API
+
+Since version 8.0 Fire comes with an API, meaning that you can take adantage of some of Fire's features under program control.
+
+You must make sure that Fire is available in `⎕SE`. This can either be achieved by just executing the `]Fire` user command or by executing `]Fire -load` which does load Fire into `⎕SE` but does not run Fire, meaning that the GUI would not show.
+
+You can then execute the appropriate methods from the namespace `⎕SE._Fire.Fire.API`.
+
+### Searching for a string
+
+Let's assume you want to search the string "abc" in `⎕SE`. This is what you would do:
+
+```
+      parms←⎕SE._Fire.Fire.API.CreateParms
+      parms. ∆List
+ APL_Name       0
+ Greedy         0
+ Negate         0
+ Report         0
+ SearchIsRegEx  0
+ APL_Code       1
+ Case           1
+ Code           1
+ Comments       1
+ Text           1
+ Vars           1
+ StartSearchIn  #
+      parms.StartSearchIn←'⎕se'
+      parms ⎕SE._Fire.Fire.API.Search 'abc'
+ ⎕SE.Parser        4 9.4
+ ⎕SE.SALT          2 9.4
+ ⎕SE.UnicodeFile   1 9.4
+```
+
+There are three columns:
+
+* `[;1]` = the names of the objects with hits
+* `[;2]` = Number of hits
+* `[;3]` = Name class
+
+If you want to get the hits listed set `Report` to 1:
+
+~~~{style="white-space: pre;"}
+      parms←⎕SE._Fire.Fire.API.CreateParms
+      parms.StartSearchIn←'⎕se'
+      parms.Report←1
+      ⎕←parms ⎕SE._Fire.Fire.API.Search 'abc'
+ ∇⎕SE.Parser[⎕47 130 131]∇
+  [47]  (LOWER UPPER)←'abcdefghijklmnopqrstuvwxyzàáâãåèéêëòóôõöøùúûäæü' 'ABCDEFGHIJKLMNOPQRSTUVWXYZÀÁÂÃÅÈÉÊËÒÓÔÕÖØÙÚÛÄÆÜ' 
+  [130] ⍝ sw←123 Switch 'abc' ⍝ if 'abc' has not been set 123 is returned.
+  [131] ⍝ If /abc=789 was specified in the parsed string the value returned will be ,789, not '789'
+ ∇⎕SE.SALT[⎕735 737]∇
+  [735] t←'0123456789abcdefghijklmnopqrstuvwxyz' ⋄ ex←ex,(⍴ex)↓'^=_'
+  [737] to←t,'aaaaaaeeeeeiiiioooooouuuunpdsccabcdefghijklmnopqrstuvwxyzaaaaaaeeeeeiiiioooooouuuudyn',ex
+ ∇⎕SE.UnicodeFile[⎕298]∇
+  [298] charset←'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 abcdefghijklmnopqrstuvwxyz0123456789'
+~~~
+
+
 ## Useful Regular expressions
 
 There is a separate document `UsefulRegExes.html` available --- see there.
@@ -397,7 +480,7 @@ There is a separate document `UsefulRegExes.html` available --- see there.
 
 ## acre and Fire
 
-Acre --- which [lives on GitHub](https://github.com/the-carlisle-group/Acre-Desktop) --- is an APL project manager systen written in Dyalog APL by [Phil Last](http://aplwiki.com/PhilLast).
+Acre --- which [lives on GitHub](https://github.com/the-carlisle-group/Acre-Desktop) --- is an APL project management systen written in Dyalog APL by [Phil Last](http://aplwiki.com/PhilLast).
 
 When Fire finds acre in `⎕SE` it will tell acre about all change and delete operations. Acre will then work out what project the object in question belongs to and take action, if any. In other words, Fire and acre are fully integrated.
 
@@ -432,4 +515,4 @@ In case you've added {PID} - which stands for "Process ID" - to the MessageBox v
 
 In case you wonder what this is good for: there are people out there who have more than just one Dyalog session running at the same time, sometimes many. In such cases it can be very useful to know the process ID a particular message box belongs to, because it can be very awkward or impossible to find out by other means.
 
-Kai Jaeger --- 2018-01-28
+Kai Jaeger --- 2019-12-23

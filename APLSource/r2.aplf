@@ -1,0 +1,7 @@
+ r←r2;parms;r;searchFor
+ parms←Fire.API.CreateParms
+ parms.StartSearchIn←#.Fire.TestCases
+ parms.Report←1
+ searchFor←⎕UCS 9053 84 79 68 79 9053  ⍝ The integers result in "TODO" with a leading lamp; we don't want that to be found here
+ r←parms Fire.API.Search searchFor
+ ⍝Done

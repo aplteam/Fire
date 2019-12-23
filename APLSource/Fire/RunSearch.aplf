@@ -1,4 +1,4 @@
- (rc objHits noOfObj noOfContainers)←RunSearch n;flag;list;_;buffer;Performs;toggleStatusWas
+ (rc objHits noOfObj noOfContainers)←RunSearch n;flag;list;_;buffer;Performs;toggleStatusWas;report;msg
 ⍝ Performs the actual search.
 ⍝ If "flag" is 1 then either the workspace or ⎕SE is scanned.
 ⍝ If "flag" is zero then only the current hit list is scanned.
@@ -12,7 +12,7 @@
  :If 0=G.(Code+Vars)
      (list noOfContainers)←GetNames flag
  :Else
-     (list noOfContainers)←GetList n flag 1
+     (list noOfContainers)←GetList flag 1
  :EndIf
  :If 0=≢list
      GUI.ResetHitList noOfObj,noOfContainers
@@ -23,7 +23,16 @@
          GUI.ResetHitList noOfObj,noOfContainers
          rc←0
      :Else
-         objHits←⊃ProcessList list
+         (objHits report)←ProcessList list
+         :If 1=≢report
+             'Variable "',(↑{⍵,'.',⍺}/1 0 1/0⊃report),'" was ignored due to a ',0 1⊃report
+         :ElseIf 1<≢report
+             msg←⊂(⍕⍴report),' variables have been ignored due to errors (',(↑{⍺,',',⍵}/∪1⊃¨report),')'
+             msg,←'' 'Would you like to print the names of them to the session?'
+             :If Question.YesOrNo msg
+                 ⎕←⍪{(2⊃⍵),'.',(0⊃⍵),' caused a ',1⊃⍵}¨report
+             :EndIf
+         :EndIf
          :If G.Negate
              :If 0=≢objHits
                  objHits←list[;0 1],0,0,list[;2],(⊂⍬),list[;,3]

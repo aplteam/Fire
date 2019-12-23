@@ -4,7 +4,7 @@
  r←⍬
  :If flag
      n.HiddenBtns.Active←1
-     n.(SearchFor LookIn).Active←1
+     n.(SearchFor StartSearchIn).Active←1
      n.CancelSearchBtn.(Active Visible Default)←0
      n.StartBtn.Active←1
      n.ReportHits.Active←0<≢n.HitList.Items
@@ -14,14 +14,14 @@
      {}'Group' 'Combo'SetActivePropTo¨1
      :If 0=≡n.HitList.Items
          n.ReuseSearch.(Active State)←0
-         n.LookIn.BCol←0
-         n.LookIn.Text{0=≢⍺:⍵ ⋄ ⍺}←'#'
+         n.StartSearchIn.BCol←0
+         n.StartSearchIn.Text{0=≢⍺:⍵ ⋄ ⍺}←'#'
      :Else
          n.ReuseSearch.Active←1
      :EndIf
  :Else
      n.HiddenBtns.Active←0
-     n.(SearchFor LookIn).Active←0
+     n.(SearchFor StartSearchIn).Active←0
      n.EditCmd.Active←0
      n.InvertSelectionCmd.Active←0
      n.StartBtn.Active←0

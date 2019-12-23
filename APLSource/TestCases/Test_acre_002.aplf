@@ -37,7 +37,7 @@
  n←#.Fire.Fire.GUI.n
 
  n.SearchFor.Text←'world'
- n.LookIn.Text←'#.FireAcreTest'
+ n.StartSearchIn.Text←'#.FireAcreTest'
 
  n.Negate.State←0
  n.ReuseSearch.State←0

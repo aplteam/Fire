@@ -12,7 +12,7 @@
  n←#.Fire.Fire.GUI.n
 
  n.SearchFor.Text←'world'
- n.LookIn.Text←'#.FireObjectTest'
+ n.StartSearchIn.Text←'#.FireObjectTest'
  n.Case.State←0
 
  {}∆Select n.StartBtn

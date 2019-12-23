@@ -30,7 +30,7 @@
  #.TMP.NS.⎕FX'r←Fns_B dummy' '⍝ Goo' 'Goo←1' 'r←''Goo'''
 
  n.SearchFor.Text←'Foo'
- n.LookIn.Text←'#.TMP'
+ n.StartSearchIn.Text←'#.TMP'
  n.Case.State←0
 
 ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝ Search everywhere: APL code, comments, text

@@ -13,7 +13,7 @@
  ref.vars←'this is caspar david albrecht'
 
  n.SearchFor.Text←'\b\w*a\w*\b'   ⍝ Find all words that contain an "a"
- n.LookIn.Text←'#.',name
+ n.StartSearchIn.Text←'#.',name
  n.SearchIsRegEx.State←1
  n.Greedy.(Active State)←1 0
 

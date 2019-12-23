@@ -1,0 +1,7 @@
+ {r}←∆CreateFooNamespace dummy
+ r←⍬
+ 'TEMP'#.⎕NS''
+ #.TEMP.⎕FX'r←Hello1' 'r←''World'''
+ #.TEMP.⎕FX'r←Hello2' 'r←''Galaxy'' ⍝ KaiThomas'
+ #.TEMP.⎕FX'r←Hello3' 'r←''Universe'' ⍝ abc Kai'
+ ⍝Done

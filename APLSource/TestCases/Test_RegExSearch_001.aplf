@@ -14,7 +14,7 @@
  #.Temp_RegExSearch_001.⎕FIX':Namespace NS1' '  ⍝ First comment' '∇ Hello3' '⍝ First C' '  ⍝ Second C' 'a←1 ⍝ Third C' '∇' ':EndNamespace'
 
  n.SearchFor.Text←'^\s{0,}⍝.*'
- n.LookIn.Text←'#.Temp_RegExSearch_001'
+ n.StartSearchIn.Text←'#.Temp_RegExSearch_001'
  n.SearchIsRegEx.State←1
  n.Greedy.(Active State)←1 1
 

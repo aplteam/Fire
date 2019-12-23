@@ -37,7 +37,7 @@
  n←#.Fire.Fire.GUI.n
 
  n.SearchFor.Text←'abc←1'
- n.LookIn.Text←'#.TEMP'
+ n.StartSearchIn.Text←'#.TEMP'
 
  {}∆Select n.StartBtn
  0.2 ∆Process n.Form

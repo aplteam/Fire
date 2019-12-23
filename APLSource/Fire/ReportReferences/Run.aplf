@@ -2,7 +2,7 @@
 ⍝ Report namespaces references
  cursorWas←##.SetCursorObj 1
  ref←⍬
- :If 0∊⍴list←2 ##.ListNamespaceTree startHere 0
+ :If 0=≢list←2 ##.ListNamespaceTree startHere 0
      ##.SetCursorObj 0
      {}##.Question.ShowMsg'No namespace references found'
      ##.SetCursorObj cursorWas

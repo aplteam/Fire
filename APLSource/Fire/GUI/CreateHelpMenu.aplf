@@ -3,16 +3,22 @@
 
  ∆←⊂'MenuItem'
  ∆,←⊂'Caption' 'View "ReadMe"'
+ ∆,←⊂'HintObj'n.Info
+ ∆,←⊂'Hint' 'Puts the ReadMe.html file on display with the default browser'
  n.ReadMe←⍎'ReadMe'rf.⎕WC ∆
  n.ReadMe.onSelect←'OnShowReadMe'
 
  ∆←⊂'MenuItem'
  ∆,←⊂'Caption' 'View "Useful RegExes"'
+ ∆,←⊂'HintObj'n.Info
+ ∆,←⊂'Hint' ''
  n.UsefulRegExes←⍎'ReadMe'rf.⎕WC ∆
  n.UsefulRegExes.onSelect←'OnShowUsefulRegExes'
 
  ∆←⊂'MenuItem'
  ∆,←⊂'Caption' 'View "Release Notes"'
+ ∆,←⊂'HintObj'n.Info
+ ∆,←⊂'Hint' ''
  n.ReleaseNotes←⍎'ReleaseNotes'rf.⎕WC ∆
  n.ReleaseNotes.onSelect←'OnShowReleaseNotes'
 
@@ -20,16 +26,22 @@
 
  ∆←⊂'MenuItem'
  ∆,←⊂'Caption' 'View release notes on GitHub'
+ ∆,←⊂'HintObj'n.Info
+ ∆,←⊂'Hint' ''
  n.AllReleaseNotes←⍎'ReleaseNotes'rf.⎕WC ∆
  n.AllReleaseNotes.onSelect←'OnShowAllReleaseNotes'
 
  ∆←⊂'MenuItem'
  ∆,←⊂'Caption' 'Visit Fire on GitHub'
+ ∆,←⊂'HintObj'n.Info
+ ∆,←⊂'Hint' ''
  n.GoToGitHub←⍎'GoToGitHub'rf.⎕WC ∆
  n.GoToGitHub.onSelect←'OnGoToGitHub'
 
  ∆←⊂'MenuItem'
  ∆,←⊂'Caption' 'Check for updates...'
+ ∆,←⊂'HintObj'n.Info
+ ∆,←⊂'Hint' ''
  n.CheckForUpdates←⍎'ReadMe'rf.⎕WC ∆
  n.CheckForUpdates.onSelect←'OnCheckForUpdates'
 
@@ -37,6 +49,8 @@
 
  ∆←⊂'MenuItem'
  ∆,←⊂'Caption' 'About...'
+ ∆,←⊂'HintObj'n.Info
+ ∆,←⊂'Hint' ''
  n.About←⍎'About'rf.⎕WC ∆
  n.About.onSelect←'OnAbout'
 ⍝Done

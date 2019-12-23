@@ -7,7 +7,7 @@
  ∆,←⊂'State'##.G.Negate
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'TipObj'n.TipObj
- ∆,←⊂'Tip'(Split'Everything that does NOT contain the⌹search string goes into the hit list.')
+ ∆,←⊂'Tip'('Everything that does NOT contain the search' 'string goes into the hit list.')
  n.Negate←⍎'Negate'n.Form.⎕WC ∆
  n.Negate.onKeyPress←'OnKeyPressStandard'
 
@@ -20,7 +20,7 @@
  ∆,←⊂'State' 0
  ∆,←⊂'Active' 0
  ∆,←⊂'TipObj'n.TipObj
- ∆,←⊂'Tip'(Split'Search just the objects in the hit list')
+ ∆,←⊂'Tip' 'Search just the objects in the hit list'
  n.ReuseSearch←⍎'ReuseSearch'n.Form.⎕WC ∆
  n.ReuseSearch.onSelect←'OnReuseSearch'
  n.ReuseSearch.onKeyPress←'OnKeyPressStandard'

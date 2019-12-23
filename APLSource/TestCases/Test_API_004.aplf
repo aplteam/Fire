@@ -1,0 +1,19 @@
+ R←Test_API_004(stopFlag batchFlag);⎕TRAP;ref;buff;parms
+⍝ Exercise the `Search` function in "report" mode
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←T._Failed
+
+ #.⎕SHADOW'TEMP'
+ ∆CreateFooNamespace ⍬
+
+ ref←##.Fire.API
+
+ parms←ref.CreateSearchParms
+ parms.StartSearchIn←'#.TEMP'
+ parms.Report←1
+ buff←parms ref.Search'KaiThomas'
+ →T.PassesIf 2=⍴⍴buff
+ →T.PassesIf∨/,'KaiThomas'⍷⎕FMT buff
+
+ R←T._OK
+⍝Done

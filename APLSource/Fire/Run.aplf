@@ -13,10 +13,6 @@
 ⍝ sure that the test cases always start with the defaults.\\
 ⍝ Home page: <https://github.com/aplteam/Fire>
  testFlag←↑{0<⎕NC ⍵:(⍎⍵),0 ⋄ 0}'testFlag'
- :If 9=⎕NC'G'
- :AndIf 9=⎕NC'GUI.n.Form'
-     G.Posn←⍬ ⍬
- :EndIf
  {}Cleanup
  :If debugFlag
      ##.FilesAndDirs.PolishCurrentDir

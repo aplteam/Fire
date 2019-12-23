@@ -5,6 +5,8 @@
 ⍝ If this is not the case then Fire is copied into []SE from
 ⍝ the same directory the User Command stems from and then started.
 ⍝ Kai Jaeger ⋄ APL Team Ltd
+⍝ * Version 2.6.0 - 2019-12-22
+⍝   * New option -noGUI added: loads Fire into ⎕SE but does not run it.
 ⍝ * Version 2.5.1 - 2019-08-22
 ⍝   * Bug fix: Fire was copied each and every time, therefore forgetting former search tokens.
 ⍝ * Version 2.5.0 - 2019-07-28
@@ -19,14 +21,15 @@
       r.Desc←'Starts Fire (FInd & REplace)'
       r.Group←'WS'
      ⍝ Parsing rules:
-      r.Parse←'1s -fl'                      ⍝ Takes one optional switch: force load
+      r.Parse←'1s -fl -noGUI'
     ∇
 
-    ∇ r←Run(Cmd Args);⎕IO;⎕ML;forceLoadFlag;neededModules;dne;n
+    ∇ r←Run(Cmd Args);⎕IO;⎕ML;forceLoadFlag;neededModules;dne;n;noGUIFlag
       :Access Shared Public
       ⎕IO←0 ⋄ ⎕ML←3 ⋄ ⎕WX←3
       r←0 0⍴''
       forceLoadFlag←Args.Switch'fl'
+      noGUIFlag←Args.Switch'noGUI'
       neededModules←'APLTreeUtils' 'FilesAndDirs' 'OS' 'WinReg' 'GitHubAPIv3'   ⍝ to be copied
       '_Fire'⎕SE.⎕NS''
       dne←0=↑∘⎕SE.⎕NC¨neededModules                                             ⍝ do not exist (dne)
@@ -47,11 +50,13 @@
               'Could not copy Fire'⎕SIGNAL 11
           :EndTrap
       :EndIf
-      n←⎕SE._Fire.Fire.Run 0
-      :If 1=≢↑Args.Arguments
-      :AndIf (,'.')≡,↑Args.Arguments
-          n.LookIn.Text←(⎕SI⍳⊂'UCMD')⊃⎕NSI
-      :EndIf
+      :If ~noGUIFlag
+          n←⎕SE._Fire.Fire.Run 0
+          :If 1=≢↑Args.Arguments
+          :AndIf (,'.')≡,↑Args.Arguments
+               n.LookIn.Text←(⎕SI⍳⊂'UCMD')⊃⎕NSI
+          :EndIf
+       :EndIf
     ∇
 
     ∇ r←Help Cmd;⎕IO;⎕ML
@@ -66,6 +71,11 @@
       r,←⊂'If you are somewhere different from # then you can force Fire to start'
       r,←⊂'the next search from that namespace by providing a dot as argument:'
       r,←⊂']Fire .'
+      r,←⊂''
+      r,←⊂'If you want to load Fire into ⎕SE without actually running it then you'
+      r,←⊂'can use the -noGUI switch which does this without running Fire. Use this'
+      r,←⊂'if you want to run any of Fire''s API functions: you need to get Fire'
+      r,←⊂'into ⎕SE somehow.'
     ∇
 
     ∇ {r}←CopyThese objects;wsNamePath;object;i;msg

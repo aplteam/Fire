@@ -7,4 +7,14 @@
 ⍝ ## Supported platforms
 ⍝ Fire is a Windows-only tool.
 ⍝ ## How to install Fire
-⍝ Sincee version 7 Fire comes with its own installer. Just double-click it and you are done.
+⍝ Since version 7 Fire comes with its own installer. Just double-click it and you are done.
+⍝ ## API
+⍝ Although Fire was originally designed to be used with a GUI, and later as a user command, since version 8.0
+⍝ it offers an API. That allows you to search for a string programmatically, without the GUI being involved.
+⍝ There are two functions available:
+⍝ ### Creating a parameters space
+⍝ By calling `CreateSearchParms` you can create a namespace with default parameters. Then you can make the
+⍝ necessary adjustments before carrying out the search.
+⍝ ### Performing the search
+⍝ By calling the function `Search` and providing the parameter space as left argument and the search string as
+⍝ right argument you can carry out the actually search.

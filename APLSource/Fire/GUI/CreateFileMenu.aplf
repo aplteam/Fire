@@ -4,5 +4,7 @@
 
  ∆←⊂'MenuItem'
  ∆,←⊂'Caption'('Quit',##.TAB,'Escape')
+ ∆,←⊂'HintObj'n.Info
+ ∆,←⊂'Hint' ''
  n.QuitCmd←⍎'QuitCmd'rf.⎕WC ∆
  n.QuitCmd.onSelect←'OnQuitCmd'

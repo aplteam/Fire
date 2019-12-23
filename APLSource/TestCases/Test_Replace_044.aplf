@@ -8,7 +8,7 @@
  n←#.Fire.Fire.GUI.n
 
  n.SearchFor.Text←'History'
- n.LookIn.Text←'#.TestData.SaltedScript'
+ n.StartSearchIn.Text←'#.TestData.SaltedScript'
  n.(Case APL_Name).State←1
 
  {}∆Select n.StartBtn

@@ -14,7 +14,7 @@
  n←#.Fire.Fire.GUI.n
 
  n.SearchFor.Text←'⎕IO'
- n.LookIn.Text←'#.TEMP'
+ n.StartSearchIn.Text←'#.TEMP'
  n.ReuseSearch.State←0
 
  {}∆Select n.StartBtn

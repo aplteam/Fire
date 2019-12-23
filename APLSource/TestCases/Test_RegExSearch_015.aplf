@@ -14,7 +14,7 @@
  #.Temp_RegExSearch_015.⎕FX'r←fns2 arg' '⍝ ''APL''' '''COBOL''' '''Q'' ''K'' ''A'' ''J'' ''APL''' 'b←123'
 
  n.SearchFor.Text←'''.*?'''
- n.LookIn.Text←'#.Temp_RegExSearch_015'
+ n.StartSearchIn.Text←'#.Temp_RegExSearch_015'
  n.SearchIsRegEx.State←1
  n.Greedy.(Active State)←1
 

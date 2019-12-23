@@ -8,16 +8,22 @@
 
      ∆←⊂'MenuItem'
      ∆,←⊂'Caption' 'Stop in "Search"'
+     ∆,←⊂'HintObj'n.Info
+     ∆,←⊂'Hint' ''
      n.StopInSearch←⍎'StopInSearch'rf.⎕WC ∆
      n.StopInSearch.onSelect←'OnToggleStop'
 
      ∆←⊂'MenuItem'
      ∆,←⊂'Caption' 'Stop in "Replace"'
+     ∆,←⊂'HintObj'n.Info
+     ∆,←⊂'Hint' ''
      n.StopInReplace←⍎'StopInReplace'rf.⎕WC ∆
      n.StopInReplace.onSelect←'OnToggleStop'
 
      ∆←⊂'MenuItem'
      ∆,←⊂'Caption' 'Stop in "Calling counter'
+     ∆,←⊂'HintObj'n.Info
+     ∆,←⊂'Hint' ''
      n.StopInCallingCounter←⍎'StopInCallingCounter'rf.⎕WC ∆
      n.StopInCallingCounter.onSelect←'OnToggleStop'
 
@@ -25,9 +31,10 @@
 
      ∆←⊂'MenuItem'
      ∆,←⊂'Caption' 'Check all'
+     ∆,←⊂'HintObj'n.Info
+     ∆,←⊂'Hint' ''
      n.ToggleAllInDeveloperMenu←⍎'All'rf.⎕WC ∆
      n.ToggleAllInDeveloperMenu.onSelect←'OnToggleAll'
-
 
  :Else
 

@@ -46,8 +46,8 @@
      r←0
      flag←1
  :Case 46 0                                    ⍝ DEL ?
-     n.LookIn.Text←,'#'
-     n.LookIn.SelText←2 2
+     n.StartSearchIn.Text←,'#'
+     n.StartSearchIn.SelText←2 2
      {}HideAutoComplete ⍬
      r←flag←0
  :Case 115 4

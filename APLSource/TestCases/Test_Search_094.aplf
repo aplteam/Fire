@@ -18,7 +18,7 @@
  :EndWith
 
  n.SearchFor.Text←'is text  ⌹'
- n.LookIn.Text←'#.TEMP'
+ n.StartSearchIn.Text←'#.TEMP'
  n.Case.State←1
  n.(APL_Code Comments).State←0
 

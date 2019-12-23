@@ -3,6 +3,6 @@
      rl.SelItems[]←0
      rl.Index←1
      rl.SelItems[0]←1
-     n.LookIn.SelText←1 1
+     n.StartSearchIn.SelText←1 1
  :EndIf
  r←flag←0

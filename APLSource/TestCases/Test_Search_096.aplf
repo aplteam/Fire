@@ -12,7 +12,7 @@
  #.TMP.⎕FIX'⍝ Leading comment "Foo"' ':Namespace Test1' 'Hello←{' '''world''' '}' ':EndNamespace'
 
  n.SearchFor.Text←'"Foo"'
- n.LookIn.Text←'#.TMP'
+ n.StartSearchIn.Text←'#.TMP'
 
  {}∆Select n.StartBtn
  ∆Process n.Form

@@ -22,7 +22,7 @@
  n←#.Fire.Fire.GUI.n
 
  n.SearchFor.Text←'Hello'
- n.LookIn.Text←'#.FireAcreTest'
+ n.StartSearchIn.Text←'#.FireAcreTest'
 
  {}∆Select n.StartBtn
  ∆Process n.Form

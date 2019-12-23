@@ -3,7 +3,7 @@
 
  ∆←⊂'Group'
  ∆,←⊂'Caption' 'RegEx'
- ∆,←⊂'Posn'((8+0⊃PosnPlusSize n.LookIn)10)
+ ∆,←⊂'Posn'((8+0⊃PosnPlusSize n.StartSearchIn)10)
  ∆,←⊂'Size'(110 160)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  rf←⍎'OptionsGroup'n.Form.⎕WC ∆
@@ -15,7 +15,7 @@
  ∆,←⊂'Attach'('Top' 'Right' 'Top' 'Right')
  ∆,←⊂'State'##.G.SearchIsRegEx
  ∆,←⊂'TipObj'n.TipObj
- ∆,←⊂'Tip'(Split'Interpret "Search for" as a regular expression.')
+ ∆,←⊂'Tip' 'Interpret "Search for" as a regular expression.'
  n.SearchIsRegEx←⍎'SearchIsRegEx'rf.⎕WC ∆
  n.SearchIsRegEx.onSelect←'OnToggleSearchIsRegEx'
 
@@ -26,7 +26,7 @@
  ∆,←⊂'State'##.G.Greedy
  ∆,←⊂'Attach'('Top' 'Right' 'Top' 'Right')
  ∆,←⊂'TipObj'n.TipObj
- ∆,←⊂'Tip'(Split'Specifies whether the RegEx is greedy.')
+ ∆,←⊂'Tip' 'Specifies whether the RegEx is greedy.'
  n.Greedy←⍎'Greedy'rf.⎕WC ∆
  n.Greedy.onSelect←'OnToggleSearchIsRegEx'
 

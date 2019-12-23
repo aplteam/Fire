@@ -8,7 +8,7 @@
  n←#.Fire.Fire.GUI.n
 
  n.SearchFor.Text←'send'
- n.LookIn.Text←'#.TestData.LookForNames'
+ n.StartSearchIn.Text←'#.TestData.LookForNames'
  n.Case.State←1
 
  {}∆Select n.StartBtn

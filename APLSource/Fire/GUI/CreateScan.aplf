@@ -15,7 +15,7 @@
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'State'##.G.Comments
  ∆,←⊂'TipObj'n.TipObj
- ∆,←⊂'Tip'(Split'Scan comments. Not applicable to variables.')
+ ∆,←⊂'Tip' 'Scan comments. Not applicable to variables.'
  n.Comments←⍎'Comments'rf.⎕WC ∆
  n.Comments.onSelect←'OnScanChild'
  n.Comments.onKeyPress←'OnKeyPressStandard'
@@ -28,11 +28,11 @@
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'TipObj'n.TipObj
  msg←''
- msg,←'Scan text; that''s everything between quotes.⌹'
- msg,←'Note that text may contain program calls as in⌹'
- msg,←'executed strings and callback definitions.⌹'
- msg,←'Is applicable to variables.'
- ∆,←⊂'Tip'(Split msg)
+ msg,←⊂'Scan text; that''s everything between quotes.'
+ msg,←⊂'Note that text may contain program calls as in'
+ msg,←⊂'executed strings and callback definitions.'
+ msg,←⊂'Is applicable to variables.'
+ ∆,←⊂'Tip'msg
  n.Text←⍎'Text'rf.⎕WC ∆
  n.Text.onSelect←'OnScanChild'
  n.Text.onKeyPress←'OnKeyPressStandard'
@@ -45,9 +45,10 @@
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'TipObj'n.TipObj
  msg←''
- msg,←'Everything that is neither text nor a comment: the APL code as such⌹'
- msg,←'Not applicable to variables.'
- ∆,←⊂'Tip'(Split msg)
+ msg,←⊂'Everything that is neither text nor a comment:'
+ msg,←⊂'the APL code as such'
+ msg,←⊂'Not applicable to variables.'
+ ∆,←⊂'Tip'msg
  n.APL_Code←⍎'APL_Code'rf.⎕WC ∆
  n.APL_Code.onSelect←'OnScanChild'
  n.APL_Code.onKeyPress←'OnKeyPressStandard'
