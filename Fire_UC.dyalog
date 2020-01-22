@@ -1,10 +1,14 @@
-﻿:Class  Fire
+:Class  Fire
 ⍝ User Command script for "Fire"
 ⍝ Checks whether Fire is already loaded into ⎕SE.Fire.
 ⍝ If this is the case then Fire is started.
 ⍝ If this is not the case then Fire is copied into []SE from
 ⍝ the same directory the User Command stems from and then started.
 ⍝ Kai Jaeger ⋄ APL Team Ltd
+⍝ * Version 2.7.0 - 2020-01-22
+⍝   Now the user command checks whether the minimum requierements (Dyalog Version) are met.
+⍝   In the past an attempt to use Fire from a version that was too old resulted in a
+⍝   misleading error message.
 ⍝ * Version 2.6.0 - 2019-12-22
 ⍝   * New option -noGUI added: loads Fire into ⎕SE but does not run it.
 ⍝ * Version 2.5.1 - 2019-08-22
@@ -12,6 +16,8 @@
 ⍝ * Version 2.5.0 - 2019-07-28
 ⍝   * The script now simply assumes that the folder Fire\ is a sibling of this script.
 ⍝   * Changed to groups "WS".
+
+    MinimumVersionOfDyalogNeeded←'16.0'   ⍝ No need to edit this: it's checked by ]runmake, and changed if necessary
 
     ∇ r←List;⎕IO;⎕ML ⍝ this function usually returns 1 or more namespaces (here only 1)
       :Access Shared Public
@@ -24,9 +30,13 @@
       r.Parse←'1s -fl -noGUI'
     ∇
 
-    ∇ r←Run(Cmd Args);⎕IO;⎕ML;forceLoadFlag;neededModules;dne;n;noGUIFlag
+    ∇ r←Run(Cmd Args);⎕IO;⎕ML;forceLoadFlag;neededModules;dne;n;noGUIFlag;thisVersion
       :Access Shared Public
       ⎕IO←0 ⋄ ⎕ML←3 ⋄ ⎕WX←3
+      thisVersion←⊃(//)⎕VFI{⍵/⍨2>+\'.'=⍵}1⊃'#'⎕WG'APLVersion'
+      :If (⊃(//)⎕VFI MinimumVersionOfDyalogNeeded)>⊃(//)⎕VFI{⍵/⍨2>+\'.'=⍵}1⊃'#'⎕WG'APLVersion'
+          11 ⎕SIGNAL⍨'Fire needs at least version ',MinimumVersionOfDyalogNeeded,' of Dyalog APL'
+      :EndIf
       r←0 0⍴''
       forceLoadFlag←Args.Switch'fl'
       noGUIFlag←Args.Switch'noGUI'
@@ -54,15 +64,17 @@
           n←⎕SE._Fire.Fire.Run 0
           :If 1=≢↑Args.Arguments
           :AndIf (,'.')≡,↑Args.Arguments
-               n.LookIn.Text←(⎕SI⍳⊂'UCMD')⊃⎕NSI
+              n.LookIn.Text←(⎕SI⍳⊂'UCMD')⊃⎕NSI
           :EndIf
-       :EndIf
+      :EndIf
     ∇
 
     ∇ r←Help Cmd;⎕IO;⎕ML
       ⎕IO←0 ⋄ ⎕ML←3
       :Access Shared Public
-      r←⊂'Starts Fire (FInd & REplace).'
+      r←''
+      r,←⊂'Starts Fire (FInd & REplace).'
+      r,←⊂'Runs under Dyalog version ',MinimumVersionOfDyalogNeeded,' or later.'
       r,←⊂'Loads Fire (and some stuff needed by Fire) into ⎕SE and starts it.'
       r,←⊂'When you call Fire again it is started from ⎕SE without further ado.'
       r,←⊂'However, you can force a reload into ⎕SE by specifying the optional'

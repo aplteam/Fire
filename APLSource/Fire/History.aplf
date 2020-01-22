@@ -1,5 +1,7 @@
  History
 ⍝⍝ Contains information regarding the last release. A full history is available on GitHub. (This line is ignored)
+⍝ * 8.0.1
+⍝   * The user commands now checks whether is called by the minimum version of Dyalog required.
 ⍝ * 8.0.0
 ⍝   * Fire now offers an API in order to search strings programmatically.
 ⍝   * Bug fixes
