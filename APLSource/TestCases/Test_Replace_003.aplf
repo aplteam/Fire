@@ -5,8 +5,7 @@
  R←T._Failed
 
 ⍝ Preconditions
- 1 #.Fire.Fire.Run 0
- n←#.Fire.Fire.GUI.n
+ n←1 #.Fire.Fire.Run 0
 
  n.SearchFor.Text←'#.UTILS.#.UTILS.'
  n.StartSearchIn.Text←'#.TestData.Replacements'

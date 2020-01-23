@@ -24,7 +24,7 @@
  #.FireAcreTest.myRef.myForm.⎕FX'r←Hello5' 'r←''world12'''
  acreTestProjectName←'FireAcreTestTemp'
  :If (⊂acreTestProjectName)∊⎕SE.UCMD'acre.Projects'
-     {}⎕SE.UCMD'acre.close ',acreTestProjectName
+     {}⎕SE.acre.Close acreTestProjectName
  :EndIf
  ##.FilesAndDirs.RmDir acreTestProjectName
  {}⎕SE.UCMD'acre.CreateProject ',acreTestProjectName,' #.FireAcreTest -casecod=''on'' -keephistory=''on'''

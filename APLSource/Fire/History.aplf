@@ -1,5 +1,7 @@
  History
 ⍝⍝ Contains information regarding the last release. A full history is available on GitHub. (This line is ignored)
+⍝ * 8.0.3
+⍝   * Some of Fire's methods left behind temp files that could and should have been deleted.
 ⍝ * 8.0.2
 ⍝   * Bug fixes:
 ⍝     * The `]fire .` syntax has stopped working with release 8.0.0

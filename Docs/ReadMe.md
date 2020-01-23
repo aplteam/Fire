@@ -1,8 +1,8 @@
 [parm]:toc            = 3
 [parm]:numberHeaders  = 2 3 4
 [parm]:collapsibleTOC = 1
-[parm]:saveHTML       = 1
-[parm]:title          = 'Fire'
+[parm]:saveHTML       = 0
+[parm]:title          = 'Fire ReadMe'
 
 
 # Fire

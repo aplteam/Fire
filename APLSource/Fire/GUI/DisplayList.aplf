@@ -30,6 +30,6 @@
  n.HitList.(SelItems←(⍴Items)↑1)
  ##.G.ProcessingTime←{0.01×⌊100×⍵}(⎕AI[1]-##.∆AI)÷1000
  ##.G.NoOfHits←##.G.Negate⊃(+/+/↑¨hits[;2])(↑⍴hits)
- ##.G.NoOfObjects←↑⍴hits
+ ##.G.NoOfObjects←≢hits
  {}ReportHitsInStatusbar ##.G.NoOfHits,##.G.NoOfObjects,noOfObj,noOfContainers
 ⍝Done

@@ -1,0 +1,10 @@
+:Class MyClass
+∇r←Hello
+:Access Public Shared
+r←'Universe11'
+∇
+∇co
+:Implements constructor
+:Access Public
+∇
+:EndClass

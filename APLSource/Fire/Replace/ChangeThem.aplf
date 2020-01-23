@@ -45,8 +45,9 @@
          :Else
              ##.Question.ShowMsg'No changes'
          :EndIf
-         ⎕FUNTIE G.fileOldTieNo G.compareFileTieNo
          ⎕DL 0.1
+         G.(filenameOld filenameCompare)⎕FERASE¨G.fileOldTieNo G.compareFileTieNo
+         ##.F.DeleteFile G.(htmlFilename cssFilename)
          ##.F.DeleteFile G.(filenameCompare filenameOld)
      :EndIf
      {}##.DisableProgressbar ⍬

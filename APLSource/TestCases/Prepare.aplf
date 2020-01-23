@@ -1,2 +1,5 @@
  Prepare
  T←⎕NEW ##.Tester2 ⎕THIS
+ T.exec_before_each_test←'#.Before'
+ T.exec_after_each_test←'#.After'
+⍝Done

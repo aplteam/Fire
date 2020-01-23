@@ -25,7 +25,7 @@
          'append'##.A.WriteUtf8File htmlFilename BottomOfDoc
          :If noGui
              r←##.A.ReadUtf8File htmlFilename
-             ##.F.DeleteFile htmlFilename
+             ##.F.DeleteFile htmlFilename cssFilename
          :Else
              n←testFlag Display htmlFilename data
              n.∆Filename←htmlFilename

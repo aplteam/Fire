@@ -1,5 +1,6 @@
 [parm]:toc      = 2
 [parm]:saveHTML = 0 
+[parm]:title    = 'Fire: Useful RegExes'
 
 # Useful regular expressions
 

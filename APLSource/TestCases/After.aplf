@@ -1,0 +1,3 @@
+ After ps
+ Assert 0=≢#.Fire.FilesAndDirs.ListFiles'%TEMP%\*_',⎕AN,'_*' ⍝ If this crashes simply try again: most of the time that will fix the problem.
+ ⍝ Note that using a loop with a time delay does NOT help here.

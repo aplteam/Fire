@@ -1,0 +1,5 @@
+# Technical debt
+
+We have a problem with the dynamically created (?!) and/or changed namespace `#.TestData.Replacement`:
+Test cases rely on calling in a particu;ar sequence. The comments are already wrong, and the whole
+idea is a really bad one that needs to be addressed.

@@ -1,7 +1,7 @@
  OnClose←{
      ref←0⊃,⍵
      n←##.GUI.GetRefTo_n ref
-     _←##.F.DeleteFile n.TheForm.filenameHTML
+     _←##.F.DeleteFile n.∆Filename
      _←##.F.DeleteFile n.∆CSSfilename
      0⊣2 ⎕NQ n.TheForm'Close'
  }

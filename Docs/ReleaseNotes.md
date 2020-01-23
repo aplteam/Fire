@@ -1,4 +1,9 @@
-[parm]:saveHTML = 0 
+[parm]:saveHTML = 0
+[parm]:title    = 'Fire Release Notes'
+
+
+# Release Notes 8.0.3
+* Some of Fire's methods left behind temp files that could and should have been deleted.
 
 # Release Notes 8.0.2
 * Bug fixes (introduced with version 8.0
