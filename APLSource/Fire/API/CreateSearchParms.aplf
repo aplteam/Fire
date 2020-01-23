@@ -1,6 +1,7 @@
  parms←CreateSearchParms
 ⍝ If you make changes to this make sure to check `Populate_G` as well.
  parms←##.⎕NS''    ⍝ Holds Globals. GUI data is copied into this
+ parms,(⎕IO ⎕ML)←0 3
 
  parms.StartSearchIn←'#'
  parms.APL_Code←1
@@ -24,5 +25,5 @@
  :If 0∊∊##.⎕NC¨'AFR'
      ##.CreateRefs
  :EndIf
- parms.⎕FX'r←∆List' 'r←{⍵[⍋⍵[;1];]}{⍵,[0.5]⍎¨⍵}('' ''~¨⍨↓⎕NL 2)~''noGUI'''
+ parms.⎕FX'r←∆List' 'r←{⍵[⍋↑⍵[;0];]}{⍵,[0.5]⍎¨⍵}('' ''~¨⍨↓⎕NL 2)~''noGUI'''
 ⍝Done

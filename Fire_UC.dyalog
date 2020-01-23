@@ -5,6 +5,8 @@
 ⍝ If this is not the case then Fire is copied into []SE from
 ⍝ the same directory the User Command stems from and then started.
 ⍝ Kai Jaeger ⋄ APL Team Ltd
+⍝ * Version 2.7.1 - 2020-01-22
+⍝   * Bug fix: the  ]fire .  had stopped working with version 8.0.0
 ⍝ * Version 2.7.0 - 2020-01-22
 ⍝   Now the user command checks whether the minimum requierements (Dyalog Version) are met.
 ⍝   In the past an attempt to use Fire from a version that was too old resulted in a
@@ -64,7 +66,7 @@
           n←⎕SE._Fire.Fire.Run 0
           :If 1=≢↑Args.Arguments
           :AndIf (,'.')≡,↑Args.Arguments
-              n.LookIn.Text←(⎕SI⍳⊂'UCMD')⊃⎕NSI
+              n.StartSearchIn.Text←(⎕SI⍳⊂'UCMD')⊃⎕NSI
           :EndIf
       :EndIf
     ∇
