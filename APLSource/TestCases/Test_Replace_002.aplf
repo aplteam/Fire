@@ -30,8 +30,8 @@
 
  n.SearchFor.Text←'#.UTILS.#.UTILS.'
  {}∆Select n.StartBtn
- ∆Process n.Form
- →T.GoToTidyUp(≢list)≠#.Fire.Fire.G.NoOfObjects  ⍝ Error?! Re-execute this line (!) and it probably will be fine (timing issue)
+ 0.3 ∆Process n.Form
+ →T.GoToTidyUp(≢list)≠#.Fire.Fire.G.NoOfObjects   ⍝ Error?! Re-execute this line (!) and it probably will be fine (timing issue)
  →T.GoToTidyUp(≢list)≠#.Fire.Fire.G.NoOfObjects
  ss←'r←#.UTILS.#.UTILS.DAB''aaa'''   ⍝ Search string
  code←1↓↑,/(⎕UCS 13),¨⎕SRC #.TestData.Replacements.class_1

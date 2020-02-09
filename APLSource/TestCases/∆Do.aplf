@@ -1,0 +1,11 @@
+ r←{wait}∆Do statement;counter;flag
+ wait←{0<⎕NC ⍵:⍎⍵ ⋄ 0.1}'wait'
+ counter←0
+ :Repeat
+     flag←r←⍎statement
+     :If 1=flag
+         {}⎕WA
+         ⎕DL wait
+         flag←20≥counter←counter+1
+     :EndIf
+ :Until ~flag

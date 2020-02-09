@@ -2,6 +2,11 @@
 [parm]:title    = 'Fire Release Notes'
 
 
+# Release Notes 8.0.4
+* The function `API.CreateSearchParms` did not define `⎕IO` and `⎕ML` but printed something to 
+  the session instead.
+* Tests improved
+
 # Release Notes 8.0.3
 * Some of Fire's methods left behind temp files that could and should have been deleted.
 

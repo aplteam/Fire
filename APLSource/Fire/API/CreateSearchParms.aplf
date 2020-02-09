@@ -1,7 +1,7 @@
  parms←CreateSearchParms
 ⍝ If you make changes to this make sure to check `Populate_G` as well.
  parms←##.⎕NS''    ⍝ Holds Globals. GUI data is copied into this
- parms,(⎕IO ⎕ML)←0 3
+ parms.(⎕IO ⎕ML)←0 3
 
  parms.StartSearchIn←'#'
  parms.APL_Code←1
