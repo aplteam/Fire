@@ -1,5 +1,7 @@
  History
 ⍝⍝ Contains information regarding the last release. A full history is available on GitHub. (This line is ignored)
+⍝ * 8.0.5
+⍝   * Bug fix: Searching ⎕SE could crash Fire due to strange shadowing problems.
 ⍝ * 8.0.4
 ⍝   * Bug fix in `API.CreateSearchParms`: rather than setting `⎕IO` and `⎕ML` it printed merely to the session.
 ⍝ * 8.0.3

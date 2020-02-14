@@ -1,0 +1,19 @@
+ R←Test_Search_097(stopFlag batchFlag);n;⎕TRAP;n2;html;expected
+⍝ Search ⎕SE. Did crash Fire once when ALT was active due to strange shadowing problems.
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←T._Failed
+
+⍝ Preconditions
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+
+ n.SearchFor.Text←'⍝∇req'
+ n.StartSearchIn.Text←'⎕SE'
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+
+ R←T._OK
+
+∆TidyUp:
+ CloseFire

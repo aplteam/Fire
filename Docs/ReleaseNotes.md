@@ -2,6 +2,9 @@
 [parm]:title    = 'Fire Release Notes'
 
 
+# Release Notes 8.0.5
+* Bug fix: Searching `⎕SE` could crash Fire due to strange shadowing problems.
+
 # Release Notes 8.0.4
 * The function `API.CreateSearchParms` did not define `⎕IO` and `⎕ML` but printed something to 
   the session instead.
