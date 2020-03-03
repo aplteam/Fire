@@ -10,7 +10,7 @@
  key←⊂2↑4↓msg
  :If key∊k.(Escape AltF4)
      :Trap 6
-         ⎕NQ ref.##.##'Close'
+         ⎕NQ((##.GUI.GetRefTo_n ref).TheForm)'Close'
      :EndTrap
      r←0
  :ElseIf key∊k.(CtrlHome CtrlEnd)  ⍝ Ignore those

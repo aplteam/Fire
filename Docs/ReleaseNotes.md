@@ -2,6 +2,10 @@
 [parm]:title    = 'Fire Release Notes'
 
 
+
+# Release Notes 8.0.6
+Bug fix: pressing <escape> in the Hit report seemed to have no effect at all, while pressing it a second time closed both, the Hit report and the main form.
+
 # Release Notes 8.0.5
 * Bug fix: Searching `⎕SE` could crash Fire due to strange shadowing problems.
 

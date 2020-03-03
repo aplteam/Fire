@@ -1,5 +1,8 @@
  History
 ⍝⍝ Contains information regarding the last release. A full history is available on GitHub. (This line is ignored)
+⍝ * 8.0.6
+⍝   * Bug fix: pressing <escape> in the Hit report seemed to have no effect at all, while pressing it a second time
+⍝     closed both, the Hit report and the main form.
 ⍝ * 8.0.5
 ⍝   * Bug fix: Searching ⎕SE could crash Fire due to strange shadowing problems.
 ⍝ * 8.0.4
