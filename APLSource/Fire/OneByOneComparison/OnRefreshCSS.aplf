@@ -1,7 +1,8 @@
- r←OnRefreshCSS msg;b;was;ref;ID
+ r←OnRefreshCSS msg;b;was;ref;ID;n
  ⍝ Rewrite the CSS and then refreshs the browser.
  ⍝ Used to display either the old or the new text.
  (ref msg ID)←3↑msg,⊂''
+ n←##.GUI.GetRefTo_n ref
  b←IsTicked n
  ⎕THIS.wasTicked←b
  was←#.CursorObj

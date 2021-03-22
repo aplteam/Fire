@@ -31,7 +31,7 @@
  {}∆Select n2.StartBtn
  ∆Process n.Form
  →T.GoToTidyUp 1≠#.Fire.Fire.Replace.NoOfReplacements
- →T.GoToTidyUp('myDfns←{a←''universe''' 'b←''world''' 'c←''universe''}')≢##.APLTreeUtils.dlb #.TEMP.⎕NR'myDfns'
+ →T.GoToTidyUp('myDfns←{a←''universe''' 'b←''world''' 'c←''universe''}')≢APLTreeUtils2.DLB #.TEMP.⎕NR'myDfns'
  R←T._OK
 
 ∆TidyUp:

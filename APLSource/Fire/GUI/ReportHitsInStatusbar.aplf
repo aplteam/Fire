@@ -1,14 +1,15 @@
- {r}←{reportCPU_time}ReportHitsInStatusbar(noOfHits noOfNames noOfScannedObjs noOfContainers);tx
+ {r}←{reportCPU_time}ReportHitsInStatusbar(noOfHits noOfNames noOfScannedObjs noOfContainers reused);tx
  r←⍬
  reportCPU_time←{0<⎕NC ⍵:⍎⍵ ⋄ 1}'reportCPU_time'
  :If 0=noOfHits
-     tx←'No hits found'
+     tx←'No hits found',reused/' in hit list'
  :Else
      tx←(⍕noOfHits),' hit',((1≠noOfHits)/'s')
      tx,←' found in ',(⍕noOfNames)
      tx,←{(0<⍵)/' of ',⍕⍵}noOfScannedObjs
      tx,←' APL object',(1≠noOfScannedObjs)/'s'
      tx,←{(0<≢⍵)/' from ',(⍕⍵),' container',((1≠⍵)/'s')}noOfContainers
+     tx,←reused/' within the hit list'
  :EndIf
  reportCPU_time WriteInfo tx
 ⍝Done

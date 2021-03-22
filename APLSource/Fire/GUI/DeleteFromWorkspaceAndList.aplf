@@ -24,5 +24,6 @@
      :EndIf
  :EndIf
  LetAcreDelete rows
+ LetLinkDelete rows
  {}RemoveFromHitList rows
 ⍝Done

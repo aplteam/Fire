@@ -1,7 +1,7 @@
  {r}←ProcessOneByOne dummy;batchFlag
 ⍝ Checks whether the user input is okay and then performs a "one-by-one" Replace.
  r←⍬
- →(0=Warning_ReplaceIsEmpty⍣((0=n.DeleteLine.State)∧0∊⍴n.ReplaceBy.Text)⊣1)/0
+ →(0=Warning_ReplaceIsEmpty⍣((0=n.DeleteLine.State)∧0=≢n.ReplaceBy.Text)⊣1)/0
  →(0=CheckUserInput)/0
  n.(StartBtn Cancel).Active←0
  n.Form.Active←0

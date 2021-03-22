@@ -1,29 +1,24 @@
  parms←CreateSearchParms
-⍝ If you make changes to this make sure to check `Populate_G` as well.
- parms←##.⎕NS''    ⍝ Holds Globals. GUI data is copied into this
+⍝ If you make changes to this, make sure to check `Populate_G` as well.
+ parms←##.⎕NS''             ⍝ Holds Globals.
  parms.(⎕IO ⎕ML)←0 3
-
  parms.StartSearchIn←'#'
  parms.APL_Code←1
-
  parms.SearchIsRegEx←0
  parms.Greedy←0
-
  parms.Case←1
  parms.APL_Name←0
-
  parms.Code←1
  parms.Vars←1
-
  parms.Comments←1
  parms.Text←1
-
  parms.Negate←0
-
  parms.Report←0
-
+ parms.LookForList←''
+ parms.IgnoreRefs←1
+ parms.IgnoreTatinPkgs←1
  :If 0∊∊##.⎕NC¨'AFR'
      ##.CreateRefs
  :EndIf
- parms.⎕FX'r←∆List' 'r←{⍵[⍋↑⍵[;0];]}{⍵,[0.5]⍎¨⍵}('' ''~¨⍨↓⎕NL 2)~''noGUI'''
+ parms.⎕FX'r←∆List' 'r←{⍵[⍋⊃⍵[;0];]}{⍵,[0.5]⍎¨⍵}('' ''~¨⍨↓⎕NL 2)~''noGUI'''
 ⍝Done

@@ -11,6 +11,7 @@
  G.ReuseSearch←0
  G.Negate←0
  G.IgnoreRefs←1
+ G.IgnoreTatinPkgs←1
  G.SearchIsRegEx←0
  G.Text←1
  G.Vars←1

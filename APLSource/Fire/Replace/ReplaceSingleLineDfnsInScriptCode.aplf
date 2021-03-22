@@ -14,7 +14,7 @@
  :If 1=≢tl                                  ⍝ No diamondized statement involved?
      script←(-sl)⌽code,1↓script
  :Else
-     masked←##.A.dlb masked
+     masked←##.A.DLB masked
      fnsNames←{⍵↑⍨¯1+⍵⍳'{'}¨({∨/'←{'⍷⍵}¨masked)/¨masked
      ind←fnsNames⍳⊂name
      'Something is very wrong here!'##.Assert ind≠≢fnsNames

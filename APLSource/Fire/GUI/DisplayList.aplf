@@ -10,7 +10,7 @@
  n.HitList.Items←names                      ⍝ Assign the names
  n.HitList.Visible←1
  type2←('Vars' 'tfn' 'dfn' 'top' 'dop' 'NS' 'Interface' 'Class' '')[type1←2.1 3.1 3.2 4.1 4.2 9.1 9.5 9.4⍳hits[;3]]
- type2[##.Where hits[;6]=4]←⊂'Class Instance'
+ type2[⍸hits[;6]=4]←⊂'Class Instance'
  fnsOprs←type1∊1 2
  isScript←IsScripted¨↓hits[;0 1 3]
  realNames←⍕¨##.GetDisplayFormat¨locs
@@ -31,5 +31,5 @@
  ##.G.ProcessingTime←{0.01×⌊100×⍵}(⎕AI[1]-##.∆AI)÷1000
  ##.G.NoOfHits←##.G.Negate⊃(+/+/↑¨hits[;2])(↑⍴hits)
  ##.G.NoOfObjects←≢hits
- {}ReportHitsInStatusbar ##.G.NoOfHits,##.G.NoOfObjects,noOfObj,noOfContainers
+ {}ReportHitsInStatusbar ##.G.NoOfHits,##.G.NoOfObjects,noOfObj,noOfContainers,##.G.ReuseSearch
 ⍝Done

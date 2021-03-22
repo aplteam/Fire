@@ -1,4 +1,4 @@
- R←Test_acre_004(stopFlag batchFlag);n;n2;⎕TRAP;body;acreTestProjectName
+ R←Test_acre_004(stopFlag batchFlag);n;n2;⎕TRAP;body;acreTestProjectName;res
 ⍝ Check whether an acre 4 (or later) managed script remains acre managed after a "Replace" operation
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
 
@@ -6,12 +6,14 @@
 
 ⍝ Preconditions
  acreTestProjectName←'FireAcreTest'
- ##.FilesAndDirs.RmDir acreTestProjectName
+ FilesAndDirs.RmDir acreTestProjectName
  #.⎕SHADOW'TEMP'
  'TEMP'#.⎕NS''
  #.TEMP.⎕FX'r←Hello' 'r←''Hello world'''
  #.TEMP.⎕FIX':Class Foo' '∇r←Hello' 'r←''Hello world''' '∇' ':EndClass'
- {}⎕SE.UCMD'acre.CreateProject ',acreTestProjectName,' #.TEMP'
+⍝ res←⎕SE.UCMD'acre.CreateProject ',acreTestProjectName,' #.TEMP'
+ res←⎕SE.acre.CreateProject acreTestProjectName #.TEMP
+ Assert 0<≢res
 
  1 #.Fire.Fire.Run 0
  n←#.Fire.Fire.GUI.n
@@ -39,5 +41,5 @@
  R←T._OK
 
 ∆TidyUp:
- ##.FilesAndDirs.RmDir acreTestProjectName
+ FilesAndDirs.RmDir acreTestProjectName
  CloseFire

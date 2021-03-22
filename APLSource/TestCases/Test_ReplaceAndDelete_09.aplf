@@ -30,7 +30,7 @@
  {}∆Select n2.StartBtn
  ∆Process n.Form
  expected←,¨'⍝ comment 1' '' '⍝ comment 2' ':Namespace MyNS' '∇ r←Hello' 'r←''World''' '∇' ':EndNamespace' '⍝ comment 3' '' '⍝ comment 4'
- →T.GoToTidyUp expected≢##.APLTreeUtils.dlb ⎕SRC #.TEMP.MyNS
+ →T.GoToTidyUp expected≢APLTreeUtils2.DLB ⎕SRC #.TEMP.MyNS
  R←T._OK
 
 ∆TidyUp:

@@ -32,7 +32,7 @@
          msg←'After removing stuff that cannot be changed there is nothing left!'
          'Replace'##.Question.ShowMsg msg
      :Else
-         0 ##.GUI.ReportHitsInStatusbar ##.G.(NoOfHits NoOfObjects NoOfObjects),⊂⍬
+         0 ##.GUI.ReportHitsInStatusbar ##.G.(NoOfHits NoOfObjects NoOfObjects),(⊂⍬),##.G.ReuseSearch
          {}##.GUI.CopyGuiToGlobal ⍬
          n←##.CreateGuiRefContainer   ⍝ DO NOT localize "n"!
          n←CreateReplaceGUI n

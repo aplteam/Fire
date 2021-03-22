@@ -5,7 +5,7 @@
 ⍝ their also might be a comment on the last line after that.
  script←sl⌽script
  fl←0⊃script                            ⍝ First Line of the dfns
- sp←1⍳⍨(fnsName,'←{')⍷##.A.dmb fl       ⍝ Starting Point
+ sp←1⍳⍨(fnsName,'←{')⍷##.A.DMB fl       ⍝ Starting Point
  oldBody←noOf↑script
  script←noOf↓script
  maskedOld←MaskText¨oldBody

@@ -1,0 +1,4 @@
+ l←DropTatinFrom l;ignore
+ ignore←('#'≡↑⍕↑l)⊃'⎕SE._tatin.' '#._tatin.'
+ l←(ignore∘≢¨(≢ignore)↑¨⍕¨l[;0])⌿l
+⍝Done

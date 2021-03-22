@@ -1,5 +1,5 @@
  IfUpper←{
 ⍝ Return ⍵ as uppercase if G.Case is zero
      G.Case:⍵
-     A.Uppercase ⍵
+     1 ⎕C ⍵
  }

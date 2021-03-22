@@ -1,5 +1,5 @@
  Split←{
-⍝ Cover for APLTreeUtils.Split. Uses "⌹" as default split character,
+⍝ Cover for APLTreeUtils2.Split. Uses "⌹" as default split character,
 ⍝ Used to bring Tips into shape.
      ⍺←'⌹'
      ⍺ ##.A.Split ⍵

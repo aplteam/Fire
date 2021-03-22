@@ -2,7 +2,7 @@
 ⍝
      (n.ReuseSearch.State):⍬                        ⍝ No need for autocomplete on a hit list
      f←n.AutoCompleteForm.Visible                   ⍝ Flag: is autocompletion visible right now?
-     isQSE←'⎕SE'≡3↑##.A.Uppercase n.StartSearchIn.Text     ⍝ Flag: is it pointing to ⎕SE?!
+     isQSE←'⎕SE'≡3↑1 ⎕C n.StartSearchIn.Text        ⍝ Flag: is it pointing to ⎕SE?!
      s←isQSE{⍺:⎕SE ⋄ ((0∊⍴⍵)∨'#'=1⍴,⍵):# ⋄ ⍬}n.StartSearchIn.Text  ⍝ Determine source
      (0∊⍴,s):HideAutoComplete ⍬
      _←CheckForQSE isQSE

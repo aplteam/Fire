@@ -49,5 +49,6 @@
          :EndSelect
      :EndIf
      ##.G.TestFlag TellAcre(⍕ref),'.',{⍵↑⍨⍵⍳' '}(⍴':Namespace ')↓0⊃script
+     ##.G.TestFlag TellLink ref({⍵↑⍨⍵⍳' '}(⍴':Namespace ')↓0⊃script)
  :EndIf
  ⍝Done

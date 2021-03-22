@@ -11,12 +11,12 @@
              b←{~0∊∘⍴¨⍵}result←{G.SearchFor2 ⎕S 0⍠options⊣⍵}¨⍕¨names
              (b/result)←≢¨b/result
          :Else
-             msg←A.dmb{0=+/b←':'=⍵:⍵ ⋄ (~b)⊂⍵}⎕DMX.Message
+             msg←A.DMB{0=+/b←':'=⍵:⍵ ⋄ (~b)⊂⍵}⎕DMX.Message
              'Regular Expression error'Question.ShowMsg msg
              ⎕SIGNAL 988
          :EndTrap
      :Else
-         b←∨/result←(IfLower G.SearchFor2)⍷IfLower⊃{~'.'∊⍵:⍵ ⋄ ##.APLTreeUtils.Last ⍵}∘⍕¨names
+         b←∨/result←(IfLower G.SearchFor2)⍷IfLower⊃{~'.'∊⍵:⍵ ⋄ ##.APLTreeUtils2.Last ⍵}∘⍕¨names
          result←+/result
      :EndIf
      :If 0<+/b
@@ -24,7 +24,7 @@
      :EndIf
      :If 0≠≢hits
          :If 1∊bool←~↑∘⍴∘,¨hits[;0]
-             hits[Where bool;0 1]←⊃{⍵.##(1⊃'.'A.SplitPath⍕⍵)}¨bool⌿hits[;1]
+             hits[⍸bool;0 1]←⊃{⍵.##(1⊃'.'A.SplitPath⍕⍵)}¨bool⌿hits[;1]
          :EndIf
          hits,←⊂⍬
          hits,←⊂⍬

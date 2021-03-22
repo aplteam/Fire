@@ -1,7 +1,0 @@
-:Namespace MyNamespace
-    ∇ r←Hello3
-     :Access Public Shared
-     r←'Universe'
-    ∇
- Hello4←{'Universe'}
-:EndNamespace

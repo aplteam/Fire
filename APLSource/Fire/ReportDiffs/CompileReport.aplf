@@ -1,17 +1,16 @@
- {r}←CompileReport G;A;fno;firstFlag;k;searchFor;replaceBy;realSequence;wantedSequence;noOfItems;ind
+ {r}←CompileReport G;A;firstFlag;k;searchFor;replaceBy;realSequence;wantedSequence;noOfItems;ind
 ⍝ Compiles a full report. Unchanged lines are shown once but enclosed with <div class="show">
 ⍝ so that we can hide them all in one go via CSS.
 ⍝ All changed lines are shown twice, with the changes emphasized, again via CSS.
 ⍝ "compressType": 1=full report ⋄ 2=compressed report
  r←⍬ ⋄ A←##.A
- A.WriteUtf8File G.htmlFilename(##.ReportDiffs.TopOfDoc 1⊃A.SplitPath G.cssFilename)
- fno←G.htmlFilename ⎕NTIE 0
- WriteReport←fno∘{(0∊⍴⍵): ⋄ 'append'A.WriteUtf8File ⍺ ⍵}
+ (⊂##.ReportDiffs.TopOfDoc 1⊃A.SplitPath G.cssFilename)##.F.NPUT G.htmlFilename 1
+ WriteReport←G.htmlFilename∘{(0∊⍴⍵): ⋄ (⊂⍵)##.F.NPUT ⍺ 2}
  {}'Compile report...'##.EnableProgressbar noOfItems←-/⌽2↑⎕FSIZE G.compareFileTieNo
  firstFlag←1
  k←0
  searchFor←##.IfLower G.SearchFor
- replaceBy←##.A.dlb ##.IfLower G.ReplaceBy
+ replaceBy←##.A.DLB ##.IfLower G.ReplaceBy
  realSequence←⊃¨{(⍕⍺),'.',⍵}/¨↓(##.GetSortedHitListData ⍬)[;0 1]
  wantedSequence←⊃¨{(⍕⍺),'.',⍵}/¨↓##.G.Hits[;0 1]
  :Repeat
@@ -22,6 +21,6 @@
 
      firstFlag←0
  :Until noOfItems=k←k+1
- 'append'A.WriteUtf8File fno(⊂'</div>')
- 'append'A.WriteUtf8File fno BottomOfDoc
- ⎕NUNTIE fno
+ WriteReport'</div>'
+ WriteReport BottomOfDoc
+⍝Done

@@ -8,3 +8,4 @@
  :Trap 0
      _←⎕NQ #.Fire.Fire.GUI.n.Form'Close'
  :EndTrap
+ ⎕DL 0.1

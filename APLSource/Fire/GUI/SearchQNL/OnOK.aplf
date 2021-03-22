@@ -1,3 +1,7 @@
  OnOK←{
-     Search n2
+     parms←##.##.API.CreateParmsFor_QNL_Search
+     parms.FullPath←n2.FullPath.State
+     parms.SearchIsRegEx←n2.IsRegEx.State
+     parms.SearchFor←n2.SearchFor.Text
+     Search parms
  }

@@ -1,8 +1,9 @@
- r←{parms}Search searchFor
+ r←{parms}Search searchFor;⎕ML;⎕IO
 ⍝ Performs the actual search.
 ⍝ `r` reports objects that carry a hit.
+ ⎕IO←0 ⋄ ⎕ML←3
  parms←{0<⎕NC ⍵:⍎⍵ ⋄ CreateSearchParms}'parms'
- parms.(noGUI Containe)←1  ⍝ Required but cannot be set by user
+ parms.(noGUI IgnoreRefs)←1                         ⍝ Required but cannot be set by user
  parms.StartSearchIn←⍕parms.StartSearchIn
  :If 0=≢r←parms ##.Search searchFor
      r←0 3⍴''
@@ -12,7 +13,7 @@
      :If parms.Report
          r←⍪parms ##.PrintHitsToSession r
      :Else
-         r←r[;0 2 3]                                            ⍝ Just parent, object, type and number of hits
+         r←r[;0 2 3]                                ⍝ Just parent, object, type and number of hits
      :EndIf
  :EndIf
 ⍝Done

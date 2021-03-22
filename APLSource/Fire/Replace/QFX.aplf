@@ -3,18 +3,19 @@
 ⍝ Attempts to delete objects when "code" is empty & they are dfns/dops.
 ⍝ Returns 1 in case the user has cancelled the whole operation, otherwise 0.
  r←0
- :If 0∊⍴code
+ :If 0=≢code
  :AndIf (ref.⎕NC⊂name)∊3.1 3.2 4.1 4.2
      ref.⎕EX name
      :If 1=##.IsAnyAcreAround
          :If 3=⎕NC'#.acre.Erase'
              {}#.acre.Erase(⍕ref),'.',name
          :ElseIf 9=⎕NC'⎕SE.acre'
-             {}⎕SE.UCMD'acre.Erase ',(⍕ref),'.',name
+             {}⎕SE.acre.Erase(⍕ref),'.',name
          :Else
              . ⍝ Huuh?! Acre is around and isn't?!
          :EndIf
      :EndIf
+      ⍝TODO⍝ Link: Add Link support here
  :Else
 ∆Fix:
      code←{(⎕UCS 13)Split ⍵}⍣((⎕UCS 13)∊code)⊣code
@@ -44,6 +45,7 @@
          :Else
              flag←1
              ##.G.TestFlag TellAcre(⍕ref),'.',name
+             ##.G.TestFlag TellLink ref name
          :EndIf
      :Until flag
  :EndIf

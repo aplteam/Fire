@@ -1,5 +1,5 @@
  EditCmd←{
-     where←##.Where n.HitList.SelItems
+     where←⍸n.HitList.SelItems
      0=≢where:⍬
      m←'You cannot edit class instances.'
      bool←4=↑¨n.HitList.Data[where;2]

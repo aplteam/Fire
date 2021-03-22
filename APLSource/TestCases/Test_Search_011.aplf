@@ -1,0 +1,20 @@
+ R←Test_Search_011(stopFlag batchFlag);n;⎕TRAP
+⍝ Search for "DTB" including tatin packages
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←T._Failed
+
+⍝ Preconditions
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+
+ n.SearchFor.Text←'DTB'
+ n.StartSearchIn.Text←'#'
+ n.IgnoreTatinPkgs.State←0
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →T.GoToTidyUp~0<+/'#._tatin'{⍺∘≡¨(≢⍺)↑¨⍵}n.HitList.ReportInfo[;0]
+ R←T._OK
+
+∆TidyUp:
+ CloseFire

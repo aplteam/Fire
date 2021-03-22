@@ -3,8 +3,8 @@
  :If searchType
      rf←⍎G.StartSearchIn
      noOfContainers←0⊃⍴nsList←CompileNamespaceList G.StartSearchIn 0
-     :If ~0∊⍴list←⊃↑,/{⍵∘,¨⊂¨⍵.⎕NL-2 3 4}¨nsList[;0]
-     :AndIf ~0∊⍴list←list⍪↑⍪/{⍵,[0.5]⍵.⎕NL-9.4 9.5}¨nsList[;0]
+     :If 0≠≢list←⊃↑,/{⍵∘,¨⊂¨⍵.⎕NL-2 3 4}¨nsList[;0]
+     :AndIf 0≠≢list←list⍪↑⍪/{⍵,[0.5]⍵.⎕NL-9.4 9.5}¨nsList[;0]
          list,←{↑⍺.⎕NC⊂⍵}/¨↓list[;0 1]
          list⌿⍨←~list[;2]∊-2.6 3.6 8.6 9.6            ⍝ Drop external stuff
          list,←Types.∆GetTypes list[;0]

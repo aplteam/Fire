@@ -21,7 +21,7 @@
          n.FindNext.Active←0
          :Return
      :Else
-         ind←↑,/{↑,/⍵}¨¨(((⍳≢b),¨≢ns.SearchFor.Text){0=+/⍵:⍬ ⋄ ⍺∘{((⍺[0]+1),¨⍵+1)((⍺[0]+1),¨⍵+⍺[1]+1)}¨##.A.Where ⍵}¨b)~⊂⍬
+         ind←↑,/{↑,/⍵}¨¨(((⍳≢b),¨≢ns.SearchFor.Text){0=+/⍵:⍬ ⋄ ⍺∘{((⍺[0]+1),¨⍵+1)((⍺[0]+1),¨⍵+⍺[1]+1)}¨⍸⍵}¨b)~⊂⍬
          length←≢ns.SearchFor.Text
      :EndIf
  :EndIf

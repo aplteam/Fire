@@ -1,21 +1,20 @@
- RemoveFromHitReport←{
-     n←⍺
-     rows←⍵
-     file←(⍴'file://')↓n.Browser.LocationURL
-     file←('/'=1⍴file)↓file
-     file←↑,/{l←⌊/(w←⌽⍵)⍳'/\' ⋄ (⌽l↓w)({⍵↑⍨⍵⍳'#'}⌽l↑w)}file  ⍝ Remove bookmark
-     buffer←##.A.ReadUtf8File file
-     bool←~↑∨/∨/¨¨buffer∘{∨/¨⍵∘⍷¨⍺}¨({('<h2>',(⍕1+⍵),'. ')}¨rows)
-     rows2←##.Where~bool
-     length←buffer∘{+/∧\'<a '∘≢¨3↑¨(1+⍵)↓⍺}¨rows2  ⍝ Number of rows of each object
-     bool[↑,/rows2+¨1+⍳¨length]←0
-     buffer/⍨←bool
-     _←##.A.WriteUtf8File file buffer
-     0=≢##.G.Hits:⍬
+ {r}←n RemoveFromHitReport rows;file;buffer;searchFor;line;replaceBy;row;bool
+ r←⍬
+⍝ file←(≢'file://')↓n.Browser.LocationURL
+⍝ file←('/'=1⍴file)↓file
+⍝ file←↑,/{l←⌊/(w←⌽⍵)⍳'/\' ⋄ (⌽l↓w)({⍵↑⍨⍵⍳'#'}⌽l↑w)}file  ⍝ Remove bookmark
+⍝ buffer←↑##.F.NGET file
+⍝ :For row :In rows
+⍝     searchFor←'<div class="obj" id="div-no-',(⍕row+1),'">'
+⍝     replaceBy←'<div class="obj removed" id="div-no-',(⍕row+1),'">'
+⍝     buffer←searchFor ⎕R replaceBy⍠('Greedy' 0)⊣buffer
+⍝ :EndFor
+⍝ (⊂buffer)##.##.FilesAndDirs.NPUT file 1
+ :If 0≠≢##.G.Hits
      bool←~({(⍕↑⍵),'.',1⊃⍵}¨↓##.G.Hits)∊n.List.ReportInfo[rows;0]
      ##.G.Hits←bool⌿##.G.Hits
-     _←{##.G.NoOfHits←##.G.Negate⊃(+/+/↑¨⍵[;5])(≢⍵)}⍣(0<≢##.G.Hits)⊣##.G.Hits
+     {}{##.G.NoOfHits←##.G.Negate⊃(+/+/↑¨⍵[;5])(≢⍵)}⍣(0<≢##.G.Hits)⊣##.G.Hits
      ##.G.NoOfObjects←≢##.G.Hits
-     _←0 ##.GUI.ReportHitsInStatusbar ##.G.(NoOfHits NoOfObjects),0 ''
-     ⍬
- }
+     {}0 ##.GUI.ReportHitsInStatusbar ##.G.(NoOfHits NoOfObjects),0 '',##.G.ReuseSearch
+ :EndIf
+⍝Done

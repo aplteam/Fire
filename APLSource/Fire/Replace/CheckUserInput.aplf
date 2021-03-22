@@ -15,7 +15,7 @@
      _←##.Question.ShowMsg msg
      r←0
  :ElseIf ~##.G.Case
- :AndIf ≡/##.##.APLTreeUtils.Lowercase¨n.SearchFor.Text(,n.ReplaceBy.Text)
+ :AndIf ≡/⎕C¨n.SearchFor.Text(,n.ReplaceBy.Text)
      msg←⊂'"Search for" and "Replace by" do equal.'
      msg,←⊂'That does not make too much sense, right?'
      _←##.Question.ShowMsg msg

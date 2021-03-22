@@ -1,10 +1,6 @@
- R←Test_acre_001(stopFlag batchFlag);n;n2;⎕TRAP;acreTestProjectName;changeFilesFolder;expected
+ R←Test_acre_001(stopFlag batchFlag);n;n2;⎕TRAP;acreTestProjectName;changeFilesFolder;expected;res
 ⍝ Check whether acre reacts correctly when objects are changed by Fire that partly belong to an open acre 4 (or later) project
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
-
- :If ~IsAcre6OrBetter
-     →0,R←T._Inactive
- :EndIf
 
  R←T._Failed
 
@@ -23,11 +19,12 @@
  'myForm'#.FireAcreTest.myRef.⎕WC'Form'('Visible' 0)('KeepOnClose' 1)
  #.FireAcreTest.myRef.myForm.⎕FX'r←Hello5' 'r←''world12'''
  acreTestProjectName←'FireAcreTestTemp'
- :If (⊂acreTestProjectName)∊⎕SE.UCMD'acre.Projects'
+ :If (⊂acreTestProjectName)∊⎕SE.acre.Projects''
      {}⎕SE.acre.Close acreTestProjectName
  :EndIf
- ##.FilesAndDirs.RmDir acreTestProjectName
- {}⎕SE.UCMD'acre.CreateProject ',acreTestProjectName,' #.FireAcreTest -casecod=''on'' -keephistory=''on'''
+ FilesAndDirs.RmDir acreTestProjectName
+ res←⎕SE.acre.CreateProject acreTestProjectName #.FireAcreTest('casecode' 'On')('keephistory' 'On')
+ Assert 0<≢res
 
  n←1 #.Fire.Fire.Run 0
 
@@ -52,12 +49,12 @@
  →T.GoToTidyUp~'Universe11'≡#.FireAcreTest.MyClass.Hello
  →T.GoToTidyUp~'Universe'≡#.FireAcreTest.MyNamespace.Hello3
  →T.GoToTidyUp~'Universe'≡#.FireAcreTest.MyNamespace.Hello4 ⍬
- changeFilesFolder←'expand'##.FilesAndDirs.NormalizePath acreTestProjectName,'\.acre\changes\'
+ changeFilesFolder←'expand'FilesAndDirs.NormalizePath acreTestProjectName,'\.acre\changes\'
  expected←'Doe' 'MyClass' 'MyNamespace' 'MyVars'
- →T.GoToTidyUp~expected≡{⍵↑⍨⍵⍳'-'}¨{0⊃'.'##.APLTreeUtils.Split ⍵}¨{1⊃⎕NPARTS ⍵}¨↑##.FilesAndDirs.Dir changeFilesFolder
+ →T.GoToTidyUp~expected≡{⍵↑⍨⍵⍳'-'}¨{0⊃'.'APLTreeUtils2.Split ⍵}¨{1⊃⎕NPARTS ⍵}¨↑FilesAndDirs.Dir changeFilesFolder
  R←T._OK
 
 ∆TidyUp:
  #.⎕EX'FireAcreTest'
- ##.FilesAndDirs.RmDir acreTestProjectName
+ FilesAndDirs.RmDir acreTestProjectName
  CloseFire

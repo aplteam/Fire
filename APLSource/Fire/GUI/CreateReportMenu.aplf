@@ -33,11 +33,4 @@
  ∆,←⊂'Hint' 'Report any references accept those pointing the fns, oprs, idioms and unnamed namespaces'
  n.References←⍎'ReportReferences'rf.⎕WC ∆
  n.References.onSelect←'OnReportReferences'
-
- ∆←⊂'MenuItem'
- ∆,←⊂'Caption' 'SALTed scripts...'
- ∆,←⊂'HintObj'n.Info
- ∆,←⊂'Hint' 'Lists all scripts managed by SALT that got changed by a "Replace" operation'
- n.ListSALTedChangedScripts←⍎'CallingCmd'rf.⎕WC ∆
- n.ListSALTedChangedScripts.onSelect←'OnListSALTedChangedScripts'
  ⍝Done

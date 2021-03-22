@@ -16,7 +16,7 @@
          r←(¯3↓r),extension
      :EndIf
      :If create
-         orig F.MoveTo r
+         r ⎕NMOVE orig
      :Else
          F.DeleteFile orig
      :EndIf

@@ -1,10 +1,6 @@
- R←Test_acre_002(stopFlag batchFlag);n;n2;oldPath;⎕TRAP;openAcreProjects;acreTestProjectName;changeFilesFolder;acreTestProjectFolder;more;en;rc
+ R←Test_acre_002(stopFlag batchFlag);n;n2;oldPath;⎕TRAP;openAcreProjects;acreTestProjectName;changeFilesFolder;acreTestProjectFolder;more;en;rc;res
 ⍝ Check whether acre 4 (or later) reacts correctly when an object is deleted by Fire and there are self-refs around.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
-
- :If ~IsAcre6OrBetter
-     →0,R←T._Inactive
- :EndIf
 
  R←T._Failed
 
@@ -29,9 +25,10 @@
  #.FireAcreTest.MyForm.⎕FX'r←Universe' 'r←''Includes world'''
  {}#.FireAcreTest.⎕NEW #.FireAcreTest.MyClass
  acreTestProjectName←'FireAcreTestTemp'
- (rc en more)←##.FilesAndDirs.RmDir'.\',acreTestProjectName
+ (rc en more)←FilesAndDirs.RmDir'.\',acreTestProjectName
  more Assert 0=rc
- {}⎕SE.UCMD'acre.CreateProject ',acreTestProjectName,' #.FireAcreTest -casecod=''on'' -keephistory=''on'''
+ res←⎕SE.acre.CreateProject acreTestProjectName #.FireAcreTest('casecode' 'on')('keephistory' 'on')
+ Assert 0<≢res
 
  1 #.Fire.Fire.Run 0
  n←#.Fire.Fire.GUI.n
@@ -52,11 +49,11 @@
  0.2 ∆Process n.Form
 
  →T.GoToTidyUp~∧/~'Doe' 'Foe'∊#.FireAcreTest.⎕NL-⍳16
- changeFilesFolder←'expand'##.FilesAndDirs.NormalizePath acreTestProjectName,'\.acre\changes\'
- →T.GoToTidyUp~'delete' 'delete'≡##.APLTreeUtils.Last¨↑##.FilesAndDirs.Dir changeFilesFolder
+ changeFilesFolder←'expand'FilesAndDirs.NormalizePath acreTestProjectName,'\.acre\changes\'
+ →T.GoToTidyUp~'delete' 'delete'≡APLTreeUtils2.Last¨↑FilesAndDirs.Dir changeFilesFolder
  R←T._OK
 
 ∆TidyUp:
  #.⎕EX'FireAcreTest'
- ##.FilesAndDirs.RmDir acreTestProjectName
+ FilesAndDirs.RmDir acreTestProjectName
  CloseFire

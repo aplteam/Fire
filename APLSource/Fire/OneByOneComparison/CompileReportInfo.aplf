@@ -1,9 +1,6 @@
  CompileReportInfo←{
      lineNumbers←⍵
      r←↑,/{1+⍳⍵}¨+⌿{⍵∘.=∪⍵}lineNumbers
-⍝     singleHit←1 1⍷r
-⍝     (¯1↑singleHit)←1=¯1↑r
      r←(⍕¨r),¨'.'
-⍝     (singleHit/r)←⊂''
      ⍪r
  }

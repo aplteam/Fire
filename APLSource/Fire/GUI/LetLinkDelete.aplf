@@ -1,0 +1,6 @@
+ {r}←LetLinkDelete rows
+⍝ Let Link know that objects got deleted from the workspace
+ r←⍬
+ :If 0  ⍝TODO⍝
+     ∘∘∘
+ :EndIf

@@ -6,7 +6,7 @@
      b1←'{'=masked
      b2←'}'=masked
      b←b2∨0≠(+\b1)-+\b2
-     b[1+##.Where 0 1⍷b]←0            ⍝ Preserve the first "{" within each ⋄-statement - we need that!
+     b[1+⍸0 1⍷b]←0            ⍝ Preserve the first "{" within each ⋄-statement - we need that!
      (b/masked)←' '
      masked
  }

@@ -22,12 +22,12 @@
          bool2[(⍴bool2)⌊ind∘.+length]←⊂0 1
          bool2←↑,/bool2
          body←bool2\body
-         body[##.Where~bool2]←⊂'</span>'
+         body[⍸~bool2]←⊂'</span>'
          body←∊body
          body←##.NL ##.A.Split body
          bool←∨/¨'<span class="diff">'∘⍷¨body
          body←bool/body
-         r,←(##.A.Where bool){'[',(⍕⍺),'] ',⍵}¨body,¨⊂'<br>'
+         r,←(⍸bool){'[',(⍕⍺),'] ',⍵}¨body,¨⊂'<br>'
          r,←⊂'</div>'
      :EndIf
  :EndIf

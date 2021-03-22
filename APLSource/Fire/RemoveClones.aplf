@@ -1,16 +1,17 @@
  RemoveClones←{
  ⍝ Remove all references pointing elsewhere: we don't want objects to appear twice,
  ⍝ or in a different place than specified in G.StartSearchIn
-     list←⍵
-     G.ReuseSearch:list                                        ⍝ Not in case of "Search hit list"
+     0=≢list←⍵:list
+     G.ReuseSearch:list                                         ⍝ Not in case of "Search hit list"
+     0=G.IgnoreRefs:list                                        ⍝ There might be good reasons for wanting this
      names←⍕¨list[;0]
-     b1←names≡¨⊂G.StartSearchIn                                ⍝ Get rid of those who live elsewhere
-     b2←(0=≢¨names)∨(G.StartSearchIn,'.'){⍺∘≡¨(≢⍺)↑¨⍵}names    ⍝ When not empty then they must live in G.StartSearchIn
-     b3←names∊,¨'#' '⎕SE'                                      ⍝ Make exceptions for root objects, or will loose scripts
+     b1←names≡¨⊂G.StartSearchIn                                 ⍝ Get rid of those who live elsewhere
+     b2←(0=≢¨names)∨(G.StartSearchIn,'.'){⍺∘≡¨(≢⍺)↑¨⍵}names     ⍝ When not empty then they must live in G.StartSearchIn
+     b3←names∊,¨'#' '⎕SE'                                       ⍝ Make exceptions for root objects, or will loose scripts
      list←(b3∨b1∨b2)⌿list
-     b4←list[;2]∊9.1 9.3 9.4                                   ⍝ Everything that is a namespace or a class or an interface
+     b4←list[;2]∊9.1 9.3 9.4                                    ⍝ Everything that is a namespace or a class or an interface
      0=+/b4:list
-     names←MerryParentAndChild¨↓b4⌿list[;0 1]                  ⍝ Compile names from parent and object name
-     b5←(~b4)∨b4\{6::0 ⋄ ⍵≡GetDisplayFormat∘⍎⍵}¨names          ⍝ Only when their "real" display format is what it should be does it count
+     names←MerryParentAndChild¨↓b4⌿list[;0 1]                   ⍝ Compile names from parent and object name
+     b5←(~b4)∨b4\{6::0 ⋄ ⍵≡GetDisplayFormat∘⍎⍵}¨names           ⍝ Only when their "real" display format is what it should be does it count
      b5⌿list
  }

@@ -4,8 +4,8 @@
 ⍝ Returns 1 in case the user has cancelled the process, otherwise 0
  r←0
  script←⎕SRC ref
- (nolc notc)←CountLeadingAndTrailingComments ##.A.dlb script
- 'Something is very wrong here!'⎕SIGNAL 11/⍨~∨/∨/¨':namespace '∘⍷¨##.A.Lowercase script
+ (nolc notc)←CountLeadingAndTrailingComments ##.A.DLB script
+ 'Something is very wrong here!'⎕SIGNAL 11/⍨~∨/∨/¨':namespace '∘⍷¨⎕C script
  :Select ref.⎕NC⊂name
  :CaseList 3.1 4.1
      script←ReplaceTfnsCodeInScript script code name

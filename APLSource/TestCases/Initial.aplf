@@ -4,5 +4,4 @@
  CopyTestData
  #.TestData.GUI_Instance.Make   ⍝ Converts that namespace into a GUI. Is then name class 9.2
  ##.Fire.Reset
- ##.Fire.A←##.APLTreeUtils
 ⍝Done

@@ -41,4 +41,5 @@
      :EndTrap
  :Until flag
  ##.G.TestFlag TellAcre taa
+ ##.G.TestFlag TellLink taa
 ⍝Done

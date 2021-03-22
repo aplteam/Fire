@@ -22,7 +22,7 @@
  :EndIf
  RESULT←FIXREMAINING←0
  :If ~0∊⍴cs.cancelCaption
-     defaultBtn←('OK' 'CANCEL'⍳⊂##.A.Uppercase cs.defaultBtn)⊃ff.(ok cancel) ⍝ Index Error? Invalid "defaultBtn"
+     defaultBtn←('OK' 'CANCEL'⍳⊂1 ⎕C cs.defaultBtn)⊃ff.(ok cancel) ⍝ Index Error? Invalid "defaultBtn"
  :Else
      defaultBtn←ff.ok
  :EndIf

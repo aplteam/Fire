@@ -15,7 +15,7 @@
  ∆,←⊂'Attach'('Top' 'Left' 'Top' 'Left')
  ∆,←⊂'Items'(⌽##.G.LookForList)
  ∆,←⊂'TipObj'n.TipObj
- ∆,←##.IsVersion16OrBetter/⊂'HasClearButton' 1
+ ∆,←⊂'HasClearButton' 1
  msg←''
  msg,←⊂'Enter here what you want to search for.'
  msg,←⊂'Select from the combo box previously'

@@ -9,6 +9,7 @@
  buff←parms.∆List
  →T.PassesIf 2=⍴⍴buff
  →T.PassesIf 2=1⊃⍴buff
+ →T.PassesIf=/≢¨buff(parms.⎕NL 2)
 
  R←T._OK
 ⍝Done

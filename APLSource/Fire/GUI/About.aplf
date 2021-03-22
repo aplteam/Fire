@@ -1,4 +1,5 @@
  About←{
+
 ⍝ Show the "About" information
      msg←⊂'Fire version ',↑{⍺,' - ',⍵}/1↓##.Version
      msg,←⊂''

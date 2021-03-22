@@ -1,10 +1,6 @@
- R←Test_acre_003(stopFlag batchFlag);⎕TRAP;n;n2;acreTestProjectName;changeFilesFolder
+ R←Test_acre_003(stopFlag batchFlag);⎕TRAP;n;n2;acreTestProjectName;changeFilesFolder;res
 ⍝ Check whether acre 4 (or later) reacts correctly when a variable is changed by Fire.
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
-
- :If ~IsAcre6OrBetter
-     →0,R←T._Inactive
- :EndIf
 
  R←T._Failed
 
@@ -15,8 +11,9 @@
  #.FireAcreTest.vars2←'Hello universe.'
 
  acreTestProjectName←'FireAcreTestTemp'
- {}##.FilesAndDirs.RmDir acreTestProjectName
- {}⎕SE.UCMD'acre.CreateProject ',acreTestProjectName,' #.FireAcreTest -casecod=''on'' -keephistory=''on'''
+ {}FilesAndDirs.RmDir acreTestProjectName
+ res←⎕SE.acre.CreateProject acreTestProjectName #.FireAcreTest('casecode' 'on')('keephistory' 'on')
+ Assert 0<≢res
 
  1 #.Fire.Fire.Run 0
  n←#.Fire.Fire.GUI.n
@@ -41,11 +38,11 @@
 
  →T.GoToTidyUp'Hello, world.'≢#.FireAcreTest.vars1
  →T.GoToTidyUp'Hello, universe.'≢#.FireAcreTest.vars2
- changeFilesFolder←'expand'##.FilesAndDirs.NormalizePath acreTestProjectName,'\.acre\changes\'
- →T.GoToTidyUp'vars1' 'vars2'≢{⍵↑⍨⍵⍳'-'}¨'\'##.APLTreeUtils.Last¨↑##.FilesAndDirs.Dir changeFilesFolder
+ changeFilesFolder←'expand'FilesAndDirs.NormalizePath acreTestProjectName,'\.acre\changes\'
+ →T.GoToTidyUp'vars1' 'vars2'≢{⍵↑⍨⍵⍳'-'}¨'\'APLTreeUtils2.Last¨↑FilesAndDirs.Dir changeFilesFolder
  R←T._OK
 
 ∆TidyUp:
  #.⎕EX'FireAcreTest'
- ##.FilesAndDirs.RmDir acreTestProjectName
+ FilesAndDirs.RmDir acreTestProjectName
  CloseFire

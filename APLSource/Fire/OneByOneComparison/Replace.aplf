@@ -1,30 +1,30 @@
- code←Replace G;ns;fns;hits
+ newCode←Replace G;ns;fns;hits;bool;oldCode
  :If ##.G.SearchIsRegEx
      ns←⎕NS''
      ns.options←##.Replace.GetRegExOptions G.OldCode ##.G
      ns.ss←##.Replace.GetRegExSearchString ##.G G.NC                ⍝ Search string
      ns.rs←##.Replace.GetRegExReplaceString ##.G ns.ss G.NC         ⍝ Replace string
-     ns.i←0
+     ns.i←¯1
      ns.these←G.These
-     ns.lines←ns.ss ⎕S 2⍠(ns.options,⊂'Mode' 'L')⊣oldCode
+     newCode←G.OldCode
+     ns.lines←ns.ss ⎕S 2⍠(ns.options,⊂'Mode' 'L')⊣G.OldCode
      fns←ns∘{
          ns←⍺
-         code←(ns.i∊ns.these)⊃⍵.Match ns.rs
          ns.i+←1
-         code
+         ~ns.i∊ns.these:⍵.Match                 ⍝ No change
+         ns.ss ⎕R ns.rs⍠ns.options⊣⍵.Match
      }
-     code←G.OldCode
-     code[∪ns.lines]←ns.ss ⎕R fns⍠ns.options⊣code[∪ns.lines]
+     newCode[∪ns.lines]←ns.ss ⎕R fns⍠ns.options⊣newCode[∪ns.lines]
  :Else
      :If G.DeleteFlag
-         code←G.OldCode[(⍳≢G.OldCode)~G.LineNumbers[G.These]]
+         newCode←G.OldCode[(⍳≢G.OldCode)~G.LineNumbers[G.These]]
      :Else
          hits←G.Hits[G.These]
-         code←1↓↑,/##.NL,¨G.OldCode
-         code[hits∘.+1↓⍳≢G.SearchFor]←⊂''
-         code[hits]←⊂1↓↑,/##.NL,¨G.ReplaceBy
-         code←↑,/code
-         code←##.NL ##.A.Split code
+         newCode←1↓↑,/##.NL,¨G.OldCode
+         newCode[hits∘.+1↓⍳≢G.SearchFor]←⊂''
+         newCode[hits]←⊂1↓↑,/##.NL,¨G.ReplaceBy
+         newCode←↑,/newCode
+         newCode←##.NL ##.A.Split newCode
      :EndIf
  :EndIf
 ⍝Done

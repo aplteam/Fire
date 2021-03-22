@@ -21,7 +21,7 @@
              r,←MarkupHitsInSimpleVars data name rn ref
          :Else
              data←1 ##.ReplaceSpecialChars¨data
-             options←('IC'(~##.G.Case))('Greedy' 0)('EOL' 'CR'),##.IsVersion16OrBetter/⊂('UCP' 1)
+             options←('IC'(~##.G.Case))('Greedy' 0)('EOL' 'CR')('UCP' 1)
              ss←rs←'' ⍝ ss:Search String; rs=Replace string
              :If ~##.G.Text
                  ss,←⊂'''\N*?'''
@@ -35,7 +35,7 @@
              r[⍳¯1+≢r]←(¯1↓r),¨⊂'<br>'
              fullName←(⍕ref),'.',name
              r←(⊂'<h2 id="h-',(⍕rn),'">',(⍕rn),'. ',fullName,'</h2>'),r,⊂'</div>'
-             r←(⊂'<div class="obj">'),r,⊂'</div>'
+             r←(⊂'<div class="obj" id="div-no-',(⍕rn),'">'),r,⊂'</div>'
          :EndIf
      :EndIf
  :Else

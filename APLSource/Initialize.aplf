@@ -1,0 +1,15 @@
+ {r}←Initialize;⎕TRAP;parent
+ ⎕TRAP←0 'S'
+ r←⍬
+ {}⎕SE.UCMD'cd ',AcreConfig.ProjectFolder
+ ⎕WSID←AcreConfig.ProjectFolder,'Fire.dws'
+ parent←⍕⎕THIS
+ :If 0=⎕SE.⎕NC'Tatin'
+     ⎕SE.UCMD'Tatin.Loadtatin'
+ :AndIf 0<⎕SE.⎕NC'Tatin'
+     'Fire requires the Tatin Package Manager to be available'⎕SIGNAL 6
+ :EndIf
+ {}⎕SE.Tatin.LoadDependencies'./packages/'parent
+ parent,←'.TestCases'
+ {}⎕SE.Tatin.LoadDependencies'./packages_dev/'parent
+⍝Done

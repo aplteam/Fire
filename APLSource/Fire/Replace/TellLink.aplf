@@ -1,0 +1,12 @@
+ {r}←testFlag TellLink name;buff;flag
+⍝ Tells Link about "name" if it is associated with a file.
+ r←⍬
+ :If 0   ⍝TODO⍝  If one day we support Link this function need attention. The necessary calls are all in place already for changes but not deletions
+     flag←0
+     :If 0≠≢name
+     :AndIf ##.IsLinkAround
+         ∘∘∘  ⍝ Find out whether the object is linked
+         ∘∘∘  ⍝ If so notify Link about the change
+         ∘∘∘ ⍝ Check somehow that it worked
+     :EndIf
+ :EndIf

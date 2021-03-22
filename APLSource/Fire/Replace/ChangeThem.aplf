@@ -18,7 +18,7 @@
      :EndIf
      G.filenameCompare←0 ##.GetTempFileName'.dcf'       ⍝ Native file used to write the changed source code for comparison
      :If ##.F.IsFile G.filenameCompare                  ⍝ This can happen when the Fire test cases run: timing issue
-         ⎕FUNTIE((##.A.dtb↓⎕NNAMES)⍳⊂G.filenameCompare)⊃⎕FNUMS,⊂⍬
+         ⎕FUNTIE((##.A.DTB↓⎕NNAMES)⍳⊂G.filenameCompare)⊃⎕FNUMS,⊂⍬
          3 ⎕NDELETE G.filenameCompare
          ⎕DL 0.1
      :EndIf
@@ -57,6 +57,6 @@
  :Trap 6 ⋄ ⎕NQ n.Form'GotFocus' ⋄ :EndTrap
 
 ∆Exit:
- ⎕FUNTIE((##.A.dtb↓⎕FNAMES)⍳⊂G.filenameCompare)⊃⎕FNUMS,⊂⍬
+ ⎕FUNTIE((##.A.DTB↓⎕FNAMES)⍳⊂G.filenameCompare)⊃⎕FNUMS,⊂⍬
  ##.F.DeleteFile G.filenameCompare
 ⍝Done

@@ -24,9 +24,9 @@
              :Return
          :EndIf
      :EndIf
-     WriteReport⊂'<div class="deleted">'
+     WriteReport'<div class="deleted">'
      data←##.ReplaceSpecialChars¨diffs/Old
-     data←'p class="deleted"'∘Tag¨({'<span class="lineno">[',(⍕⍵),']</span> '}¨##.A.Where diffs),¨data
+     data←'p class="deleted"'∘Tag¨({'<span class="lineno">[',(⍕⍵),']</span> '}¨⍸diffs),¨data
      WriteReport data
      WriteReport¨⊂'</div>'(,##.CR)
  :ElseIf 2=⌊nc
@@ -45,8 +45,8 @@
          :If 0<noOf
              Drop G.DeleteLineFlag noOf noOf
          :Else
-             data1←{(1=⍴⍵):∊⍵ ⋄ 1↓↑,/##.CR,¨⍵}{A.dlb ⍵}¨1↑New
-             data2←##.A.dlb{2=≡⍵:{0=≢⍵:⍵ ⋄ 0⊃⍵}⍵ ⋄ ⍵}Old
+             data1←{(1=⍴⍵):∊⍵ ⋄ 1↓↑,/##.CR,¨⍵}{A.DLB ⍵}¨1↑New
+             data2←##.A.DLB{2=≡⍵:{0=≢⍵:⍵ ⋄ 0⊃⍵}⍵ ⋄ ⍵}Old
              data11←TAB,TAB,'p'Tag 1 MarkupDiff2 data2 data1 G.SearchFor G.ReplaceBy
              data22←TAB,TAB,'p'Tag 2 MarkupDiff2 data1 data2 G.ReplaceBy G.SearchFor
              data←TAB,({(0=≢⍵)∨(,0)≡,⍵:'' ⋄ '<span class="lineno">[',(⍕⍵),']</span><br>'}↑lns),TAB,'div class="comp"'Tag data11,data22

@@ -9,7 +9,10 @@
      n.HitList.ReportInfo←(0,1↓⍴n.HitList.ReportInfo)⍴''
      ##.G.Hits←0 4⍴⍬
      ##.G.ProcessingTime←0
+     reuseWas←n.ReuseSearch.State
+     n.ReuseSearch.State←0
+     _←CheckLookIn ⍬
      ~⍺:WriteInfo''
      ##.G.ProcessingTime←{0.01×⌊100×⍵}(⎕AI[1]-##.∆AI)÷1000
-     ReportHitsInStatusbar ##.G.NoOfHits,##.G.NoOfObjects,noOfObj,noOfContainers
+     ReportHitsInStatusbar ##.G.NoOfHits,##.G.NoOfObjects,noOfObj,noOfContainers reuseWas
  }

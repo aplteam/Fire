@@ -5,6 +5,6 @@
  r←⍬
  code←CR,code,CR
  ((''''=code)/code)←'+'                 ⍝ In order to separate names
- :If 0≠≢startPoints←##.APLTreeUtils.Where ss⍷code
+ :If 0≠≢startPoints←⍸ss⍷code
      r←¯1+↑,/(code ss)∘IsName_¨startPoints
  :EndIf

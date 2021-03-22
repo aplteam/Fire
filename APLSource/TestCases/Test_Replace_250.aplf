@@ -1,0 +1,58 @@
+ R←Test_Replace_250(stopFlag batchFlag);n;n2;⎕TRAP;expected;ref;dir
+⍝ Check whether Link is notified regardig changes performed by Fire
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+
+ R←T._Failed
+
+ R←T._NotImplemented
+ :Return
+
+⍝ Preconditions
+ #.⎕SHADOW'FireLinksTest'
+ ref←⍎'FireLinksTest'#.⎕NS''
+ ref.⎕FX'r←Doe' 'r←''Johnny ''' 'r,←''in the world'''
+ ref.⎕FIX':Class MyClass' '∇r←Hello' ':Access Public Shared' 'r←''World11''' '∇' '∇co' ':Implements constructor' ':Access Public' '∇' ':EndClass'
+ ref.⎕FIX':Namespace MyNamespace' '∇r←Hello3' ':Access Public Shared' 'r←''World''' '∇' 'Hello4←{''world''}' ':EndNamespace'
+ ref.MyVars←'Oh dear world'
+ ref.(myRef←⎕NS'')
+ ref.myRef.⎕FX'r←Hello2' 'r←''World'''
+ 'MyNamedNS'ref.myRef.⎕NS''
+ ref.myRef.MyNamedNS.⎕FX'r←Dear' 'r←''my glorious world'''
+ ref.myInstance←ref.(⎕NEW MyClass)
+ 'myForm'ref.myRef.⎕WC'Form'('Visible' 0)('KeepOnClose' 1)
+ ref.myRef.myForm.⎕FX'r←Hello5' 'r←''world12'''
+ dir←FilesAndDirs.GetTempSubDir''
+ ⎕SE.Link.Create'#.FireLinksTest'dir
+
+ n←1 #.Fire.Fire.Run 0
+
+ n.SearchFor.Text←'world'
+ n.StartSearchIn.Text←'#.FireLinksTest'
+ n.Case.State←0
+
+ {}∆Select n.StartBtn
+ 0.2 ∆Process n.Form
+ →T.PassesIf 5=#.Fire.Fire.G.NoOfObjects   ⍝ The one in the unnamed namepace is not found!
+
+ {}∆Select n.ReplaceBtn
+ ∆Process n.Form
+
+ n2←#.Fire.Fire.Replace.n
+ n2.ReplaceBy.Text←'Universe'
+
+ {}∆Select n2.StartBtn
+ 0.2 ∆Process n.Form
+
+ →T.GoToTidyUp~'Johnny in the Universe'≡ref.Doe
+ →T.GoToTidyUp~'Universe11'≡ref.Hello
+ →T.GoToTidyUp~'Universe'≡ref.Hello3
+ →T.GoToTidyUp~'Universe'≡ref.Hello4 ⍬
+ ∘∘∘changeFilesFolder←'expand'FilesAndDirs.NormalizePath acreTestProjectName,'\.acre\changes\'
+ expected←'Doe' 'MyClass' 'MyNamespace' 'MyVars'
+ →T.GoToTidyUp~expected≡{⍵↑⍨⍵⍳'-'}¨{0⊃'.'APLTreeUtils2.Split ⍵}¨{1⊃⎕NPARTS ⍵}¨↑FilesAndDirs.Dir changeFilesFolder
+ R←T._OK
+
+∆TidyUp:
+ #.⎕EX'FireLinksTest'
+ FilesAndDirs.RmDir dir
+ CloseFire

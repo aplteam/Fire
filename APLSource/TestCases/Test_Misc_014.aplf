@@ -6,9 +6,9 @@
 ⍝ Preconditions
  #.⎕EX'FireReportGhost'
  'FireReportGhost'#.⎕NS''
- #.FireReportGhost.⎕FIX #.⎕SRC ##.APLTreeUtils
- #.FireReportGhost.⎕FIX #.⎕SRC ##.FilesAndDirs
- #.FireReportGhost.APLTreeUtils.⎕FX'r←Hello' 'r←''Worlds'''  ⍝ This is NOT a ghost!
+ #.FireReportGhost.⎕FIX #.⎕SRC APLTreeUtils2
+ #.FireReportGhost.⎕FIX #.⎕SRC FilesAndDirs
+ #.FireReportGhost.APLTreeUtils2.⎕FX'r←Hello' 'r←''Worlds'''  ⍝ This is NOT a ghost!
  #.FireReportGhost.FilesAndDirs.⎕FX'r←Hello' 'r←''World'''
  #.FireReportGhost.FilesAndDirs.⎕FX'r←Hello2' 'r←''World2'''
  #.FireReportGhost.FilesAndDirs.⎕FX'r←Hello3' 'r←''World3'''
@@ -25,13 +25,13 @@
  ⎕DL 0.05
 
 ⍝ Checks
- expected←'#.FireReportGhost.MyGUI' 'Hello' '#.FireReportGhost.FilesAndDirs' 'Hello' 'Hello2' 'Hello3' '#.FireReportGhost.InterfaceFoo' '∆Hello10'
+ expected←'#.FireReportGhost.MyGUI' 'Hello' '#.FireReportGhost.FilesAndDirs' 'Hello' 'Hello2' 'Hello3' '#.FireReportGhost.APLTreeUtils2' 'Hello' '#.FireReportGhost.InterfaceFoo' '∆Hello10'
  →T.GoToTidyUp ref.TV.Items≢expected
  rg←#.Fire.Fire.ReportGosts
  ref.TV.SelItems←0 0 0 0 1 0 0 0
  1 rg.DeleteGhost ref.TV
  →T.GoToTidyUp 0=∨/'deleted'⍷4⊃ref.TV.Items
- →T.GoToTidyUp 0≠#.FireReportGhost.APLTreeUtils.⎕NC'Hello2'
+ →T.GoToTidyUp 0≠#.FireReportGhost.APLTreeUtils2.⎕NC'Hello2'
  ref.TV.SelItems←0 0 0 0 1 0 0 0
  →T.GoToTidyUp~0∊⍴1 rg.GetCode ref.TV
  ref.TV.SelItems←0 0 0 1 0 0 0 0
