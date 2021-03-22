@@ -9,10 +9,10 @@
  :If 0=≢n.SearchFor.Text
      ResetHitList 0 0
  :Else
+     {}CopyGuiToGlobal ⍬
      HandleCombo n.SearchFor
      →(CheckLookIn ⍬)/0
      {}HandleControlDependencies 0
-     {}CopyGuiToGlobal ⍬
      ##.SetCursorObj 1  ⍝ Is reset by caller
      ##.∆AI←⎕AI[1]
      parms_____.successFlag_____←1

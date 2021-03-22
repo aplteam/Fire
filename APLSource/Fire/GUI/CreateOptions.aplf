@@ -11,7 +11,7 @@
  ∆←⊂'Button'
  ∆,←⊂'Caption' '&Match case'
  ∆,←⊂'Style' 'Check'
- ∆,←⊂'Posn'(25 10)
+ ∆,←⊂'Posn'(20 10)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'State'##.G.Case
  ∆,←⊂'TipObj'n.TipObj
@@ -23,7 +23,7 @@
  ∆←⊂'Button'
  ∆,←⊂'Caption' 'Match valid names &only'
  ∆,←⊂'Style' 'Check'
- ∆,←⊂'Posn'(50 10)
+ ∆,←⊂'Posn'(40 10)
  ∆,←⊂'State'##.G.APL_Name
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'TipObj'n.TipObj
@@ -39,16 +39,34 @@
  ∆←⊂'Button'
  ∆,←⊂'Caption' '&Ignore references'
  ∆,←⊂'Style' 'Check'
- ∆,←⊂'Posn'(75 10)
- ∆,←⊂'State' 0  ⍝ ##.G.IgnoreRefs
+ ∆,←⊂'Posn'(60 10)
+ ∆,←⊂'State'##.G.IgnoreRefs
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'TipObj'n.TipObj
- ∆,←⊂'Active' 0
- ∆,←⊂'Visible' 0
- msg←'Without ticking this refs are treated exactly like the originals'
+ ∆,←⊂'Active' 1
+ ∆,←⊂'Visible' 1
+ msg←⊂'Without ticking this refs pointing to classes,'
+ msg,←⊂'interfaces and namespaces are treated exactly'
+ msg,←⊂'like the originals'
  ∆,←⊂'Tip'msg
  n.IgnoreRefs←⍎'IgnoreRefs'rf.⎕WC ∆
  n.IgnoreRefs.onKeyPress←'OnKeyPressStandard'
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' 'Ignore Tatin &packages'
+ ∆,←⊂'Style' 'Check'
+ ∆,←⊂'Posn'(80 10)
+ ∆,←⊂'State'##.G.IgnoreTatinPkgs
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ ∆,←⊂'TipObj'n.TipObj
+ ∆,←⊂'Active' 1
+ ∆,←⊂'Visible' 1
+ msg←⊂'Tatin packages are saved in either #._tatin or'
+ msg,←⊂'⎕SE._tatin; if you tick this check box then those'
+ msg,←⊂'namespaces and their contents with be ignored'
+ ∆,←⊂'Tip'msg
+ n.IgnoreTatinPkgs←⍎'IgnoreTatinPkgs'rf.⎕WC ∆
+ n.IgnoreTatinPkgs.onKeyPress←'OnKeyPressStandard'
 
  {}PolishWidth rf
  ⍝ Done

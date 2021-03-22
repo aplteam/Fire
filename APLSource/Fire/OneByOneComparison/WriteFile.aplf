@@ -1,3 +1,3 @@
- {r}←tieNumber WriteFile text
- r←'append'##.A.WriteUtf8File tieNumber text
+ {r}←filename WriteFile text
+ r←(⊂text)##.##.FilesAndDirs.NPUT filename 2
 ⍝Done

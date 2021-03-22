@@ -3,6 +3,7 @@
      ##.G.Case←n.Case.State
      ##.G.APL_Name←n.APL_Name.State
      ##.G.IgnoreRefs←n.IgnoreRefs.State
+     ##.G.IgnoreTatinPkgs←n.IgnoreTatinPkgs.State
      ##.G.Code←n.Code.State
      ##.G.Vars←n.Vars.State
      ##.G.APL_Code←n.APL_Code.State

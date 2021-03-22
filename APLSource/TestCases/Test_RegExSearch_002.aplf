@@ -26,9 +26,9 @@
 
  {}#.Fire.Fire.GUI.CopyGuiToGlobal ⍬
  n2←#.Fire.Fire.ReportHits.Run 1
- html←##.APLTreeUtils.ReadUtf8File n2.∆Filename
+ html←↑FilesAndDirs.NGET n2.∆Filename 1
  R←T._OK
 
 ∆TidyUp:
- :Trap 0 ⋄ ##.FilesAndDirs.DeleteFile n2.∆Filename ⋄ :EndTrap
+ :Trap 0 ⋄ FilesAndDirs.DeleteFile n2.∆Filename ⋄ :EndTrap
  CloseFire

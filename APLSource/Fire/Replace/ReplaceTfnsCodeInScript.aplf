@@ -3,7 +3,7 @@
  masked←MaskText¨masked                     ⍝ ... all text (stuff within quotes) masked and...
  masked←{⍵↑⍨⍵⍳'⍝'}¨masked                   ⍝ ... all comments removed ...
  masked←MaskCurlyContents masked            ⍝ ... and contents of dfns masked (recursive ∇!!)
- sel←##.Where'∇'=↑¨##.A.dlb¨masked          ⍝ Potential start- and end lines
+ sel←⍸'∇'=↑¨##.A.DLB¨masked                 ⍝ Potential start- and end lines
  sl←{⍵/⍨1 0⍴⍨⍴⍵}sel                         ⍝ That's where trad functions start
  el←{⍵/⍨0 1⍴⍨⍴⍵}sel                         ⍝ That's where trad functions end
  names←GetNameFromDelLine¨masked[sl]

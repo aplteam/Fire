@@ -1,5 +1,5 @@
  {r}←ShowAllReleaseNotes n;body
 ⍝ Takes the comments in the function `History` and displays it.
  r←⍬
- ##.APLTreeUtils.GoToWebPage'https://github.com/aplteam/Fire/releases'
+ ##.APLTreeUtils2.GoToWebPage'https://github.com/aplteam/Fire/releases'
 ⍝Done

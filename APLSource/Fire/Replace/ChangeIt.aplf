@@ -14,18 +14,18 @@
              newCode←''                                         ⍝ That's it!
          :EndIf
      :Else
-         (nolc notc)←CountLeadingAndTrailingComments ##.A.dtb oldCode  ⍝ Number of leading/trailing comments
+         (nolc notc)←CountLeadingAndTrailingComments ##.A.DTB oldCode  ⍝ Number of leading/trailing comments
          :If lwh≡⍳≢oldCode                                      ⍝ All lines carry hits?
-         :AndIf ~(⊂{##.A.Lowercase ⍵↑⍨⍵⍳' '}nolc⊃oldCode)∊':class' ':namespace' ':interface'
+         :AndIf ~(⊂{⎕C ⍵↑⍨⍵⍳' '}nolc⊃oldCode)∊':class' ':namespace' ':interface'
              newCode←''                                         ⍝ Then we remove it!
          :Else
              lwh~←nolc                                          ⍝ But never the opening line
-             :If ∨/':interface' ':class'{⍺∊⊂⍵↑⍨⍵⍳' '}##.A.Lowercase nolc⊃oldCode ⍝ Is it a class or an interface?
+             :If ∨/':interface' ':class'{⍺∊⊂⍵↑⍨⍵⍳' '}⎕C nolc⊃oldCode ⍝ Is it a class or an interface?
              :OrIf nc∊3.2 4.2 9.1                               ⍝ Or a dfns/dop?
                  lwh~←(≢oldCode)-notc+1                         ⍝ With those we MUST preserve the closing line
              :EndIf
              st←':interface' ':class' ':namespace'              ⍝ Script types
-             :If ∨/st{⍺∊⊂⍵↑⍨⌊/⍵⍳' ⍝'}##.A.Lowercase nolc⊃oldCode  ⍝ Is it a script?
+             :If ∨/st{⍺∊⊂⍵↑⍨⌊/⍵⍳' ⍝'}⎕C nolc⊃oldCode  ⍝ Is it a script?
                  lwh/⍨←{~'∇'∊MaskText ⍵}¨oldCode[lwh]           ⍝ Mask header lines of tradfns
              :EndIf
              newCode←oldCode[(⍳≢oldCode)~lwh]

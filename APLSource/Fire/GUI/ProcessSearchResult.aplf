@@ -4,7 +4,7 @@
  ⎕TRAP←(999 'C' '→∆Error')(0 'N')
  r←⍬
  ##.G.LastSearchedFor←n.SearchFor.Text
- :If 0∊⍴hits
+ :If 0=≢hits
      ResetHitList 0 0
  :Else
      n.HitList.ColTitles←n.HitList.colWidth↑¨n.HitList.ColTitles

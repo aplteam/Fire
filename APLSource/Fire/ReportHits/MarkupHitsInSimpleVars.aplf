@@ -12,5 +12,5 @@
  data←ss ⎕R rs⍠options⊣{300>⍴,⍵:⍵ ⋄ (300↑⍵),'...'}data
  fullName←(⍕ref),'.',name
  r←⊂'<a href="#',fullName,'" id="h-',(⍕rn),'"> <h2>',(⍕rn),'. ',fullName,'</h2></a>',data
- r←(⊂'<div class="obj">'),r,⊂'</div>'
+ r←(⊂'<div class="obj" id="div-no-',(⍕rn),'">'),r,⊂'</div>'
 ⍝Done

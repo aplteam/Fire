@@ -12,6 +12,8 @@
 ⍝ However, when `0<+/testFlag` then `Reset` is always called in order to make
 ⍝ sure that the test cases always start with the defaults.\\
 ⍝ Home page: <https://github.com/aplteam/Fire>
+ ⎕IO←0 ⋄ ⎕ML←3
+ 'This version of Fire requires at least Dyalog 18.0 Unicode'Assert ##.APLTreeUtils2.AtLeastVersion 18
  testFlag←↑{0<⎕NC ⍵:(⍎⍵),0 ⋄ 0}'testFlag'
  {}Cleanup
  :If debugFlag

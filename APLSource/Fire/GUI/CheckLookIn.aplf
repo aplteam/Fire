@@ -14,8 +14,10 @@
              n.StartSearchIn.Text←'#'
          :EndIf
      :ElseIf (,'#')≢,n.StartSearchIn.Text
-     :AndIf '⎕SE'≢##.A.Uppercase n.StartSearchIn.Text
+     :AndIf '⎕SE'≢1 ⎕C n.StartSearchIn.Text
          {}##.Question.ShowMsg'Problem with "Start looking here":'('<',n.StartSearchIn.Text,'>')'does not exist.'
          r←1
      :EndIf
+     n.StartSearchIn.Active←1
+     n.StartSearchIn.BCol←0
  :EndIf

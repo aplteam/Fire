@@ -2,6 +2,6 @@
 ⍝ Return ⍵ as lowercase if ns.Case.State is zero
  :If ~ns.RegEx.State
  :AndIf ~ns.Case.State
-     txt←##.A.Lowercase txt
+     txt←⎕C txt
  :EndIf
 ⍝Done

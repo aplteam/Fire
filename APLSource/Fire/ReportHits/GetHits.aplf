@@ -6,7 +6,7 @@
      body←↑,/##.CR,¨body
      body←(1+ind)↓¨⊂body
      body←(body⍳¨##.CR)↑¨body
-     body←∪{(+/∧\⍵∊⎕A,(##.A.Lowercase ⎕A),⎕D,'⎕.#∆⍙⍎')↑⍵}¨body
+     body←∪{(+/∧\⍵∊⎕A,(⎕C ⎕A),⎕D,'⎕.#∆⍙⍎')↑⍵}¨body
      b←'⍎'∊¨body
      (b/body)←{⍵↑⍨¯1+⍵⍳'⍎'}¨b/body
      body

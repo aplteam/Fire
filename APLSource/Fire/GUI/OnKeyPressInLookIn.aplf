@@ -9,6 +9,8 @@
      ref.SelText←1,1+⍴,ref.Text
  :ElseIf 67 2≡kc                                ⍝ Ctrl+C
      2 ⎕NQ ref'KeyPress' 'CP'
+ :ElseIf 32=↑kc                                 ⍝ A space does not make sense here
+     r←0
  :Else
      flag←1+r←0
      specialKeys←(38 0)(40 0)(40 4)(33 0)(34 0)(39 0)(13 0)(35 0)(36 0)(27 0)(9 0)(9 1)(9 2)(114 0)(8 2)(46 0)(8 0)
@@ -17,7 +19,7 @@
      :Else
          (rf rl)←n.(AutoCompleteForm AutoCompleteList)
          :If 1=⍴,2⊃y
-             :If 0∊⍴,n.StartSearchIn.Text
+             :If 0=≢n.StartSearchIn.Text
                  r←0
                  :If '#'=2⊃y
                      n.StartSearchIn.Text←'#'
@@ -33,7 +35,7 @@
                              :Return
                          :EndTrap
                      :EndIf
-                 :ElseIf ~0∊⍴rl.Items
+                 :ElseIf 0≠≢rl.Items
                      r←∨/rl.Items{((⍴⍵)↑[1]⍺)∧.=⍵}n.StartSearchIn.Text,2⊃y
                  :EndIf
              :EndIf

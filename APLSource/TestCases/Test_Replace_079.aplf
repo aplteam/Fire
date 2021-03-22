@@ -1,8 +1,8 @@
- R←Test_Replace_079(stopFlag batchFlag);n;n2;⎕TRAP;rf;code;Top2;buffer;dlb;body
+ R←Test_Replace_079(stopFlag batchFlag);n;n2;⎕TRAP;rf;code;Top2;buffer;DLB;body
  ⍝ Find and replace with emphasize on "Match case"
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  R←T._Failed
- dlb←##.APLTreeUtils.dlb
+ DLB←APLTreeUtils2.DLB
 
 ⍝ Preconditions
  #.⎕SHADOW'TEMP'
@@ -110,12 +110,12 @@
 
  →T.GoToTidyUp(⎕NR'#.TEMP.Hello1')≢' r←Hello1' ' b←0' ' c←¯1' ' A←1 ⋄ A←2' ' A←3' ' A←4'
  →T.GoToTidyUp(⎕NR'#.TEMP.Hello2')≢' r←(fns Hello2)y;A' ' b←0' ' c←¯1' ' A←1 ⋄ A←2' ' A←3' ' A←4'
- →T.GoToTidyUp(dlb ⎕NR'#.TEMP.dfns')≢dlb' dfns←{' '     b←0' '     c←¯1' '     A←1 ⋄ A←2' '     A←3' '     A←4' ' }'
- →T.GoToTidyUp(dlb ⎕NR'#.TEMP.dop')≢dlb' dop←{' '     b←0 c←¯1' '     A←1 ⋄ A←⍺⍺ 2' '     A←3' '     A←4' ' }'
+ →T.GoToTidyUp(DLB ⎕NR'#.TEMP.dfns')≢DLB' dfns←{' '     b←0' '     c←¯1' '     A←1 ⋄ A←2' '     A←3' '     A←4' ' }'
+ →T.GoToTidyUp(DLB ⎕NR'#.TEMP.dop')≢DLB' dop←{' '     b←0 c←¯1' '     A←1 ⋄ A←⍺⍺ 2' '     A←3' '     A←4' ' }'
  buffer←,¨':Class Foo' 'Dfns1←{c←0 ⋄ A←1 ⋄ A←2}' 'Dfns2←{' 'b←0' 'c←¯1' 'A←1 ⋄ A←2' 'A←3' 'A←4' '}' 'Top1←{c←0 ⋄ A←1 ⋄ A←⍺⍺ 2}' 'Top2←{' 'b←0' 'c←¯1' 'A←1 ⋄ A←⍺⍺ 2' 'A←3' 'A←4' '}' '∇r←Fns' 'b←0' 'c←¯1' 'A←1 ⋄ A←2' 'A←3' 'A←4' '∇' '∇r←(fns Top) y' 'A←1 ⋄ A←fns 2' 'A←3' 'A←4' '∇' ':EndClass'
- →T.GoToTidyUp(dlb ⎕SRC #.TEMP.Foo)≢dlb buffer
+ →T.GoToTidyUp(DLB ⎕SRC #.TEMP.Foo)≢DLB buffer
  buffer←,¨':Namespace NS' 'Dfns1←{c←0 ⋄ A←1 ⋄ A←2}⋄ A←1' 'Dfns2←{' 'b←0' 'c←¯1' 'A←1 ⋄ A←2' 'A←3' 'A←4' '}' 'Top1←{c*0 ⋄ A←1 ⋄ A←⍺⍺ 2}' 'Top2←{' 'b←0' 'c←¯1' 'A←1 ⋄ A←⍺⍺ 2' 'A←3' 'A←4' '}' '∇ r←Fns' 'b←0' 'c←¯1' 'A←1 ⋄ A←2' 'A←3' 'A←4' '∇' '∇ r←(fns Top)y' 'b←0' 'c←¯1' 'A←1 ⋄ A←fns 2' 'A←3' 'A←4' '∇' ':EndNamespace'
- body←dlb ⎕SRC #.TEMP.NS
+ body←DLB ⎕SRC #.TEMP.NS
  →T.GoToTidyUp body≢buffer
  R←T._OK
 

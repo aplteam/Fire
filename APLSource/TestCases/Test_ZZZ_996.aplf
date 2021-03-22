@@ -3,10 +3,11 @@
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  R←T._Failed
 
- rn←##.APLTreeUtils.ReadUtf8File'Docs\ReleaseNotes.md'
- searchFor←'# Release Notes '
+ rn←↑FilesAndDirs.NGET'Docs\ReleaseNotes.md' 1
+ searchFor←'## '
  buff←rn⊃⍨1⍳⍨searchFor∘{⍺≡(≢⍺)↑⍵}¨rn
  buff←(≢searchFor)↓buff
- →T.PassesIf buff≡{⍵/⍨3>+\'.'=⍵}1⊃##.Fire.Version
+ buff/⍨←buff∊'.',⎕D
+ →T.PassesIf buff≡{⍵↑⍨⍵⍳'+'}{⍵/⍨3>+\'.'=⍵}1⊃##.Fire.Version
 
  R←T._OK

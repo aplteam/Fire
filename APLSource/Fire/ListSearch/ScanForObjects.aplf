@@ -18,7 +18,7 @@
  :If ~0∊⍴data
      data←0⊃##.GetTextAndRest data              ⍝ Get rid of text
      data←{'⍝'∊⍵:⍵↑⍨⍵⍳'⍝' ⋄ ⍵}¨data             ⍝ Get rid  of comments
-     data←##.A.dmb data                         ⍝ Well invested time
+     data←##.A.DMB data                         ⍝ Well invested time
      data~←⊂''                                  ⍝ Ditto
      list[;1]+←list[;0]SearchIn(NC data)
  :EndIf

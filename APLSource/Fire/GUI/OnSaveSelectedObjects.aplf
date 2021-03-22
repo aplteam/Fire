@@ -1,4 +1,4 @@
  OnSaveSelectedObjects←{
-     rows←##.Where n.HitList.SelItems
+     rows←⍸n.HitList.SelItems
      ⍬⊣SaveSelectedObjects rows
  }

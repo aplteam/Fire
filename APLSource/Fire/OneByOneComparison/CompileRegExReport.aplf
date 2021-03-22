@@ -1,17 +1,16 @@
- G←CompileRegExReport(name oldCode newCode lineNumbers ind length nc n2 deleteFlag);oldCode;length;ns;fns;html;tno;caption
+ G←CompileRegExReport(name oldCode newCode lineNumbers ind length nc n2 deleteFlag);oldCode;length;ns;fns;html;caption
 ⍝ Collect all the information needed and then call CompileReport_.
  G←CollectData oldCode newCode lineNumbers ind nc
  G.DeleteFlag←deleteFlag
  ##.F.DeleteFile n2.∆HtmlFilename
- tno←n2.∆HtmlFilename ⎕NCREATE 0
- tno WriteFile TopOfDoc n2.∆CssFilename
+ n2.∆HtmlFilename WriteFile TopOfDoc n2.∆CssFilename
  caption←name,'  (⎕NC=',(⍕nc)
  :If 2=⌊nc
      caption,←{0::'' ⋄ ', depth=',⍕⍵}≡⍎name
      caption,←{0::'' ⋄ ', shape=',⍕⍵}⍴⍎name
  :EndIf
  caption,←')'
- tno WriteFile'<div id="title">',caption,'</div>'
+ n2.∆CssFilename WriteFile'<div id="title">',caption,'</div>'
  ns←⎕NS''
  ns.options←##.Replace.GetRegExOptions oldCode ##.G
  ns.ss←##.Replace.GetRegExSearchString ##.G G.NC                ⍝ Search string
@@ -32,7 +31,7 @@
          ns.i+←1
          '<span class="diff-old" id="n-',id,'-old">',⍵.Match,'</span><span class="diff-new" id="n-',id,'-new">',ns.rs,'</span>'
      }
-     html←ns.ss ⎕R fns⍠ns.options⊣##.A.dlb oldCode
+     html←ns.ss ⎕R fns⍠ns.options⊣##.A.DLB oldCode
      html←'<div class="line"><code>',html,'</code></div>'
  :Else
      ns.i←0
@@ -40,12 +39,12 @@
          ns←⍺
          id←⍕ns.i⊃ns.IDs
          ns.i+←1
-         '<span class="diff-old" id="n',id,'-old">',⍵.Match,'</span><span class="diff-new" id="n',id,'-new">',ns.rs,'</span>'
+         new←ns.ss ⎕R ns.rs⍠ns.options⊣⍵.Match
+         '<span class="diff-old" id="n',id,'-old">',⍵.Match,'</span><span class="diff-new" id="n',id,'-new">',new,'</span>'
      }
-     html←ns.ss ⎕R fns⍠ns.options⊣##.A.dlb oldCode[∪ns.lines]
+     html←ns.ss ⎕R fns⍠ns.options⊣##.A.DLB oldCode[∪ns.lines]
      html←(⍕¨∪lineNumbers){'<div class="line"><span class="lineno">[',⍺,']</span><code>',⍵,'</code></div>'}¨html
  :EndIf
- tno WriteFile html
- tno WriteFile BottomOfDoc
- ⎕NUNTIE tno
+ n2.∆HtmlFilename WriteFile html
+ n2.∆HtmlFilename WriteFile BottomOfDoc
 ⍝Done

@@ -1,0 +1,11 @@
+# Link support
+
+Support for Link is partly realize.
+
+* Calling `TellLink` for changes is already in place everywhere
+* In case the user deletes somthing with Cytl+Del from the hit list a call to `LetLinkDelete` is already in place.
+* In case an APL object is deleted as a conseqence of a "Replace" operation nothing is in place yet but a `⍝TODO⍝ Link` marker
+
+A change in startegy might be required however.
+
+See ⎕SE.Link.Fix and ⎕SE.Link.Expunge and email exchange with Morten

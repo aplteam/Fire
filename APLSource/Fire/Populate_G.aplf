@@ -16,3 +16,5 @@
  G.Posn←⍬ ⍬
  G.Size←600 850
  G.ReplaceBy_was←''
+ G.IgnoreRefs←1
+ G.IgnoreTatinPkgs←1

@@ -27,7 +27,7 @@
  ∆Process n.Form
  →T.GoToTidyUp 2≠⍴n2.List.Items
  →T.GoToTidyUp'HTML Document'≢n2.Browser.Type
- html←##.APLTreeUtils.Lowercase'flat'##.APLTreeUtils.ReadUtf8File n2.∆Filename
+ html←⎕C FilesAndDirs.NGET n2.∆Filename
  expected←''
  expected,←⊂'<h2 id="h-1">1. #.temp_regexsearch_015.fns1 (3.2)</h2>'
  expected,←⊂'<div class="obj">'
@@ -45,7 +45,7 @@
  expected,←⊂'<span class="diff">''a''</span>'
  expected,←⊂'<span class="diff">''j''</span>'
  expected,←⊂'<span class="diff">''apl''</span><br></div>'
- →T.GoToTidyUp~∧/∨/¨expected⍷¨⊂∊##.APLTreeUtils.dmb html
+ →T.GoToTidyUp~∧/∨/¨expected⍷¨⊂∊APLTreeUtils2.DMB html
  R←T._OK
 
 ∆TidyUp:

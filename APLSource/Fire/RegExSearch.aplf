@@ -3,7 +3,7 @@
      options←('Mode' 'M')('IC'(~G.Case))('Greedy'G.Greedy),IsVersion16OrBetter/⊂('UCP' 1)
      r←G.SearchFor2 ⎕S 0 1⍠options⊣data
  :Else
-     msg←A.dmb{0=+/b←':'=⍵:⍵ ⋄ (~b)⊂⍵}⎕DMX.Message
+     msg←A.DMB{0=+/b←':'=⍵:⍵ ⋄ (~b)⊂⍵}⎕DMX.Message
      'Regular Expression error'Question.ShowMsg msg
      ⎕SIGNAL 988
  :EndTrap

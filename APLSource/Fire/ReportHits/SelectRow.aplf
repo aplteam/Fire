@@ -1,0 +1,6 @@
+ SelectRow←{
+     row←⍵
+     n←⍺
+     _←n.Browser{6::⍬ ⋄ ,⍺.Navigate2⊂'file:///',⍵}n.TheForm.filenameHTML,'#h-',⍕row+1
+     1:shy←⍬
+ }

@@ -11,7 +11,7 @@
  :EndFor
  code[ns.hits]←html
  code←↑,/code
- code←##.A.dlb ##.NL ##.A.Split code
+ code←##.A.DLB ##.NL ##.A.Split code
  lineNumbers←∪(⍳≢code)[ns.lineNumbers]
  code←code[lineNumbers]
  html←lineNumbers{'<div class="line"><span class="lineno">[',(⍕⍺),']</span><p> ',⍵,'</p></div>'}¨code

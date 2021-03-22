@@ -14,7 +14,7 @@
  col←n.HitList.(Items,ReportInfo)[;cn]          ⍝ The column in question
  :If 0=1↑0⍴↑col
      si←sf⊃col                                  ⍝ Sort index for num
- :ElseIf ∧/~(∊col)∊⎕A,##.A.Lowercase ⎕A
+ :ElseIf ∧/~(∊col)∊⎕A,⎕C ⎕A
      si←sf⊃col                                  ⍝ Sort index for digits
  :Else
      si←##.SortAlph sf⊃col                      ⍝ Sort index for char

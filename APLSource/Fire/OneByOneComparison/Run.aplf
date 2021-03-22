@@ -27,7 +27,7 @@
  :EndIf
  :Select res
  :CaseList n2.(OK AllRemaining)
-     G.These←##.A.Where IsTicked n2
+     G.These←⍸IsTicked n2
      newCode←Replace G
      r←1(res≡n2.AllRemaining)newCode
  :Case n2.Skip

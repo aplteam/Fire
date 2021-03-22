@@ -40,7 +40,7 @@
              :EndTrap
          :Else
              itemNo←↑∊body∘{('^ *',⍵)⎕S 2⍠('IC' 1)('Mode' 'L')⊣⍺}¨':namespace' ':class' ':interface'
-             nc←(':namespace' ':class' ':interface'⍳⊂A.Lowercase{⍵↑⍨⍵⍳' '}A.dlb itemNo⊃body)⊃9.1 9.4 9.5
+             nc←(':namespace' ':class' ':interface'⍳⊂⎕C{⍵↑⍨⍵⍳' '}A.DLB itemNo⊃body)⊃9.1 9.4 9.5
          :EndIf
      :EndIf
  :EndIf

@@ -2,13 +2,13 @@
 ⍝ Performs a bit more than an ordinary search
  in←' ',⍨##.Simplify ##.CR,¨in
  r←(⍴these)⍴0
- lc←##.A.Lowercase ⎕A
+ lc←⎕C ⎕A
  start←'⎕∆⍙_:',⎕A,lc
  end←'¯∆⍙_',⎕D,⎕A,lc
  :For i :In ⍳⍴these
      this←(i⊃these)~' '
      :If 0<+/b←this⍷in                                  ⍝ No hit at all?
-         ind←##.Where b
+         ind←⍸b
          :If ~0∊⍴ind←(~in[ind-1]∊start)/ind             ⍝ Can it be a name? (left)
          :AndIf ~0∊⍴ind←(~in[ind+⍴this]∊end)/ind        ⍝ Can it be a name? (Right)
              :If ∧/gf←'.'=in[ind-1]                     ⍝ Globally referenced?
@@ -17,7 +17,7 @@
                  :If nc∊3.1 4.1                         ⍝ Is it a trad fns/opr?
                      h←1↓{⍵/⍨1=+\⍵=##.CR}in             ⍝ Header without comments
                      ((h∊'←{}();')/h)←' '               ⍝ Replace special chars by a blank
-                     h←##.A.dmb h                       ⍝ Remove multiple blanks
+                     h←##.A.DMB h                       ⍝ Remove multiple blanks
                      ll←' '##.A.Split h                 ⍝ List of Locals
                  :AndIf 0=+/(⊂this)∊ll
                      r[i]←+/b

@@ -47,12 +47,17 @@ Fire also overcomes a couple of problems that Dyalog's built-in Search tool is s
 
 * It is less likely to generate a WS FULL.
 
-* It supports regular expressions (`⎕R`/`⎕S`). (Dyalog supports this partly since version 16.0)
+
+## Prerequisites
+
+* Fire requires at least version 18.0 Unicode in order to run
+
+* Fire also requires the Dyalog package manager Tatin to be installed in order to bring in the packages Fire depends on.
 
 
 ## Installing Fire
 
-General information
+### General information
 
 Since version 7.1.0 Fire comes with its own installer. Just double-click it and your are done. It does not require admin rights.
 
@@ -68,7 +73,7 @@ Without doing this the old installation will continue to exist, and depending on
 
 ### Installing Fire somewhere else
 
-If for some reason you decide to install Fire not in the default location but somewhere else then that's fine. Of course the hosting folder must be among the folders scanned by Dyalog for user commands; see the "User Command" tab in the Configuration dialog.
+If for some reason you decide to install Fire not in the default location but somewhere else then that's fine. Of course the hosting folder must be among the folders scanned by Dyalog for user commands; see the "User Command" tab in the Dyalog Configuration dialog.
 
 If you want to change the installation folder later when you install Fire again then it is strongly recommended that you un-install it first: execute this EXE in order to achieve that:
 
@@ -126,7 +131,7 @@ A namespace script as such is _only_ listed in the hit list when it carries vari
 
 However, this is inconsistent with what Fire does with functions and operators: in ordinary namespaces a variable is listed on it's own only when its value --- not the name! --- carries a hit. For scripted namespaces it's listed on its own when the value _or_ the name carries a hit.
 
-The reason for this inconsistency is that is no good way to tell function assignments (like `fns←+/`) from variable assignments.
+The reason for this inconsistency is that there is no good way to tell function assignments (like `fns←+/`) from variable assignments.
 
 Since "Replace" is only available for variables of certain types anyway, this still seemed the best way to deal with the problem.
 
@@ -137,7 +142,7 @@ There are two different flavours of references to be considered:
 
 * References pointing to classes, interfaces or namespaces.
 
-  These are simply ignored by Fire.
+  By default these are simply ignored by Fire.
 
 * References pointing to functions, either traditional ones or dfns.
 
@@ -147,7 +152,7 @@ Worse, there is no way to tell a reference pointing to a dfn from that dfn.
 
 Therefore Fire does not even attempt to identify such references. That could result in the same function listed twice in the hit list, once under its real name and once under the name of the reference.
 
-That should never pose a problem, even if you perform a "Replace" operation: Fire would carry out the same operation twice, wasting a bit of time but delivering the desired result.
+That should not pose a problem, even if you perform a "Replace" operation: Fire would carry out the same operation twice, wasting a bit of time but delivering the desired result.
 
 
 ### Nested scripted namespaces
@@ -246,7 +251,7 @@ Hopefully using nested namespaces will not become popular...
 
 ### Ghostly namespaces
 
-Note that Fire does not search ghostly namespaces. These are namespaces which exist together with GUI objects as well as classes. If you did not know about ghostly namespaces then it might be best to ignore them: they can be quite confusing. 
+Note that Fire does not scan ghostly namespaces. These are namespaces which exist together with GUI objects as well as classes. If you did not know about ghostly namespaces then it might be best to ignore them: they can be quite confusing. 
 
 Ghostly namespaces exist for a very long time but until OO was introduced to Dyalog APL they were kept hidden from users.
 
@@ -352,11 +357,11 @@ The "Replace" dialog has a check box "Delete lines/items with hits". That seems 
 
 1. The first and the last line of any script is never deleted, no matter whether they carry a hit or not. It should be obvious why that is.
 
-1. The first line of any function or operator is never deleted, no matter whether they carry a hit or not. However, be aware of 6.
-
-1. A one-line dfns that carries a hit is deleted.
+1. The first line of any function or operator is never deleted, no matter whether they carry a hit or not. However, be aware of the next topic.
 
 1. A tfns that carries hits on all its lines is deleted.
+
+1. A one-line dfns that carries a hit is deleted.
 
 
 ## Tips and Tricks
@@ -418,7 +423,7 @@ This might not work too well on multiple-monitor systems when the screen sizes o
 
 Since version 8.0 Fire comes with an API, meaning that you can take adantage of some of Fire's features under program control.
 
-You must make sure that Fire is available in `⎕SE`. This can either be achieved by just executing the `]Fire` user command or by executing `]Fire -load` which does load Fire into `⎕SE` but does not run Fire, meaning that the GUI would not show.
+You must make sure that Fire is available in `⎕SE`. This can either be achieved by just executing the `]Fire` user command or by executing `]Fire -noGUI` which does load Fire into `⎕SE` but does not run Fire, meaning that the GUI would not show.
 
 You can then execute the appropriate methods from the namespace `⎕SE._Fire.Fire.API`.
 
@@ -472,6 +477,35 @@ If you want to get the hits listed set `Report` to 1:
   [298] charset←'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 abcdefghijklmnopqrstuvwxyz0123456789'
 ~~~
 
+### Search `⎕NL` (Name List)
+
+Since version 9.0 the API also allows you to search `⎕NL` recursively. Note that this always searched `#`.
+
+Let's assume you want to perform a search for "string" in the names of all objects, and that the search should _not_ be case sensitive. 
+
+We can do this without further ado because the defaults fit:
+
+```
+      ⎕SE.Fire.SearchQNL 'search'
+
+```
+
+If we want to search for all functions that start their names with "Search" we must use a RegEx, and it must be a case sensitive search. For that we need to set some parameters:
+
+```
+      parms←⎕SE.Fire.CreateParmsFor_QNL_Search
+      parms.∆List  ⍝ List the defaults
+ Case           0 
+ FullPath       0 
+ SearchFor        
+ SearchIsRegEx  0 
+      parms←SearchIsRegEx←1
+      parms←Case←1
+      parms ⎕SE.Fire.SearchQNL '^Search'
+
+```
+
+Note that if you want to find "search" in the full path of the APL objects (like "Foo" in `#.Fist.Foo.MyFunction`) then you must set `FullPath` to 1.
 
 ## Useful Regular expressions
 
@@ -480,31 +514,34 @@ There is a separate document `UsefulRegExes.html` available --- see there.
 
 ## acre and Fire
 
-Acre --- which [lives on GitHub](https://github.com/the-carlisle-group/Acre-Desktop) --- is an APL project management systen written in Dyalog APL by [Phil Last](http://aplwiki.com/PhilLast).
+Acre --- which [lives on GitHub](https://github.com/the-carlisle-group/Acre-Desktop) --- is an APL project management system written in Dyalog APL by [Phil Last](http://aplwiki.com/PhilLast).
 
-When Fire finds acre in `⎕SE` it will tell acre about all change and delete operations. Acre will then work out what project the object in question belongs to and take action, if any. In other words, Fire and acre are fully integrated.
+When Fire finds acre in `⎕SE` it will tell acre about all change and delete operations. Acre will then work out what project the object in question belongs to and take action, if any. In other words, Fire and acre are fully integrated
+
+
+## Link and Fire
+
+`⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹`
 
 
 ## Salt and Fire
 
-The Simple APL Library Toolkit (SALT) which is supplied with Dyalog APL is supported by Fire: when a script is managed by SALT then the script "contains" an ordinary namespace SALT_Data. This namespace contains a number of variables including
+The Simple APL Library Toolkit (SALT) which is supplied with Dyalog APL is supported by Fire: when a script is managed by SALT then the script "contains" an ordinary namespace `SALT_Data`. This namespace contains a number of variables including
 
-* CRC            
-* GlobalName     
-* LastWriteTime  
-* PreviousVersion
-* SourceFile     
-* Version        
+* `CRC`
+* `GlobalName` 
+* `LastWriteTime`
+* `PreviousVersion`
+* `SourceFile`     
+* `Version`
 
 and others. SALT uses them for its own purposes.
 
-When a script is re-fixed with `⎕FIX` then the namespace SALT_Data disappears. 
+When a script is re-fixed with `⎕FIX` then the namespace `SALT_Data` disappears. 
 
-However, Fire works out whether a script is managed by SALT and restores the namespace SALT_Data after having re-fixed it as part of a "Replace" operation. Therefore the script continues to be managed by SALT.
+However, Fire works out whether a script is managed by SALT and restores the namespace `SALT_Data` after having re-fixed it as part of a "Replace" operation. Therefore the script continues to be managed by SALT.
 
 What Fire does not do is actually saving any object via a SALT command. The simple reason is that when you change an object in the workspace it does not necessarily mean that you want to save those changes on disk. It's completely up to the programmer to make that decision. 
-
-Note that in the "Report" menu there is a command "List changed SALTed scripts". This command prints a SALT "Save" command to the session for all scripts that got changed by Fire and are managed by SALT.
 
 
 ## Showing the PID in all Fire window captions
@@ -515,4 +552,4 @@ In case you've added {PID} - which stands for "Process ID" - to the MessageBox v
 
 In case you wonder what this is good for: there are people out there who have more than just one Dyalog session running at the same time, sometimes many. In such cases it can be very useful to know the process ID a particular message box belongs to, because it can be very awkward or impossible to find out by other means.
 
-Kai Jaeger --- 2019-12-23
+Kai Jaeger --- 2021-03-19

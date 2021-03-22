@@ -1,5 +1,5 @@
  OnEditCode←{
      n←##.GUI.GetRefTo_n 0⊃,⍵
      (0=+/b←n.List.SelItems):⍬
-     EditCode n.List.ReportInfo[##.Where b;0](##.Where b)
+     EditCode n.List.ReportInfo[⍸b;0](⍸b)
  }

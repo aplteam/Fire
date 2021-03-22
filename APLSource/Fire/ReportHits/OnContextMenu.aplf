@@ -16,11 +16,11 @@
  :AndIf 'mm.Cancel'≢0⊃res
      :Select 0⊃res
      :Case 'mm.EditCode'
-         EditCode(n.List.ReportInfo[##.Where n.List.SelItems;0])(##.Where n.List.SelItems)
+         EditCode(n.List.ReportInfo[⍸n.List.SelItems;0])(⍸n.List.SelItems)
      :Case 'mm.RemoveFromList'
          RemoveFromList n
      :Case 'mm.PrintName'
-         PrintName¨n.List.ReportInfo[##.Where n.List.SelItems;0]
+         PrintName¨n.List.ReportInfo[⍸n.List.SelItems;0]
      :EndSelect
  :EndIf
 ⍝Done

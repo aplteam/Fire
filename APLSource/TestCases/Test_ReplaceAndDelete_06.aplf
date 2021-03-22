@@ -27,7 +27,7 @@
  {}∆Select n2.StartBtn
  ∆Process n.Form
  →T.GoToTidyUp 1≠#.Fire.Fire.Replace.NoOfReplacements
- →T.GoToTidyUp('r←(f myTop)x' 'r←''world''')≢##.APLTreeUtils.dlb #.TEMP.⎕NR'myTop'
+ →T.GoToTidyUp('r←(f myTop)x' 'r←''world''')≢APLTreeUtils2.DLB #.TEMP.⎕NR'myTop'
  R←T._OK
 
 ∆TidyUp:

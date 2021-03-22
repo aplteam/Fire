@@ -1,0 +1,8 @@
+ r←{parms}SearchQNL searchFor;⎕ML;⎕IO
+⍝ Performs the actual search: scan ⎕NL recursively
+⍝ `r` reports objects that carry a hit.
+ ⎕IO←0 ⋄ ⎕ML←3
+ parms←{0<⎕NC ⍵:⍎⍵ ⋄ CreateParmsFor_QNL_Search}'parms'
+ parms.SearchFor←searchFor
+ r←0 ##.GUI.SearchQNL.Search parms
+⍝Done

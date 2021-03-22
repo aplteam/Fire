@@ -4,7 +4,7 @@
  r←⍬
  :If ##.IsAnyAcreAround
      :If 0<⎕NC'⎕SE.acre'
-         res←{⎕SE.UCMD'acre.Erase ',⍵}¨GetFullPath¨rows
+         res←⎕SE.acre.Erase¨GetFullPath¨rows
      :EndIf
      :If 0≠≢∊res
      :AndIf ~##.G.TestFlag

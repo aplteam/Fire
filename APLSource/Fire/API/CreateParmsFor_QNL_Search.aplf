@@ -1,0 +1,12 @@
+ parms←CreateParmsFor_QNL_Search
+ parms←##.⎕NS''             ⍝ Holds Globals.
+ parms.(⎕IO ⎕ML)←0 3
+ parms.SearchFor←''
+ parms.SearchIsRegEx←0
+ parms.Case←0
+ parms.FullPath←0
+ :If 0∊∊##.⎕NC¨'AFR'
+     ##.CreateRefs
+ :EndIf
+ parms.⎕FX'r←∆List' 'r←{⍵[⍋⊃⍵[;0];]}{⍵,[0.5]⍎¨⍵}('' ''~¨⍨↓⎕NL 2)~''noGUI'''
+⍝Done

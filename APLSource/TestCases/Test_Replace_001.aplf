@@ -26,9 +26,9 @@
  {}∆Select n2.StartBtn
  ∆Process n.Form
  →T.GoToTidyUp 3≠#.Fire.Fire.Replace.NoOfReplacements
- →T.GoToTidyUp~0=⍴##.APLTreeUtils.Where∨/¨'xyz←'∘⍷¨⎕NR'#.TestData.APL_Names.DeleteLinesFromThis2'
- →T.GoToTidyUp 1≠⍴##.APLTreeUtils.Where∨/¨'∇ r←DeleteLinesFromThis;a;b;c;abc;d;e;xyz;xyz2'∘⍷¨⎕SRC #.TestData.APL_Names.MyClass
- →T.GoToTidyUp 1≠⍴##.APLTreeUtils.Where∨/¨'xyz2'∘⍷¨⎕NR'#.TestData.APL_Names.DeleteLinesFromThis_abc'
+ →T.GoToTidyUp~0=⍴⍸∨/¨'xyz←'∘⍷¨⎕NR'#.TestData.APL_Names.DeleteLinesFromThis2'
+ →T.GoToTidyUp 1≠⍴⍸∨/¨'∇ r←DeleteLinesFromThis;a;b;c;abc;d;e;xyz;xyz2'∘⍷¨⎕SRC #.TestData.APL_Names.MyClass
+ →T.GoToTidyUp 1≠⍴⍸∨/¨'xyz2'∘⍷¨⎕NR'#.TestData.APL_Names.DeleteLinesFromThis_abc'
  R←T._OK
 
 ∆TidyUp:

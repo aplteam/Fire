@@ -3,7 +3,10 @@
 ⍝ classFlag=1=include classes and instances
  objList←0 4⍴''
  :If searchType
-     noOfContainers←≢nsList←CompileNamespaceList G.StartSearchIn classFlag
+     :If 0<≢noOfContainers←≢nsList←CompileNamespaceList G.StartSearchIn classFlag
+     :AndIf G.IgnoreTatinPkgs
+         noOfContainers←≢nsList←DropTatinFrom nsList
+     :EndIf
      objList←{(0=≢⍵):⍬ ⋄ ↑⍪/GetNamesFrom¨↓⍵}(~nsList[;1]∊Types.(ClassInstance Class Interface))⌿nsList
      :If 0=≢objList
          :Return            ⍝ There are namespace(s) but they are all empty

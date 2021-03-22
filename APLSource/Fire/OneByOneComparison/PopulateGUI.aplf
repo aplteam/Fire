@@ -6,7 +6,7 @@
          buff←((##.(NL CR)∊data)/##.(NL CR))##.A.Split data
          bool←∨/¨⎕AV[1]=buff
          count←0~⍨+/¨⎕AV[1]=buff
-         lineNumbers←count/##.A.Where bool
+         lineNumbers←count/⍸bool
          n.List.Items←'[',¨(⍕¨lineNumbers),¨']'
          n.List.ReportInfo←⍕¨⍪∪⍣deleteLines⊣1+∊⍳¨count
      :Else
@@ -20,7 +20,6 @@
      lineNumbers←(⊃,/(1+≢¨data)⍴¨⍳≢data)[offset]
      n.List.Items←'[',¨(⍕¨∪⍣deleteLines⊣lineNumbers),¨']'
      n.List.ReportInfo←CompileReportInfo∪⍣deleteLines⊣lineNumbers
-     r←lineNumbers
  :EndIf
  TickAllCheckBoxes n.List
  i noOf WriteStatusMsg n

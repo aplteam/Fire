@@ -10,7 +10,7 @@
      ##.GUI.n.HitList.ReportInfo←b⌿##.GUI.n.HitList.ReportInfo
      n.List.ReportInfo[rows;2]←⊂'removed from hit list'
      _←n RemoveFromHitReport rows
-     _←n RewriteCSS 1+##.A.Where n.List.ReportInfo[;2]≡¨⊂'removed from hit list' ⍝ All removed, not only the last one's removed (rows)
+     _←n RewriteCSS 1+⍸n.List.ReportInfo[;2]≡¨⊂'removed from hit list' ⍝ All removed, not only the last one's removed (rows)
      _←{0::⍬ ⋄ n.Browser.Refresh ⍵}⍬
      ⍬
  }

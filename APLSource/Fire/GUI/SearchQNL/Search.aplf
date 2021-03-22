@@ -1,26 +1,36 @@
- {r}←Search n2;list;containerList;bool;list2;searchFor
+ {r}←{printToSession}Search parms;list;containerList;bool;list2;searchFor
  r←⍬
+ printToSession←{0<⎕NC ⍵:⍎⍵ ⋄ 1}'printToSession'
  containerList←(##.##.CompileNamespaceList'#' 1)[;0]
  list←1↓↑,/GetNames¨containerList
- :If n2.Last.State
-     list2←##.##.A.Last¨list
- :Else
+ :If parms.FullPath
      list2←list
- :EndIf
- :If n2.IsRegEx.State
-     searchFor←,n2 IfLower n2.SearchFor.Text
-     bool←searchFor∘{≢⍺ ⎕S 0⍠('IC'(~n2.Case.State))⊣⍵}¨list2
  :Else
-     list2←n2 IfLower list2
-     searchFor←,n2 IfLower n2.SearchFor.Text
+     list2←##.##.A.Last¨list
+ :EndIf
+ searchFor←parms.SearchFor
+ :If parms.SearchIsRegEx
+     bool←searchFor∘{≢⍺ ⎕S 0⍠('IC'(~parms.Case))⊣⍵}¨list2
+ :Else
+     list2←parms.Case IfLower list2
+     searchFor←,parms.Case IfLower searchFor
      bool←∨/¨searchFor∘⍷¨list2
  :EndIf
  list←bool/list
  :If 0=≢list
-     'No hits'##.##.Question.ShowMsg'Nothing found'
+     :If printToSession
+         ⎕←'Not found in ⎕NL'
+     :Else
+         r←0 2⍴''
+     :EndIf
  :Else
-     list←↓⎕FMT list,[0.5]⍕¨⎕NC∘⊂¨list
-     list←⊃(⊂'*** Search for <',searchFor,'> yielded ',(⍕≢list),' hit',((1<≢list)/'s'),':'),list
-     ⎕←list
+     list←list,[0.5]⍕¨⎕NC∘⊂¨list
+     :If printToSession
+         list←↓⎕FMT list
+         list←⊃(⊂'*** Search for <',searchFor,'> yielded ',(⍕≢list),' hit',((1<≢list)/'s'),':'),list
+         ⎕←list
+     :Else
+         r←list
+     :EndIf
  :EndIf
 ⍝Done

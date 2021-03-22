@@ -5,7 +5,7 @@
  r←⍬
  {}CopyGuiToGlobal ⍬
  ##.PrePopulateSearchBox ⍬
- :If 0≠≢ind←##.Where 0=↑∘⍴¨objects[;1]
+ :If 0≠≢ind←⍸0=↑∘⍴¨objects[;1]
      objects[ind;]←⊃{#,⊂⍕0⊃⍵}¨↓objects[ind;]
  :EndIf
  (objects[;0]).⎕ED&objects[;1]

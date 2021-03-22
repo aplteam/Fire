@@ -3,6 +3,8 @@
 
 ![Logo](Images/fire.png) Fire stands for FInd and REplace. It's designed to search and replace strings in the workspace.
 
+Note that with version 9.0.0 Fire runs under Dyalog APL/W 18.0 Unicode and later. If you use older versions of Dyalog APL then use the latest version 8.x
+
 
 ## Features
 

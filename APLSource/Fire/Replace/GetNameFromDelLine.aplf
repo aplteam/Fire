@@ -6,12 +6,12 @@
  ⍝ and returns just the name (foo) no matter that the signature looks like
  ⍝ This function has its own text case: #.TestCases.Test_064
  r←{('∇'∊⍵):⍵↓⍨1+⍵⍳'∇' ⋄ ⍵}header
- Split←##.##.APLTreeUtils.Split
+ Split←##.##.APLTreeUtils2.Split
  r←{('←'∊⍵):⍵↓⍨1+⍵⍳'←' ⋄ ⍵}r                ⍝ Get rid of any explicit result
  r←{('⍝'∊⍵):⍵↑⍨⍵⍳'⍝' ⋄ ⍵}r                  ⍝ Get rid of any comment
  r↑⍨←r⍳';'                                  ⍝ Get rid of any local variables
  r←{('}'∊⍵):⍵↓⍨1+⍵⍳'}' ⋄ ⍵}r                ⍝ Get rid of optional arguments
- r←##.##.APLTreeUtils.dmb r                 ⍝ Delete any leading/trailing/multiple blanks
+ r←##.##.APLTreeUtils2.DMB r                ⍝ Delete any leading/trailing/multiple blanks
  r{⍵:' d',⍨⍺↓⍨-1+'('⍳⍨⌽⍺ ⋄ ⍺}←')'=¯1↑r      ⍝ Replace multiple right arguments with dummy (if any)
  isOpr←('('=1⍴r)∨3=r+.=' '                  ⍝ Is it an operator?
  :If isOpr

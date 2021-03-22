@@ -11,5 +11,5 @@
      CSS,←⊂##.TAB,'color:#b0b0b0;'
      CSS,←⊂'}'
  :EndIf
- ##.A.WriteUtf8File fn CSS
+ (⊂CSS)##.##.FilesAndDirs.NPUT fn 1
 ⍝Done
