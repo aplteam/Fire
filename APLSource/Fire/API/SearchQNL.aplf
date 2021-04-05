@@ -1,8 +1,17 @@
- r←{parms}SearchQNL searchFor;⎕ML;⎕IO
+ r←{parms_}SearchQNL searchFor;⎕ML;⎕IO;parms
 ⍝ Performs the actual search: scan ⎕NL recursively
 ⍝ `r` reports objects that carry a hit.
  ⎕IO←0 ⋄ ⎕ML←3
- parms←{0<⎕NC ⍵:⍎⍵ ⋄ CreateParmsFor_QNL_Search}'parms'
- parms.SearchFor←searchFor
+ :If 0<⎕NC'parms_'
+     'parms'⎕NS parms_
+ :Else
+     parms←CreateParmsFor_QNL_Search
+ :EndIf
+ :If 0=≢parms.SearchFor
+ :OrIf parms.SearchFor≡searchFor
+     parms.SearchFor←searchFor
+ :Else
+     'Both the right argument and the parameter "searchFor" are set?!'##.Assert 0=≢searchFor
+ :EndIf
  r←0 ##.GUI.SearchQNL.Search parms
 ⍝Done

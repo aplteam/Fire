@@ -1,0 +1,19 @@
+ R←Test_API_016(stopFlag batchFlag);⎕TRAP;ref;buff;parms
+⍝ Exercise the `SearchQLN` function with parameters and specify search string as parameter *and* right argument equally
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←T._Failed
+
+ #.⎕SHADOW'TEMP'
+ ∆CreateFooNamespace ⍬
+
+ ref←##.Fire.API
+
+ parms←ref.CreateParmsFor_QNL_Search
+ parms.SearchIsRegEx←1
+ parms.SearchFor←'AA'
+ parms.StartSearchIn←'⎕SE'
+ buff←parms ref.SearchQNL''
+ →T.PassesIf 0<≢buff
+
+ R←T._OK
+⍝Done

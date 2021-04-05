@@ -1,11 +1,11 @@
  R←Test_Replace_250(stopFlag batchFlag);n;n2;⎕TRAP;expected;ref;dir
-⍝ Check whether Link is notified regardig changes performed by Fire
+⍝ Check whether Link is notified regarding changes performed by Fire
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
 
  R←T._Failed
 
  R←T._NotImplemented
-  ⍝TODO⍝  ⍝TODO⍝  ⍝TODO⍝  ⍝TODO⍝ :Return
+ :Return
 
 ⍝ Preconditions
  #.⎕SHADOW'FireLinksTest'

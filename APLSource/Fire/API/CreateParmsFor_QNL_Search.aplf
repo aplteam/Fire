@@ -1,6 +1,7 @@
  parms←CreateParmsFor_QNL_Search
  parms←##.⎕NS''             ⍝ Holds Globals.
  parms.(⎕IO ⎕ML)←0 3
+ parms.StartSearchIn←'#'
  parms.SearchFor←''
  parms.SearchIsRegEx←0
  parms.Case←0

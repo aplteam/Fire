@@ -1,7 +1,7 @@
- {r}←{printToSession}Search parms;list;containerList;bool;list2;searchFor
+ {r}←{printToSession}Search parms;list;containerList;bool;list2;searchFor;searchIn
  r←⍬
  printToSession←{0<⎕NC ⍵:⍎⍵ ⋄ 1}'printToSession'
- containerList←(##.##.CompileNamespaceList'#' 1)[;0]
+ containerList←(##.##.CompileNamespaceList parms.StartSearchIn 1)[;0]
  list←1↓↑,/GetNames¨containerList
  :If parms.FullPath
      list2←list
