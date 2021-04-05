@@ -118,13 +118,13 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><th>Executed at</th><th>APLVersion</th><th>Memory (MB)</th></tr>
 <thead>
 </tbody>
-<tr><td>2021-03-22 07:21:11</td><td>Windows-64 ⋄ 18.0.40044.0 ⋄ W ⋄ Development</td><td>52</td></tr>
+<tr><td>2021-04-05 11:53:28</td><td>Windows-64 ⋄ 18.0.40272.0 ⋄ W ⋄ Development</td><td>52</td></tr>
 </tbody>
 </table>
 <p>Overall 44% of the testable code is  covered.</p>
 <p>(Comment lines, empty lines, all <code>:End</code>* lines etc. are all ignored)</p>
 <p>187 of the fns/opr are 100% covered.</p>
-<p>365 are not covered at all:</p>
+<p>367 are not covered at all:</p>
 <table>
 <tbody>
 <tr><td>#.Fire.Fire.About</td></tr>
@@ -219,6 +219,7 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.GUI.HandleKey_CtrlBackspace</td></tr>
 <tr><td>#.Fire.Fire.GUI.HandleKey_CursorDown</td></tr>
 <tr><td>#.Fire.Fire.GUI.HandleKey_CursorUp</td></tr>
+<tr><td>#.Fire.Fire.GUI.HandlePageDown</td></tr>
 <tr><td>#.Fire.Fire.GUI.HandlePgDown</td></tr>
 <tr><td>#.Fire.Fire.GUI.HandlePgUp</td></tr>
 <tr><td>#.Fire.Fire.GUI.IsBetterThan</td></tr>
@@ -256,6 +257,7 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.GUI.OnKeyPressInLookIn</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnKeyPressInLookIn_</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnKeyPressInSearchFor</td></tr>
+<tr><td>#.Fire.Fire.GUI.OnKeyPressStandard</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnLookInGotFocus</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnLookInLostFocus</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnObjectType</td></tr>
@@ -495,7 +497,7 @@ ul li, ol li {margin: 8pt 3pt;}
 </tbody>
 </table>
 <div id="partly-covered" class="keep-together">
-<p>83 are partly covered:</p>
+<p>81 are partly covered:</p>
 <table>
 <thead>
 <tr><th style="text-align:left;">Function/Operator</th><th style="text-align:left;">Lines not executed</th><th style="text-align:left;">Coverage</th><th style="text-align:right;">≢</th></tr>
@@ -516,8 +518,6 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.GUI.CheckForConsistency</td><td>25←≢7-9,14-21,27-33,39-45</td><td>31%</td><td class="align-right">36</td></tr>
 <tr><td>#.Fire.Fire.ReportHits.RestrictLengthOfVarsForHTML</td><td>4,5</td><td>33%</td><td class="align-right">3</td></tr>
 <tr><td>#.Fire.Fire.GetRefTo</td><td>6,7,8</td><td>40%</td><td class="align-right">5</td></tr>
-<tr><td>#.Fire.Fire.GUI.HandlePageDown</td><td>6,7,8</td><td>40%</td><td class="align-right">5</td></tr>
-<tr><td>#.Fire.Fire.Icon.GetFilename</td><td>7,8,9</td><td>40%</td><td class="align-right">5</td></tr>
 <tr><td>#.Fire.Fire.ReportHits.MarkupHitsInVars</td><td>26←≢5,8-11,15-17,26-27,41-45,47-53,55,57-59</td><td>43%</td><td class="align-right">46</td></tr>
 <tr><td>#.Fire.Fire.Replace.ChangeThem_</td><td>46←≢21,25-27,32,37-38,51-53,56-57,59-65,67-76,78,80-89,96-97,103-106</td><td>45%</td><td class="align-right">83</td></tr>
 <tr><td>#.Fire.Fire.Replace.QFX</td><td>20←≢10,14,25-42</td><td>47%</td><td class="align-right">38</td></tr>

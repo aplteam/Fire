@@ -1,12 +1,2 @@
- After ps;flag;counter
- counter←flag←0
- :Repeat
-     :Trap 6 11
-         Assert 0=≢#.Fire.FilesAndDirs.ListFiles'%TEMP%\*_',⎕AN,'_*' ⍝ If this crashes simply try again: most of the time that will fix the problem.
-         flag←1
- ⍝ Note that using a loop with a time delay does NOT help here.
-     :Else
-         ⎕DL 0.1
-         flag←10<counter←counter+1
-     :EndTrap
- :Until flag
+ After ps;flag
+ 0 0⍴#.⎕SRC APLTreeUtils2

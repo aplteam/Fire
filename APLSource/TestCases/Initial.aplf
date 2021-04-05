@@ -2,6 +2,7 @@
  ⎕IO←0 ⋄ ⎕ML←3
  ShowWarning ⍬
  CopyTestData
+ ##.FilesAndDirs.DeleteFile ##.FilesAndDirs.GetTempPath,'/Fire_dyalog_apl.ico'  ⍝ Because a new installation won't fine this (was once a bug)
  #.TestData.GUI_Instance.Make   ⍝ Converts that namespace into a GUI. Is then name class 9.2
  ##.Fire.Reset
 ⍝Done

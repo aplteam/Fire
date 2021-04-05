@@ -5,6 +5,8 @@
  ⍝ is then written to the Registry.
  fn←##.F.GetTempPath,'/Fire_dyalog_apl.ico'
  :If ~##.F.Exists fn
+ :OrIf 0=⊃('type' 2)##.F.Dir fn
+     ##.F.DeleteFile fn
      tno←fn ⎕NCREATE 0
      IconData ⎕NAPPEND tno,163
      ⎕NUNTIE tno

@@ -1,4 +1,6 @@
 ⍝ Contains information regarding the last release. A full history is available on GitHub. (This line is ignored)
+* 9.0.1
+  * There was a problem with the Fire icon. It hit only on PCs were Fire has never been installed before.
 * 9.0.0
   * Breaking changes: 
     * Requires at least Dyalog 18.0 Unicode.
@@ -9,7 +11,7 @@
   * Messages in the status bar are now explicitly mentioning whether the hit list was searched.
   * When a search of the current hit list yields no results the "Search hit list" button is un-ticked and the
     "Search in" field is made available.
-  * The API is now (also) availbale from `⎕SE.Fire`
+  * The API is now (also) available from `⎕SE.Fire`
   * Bug fixes:
     * Attempts to remove variables from the hit report failed.
     * In the hit list, moving the selection with the keyboard did not update the right pane accordingly.
@@ -20,7 +22,7 @@
       enter a space since it makes no sense in this field.
     * It was possible to enter a dot in the "Start looking here" field even if there weren't any sub-namespaces
       available. That should be prevented.
-    * The replace preview failed to show anything sensible when the replace string referred to groups.
+    * The replace preview failed to show anything sensible when the replace string refered to groups.
     * When after a search for an RegEx a one-by-one replace operation was triggered Fire might produce a VALUE ERRROR.
     * In the "Replace" dialog the "Delete lines" options should not be available (active) when it is a RegEx search.
     * The `∆List` function created by `Fire.API.CreateSearchParms` was buggy.
