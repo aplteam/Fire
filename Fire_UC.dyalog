@@ -123,13 +123,13 @@
       :Access Public Shared
       ⍝ Returns 1 if the currently running version is at least `min`.\\
       ⍝ If the current version is 17.1 then:\\
-      ⍝ `0 0 1 1 ←→ AtLeastVersion¨16 17 17.1 18`\\
+      ⍝ `1 1 1 0 ←→ AtLeastVersion¨16 17 17.1 18`\\
       ⍝ You may specify a version different from the currently running one via `⍺`:\\
-      ⍝ `0 1 1 1 ←→ 17 AtLeastVersion¨16 17 17.1 18`
+      ⍝ `1 1 0 0 ←→ 17 AtLeastVersion¨16 17 17.1 18`
       ⎕IO←1 ⋄
       x←{0<⎕NC ⍵:⍎⍵ ⋄ {⊃⊃(//)⎕VFI ⍵/⍨2>+\⍵='.'}2⊃'#'⎕WG'APLVersion'}'x'
       'Right argument must be length 1'⎕SIGNAL 11/⍨1≠≢min
-      r←⊃min≥x
+      r←⊃min≤x
     ∇
     
     ∇r←IsUnicode

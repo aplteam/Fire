@@ -3,13 +3,13 @@
  G←CollectData oldCode newCode lineNumbers ind nc
  G.DeleteFlag←deleteFlag
  ##.F.DeleteFile n2.∆HtmlFilename
- n2.∆CssFilename WriteFile TopOfDoc n2.∆CssFilename
- n2.∆CssFilename WriteFile'<h1>',name,' (',(##.CompileHeader1 name nc),')</h1>'
+ n2.∆HtmlFilename WriteFile TopOfDoc n2.∆CssFilename
+ n2.∆HtmlFilename WriteFile'<h1>',name,' (',(##.CompileHeader1 name nc),')</h1>'
  :If G.DeleteFlag
      html←##.ReplaceSpecialChars¨oldCode[∪lineNumbers]
      html,¨←{' <span class="diff-old" id="n',⍵,'-1-old"> (<b>not</b> deleted)</span><span class="diff-new" id="n',⍵,'-1-new">(to be deleted)</span>'}¨⍕¨∪lineNumbers
      html←(⍕¨∪lineNumbers){' <div class="line"><span class="lineno">[',⍺,']</span><p>',⍵,'</p></div>'}¨html
-     n2.∆CssFilename WriteFile html
+     n2.∆HtmlFilename WriteFile html
  :Else
      ns←⎕NS''
      ns.ss←##.G.SearchFor
@@ -22,7 +22,7 @@
      :Else
          ns←ns ReplaceForDisplay oldCode
      :EndIf
-     n2.∆CssFilename WriteFile ns.html
+     n2.∆HtmlFilename WriteFile ns.html
  :EndIf
  n2.∆CssFilename WriteFile BottomOfDoc
 ⍝Done

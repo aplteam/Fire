@@ -1,0 +1,64 @@
+ R←Test_Replace_229(stopFlag batchFlag);n;n2;⎕TRAP;buffer;search;code
+⍝ Replace a string in a multi-line function with one-by-one
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←T._Failed
+
+ :If batchFlag
+     R←T._NoBatchTest
+     :Return
+ :EndIf
+
+ ⎕←'Attempts to do a "replace" one-by-one. It''s fine when you see it''s GUI - just close it then'
+ {}⍞,0/⍞←'To continue press <enter>'
+
+⍝ Preconditions
+ #.⎕SHADOW'TEMP'
+ 'TEMP'#.⎕NS''
+ buffer←⊂':Namespace Foo'
+ buffer,←⊂'f0←{''⍝''}'
+ buffer,←⊂'f1←{abc←123 ⋄ a{⍺×⍵}x←2}'
+ buffer,←⊂'abc←123'
+ buffer,←⊂'f2←{'
+ buffer,←⊂'abc←123'
+ buffer,←⊂'abc←456 ⋄ a←1'
+ buffer,←⊂'abc←789'
+ buffer,←⊂'abc←123⋄ b←2} ⍝ my comment'
+ buffer,←⊂'f3←{⍺×⍵}'
+ buffer,←⊂'t2←''More te}xt'' ⍝ comment'
+ buffer,←⊂'∇r←f4'
+ buffer,←⊂'abc←123'
+ buffer,←⊂'r←''Hello Universe'''
+ buffer,←⊂'abc←123 ⋄ abc←987 ⋄ abc←123'
+ buffer,←⊂'∇'
+ buffer,←⊂':EndNamespace'
+ #.TEMP.⎕FIX buffer
+
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+
+ n.SearchFor.Text←'abc←123'
+ n.StartSearchIn.Text←'#.TEMP'
+ n.(Case).State←1
+ n.(Vars Comments Text).State←0
+
+ {}∆Select n.StartBtn
+ 0.2 ∆Process n.Form
+ →T.GoToTidyUp 4≠#.Fire.Fire.G.NoOfObjects
+ →T.GoToTidyUp~n.HitList.Items Match'Foo' 'f1' 'f2' 'f4'
+
+ {}∆Select n.ReplaceBtn
+ ∆Process n.Form
+
+ n2←#.Fire.Fire.Replace.n
+ n2.ReplaceBy.Text←'abcd←2000' 'more←''hello world'''
+ n2.OneByOneMode.State←1
+
+ {}∆Select n2.StartBtn
+ ∆Process n2.Form
+
+ :If 1 ∆YesOrNo'Did you see the "Replace one-by-one" GUI?'
+     R←T._OK
+ :EndIf
+
+∆TidyUp:
+ CloseFire

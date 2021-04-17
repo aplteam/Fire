@@ -28,7 +28,7 @@
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  ∆,←⊂'TipObj'n.TipObj
  msg←''
- msg,←⊂'Scan text; that''s everything between quotes.'
+ msg,←⊂'Scan text; that is everything between quotes.'
  msg,←⊂'Note that text may contain program calls as in'
  msg,←⊂'executed strings and callback definitions.'
  msg,←⊂'Is applicable to variables.'
@@ -46,7 +46,7 @@
  ∆,←⊂'TipObj'n.TipObj
  msg←''
  msg,←⊂'Everything that is neither text nor a comment:'
- msg,←⊂'the APL code as such'
+ msg,←⊂'the APL code as such.'
  msg,←⊂'Not applicable to variables.'
  ∆,←⊂'Tip'msg
  n.APL_Code←⍎'APL_Code'rf.⎕WC ∆

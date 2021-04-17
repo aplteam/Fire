@@ -63,7 +63,7 @@
  ∆,←⊂'Visible' 1
  msg←⊂'Tatin packages are saved in either #._tatin or'
  msg,←⊂'⎕SE._tatin; if you tick this check box then those'
- msg,←⊂'namespaces and their contents with be ignored'
+ msg,←⊂'namespaces and their contents will be ignored'
  ∆,←⊂'Tip'msg
  n.IgnoreTatinPkgs←⍎'IgnoreTatinPkgs'rf.⎕WC ∆
  n.IgnoreTatinPkgs.onKeyPress←'OnKeyPressStandard'

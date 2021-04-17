@@ -5,9 +5,22 @@
 
 Note that with version 9.0.0 Fire started using the concept of semantic versioning ([SemVer](https://semver.org "Link to the document that introduced SemVer")).
 
-In short this means that a bump of the major version number indicates a breaking change. For example, 9.0.0 does not run on versions of Dyalog older than 18.0.
+In short this means that a bump of the major version number indicates a breaking change. For example, 9.* does not run on versions of Dyalog older than 18.0.
 
-## Version 9.0.1 from 2021-04-5
+## Version 9.1.1 from 2021-04-17
+
+* Replace with one-by-one did not work
+
+## Version 9.1.0 from 2021-04-07
+
+* New parameter "StartSearchIn" introduced for searching `⎕NL` (`CreateParmsFor_QNL_Search`) that defaults to `#` but
+  can also be `⎕SE`.
+* Bug fixes
+  * In case "searchFor" was specified as a parameter via the left argument of `SearchQNL` this was overwritten 
+    by the right argument, even in case this was empty.
+  * Fire 9 did not run under Dyalog 18.1
+
+## Version 9.0.1 from 2021-04-05
 
 * Bug fix: There was a problem with the Fire icon. It hit only on PCs were Fire has never been installed before.
 

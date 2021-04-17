@@ -349,6 +349,28 @@ By the way, if for any reason you want to know whether there is code somewhere i
 
 Note that code that exists in a ghostly namespace associated with an external object (Like an Excel workbook) is not reported; Fire cares about APL objects only.
 
+
+### `2 ⎕FIX` with the file:// protocol
+
+You can use 
+
+```
+2 ⎕FIX 'file:///path/to/MyClass.aplc'
+```
+
+This will bring the class into the workspace and link it to the file.
+
+If for any reason you break that link with the `5178⌶` I-Beam then it leaves behind a kind of zombie: you cannot edit the code anymore, and `⎕SRC` would generate a NONCE ERROR on it, despite the fact that the code still executes.
+
+Fire would not find anything inside such a zombie. Dyalogs own search tool would find stuff inside any function and any operator inside `MyClass`, be it private or public, but nothing outside functions and oeprators.
+
+Our advice is to not use `2 ⎕FIX` with the file protocol if you can help it; instead use 
+
+```
+2 ⎕FIX ⊃⎕NGET '/path/to/MyClass.aplc
+```
+
+
 ## Deleting stuff
 
 The "Replace" dialog has a check box "Delete lines/items with hits". That seems to be easy enough: any lines that carry the search string are going to be deleted. However, there are details you need to be aware of:
@@ -359,9 +381,9 @@ The "Replace" dialog has a check box "Delete lines/items with hits". That seems 
 
 1. The first line of any function or operator is never deleted, no matter whether they carry a hit or not. However, be aware of the next topic.
 
-1. A tfns that carries hits on all its lines is deleted.
+1. A tfn that carries hits on all its lines is deleted.
 
-1. A one-line dfns that carries a hit is deleted.
+1. A one-line dfn that carries a hit is deleted.
 
 
 ## Tips and Tricks
@@ -521,7 +543,7 @@ When Fire finds acre in `⎕SE` it will tell acre about all change and delete op
 
 ## Link and Fire
 
-`⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹`
+So far nobody has asked for this, therefore Fire is still not supporting Link.
 
 
 ## Salt and Fire

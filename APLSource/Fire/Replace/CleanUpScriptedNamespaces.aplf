@@ -7,6 +7,7 @@
  r←1
  :If ~batchFlag
  :AndIf 0≠≢##.GUI.n.HitList.Data
+ :AndIf ~##.G.TestFlag
  :AndIf 0<+/bool1←9.1=##.GUI.n.HitList.Data[;3]
      scriptsNames←bool1⌿##.GUI.n.HitList.Data[;1]
      bool2←~({⍵↓⍨1+1⍳⍨+\⍵='.'}∘⍕¨##.GUI.n.HitList.Data[;0])∊scriptsNames

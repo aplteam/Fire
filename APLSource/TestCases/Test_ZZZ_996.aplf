@@ -4,10 +4,10 @@
  R←T._Failed
 
  rn←↑FilesAndDirs.NGET'Docs\ReleaseNotes.md' 1
- searchFor←'## '
+ searchFor←'## Version '
  buff←rn⊃⍨1⍳⍨searchFor∘{⍺≡(≢⍺)↑⍵}¨rn
  buff←(≢searchFor)↓buff
- buff/⍨←buff∊'.',⎕D
+ buff↑⍨←buff⍳' '
  →T.PassesIf buff≡{⍵↑⍨⍵⍳'+'}{⍵/⍨3>+\'.'=⍵}1⊃##.Fire.Version
 
  R←T._OK

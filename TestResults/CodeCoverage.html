@@ -112,19 +112,20 @@ ul li, ol li {margin: 8pt 3pt;}
 <body>
 <h1 id="top">Coverage Report</h1>
 <p>Watched: 635 fns/opr within <code>#.Fire.Fire</code></p>
-<p>The test test suite was execute once:</p>
+<p>The test test suite was executed 2 times:</p>
 <table>
 <thead>
 <tr><th>Executed at</th><th>APLVersion</th><th>Memory (MB)</th></tr>
 <thead>
 </tbody>
-<tr><td>2021-04-05 14:26:40</td><td>Windows-64 ⋄ 18.0.40272.0 ⋄ W ⋄ Development</td><td>52</td></tr>
+<tr><td>2021-04-17 07:59:37</td><td>Windows-64 ⋄ 18.0.40272.0 ⋄ W ⋄ Development</td><td>52</td></tr>
+<tr><td>2021-04-17 12:28:53</td><td>Windows-64 ⋄ 18.0.40272.0 ⋄ W ⋄ Development</td><td>52</td></tr>
 </tbody>
 </table>
-<p>Overall 44% of the testable code is  covered.</p>
+<p>Overall 49% of the testable code is  covered.</p>
 <p>(Comment lines, empty lines, all <code>:End</code>* lines etc. are all ignored)</p>
-<p>189 of the fns/opr are 100% covered.</p>
-<p>364 are not covered at all:</p>
+<p>203 of the fns/opr are 100% covered.</p>
+<p>343 are not covered at all:</p>
 <table>
 <tbody>
 <tr><td>#.Fire.Fire.About</td></tr>
@@ -219,6 +220,7 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.GUI.HandleKey_CtrlBackspace</td></tr>
 <tr><td>#.Fire.Fire.GUI.HandleKey_CursorDown</td></tr>
 <tr><td>#.Fire.Fire.GUI.HandleKey_CursorUp</td></tr>
+<tr><td>#.Fire.Fire.GUI.HandlePageDown</td></tr>
 <tr><td>#.Fire.Fire.GUI.HandlePgDown</td></tr>
 <tr><td>#.Fire.Fire.GUI.HandlePgUp</td></tr>
 <tr><td>#.Fire.Fire.GUI.IsBetterThan</td></tr>
@@ -233,6 +235,7 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.GUI.OnCallingCmd</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnCancelSearch</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnCase</td></tr>
+<tr><td>#.Fire.Fire.GUI.OnCheckForChangeInSearchFor</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnCheckForUpdates</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnCheckInfoBtnPosnInHitList</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnCode</td></tr>
@@ -252,8 +255,10 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.GUI.OnHelp</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnHiddenButtonGotFocus</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnInvertSelectionCmd</td></tr>
+<tr><td>#.Fire.Fire.GUI.OnKeyPressInHitList</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnKeyPressInLookIn</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnKeyPressInLookIn_</td></tr>
+<tr><td>#.Fire.Fire.GUI.OnKeyPressInSearchFor</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnKeyPressStandard</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnLookInGotFocus</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnLookInLostFocus</td></tr>
@@ -301,7 +306,6 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.GUI.set</td></tr>
 <tr><td>#.Fire.Fire.GUI.Events.CheckInfoBtnPosnInHitList</td></tr>
 <tr><td>#.Fire.Fire.GUI.Events.QuitWait</td></tr>
-<tr><td>#.Fire.Fire.GUI.Events.RefreshCSS</td></tr>
 <tr><td>#.Fire.Fire.GUI.NamespaceList.CompileMsgAndBoolForAll</td></tr>
 <tr><td>#.Fire.Fire.GUI.NamespaceList.CreateGui</td></tr>
 <tr><td>#.Fire.Fire.GUI.NamespaceList.GetItemList</td></tr>
@@ -333,45 +337,23 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.ListSearch.ScanForObjects</td></tr>
 <tr><td>#.Fire.Fire.ListSearch.SearchIn</td></tr>
 <tr><td>#.Fire.Fire.ListSearch.StopInCallingCounter</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.BottomOfDoc</td></tr>
 <tr><td>#.Fire.Fire.OneByOneComparison.BrowseCode</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.CheckStatusOfButtons</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.CloseForm</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.CollectData</td></tr>
 <tr><td>#.Fire.Fire.OneByOneComparison.CompileRegExReport</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.CompileReport</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.CompileReportInfo</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.CreateGUI</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.DQ</td></tr>
 <tr><td>#.Fire.Fire.OneByOneComparison.Down</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.GetCss</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.GetIDs</td></tr>
 <tr><td>#.Fire.Fire.OneByOneComparison.GoToEnd</td></tr>
 <tr><td>#.Fire.Fire.OneByOneComparison.GoToTop</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.IsTicked</td></tr>
 <tr><td>#.Fire.Fire.OneByOneComparison.On9994</td></tr>
 <tr><td>#.Fire.Fire.OneByOneComparison.OnBrowseCode</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.OnClose</td></tr>
 <tr><td>#.Fire.Fire.OneByOneComparison.OnContextMenuInListView</td></tr>
 <tr><td>#.Fire.Fire.OneByOneComparison.OnItemUpInListView</td></tr>
 <tr><td>#.Fire.Fire.OneByOneComparison.OnKeyPressInCodeBrowser</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.OnKeyPressInList</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.OnRefreshCSS</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.PopulateGUI</td></tr>
 <tr><td>#.Fire.Fire.OneByOneComparison.PutOnDisplay</td></tr>
 <tr><td>#.Fire.Fire.OneByOneComparison.Replace</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.ReplaceForDisplay</td></tr>
 <tr><td>#.Fire.Fire.OneByOneComparison.ReplaceInVarsForDisplay</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.RewriteCSS</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.Run</td></tr>
 <tr><td>#.Fire.Fire.OneByOneComparison.ShowCode</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.TickAllCheckBoxes</td></tr>
 <tr><td>#.Fire.Fire.OneByOneComparison.ToggleCheckbox</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.TopOfDoc</td></tr>
 <tr><td>#.Fire.Fire.OneByOneComparison.UntickAllCheckBoxes</td></tr>
 <tr><td>#.Fire.Fire.OneByOneComparison.Up</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.WriteFile</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.WriteStatusMsg</td></tr>
 <tr><td>#.Fire.Fire.Question.About</td></tr>
 <tr><td>#.Fire.Fire.Question.ConfirmFix</td></tr>
 <tr><td>#.Fire.Fire.Question.CreateDefaultParms</td></tr>
@@ -416,11 +398,9 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.Replace.OnSkip</td></tr>
 <tr><td>#.Fire.Fire.Replace.OnToggleDeleteLine</td></tr>
 <tr><td>#.Fire.Fire.Replace.OnToggleRegEx</td></tr>
-<tr><td>#.Fire.Fire.Replace.ProcessOneByOne</td></tr>
 <tr><td>#.Fire.Fire.Replace.ReplaceLines</td></tr>
 <tr><td>#.Fire.Fire.Replace.SelectAll</td></tr>
 <tr><td>#.Fire.Fire.Replace.ShowOld</td></tr>
-<tr><td>#.Fire.Fire.Replace.ShowUser</td></tr>
 <tr><td>#.Fire.Fire.Replace.ShowUserViaHomeMadeEditor</td></tr>
 <tr><td>#.Fire.Fire.Replace.ShowVarsReport</td></tr>
 <tr><td>#.Fire.Fire.Replace.StopInReplace</td></tr>
@@ -494,14 +474,14 @@ ul li, ol li {margin: 8pt 3pt;}
 </tbody>
 </table>
 <div id="partly-covered" class="keep-together">
-<p>82 are partly covered:</p>
+<p>89 are partly covered:</p>
 <table>
 <thead>
 <tr><th style="text-align:left;">Function/Operator</th><th style="text-align:left;">Lines not executed</th><th style="text-align:left;">Coverage</th><th style="text-align:right;">≢</th></tr>
 </thead>
 <tbody>
 <tr><td>#.Fire.Fire.GUI.CreateDevelopersMenu</td><td>27←≢5-6,8-13,15-20,22-27,29,31-36</td><td>7%</td><td class="align-right">29</td></tr>
-<tr><td>#.Fire.Fire.Replace.CleanUpScriptedNamespaces</td><td>22←≢8-29</td><td>8%</td><td class="align-right">24</td></tr>
+<tr><td>#.Fire.Fire.Replace.CleanUpScriptedNamespaces</td><td>20←≢10-29</td><td>17%</td><td class="align-right">24</td></tr>
 <tr><td>#.Fire.Fire.Replace.ReportAllChanges</td><td>9←≢6-10,12-15</td><td>18%</td><td class="align-right">11</td></tr>
 <tr><td>#.Fire.Fire.EnsureAcre</td><td>4←≢3-6</td><td>20%</td><td class="align-right">5</td></tr>
 <tr><td>#.Fire.Fire.GUI.CheckSALTedScripts</td><td>4←≢4-7</td><td>20%</td><td class="align-right">5</td></tr>
@@ -514,10 +494,9 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.Replace.RemoveUnknown</td><td>7←≢6-12</td><td>30%</td><td class="align-right">10</td></tr>
 <tr><td>#.Fire.Fire.GUI.CheckForConsistency</td><td>25←≢7-9,14-21,27-33,39-45</td><td>31%</td><td class="align-right">36</td></tr>
 <tr><td>#.Fire.Fire.ReportHits.RestrictLengthOfVarsForHTML</td><td>4,5</td><td>33%</td><td class="align-right">3</td></tr>
+<tr><td>#.Fire.Fire.OneByOneComparison.PopulateGUI</td><td>14←≢2-10,12-16</td><td>36%</td><td class="align-right">22</td></tr>
 <tr><td>#.Fire.Fire.GetRefTo</td><td>6,7,8</td><td>40%</td><td class="align-right">5</td></tr>
-<tr><td>#.Fire.Fire.GUI.HandlePageDown</td><td>6,7,8</td><td>40%</td><td class="align-right">5</td></tr>
 <tr><td>#.Fire.Fire.ReportHits.MarkupHitsInVars</td><td>26←≢5,8-11,15-17,26-27,41-45,47-53,55,57-59</td><td>43%</td><td class="align-right">46</td></tr>
-<tr><td>#.Fire.Fire.Replace.ChangeThem_</td><td>46←≢21,25-27,32,37-38,51-53,56-57,59-65,67-76,78,80-89,96-97,103-106</td><td>45%</td><td class="align-right">83</td></tr>
 <tr><td>#.Fire.Fire.Replace.QFX</td><td>20←≢10,14,25-42</td><td>47%</td><td class="align-right">38</td></tr>
 <tr><td>#.Fire.Fire.Replace.FixScript</td><td>18←≢18,22-38</td><td>49%</td><td class="align-right">35</td></tr>
 <tr><td>#.Fire.Fire.ListNamespaceTree</td><td>7←≢9,11,15-19</td><td>50%</td><td class="align-right">14</td></tr>
@@ -526,10 +505,13 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.Replace.ChangeItByRegEx</td><td>7←≢12-15,17,19-20</td><td>56%</td><td class="align-right">16</td></tr>
 <tr><td>#.Fire.Fire.GetCode</td><td>11←≢7,21,25-27,29-31,33-34,38</td><td>58%</td><td class="align-right">26</td></tr>
 <tr><td>#.Fire.Fire.Replace.Run</td><td>14←≢11-15,22-27,31-32,44</td><td>59%</td><td class="align-right">34</td></tr>
-<tr><td>#.Fire.Fire.Replace.OnStartReplace</td><td>11←≢13,24-32,35</td><td>62%</td><td class="align-right">29</td></tr>
+<tr><td>#.Fire.Fire.Replace.ChangeThem_</td><td>33←≢21,25-27,32,37-38,51-53,57,72-76,78,80-89,96-97,103-106</td><td>60%</td><td class="align-right">83</td></tr>
 <tr><td>#.Fire.Fire.CleanRegistry</td><td>4←≢9-12</td><td>64%</td><td class="align-right">11</td></tr>
 <tr><td>#.Fire.Fire.RunSearch</td><td>11←≢12,17,22-23,27,29-32,37,40</td><td>66%</td><td class="align-right">32</td></tr>
+<tr><td>#.Fire.Fire.Replace.OnStartReplace</td><td>10←≢13,24-32</td><td>66%</td><td class="align-right">29</td></tr>
 <tr><td>#.Fire.Fire.ResetCertainRegKeySettings</td><td>5,6</td><td>67%</td><td class="align-right">6</td></tr>
+<tr><td>#.Fire.Fire.OneByOneComparison.GetIDs</td><td>4,5,6</td><td>67%</td><td class="align-right">9</td></tr>
+<tr><td>#.Fire.Fire.OneByOneComparison.WriteStatusMsg</td><td>4←≢10,15-16,18</td><td>67%</td><td class="align-right">12</td></tr>
 <tr><td>#.Fire.Fire.Replace.GetRegExOptions</td><td>2</td><td>67%</td><td class="align-right">3</td></tr>
 <tr><td>#.Fire.Fire.ReportHits.Run</td><td>9,10</td><td>67%</td><td class="align-right">6</td></tr>
 <tr><td>#.Fire.Fire.FindFireReadMe</td><td>6←≢6,19-23</td><td>68%</td><td class="align-right">19</td></tr>
@@ -541,14 +523,17 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.Replace.GetRegExReplaceString</td><td>3,7</td><td>71%</td><td class="align-right">7</td></tr>
 <tr><td>#.Fire.Fire.Replace.GetRegExSearchString</td><td>3,7</td><td>71%</td><td class="align-right">7</td></tr>
 <tr><td>#.Fire.Fire.GUI.ProcessSearchResult</td><td>7←≢13-15,30-33</td><td>73%</td><td class="align-right">26</td></tr>
+<tr><td>#.Fire.Fire.OneByOneComparison.RewriteCSS</td><td>4←≢12-15</td><td>73%</td><td class="align-right">15</td></tr>
 <tr><td>#.Fire.Fire.FormatDateTime</td><td>8←≢16-18,21,25,46,50,55</td><td>75%</td><td class="align-right">32</td></tr>
 <tr><td>#.Fire.Fire.PrintHitsToSession</td><td>4,5,9</td><td>75%</td><td class="align-right">12</td></tr>
 <tr><td>#.Fire.Fire.GUI.CloseChildForms</td><td>9,10</td><td>75%</td><td class="align-right">8</td></tr>
 <tr><td>#.Fire.Fire.GUI.LetAcreDelete</td><td>10,11</td><td>75%</td><td class="align-right">8</td></tr>
 <tr><td>#.Fire.Fire.GUI.SetStateAndActive</td><td>4</td><td>75%</td><td class="align-right">4</td></tr>
-<tr><td>#.Fire.Fire.Replace.ChangeThem</td><td>9←≢20-22,29-31,42,45,54</td><td>76%</td><td class="align-right">38</td></tr>
+<tr><td>#.Fire.Fire.OneByOneComparison.CompileReport</td><td>5←≢8-11,20</td><td>76%</td><td class="align-right">21</td></tr>
 <tr><td>#.Fire.Fire.Replace.Fix</td><td>11,12</td><td>78%</td><td class="align-right">9</td></tr>
 <tr><td>#.Fire.Fire.Replace.TellAcre</td><td>9,11</td><td>78%</td><td class="align-right">9</td></tr>
+<tr><td>#.Fire.Fire.OneByOneComparison.Run</td><td>6←≢13,23,29-31,33</td><td>79%</td><td class="align-right">29</td></tr>
+<tr><td>#.Fire.Fire.Replace.ProcessOneByOne</td><td>15,16,18</td><td>79%</td><td class="align-right">14</td></tr>
 <tr><td>#.Fire.Fire.ReportHits.MarkupRegExHitsInSimpleVars</td><td>7,8</td><td>80%</td><td class="align-right">10</td></tr>
 <tr><td>#.Fire.Fire.ListNamespaceTree_</td><td>5←≢20-23,32</td><td>81%</td><td class="align-right">27</td></tr>
 <tr><td>#.Fire.Fire.RemoveUnwanted</td><td>4←≢18,22,24-25</td><td>81%</td><td class="align-right">21</td></tr>
@@ -559,12 +544,12 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.GUI.OnStartBtn</td><td>4←≢9,33,35-36</td><td>82%</td><td class="align-right">22</td></tr>
 <tr><td>#.Fire.Fire.Replace.OnClose</td><td>12,13</td><td>83%</td><td class="align-right">12</td></tr>
 <tr><td>#.Fire.Fire.Replace.Replace_Split</td><td>8,9</td><td>83%</td><td class="align-right">12</td></tr>
+<tr><td>#.Fire.Fire.Replace.ChangeThem</td><td>6←≢20-22,42,45,54</td><td>84%</td><td class="align-right">38</td></tr>
 <tr><td>#.Fire.Fire.ReportHits.MarkupHitsInSimpleVars</td><td>6,7</td><td>85%</td><td class="align-right">13</td></tr>
 <tr><td>#.Fire.Fire.ScanScripts</td><td>13,14</td><td>86%</td><td class="align-right">14</td></tr>
 <tr><td>#.Fire.Fire.Replace.Replace</td><td>3</td><td>86%</td><td class="align-right">7</td></tr>
 <tr><td>#.Fire.Fire.GUI.HandleControlDependencies</td><td>15,16,17</td><td>87%</td><td class="align-right">23</td></tr>
 <tr><td>#.Fire.Fire.Run</td><td>19,31</td><td>88%</td><td class="align-right">16</td></tr>
-<tr><td>#.Fire.Fire.GUI.OnKeyPressInHitList</td><td>9</td><td>88%</td><td class="align-right">8</td></tr>
 <tr><td>#.Fire.Fire.API.CreateParmsFor_QNL_Search</td><td>9</td><td>90%</td><td class="align-right">10</td></tr>
 <tr><td>#.Fire.Fire.API.Search</td><td>8</td><td>91%</td><td class="align-right">11</td></tr>
 <tr><td>#.Fire.Fire.Replace.ReplaceCodeInScript</td><td>14</td><td>91%</td><td class="align-right">11</td></tr>
@@ -576,12 +561,14 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.ReportGosts.Run</td><td>10</td><td>93%</td><td class="align-right">14</td></tr>
 <tr><td>#.Fire.Fire.GetList</td><td>11</td><td>94%</td><td class="align-right">16</td></tr>
 <tr><td>#.Fire.Fire.ScanVars</td><td>25</td><td>94%</td><td class="align-right">17</td></tr>
+<tr><td>#.Fire.Fire.OneByOneComparison.OnRefreshCSS</td><td>13</td><td>94%</td><td class="align-right">17</td></tr>
 <tr><td>#.Fire.Fire.Replace.SaveThese</td><td>18</td><td>94%</td><td class="align-right">17</td></tr>
 <tr><td>#.Fire.Fire.ReportDiffs.MarkupDiff2</td><td>17</td><td>94%</td><td class="align-right">16</td></tr>
 <tr><td>#.Fire.Fire.Scan</td><td>13,50</td><td>95%</td><td class="align-right">41</td></tr>
 <tr><td>#.Fire.Fire.API.CreateSearchParms</td><td>20</td><td>95%</td><td class="align-right">20</td></tr>
 <tr><td>#.Fire.Fire.ProcessList</td><td>24</td><td>96%</td><td class="align-right">24</td></tr>
 <tr><td>#.Fire.Fire.ReportHits.MarkUpRegExHits</td><td>15</td><td>97%</td><td class="align-right">30</td></tr>
+<tr><td>#.Fire.Fire.OneByOneComparison.CreateGUI</td><td>10</td><td>99%</td><td class="align-right">99</td></tr>
 </tbody>
 </table>
 </div>
