@@ -7,6 +7,11 @@ Note that with version 9.0.0 Fire started using the concept of semantic versioni
 
 In short this means that a bump of the major version number indicates a breaking change. For example, 9.* does not run on versions of Dyalog older than 18.0.
 
+## Version 9.1.2 from 2021-04-18
+
+* `ReportHits.MarkUpAllHits` was buggy
+
+
 ## Version 9.1.1 from 2021-04-17
 
 * Replace with one-by-one did not work

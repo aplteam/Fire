@@ -1,4 +1,6 @@
 ⍝ Contains information regarding the last release. A full history is available on GitHub. (This line is ignored)
+* 9.1.2 from 2021-04-18
+  * Bug fix: ReportHits.MarkUpAllHits was buggy
 * 9.1.1 from 2021-04-17
   * Replace with one-by-one did not work
 * 9.1.0 from 2021-04-07

@@ -2,7 +2,6 @@
  r←''
  :For i this :InEach (1+⍳0⊃⍴data)data
      {(0=10|⍵):##.GUI.n.PB.Thumb←⍵}i+1
-     {⍵:.}i=232
      r,←i fns this
  :EndFor
 ⍝Done
