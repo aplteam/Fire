@@ -7,6 +7,11 @@ Note that with version 9.0.0 Fire started using the concept of semantic versioni
 
 In short this means that a bump of the major version number indicates a breaking change. For example, 9.* does not run on versions of Dyalog older than 18.0.
 
+## Version 9.1.3 from 2021-04-30
+
+* Fire does not leave behind orphaned refs anymore. Important because that may cause a performance penalty
+* Attempt to change something in a scripted namespaces that is embedded in a scripted namespace causes a "Not supported by design" warning now.
+
 ## Version 9.1.2 from 2021-04-18
 
 * `ReportHits.MarkUpAllHits` was buggy

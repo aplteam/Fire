@@ -4,7 +4,7 @@
  ∆,←⊂'Posn'((n.Case.##.Posn[0])),(10+1⊃PosnPlusSize n.Case.##)
  ∆,←⊂'Size'((0⊃n.Case.##.Size),280)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
- rf←⍎'ScanGroup'n.Form.⎕WC ∆
+ rf←n.ScanGroup←⍎'ScanGroup'n.Form.⎕WC ∆
 
  ∆←⊂'Button'
  ∆,←⊂'Caption' '&APL code'

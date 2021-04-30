@@ -14,8 +14,8 @@
      msg,←⊂'You are trying to change a function or operator in a scripted namespace'
      msg,←⊂'that is embedded in a scripted namespace.'
      msg,←⊂''
-     msg,←⊂'Unfortunately this won''t work due to a bug in Dyalog APL, therefore the'
-     msg,←⊂'object "',name,'" is left unchanged in ',⍕ref
+     msg,←⊂'Unfortunately this won''t work because Dyalog does not offer the required tools,'
+     msg,←⊂'therefore object "',name,'" is left unchanged in ',⍕ref
      cs←##.Question.CreateDefaultParms
      cs.okCaption←'Noted'
      cs.cancelCaption←''

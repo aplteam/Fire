@@ -1,4 +1,8 @@
 ⍝ Contains information regarding the last release. A full history is available on GitHub. (This line is ignored)
+* 9.1.3 from 2021-04-30
+  * Fire does not leave behind orphaned refs anymore. Important because that may cause a performance penalty 
+  * Attempt to change something in a scripted namespaces that is embedded in a scripted namespaces causes a 
+    "Not supported by design" warning now.
 * 9.1.2 from 2021-04-18
   * Bug fix: ReportHits.MarkUpAllHits was buggy
 * 9.1.1 from 2021-04-17

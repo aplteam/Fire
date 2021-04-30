@@ -6,7 +6,7 @@
  ∆,←⊂'Posn'((n.SearchIsRegEx.##.Posn[0]),(10+1⊃PosnPlusSize n.SearchIsRegEx.##))
  ∆,←⊂'Size'(110 240)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
- rf←⍎'OptionsGroup'n.Form.⎕WC ∆
+ rf←n.OptionsGroup←⍎'OptionsGroup'n.Form.⎕WC ∆
 
  ∆←⊂'Button'
  ∆,←⊂'Caption' '&Match case'

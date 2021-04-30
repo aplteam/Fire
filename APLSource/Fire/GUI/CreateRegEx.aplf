@@ -6,7 +6,7 @@
  ∆,←⊂'Posn'((8+0⊃PosnPlusSize n.StartSearchIn)10)
  ∆,←⊂'Size'(110 160)
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
- rf←⍎'OptionsGroup'n.Form.⎕WC ∆
+ rf←n.RegExGroup←⍎'RegExGroup'n.Form.⎕WC ∆
 
  ∆←⊂'Button'
  ∆,←⊂'Caption' 'Is RegE&x'
