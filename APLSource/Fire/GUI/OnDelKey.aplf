@@ -5,7 +5,7 @@
      n.SearchFor.Text←''
      n.(ReplaceBtn ReportHits).Active←0
  :Case n.HitList
-     :If ~0∊⍴ind←{⍵/⍳⍴,⍵}n.HitList.SelItems
+     :If 0≠≢ind←⍸n.HitList.SelItems
          DeleteFromWorkspaceAndList ind
      :EndIf
  :EndSelect

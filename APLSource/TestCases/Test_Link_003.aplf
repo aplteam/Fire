@@ -1,0 +1,41 @@
+ R←Test_Link_003(stopFlag batchFlag);⎕TRAP;tempDir;res;n
+⍝ Check whether Link and Fire get along regarding expunging code and variables
+⍝ One variable is Linked (Add), the other is not
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+
+ R←T._Failed
+
+⍝ Preconditions
+ 'FireLinkTest'#.⎕NS''
+ #.FireLinkTest.⎕FX'r←Doe' 'r←''Johnny ''' 'r,←''in the world'''
+ #.FireLinkTest.⎕FIX':Class MyClass' '∇r←Hello' ':Access Public Shared' 'r←''World11''' '∇' '∇co' ':Implements constructor' ':Access Public' '∇' ':EndClass'
+ #.FireLinkTest.MyVars1←'To be saved (world)'
+ #.FireLinkTest.MyVars2←'NOT to be saved (world)'
+ tempDir←FilesAndDirs.GetTempSubDir↑⎕SI
+ FilesAndDirs.RmDir tempDir ⍝ paranoia
+ res←⎕SE.Link.Create #.FireLinkTest tempDir
+ Assert 0<≢res
+ res←⎕SE.Link.Add'#.FireLinkTest.MyVars1'
+ Assert'Added: #.FireLinkTest.MyVars1'≡res
+
+ n←1 #.Fire.Fire.Run 0
+
+ n.SearchFor.Text←'world'
+ n.StartSearchIn.Text←'#.FireLinkTest'
+ n.Case.State←0
+
+ {}∆Select n.StartBtn
+ 0.2 ∆Process n.Form
+ →T.PassesIf 4=#.Fire.Fire.G.NoOfObjects
+
+ #.Fire.Fire.GUI.DeleteFromWorkspaceAndList⍳#.Fire.Fire.G.NoOfObjects
+ →T.GoToTidyUp 0≠≢FilesAndDirs.ListFiles tempDir,'/'
+ →T.GoToTidyUp 0≠≢#.FireLinkTest.⎕NL⍳16
+
+ R←T._OK
+
+∆TidyUp:
+ ∆BreakLink'#.FireLinkTest'
+ #.⎕EX'FireLinkTest'
+ FilesAndDirs.RmDir tempDir
+ CloseFire

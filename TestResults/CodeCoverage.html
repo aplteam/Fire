@@ -112,21 +112,19 @@ ul li, ol li {margin: 8pt 3pt;}
 <body>
 <h1 id="top">Coverage Report</h1>
 <p>Watched: 635 fns/opr within <code>#.Fire.Fire</code></p>
-<p>The test test suite was executed 3 times:</p>
+<p>The test test suite was execute once:</p>
 <table>
 <thead>
 <tr><th>Executed at</th><th>APLVersion</th><th>Memory (MB)</th></tr>
 <thead>
 </tbody>
-<tr><td>2021-04-17 07:59:37</td><td>Windows-64 ⋄ 18.0.40272.0 ⋄ W ⋄ Development</td><td>52</td></tr>
-<tr><td>2021-04-17 12:28:53</td><td>Windows-64 ⋄ 18.0.40272.0 ⋄ W ⋄ Development</td><td>52</td></tr>
-<tr><td>2021-04-18 20:53:43</td><td>Windows-64 ⋄ 18.1.40326.0 ⋄ W ⋄ Development</td><td>52</td></tr>
+<tr><td>2021-10-03 16:32:40</td><td>Windows-64 ⋄ 18.0.44437.0 ⋄ W ⋄ Development</td><td>51</td></tr>
 </tbody>
 </table>
 <p>Overall 50% of the testable code is  covered.</p>
 <p>(Comment lines, empty lines, all <code>:End</code>* lines etc. are all ignored)</p>
 <p>204 of the fns/opr are 100% covered.</p>
-<p>342 are not covered at all:</p>
+<p>341 are not covered at all:</p>
 <table>
 <tbody>
 <tr><td>#.Fire.Fire.About</td></tr>
@@ -145,7 +143,6 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.GetTextAndRest</td></tr>
 <tr><td>#.Fire.Fire.HonorTestFlag</td></tr>
 <tr><td>#.Fire.Fire.IfUpper</td></tr>
-<tr><td>#.Fire.Fire.IsLinkAround</td></tr>
 <tr><td>#.Fire.Fire.IsRef</td></tr>
 <tr><td>#.Fire.Fire.IsWord</td></tr>
 <tr><td>#.Fire.Fire.PrePopulateSearchBox</td></tr>
@@ -187,6 +184,7 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.GUI.CenterOnMonitor</td></tr>
 <tr><td>#.Fire.Fire.GUI.CheckForQSE</td></tr>
 <tr><td>#.Fire.Fire.GUI.CheckForUpdates</td></tr>
+<tr><td>#.Fire.Fire.GUI.CheckSALTedScripts</td></tr>
 <tr><td>#.Fire.Fire.GUI.ClickFindButton</td></tr>
 <tr><td>#.Fire.Fire.GUI.CopyAutoCompleteToCombo</td></tr>
 <tr><td>#.Fire.Fire.GUI.CreateContextMenu</td></tr>
@@ -201,7 +199,6 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.GUI.CreateContextMenu_RemoveObject</td></tr>
 <tr><td>#.Fire.Fire.GUI.CreateContextMenu_SelectAllInHitList</td></tr>
 <tr><td>#.Fire.Fire.GUI.CreateContextMenu_Separator</td></tr>
-<tr><td>#.Fire.Fire.GUI.DeleteFromWorkspaceAndList</td></tr>
 <tr><td>#.Fire.Fire.GUI.DoesClipboardHoldText</td></tr>
 <tr><td>#.Fire.Fire.GUI.DropAutoCompleteLevels</td></tr>
 <tr><td>#.Fire.Fire.GUI.DropCurrentFromComboList</td></tr>
@@ -225,7 +222,6 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.GUI.HandlePgDown</td></tr>
 <tr><td>#.Fire.Fire.GUI.HandlePgUp</td></tr>
 <tr><td>#.Fire.Fire.GUI.IsBetterThan</td></tr>
-<tr><td>#.Fire.Fire.GUI.LetLinkDelete</td></tr>
 <tr><td>#.Fire.Fire.GUI.On9991InSearchFor</td></tr>
 <tr><td>#.Fire.Fire.GUI.On9991InWhereToLook</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnAPL_Name</td></tr>
@@ -239,11 +235,13 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.GUI.OnCheckForChangeInSearchFor</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnCheckForUpdates</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnCheckInfoBtnPosnInHitList</td></tr>
+<tr><td>#.Fire.Fire.GUI.OnClose</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnCode</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnColumnClickInHitList</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnContextMenuInHitList</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnContextMenuInSearchFor</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnCopyCmd</td></tr>
+<tr><td>#.Fire.Fire.GUI.OnCopyNameToSearchFor</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnCopyPathToStartLookingHere</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnCrossRefCmd</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnDblCklickInHitList</td></tr>
@@ -286,7 +284,6 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.GUI.OnToggleStopOnSearch</td></tr>
 <tr><td>#.Fire.Fire.GUI.PrintNamesFromHitList</td></tr>
 <tr><td>#.Fire.Fire.GUI.RemoveAllInCertainNamespace</td></tr>
-<tr><td>#.Fire.Fire.GUI.RemoveFromHitList</td></tr>
 <tr><td>#.Fire.Fire.GUI.SaveSelectedObjects</td></tr>
 <tr><td>#.Fire.Fire.GUI.SelectAllInHitList</td></tr>
 <tr><td>#.Fire.Fire.GUI.SelectAllInSearchFor</td></tr>
@@ -474,20 +471,18 @@ ul li, ol li {margin: 8pt 3pt;}
 </tbody>
 </table>
 <div id="partly-covered" class="keep-together">
-<p>89 are partly covered:</p>
+<p>90 are partly covered:</p>
 <table>
 <thead>
 <tr><th style="text-align:left;">Function/Operator</th><th style="text-align:left;">Lines not executed</th><th style="text-align:left;">Coverage</th><th style="text-align:right;">≢</th></tr>
 </thead>
 <tbody>
 <tr><td>#.Fire.Fire.GUI.CreateDevelopersMenu</td><td>27←≢5-6,8-13,15-20,22-27,29,31-36</td><td>7%</td><td class="align-right">29</td></tr>
-<tr><td>#.Fire.Fire.Replace.CleanUpScriptedNamespaces</td><td>20←≢10-29</td><td>17%</td><td class="align-right">24</td></tr>
+<tr><td>#.Fire.Fire.Replace.CleanUpScriptedNamespaces</td><td>21←≢10-30</td><td>16%</td><td class="align-right">25</td></tr>
 <tr><td>#.Fire.Fire.Replace.ReportAllChanges</td><td>9←≢6-10,12-15</td><td>18%</td><td class="align-right">11</td></tr>
 <tr><td>#.Fire.Fire.EnsureAcre</td><td>4←≢3-6</td><td>20%</td><td class="align-right">5</td></tr>
-<tr><td>#.Fire.Fire.GUI.CheckSALTedScripts</td><td>4←≢4-7</td><td>20%</td><td class="align-right">5</td></tr>
 <tr><td>#.Fire.Fire.GUI.EnlargeForm</td><td>4,5,6</td><td>25%</td><td class="align-right">4</td></tr>
 <tr><td>#.Fire.Fire.Question.YesOrNo</td><td>6←≢5-9,11</td><td>25%</td><td class="align-right">8</td></tr>
-<tr><td>#.Fire.Fire.Replace.TellLink</td><td>6←≢4-9</td><td>25%</td><td class="align-right">8</td></tr>
 <tr><td>#.Fire.Fire.Replace.CheckUserInput</td><td>18←≢4-9,11-15,18-21,24-26</td><td>28%</td><td class="align-right">25</td></tr>
 <tr><td>#.Fire.Fire.Replace.QFIX</td><td>28←≢12-21,28,31-47</td><td>28%</td><td class="align-right">39</td></tr>
 <tr><td>#.Fire.Fire.Question.ShowMsg</td><td>5←≢4-7,9</td><td>29%</td><td class="align-right">7</td></tr>
@@ -498,6 +493,7 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.GetRefTo</td><td>6,7,8</td><td>40%</td><td class="align-right">5</td></tr>
 <tr><td>#.Fire.Fire.ReportHits.MarkupHitsInVars</td><td>26←≢5,8-11,15-17,26-27,41-45,47-53,55,57-59</td><td>43%</td><td class="align-right">46</td></tr>
 <tr><td>#.Fire.Fire.Replace.QFX</td><td>20←≢10,14,25-42</td><td>47%</td><td class="align-right">38</td></tr>
+<tr><td>#.Fire.Fire.GUI.DeleteFromWorkspaceAndList</td><td>11←≢6-9,11-15,17,22</td><td>48%</td><td class="align-right">21</td></tr>
 <tr><td>#.Fire.Fire.Replace.FixScript</td><td>18←≢18,22-38</td><td>49%</td><td class="align-right">35</td></tr>
 <tr><td>#.Fire.Fire.ListNamespaceTree</td><td>7←≢9,11,15-19</td><td>50%</td><td class="align-right">14</td></tr>
 <tr><td>#.Fire.Fire.RegExSearch</td><td>5,6,7</td><td>50%</td><td class="align-right">6</td></tr>
@@ -506,6 +502,7 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.GetCode</td><td>11←≢7,21,25-27,29-31,33-34,38</td><td>58%</td><td class="align-right">26</td></tr>
 <tr><td>#.Fire.Fire.Replace.Run</td><td>14←≢11-15,22-27,31-32,44</td><td>59%</td><td class="align-right">34</td></tr>
 <tr><td>#.Fire.Fire.Replace.ChangeThem_</td><td>33←≢21,25-27,32,37-38,51-53,57,72-76,78,80-89,96-97,103-106</td><td>60%</td><td class="align-right">83</td></tr>
+<tr><td>#.Fire.Fire.GUI.RemoveFromHitList</td><td>6←≢15-20</td><td>63%</td><td class="align-right">16</td></tr>
 <tr><td>#.Fire.Fire.CleanRegistry</td><td>4←≢9-12</td><td>64%</td><td class="align-right">11</td></tr>
 <tr><td>#.Fire.Fire.RunSearch</td><td>11←≢12,17,22-23,27,29-32,37,40</td><td>66%</td><td class="align-right">32</td></tr>
 <tr><td>#.Fire.Fire.Replace.OnStartReplace</td><td>10←≢13,24-32</td><td>66%</td><td class="align-right">29</td></tr>
@@ -518,6 +515,7 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.Search</td><td>8←≢9,18,20,23-24,26-27,29</td><td>70%</td><td class="align-right">27</td></tr>
 <tr><td>#.Fire.Fire.ReportGosts.GetContents</td><td>15,16,17</td><td>70%</td><td class="align-right">10</td></tr>
 <tr><td>#.Fire.Fire.List</td><td>11,12</td><td>71%</td><td class="align-right">7</td></tr>
+<tr><td>#.Fire.Fire.GUI.LetLinkDelete</td><td>7,8</td><td>71%</td><td class="align-right">7</td></tr>
 <tr><td>#.Fire.Fire.GUI.SearchQNL.Search</td><td>7←≢6,20-21,23,28-30</td><td>71%</td><td class="align-right">24</td></tr>
 <tr><td>#.Fire.Fire.Replace.Establish</td><td>7,11</td><td>71%</td><td class="align-right">7</td></tr>
 <tr><td>#.Fire.Fire.Replace.GetRegExReplaceString</td><td>3,7</td><td>71%</td><td class="align-right">7</td></tr>
@@ -525,13 +523,13 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.GUI.ProcessSearchResult</td><td>7←≢13-15,30-33</td><td>73%</td><td class="align-right">26</td></tr>
 <tr><td>#.Fire.Fire.OneByOneComparison.RewriteCSS</td><td>4←≢12-15</td><td>73%</td><td class="align-right">15</td></tr>
 <tr><td>#.Fire.Fire.FormatDateTime</td><td>8←≢16-18,21,25,46,50,55</td><td>75%</td><td class="align-right">32</td></tr>
+<tr><td>#.Fire.Fire.IsLinkAround</td><td>6</td><td>75%</td><td class="align-right">4</td></tr>
 <tr><td>#.Fire.Fire.PrintHitsToSession</td><td>4,5,9</td><td>75%</td><td class="align-right">12</td></tr>
 <tr><td>#.Fire.Fire.GUI.CloseChildForms</td><td>9,10</td><td>75%</td><td class="align-right">8</td></tr>
-<tr><td>#.Fire.Fire.GUI.LetAcreDelete</td><td>10,11</td><td>75%</td><td class="align-right">8</td></tr>
 <tr><td>#.Fire.Fire.GUI.SetStateAndActive</td><td>4</td><td>75%</td><td class="align-right">4</td></tr>
 <tr><td>#.Fire.Fire.OneByOneComparison.CompileReport</td><td>5←≢8-11,20</td><td>76%</td><td class="align-right">21</td></tr>
+<tr><td>#.Fire.Fire.GUI.LetAcreDelete</td><td>11,12</td><td>78%</td><td class="align-right">9</td></tr>
 <tr><td>#.Fire.Fire.Replace.Fix</td><td>11,12</td><td>78%</td><td class="align-right">9</td></tr>
-<tr><td>#.Fire.Fire.Replace.TellAcre</td><td>9,11</td><td>78%</td><td class="align-right">9</td></tr>
 <tr><td>#.Fire.Fire.OneByOneComparison.Run</td><td>6←≢13,23,29-31,33</td><td>79%</td><td class="align-right">29</td></tr>
 <tr><td>#.Fire.Fire.Replace.ProcessOneByOne</td><td>15,16,18</td><td>79%</td><td class="align-right">14</td></tr>
 <tr><td>#.Fire.Fire.ReportHits.MarkupRegExHitsInSimpleVars</td><td>7,8</td><td>80%</td><td class="align-right">10</td></tr>

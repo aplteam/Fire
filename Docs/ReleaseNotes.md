@@ -1,11 +1,23 @@
 [parm]:saveHTML = 0
 [parm]:title    = 'Fire Release Notes'
 
+
+
 # Release Notes 
 
 Note that with version 9.0.0 Fire started using the concept of semantic versioning ([SemVer](https://semver.org "Link to the document that introduced SemVer")).
 
 In short this means that a bump of the major version number indicates a breaking change. For example, 9.* does not run on versions of Dyalog older than 18.0.
+
+## Version 9.2.0 from 2021-10-03
+
+* Fire now supports Link. This means that...
+  * for any changes `⎕SE.Link.Add` is called
+  * for any deletions `⎕SE.Link.Expunge` is called
+
+  However, note that Fire requires at least Link 3.0.0. If only an older version can be found warnings are printed to the session.
+
+* acre is no longer mentioned, but Fire is still calling `⎕SE.acre.SetChanged` if acre is around. 
 
 ## Version 9.1.3 from 2021-04-30
 

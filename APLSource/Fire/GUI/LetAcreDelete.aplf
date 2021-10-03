@@ -1,14 +1,15 @@
  {r}←LetAcreDelete rows;res
 ⍝ In case acre it will be told.
 ⍝ Note that acre is smart enough to work out which project an object belongs to.
- r←⍬
+ r←0
  :If ##.IsAnyAcreAround
      :If 0<⎕NC'⎕SE.acre'
          res←⎕SE.acre.Erase¨GetFullPath¨rows
      :EndIf
      :If 0≠≢∊res
+         r←≢res
      :AndIf ~##.G.TestFlag
-         ⎕←'Acre confirmed deletion for:'
-         ⎕←⍪res
+         ⎕←'Acre confirmed deletion of:'
+         ⎕←' ',⍪res
      :EndIf
  :EndIf

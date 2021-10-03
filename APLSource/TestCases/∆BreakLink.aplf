@@ -1,0 +1,11 @@
+ {r}←∆BreakLink nsName;was
+⍝ At the time of writing breaking a link leads to Dyalog becoming unresponsive when the option "Threads > Pause on Error" is ticked.
+⍝ This is my <01920> and Mantis 19317
+⍝ To overcome this bug we remember the current setting of the option, make sure it's unticked, then break the link
+⍝ and finally restore the option.
+⍝ Can all be removed once the bug got fixed.
+⍝ Kai 2021-09-18
+ was←⎕SE.mb.threads.pauseonerror.Checked
+ ⎕SE.mb.threads.pauseonerror.Checked←0
+ r←⎕SE.Link.Break nsName
+ ⎕SE.mb.threads.pauseonerror.Checked←1

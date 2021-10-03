@@ -1,3 +1,8 @@
  r←IsLinkAround
 ⍝ Returns a 1 in case Link is found in ⎕SE.
- r←0<↑⎕NC'⎕SE.Link'
+⍝ Prints a warning in case it is not Link 3.0 or better because that is not sufficient
+ :If r←0<↑⎕NC'⎕SE.Link'
+ :AndIf r←0<↑⎕NC'⎕SE.Link.Version'
+ :AndIf ~r←3≤{↑(//)⎕VFI ⍵/⍨2>+\⍵='.'}⎕SE.Link.Version
+     ⎕←'*** Warning: Fire requires at least Link 3.0.0'
+ :EndIf

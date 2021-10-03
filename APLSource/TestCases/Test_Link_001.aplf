@@ -1,0 +1,55 @@
+ R←Test_Link_001(stopFlag batchFlag);⎕TRAP;tempDir;res;n;expected;filesFound;n2
+⍝ Check whether Link and Fire get along regarding changes in code
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+
+ R←T._Failed
+
+⍝ Preconditions
+ 'FireLinkTest'#.⎕NS''
+ #.FireLinkTest.⎕FX'r←Doe' 'r←''Johnny ''' 'r,←''in the world'''
+ #.FireLinkTest.⎕FIX':Class MyClass' '∇r←Hello' ':Access Public Shared' 'r←''World11''' '∇' '∇co' ':Implements constructor' ':Access Public' '∇' ':EndClass'
+ #.FireLinkTest.⎕FIX':Namespace MyNamespace' '∇r←Hello3' ':Access Public Shared' 'r←''World''' '∇' 'Hello4←{''world''}' ':EndNamespace'
+ #.FireLinkTest.(myRef←⎕NS'')
+ #.FireLinkTest.myRef.⎕FX'r←Hello2' 'r←''World'''
+ 'MyNamedNS'#.FireLinkTest.myRef.⎕NS''
+ #.FireLinkTest.myRef.MyNamedNS.⎕FX'r←Dear' 'r←''my glorious world'''
+ tempDir←FilesAndDirs.GetTempSubDir↑⎕SI
+ FilesAndDirs.RmDir tempDir ⍝ paranoia
+ res←⎕SE.Link.Create #.FireLinkTest tempDir
+ Assert 0<≢res
+
+ n←1 #.Fire.Fire.Run 0
+
+ n.SearchFor.Text←'world'
+ n.StartSearchIn.Text←'#.FireLinkTest'
+ n.Case.State←0
+
+ {}∆Select n.StartBtn
+ 0.2 ∆Process n.Form
+ →T.PassesIf 4=#.Fire.Fire.G.NoOfObjects   ⍝ The one in the unnamed namepace is not found!
+
+ {}∆Select n.ReplaceBtn
+ ∆Process n.Form
+
+ n2←#.Fire.Fire.Replace.n
+ n2.ReplaceBy.Text←'Universe'
+
+ {}∆Select n2.StartBtn
+ 0.2 ∆Process n.Form
+
+ →T.GoToTidyUp~'Johnny in the Universe'≡#.FireLinkTest.Doe
+ →T.GoToTidyUp~'Universe11'≡#.FireLinkTest.MyClass.Hello
+ →T.GoToTidyUp~'Universe'≡#.FireLinkTest.MyNamespace.Hello3
+ →T.GoToTidyUp~'Universe'≡#.FireLinkTest.MyNamespace.Hello4 ⍬
+ →T.GoToTidyUp~'World'≡#.FireLinkTest.myRef.Hello2
+ →T.GoToTidyUp~'my glorious world'≡#.FireLinkTest.myRef.MyNamedNS.Dear
+ expected←FilesAndDirs.EnforceSlash¨'Doe.aplf' 'MyClass.aplc' 'MyNamespace.apln' 'myRef' 'myRef\Hello2.aplf' 'myRef\MyNamedNS\Dear.aplf' 'myRef/MyNamedNS'
+ filesFound←FilesAndDirs.EnforceSlash¨{⍵↓¨⍨{+/⊃∧/(↓⍵)=¨⊂⍵[0;]}⊃⍵}↑('recursive' 1)FilesAndDirs.Dir tempDir,'/'
+ →T.GoToTidyUp~expected ∆LazyMatch filesFound
+ R←T._OK
+
+∆TidyUp:
+ ∆BreakLink'#.FireLinkTest'
+ #.⎕EX'FireLinkTest'
+ FilesAndDirs.RmDir tempDir
+ CloseFire

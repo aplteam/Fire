@@ -1,0 +1,53 @@
+ R←Test_Link_002(stopFlag batchFlag);⎕TRAP;tempDir;res;n;filename;n2
+⍝ Check whether Link and Fire get along regarding variables
+⍝ One variable is Linked (Add), the other is not
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+
+ R←T._Failed
+
+⍝ Preconditions
+ 'FireLinkTest'#.⎕NS''
+ #.FireLinkTest.MyVars1←'To be saved (world)'
+ #.FireLinkTest.MyVars2←'NOT to be saved (world)'
+ tempDir←FilesAndDirs.GetTempSubDir↑⎕SI
+ FilesAndDirs.RmDir tempDir ⍝ paranoia
+ res←⎕SE.Link.Create #.FireLinkTest tempDir
+ Assert 0<≢res
+ res←⎕SE.Link.Add'#.FireLinkTest.MyVars1'
+ Assert'Added: #.FireLinkTest.MyVars1'≡res
+
+ n←1 #.Fire.Fire.Run 0
+
+ n.SearchFor.Text←'world'
+ n.StartSearchIn.Text←'#.FireLinkTest'
+ n.Case.State←0
+
+ {}∆Select n.StartBtn
+ 0.2 ∆Process n.Form
+ →T.PassesIf 2=#.Fire.Fire.G.NoOfObjects
+
+ {}∆Select n.ReplaceBtn
+ ∆Process n.Form
+
+ n2←#.Fire.Fire.Replace.n
+ n2.ReplaceBy.Text←'Universe'
+
+ {}∆Select n2.StartBtn
+ 0.2 ∆Process n.Form
+
+ →T.GoToTidyUp~∨/'(Universe)'⍷#.FireLinkTest.MyVars1
+ →T.GoToTidyUp~∨/'(Universe)'⍷#.FireLinkTest.MyVars2
+
+ filename←tempDir,'/MyVars1.apla'
+ →T.GoToTidyUp~⎕NEXISTS filename
+ →T.GoToTidyUp~∨/'(Universe)'⍷↑⎕NGET filename
+ filename←tempDir,'/MyVars2.apla'
+ →T.GoToTidyUp ⎕NEXISTS filename
+
+ R←T._OK
+
+∆TidyUp:
+ ∆BreakLink'#.FireLinkTest'
+ #.⎕EX'FireLinkTest'
+ FilesAndDirs.RmDir tempDir
+ CloseFire

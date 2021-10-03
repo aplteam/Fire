@@ -16,7 +16,7 @@
      ##.G.SearchIsRegEx←n.SearchIsRegEx.State
      ##.G.Greedy←n.Greedy.State
      txt←n.SearchFor.Text
-     ##.G.LookForList←⌽∪⌽##.G.LookForList,(n.SearchFor.Items,⊂txt)~⊂''
+     ##.G.LookForList←∪##.G.LookForList,(n.SearchFor.Items,⊂txt)~⊂''
      n.SearchFor.Items←##.G.LookForList
      n.SearchFor.SelItems[]←0
      _←{0=≢⍵:⍬ ⋄ n.SearchFor.SelItems[##.G.LookForList⍳⊂⍵]←1}txt

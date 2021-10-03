@@ -7,7 +7,7 @@
      isQSE←'⎕SE'≡3↑1 ⎕C n.StartSearchIn.Text                    ⍝ Flag: is it pointing to ⎕SE?!
      s←isQSE{⍺:⎕SE ⋄ ((0∊⍴⍵)∨'#'=1⍴,⍵):# ⋄ ⍬}n.StartSearchIn.Text ⍝ Determine source
      :If 0=≢s
-         HideAutoComplete ⍬
+         {}HideAutoComplete ⍬
      :Else
          {}CheckForQSE isQSE
          l←1 ##.List s 0                                        ⍝ Get list of all named NS in either # or ⎕SE

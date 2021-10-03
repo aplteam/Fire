@@ -31,6 +31,13 @@ Other features are:
 
 * Fire reports a WS FULL only when it is reasonable to do so 
 
+* Fire offers a Replace operation
+
+
+## Compatability
+
+In case Fire changes or deletes objects in the workspace it will tell both acre as well as Link about those changes.
+
 
 ## Fire's GUI
 

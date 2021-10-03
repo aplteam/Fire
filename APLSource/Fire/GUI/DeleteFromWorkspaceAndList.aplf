@@ -1,6 +1,6 @@
  {r}←DeleteFromWorkspaceAndList rows;b;msg;ans;question
 ⍝ Deletes the selected objects from both, the workspace and the hit list.
-⍝ Also: tell acre.
+⍝ Also: tell both acre and Link.
  r←⍬
  b←{3≠⎕NC⊃{⍺,'.',⍵}/⍵:0 ⋄ (9.1≠⎕NC ⍵[0]):0 ⋄ ##.IsScripted⍎0⊃⍵}¨↓n.HitList.(ReportInfo[;,0],Items)[rows;]
  :If ∧/b
@@ -18,7 +18,7 @@
      rows←(~b)/rows
  :Else
      question←⊂'Sure that you want delete ',(⍕⍴rows),' object',((1<⍴rows)/'s'),' from the workspace'
-     question,←⊂'and potentially from any acre project?'
+     question,←⊂'and potentially also from disk (Link, Cider project) ?'
      :If 0=##.Question.YesOrNo question
          :Return
      :EndIf

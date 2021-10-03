@@ -3,7 +3,7 @@
 [parm]:collapsibleTOC = 1
 [parm]:saveHTML       = 0
 [parm]:title          = 'Fire ReadMe'
-
+ 
 
 # Fire
 
@@ -533,20 +533,16 @@ Note that if you want to find "search" in the full path of the APL objects (like
 
 There is a separate document `UsefulRegExes.html` available --- see there.
 
-
-## acre and Fire
-
-Acre --- which [lives on GitHub](https://github.com/the-carlisle-group/Acre-Desktop) --- is an APL project management system written in Dyalog APL by [Phil Last](http://aplwiki.com/PhilLast).
-
-When Fire finds acre in `⎕SE` it will tell acre about all change and delete operations. Acre will then work out what project the object in question belongs to and take action, if any. In other words, Fire and acre are fully integrated
-
-
 ## Link and Fire
 
-So far nobody has asked for this, therefore Fire is still not supporting Link.
+Since version 9.2 Fire supports Link. However, Fire needs at least Link version 3.0.0 for that to work.
+
+In case only an older version is found Fire will print warnings to the session.
 
 
 ## Salt and Fire
+
+Note that managing scripts with Salt it deprecated. Use Link instead.
 
 The Simple APL Library Toolkit (SALT) which is supplied with Dyalog APL is supported by Fire: when a script is managed by SALT then the script "contains" an ordinary namespace `SALT_Data`. This namespace contains a number of variables including
 

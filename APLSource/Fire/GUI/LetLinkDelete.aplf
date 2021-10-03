@@ -1,6 +1,11 @@
- {r}←LetLinkDelete rows
+ {r}←LetLinkDelete rows;names;bool
 ⍝ Let Link know that objects got deleted from the workspace
- r←⍬
- :If 0  ⍝TODO⍝
-     ∘∘∘
+ r←0
+ :If ##.IsLinkAround
+     names←{(0⊃⍵),'.',1⊃⍵}¨↓n.HitList.(Items,ReportInfo)[rows;1 0]
+ :AndIf 0<r←+/bool←⎕SE.Link.Expunge¨⊆names
+ :AndIf ~##.G.TestFlag
+     ⎕←'Link confirmed deletion of:'
+     ⎕←' ',⍪bool/⊆names
  :EndIf
+⍝Done

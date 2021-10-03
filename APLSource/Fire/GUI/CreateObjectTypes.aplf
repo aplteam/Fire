@@ -31,8 +31,8 @@
  msg,←⊂'(and possibly reported), the "Replace" option'
  msg,←⊂'works only on specific types of variables:'
  msg,←⊂'Simple text vectors and vectors of text vectors.'
- msg,←⊂'Note that variables in scripted namespaces are'
- msg,←⊂'scanned in any case.'
+ msg,←⊂'Note that variables in scripts are scanned in'
+ msg,←⊂'any case.'
  ∆,←⊂'Tip'msg
  n.Vars←⍎'Vars'rf.⎕WC ∆
  n.Vars.onSelect←'OnObjectType'

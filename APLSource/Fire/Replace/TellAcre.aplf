@@ -1,14 +1,11 @@
- {r}←testFlag TellAcre name;buff;flag
+ {r}←TellAcre name;buff;flag
 ⍝ Tells acre that ⍵ (fully qualified name) got changed.
 ⍝ Returns 0 in case acre did not take action and 1 otherwise
- r←⍬
- flag←0
+ r←flag←0
  :If 0≠≢name
  :AndIf ##.IsAnyAcreAround
      flag←0≠≢' '~⍨⎕SE.acre.SetChanged∊name
-     :If flag∧0=testFlag
+     :If r←flag
          ⎕←'acre was told successfully about ',name
-     :ElseIf 0=testFlag
-         ⎕←'acre was told but it was not interested in ',name
      :EndIf
  :EndIf

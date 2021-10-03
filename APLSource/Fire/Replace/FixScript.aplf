@@ -40,6 +40,7 @@
          :EndSelect
      :EndTrap
  :Until flag
- ##.G.TestFlag TellAcre taa
- ##.G.TestFlag TellLink taa
+ :If ~TellAcre taa
+     TellLink taa
+ :EndIf
 ⍝Done

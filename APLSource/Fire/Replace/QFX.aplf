@@ -44,8 +44,9 @@
              :EndSelect
          :Else
              flag←1
-             ##.G.TestFlag TellAcre(⍕ref),'.',name
-             ##.G.TestFlag TellLink ref name
+             :If ~TellAcre(⍕ref),'.',name
+                 TellLink(⍕ref),'.',name
+             :EndIf
          :EndIf
      :Until flag
  :EndIf

@@ -26,6 +26,8 @@
  res←⎕SE.acre.CreateProject acreTestProjectName #.FireAcreTest('casecode' 'On')('keephistory' 'On')
  Assert 0<≢res
 
+ ⎕SE.acre.SetChanged'#.FireAcreTest.MyVars'
+
  n←1 #.Fire.Fire.Run 0
 
  n.SearchFor.Text←'world'

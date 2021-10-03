@@ -12,7 +12,7 @@
 
  acreTestProjectName←'FireAcreTestTemp'
  {}FilesAndDirs.RmDir acreTestProjectName
- res←⎕SE.acre.CreateProject acreTestProjectName #.FireAcreTest('casecode' 'on')('keephistory' 'on')
+ res←⎕SE.acre.CreateProject acreTestProjectName #.FireAcreTest('casecode' 'on')('keephistory' 'on')('variables' 'on')
  Assert 0<≢res
 
  1 #.Fire.Fire.Run 0

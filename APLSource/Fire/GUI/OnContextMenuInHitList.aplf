@@ -1,8 +1,8 @@
  {r}←OnContextMenuInHitList;c;mm;noOf;name;ind;res;_;flag;NS_name
 ⍝ Offers context menu for the hit list
  r←0
- ind←{⍵/⍳⍴,⍵}n.HitList.SelItems
- :If ~0∊⍴ind
+ ind←⍸n.HitList.SelItems
+ :If 0≠≢ind
      _←'mm'⎕WC'Menu'
      noOf←+/n.HitList.SelItems
      CreateContextMenu noOf
