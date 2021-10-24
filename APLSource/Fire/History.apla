@@ -1,6 +1,8 @@
 (
   '⍝ Contains information regarding the last release. A full history is available on GitHub. (This line is ignored)'
   ''
+  '* 9.2.1 from 2021-10-24'
+  '  * "Case sensitive" in "Search QNL" did not work.'
   '* 9.2.0 from 2021-10-03'
   '  * Fire now cooperates with Link but needs at least version 3.0 of Link for that to work'
   '* 9.1.3 from 2021-04-30'

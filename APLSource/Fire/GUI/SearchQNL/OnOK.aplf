@@ -3,5 +3,6 @@
      parms.FullPath←n2.FullPath.State
      parms.SearchIsRegEx←n2.IsRegEx.State
      parms.SearchFor←n2.SearchFor.Text
+     parms.Case←n2.Case.State
      Search parms
  }
