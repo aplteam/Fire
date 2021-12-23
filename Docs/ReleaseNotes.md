@@ -9,6 +9,17 @@ Note that with version 9.0.0 Fire started using the concept of semantic versioni
 
 In short this means that a bump of the major version number indicates a breaking change. For example, 9.* does not run on versions of Dyalog older than 18.0.
 
+A bump of the minor number indicates added functionality plus possibly bug fixes.
+
+A bump of the patch number indicates bug fixes.
+
+## Version 9.3.0 from 2021-12-14
+
+* Because of the danger involved Fire's "Replace" now refuses to act in case there are threads running.
+* Bug fixes
+  * In case a function needs to be deleted as a result of "Delete lines with hits" (when no code it left) Link was not informed.
+  * In case of hits in `#` the very first one was not reported.
+
 ## Version 9.2.1 from 2021-10-24
 
 * "Case sensitive" in the ""Search QNL" report" did not work.

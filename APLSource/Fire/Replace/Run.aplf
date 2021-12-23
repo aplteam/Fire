@@ -4,6 +4,12 @@
 ⍝ Result "rc" gets 1 for "carry on" and 0 if the user wants to cancel.
  r←⍬
  ⍝ ##.GUI.n.Form.Active←0  ⍝ I would love to do that but it stops the test cases from working!
+ :If 1<≢⎕TNUMS
+     ⎕DL 0.5
+ :AndIf 1<≢⎕TNUMS
+     'Replace'##.Question.ShowMsg'"Replace" is incompatible with multiple threads running.'
+     :Return
+ :EndIf
  hl←##.GUI.n.HitList
  NoOfReplacements←0
  hl←RemoveUnknown hl

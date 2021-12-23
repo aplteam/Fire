@@ -5,7 +5,6 @@
  r←0
  :If 0=≢code
  :AndIf (ref.⎕NC⊂name)∊3.1 3.2 4.1 4.2
-     ref.⎕EX name
      :If 1=##.IsAnyAcreAround
          :If 3=⎕NC'#.acre.Erase'
              {}#.acre.Erase(⍕ref),'.',name
@@ -15,7 +14,7 @@
              . ⍝ Huuh?! Acre is around and isn't?!
          :EndIf
      :EndIf
-      ⍝TODO⍝ Link: Add Link support here
+     {}⎕SE.Link.Expunge(⍕ref),'.',name
  :Else
 ∆Fix:
      code←{(⎕UCS 13)Split ⍵}⍣((⎕UCS 13)∊code)⊣code

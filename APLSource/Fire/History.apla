@@ -1,6 +1,12 @@
 (
   '⍝ Contains information regarding the last release. A full history is available on GitHub. (This line is ignored)'
   ''
+  '* 9.3.0 from 2021-12-23'
+  '  * Because if the danger involved Fire "Replace" refuses to act in case there are threads running.'
+  '  * Bug fixes: '
+  '    * In case a function needs to be deleted as a result of "Delete lines with hits" (when no code it left)'
+  '      Link was not informed.'
+  '    * In case of hits in `#` the very first one was not reported.'
   '* 9.2.1 from 2021-10-24'
   '  * "Case sensitive" in "Search QNL" did not work.'
   '* 9.2.0 from 2021-10-03'

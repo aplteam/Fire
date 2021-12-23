@@ -2,7 +2,7 @@
  r←⍬
  printToSession←{0<⎕NC ⍵:⍎⍵ ⋄ 1}'printToSession'
  containerList←(##.##.CompileNamespaceList parms.StartSearchIn 1)[;0]
- list←1↓↑,/GetNames¨containerList
+ list←(↑,/GetNames¨containerList)~⊂,'#'
  :If parms.FullPath
      list2←list
  :Else

@@ -1,0 +1,43 @@
+ R←Test_ReplaceAndDelete_10(stopFlag batchFlag);n;n2;⎕TRAP;tempDir;parms;msg
+⍝ Replace all code in a direct function with Link involved; function must be deleted.
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←T._Failed
+
+⍝ Preconditions
+ tempDir←FilesAndDirs.GetTempSubDir↑⎕SI
+ #.⎕EX'TEMP' ⋄ 'TEMP'#.⎕NS'' ⋄ 'TEMP2'#.TEMP.⎕NS''
+ #.TEMP.TEMP2.myDfns2←{42}
+ #.TEMP.myDfns←{42}
+ parms←⎕NS''
+ parms.watch←'ns'
+ msg←parms ⎕SE.Link.Create'#.TEMP2'tempDir
+ Assert'Linked: #.TEMP2 '{⍺≡(≢⍺)↑⍵}msg
+
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+
+ n.SearchFor.Text←'42'
+ n.StartSearchIn.Text←'#.TEMP'
+
+ {}∆Select n.StartBtn
+ 0.2 ∆Process n.Form
+ →T.GoToTidyUp 2≠≢n.HitList.Items
+
+ {}∆Select n.ReplaceBtn
+ ∆Process n.Form
+
+ n2←#.Fire.Fire.Replace.n
+ n2.ReplaceBy.Text←''
+ n2.DeleteLine.State←1
+
+ {}∆Select n2.StartBtn
+ ∆Process n.Form
+ →T.GoToTidyUp 2≠#.Fire.Fire.Replace.NoOfReplacements
+ →T.GoToTidyUp 0<≢#.TEMP.⎕nl 3
+  →T.GoToTidyUp 0<≢#.TEMP.TEMP2.⎕nl 3
+ R←T._OK
+
+∆TidyUp:
+ CloseFire
+ {}⎕SE.Link.Break'#.TEMP'
+ ⎕EX¨'#.TEMP' '#.TEMP2'
