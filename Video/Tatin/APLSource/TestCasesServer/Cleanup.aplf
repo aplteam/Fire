@@ -1,0 +1,4 @@
+ Cleanup
+ ⎕NUNTIE ⎕NNUMS
+ ∆DeleteTempDir 1
+⍝Done

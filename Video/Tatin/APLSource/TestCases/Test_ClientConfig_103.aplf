@@ -1,0 +1,34 @@
+ r←Test_ClientConfig_103(stopFlag batchFlag);⎕TRAP;tempDir;settings;reg2;reg1;ns
+⍝ Exercise AddRegistry, ListRegistries, ReplaceRegistry and RemoveRegistry on a config file with 1 to 2 registries
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ r←T._Failed
+
+ tempDir←GetTempDir''
+ F.DeleteFile tempDir,'/',TC.UserSettings.cfg_name                           ⍝ Precaution
+
+ settings←⎕NEW TC.UserSettings(,⊂tempDir)
+ →T.GoToTidyUp 2≠≢settings.registries
+ reg2←⎕NEW TC.DefineRegistry(,⊂'https://localhost')
+ settings.AddRegistry reg2
+ →T.GoToTidyUp 3≠≢settings.registries
+ reg2.alias←'foo'
+ reg2.api_key←'Firlefanz'
+ ns←reg2.Get ⍬
+ settings.ReplaceRegistry reg2
+ settings.Save 1
+ ⎕EX'settings'
+ settings←⎕NEW TC.UserSettings(,⊂tempDir)
+ →T.GoToTidyUp 3≠≢settings.registries
+ →T.GoToTidyUp(settings.GetRegistry'[foo]')≢settings.GetRegistry'https://localhost'
+ →T.GoToTidyUp 1≠settings.RemoveRegistry'https://localhost'
+ settings.AddRegistry reg2
+ →T.GoToTidyUp 3≠≢settings.registries
+ →T.GoToTidyUp 1≠settings.Exist'[foo]'
+ →T.GoToTidyUp 1≠settings.RemoveRegistry'[foo]'
+ →T.GoToTidyUp 0≠settings.Exist'[foo]'
+ →T.GoToTidyUp 2≠≢settings.registries
+
+ r←T._OK
+
+∆TidyUp:
+ F.RmDir tempDir

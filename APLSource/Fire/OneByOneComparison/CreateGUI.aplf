@@ -1,7 +1,7 @@
  n←parms CreateGUI(name i noOfObjs);∆;rf;b;wasTicked;noOf;ref
  n←⎕NS''
  ∆←⊂'Form'
- ∆,←⊂'Caption'(##.AddPidToCaption'Fire - Replace one by one')
+ ∆,←⊂'Caption'(##.AddPidToCaption'Fire - Replace one by one: ',name)
  ∆,←⊂'Coord' 'Pixel'
  ∆,←⊂'Icon'##.GUI.n.TheIcon
  ∆,←⊂'Size'parms.Size

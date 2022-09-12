@@ -1,0 +1,35 @@
+ Make flag;targetPath;home;M;name;setupExe;myUCMDsFolder;C
+⍝ Version 7.0.0 ⋄ 2022-08-30
+ ⎕IO←1 ⋄ ⎕ML←1
+ :If flag
+     home←##.CiderConfig.HOME,'/'
+     targetPath←home,'Dist/'
+     {⍵:.}' '≠1↑0⍴⎕FX↑'r←M' 'r←⎕SE.MakeHelpers'  ⍝ avoids creating a link in # that point to ⎕SE
+     C←##.CiderConfig
+     myUCMDsFolder←M.GetMyUCMDsFolder'\'
+     name←'Fire'
+    ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
+     M.RecreateFolder targetPath
+     M.IncreaseBuildID'#.',name,'.',name,'.Version'
+     M.CopyBetter(myUCMDsFolder,'Fire/Fire_uc.dyalog')(home,C.CIDER.source,'/Fire_uc.dyalog')'MyUCMDs/'(C.CIDER.source,'/')
+     {}⎕SE.Cider.CloseProject''  ⍝ Precaution
+     ⎕WSID←targetPath,name,'.dws'
+     0 ⎕SAVE ⎕WSID
+     #.⎕EX ⎕NL⍳16
+     ⎕LX←'#.',name,'.Run 0'
+     '#.Fire.Fire'#.⎕CY ⎕WSID
+     0 ⎕SAVE ⎕WSID
+     './packages'M.CopyTo targetPath
+     M.ConvertMarkdownToHtml5(home,'Docs/')(targetPath,'html/')
+     ##.FilesAndDirs.DeleteFile targetPath,'/html/readme.html'
+     (home,##.CiderConfig.CIDER.source,'/',name,'_UC.dyalog')M.CopyTo targetPath
+     (home,'LICENSE')M.CopyTo targetPath
+     (home,'Fire.ico')M.CopyTo targetPath
+     setupExe←##.TestCases.Inno.Run name
+     M.RemoveStuffButSetupExe targetPath
+     :If 1 M.YesOrNo'Would you like to execute "',setupExe,'" ?'
+         ⎕CMD setupExe
+     :EndIf
+     ⎕←'Clearing the workspace...'
+     ⎕CLEAR
+ :EndIf

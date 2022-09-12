@@ -19,7 +19,7 @@
  ∆,←⊂'Size'(100 100)
  ∆,←⊂'Attach'('Top' 'Left' 'Right' 'Bottom')
  ∆,←⊂'View' 'Report'
- ∆,←⊂'ColTitles'('No' 'A' 'Reference name' 'Pointing to' '[]NC')
+ ∆,←⊂'ColTitles'('No' 'A' 'Reference name' '[]NC' 'Pointing to' '[]NC')
  lv←⍎'LV'ref.⎕WC ∆
  lv.onKeyPress←'OnKeyPress'
 

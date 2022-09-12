@@ -1,5 +1,5 @@
  r←CreateDefaultParms
-⍝  Creates a set od default parms
+⍝  Creates a set of default parms
  r←⎕NS''
  r.addToCaption←''
  r.defaultBtn←'OK'          ⍝ Which button gets the focus?

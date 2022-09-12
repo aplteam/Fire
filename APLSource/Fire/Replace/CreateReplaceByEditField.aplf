@@ -13,6 +13,7 @@
  :EndIf
  msg←'Enter here the string you want⌹to replace "Search for" with.'
  msg,←##.G.SearchIsRegEx/'⌹This will become the right argument⌹of the ⎕R operator.'
+ msg,←'⌹Press F6 in order to copy "Search for" to "Replace by".'
  ∆,←⊂'Style' 'Multi'
  ∆,←⊂'VScroll' ¯1
  ∆,←⊂'WantsReturn' 0

@@ -1,4 +1,4 @@
- newCode←Replace G;ns;fns;hits;bool;oldCode
+ newCode←Replace G;ns;fns;hits;bool;oldCode;buff
  :If ##.G.SearchIsRegEx
      ns←⎕NS''
      ns.options←##.Replace.GetRegExOptions G.OldCode ##.G
@@ -14,7 +14,9 @@
          ~ns.i∊ns.these:⍵.Match                 ⍝ No change
          ns.ss ⎕R ns.rs⍠ns.options⊣⍵.Match
      }
-     newCode[∪ns.lines]←ns.ss ⎕R fns⍠ns.options⊣newCode[∪ns.lines]
+     buff←ns(fns{⍺.ss ⎕R ⍺⍺⍠⍺.options⊣⍵})¨newCode[∪ns.lines]
+     ∘∘∘
+     newCode[∪ns.lines]←buff
  :Else
      :If G.DeleteFlag
          newCode←G.OldCode[(⍳≢G.OldCode)~G.LineNumbers[G.These]]

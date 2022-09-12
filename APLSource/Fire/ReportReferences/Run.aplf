@@ -1,5 +1,6 @@
- {ref}←Run startHere;list;noOf;buffer;cursorWas
+ {ref}←{ignoreTatin}Run startHere;list;noOf;cursorWas;nc1;nc2
 ⍝ Report namespaces references
+ ignoreTatin←{0<⎕NC ⍵:⍎⍵ ⋄ 1}'ignoreTatin'
  cursorWas←##.SetCursorObj 1
  ref←⍬
  :If 0=≢list←2 ##.ListNamespaceTree startHere 0
@@ -7,17 +8,24 @@
      {}##.Question.ShowMsg'No namespace references found'
      ##.SetCursorObj cursorWas
  :Else
+     :If ignoreTatin
+         list←((∧/0={↑((⍕startHere),'._tatin.')⎕S 1⊣⍵}¨⍕¨list))⌿list
+     :EndIf
+     list←((↑¨list[;1])∊'#⎕')⌿list      ⍝ Exclude system stuff, like Link's File System Watcher
      ref←CreateGUI ⍬
      ⎕NQ ref'GotFocus'
-     ref.LV.Items←⍕¨1+⍳0⊃⍴list
-     ref.LV.ReportInfo←list[;3 0 1]
-     buffer←⎕NC∘⊂¨ref.LV.ReportInfo[;1]
-     ((0=buffer)/buffer)←' '
-     ref.LV.ReportInfo,←⍕¨buffer
+     ref.LV.Items←⍕¨1+⍳≢list
+     nc1←↑∘⎕NC¨list[;0]
+     ((0=nc1)/nc1)←' '
+     list,←nc1
+     nc2←↑∘⎕NC¨list[;1]
+     ((0=nc2)/nc2)←' '
+     list,←nc2
+     ref.LV.ReportInfo←list[;3 0 4 1 5]
      ref.LV.{SetColSize ⍵ ¯3}¨⍳1⊃⍴list
      :If 0<noOf←'!'+.=list[;3]
          :If 1=noOf
-             ref.SB.F1.Text←'Attention: there is one anomaly; see line ',⍕1+list[;0]⍳'!'
+             ref.SB.F1.Text←'Attention: there is one anomaly; see line ',⍕1+list[;3]⍳'!'
          :Else
              ref.SB.F1.Text←'Attention: there are ',(⍕noOf),' anomalies; see lines ',⊃{⍺,',',⍵}/⍕¨1+⍸list[;3]='!'
          :EndIf

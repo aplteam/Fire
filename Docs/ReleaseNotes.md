@@ -13,6 +13,20 @@ A bump of the minor number indicates added functionality plus possibly bug fixes
 
 A bump of the patch number indicates bug fixes.
 
+
+## Version 9.4.0 from 2022-09-11
+
+* The "References" report now offers to ignore Tatin packages. Also, the name class is now reported for both the source and the target which allows a better understanding of anomalies.
+
+* Bug fixes:
+  * Searching for a RegEx and then replacing hits with a multi-line replace string did not work
+  * When the special syntax `]Fire .` was used while a function was on the stack that came from a class instance
+    then the setting of "Start looking here" was both wrong and invalid
+  * Under certain (and rare) circumstances closing the "Replace" dialog box resulted in a VALUE ERROR
+  * Resizing the "Remove all objects from namespace... from list" dialog box resulted in a stream of VALUE ERRORs 
+    on a missing `OnConfiguration` handler
+  * In the "References" report the message regarding anomalies always reported a wrong line number
+
 ## Version 9.3.0 from 2021-12-14
 
 * Because of the danger involved Fire's "Replace" now refuses to act in case there are threads running.

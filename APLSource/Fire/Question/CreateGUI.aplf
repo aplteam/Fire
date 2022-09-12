@@ -1,6 +1,6 @@
  ff←cs CreateGUI caption;∆;i;flag;this;rf;btnWidth;LinkFnt;noOf
  ∆←⊂'Form'
- :If 0∊⍴cs.addToCaption
+ :If 0=≢cs.addToCaption
      ∆,←⊂'Caption'(##.AddPidToCaption'Fire')
  :Else
      ∆,←⊂'Caption'(##.AddPidToCaption'Fire : ',cs.addToCaption)
@@ -53,7 +53,7 @@
  'ok'ff.⎕WC ∆
  ff.ok.onSelect←'OnOkay'
 
- :If ~ff.ok.Cancel←0∊⍴cs.caption2
+ :If ~ff.ok.Cancel←0=≢cs.caption2
      ∆←⊂'Button'
      ∆,←⊂'Caption'cs.caption2
      ∆,←⊂'Posn'((ff.Size[0]-35),10+1⊃+⌿⊃ff.ok.(Posn Size))
@@ -66,7 +66,7 @@
      ff.btn2.onSelect←'OnBtn2'
  :EndIf
 
- :If ~ff.ok.Cancel←0∊⍴cs.cancelCaption
+ :If ~ff.ok.Cancel←0=≢cs.cancelCaption
      ∆←⊂'Button'
      ∆,←⊂'Caption'cs.cancelCaption
      ∆,←⊂'Size'(⍬ btnWidth)
@@ -75,7 +75,7 @@
      :AndIf cs.escape
          ∆,←⊂'Cancel' 1
      :EndIf
-     :If 0∊⍴cs.caption2
+     :If 0=≢cs.caption2
          ∆,←⊂'Posn'((ff.Size[0]-35),10+1⊃+⌿⊃ff.ok.(Posn Size))
          ∆,←⊂'Attach'(4⍴'Bottom' 'Right')
      :Else
@@ -99,6 +99,7 @@
      'Warning_Again'ff.⎕WC ∆
      ff.Warning_Again.Posn←(ff.ok.Posn[0]-10+ff.Warning_Again.Size[0]),10
  :EndIf
+
  :If 2=+/(↑0=ff.⎕NC'btn2')(↑0=ff.⎕NC'cancel')
      ff.ok.Posn[1]←⌊0.5×ff.Size[1]-ff.ok.Size[1]
  :EndIf

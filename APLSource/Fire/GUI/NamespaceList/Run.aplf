@@ -4,5 +4,5 @@
  CreateGui
  ⎕NQ n.TheList'GotFocus'
  ⎕DQ n.TheForm
- n.TheForm.Close
+ :Trap 6 ⋄ n.TheForm.Close ⋄ :EndTrap ⍝ The user might have destroyed it already
 ⍝Done

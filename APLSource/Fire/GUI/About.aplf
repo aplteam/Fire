@@ -3,7 +3,7 @@
 ⍝ Show the "About" information
      msg←⊂'Fire version ',↑{⍺,' - ',⍵}/1↓##.Version
      msg,←⊂''
-     msg,←⊂'Written by Kai Jaeger ⋄ APL Software Ltd'
+     msg,←⊂'Written by Kai Jaeger'
      msg,←⊂''
      msg,←⊂'https://github.com/aplteam/Fire'
      ##.Question.ShowMsg msg

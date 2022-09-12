@@ -43,7 +43,7 @@
  →T.GoToTidyUp~'Universe'≡#.FireLinkTest.MyNamespace.Hello4 ⍬
  →T.GoToTidyUp~'World'≡#.FireLinkTest.myRef.Hello2
  →T.GoToTidyUp~'my glorious world'≡#.FireLinkTest.myRef.MyNamedNS.Dear
- expected←FilesAndDirs.EnforceSlash¨'Doe.aplf' 'MyClass.aplc' 'MyNamespace.apln' 'myRef' 'myRef\Hello2.aplf' 'myRef\MyNamedNS\Dear.aplf' 'myRef/MyNamedNS'
+ expected←FilesAndDirs.EnforceSlash¨'Doe.aplf' 'MyClass.aplc' 'MyNamespace.apln' ⍝ But not myRef or anything within it
  filesFound←FilesAndDirs.EnforceSlash¨{⍵↓¨⍨{+/⊃∧/(↓⍵)=¨⊂⍵[0;]}⊃⍵}↑('recursive' 1)FilesAndDirs.Dir tempDir,'/'
  →T.GoToTidyUp~expected ∆LazyMatch filesFound
  R←T._OK

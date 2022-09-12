@@ -362,7 +362,7 @@ This will bring the class into the workspace and link it to the file.
 
 If for any reason you break that link with the `5178⌶` I-Beam then it leaves behind a kind of zombie: you cannot edit the code anymore, and `⎕SRC` would generate a NONCE ERROR on it, despite the fact that the code still executes.
 
-Fire would not find anything inside such a zombie. Dyalogs own search tool would find stuff inside any function and any operator inside `MyClass`, be it private or public, but nothing outside functions and oeprators.
+Fire would not find anything inside such a zombie. Dyalogs own search tool would find stuff inside any function and any operator inside `MyClass`, be it private or public, but nothing outside functions and operators.
 
 Our advice is to not use `2 ⎕FIX` with the file protocol if you can help it; instead use 
 
@@ -388,10 +388,16 @@ The "Replace" dialog has a check box "Delete lines/items with hits". That seems 
 
 ## Tips and Tricks
 
+### ⎕DQ and the "Wait" method
+
 
 Fire does not execute either `⎕DQ` or `Wait` on its main GUI. That allows one to move the focus to the session by pressing <Ctrl+Tab> in Fire. Sadly there is no way to move the focus back to Fire without the mouse.
 
 Avoiding `⎕DQ` works well in many circumstances but it might cause problems when other threads are running. In that case you are advised to finish those threads before you use Fire.
+
+### Threads and Fire
+
+Threads can pose a problem. This is particularly true for the "Replace" operation. That is the reason that the "Replace" operation cannot be triggered when other threads than the main threads are running.
 
 
 ### Editing
@@ -402,6 +408,8 @@ When you edit one or more APL objects from Fire you can double-click another APL
 ### Report "Detailed hits"
 
 After having performed a search the report "Detailed hits" allows you to check the hits in context. This is particularly useful in order to find out whether the hit list needs some fine tuning.
+
+Note that you can remove objects from the "Detailed hits" report, and this will _also_ remove them from the hit list.
 
 
 ### Print object name(s) to the session
@@ -454,7 +462,8 @@ You can then execute the appropriate methods from the namespace `⎕SE._Fire.Fir
 Let's assume you want to search the string "abc" in `⎕SE`. This is what you would do:
 
 ```
-      parms←⎕SE._Fire.Fire.API.CreateParms
+      F←⎕SE._Fire.Fire.API
+      parms←F.CreateParms
       parms. ∆List
  APL_Name       0
  Greedy         0
@@ -469,7 +478,7 @@ Let's assume you want to search the string "abc" in `⎕SE`. This is what you wo
  Vars           1
  StartSearchIn  #
       parms.StartSearchIn←'⎕se'
-      parms ⎕SE._Fire.Fire.API.Search 'abc'
+      parms F.Search 'abc'
  ⎕SE.Parser        4 9.4
  ⎕SE.SALT          2 9.4
  ⎕SE.UnicodeFile   1 9.4
@@ -484,10 +493,10 @@ There are three columns:
 If you want to get the hits listed set `Report` to 1:
 
 ~~~{style="white-space: pre;"}
-      parms←⎕SE._Fire.Fire.API.CreateParms
+      parms←F.CreateParms
       parms.StartSearchIn←'⎕se'
       parms.Report←1
-      ⎕←parms ⎕SE._Fire.Fire.API.Search 'abc'
+      ⎕←parms F.Search 'abc'
  ∇⎕SE.Parser[⎕47 130 131]∇
   [47]  (LOWER UPPER)←'abcdefghijklmnopqrstuvwxyzàáâãåèéêëòóôõöøùúûäæü' 'ABCDEFGHIJKLMNOPQRSTUVWXYZÀÁÂÃÅÈÉÊËÒÓÔÕÖØÙÚÛÄÆÜ' 
   [130] ⍝ sw←123 Switch 'abc' ⍝ if 'abc' has not been set 123 is returned.
@@ -501,21 +510,21 @@ If you want to get the hits listed set `Report` to 1:
 
 ### Search `⎕NL` (Name List)
 
-Since version 9.0 the API also allows you to search `⎕NL` recursively. Note that this always searched `#`.
+Since version 9.0 the API also allows you to search `⎕NL` recursively. Note that this always searches `#`.
 
 Let's assume you want to perform a search for "string" in the names of all objects, and that the search should _not_ be case sensitive. 
 
 We can do this without further ado because the defaults fit:
 
 ```
-      ⎕SE.Fire.SearchQNL 'search'
+      F.SearchQNL 'search'
 
 ```
 
-If we want to search for all functions that start their names with "Search" we must use a RegEx, and it must be a case sensitive search. For that we need to set some parameters:
+If we want to search for all functions that start their names with "Search" we must use a RegEx, and it should be a case sensitive search. For that we need to set some parameters:
 
 ```
-      parms←⎕SE.Fire.CreateParmsFor_QNL_Search
+      parms←F.CreateParmsFor_QNL_Search
       parms.∆List  ⍝ List the defaults
  Case           0 
  FullPath       0 
@@ -523,7 +532,7 @@ If we want to search for all functions that start their names with "Search" we m
  SearchIsRegEx  0 
       parms←SearchIsRegEx←1
       parms←Case←1
-      parms ⎕SE.Fire.SearchQNL '^Search'
+      parms F.SearchQNL '^Search'
 
 ```
 
@@ -570,4 +579,4 @@ In case you've added {PID} - which stands for "Process ID" - to the MessageBox v
 
 In case you wonder what this is good for: there are people out there who have more than just one Dyalog session running at the same time, sometimes many. In such cases it can be very useful to know the process ID a particular message box belongs to, because it can be very awkward or impossible to find out by other means.
 
-Kai Jaeger --- 2021-03-19
+Kai Jaeger --- 2022-08-31

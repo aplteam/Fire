@@ -1,13 +1,10 @@
-# Auto detect text files and perform LF normalization
+# Auto detect text files
 * text=auto
 
-*.aplf linguist-language=apl
-*.aplo linguist-language=apl
-*.aplc linguist-language=apl
-*.apln linguist-language=apl
-*.apli linguist-language=apl
-*.dws linguist-language=apl
+*.apl? linguist-language=apl
 *.dyapp linguist-language=apl
+*.dyalog linguist-language=apl
+*.dws linguist-language=apl
 
 Dist/ linguist-vendored=true
 CSS/ linguist-vendored=true

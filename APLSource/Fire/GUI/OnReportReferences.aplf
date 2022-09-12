@@ -5,5 +5,6 @@
      parms.okCaption←'#'
      parms.caption2←'[]SE'
      (0=answer←parms ##.Question.ThreeButton'Where would you like to start?'):⍬
-     n.RefToReferencesReport←##.ReportReferences.Run(answer-1)⊃# ⎕SE
+     ignoreTatin←##.Question.YesOrNo'Exclude Tatin packages ([#|⎕SE)._tatin) ?'
+     n.RefToReferencesReport←ignoreTatin ##.ReportReferences.Run(answer-1)⊃# ⎕SE
  }

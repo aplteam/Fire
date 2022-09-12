@@ -34,16 +34,19 @@
      html←ns.ss ⎕R fns⍠ns.options⊣##.A.DLB oldCode
      html←'<div class="line"><code>',html,'</code></div>'
  :Else
-     ns.i←0
+     ns.lines←∪ns.lines
+     ns.oldCode←oldCode[ns.lines]
+     ns.rs←∊(⊂'<br>')@(⍸ns.rs=⎕UCS 13)⊣ns.rs   ⍝ In case the replace array spans more than line line
+     ns.newCode←ns.ss ⎕R ns.rs⍠ns.options⊣ns.oldCode
      fns←ns∘{
          ns←⍺
-         id←⍕ns.i⊃ns.IDs
-         ns.i+←1
-         new←ns.ss ⎕R ns.rs⍠ns.options⊣⍵.Match
-         '<span class="diff-old" id="n',id,'-old">',⍵.Match,'</span><span class="diff-new" id="n',id,'-new">',new,'</span>'
+         i←⍵
+         id←⍕i⊃ns.IDs
+         new←'<span class="diff-old" id="n',id,'-old">',(i⊃ns.oldCode),'</span><span class="diff-new" id="n',id,'-new">',(i⊃ns.newCode),'</span>'
+         new←'<div class="line"><span class="lineno">[',(⍕i⊃ns.lines),']</span><code>',(i⊃ns.newCode),'</code></div>'
+         new
      }
-     html←ns.ss ⎕R fns⍠ns.options⊣##.A.DLB oldCode[∪ns.lines]
-     html←(⍕¨∪lineNumbers){'<div class="line"><span class="lineno">[',⍺,']</span><code>',⍵,'</code></div>'}¨html
+     html←fns¨⍳≢ns.lines
  :EndIf
  n2.∆HtmlFilename WriteFile html
  n2.∆HtmlFilename WriteFile BottomOfDoc

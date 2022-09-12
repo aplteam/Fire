@@ -1,0 +1,13 @@
+ CreateTree←{
+⍝ Creates a namespace that carries the dependency tree which eventually will become the build list.
+⍝ "Data" carries the tree, all other variables are column indices into "Data".
+⍝ Right argument is usually `⎕NS ''`
+     r←⍵
+     r.Data←0 3⍴⍬       ⍝ Useful for ...
+     r.∆principal←1     ⍝ ...indexing ...
+     r.∆packageID←2     ⍝ ... Data
+     r.∆url←3
+     r.ignore←''        ⍝ Registries that do not respond
+     _←r.⎕FX'r←View;h;u' 'h←''Level'' ''Package ID'' ''URL''' 'u←(≢¨h)⍴¨''-''' 'r←↑h u,↓Data'
+     r
+ }
