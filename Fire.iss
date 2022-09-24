@@ -1,13 +1,13 @@
 ; This script is best executed by Fire's "Make" utility.
 
-#define MyAppVersion "9.4.0+236"
+#define MyAppVersion "9.4.1+238"
 #define MyAppName "Fire"
 #define MyAppExeName "Fire.dws"
 #define MyAppPublisher "Kai Jaeger"
 #define MyAppURL "https://github.com/aplteam/Fire"
 #define MyAppIcoName "Fire.ico"
 #define MyBlank " "
-#define TargetDir "Dist\"
+#define TargetDir "<<TARGETDIR>>"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -20,8 +20,8 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
-DefaultDirName={userdocs}\\MyUCMDs\\{#MyAppName}
-DefaultGroupName={#MyAppPublisher}\{#MyAppName}
+DefaultDirName={userdocs}//MyUCMDs//{#MyAppName}
+DefaultGroupName={#MyAppPublisher}/{#MyAppName}
 AllowNoIcons=yes
 OutputDir={#TargetDir}
 OutputBaseFilename="SetUp_{#MyAppName}_{#MyAppVersion}"
@@ -42,13 +42,14 @@ Name: "english"; MessagesFile: "compiler:Default.isl"; LicenseFile: "License";
 [Dirs]
 
 [Files]
-Source: "{#TargetDir}\Fire_uc.dyalog"; DestDir: "{app}\..\";
-Source: "{#TargetDir}\html\FireAndRegularExpressions.html"; DestDir: "{app}";
-Source: "{#TargetDir}\html\ReleaseNotes.html"; DestDir: "{app}";
-Source: "{#TargetDir}\html\UsefulRegExes.html"; DestDir: "{app}";
-Source: "{#TargetDir}\{#MyAppExeName}"; DestDir: "{app}"
-Source: "{#TargetDir}\packages\*"; DestDir: "{app}\packages\"; Flags: recursesubdirs
-Source: "{#TargetDir}\LICENSE"; DestDir: "{app}"
+Source: "{#TargetDir}Fire_uc.dyalog"; DestDir: "{app}";
+Source: "{#TargetDir}Fire_uc.dyalog"; DestDir: "{app}/test/";
+Source: "{#TargetDir}html/FireAndRegularExpressions.html"; DestDir: "{app}";
+Source: "{#TargetDir}html/ReleaseNotes.html"; DestDir: "{app}";
+Source: "{#TargetDir}html/UsefulRegExes.html"; DestDir: "{app}";
+Source: "{#TargetDir}{#MyAppExeName}"; DestDir: "{app}"
+Source: "{#TargetDir}packages/*"; DestDir: "{app}/packages/"; Flags: recursesubdirs
+;Source: "{#TargetDir}LICENSE"; DestDir: "{app}"
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
@@ -56,10 +57,17 @@ Source: "{#TargetDir}\LICENSE"; DestDir: "{app}"
 
 [Run]
 ; Because with 9.1.0 the user command script was moved into Fire/, so we delete leftovers:
-Filename: "{cmd}"; Parameters: "/C ""del {app}\..\Fire_UC.dyalog /F /Q"""; Flags: runhidden
-
-Filename: "{app}\ReleaseNotes.html"; Description: "View the Release Notes"; Flags: postinstall shellexec skipifsilent
+Filename: "{app}/ReleaseNotes.html"; Description: "View the Release Notes"; Flags: postinstall shellexec skipifsilent
 
 [Tasks]
 
+[InstallDelete]
+
 [Code]
+// Delete potential left-over from 9.1.0 (and earlier) installations
+procedure CurStepChanged(CurStep: TSetupStep);
+begin
+  if CurStep = ssPostInstall then begin
+    DeleteFile(ExpandConstant('{app}\..\Fire_uc.dyalog')); 
+  end;
+end;

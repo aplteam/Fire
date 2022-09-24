@@ -14,9 +14,8 @@
      zipFilename←name,'-',DropBuildNumber version
  :EndIf
  zipFilename,←{'.zip'/⍨'.zip'≢⎕C ¯4↑⍵}zipFilename
- 1 ⎕NDELETE folder,zipFilename
- zipFilename←F.GetTempPath,zipFilename
+ 1 ⎕NDELETE folder,'/',zipFilename
+ zipFilename←folder,'/',zipFilename
  1 ⎕NDELETE zipFilename
  {}folder ZipArchive.ZipFolder zipFilename
- folder ⎕NMOVE zipFilename
 ⍝Done

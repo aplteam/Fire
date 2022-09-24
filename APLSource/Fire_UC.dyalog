@@ -4,7 +4,7 @@
 ⍝ If this is the case then Fire is started.
 ⍝ If this is not the case then Fire is copied into []SE from
 ⍝ the same directory the User Command stems from and then started.
-⍝ Kai Jaeger 
+⍝ Kai Jaeger
 ⍝ * Version 4.0.1 - 2022-08-30
 ⍝   * The user command was moved into the folder Fire/, and that required some changes.
 ⍝ * Version 4.0.0 - 2021-03-19
@@ -81,7 +81,7 @@
       :EndIf
     ∇
 
-    ∇ LoadFire(Args forceLoadFlag noGUIFlag);n
+    ∇ LoadFire(Args forceLoadFlag noGUIFlag);n;qdmx
       '_Fire'⎕SE.⎕NS''
       :If forceLoadFlag
       :OrIf 0=⎕SE._Fire.⎕NC'Fire'
@@ -92,7 +92,12 @@
           :EndTrap
       :EndIf
       ⎕SE.Fire←⎕SE._Fire.Fire.API
-      {}⎕SE.Tatin.LoadDependencies(1⊃⎕NPARTS ##.SourceFile)⎕SE._Fire
+      :Trap 0
+          {}⎕SE.Tatin.LoadDependencies((1⊃⎕NPARTS ##.SourceFile),'/packages')⎕SE._Fire
+      :Else
+          qdmx←⎕DMX
+          11 ⎕SIGNAL⍨'Could not load Fire''s Tatin packages: ',qdmx.EM
+      :EndTrap
       :If ~noGUIFlag
           n←⎕SE._Fire.Fire.Run 0
           :If 1=≢⊃Args.Arguments

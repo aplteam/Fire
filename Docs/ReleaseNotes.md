@@ -13,6 +13,9 @@ A bump of the minor number indicates added functionality plus possibly bug fixes
 
 A bump of the patch number indicates bug fixes.
 
+## Version 9.4.1 from 2022-09-23
+
+* Fire's "Make" copied the packages twice
 
 ## Version 9.4.0 from 2022-09-11
 

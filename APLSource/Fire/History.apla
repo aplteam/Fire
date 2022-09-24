@@ -1,6 +1,11 @@
 (
  '⍝ Contains information regarding the last release. A full history is available on GitHub. (This line is ignored)'
  ''
+ '* 9.4.1 from 2022-09-24'
+ '  * Fixed: Fire''s "Make" copied the packages twice!'
+ '  * Fixed: Fire''s script from earlier versions than 9.2 was not deleted (as intended) by the installer, causing'
+ '    potentially havoc.'
+ ''
  '* 9.4.0 from 2022-09-11'
  '  * The "References" report now offers to ignore Tatin packages '
  '  * Bug fixes                       '

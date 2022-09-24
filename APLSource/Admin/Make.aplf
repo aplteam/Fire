@@ -1,34 +1,47 @@
- Make flag;targetPath;home;M;name;setupExe;myUCMDsFolder;C
-⍝ Version 7.0.0 ⋄ 2022-08-30
+  Make flag;targetPath;home;M;name;setupExe;myUCMDsFolder;C;tempFolder;data
+⍝ Version 7.0.1 ⋄ 2022-09-24
+⍝ * 7.0.1 ⋄ 2022-09-22
+⍝   * New version is assembled in a temp folder rather than Dist\ (Dropbox etc!)
+⍝   * Comment polished
+⍝   * Ref to FilesAndDir shortened
  ⎕IO←1 ⋄ ⎕ML←1
  :If flag
      home←##.CiderConfig.HOME,'/'
      targetPath←home,'Dist/'
-     {⍵:.}' '≠1↑0⍴⎕FX↑'r←M' 'r←⎕SE.MakeHelpers'  ⍝ avoids creating a link in # that point to ⎕SE
+     {⍵:.}' '≠1↑0⍴⎕FX↑'r←M' 'r←⎕SE.MakeHelpers'  ⍝ avoids creating a link in # that point to ⎕SE at the expense of defeating auto-complete
      C←##.CiderConfig
      myUCMDsFolder←M.GetMyUCMDsFolder'\'
      name←'Fire'
+     tempFolder←(M.##.F.GetTempSubDir name),'/'
     ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
      M.RecreateFolder targetPath
      M.IncreaseBuildID'#.',name,'.',name,'.Version'
-     M.CopyBetter(myUCMDsFolder,'Fire/Fire_uc.dyalog')(home,C.CIDER.source,'/Fire_uc.dyalog')'MyUCMDs/'(C.CIDER.source,'/')
+     :If ⎕NEXISTS myUCMDsFolder,'Fire/Fire_uc.dyalog'
+         M.CopyBetter(myUCMDsFolder,'Fire/Fire_uc.dyalog')(home,C.CIDER.source,'/Fire_uc.dyalog')'MyUCMDs/'(C.CIDER.source,'/')
+     :EndIf
      {}⎕SE.Cider.CloseProject''  ⍝ Precaution
-     ⎕WSID←targetPath,name,'.dws'
+     ⎕WSID←tempFolder,name,'.dws'
      0 ⎕SAVE ⎕WSID
      #.⎕EX ⎕NL⍳16
      ⎕LX←'#.',name,'.Run 0'
      '#.Fire.Fire'#.⎕CY ⎕WSID
      0 ⎕SAVE ⎕WSID
-     './packages'M.CopyTo targetPath
-     M.ConvertMarkdownToHtml5(home,'Docs/')(targetPath,'html/')
-     ##.FilesAndDirs.DeleteFile targetPath,'/html/readme.html'
-     (home,##.CiderConfig.CIDER.source,'/',name,'_UC.dyalog')M.CopyTo targetPath
-     (home,'LICENSE')M.CopyTo targetPath
-     (home,'Fire.ico')M.CopyTo targetPath
-     setupExe←##.TestCases.Inno.Run name
-     M.RemoveStuffButSetupExe targetPath
+     './packages'M.CopyTo tempFolder
+     M.ConvertMarkdownToHtml5(home,'Docs/')(tempFolder,'html/')
+     M.##.F.DeleteFile tempFolder,'/html/readme.html'
+     (home,##.CiderConfig.CIDER.source,'/',name,'_UC.dyalog')M.CopyTo tempFolder
+     (home,'LICENSE')M.CopyTo tempFolder
+     (home,'Fire.ico')M.CopyTo tempFolder
+     (home,'Fire.iss')M.CopyTo tempFolder
+     data←⊃⎕NGET tempFolder,'Fire.iss'
+     data←M.##.F.EnforceSlash tempFolder{ss←'<<TARGETDIR>>' ⋄ sp←¯1+1⍳⍨ss⍷⍵ ⋄ (-sp)⌽⍺,(≢ss)↓sp⌽⍵}data
+     (⊂data)⎕NPUT(tempFolder,'Fire.iss')1
+     setupExe←tempFolder ##.TestCases.Inno.Run name
+     targetPath ⎕NMOVE setupExe
+     setupExe←⊃,/1↓⎕NPARTS setupExe
+     M.##.F.RmDir tempFolder
      :If 1 M.YesOrNo'Would you like to execute "',setupExe,'" ?'
-         ⎕CMD setupExe
+         ⎕CMD targetPath,setupExe
      :EndIf
      ⎕←'Clearing the workspace...'
      ⎕CLEAR
