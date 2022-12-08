@@ -1,11 +1,16 @@
-  Make flag;targetPath;home;M;name;setupExe;myUCMDsFolder;C;tempFolder;data
-⍝ Version 7.0.1 ⋄ 2022-09-24
+ Make flag;targetPath;home;M;name;setupExe;myUCMDsFolder;C;tempFolder;data;buff
+⍝ Version 7.1.0 ⋄ 2022-11-08
+⍝ * 7.1.0 ⋄ 2022-11-08
+⍝   * Checks now the minimum version of Dyalog APL (18.0 at the time of writing this)
 ⍝ * 7.0.1 ⋄ 2022-09-22
 ⍝   * New version is assembled in a temp folder rather than Dist\ (Dropbox etc!)
 ⍝   * Comment polished
 ⍝   * Ref to FilesAndDir shortened
  ⎕IO←1 ⋄ ⎕ML←1
  :If flag
+     :If 18≢⊃⊃(//)⎕VFI buff←{⍵/⍨2>+\⍵='.'}2⊃# ⎕WG'APLVersion'  ⍝
+         ('"Make" a new version with 18.0 - this is ',buff)⎕SIGNAL 11
+     :EndIf
      home←##.CiderConfig.HOME,'/'
      targetPath←home,'Dist/'
      {⍵:.}' '≠1↑0⍴⎕FX↑'r←M' 'r←⎕SE.MakeHelpers'  ⍝ avoids creating a link in # that point to ⎕SE at the expense of defeating auto-complete
