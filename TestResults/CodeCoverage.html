@@ -35,6 +35,9 @@ div.code-block {
     margin: 0.5em 0.5em 0.5em 0.5em;
     padding: 0.5em;
 }
+div.code-block.missing {
+    background-color: #fa605254;
+}
 div.code-block code {display: block; white-space: pre-wrap; margin:0; padding:0; word-wrap: break-word;}
 .emphasize { font-weight: 800;}
 ul li, ol li {margin: 0.7em 0.2em;}
@@ -117,19 +120,19 @@ ul li, ol li {margin: 8pt 3pt;}
 </head>
 <body>
 <h1 id="top">Coverage Report</h1>
-<p>Watched: 635 fns/opr within <code>#.Fire.Fire</code></p>
+<p>Watched: 633 fns/opr within <code>#.Fire.Fire</code></p>
 <p>The test suite was executed once:</p>
 <table>
 <thead>
 <tr><th>Executed at</th><th>APLVersion</th><th>Memory (MB)</th></tr>
 </thead>
 <tbody>
-<tr><td>2022-09-24 12:21:56</td><td>Windows-64 ⋄ 18.2.46028.0 ⋄ W ⋄ Development</td><td>50</td></tr>
+<tr><td>2022-12-13 19:36:36</td><td>Windows-64 ⋄ 19.0.46319.0 ⋄ W ⋄ Development ⋄ Unicode</td><td>52</td></tr>
 </tbody>
 </table>
-<p>Overall 50% of the testable code is covered.</p>
+<p>Overall 12% of the testable code is covered.</p>
 <p>(Comment lines, empty lines, all <code>:End</code>* lines etc. are ignored)</p>
-<p>214 of the fns/opr are 100% covered.</p>
+<p>69 of the fns/opr are 100% covered.</p>
 <div id="partly-covered" class="keep-together">
 <table id="percent">
 <thead>
@@ -137,35 +140,92 @@ ul li, ol li {margin: 8pt 3pt;}
 </thead>
 <tbody>
 <tr class="uncovered"><td>#.Fire.Fire.About</td><td>1</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.CR</td><td>1</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.CompileHeader1</td><td>4←≢1-4</td><td>0</td><td>4</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.CompileHits</td><td>3</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.CompileNamespaceList</td><td>3, 4, 5</td><td>0</td><td>3</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ConvertToPixel</td><td>4←≢3-6</td><td>0</td><td>4</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.CopySearchFor2ReplaceBy</td><td>4←≢1-4</td><td>0</td><td>4</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.DQ</td><td>1</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.DisableProgressbar</td><td>4←≢1-4</td><td>0</td><td>4</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.DropComments</td><td>2, 3</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.DropRefsFrom</td><td>1, 2</td><td>0</td><td>2</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.DropTatinFrom</td><td>1, 2</td><td>0</td><td>2</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.EnableProgressbar</td><td>7←≢2-8</td><td>0</td><td>7</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.FindScript</td><td>7←≢3-9</td><td>0</td><td>7</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.FormatDateTime</td><td>32←≢14-18,21,24-25,27-32,34-36,39-40,42,44-48,50,52-55,57-58</td><td>0</td><td>32</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GetCode</td><td>26←≢5-7,9-15,17-18,20-21,24-27,29-31,33-34,38,41-42</td><td>0</td><td>26</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GetComments</td><td>3, 4</td><td>0</td><td>2</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GetCommentsAndRest</td><td>15←≢3-9,11-18</td><td>0</td><td>15</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GetCss</td><td>49←≢1-11,14-24,26,28-37,39-42,44-47,49,51-57</td><td>0</td><td>49</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GetDisplayFormat</td><td>2</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GetDyalogInstallDir</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GetHitListNames</td><td>4, 5</td><td>0</td><td>2</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GetHitListRefs</td><td>5←≢6-10</td><td>0</td><td>5</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GetHitsForScanFnsAndOprs</td><td>8←≢2-8,10</td><td>0</td><td>8</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GetList</td><td>16←≢3-7,9-11,13-16,19-20,22-23</td><td>0</td><td>16</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GetNames</td><td>12←≢2-11,14-15</td><td>0</td><td>12</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GetNamesFrom</td><td>11←≢3-13</td><td>0</td><td>11</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GetSortedHitListData</td><td>6</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GetTempFileName</td><td>10←≢8-13,15,17-18,20</td><td>0</td><td>10</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GetTextAndRest</td><td>7←≢3-9</td><td>0</td><td>7</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GetTextOnly</td><td>5←≢3-7</td><td>0</td><td>5</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.HonorTestFlag</td><td>6, 7</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.IfUpper</td><td>2, 3</td><td>0</td><td>2</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.IsAnyAcreAround</td><td>2</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.IsLinkAround</td><td>4←≢3-6</td><td>0</td><td>4</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.IsName</td><td>5←≢4-8</td><td>0</td><td>5</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.IsName_</td><td>23←≢5-9,11-16,18-20,22-23,25-26,28-31,35</td><td>0</td><td>23</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.IsRef</td><td>4←≢3-6</td><td>0</td><td>4</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.IsScripted</td><td>2, 3, 4</td><td>0</td><td>3</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.IsUnnameNamespace</td><td>1, 2, 3</td><td>0</td><td>3</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.IsVersion16OrBetter</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.IsWord</td><td>8←≢7-8,10-15</td><td>0</td><td>8</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.List</td><td>7←≢8-12,14-15</td><td>0</td><td>7</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ListNamespaceTree</td><td>14←≢5-9,11,13-19,21</td><td>0</td><td>14</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ListNamespaceTree_</td><td>27←≢5,9-17,19-23,26-30,32,34-36,40-42</td><td>0</td><td>27</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.MerryParentAndChild</td><td>1</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.NL</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.PrePopulateSearchBox</td><td>5←≢1-2,4,7-8</td><td>0</td><td>5</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.PrintHitsToSession</td><td>12←≢1-5,8-9,12-16</td><td>0</td><td>12</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ProcessList</td><td>24←≢3-10,12-20,22-24,27-28,30-31</td><td>0</td><td>24</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ProcessNameSearch</td><td>29←≢2-11,13-15,18-19,21-22,24-26,28-33,36-38</td><td>0</td><td>29</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Public</td><td>1</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.RegExSearch</td><td>6←≢1-3,5-7</td><td>0</td><td>6</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.RemoveAllVars</td><td>11←≢2-12</td><td>0</td><td>11</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.RemoveClones</td><td>13←≢3-15</td><td>0</td><td>13</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.RemoveFnsAndOpr</td><td>16←≢8-23</td><td>0</td><td>16</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.RemoveInvalidVars</td><td>15←≢4-18</td><td>0</td><td>15</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.RemoveUnwanted</td><td>21←≢2-3,5-11,13-15,18,20-22,24-25,27,30-31</td><td>0</td><td>21</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReplaceAssignedDfnNameBySpace</td><td>1, 2</td><td>0</td><td>2</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReplaceSpecialChars</td><td>11←≢8-15,17-18,20</td><td>0</td><td>11</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportSALTedScripts</td><td>2, 3, 4</td><td>0</td><td>3</td></tr>
-<tr class="uncovered"><td>#.Fire.Fire.Reset</td><td>2, 3</td><td>0</td><td>2</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.RunSearch</td><td>32←≢8-12,14,16-17,19-23,25-32,35-37,39-40,42,46-47,50-51,54</td><td>0</td><td>32</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Scan</td><td>41←≢6-8,10-13,15,18-20,22-24,26-31,33-37,39,41-44,47-50,52-53,56-58,61-62</td><td>0</td><td>41</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ScanBody</td><td>29←≢10-18,20,24-29,31,35-41,43,48-51</td><td>0</td><td>29</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ScanCode</td><td>4, 5, 6</td><td>0</td><td>3</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ScanFnsAndOprs</td><td>3, 4, 5</td><td>0</td><td>3</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ScanScripts</td><td>14←≢3-6,8-14,16-18</td><td>0</td><td>14</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ScanText</td><td>4←≢2-5</td><td>0</td><td>4</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ScanVars</td><td>17←≢3-8,10-14,17-19,22-23,25</td><td>0</td><td>17</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Search</td><td>27←≢2-9,11,13-20,22-24,26-27,29,33-34,37,39</td><td>0</td><td>27</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.SetCursorObj</td><td>1, 2</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ShowAllReleaseNotes</td><td>2, 3</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ShowReadMe</td><td>5←≢2-4,6-7</td><td>0</td><td>5</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ShowReleaseNotes</td><td>7←≢2-6,8-9</td><td>0</td><td>7</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ShowUsefulRegExes</td><td>7←≢2-6,8-9</td><td>0</td><td>7</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.SortAlph</td><td>1</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.SortHits</td><td>2</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.StopInSearch</td><td>1, 2, 3</td><td>0</td><td>3</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.TellRemovedVars</td><td>8←≢1-8</td><td>0</td><td>8</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.TellWSFULL</td><td>1, 2, 3</td><td>0</td><td>3</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ToggleAutoStatus</td><td>8←≢5-12</td><td>0</td><td>8</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.TransFromYYYYMMDDHHMMSS</td><td>2</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.WhichItemsOrRows</td><td>4←≢3-6</td><td>0</td><td>4</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.API.CreateParmsFor_QNL_Search</td><td>10←≢1-9,11</td><td>0</td><td>10</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.API.CreateSearchParms</td><td>20←≢2-20,22</td><td>0</td><td>20</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.API.Search</td><td>11←≢3-8,10-13,15</td><td>0</td><td>11</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.API.SearchQNL</td><td>9←≢3-5,7,9-11,13,15</td><td>0</td><td>9</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.BrowseCode.CalculateNextPos</td><td>7←≢1-7</td><td>0</td><td>7</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.BrowseCode.CreateBowseGUI</td><td>73←≢1-7,9-13,15-16,18-24,26-27,29-33,35-41,43,45,47-53,55,57,59-65,67,69,71-78,80-87,89-90</td><td>0</td><td>73</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.BrowseCode.CreateGUI</td><td>75←≢1-12,14-25,27-28,30-45,47,49-59,62,65-82,84-85</td><td>0</td><td>75</td></tr>
@@ -189,11 +249,14 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr class="uncovered"><td>#.Fire.Fire.BrowseCode.PerformFind</td><td>30←≢1-11,13-14,16-21,23-24,27-29,31-36</td><td>0</td><td>30</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.BrowseCode.Run</td><td>2, 3, 4</td><td>0</td><td>3</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.About</td><td>6←≢3-8</td><td>0</td><td>6</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.CenterIn</td><td>12←≢1-12</td><td>0</td><td>12</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.CenterOnMonitor</td><td>15←≢2-4,7,10-11,14-20,22,24</td><td>0</td><td>15</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.CheckForConsistency</td><td>36←≢5-9,11-21,24-33,36-45</td><td>0</td><td>36</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.CheckForQSE</td><td>2, 3, 4</td><td>0</td><td>3</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.CheckForUpdates</td><td>11←≢1-6,8-11,13</td><td>0</td><td>11</td></tr>
-<tr class="uncovered"><td>#.Fire.Fire.GUI.CheckSALTedScripts</td><td>5←≢3-7</td><td>0</td><td>5</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.CheckHitList</td><td>5←≢7-11</td><td>0</td><td>5</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.ClickFindButton</td><td>5←≢2-3,5-7</td><td>0</td><td>5</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.CloseChildForms</td><td>8←≢3-10</td><td>0</td><td>8</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.CopyAutoCompleteToCombo</td><td>8←≢4-11</td><td>0</td><td>8</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.CreateContextMenu</td><td>14←≢1-14</td><td>0</td><td>14</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.CreateContextMenu_AllFromSelectedNamespace</td><td>1, 2</td><td>0</td><td>2</td></tr>
@@ -207,19 +270,30 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr class="uncovered"><td>#.Fire.Fire.GUI.CreateContextMenu_RemoveObject</td><td>4←≢1-2,4,6</td><td>0</td><td>4</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.CreateContextMenu_SelectAllInHitList</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.CreateContextMenu_Separator</td><td>1, 2</td><td>0</td><td>2</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.DeleteFromWorkspaceAndList</td><td>21←≢3-15,17,19-22,25-27</td><td>0</td><td>21</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.DisplayList</td><td>28←≢4-20,22-24,26-33</td><td>0</td><td>28</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.DoesClipboardHoldText</td><td>2, 3, 5</td><td>0</td><td>3</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.DropAutoCompleteLevels</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.DropCurrentFromComboList</td><td>5←≢3-7</td><td>0</td><td>5</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.Edit</td><td>6←≢4-8,10</td><td>0</td><td>6</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.EditCmd</td><td>9←≢1-9</td><td>0</td><td>9</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.EnableGhostlyReportWhenAppropriate</td><td>2</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.EnableReportHitsWhenAppropriate</td><td>2, 3</td><td>0</td><td>2</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.EnlargeForm</td><td>4←≢3-6</td><td>0</td><td>4</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.ExecuteContextCommand</td><td>27←≢3-28,30</td><td>0</td><td>27</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.ForceFocusTo</td><td>3</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.GetDPI</td><td>7←≢3-9</td><td>0</td><td>7</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.GetFullPath</td><td>3, 4</td><td>0</td><td>2</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.GetItemState</td><td>2, 3</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.GetItemStates</td><td>2, 3</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.GetListViewItemHeight</td><td>8←≢3-10</td><td>0</td><td>8</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.GetParentForm</td><td>1, 2</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.GetPotentialControls</td><td>13←≢10-18,21,24-26</td><td>0</td><td>13</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.GetProperPosition</td><td>9←≢4-12</td><td>0</td><td>9</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.GetSystemMetrics</td><td>1, 2</td><td>0</td><td>2</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.Get_QAT</td><td>2</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.HandleCombo</td><td>4←≢2-5</td><td>0</td><td>4</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.HandleControlDependencies</td><td>23←≢3-17,19,22-28</td><td>0</td><td>23</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.HandleCursorRightInWhereToLook</td><td>3, 4, 5</td><td>0</td><td>3</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.HandleEndKey</td><td>5←≢1-5</td><td>0</td><td>5</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.HandleHomeKey</td><td>6←≢1-5,7</td><td>0</td><td>6</td></tr>
@@ -230,6 +304,11 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr class="uncovered"><td>#.Fire.Fire.GUI.HandlePgDown</td><td>5←≢1-5</td><td>0</td><td>5</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.HandlePgUp</td><td>5←≢1-5</td><td>0</td><td>5</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.IsBetterThan</td><td>7←≢2-8</td><td>0</td><td>7</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.IsScripted</td><td>6←≢1-6</td><td>0</td><td>6</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.LetAcreDelete</td><td>9←≢3-6,8-12</td><td>0</td><td>9</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.LetLinkDelete</td><td>7←≢2-8</td><td>0</td><td>7</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.MonitorInfo</td><td>12</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.NotifyChangeFor</td><td>11←≢3-13</td><td>0</td><td>11</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.On9991InSearchFor</td><td>3, 4</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.On9991InWhereToLook</td><td>15←≢2-16</td><td>0</td><td>15</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnAPL_Name</td><td>8←≢2-9</td><td>0</td><td>8</td></tr>
@@ -243,7 +322,6 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnCheckForChangeInSearchFor</td><td>3, 4</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnCheckForUpdates</td><td>19←≢1-6,8-10,12-17,19,21,24,26</td><td>0</td><td>19</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnCheckInfoBtnPosnInHitList</td><td>1</td><td>0</td><td>1</td></tr>
-<tr class="uncovered"><td>#.Fire.Fire.GUI.OnClose</td><td>7←≢2-8</td><td>0</td><td>7</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnCode</td><td>1, 2, 3</td><td>0</td><td>3</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnColumnClickInHitList</td><td>25←≢2-7,9-11,13-17,19,21-29,31</td><td>0</td><td>25</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnContextMenuInHitList</td><td>9←≢2-10</td><td>0</td><td>9</td></tr>
@@ -261,6 +339,7 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnHelp</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnHiddenButtonGotFocus</td><td>2</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnInvertSelectionCmd</td><td>2</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.OnKeyPressInHitList</td><td>8←≢2-9</td><td>0</td><td>8</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnKeyPressInLookIn</td><td>31←≢2-12,14-17,19-26,29-32,34,37-38,43</td><td>0</td><td>31</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnKeyPressInLookIn_</td><td>54←≢1-21,23,25-32,34,36-57,59</td><td>0</td><td>54</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnKeyPressInSearchFor</td><td>17←≢2-18</td><td>0</td><td>17</td></tr>
@@ -269,7 +348,9 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnOnContextMenuInHitList</td><td>2</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnPrintCmd</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnQuitCmd</td><td>3</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.OnReplaceBtn</td><td>1, 2</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnReportGosts</td><td>2</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.OnReportHits</td><td>2, 3</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnReportReferences</td><td>7←≢2-8</td><td>0</td><td>7</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnReuseSearch</td><td>6←≢3-7,9</td><td>0</td><td>6</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnSaveSelectedObjects</td><td>1, 2</td><td>0</td><td>2</td></tr>
@@ -280,6 +361,7 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnShowReadMe</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnShowReleaseNotes</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnShowUsefulRegExes</td><td>1</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.OnStartBtn</td><td>22←≢5-9,11-15,17,19-20,22-24,26,29-30,33,35-36</td><td>0</td><td>22</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnSwitchTab</td><td>8←≢1-6,8,10</td><td>0</td><td>8</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnTestMode</td><td>2</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnToggleAll</td><td>2, 3</td><td>0</td><td>2</td></tr>
@@ -287,13 +369,23 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnToggleStop</td><td>2, 3</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnToggleStopOnReplace</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnToggleStopOnSearch</td><td>1</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.PrepareSearch</td><td>13←≢4-9,11-17</td><td>0</td><td>13</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.PrintNamesFromHitList</td><td>5←≢3-7</td><td>0</td><td>5</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.ProcessSearchResult</td><td>26←≢2-7,9-15,17-20,23-24,26-28,30-33</td><td>0</td><td>26</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.RemoveAllInCertainNamespace</td><td>11←≢4-14</td><td>0</td><td>11</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.RemoveFromHitList</td><td>16←≢5-20</td><td>0</td><td>16</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.ReportHitsInStatusbar</td><td>11←≢1-4,6-11,13</td><td>0</td><td>11</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.ResetAfterSearch</td><td>1, 2, 3</td><td>0</td><td>3</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.ResetHitList</td><td>14←≢3-16</td><td>0</td><td>14</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.RestoreDynamicProps</td><td>4←≢4-7</td><td>0</td><td>4</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.SaveDynamicProps</td><td>9←≢6-14</td><td>0</td><td>9</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.SaveSelectedObjects</td><td>47←≢3-18,20-21,23-32,35,37,39-44,46-47,50-51,53-54,58-62</td><td>0</td><td>47</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.SelectAllInHitList</td><td>4←≢1-4</td><td>0</td><td>4</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.SelectAllInSearchFor</td><td>1, 2</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.SendCloseToForm</td><td>1, 2</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.SetActiveForGroup</td><td>2, 3, 4</td><td>0</td><td>3</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.SetActivePropTo</td><td>2, 3</td><td>0</td><td>2</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.SetFocusTo</td><td>9←≢1-9</td><td>0</td><td>9</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.SetListSize</td><td>4←≢0,2-4</td><td>0</td><td>4</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.SetStateForGroup</td><td>2, 3, 4</td><td>0</td><td>3</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.ShowAutoCompleteForm</td><td>2, 3</td><td>0</td><td>2</td></tr>
@@ -303,10 +395,12 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr class="uncovered"><td>#.Fire.Fire.GUI.TellFireIsUp2Date</td><td>5←≢1-5</td><td>0</td><td>5</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.TellProblem</td><td>4←≢1-4</td><td>0</td><td>4</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.ToggleStopOnSearch</td><td>1</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.WriteInfo</td><td>6←≢2-7</td><td>0</td><td>6</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.get</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.set</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.Events.CheckInfoBtnPosnInHitList</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.Events.QuitWait</td><td>1</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.Events.RefreshCSS</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.NamespaceList.CompileMsgAndBoolForAll</td><td>4, 5, 7</td><td>0</td><td>3</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.NamespaceList.CreateGui</td><td>59←≢3,5-13,15-19,21-32,34-41,43-50,52-59,61-68</td><td>0</td><td>59</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.NamespaceList.GetItemList</td><td>4←≢1-4</td><td>0</td><td>4</td></tr>
@@ -317,9 +411,12 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr class="uncovered"><td>#.Fire.Fire.GUI.NamespaceList.onKeyPressInList</td><td>5←≢2-6</td><td>0</td><td>5</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.SearchQNL.CreateGUI</td><td>70←≢1,3-11,14-18,20-26,28-33,35-40,42-47,49-54,56-62,64-71,73-81</td><td>0</td><td>70</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.SearchQNL.DQ</td><td>1</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.SearchQNL.GetNames</td><td>5←≢2-6</td><td>0</td><td>5</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.SearchQNL.IfLower</td><td>2, 3</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.SearchQNL.OnKeyPressInSearchFor</td><td>5←≢1-5</td><td>0</td><td>5</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.SearchQNL.OnOK</td><td>6←≢1-6</td><td>0</td><td>6</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.SearchQNL.Run</td><td>4←≢1-4</td><td>0</td><td>4</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.SearchQNL.Search</td><td>24←≢1-6,8,10-12,14-16,18-21,23,26-30,32</td><td>0</td><td>24</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.hc.∆List</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ListSearch.CheckVars</td><td>6←≢3-8</td><td>0</td><td>6</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ListSearch.CopyItems</td><td>1, 2</td><td>0</td><td>2</td></tr>
@@ -338,23 +435,45 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr class="uncovered"><td>#.Fire.Fire.ListSearch.ScanForObjects</td><td>17←≢2-8,10,12-13,15,17-22</td><td>0</td><td>17</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ListSearch.SearchIn</td><td>21←≢2-14,16-22,24</td><td>0</td><td>21</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ListSearch.StopInCallingCounter</td><td>1, 2, 3</td><td>0</td><td>3</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.BottomOfDoc</td><td>1, 2, 3</td><td>0</td><td>3</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.BrowseCode</td><td>2</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.CheckStatusOfButtons</td><td>4←≢1-4</td><td>0</td><td>4</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.CloseForm</td><td>1, 2</td><td>0</td><td>2</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.CollectData</td><td>11←≢1-11</td><td>0</td><td>11</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.CompileRegExReport</td><td>44←≢2-9,11-23,25-31,33-34,36-46,48,50-51</td><td>0</td><td>44</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.CompileReport</td><td>21←≢2-11,13-20,22,24,26</td><td>0</td><td>21</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.CompileReportInfo</td><td>4←≢1-4</td><td>0</td><td>4</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.CreateGUI</td><td>99←≢1-8,10,12-15,17-23,25-31,33-34,36-37,39-43,45-59,61-64,66,68-73,75-80,82-88,90-96,98-104,106-113,115-116</td><td>0</td><td>99</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.DQ</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.Down</td><td>6←≢1-6</td><td>0</td><td>6</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.GetCss</td><td>57←≢1-57</td><td>0</td><td>57</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.GetIDs</td><td>9←≢3-6,8-12</td><td>0</td><td>9</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.GoToEnd</td><td>1, 2, 3</td><td>0</td><td>3</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.GoToTop</td><td>1, 2, 3</td><td>0</td><td>3</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.IsTicked</td><td>4←≢2-5</td><td>0</td><td>4</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.On9994</td><td>7←≢1-7</td><td>0</td><td>7</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.OnBrowseCode</td><td>4←≢1-4</td><td>0</td><td>4</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.OnClose</td><td>8←≢1-8</td><td>0</td><td>8</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.OnContextMenuInListView</td><td>11←≢1-11</td><td>0</td><td>11</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.OnItemUpInListView</td><td>12←≢2-13</td><td>0</td><td>12</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.OnKeyPressInCodeBrowser</td><td>1, 2, 3</td><td>0</td><td>3</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.OnKeyPressInList</td><td>12←≢1-12</td><td>0</td><td>12</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.OnRefreshCSS</td><td>17←≢3-13,15-20</td><td>0</td><td>17</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.PopulateGUI</td><td>22←≢1-10,12-16,19-21,23-26</td><td>0</td><td>22</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.PutOnDisplay</td><td>6←≢1-6</td><td>0</td><td>6</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.Replace</td><td>25←≢1-14,16-18,20-21,23-28</td><td>0</td><td>25</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.ReplaceForDisplay</td><td>14←≢3-9,11-17</td><td>0</td><td>14</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.ReplaceInVarsForDisplay</td><td>20←≢3-5,7-12,14-19,22-26</td><td>0</td><td>20</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.RewriteCSS</td><td>15←≢1-8,10-15,17</td><td>0</td><td>15</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.Run</td><td>29←≢5-13,15,17-23,25,27-35,37-38</td><td>0</td><td>29</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.ShowCode</td><td>1, 2</td><td>0</td><td>2</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.TickAllCheckBoxes</td><td>10←≢3-12</td><td>0</td><td>10</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.ToggleCheckbox</td><td>8←≢1-8</td><td>0</td><td>8</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.TopOfDoc</td><td>16←≢1-16</td><td>0</td><td>16</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.UntickAllCheckBoxes</td><td>9←≢1-9</td><td>0</td><td>9</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.Up</td><td>7←≢1-7</td><td>0</td><td>7</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.WriteFile</td><td>1</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.OneByOneComparison.WriteStatusMsg</td><td>12←≢2-6,8-10,12,15-16,18</td><td>0</td><td>12</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Question.About</td><td>6←≢2-7</td><td>0</td><td>6</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Question.ConfirmFix</td><td>26←≢2-3,5,7-10,12-20,22-24,26,28-30,32,35-36</td><td>0</td><td>26</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Question.CreateDefaultParms</td><td>10←≢2-11</td><td>0</td><td>10</td></tr>
@@ -365,23 +484,60 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr class="uncovered"><td>#.Fire.Fire.Question.OnOkay</td><td>7←≢2-8</td><td>0</td><td>7</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Question.OnSelectLink</td><td>2, 3</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Question.Run</td><td>17←≢6-13,15-16,18,20-25</td><td>0</td><td>17</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Question.ShowMsg</td><td>7←≢2-7,9</td><td>0</td><td>7</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Question.ThreeButton</td><td>4, 5</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Question.YesNoCancel</td><td>6←≢2-7</td><td>0</td><td>6</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Question.YesOrNo</td><td>8←≢2-3,5-9,11</td><td>0</td><td>8</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.ChangeIt</td><td>27←≢2-8,10,13,16-19,21-24,26-28,30,34-36,38-40</td><td>0</td><td>27</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.ChangeItByRegEx</td><td>16←≢2-10,12-15,17,19-20</td><td>0</td><td>16</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.ChangeThem</td><td>38←≢9-16,18-22,24,26,28-31,34-40,42,45,47-50,52,54,56,58-60</td><td>0</td><td>38</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.ChangeThem_</td><td>83←≢3-17,19-21,23-27,30-32,34-38,41-42,44-49,51-53,56-57,59-65,67-76,78,80-89,93-97,99-100,103-106</td><td>0</td><td>83</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.CheckForProblem</td><td>4←≢2-5</td><td>0</td><td>4</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.CheckUserInput</td><td>25←≢3-26,28</td><td>0</td><td>25</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.CleanUpScriptedNamespaces</td><td>25←≢6-30</td><td>0</td><td>25</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.CompileReport</td><td>8←≢2-7,9,11</td><td>0</td><td>8</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.ConfirmBatchFix</td><td>6←≢1-6</td><td>0</td><td>6</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.ConfirmFix</td><td>7←≢2-8</td><td>0</td><td>7</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.CopyGuiTo_G</td><td>2, 3, 4</td><td>0</td><td>3</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.CopySearchFor2ReplaceBy</td><td>4←≢1-4</td><td>0</td><td>4</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.CountLeadingAndTrailingComments</td><td>3, 4, 5</td><td>0</td><td>3</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.CreateDeleteHitLines</td><td>26←≢2-8,10-11,13,15-30</td><td>0</td><td>26</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.CreateHiddenBtns</td><td>16←≢1-8,10-17</td><td>0</td><td>16</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.CreateReplaceByEditField</td><td>25←≢1-9,11,13-27</td><td>0</td><td>25</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.CreateReplaceGUI</td><td>7←≢1-3,5-8</td><td>0</td><td>7</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.CreateReplaceMain</td><td>20←≢3-12,14-20,22-24</td><td>0</td><td>20</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.CreateReplaceMainForm</td><td>8←≢3-10</td><td>0</td><td>8</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.CreateReplacePushButtons</td><td>21←≢2-12,14-23</td><td>0</td><td>21</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.CreateReplaceReplaceBy</td><td>6←≢2-6,8</td><td>0</td><td>6</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.CreateReplaceSearchFor</td><td>20←≢2-6,8-15,17,19-24</td><td>0</td><td>20</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.CreateSearchParms</td><td>29←≢2-9,11-17,19-25,27-33</td><td>0</td><td>29</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.CreateType</td><td>37←≢2-7,9-23,25-40</td><td>0</td><td>37</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.DQ</td><td>1</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.Establish</td><td>7←≢4-7,9-11</td><td>0</td><td>7</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.Fix</td><td>9←≢3-9,11-12</td><td>0</td><td>9</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.FixFnsOpr</td><td>4←≢3-5,7</td><td>0</td><td>4</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.FixScript</td><td>35←≢4-8,10-18,20,22-38,41-43</td><td>0</td><td>35</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.FixVars</td><td>7←≢4-10</td><td>0</td><td>7</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.GetCommentFrom</td><td>3, 4, 5</td><td>0</td><td>3</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.GetHits</td><td>5←≢2-3,5-6,8</td><td>0</td><td>5</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.GetNameFromDelLine</td><td>27←≢7-24,26-27,30-31,33-36,38</td><td>0</td><td>27</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.GetRegExOptions</td><td>1, 2, 4</td><td>0</td><td>3</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.GetRegExReplaceString</td><td>7←≢1-3,5-7,9</td><td>0</td><td>7</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.GetRegExSearchString</td><td>7←≢1-3,5-7,9</td><td>0</td><td>7</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.GetShowWarning</td><td>1, 2, 3</td><td>0</td><td>3</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.HandleCut</td><td>19←≢1-7,9-11,13-21</td><td>0</td><td>19</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.HandleReportFile</td><td>8←≢5-12</td><td>0</td><td>8</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.IsManagedByInterpreter</td><td>4←≢1-4</td><td>0</td><td>4</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.IsThereAnyChange</td><td>2</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.MaskCurlyContents</td><td>7←≢2-8</td><td>0</td><td>7</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.MaskDfnsBodies</td><td>7←≢4-10</td><td>0</td><td>7</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.MaskText</td><td>6←≢2-7</td><td>0</td><td>6</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.NoChangesSoWhat</td><td>5←≢1-5</td><td>0</td><td>5</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.NoOfCandidatesForChange</td><td>3</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.NonReplaceVars</td><td>5←≢3-6,9</td><td>0</td><td>5</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.OnAccept</td><td>2, 3</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.OnBatchMode</td><td>2, 3</td><td>0</td><td>2</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.OnClose</td><td>12←≢2-13</td><td>0</td><td>12</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.OnContextMenuInReplaceBy</td><td>18←≢1-18</td><td>0</td><td>18</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.OnCopy</td><td>1, 2</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.OnFixAll</td><td>2</td><td>0</td><td>1</td></tr>
@@ -391,26 +547,60 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr class="uncovered"><td>#.Fire.Fire.Replace.OnOneByOneMode</td><td>1, 2</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.OnSelectAll</td><td>1, 2, 3</td><td>0</td><td>3</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.OnSkip</td><td>2</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.OnStartReplace</td><td>29←≢2-7,9,11-13,15-21,24-32,35,39-40</td><td>0</td><td>29</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.OnToggleDeleteLine</td><td>7←≢2-6,8-9</td><td>0</td><td>7</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.OnToggleRegEx</td><td>1, 2, 3</td><td>0</td><td>3</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.PosnPlusSize</td><td>1</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.ProcessBatch</td><td>11←≢3-7,9,11-15</td><td>0</td><td>11</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.ProcessOneByOne</td><td>14←≢2-7,9,11-16,18</td><td>0</td><td>14</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.QFIX</td><td>39←≢2-4,6,12-21,23-26,28,30-47,50-51</td><td>0</td><td>39</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.QFX</td><td>38←≢4-11,13,16,18-41,44-46,49</td><td>0</td><td>38</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.RemoveOrdinaryNamespaces</td><td>7←≢4-10</td><td>0</td><td>7</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.RemoveUnknown</td><td>10←≢3-12</td><td>0</td><td>10</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.Replace</td><td>7←≢2-7,9</td><td>0</td><td>7</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.ReplaceCodeInScript</td><td>11←≢4-12,14,16</td><td>0</td><td>11</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.ReplaceDfnsCodeInScript</td><td>6←≢1-5,7</td><td>0</td><td>6</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.ReplaceLines</td><td>2, 3, 4</td><td>0</td><td>3</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.ReplaceMultipleLineDfnsInScriptCode</td><td>13←≢5-14,16-18</td><td>0</td><td>13</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.ReplaceSingleLineDfnsInScriptCode</td><td>26←≢1-7,9,11-14,16-22,24-25,27-30,33</td><td>0</td><td>26</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.ReplaceTfnsCodeInScript</td><td>15←≢1-14,16</td><td>0</td><td>15</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.Replace_Rotate</td><td>11←≢4-14</td><td>0</td><td>11</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.Replace_RotateBackAndForce</td><td>6←≢4-9</td><td>0</td><td>6</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.Replace_Split</td><td>12←≢4-9,11-15,17</td><td>0</td><td>12</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.ReportAllChanges</td><td>11←≢3-4,6-10,12-15</td><td>0</td><td>11</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.ReportNoHits</td><td>4←≢1-4</td><td>0</td><td>4</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.Run</td><td>39←≢4,6-10,12-21,25-33,35-38,40-48,50</td><td>0</td><td>39</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.SaveOn_G</td><td>6←≢3-8</td><td>0</td><td>6</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.SaveThese</td><td>17←≢2-16,18,20</td><td>0</td><td>17</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.SelectAll</td><td>1, 2, 3</td><td>0</td><td>3</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.ShowOld</td><td>10←≢2-11</td><td>0</td><td>10</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.ShowUser</td><td>6</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.ShowUserViaHomeMadeEditor</td><td>4, 5, 6</td><td>0</td><td>3</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.ShowVarsReport</td><td>8←≢1-8</td><td>0</td><td>8</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.Simplify</td><td>4, 5</td><td>0</td><td>2</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.SimplifyAndDiamondize</td><td>1</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.Split</td><td>3, 4</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.StopInReplace</td><td>1, 2, 3</td><td>0</td><td>3</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.TellAcre</td><td>6←≢3-8</td><td>0</td><td>6</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.TellLink</td><td>9←≢3-11</td><td>0</td><td>9</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.TellNoHits</td><td>1, 2</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.Warning_ReplaceIsEmpty</td><td>1, 2, 3</td><td>0</td><td>3</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.statusTellNoHits</td><td>1</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.BottomOfDoc</td><td>1, 2, 3</td><td>0</td><td>3</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.BrowseCode</td><td>5←≢2-4,6-7</td><td>0</td><td>5</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.CheckForDifference</td><td>1, 2, 3</td><td>0</td><td>3</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.CloseReportForm</td><td>1, 2</td><td>0</td><td>2</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.CompileReport</td><td>18←≢5-17,19,21-24</td><td>0</td><td>18</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.CompileReport_</td><td>55←≢1-2,4-15,17,19,21-23,26-37,39,41-46,48,50-56,58-65,67</td><td>0</td><td>55</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.CreateGUI</td><td>81←≢2-11,13-14,16-22,24-25,27-31,33-36,38-53,55-56,58-61,63,65-70,72-77,79-85,87-93,95-96</td><td>0</td><td>81</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.DQ</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.Display</td><td>13←≢6-16,18-19</td><td>0</td><td>13</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.Drop</td><td>7←≢1-7</td><td>0</td><td>7</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.DropCurrentObject</td><td>7←≢1-7</td><td>0</td><td>7</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.GetCss</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.IsTicked</td><td>2, 3, 4</td><td>0</td><td>3</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.MarkupDiff</td><td>9←≢2-4,6-9,11-12</td><td>0</td><td>9</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.MarkupDiff2</td><td>20←≢4-8,10-11,13-22,24-26</td><td>0</td><td>20</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.On9994</td><td>5←≢1-5</td><td>0</td><td>5</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.OnBrowseCode</td><td>6←≢2-7</td><td>0</td><td>6</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.OnClose</td><td>1</td><td>0</td><td>1</td></tr>
@@ -421,19 +611,41 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.OnRefreshCSS</td><td>10←≢3-12</td><td>0</td><td>10</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.PutOnDisplay</td><td>6←≢1-6</td><td>0</td><td>6</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.RewriteCSS</td><td>12←≢1-11,13</td><td>0</td><td>12</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.Tag</td><td>5←≢5-9</td><td>0</td><td>5</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.TickAllCheckBoxes</td><td>8←≢1-8</td><td>0</td><td>8</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.ToggleCurrentRowsCheckbox</td><td>7←≢1-7</td><td>0</td><td>7</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.TopOfDoc</td><td>16←≢1-16</td><td>0</td><td>16</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.UntickAllCheckBoxes</td><td>8←≢1-8</td><td>0</td><td>8</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.UpdateHtmlForLine</td><td>6←≢3-8</td><td>0</td><td>6</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportDiffs.WriteStatusMsg</td><td>8←≢2-5,7,10-11,13</td><td>0</td><td>8</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportGosts.CreateGUI</td><td>30←≢1-7,9-11,13,15-23,25-26,28-32,34-36</td><td>0</td><td>30</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportGosts.DeleteGhost</td><td>15←≢1-15</td><td>0</td><td>15</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportGosts.ExpandAll</td><td>1, 2</td><td>0</td><td>2</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportGosts.GetCode</td><td>9←≢1-9</td><td>0</td><td>9</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportGosts.GetContents</td><td>10←≢1-5,15-17,19-20</td><td>0</td><td>10</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportGosts.GetParentAndName</td><td>4←≢2-5</td><td>0</td><td>4</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportGosts.OnContextMenu</td><td>14←≢1-14</td><td>0</td><td>14</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportGosts.OnDelete</td><td>1, 2</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportGosts.OnItempUp</td><td>11←≢1-6,8-12</td><td>0</td><td>11</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportGosts.OnKeyPress</td><td>1, 2</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportGosts.OnPrintCode</td><td>1, 2</td><td>0</td><td>2</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportGosts.Run</td><td>14←≢4-10,12-18</td><td>0</td><td>14</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportHits.BottomOfDoc</td><td>1, 2, 3</td><td>0</td><td>3</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportHits.CreateGUI</td><td>75←≢1-7,9-14,16-22,24-27,30-36,38-39,41-45,47-65,67-70,72,74-79,81-86,88</td><td>0</td><td>75</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportHits.Display</td><td>5←≢2-6</td><td>0</td><td>5</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportHits.EditCode</td><td>19←≢1-14,16,18-21</td><td>0</td><td>19</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportHits.GetCode</td><td>1, 2, 3</td><td>0</td><td>3</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportHits.GetCss</td><td>35←≢1-35</td><td>0</td><td>35</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportHits.GetHits</td><td>11←≢1-11</td><td>0</td><td>11</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportHits.MakeBlanksVisible</td><td>2, 3, 4</td><td>0</td><td>3</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportHits.MarkUpAllHits</td><td>4←≢1-4</td><td>0</td><td>4</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportHits.MarkUpHits</td><td>25←≢2-4,6-9,11-12,14-17,19-30</td><td>0</td><td>25</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportHits.MarkUpRegExHits</td><td>30←≢1-3,5-8,10-15,17-21,23-25,27-35</td><td>0</td><td>30</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportHits.MarkupHitsInSimpleVars</td><td>13←≢1-7,9-14</td><td>0</td><td>13</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportHits.MarkupHitsInVars</td><td>46←≢2-5,7-11,13-17,19-20,22-27,29-30,32-37,41-45,47-53,55,57-59</td><td>0</td><td>46</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportHits.MarkupRegExHitsInSimpleVars</td><td>10←≢3-8,10-13</td><td>0</td><td>10</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportHits.MarkupRegExHitsInVars</td><td>10←≢1-7,9,12,14</td><td>0</td><td>10</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportHits.MarkupRegExHitsInVars_</td><td>11←≢2-12</td><td>0</td><td>11</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportHits.On9994</td><td>5←≢1-5</td><td>0</td><td>5</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportHits.OnClose</td><td>5←≢1-5</td><td>0</td><td>5</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportHits.OnContextMenu</td><td>19←≢2-10,12,14-22</td><td>0</td><td>19</td></tr>
@@ -449,178 +661,72 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr class="uncovered"><td>#.Fire.Fire.ReportHits.PutOnDisplay</td><td>5←≢1-5</td><td>0</td><td>5</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportHits.RemoveFromHitReport</td><td>7←≢1,12-17</td><td>0</td><td>7</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportHits.RemoveFromList</td><td>14←≢1-14</td><td>0</td><td>14</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportHits.RestrictLengthOfVarsForHTML</td><td>3, 4, 5</td><td>0</td><td>3</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportHits.RewriteCSS</td><td>7←≢1-6,8</td><td>0</td><td>7</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportHits.Run</td><td>6←≢4-7,9-10</td><td>0</td><td>6</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportHits.Run_</td><td>26←≢3-15,18-19,21,23-27,29-32,35</td><td>0</td><td>26</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportHits.SelectRow</td><td>4←≢1-4</td><td>0</td><td>4</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportHits.ShowCode</td><td>21←≢2-13,15-23</td><td>0</td><td>21</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportHits.ShowHits</td><td>22←≢1-7,9-10,12-24</td><td>0</td><td>22</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportHits.Tag</td><td>5←≢5-9</td><td>0</td><td>5</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportHits.ToggleLines</td><td>4←≢1-3,5</td><td>0</td><td>4</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.ReportHits.TopOfDoc</td><td>16←≢1-16</td><td>0</td><td>16</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportReferences.CreateGUI</td><td>30←≢1-7,9-11,13,15-23,25-26,28-32,34-36</td><td>0</td><td>30</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportReferences.OnKeyPress</td><td>1, 2</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.ReportReferences.Run</td><td>27←≢2-8,10-11,13-27,29,31,33</td><td>0</td><td>27</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Types.Class</td><td>1</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Types.ClassInstance</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Types.ClassInstances</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Types.Classes</td><td>1</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Types.GUI_Instance</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Types.GUI_Instances</td><td>1</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Types.Interface</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Types.Interfaces</td><td>1</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Types.NamedNamespace</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Types.NotApplicable</td><td>1</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Types.ScriptedNamespace</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Types.ScriptedNamespaces</td><td>1</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Types.UnnamedNamespace</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Types.UnnamedNamespaces</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Types.∆GetNameFor</td><td>1, 2, 3</td><td>0</td><td>3</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Types.∆GetTypes</td><td>15←≢3-11,17-22</td><td>0</td><td>15</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Types.∆List</td><td>1, 2</td><td>0</td><td>2</td></tr>
 <tr><td>#.Fire.Fire.GUI.CreateDevelopersMenu</td><td>27←≢5-6,8-13,15-20,22-27,29,31-36</td><td>7</td><td>29</td></tr>
-<tr><td>#.Fire.Fire.Replace.CleanUpScriptedNamespaces</td><td>21←≢10-30</td><td>16</td><td>25</td></tr>
-<tr><td>#.Fire.Fire.Replace.ReportAllChanges</td><td>9←≢6-10,12-15</td><td>18</td><td>11</td></tr>
-<tr><td>#.Fire.Fire.EnsureAcre</td><td>4←≢3-6</td><td>20</td><td>5</td></tr>
-<tr><td>#.Fire.Fire.GUI.EnlargeForm</td><td>4, 5, 6</td><td>25</td><td>4</td></tr>
-<tr><td>#.Fire.Fire.Question.YesOrNo</td><td>6←≢5-9,11</td><td>25</td><td>8</td></tr>
-<tr><td>#.Fire.Fire.Replace.CheckUserInput</td><td>18←≢4-9,11-15,18-21,24-26</td><td>28</td><td>25</td></tr>
-<tr><td>#.Fire.Fire.Replace.QFIX</td><td>28←≢12-21,28,31-47</td><td>28</td><td>39</td></tr>
-<tr><td>#.Fire.Fire.Question.ShowMsg</td><td>5←≢4-7,9</td><td>29</td><td>7</td></tr>
-<tr><td>#.Fire.Fire.Replace.RemoveUnknown</td><td>7←≢6-12</td><td>30</td><td>10</td></tr>
-<tr><td>#.Fire.Fire.GUI.CheckForConsistency</td><td>25←≢7-9,14-21,27-33,39-45</td><td>31</td><td>36</td></tr>
-<tr><td>#.Fire.Fire.ReportHits.RestrictLengthOfVarsForHTML</td><td>4, 5</td><td>33</td><td>3</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.PopulateGUI</td><td>14←≢2-10,12-16</td><td>36</td><td>22</td></tr>
+<tr><td>#.Fire.Fire.GUI.CheckSALTedScripts</td><td>4←≢4-7</td><td>20</td><td>5</td></tr>
 <tr><td>#.Fire.Fire.GetRefTo</td><td>6, 7, 8</td><td>40</td><td>5</td></tr>
-<tr><td>#.Fire.Fire.ReportHits.MarkupHitsInVars</td><td>26←≢5,8-11,15-17,26-27,41-45,47-53,55,57-59</td><td>43</td><td>46</td></tr>
-<tr><td>#.Fire.Fire.Replace.QFX</td><td>20←≢9,13,24-41</td><td>47</td><td>38</td></tr>
-<tr><td>#.Fire.Fire.GUI.DeleteFromWorkspaceAndList</td><td>11←≢6-9,11-15,17,22</td><td>48</td><td>21</td></tr>
-<tr><td>#.Fire.Fire.Replace.FixScript</td><td>18←≢18,22-38</td><td>49</td><td>35</td></tr>
-<tr><td>#.Fire.Fire.ListNamespaceTree</td><td>7←≢9,11,15-19</td><td>50</td><td>14</td></tr>
-<tr><td>#.Fire.Fire.RegExSearch</td><td>5, 6, 7</td><td>50</td><td>6</td></tr>
-<tr><td>#.Fire.Fire.ToggleAutoStatus</td><td>4←≢9-12</td><td>50</td><td>8</td></tr>
-<tr><td>#.Fire.Fire.Replace.ChangeItByRegEx</td><td>7←≢12-15,17,19-20</td><td>56</td><td>16</td></tr>
-<tr><td>#.Fire.Fire.GetCode</td><td>11←≢7,21,25-27,29-31,33-34,38</td><td>58</td><td>26</td></tr>
-<tr><td>#.Fire.Fire.Replace.Run</td><td>16←≢9-10,17-21,28-33,37-38,50</td><td>59</td><td>39</td></tr>
-<tr><td>#.Fire.Fire.Replace.ChangeThem_</td><td>33←≢21,25-27,32,37-38,51-53,57,72-76,78,80-89,96-97,103-106</td><td>60</td><td>83</td></tr>
-<tr><td>#.Fire.Fire.GUI.RemoveFromHitList</td><td>6←≢15-20</td><td>63</td><td>16</td></tr>
+<tr><td>#.Fire.Fire.GUI.GetRefTo_n</td><td>2</td><td>50</td><td>2</td></tr>
 <tr><td>#.Fire.Fire.CleanRegistry</td><td>4←≢9-12</td><td>64</td><td>11</td></tr>
-<tr><td>#.Fire.Fire.RunSearch</td><td>11←≢12,17,22-23,27,29-32,37,40</td><td>66</td><td>32</td></tr>
-<tr><td>#.Fire.Fire.Replace.OnStartReplace</td><td>10←≢13,24-32</td><td>66</td><td>29</td></tr>
+<tr><td>#.Fire.Fire.IfLower</td><td>4</td><td>67</td><td>3</td></tr>
 <tr><td>#.Fire.Fire.ResetCertainRegKeySettings</td><td>5, 6</td><td>67</td><td>6</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.GetIDs</td><td>4, 5, 6</td><td>67</td><td>9</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.WriteStatusMsg</td><td>4←≢10,15-16,18</td><td>67</td><td>12</td></tr>
-<tr><td>#.Fire.Fire.Replace.GetRegExOptions</td><td>2</td><td>67</td><td>3</td></tr>
-<tr><td>#.Fire.Fire.ReportHits.Run</td><td>9, 10</td><td>67</td><td>6</td></tr>
-<tr><td>#.Fire.Fire.Search</td><td>8←≢9,18,20,23-24,26-27,29</td><td>70</td><td>27</td></tr>
-<tr><td>#.Fire.Fire.ReportGosts.GetContents</td><td>15, 16, 17</td><td>70</td><td>10</td></tr>
-<tr><td>#.Fire.Fire.List</td><td>11, 12</td><td>71</td><td>7</td></tr>
-<tr><td>#.Fire.Fire.GUI.LetLinkDelete</td><td>7, 8</td><td>71</td><td>7</td></tr>
-<tr><td>#.Fire.Fire.GUI.SearchQNL.Search</td><td>7←≢6,20-21,23,28-30</td><td>71</td><td>24</td></tr>
-<tr><td>#.Fire.Fire.Replace.Establish</td><td>7, 11</td><td>71</td><td>7</td></tr>
-<tr><td>#.Fire.Fire.Replace.GetRegExReplaceString</td><td>3, 7</td><td>71</td><td>7</td></tr>
-<tr><td>#.Fire.Fire.Replace.GetRegExSearchString</td><td>3, 7</td><td>71</td><td>7</td></tr>
-<tr><td>#.Fire.Fire.GUI.ProcessSearchResult</td><td>7←≢13-15,30-33</td><td>73</td><td>26</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.RewriteCSS</td><td>4←≢12-15</td><td>73</td><td>15</td></tr>
-<tr><td>#.Fire.Fire.FormatDateTime</td><td>8←≢16-18,21,25,46,50,55</td><td>75</td><td>32</td></tr>
-<tr><td>#.Fire.Fire.IsLinkAround</td><td>6</td><td>75</td><td>4</td></tr>
-<tr><td>#.Fire.Fire.PrintHitsToSession</td><td>4, 5, 9</td><td>75</td><td>12</td></tr>
-<tr><td>#.Fire.Fire.GUI.CloseChildForms</td><td>9, 10</td><td>75</td><td>8</td></tr>
+<tr><td>#.Fire.Fire.GUI.CheckLookIn</td><td>4←≢11,16-18</td><td>75</td><td>16</td></tr>
 <tr><td>#.Fire.Fire.GUI.SetStateAndActive</td><td>4</td><td>75</td><td>4</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.CompileReport</td><td>5←≢8-11,20</td><td>76</td><td>21</td></tr>
-<tr><td>#.Fire.Fire.GUI.LetAcreDelete</td><td>11, 12</td><td>78</td><td>9</td></tr>
-<tr><td>#.Fire.Fire.Replace.Fix</td><td>11, 12</td><td>78</td><td>9</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.Run</td><td>6←≢13,23,29-31,33</td><td>79</td><td>29</td></tr>
-<tr><td>#.Fire.Fire.Replace.ProcessOneByOne</td><td>15, 16, 18</td><td>79</td><td>14</td></tr>
-<tr><td>#.Fire.Fire.ReportHits.MarkupRegExHitsInSimpleVars</td><td>7, 8</td><td>80</td><td>10</td></tr>
-<tr><td>#.Fire.Fire.ListNamespaceTree_</td><td>5←≢20-23,32</td><td>81</td><td>27</td></tr>
-<tr><td>#.Fire.Fire.RemoveUnwanted</td><td>4←≢18,22,24-25</td><td>81</td><td>21</td></tr>
-<tr><td>#.Fire.Fire.GUI.CheckLookIn</td><td>11, 17, 18</td><td>81</td><td>16</td></tr>
-<tr><td>#.Fire.Fire.Replace.ChangeIt</td><td>5←≢6-8,10,13</td><td>81</td><td>27</td></tr>
-<tr><td>#.Fire.Fire.Replace.ReplaceSingleLineDfnsInScriptCode</td><td>5←≢21-22,24-25,27</td><td>81</td><td>26</td></tr>
-<tr><td>#.Fire.Fire.ReportHits.Run_</td><td>5←≢11-15</td><td>81</td><td>26</td></tr>
-<tr><td>#.Fire.Fire.GUI.OnStartBtn</td><td>4←≢9,33,35-36</td><td>82</td><td>22</td></tr>
-<tr><td>#.Fire.Fire.Replace.OnClose</td><td>12, 13</td><td>83</td><td>12</td></tr>
-<tr><td>#.Fire.Fire.Replace.Replace_Split</td><td>8, 9</td><td>83</td><td>12</td></tr>
 <tr><td>#.Fire.Fire.FindFireReadMe</td><td>6, 14, 15</td><td>84</td><td>19</td></tr>
-<tr><td>#.Fire.Fire.Replace.ChangeThem</td><td>6←≢20-22,42,45,54</td><td>84</td><td>38</td></tr>
-<tr><td>#.Fire.Fire.ReportHits.MarkupHitsInSimpleVars</td><td>6, 7</td><td>85</td><td>13</td></tr>
-<tr><td>#.Fire.Fire.ScanScripts</td><td>13, 14</td><td>86</td><td>14</td></tr>
-<tr><td>#.Fire.Fire.Replace.Replace</td><td>3</td><td>86</td><td>7</td></tr>
-<tr><td>#.Fire.Fire.GUI.HandleControlDependencies</td><td>15, 16, 17</td><td>87</td><td>23</td></tr>
-<tr><td>#.Fire.Fire.Run</td><td>19, 31</td><td>88</td><td>16</td></tr>
-<tr><td>#.Fire.Fire.GUI.OnKeyPressInHitList</td><td>9</td><td>88</td><td>8</td></tr>
-<tr><td>#.Fire.Fire.API.CreateParmsFor_QNL_Search</td><td>9</td><td>90</td><td>10</td></tr>
-<tr><td>#.Fire.Fire.API.Search</td><td>8</td><td>91</td><td>11</td></tr>
-<tr><td>#.Fire.Fire.Replace.ReplaceCodeInScript</td><td>14</td><td>91</td><td>11</td></tr>
-<tr><td>#.Fire.Fire.GUI.PrepareSearch</td><td>9</td><td>92</td><td>13</td></tr>
-<tr><td>#.Fire.Fire.Replace.ReplaceMultipleLineDfnsInScriptCode</td><td>14</td><td>92</td><td>13</td></tr>
-<tr><td>#.Fire.Fire.ReportHits.MarkUpHits</td><td>11, 12</td><td>92</td><td>25</td></tr>
-<tr><td>#.Fire.Fire.Replace.GetNameFromDelLine</td><td>20, 38</td><td>93</td><td>27</td></tr>
-<tr><td>#.Fire.Fire.ReportDiffs.CompileReport_</td><td>4←≢14-15,17,19</td><td>93</td><td>55</td></tr>
-<tr><td>#.Fire.Fire.ReportGosts.Run</td><td>10</td><td>93</td><td>14</td></tr>
-<tr><td>#.Fire.Fire.GetList</td><td>11</td><td>94</td><td>16</td></tr>
-<tr><td>#.Fire.Fire.ScanVars</td><td>25</td><td>94</td><td>17</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.OnRefreshCSS</td><td>13</td><td>94</td><td>17</td></tr>
-<tr><td>#.Fire.Fire.Replace.SaveThese</td><td>18</td><td>94</td><td>17</td></tr>
-<tr><td>#.Fire.Fire.Scan</td><td>13, 50</td><td>95</td><td>41</td></tr>
-<tr><td>#.Fire.Fire.API.CreateSearchParms</td><td>20</td><td>95</td><td>20</td></tr>
-<tr><td>#.Fire.Fire.ReportDiffs.MarkupDiff2</td><td>22</td><td>95</td><td>20</td></tr>
-<tr><td>#.Fire.Fire.ProcessList</td><td>24</td><td>96</td><td>24</td></tr>
-<tr><td>#.Fire.Fire.ReportHits.MarkUpRegExHits</td><td>15</td><td>97</td><td>30</td></tr>
-<tr><td>#.Fire.Fire.OneByOneComparison.CreateGUI</td><td>10</td><td>99</td><td>99</td></tr>
+<tr><td>#.Fire.Fire.Icon.GetFilename</td><td>7</td><td>86</td><td>7</td></tr>
+<tr><td>#.Fire.Fire.Run</td><td>19, 23</td><td>88</td><td>16</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.ADOC_Doc</td><td></td><td>100</td><td>0</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.AddPidToCaption</td><td></td><td>100</td><td>5</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.Assert</td><td></td><td>100</td><td>0</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.CR</td><td></td><td>100</td><td>1</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.Cleanup</td><td></td><td>100</td><td>9</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.CompileHeader1</td><td></td><td>100</td><td>4</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.CompileNamespaceList</td><td></td><td>100</td><td>3</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.CreateGuiRefContainer</td><td></td><td>100</td><td>14</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.CreateRefs</td><td></td><td>100</td><td>3</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.DisableProgressbar</td><td></td><td>100</td><td>4</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.DropDoublesFromHitList</td><td></td><td>100</td><td>0</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.DropTatinFrom</td><td></td><td>100</td><td>2</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.EnableProgressbar</td><td></td><td>100</td><td>7</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.EstablishDefaultSettings</td><td></td><td>100</td><td>18</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GetCommentsAndRest</td><td></td><td>100</td><td>15</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GetCss</td><td></td><td>100</td><td>49</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GetCursorObj</td><td></td><td>100</td><td>2</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GetDisplayFormat</td><td></td><td>100</td><td>1</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GetDyalogRegKey</td><td></td><td>100</td><td>5</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GetFireRegistryKey</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GetHitListRefs</td><td></td><td>100</td><td>5</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GetNamesFrom</td><td></td><td>100</td><td>11</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GetRegKeyForSALT</td><td></td><td>100</td><td>6</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GetRepeatScriptedNamespacesWarningRegKey</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GetSortedHitListData</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GetTempFileName</td><td></td><td>100</td><td>10</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GetTextOnly</td><td></td><td>100</td><td>5</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GlueNames</td><td></td><td>100</td><td>0</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.IfLower</td><td></td><td>100</td><td>3</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Init</td><td></td><td>100</td><td>10</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.IsAnyAcreAround</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.IsName</td><td></td><td>100</td><td>5</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.IsName_</td><td></td><td>100</td><td>23</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.IsScripted</td><td></td><td>100</td><td>3</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.IsUnnameNamespace</td><td></td><td>100</td><td>3</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.IsVersion16OrBetter</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.MerryParentAndChild</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.NL</td><td></td><td>100</td><td>1</td></tr>
+<tr class="fullyCovered"><td>#.Fire.Fire.Init</td><td></td><td>100</td><td>9</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.Populate_G</td><td></td><td>100</td><td>17</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.RemoveAllVars</td><td></td><td>100</td><td>11</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.RemoveClones</td><td></td><td>100</td><td>13</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.RemoveFnsAndOpr</td><td></td><td>100</td><td>16</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.RemoveInvalidVars</td><td></td><td>100</td><td>15</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ReplaceAssignedDfnNameBySpace</td><td></td><td>100</td><td>2</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ReplaceSpecialChars</td><td></td><td>100</td><td>11</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ScanBody</td><td></td><td>100</td><td>29</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ScanCode</td><td></td><td>100</td><td>3</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ScanFnsAndOprs</td><td></td><td>100</td><td>3</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ScanText</td><td></td><td>100</td><td>4</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.SetCursorObj</td><td></td><td>100</td><td>2</td></tr>
+<tr class="fullyCovered"><td>#.Fire.Fire.Reset</td><td></td><td>100</td><td>2</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.SetScaledPixels</td><td></td><td>100</td><td>3</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.Simplify</td><td></td><td>100</td><td>0</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.SortAlph</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.SortHits</td><td></td><td>100</td><td>1</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.TAB</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.TellRemovedVars</td><td></td><td>100</td><td>8</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.Version</td><td></td><td>100</td><td>1</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.WSID</td><td></td><td>100</td><td>1</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.Where</td><td></td><td>100</td><td>0</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.WhichItemsOrRows</td><td></td><td>100</td><td>4</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.API.SearchQNL</td><td></td><td>100</td><td>9</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.BrowseCode.OnContextMenu</td><td></td><td>100</td><td>0</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.CenterIn</td><td></td><td>100</td><td>12</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.CheckHitList</td><td></td><td>100</td><td>5</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.CheckStartButton</td><td></td><td>100</td><td>3</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.CopyGuiToGlobal</td><td></td><td>100</td><td>23</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.CreateCheckBoxes</td><td></td><td>100</td><td>23</td></tr>
@@ -644,82 +750,21 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.CreateScan</td><td></td><td>100</td><td>49</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.CreateStatusbar</td><td></td><td>100</td><td>12</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.CreateWhereToLook</td><td></td><td>100</td><td>46</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.DisplayList</td><td></td><td>100</td><td>28</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.EnableGhostlyReportWhenAppropriate</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.EnableReportHitsWhenAppropriate</td><td></td><td>100</td><td>2</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.GetFullPath</td><td></td><td>100</td><td>2</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.GetItemState</td><td></td><td>100</td><td>2</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.GetRefTo_n</td><td></td><td>100</td><td>2</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.GetSystemMetrics</td><td></td><td>100</td><td>2</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.Get_QAT</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.HandleCombo</td><td></td><td>100</td><td>4</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.HideAutoComplete</td><td></td><td>100</td><td>0</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.IsScripted</td><td></td><td>100</td><td>6</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.MonitorInfo</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.NotifyChangeFor</td><td></td><td>100</td><td>11</td></tr>
+<tr class="fullyCovered"><td>#.Fire.Fire.GUI.OnClose</td><td></td><td>100</td><td>7</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.OnConfigure</td><td></td><td>100</td><td>0</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.OnExclude</td><td></td><td>100</td><td>0</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.OnHitListGotFocus</td><td></td><td>100</td><td>0</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.OnLookInGotFocus</td><td></td><td>100</td><td>0</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.OnLookInLostFocus</td><td></td><td>100</td><td>0</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.OnReplaceBtn</td><td></td><td>100</td><td>2</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.OnReportHits</td><td></td><td>100</td><td>2</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.PolishWidth</td><td></td><td>100</td><td>3</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.PosnPlusSize</td><td></td><td>100</td><td>1</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.Power2</td><td></td><td>100</td><td>0</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.ReportHitsInStatusbar</td><td></td><td>100</td><td>11</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.ResetAfterSearch</td><td></td><td>100</td><td>3</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.ResetHitList</td><td></td><td>100</td><td>14</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.RestoreDynamicProps</td><td></td><td>100</td><td>4</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.SaveDynamicProps</td><td></td><td>100</td><td>9</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.SetActivePropTo</td><td></td><td>100</td><td>2</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.SetFocusTo</td><td></td><td>100</td><td>9</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.SuppressContextMenu</td><td></td><td>100</td><td>0</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.WriteInfo</td><td></td><td>100</td><td>6</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.sendmsg</td><td></td><td>100</td><td>0</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.Events.Autocomplete</td><td></td><td>100</td><td>1</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.Events.CheckForChangeInSearchFor</td><td></td><td>100</td><td>1</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.Events.Info</td><td></td><td>100</td><td>0</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.Events.RefreshCSS</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.SearchQNL.GetNames</td><td></td><td>100</td><td>5</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.SearchQNL.IfLower</td><td></td><td>100</td><td>2</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.hc.Init</td><td></td><td>100</td><td>7</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Icon.GetFilename</td><td></td><td>100</td><td>7</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.OneByOneComparison.BottomOfDoc</td><td></td><td>100</td><td>3</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.OneByOneComparison.CheckStatusOfButtons</td><td></td><td>100</td><td>4</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.OneByOneComparison.CloseForm</td><td></td><td>100</td><td>2</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.OneByOneComparison.CollectData</td><td></td><td>100</td><td>11</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.OneByOneComparison.CompileReportInfo</td><td></td><td>100</td><td>4</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.OneByOneComparison.DQ</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.OneByOneComparison.GetCss</td><td></td><td>100</td><td>57</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.OneByOneComparison.IsTicked</td><td></td><td>100</td><td>4</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.OneByOneComparison.OnClose</td><td></td><td>100</td><td>8</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.OneByOneComparison.OnKeyPressInList</td><td></td><td>100</td><td>12</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.OneByOneComparison.ReplaceForDisplay</td><td></td><td>100</td><td>14</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.OneByOneComparison.TickAllCheckBoxes</td><td></td><td>100</td><td>10</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.OneByOneComparison.TopOfDoc</td><td></td><td>100</td><td>16</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.OneByOneComparison.WriteFile</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.CompileReport</td><td></td><td>100</td><td>8</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.CopyGuiTo_G</td><td></td><td>100</td><td>3</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.CountLeadingAndTrailingComments</td><td></td><td>100</td><td>3</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.CreateDeleteHitLines</td><td></td><td>100</td><td>26</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.CreateHiddenBtns</td><td></td><td>100</td><td>16</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.CreateReplaceByEditField</td><td></td><td>100</td><td>25</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.CreateReplaceGUI</td><td></td><td>100</td><td>7</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.CreateReplaceMain</td><td></td><td>100</td><td>20</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.CreateReplacePushButtons</td><td></td><td>100</td><td>21</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.CreateReplaceReplaceBy</td><td></td><td>100</td><td>6</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.CreateReplaceSearchFor</td><td></td><td>100</td><td>20</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.CreateType</td><td></td><td>100</td><td>37</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.FixFnsOpr</td><td></td><td>100</td><td>4</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.FixVars</td><td></td><td>100</td><td>7</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.GetCommentFrom</td><td></td><td>100</td><td>3</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.IsManagedByInterpreter</td><td></td><td>100</td><td>4</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.MaskCurlyContents</td><td></td><td>100</td><td>7</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.MaskDfnsBodies</td><td></td><td>100</td><td>7</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.MaskText</td><td></td><td>100</td><td>6</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.NoOfCandidatesForChange</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.NonReplaceVars</td><td></td><td>100</td><td>5</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.Replace.OnConfigure</td><td></td><td>100</td><td>0</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.Replace.OnReplaceByGotFocus</td><td></td><td>100</td><td>0</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.Replace.OnReplaceByGotFocusGotFocus</td><td></td><td>100</td><td>0</td></tr>
@@ -727,50 +772,6 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr class="fullyCovered"><td>#.Fire.Fire.Replace.OnReplaceByLostFocusLostFocus</td><td></td><td>100</td><td>0</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.Replace.OnSearchForGotFocus</td><td></td><td>100</td><td>0</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.Replace.OnSearchForLostFocus</td><td></td><td>100</td><td>0</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.PosnPlusSize</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.ProcessBatch</td><td></td><td>100</td><td>11</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.RemoveOrdinaryNamespaces</td><td></td><td>100</td><td>7</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.ReplaceDfnsCodeInScript</td><td></td><td>100</td><td>6</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.ReplaceTfnsCodeInScript</td><td></td><td>100</td><td>15</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.Replace_Rotate</td><td></td><td>100</td><td>11</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.Replace_RotateBackAndForce</td><td></td><td>100</td><td>6</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.ReportNoHits</td><td></td><td>100</td><td>4</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.SaveOn_G</td><td></td><td>100</td><td>6</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.ShowUser</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.Simplify</td><td></td><td>100</td><td>2</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.SimplifyAndDiamondize</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.Split</td><td></td><td>100</td><td>2</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.TellAcre</td><td></td><td>100</td><td>6</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.TellLink</td><td></td><td>100</td><td>9</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ReportDiffs.BottomOfDoc</td><td></td><td>100</td><td>3</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ReportDiffs.CompileReport</td><td></td><td>100</td><td>18</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ReportDiffs.Drop</td><td></td><td>100</td><td>7</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ReportDiffs.GetCss</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ReportDiffs.Tag</td><td></td><td>100</td><td>5</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ReportDiffs.TopOfDoc</td><td></td><td>100</td><td>16</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ReportGosts.CreateGUI</td><td></td><td>100</td><td>30</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ReportGosts.DeleteGhost</td><td></td><td>100</td><td>15</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ReportGosts.ExpandAll</td><td></td><td>100</td><td>2</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ReportGosts.GetCode</td><td></td><td>100</td><td>9</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ReportGosts.GetParentAndName</td><td></td><td>100</td><td>4</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ReportHits.BottomOfDoc</td><td></td><td>100</td><td>3</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ReportHits.CreateGUI</td><td></td><td>100</td><td>75</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ReportHits.Display</td><td></td><td>100</td><td>5</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ReportHits.GetCss</td><td></td><td>100</td><td>35</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ReportHits.MakeBlanksVisible</td><td></td><td>100</td><td>3</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ReportHits.MarkUpAllHits</td><td></td><td>100</td><td>4</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ReportHits.MarkupRegExHitsInVars</td><td></td><td>100</td><td>10</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ReportHits.MarkupRegExHitsInVars_</td><td></td><td>100</td><td>11</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ReportHits.Tag</td><td></td><td>100</td><td>5</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.ReportHits.TopOfDoc</td><td></td><td>100</td><td>16</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Types.Class</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Types.ClassInstance</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Types.GUI_Instance</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Types.Interface</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Types.NamedNamespace</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Types.ScriptedNamespace</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Types.UnnamedNamespace</td><td></td><td>100</td><td>1</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Types.∆GetTypes</td><td></td><td>100</td><td>15</td></tr>
 </tbody>
 </table>
 </div>
@@ -784,9 +785,18 @@ $(document).ready(function() {
         fixedHeader: true,
         order: [2,"asc"],
         dom: "Bft",
+        drawCallback: function( settings ) {
+             var api = this.api();
+             $('.header[id^="listing_"]').next().addBack().css("display","none");
+             api.rows( {page:"current"} ).data().each(function(data){
+              id = data[0];
+              id = id.match(/"(\#.*?)"/);
+              if (id){$(id[1]).next().addBack().css("display","block");}
+             })
+        },      
         buttons: [
         {
-            text: "Partly covered (91)",
+            text: "Partly covered (12)",
             titleAttr: "50%",
             className: "active",
             action: function ( e, dt, node, config ) {
@@ -800,7 +810,7 @@ $(document).ready(function() {
             }
         },
         {
-            text: "Uncovered (330)",
+            text: "Uncovered (552)",
             titleAttr: "0%",
             className: "active",
             action: function ( e, dt, node, config ) {
@@ -814,7 +824,7 @@ $(document).ready(function() {
             }
         },
         {
-            text: "Fully covered (214)",
+            text: "Fully covered (69)",
             titleAttr: "100%",
             className: "active",
             action: function ( e, dt, node, config ) {
@@ -828,7 +838,7 @@ $(document).ready(function() {
             }
         },
         {
-            text: "All (635)",
+            text: "All (633)",
             titleAttr: "all",
             className: "active",
             action: function ( e, dt, node, config ) {
@@ -860,7 +870,7 @@ $(document).ready(function() {
 </script>
 <div id="footer">
 <hr>
-<p>Created by "CodeCoverage" version 0.9.2+49 from 2022-09-19</p>
+<p>Created by "CodeCoverage" version 0.9.4+52 from 2022-12-12</p>
 </div>
 
 </body>

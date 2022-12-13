@@ -1,5 +1,0 @@
- r←Initial_acre4
- :If 0=⎕SE.⎕NC'acre'
-     :Trap 0 ⋄ {}⎕SE.acre.Projects'' ⋄ :EndTrap
- :EndIf
- r←9=⎕SE.⎕NC'acre'

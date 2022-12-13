@@ -5,4 +5,12 @@
  ##.FilesAndDirs.DeleteFile ##.FilesAndDirs.GetTempPath,'/Fire_dyalog_apl.ico'  ⍝ Because a new installation won't fine this (was once a bug)
  #.TestData.GUI_Instance.Make   ⍝ Converts that namespace into a GUI. Is then name class 9.2
  ##.Fire.Reset
+ ⍝:If 0=⎕SE.⎕NC'acre'
+⍝     :Trap 0
+⍝         {}⎕SE.UCMD'acre.Version'
+⍝         ∆ACRE←1
+⍝     :Else
+⍝         ∆ACRE←0 ⍝ Can happen on a machine without acre
+⍝     :EndTrap
+⍝ :EndIf
 ⍝Done

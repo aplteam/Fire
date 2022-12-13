@@ -8,4 +8,5 @@
  1 ⎕NQ n.Form'Close'
  {}⎕WA
  ##.Fire.Reset
+ ⎕ex '∆ACRE'
 ⍝Done
