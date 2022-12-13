@@ -1,0 +1,18 @@
+ {r}←{folder}UpdateVersionNumberInInno_ISS projectName;iss;row;⎕IO;⎕ML;inno;filename
+⍝ This function updates the version number in any INNO `.ISS` file.\\
+⍝ INNO is the installer software used for creating installer EXEs for applications on GitHub that carry the "apl-cation" topic.\\
+⍝ This function shall be called only after the workspace was created by calling `MakeWorkspace`.\\
+⍝ * `projectName` is the name of the ISS file
+⍝ * `←` is always `⍬`\\
+⍝ The optional left argument is normally used by test cases only because the INNO file is expected to be on the project's main level.
+⍝ The function reads the ISS file of the given application, changes the variable `MyAppVersion` to what the `Version` function
+⍝ of the given application defines and writes it back to disk.
+ ⎕IO←1 ⋄ ⎕ML←1
+ r←⍬
+ folder←{0<⎕NC ⍵:⍎⍵ ⋄ ''}'folder'
+ filename←folder,projectName{⍺,⍵/⍨⍵≢⎕C(-⍴⍵)↑⍺}'.iss'
+ iss←1⊃⎕NGET filename
+ row←⍸∨/¨'#define MyAppVersion'∘⍷¨iss
+ (row⊃iss)←'#define MyAppVersion "',(2⊃#.⍎projectName,'.Version'),'"'
+ (⊂iss)⎕NPUT filename 1
+⍝Done

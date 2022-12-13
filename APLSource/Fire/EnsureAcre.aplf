@@ -1,8 +1,0 @@
- EnsureAcre←{
-⍝ Tries to make sure that acre is loaded
-     9=⎕SE.⎕NC'acre':⍬                                  ⍝ Already there? Done!
-     buff←(⎕UCS 13)##.APLTreeUtils2.Split ⎕SE.UCMD'??'  ⍝ List of all user commands
-     0=' ACRE:'{(⊂⍺)∊(⍴,⍺)↑¨⍵}buff:⍬                    ⍝ Acre is not available? Done!
-     _←⎕SE.acre.Projects''                              ⍝ Make sure acre is loaded
-     ⍬
- }

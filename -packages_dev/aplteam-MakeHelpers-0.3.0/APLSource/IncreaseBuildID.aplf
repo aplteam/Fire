@@ -1,0 +1,43 @@
+ {version}←{isTest}IncreaseBuildID fnsName;buildID;result;p;buff;name
+⍝ Increases the build-ID of `fnsName` which must be the fully qualified name of a `Version` function
+⍝ that lives either as a public method in a class or a trad-function in a namespace.\\
+⍝ Returns the new version string as simple character vector.
+⍝ The build ID is then increased by 1, and Link is notified.\\
+⍝ The left argument is used only by test cases.
+ r←''
+ isTest←{0=⎕NC ⍵:0 ⋄ ⍎⍵}'isTest'
+ :If 0<⎕NC⊂fnsName
+     name←'.'A.Last fnsName
+ :OrIf 0≠(⍎(¯1+-≢name)↓fnsName).⎕NC⊂name  ⍝ shared method?
+     ('Is not a tradFns: ',fnsName)Assert 3.1=|⎕NC⊂fnsName
+     :If 2=≡buff←⍎fnsName
+ ⍝ Supposed to be a three-element vector: name,version,date
+         version←2⊃buff
+         :If '+'∊version
+             buildID←1+{⊃⊃(//)⎕VFI ⍵}2⊃'+'(≠⊆⊢)version
+         :Else
+             buildID←1+4⊃4↑{⊃⊃(//)⎕VFI ⍵}¨'.'(≠⊆⊢)version
+         :EndIf
+         r←fnsName AddBuildIDtoVersionNested buildID
+     :Else
+ ⍝ Supposed to be a simple character string like '1.2.3' or '1.2.3+456' 'or '1.2.3-beta-4+5678'
+         version←buff
+         :If '+'∊version
+             buildID←1+{⊃⊃(//)⎕VFI ⍵}2⊃'+'(≠⊆⊢)version
+         :Else
+             buildID←1+4⊃4↑{⊃⊃(//)⎕VFI ⍵}¨'.'(≠⊆⊢)version
+         :EndIf
+         r←fnsName AddBuildIDtoVersionSimple buildID
+     :EndIf
+     :If ~isTest
+         p←⎕NS''
+         p.source←'ns'
+         :If ¯1=×⎕NC⊂fnsName ⍝ Member of a class?
+         :OrIf {0::0 ⋄ 1⊣⎕SRC⍎⍵}¯1↓1⊃'.'A.SplitPath fnsName
+             {}⎕SE.Link.Add ¯1↓1⊃'.'A.SplitPath fnsName
+         :Else
+             {}⎕SE.Link.Add⍕fnsName
+         :EndIf
+     :EndIf
+ :EndIf
+⍝Done

@@ -1,0 +1,22 @@
+ inno←SelectInno dummy;innos;ind
+⍝ `inno` is one of
+⍝ * A full path pointing to the one and only version of Inno installed on the current machine.
+⍝ * A full path in case there is more than one version of Inno installed: the one the user selected.
+⍝ * An empty vector in case the user decided to cancel rather than pickm a version.
+⍝ * '' in case no Inno version was found at all or the user aborted.\\
+⍝ Note that at the time of writing Inno is a 32-bit application. However, this function attempts
+⍝ to find Inno as a 64-bit application as welll, so it should be future proof.
+ inno←''
+ innos←⊃,/⊃¨F.Dir¨'%ProgramFiles(x86)%\Inno Setup*' '%ProgramW6432%\Inno Setup*'
+ :If 0<≢innos
+ :AndIf 0<≢innos←(F.IsFile¨innos,¨⊂'\ISCC.exe')/innos
+     :If 1=≢innos
+         inno←(1⊃innos),'\ISCC.exe'
+     :Else
+         ind←(0 0 'Which version of Inno?')Select innos
+         :If ind⍷⍳≢inno
+             inno←(ind⊃innos),'\ISCC.exe'
+         :EndIf
+     :EndIf
+ :EndIf
+⍝Done

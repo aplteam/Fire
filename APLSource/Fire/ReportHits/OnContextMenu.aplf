@@ -5,7 +5,7 @@
  f←0<+/n.List.SelItems
  'mm.EditCode'⎕WC'MenuItem'('Edit...',##.TAB,'Ctrl+E')('Event' 'Select' 1)
  caption←'Print name',((1<+/n.List.SelItems)/'s'),' to session',##.TAB,'F4'
- 'mm.PrintName'⎕WC'MenuItem'caption('Event' 'Select' 1)
+ 'mm.PrintName'⎕WC'MenuItem'caption('Event' 'Select' 1)('Accelerator'(115 0))
  'mm.Sep2'⎕WC'Separator'
  :If ∨/'remove'⍷2⊃n.List.(ReportInfo[SelItems⍳1;])
      'mm.RemoveFromList'⎕WC'MenuItem'('Remove from hit list',##.TAB,'Del')('Active' 0)

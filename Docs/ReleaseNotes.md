@@ -13,6 +13,12 @@ A bump of the minor number indicates added functionality plus possibly bug fixes
 
 A bump of the patch number indicates bug fixes.
 
+## Version 9.4.3 from 2022-12-13
+
+* Fire does **not** attempt anymore to load acre into `⎕SE`. However, Fire still makes use of acre when it's around, it just does not attempt to load it anymore.
+
+* Bug fix: the context menu of the left pane in the "Hit" report offered "Print name to session" (which worked) but also pretended that F4 would do the same but it did not.
+
 ## Version 9.4.2 from 2022-11-08
 
 * Fire did not run under 18.0 by mistake
