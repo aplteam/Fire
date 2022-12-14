@@ -13,6 +13,9 @@ A bump of the minor number indicates added functionality plus possibly bug fixes
 
 A bump of the patch number indicates bug fixes.
 
+## Version 9.4.4 from 2022-12-19
+* Fire still required acre to be around under some circumstances.
+
 ## Version 9.4.3 from 2022-12-13
 
 * Fire does **not** attempt anymore to load acre into `⎕SE`. However, Fire still makes use of acre when it's around, it just does not attempt to load it anymore.

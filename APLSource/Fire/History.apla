@@ -1,6 +1,9 @@
 (
  '⍝ Contains information regarding the last release. A full history is available on GitHub. (This line is ignored)'
  ''
+ '* 9.4.4 from 2022-12-19'
+ '  * Bug fix: still relied on acre being present in some circumstances '
+ ''
  '* 9.4.3 from 2022-12-13'
  '  * Fire does **not** attempt anymore to load acre into ⎕SE. However, Fire still makes use of acre when it''s '
  '    around, it just does not attempt to load it anymore.'
