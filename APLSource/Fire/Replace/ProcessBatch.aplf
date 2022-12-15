@@ -1,7 +1,7 @@
  ProcessBatch←{
 ⍝ Checks whether the user input is okay and then performs a "batch" replace.
 ⍝ Returns 1 in case anything got changes, 0 if not and ¯1 in case of an error.
-     0=Warning_ReplaceIsEmpty⍣((0=n.DeleteLine.State)∧0∊⍴n.ReplaceBy.Text)⊣1:⍬
+     0=Warning_ReplaceIsEmpty⍣((0=n.DeleteLine.State)∧0=≢n.ReplaceBy.Text)⊣1:⍬
      0=CheckUserInput:⍬
      n.(StartBtn Cancel).Active←0
      n.Form.Active←0

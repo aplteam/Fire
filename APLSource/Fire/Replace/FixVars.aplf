@@ -7,10 +7,10 @@
  ⍎name_,'←data'
  :If ##.IsAnyAcreAround
      :If 0=⎕NEXISTS ⎕SE.acre.Sourcefile name_       ⍝ Only if already saved on disk...
-     :OrIf ~TellAcre name_                          ⍝ ... do we tell acre
-         :If ⎕NEXISTS ⎕SE.Link.GetFileName name_    ⍝ Only if already saved on disk...
-             TellLink name_                         ⍝ ... do we tell Link
-         :EndIf
+         TellAcre name_                             ⍝ ... do we tell acre
      :EndIf
+ :EndIf
+ :If ⎕NEXISTS ⎕SE.Link.GetFileName name_            ⍝ Only if already saved on disk...
+     TellLink name_                                 ⍝ ... do we tell Link
  :EndIf
 ⍝Done

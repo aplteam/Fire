@@ -13,7 +13,9 @@ A bump of the minor number indicates added functionality plus possibly bug fixes
 
 A bump of the patch number indicates bug fixes.
 
-## Version 9.4.4 from 2022-12-19
+## Version 9.4.4 from 2022-12-15
+
+* One-by-one replacements with RegEx crashed
 * Fire still required acre to be around under some circumstances.
 
 ## Version 9.4.3 from 2022-12-13

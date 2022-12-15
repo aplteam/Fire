@@ -15,7 +15,6 @@
          ns.ss ⎕R ns.rs⍠ns.options⊣⍵.Match
      }
      buff←ns(fns{⍺.ss ⎕R ⍺⍺⍠⍺.options⊣⍵})¨newCode[∪ns.lines]
-     ∘∘∘
      newCode[∪ns.lines]←buff
  :Else
      :If G.DeleteFlag
