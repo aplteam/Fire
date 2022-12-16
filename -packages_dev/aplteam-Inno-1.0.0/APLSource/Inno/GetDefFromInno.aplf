@@ -1,6 +1,0 @@
- GetDefFromInno←{
-     iss←⍺
-     name←⍵
-     searchFor←'#define ',name,' "'
-     ¯1↓{⍵↓⍨⍵⍳'"'}⊃iss/⍨∨/¨searchFor∘⍷¨iss
- }
