@@ -1,5 +1,7 @@
- Make flag;targetPath;home;M;name;setupExe;myUCMDsFolder;C;tempFolder;data;buff
-⍝ Version 7.1.0 ⋄ 2022-11-08
+ Make flag;targetPath;home;M;name;setupExe;myUCMDsFolder;C;tempFolder;data;buff;cfg
+⍝ Version 7.2.0 ⋄ 2023-02-04
+⍝ * 7.2.0 ⋄ 2022-11-08
+⍝   * Uses new MakeHelpers
 ⍝ * 7.1.0 ⋄ 2022-11-08
 ⍝   * Checks now the minimum version of Dyalog APL (18.0 at the time of writing this)
 ⍝ * 7.0.1 ⋄ 2022-09-22
@@ -20,7 +22,7 @@
      tempFolder←(M.##.F.GetTempSubDir name),'/'
     ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
      M.RecreateFolder targetPath
-     M.IncreaseBuildID'#.',name,'.',name,'.Version'
+     M.IncreaseBuildIDInFunction '#.Fire.Fire.Version'
      :If ⎕NEXISTS myUCMDsFolder,'Fire/Fire_uc.dyalog'
          M.CopyBetter(myUCMDsFolder,'Fire/Fire_uc.dyalog')(home,C.CIDER.source,'/Fire_uc.dyalog')'MyUCMDs/'(C.CIDER.source,'/')
      :EndIf

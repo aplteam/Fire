@@ -13,6 +13,10 @@ A bump of the minor number indicates added functionality plus possibly bug fixes
 
 A bump of the patch number indicates bug fixes.
 
+## Version 9.5.0 from 2023-02-06
+
+* Search operation is now much quicker under some cirumstances
+
 ## Version 9.4.4 from 2022-12-15
 
 * One-by-one replacements with RegEx crashed

@@ -1,0 +1,25 @@
+ {r}←{batch}CheckVersionNo(version path);json;buff;filename
+⍝ Checks whether the version number used within a project is identical with the version number within apl-package.json.
+⍝ If it is no action is taken and `⍬` is returned.\\
+⍝ If they do not match the user is questioned whether she want to update the package config file. If she does not
+⍝ approve an error is thrown.
+⍝ However, if `batch` is 1 (default is 0) the user is not questioned & the package config file is silently updated.
+ r←⍬
+ batch←{0<⎕NC ⍵:⍎⍵ ⋄ 0}'batch'
+ version←{1<≡⍵:2⊃⍵ ⋄ ⍵}version  ⍝ For backwards compatability only
+ filename←path,'\apl-package.json'
+ json←⎕JSON⍠('Dialect' 'JSON5')⊣⊃⎕NGET filename
+ :If ≢/json.version version
+     :If batch
+         ⎕←(⎕PW-1)⍴'--- Problem with the version number ',⎕PW⍴'-'
+         ⎕←(33↑'version-no in the project'),': ',version
+         ⎕←(33↑'version-no in apl-package.json'),': ',json.version
+     :OrIf 1 YesOrNo'Would you like to update apl-package.json to ',version,' ?'
+         json.version←version
+         buff←⎕JSON⍠('Compact' 0)('Dialect' 'JSON5')⊣json
+         (⊂buff)⎕NPUT filename 1
+     :Else
+         'Version conflict between apl-package.json and version in the project'Assert 0
+     :EndIf
+ :EndIf
+⍝Done
