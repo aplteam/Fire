@@ -1,6 +1,9 @@
 (
  '⍝ Contains information regarding the last release. A full history is available on GitHub. (This line is ignored)'
  ''
+ '* 9.5.1 from 2023-02-13'
+ '  * Bug fix in GUI.LetLinkDelete'
+ ''
  '* 9.5.0 from 2023-02-06'
  '  * Search operation is way quicker now under some circumstances'
  ''
