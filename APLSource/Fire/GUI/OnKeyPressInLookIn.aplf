@@ -30,7 +30,7 @@
                  :If '.'=2⊃y
                      :If '.'≠¯1↑n.StartSearchIn.Text
                          :Trap 2 6
-                             r←0<(⍎n.StartSearchIn.Text).{↑⍴⎕NL ⍵}2 3 4 9
+                             r←0<(⍎n.StartSearchIn.Text).{≢⎕NL ⍵}2 3 4 9
                          :Else
                              :Return
                          :EndTrap

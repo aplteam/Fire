@@ -127,12 +127,12 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><th>Executed at</th><th>APLVersion</th><th>Memory (MB)</th></tr>
 </thead>
 <tbody>
-<tr><td>2022-12-15 12:03:10</td><td>Windows-64 ⋄ 18.0.46299.0 ⋄ W ⋄ Development ⋄ Unicode</td><td>51</td></tr>
+<tr><td>2023-03-12 10:21:08</td><td>Windows-64 ⋄ 18.0.46765.0 ⋄ W ⋄ Development ⋄ Unicode</td><td>51</td></tr>
 </tbody>
 </table>
 <p>Overall 50% of the testable code is covered.</p>
 <p>(Comment lines, empty lines, all <code>:End</code>* lines etc. are ignored)</p>
-<p>215 of the fns/opr are 100% covered.</p>
+<p>213 of the fns/opr are 100% covered.</p>
 <div id="partly-covered" class="keep-together">
 <table id="percent">
 <thead>
@@ -195,6 +195,7 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr class="uncovered"><td>#.Fire.Fire.GUI.CenterOnMonitor</td><td>15←≢2-4,7,10-11,14-20,22,24</td><td>0</td><td>15</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.CheckForQSE</td><td>2, 3, 4</td><td>0</td><td>3</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.CheckForUpdates</td><td>11←≢1-6,8-11,13</td><td>0</td><td>11</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.ClickFindButton</td><td>5←≢2-3,5-7</td><td>0</td><td>5</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.CopyAutoCompleteToCombo</td><td>8←≢4-11</td><td>0</td><td>8</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.CreateContextMenu</td><td>14←≢1-14</td><td>0</td><td>14</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.CreateContextMenu_AllFromSelectedNamespace</td><td>1, 2</td><td>0</td><td>2</td></tr>
@@ -238,7 +239,7 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnAbout</td><td>2</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnAmendWindowSize</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnAutoCompleteList</td><td>6←≢2-7</td><td>0</td><td>6</td></tr>
-<tr class="uncovered"><td>#.Fire.Fire.GUI.OnAutocompleteInWhereToLook</td><td>23←≢3-9,11-23,25-26,28</td><td>0</td><td>23</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.OnAutocompleteInWhereToLook</td><td>25←≢3-9,11-14,16-26,28-29,31</td><td>0</td><td>25</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnCallingCmd</td><td>2</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnCancelSearch</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnCase</td><td>1</td><td>0</td><td>1</td></tr>
@@ -262,6 +263,7 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnHelp</td><td>1</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnHiddenButtonGotFocus</td><td>2</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnInvertSelectionCmd</td><td>2</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.GUI.OnKeyPressInHitList</td><td>8←≢2-9</td><td>0</td><td>8</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnKeyPressInLookIn</td><td>31←≢2-12,14-17,19-26,29-32,34,37-38,43</td><td>0</td><td>31</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnKeyPressInLookIn_</td><td>54←≢1-21,23,25-32,34,36-57,59</td><td>0</td><td>54</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.GUI.OnKeyPressInSearchFor</td><td>17←≢2-18</td><td>0</td><td>17</td></tr>
@@ -388,6 +390,7 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr class="uncovered"><td>#.Fire.Fire.Replace.OnFixAll</td><td>2</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.OnFixAndNext</td><td>2</td><td>0</td><td>1</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.OnHiddenButtonGotFocus</td><td>2</td><td>0</td><td>1</td></tr>
+<tr class="uncovered"><td>#.Fire.Fire.Replace.OnKeyPressStandard</td><td>5←≢3-7</td><td>0</td><td>5</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.OnOneByOneMode</td><td>1, 2</td><td>0</td><td>2</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.OnSelectAll</td><td>1, 2, 3</td><td>0</td><td>3</td></tr>
 <tr class="uncovered"><td>#.Fire.Fire.Replace.OnSkip</td><td>2</td><td>0</td><td>1</td></tr>
@@ -488,10 +491,9 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.ListNamespaceTree</td><td>7←≢9,11,15-19</td><td>50</td><td>14</td></tr>
 <tr><td>#.Fire.Fire.RegExSearch</td><td>5, 6, 7</td><td>50</td><td>6</td></tr>
 <tr><td>#.Fire.Fire.ToggleAutoStatus</td><td>4←≢9-12</td><td>50</td><td>8</td></tr>
-<tr><td>#.Fire.Fire.GUI.OnKeyPressInHitList</td><td>4←≢6-9</td><td>50</td><td>8</td></tr>
 <tr><td>#.Fire.Fire.Replace.TellAcre</td><td>6, 7, 8</td><td>50</td><td>6</td></tr>
 <tr><td>#.Fire.Fire.Replace.ChangeItByRegEx</td><td>7←≢12-15,17,19-20</td><td>56</td><td>16</td></tr>
-<tr><td>#.Fire.Fire.GetCode</td><td>11←≢7,21,25-27,29-31,33-34,38</td><td>58</td><td>26</td></tr>
+<tr><td>#.Fire.Fire.GetCode</td><td>11←≢7,21,25-27,29-31,33-34,38</td><td>59</td><td>27</td></tr>
 <tr><td>#.Fire.Fire.Replace.Run</td><td>16←≢9-10,17-21,28-33,37-38,50</td><td>59</td><td>39</td></tr>
 <tr><td>#.Fire.Fire.Replace.ChangeThem_</td><td>33←≢21,25-27,32,37-38,51-53,57,72-76,78,80-89,96-97,103-106</td><td>60</td><td>83</td></tr>
 <tr><td>#.Fire.Fire.GUI.RemoveFromHitList</td><td>6←≢15-20</td><td>63</td><td>16</td></tr>
@@ -524,12 +526,12 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr><td>#.Fire.Fire.OneByOneComparison.Run</td><td>6←≢13,23,29-31,33</td><td>79</td><td>29</td></tr>
 <tr><td>#.Fire.Fire.Replace.ProcessOneByOne</td><td>15, 16, 18</td><td>79</td><td>14</td></tr>
 <tr><td>#.Fire.Fire.ReportHits.MarkupRegExHitsInSimpleVars</td><td>7, 8</td><td>80</td><td>10</td></tr>
-<tr><td>#.Fire.Fire.ListNamespaceTree_</td><td>5←≢20-23,32</td><td>81</td><td>27</td></tr>
 <tr><td>#.Fire.Fire.RemoveUnwanted</td><td>4←≢18,22,24-25</td><td>81</td><td>21</td></tr>
 <tr><td>#.Fire.Fire.GUI.CheckLookIn</td><td>11, 17, 18</td><td>81</td><td>16</td></tr>
 <tr><td>#.Fire.Fire.Replace.ChangeIt</td><td>5←≢6-8,10,13</td><td>81</td><td>27</td></tr>
 <tr><td>#.Fire.Fire.Replace.ReplaceSingleLineDfnsInScriptCode</td><td>5←≢21-22,24-25,27</td><td>81</td><td>26</td></tr>
 <tr><td>#.Fire.Fire.ReportHits.Run_</td><td>5←≢11-15</td><td>81</td><td>26</td></tr>
+<tr><td>#.Fire.Fire.ListNamespaceTree_</td><td>5←≢21-24,33</td><td>82</td><td>28</td></tr>
 <tr><td>#.Fire.Fire.GUI.OnStartBtn</td><td>4←≢9,33,35-36</td><td>82</td><td>22</td></tr>
 <tr><td>#.Fire.Fire.Replace.OnClose</td><td>12, 13</td><td>83</td><td>12</td></tr>
 <tr><td>#.Fire.Fire.Replace.Replace_Split</td><td>8, 9</td><td>83</td><td>12</td></tr>
@@ -624,7 +626,6 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.CenterIn</td><td></td><td>100</td><td>12</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.CheckHitList</td><td></td><td>100</td><td>5</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.CheckStartButton</td><td></td><td>100</td><td>3</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.GUI.ClickFindButton</td><td></td><td>100</td><td>5</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.CopyGuiToGlobal</td><td></td><td>100</td><td>23</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.CreateCheckBoxes</td><td></td><td>100</td><td>23</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.GUI.CreateEditMenu</td><td></td><td>100</td><td>25</td></tr>
@@ -723,7 +724,6 @@ ul li, ol li {margin: 8pt 3pt;}
 <tr class="fullyCovered"><td>#.Fire.Fire.Replace.NoOfCandidatesForChange</td><td></td><td>100</td><td>1</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.Replace.NonReplaceVars</td><td></td><td>100</td><td>5</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.Replace.OnConfigure</td><td></td><td>100</td><td>0</td></tr>
-<tr class="fullyCovered"><td>#.Fire.Fire.Replace.OnKeyPressStandard</td><td></td><td>100</td><td>5</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.Replace.OnReplaceByGotFocus</td><td></td><td>100</td><td>0</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.Replace.OnReplaceByGotFocusGotFocus</td><td></td><td>100</td><td>0</td></tr>
 <tr class="fullyCovered"><td>#.Fire.Fire.Replace.OnReplaceByLostFocus</td><td></td><td>100</td><td>0</td></tr>
@@ -797,7 +797,7 @@ $(document).ready(function() {
         },      
         buttons: [
         {
-            text: "Partly covered (92)",
+            text: "Partly covered (91)",
             titleAttr: "50%",
             className: "active",
             action: function ( e, dt, node, config ) {
@@ -811,7 +811,7 @@ $(document).ready(function() {
             }
         },
         {
-            text: "Uncovered (327)",
+            text: "Uncovered (330)",
             titleAttr: "0%",
             className: "active",
             action: function ( e, dt, node, config ) {
@@ -825,7 +825,7 @@ $(document).ready(function() {
             }
         },
         {
-            text: "Fully covered (215)",
+            text: "Fully covered (213)",
             titleAttr: "100%",
             className: "active",
             action: function ( e, dt, node, config ) {

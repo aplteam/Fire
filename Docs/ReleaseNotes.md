@@ -13,6 +13,13 @@ A bump of the minor number indicates added functionality plus possibly bug fixes
 
 A bump of the patch number indicates bug fixes.
 
+## Version 9.5.1 from 2023-03-12
+
+* Bug fix in `ListNamespaceTree_`
+* Bug fix in `GUI.LetLinkDelete`
+* "Start looking here" offered `#._tatin` or `⎕SE._tatin` etc even if "Ignore Tatin packages" was ticked
+
+
 ## Version 9.5.0 from 2023-02-06
 
 * Search operation is now much quicker under some cirumstances

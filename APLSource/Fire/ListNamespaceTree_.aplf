@@ -1,13 +1,14 @@
  level ListNamespaceTree_(ref type classFlag);list;list1;list2;bool1;bool2;list3;list4;this;lista;lista2
 ⍝ Sub-function of "ListNamespaceTree" without independent value.
-⍝ "flag" decides whether unnamed namespaces and instances (form, sockets etc
-⍝ but no class instances!) should be included or not.
+⍝ "flag" decides whether unnamed namespaces and instances (forms, sockets etc
+⍝ but never class instances!) should be included or not.
 ⍝ Needs semi-global "∆buffer" to save results.
  list1←ref{⍺.(⍎⍕'⍺',⌽↓⎕NL 9.1)}⍬                        ⍝ Ordinary & unnamed namespaces (NS)
 ⍝ If somebody is brave enough to assign ⎕DMX to a variable we end up with a ref pointing to it.
 ⍝ Luckily the format of such a ref happens to be a matrix rather than a string.
 ⍝ That's why we get rid of those here:
  list1←(1=↑∘⍴∘⍴¨⍕¨list1)/list1
+ {⍵:.}∨/∨/¨'Tatin.Core'∘⍷¨⍕¨list1  ⍝TODO⍝  Now check #.Tatin.RumbaLean.Tests.R: it points to #.Tatin.Core which DOES NOT exist
  list1←(~↑¨∨/¨(GetDisplayFormat¨list1)∊¨⊂'[]')/list1    ⍝ Remove unnamed NS
  :If 0≠≢list2←1↓ref{⍺.(⍎⍕'⍺',⌽↓⎕NL 9.2)}⍬               ⍝ Instances (classes & GUI objects)
  :AndIf 0≠≢list2←(~'('∊¨⍕¨list2)/list2                  ⍝ Those carrying a "(" are useless for us: GUI leftovers.

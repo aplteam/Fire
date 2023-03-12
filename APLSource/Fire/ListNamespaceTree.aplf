@@ -2,7 +2,7 @@
 ⍝ "type" may be 1 (the default) or 2.\\
 ⍝ 1: Returns a list of references with all named namespaces in "ref"\\
 ⍝ 2: Return abnomalies\\
-⍝ Semi-global ∆buffer is used to to collect results while running recursively.
+⍝ Semi-global ∆buffer is used to collect results while running recursively.
  type←↑{(0<⎕NC ⍵):⍎⍵ ⋄ 1}'type'
  :If 1≡type
      ∆buffer←ref

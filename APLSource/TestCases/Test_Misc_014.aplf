@@ -7,12 +7,12 @@
  #.⎕EX'FireReportGhost'
  'FireReportGhost'#.⎕NS''
  #.FireReportGhost.⎕FIX #.⎕SRC APLTreeUtils2
- #.FireReportGhost.⎕FIX #.⎕SRC FilesAndDirs
+ #.FireReportGhost.⎕FIX #.⎕SRC APLProcess
  #.FireReportGhost.APLTreeUtils2.⎕FX'r←Hello' 'r←''Worlds'''  ⍝ This is NOT a ghost!
- #.FireReportGhost.FilesAndDirs.⎕FX'r←Hello' 'r←''World'''
- #.FireReportGhost.FilesAndDirs.⎕FX'r←Hello2' 'r←''World2'''
- #.FireReportGhost.FilesAndDirs.⎕FX'r←Hello3' 'r←''World3'''
- #.FireReportGhost.FilesAndDirs.⎕FIX':Class MyClass' '∇r←Hello' ':Access Public Shared' 'r←''Universe''' '∇' ':EndClass'
+ #.FireReportGhost.APLProcess.⎕FX'r←Hello' 'r←''World'''
+ #.FireReportGhost.APLProcess.⎕FX'r←Hello2' 'r←''World2'''
+ #.FireReportGhost.APLProcess.⎕FX'r←Hello3' 'r←''World3'''
+ #.FireReportGhost.APLProcess.⎕FIX':Class MyClass' '∇r←Hello' ':Access Public Shared' 'r←''Universe''' '∇' ':EndClass'
  #.FireReportGhost.⎕FIX':Interface InterfaceFoo' '∇r←Hello arg' '∇' ':EndInterface'
  #.FireReportGhost.InterfaceFoo.⎕FX'r←∆Hello10' 'r←''World10'''
  '#.FireReportGhost.MyGUI'⎕WC'Form'('Visible' 0)('KeepOnClose' 1)
@@ -25,8 +25,8 @@
  ⎕DL 0.05
 
 ⍝ Checks
- expected←'#.FireReportGhost.MyGUI' 'Hello' '#.FireReportGhost.FilesAndDirs' 'Hello' 'Hello2' 'Hello3' '#.FireReportGhost.APLTreeUtils2' 'Hello' '#.FireReportGhost.InterfaceFoo' '∆Hello10'
- →T.GoToTidyUp ref.TV.Items≢expected
+ expected←'#.FireReportGhost.MyGUI' 'Hello' '#.FireReportGhost.APLProcess' 'Hello' 'Hello2' 'Hello3' '#.FireReportGhost.APLTreeUtils2' 'Hello' '#.FireReportGhost.InterfaceFoo' '∆Hello10'
+ →T.GoToTidyUp ~expected ∆LazyMatch ref.TV.Items
  rg←#.Fire.Fire.ReportGosts
  ref.TV.SelItems←0 0 0 0 1 0 0 0
  1 rg.DeleteGhost ref.TV

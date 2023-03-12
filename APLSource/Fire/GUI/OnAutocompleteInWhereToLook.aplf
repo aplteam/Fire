@@ -5,12 +5,15 @@
  :If ~n.ReuseSearch.State                                       ⍝ No need for autocomplete on a hit list
      f←n.AutoCompleteForm.Visible                               ⍝ Flag: is autocompletion visible right now?
      isQSE←'⎕SE'≡3↑1 ⎕C n.StartSearchIn.Text                    ⍝ Flag: is it pointing to ⎕SE?!
-     s←isQSE{⍺:⎕SE ⋄ ((0∊⍴⍵)∨'#'=1⍴,⍵):# ⋄ ⍬}n.StartSearchIn.Text ⍝ Determine source
+     s←isQSE{⍺:⎕SE ⋄ ((0=≢⍵)∨'#'=1⍴,⍵):# ⋄ ⍬}n.StartSearchIn.Text ⍝ Determine source
      :If 0=≢s
          {}HideAutoComplete ⍬
      :Else
          {}CheckForQSE isQSE
          l←1 ##.List s 0                                        ⍝ Get list of all named NS in either # or ⎕SE
+         :If n.IgnoreTatinPkgs.State
+             l←(~(⍕¨l[;0])∊'#._tatin' '⎕SE._tatin' '⎕SE._Tatin' '⎕SE.Tatin')⌿l
+         :EndIf
          :If 0<≢l                                               ⍝ Empty?! Guard!
              l←⊃⍕¨l[;0]                                         ⍝ Just the refs as names
              l←({((⍴⍵)↑[1]l)∧.=⍵},n.StartSearchIn.Text)⌿l       ⍝ Reduce the autocomplete list

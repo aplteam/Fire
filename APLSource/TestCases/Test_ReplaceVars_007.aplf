@@ -29,7 +29,7 @@
  ⎕DL 0.2
  {}∆Select n2.StartBtn
  ∆Process n.Form
- →T.GoToTidyUp'Namespace'≢'n2.Form'⎕WG'Type'
+ →T.GoToTidyUp'Namespace'≢'n2.Form'⎕WG'Type'   ⍝ Error?! Try again!
 
  R←T._OK
 
