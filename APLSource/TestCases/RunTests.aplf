@@ -1,8 +1,10 @@
- RunTests;htmlFilename
+ RunTests;htmlFilename;verbose
  Prepare
  T.Run 1
- htmlFilename←CodeCoverage.ProcessDataAndCreateReport T.codeCoverage.filename
- :If 0 ∆YesOrNo'View CodeCoverage report?'
-     APLTreeUtils2.GoToWebPage'file://',htmlFilename
+ :If 0<≢T.codeCoverage
+ :AndIf 0 ⎕SE.MakeHelpers.YesOrNo'Put Code Coverage Report on display?'
+     verbose←0 ⎕SE.MakeHelpers.YesOrNo'Detailed report?'
+     htmlFilename←verbose CodeCoverage.ProcessDataAndCreateReport T.codeCoverage.filename
+     {}APLTreeUtils2.GoToWebPage htmlFilename
+     CodeCoverage.DeleteFiles T.codeCoverage.filename
  :EndIf
-⍝Done

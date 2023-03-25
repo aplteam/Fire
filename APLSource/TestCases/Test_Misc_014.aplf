@@ -7,6 +7,7 @@
  #.⎕EX'FireReportGhost'
  'FireReportGhost'#.⎕NS''
  #.FireReportGhost.⎕FIX #.⎕SRC APLTreeUtils2
+
  #.FireReportGhost.⎕FIX #.⎕SRC APLProcess
  #.FireReportGhost.APLTreeUtils2.⎕FX'r←Hello' 'r←''Worlds'''  ⍝ This is NOT a ghost!
  #.FireReportGhost.APLProcess.⎕FX'r←Hello' 'r←''World'''

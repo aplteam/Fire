@@ -5,18 +5,18 @@
  n←##.GUI.GetRefTo_n ref
  b←IsTicked n
  ⎕THIS.wasTicked←b
- was←#.CursorObj
- #.CursorObj←1
+ was←# ⎕WG'CursorObj'
+ # ⎕WS'CursorObj' 1
  {}RewriteCSS b
  {}WriteStatusMsg n
  n.Browser.Size←0 0
  :If 0<≢ID
      {}n.Browser{6::shy←⍬ ⋄ 1:shy←⍺.Navigate2⊂'file:///',⍵}n.∆HtmlFilename,'#',ID
  :EndIf
- {}{0::⍬ ⋄ n.Browser.Refresh ⍵}⍬
+ {11 6::shy←0 ⋄ n.Browser.Refresh ⍬}⍬   ⍝ Do NOT change this even if you think that `Refresh` is niladic
  ⎕DL 0.1
  n.Browser.Size←100 100
- #.CursorObj←was
+ # ⎕WS'CursorObj'was
  {}⎕NQ n.List'GotFocus'
  r←0
 ⍝Done

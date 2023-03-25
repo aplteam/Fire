@@ -1,6 +1,9 @@
 (
  '⍝ Contains information regarding the last release. A full history is available on GitHub. (This line is ignored)'
  ''
+ '* 9.5.2 from 2023-03-25'
+ '  * Bug fix: people who do not tick "Options > Object Syntax > Expose GUI Properties" could not use "Replace"'
+ ''
  '* 9.5.1 from 2023-03-12'
  '  * Bug fixes'
  '    * Bug fix in ListNamespaceTree_'

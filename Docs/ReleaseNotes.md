@@ -13,6 +13,10 @@ A bump of the minor number indicates added functionality plus possibly bug fixes
 
 A bump of the patch number indicates bug fixes.
 
+## Version 9.5.2 from 2023-03-25
+
+Bug fix: people who do not tick "Options > Object Syntax > Expose GUI Properties" could not use "Replace"
+
 ## Version 9.5.1 from 2023-03-12
 
 * Bug fix in `ListNamespaceTree_`
