@@ -56,7 +56,7 @@
  {}∆Select n2.StartBtn
  ∆Process n2.Form
 
- :If 1 ∆YesOrNo'Did you see the "Replace one-by-one" GUI?'
+ :If 1 CommTools.YesOrNo'Did you see the "Replace one-by-one" GUI?'
      R←T._OK
  :EndIf
 

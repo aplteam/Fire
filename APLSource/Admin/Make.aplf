@@ -1,5 +1,8 @@
  Make flag;targetPath;home;M;name;setupExe;myUCMDsFolder;C;tempFolder;data;buff;cfg
-⍝ Version 7.2.0 ⋄ 2023-02-04
+⍝ Version 7.3.0 ⋄ 2023-06-18
+⍝ * 7.2.1 ⋄ 2023-06-18
+⍝   * Uses latest features of MakeHelpers now
+⍝   * Question added to avoid mishaps
 ⍝ * 7.2.0 ⋄ 2022-11-08
 ⍝   * Uses new MakeHelpers
 ⍝ * 7.1.0 ⋄ 2022-11-08
@@ -13,19 +16,18 @@
      :If 18≢⊃⊃(//)⎕VFI buff←{⍵/⍨2>+\⍵='.'}2⊃# ⎕WG'APLVersion'  ⍝
          ('"Make" a new version with 18.0 - this is ',buff)⎕SIGNAL 11
      :EndIf
+ :AndIf ##.TestCases.CommTools.YesOrNo 'Sure yout want to create a new version of Fire? (The WS will be destroyed in the process)'
      home←##.CiderConfig.HOME,'/'
      targetPath←home,'Dist/'
-     {⍵:.}' '≠1↑0⍴⎕FX↑'r←M' 'r←⎕SE.MakeHelpers'  ⍝ avoids creating a link in # that point to ⎕SE at the expense of defeating auto-complete
+     {⍵:.}' '≠1↑0⍴⎕FX↑'r←M' 'r←⎕SE.MakeHelpers'  ⍝ avoids creating a link in # that points to ⎕SE at the expense of defeating auto-complete
      C←##.CiderConfig
      myUCMDsFolder←M.GetMyUCMDsFolder'\'
      name←'Fire'
      tempFolder←(M.##.F.GetTempSubDir name),'/'
     ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
      M.RecreateFolder targetPath
-     M.IncreaseBuildIDInFunction '#.Fire.Fire.Version'
-     :If ⎕NEXISTS myUCMDsFolder,'Fire/Fire_uc.dyalog'
-         M.CopyBetter(myUCMDsFolder,'Fire/Fire_uc.dyalog')(home,C.CIDER.source,'/Fire_uc.dyalog')'MyUCMDs/'(C.CIDER.source,'/')
-     :EndIf
+     M.IncreaseBuildIDInFunction'#.Fire.Fire.Version'
+     M.FetchLaterUserCommand'Fire_uc.dyalog'cfg C('[MyUCMDs]',name)
      {}⎕SE.Cider.CloseProject''  ⍝ Precaution
      ⎕WSID←tempFolder,name,'.dws'
      0 ⎕SAVE ⎕WSID
