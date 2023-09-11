@@ -4,13 +4,13 @@
  ∆←⊂'Form'
  ∆,←⊂'Caption'(##.##.AddPidToCaption'Fire - Search ⎕NL')
  ∆,←⊂'Coord' 'Pixel'
- ∆,←⊂'Size'(200 400)
+ ∆,←⊂'Size'(200 480)
  ∆,←⊂'Posn'(n.Form.Posn+50)
  ∆,←⊂'IconObj'n.TheIcon
  n2.Form←⍎'TheForm'n.Form.⎕WC ∆
  n2.Form.CursorObj←0
  n2.Form.n←n2
-
+ n2.Form.onConfigure←'##.OnConfigure'n2.Form.Size
 
  ∆←⊂'Label'
  ∆,←⊂'Posn'(10 10)
@@ -61,6 +61,28 @@
  ∆,←⊂'State' 1
  ∆,←⊂'Attach'(4⍴'Top' 'Left')
  n2.Last←⍎'Last'n2.Group.⎕WC ∆
+
+ ∆←⊂'Group'
+ ∆,←⊂'Caption' 'Start search in'
+ ∆,←⊂'Posn'(n2.Group.Posn[0],10+1⊃+⌿⊃n2.Group.(Posn Size))
+ ∆,←⊂'Size'(80 160)
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ n2.Group2←⍎'Group'n2.Form.⎕WC ∆
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' '&#'
+ ∆,←⊂'Posn'(20 10)
+ ∆,←⊂'Style' 'Radio'
+ ∆,←⊂'State' 1
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ n2.Root←⍎'FullPath'n2.Group2.⎕WC ∆
+
+ ∆←⊂'Button'
+ ∆,←⊂'Caption' '⎕S&E'
+ ∆,←⊂'Posn'((15+↑+/⊃n2.FullPath.(Posn Size)),10)
+ ∆,←⊂'Style' 'Radio'
+ ∆,←⊂'Attach'(4⍴'Top' 'Left')
+ n2.QSE←⍎'Last'n2.Group2.⎕WC ∆
 
  ∆←⊂'Button'
  ∆,←⊂'Caption' '&OK'

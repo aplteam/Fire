@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior:smooth" >
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>Fire ReadMe</title>
+<style media="screen">
+html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}body{margin:0;}article,aside,footer,header,nav,section{display:block;}h1{font-size:2em;margin:0.67em 0;}figcaption,figure,main{display:block;}figure{margin:1em 40px;}hr{box-sizing:content-box;height:0;overflow:visible;}pre{font-family:monospace, monospace;font-size:1em;}a{background-color:transparent;-webkit-text-decoration-skip:objects;}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted;}b,strong{font-weight:inherit;}b,strong{font-weight:bolder;}code,kbd,samp{font-family:monospace, monospace;font-size:1em;}dfn{font-style:italic;}mark{background-color:#ff0;color:#000;}small{font-size:0.8em;}sub,sup{font-size:0.75em;line-height:0;position:relative;vertical-align:baseline;}sub{bottom:-0.25em;}sup{top:-0.5em;}audio,video{display:inline-block;}audio:not([controls]){display:none;height:0;}img{border-style:none;}svg:not(:root){overflow:hidden;}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:1em;line-height:1.15;margin:0;}button,input{overflow:visible;}button,select{text-transform:none;}button,html [type="button"], [type="reset"],[type="submit"]{-webkit-appearance:button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner{border-style:none;padding:0;}button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring{outline:1px dotted ButtonText;}fieldset{padding:0.35em 0.75em 0.625em;}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal;}progress{display:inline-block;vertical-align:baseline;}textarea{overflow:auto;}[type="checkbox"],[type="radio"]{box-sizing:border-box;padding:0;}[type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto;}[type="search"]{-webkit-appearance:textfield;outline-offset:-2px;}[type="search"]::-webkit-search-cancel-button,[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit;}details, menu{display:block;}summary{display:list-item;}canvas{display:inline-block;}template{display:none;}[hidden]{display:none;}body{margin:0;font-family:"Bookman Old Style", "Callisto MT", Bookman, "Goudy Old Style", Garamond, serif;background-color:#fdfdfd;font-size:18px;line-height:1.4;max-width:900px;padding:0.83em;color:#292929;word-wrap:break-word;overflow-wrap:break-word;}h1, h2, h3, h4, h5, h6{color:#404040;font-weight:800;padding-left:0;}h1, h2, h3, h4, h5, h6{font-family:"Century Gothic", Verdana, "Sans";}h1, h2, h3, h4, p{margin-bottom:0.88em;}h1{font-size:1.8em;margin:0.27em 0 1.11em 0;}h1 > code, h2 > code, h3 > code, h4 > code, h5 > code, h6 > code{font-size:1em;background-color:inherit;}h2{font-size:1.44em;margin:0.55em 0 0.55em 0;padding-top:0.55em;border-bottom:1px solid Silver;}h3{margin:0;margin-top:0.55em;font-size:1.22em;}nav h3{font-size:1.2em;margin:0 0 0.7em 0;}h4{font-size:1em;margin:0;margin-top:0.55em;}h5{font-size:0.94em;margin:0;margin-top:0.66em;padding:0;}h6{font-size:0.88em;margin:0;margin-top:0.66em;padding:0;}a{color:#0099ff;margin:0;padding:0;vertical-align:baseline;}a:visited{color:purple;}a.autoheader_anchor{text-decoration:none;}ul{list-style-type:disc;}ul, ol{padding:0;margin:0;}dd{padding-top:0.25em;}p.first_dd{padding-top:0.25em;}li > ul, ol{padding-bottom:0;}li{line-height:1.3;margin-left:1.38em;margin-bottom:0.55em;}ul > li{margin-left:2.5em;}ol > li{margin-left:2.5em;}li ul{margin-left:0.55em;}li ul{margin-left:0.27em;}li p{padding:1px 0 0 0;margin:0.55em 0 0.27em 0;line-height:1.3;}ul, ol{line-height:1.3;padding:0.33em 0 0 0;margin:0.5em;}p{line-height:1.2;padding:0.40em 0 0 0;margin:0;}pre{overflow:scroll;padding:0.55em 0.27em;margin:0.55em 0 0.55em 0 !important;background-color:#faebd7;color:#3e3e3e;border:1px Silver dashed;display:block;font-family:APLFont, monospace;font-weight:normal;white-space:pre-wrap;}pre > code{line-height:1.2;border:0;padding:0;margin:0;background-color:inherit;color:inherit;font-weight:inherit;white-space:pre-wrap;}td code{padding:0;}a code{padding:0;font-size:1em;}nav code{background-color:inherit;font-weight:400;color:inherit;}code{font-family:APLFont, monospace;font-weight:800;color:#950000;background-color:#e7e7e7;line-height:1.1;font-size:85%;white-space:break-spaces;margin:0;padding:0.2em 0.4em;border-radius:6px;}tbody tr:nth-child(even){background-color:#F0F0F0;}th{background-color:#E6E6E6;color:black;}th, td{padding:0.16em 0.55em;vertical-align:top;}table td + td{border-left:1px solid gray;}table th + th{border-left:1px solid gray;}table{border-color:Black;margin:1.5em 0;border:2px black;border-collapse:collapse;font-family:APLFont;font-size:0.88em;line-height:1.2;border:1px solid Gray;}li > table{margin:0.55em 0 0.55em 0;}tr{margin:1.11em;}th{font-weight:bold;}tfoot td{font-weight:bold;}blockquote{border-left:0.27em solid silver;padding-left:0.27em;margin:0.83em 0.27em 0.83em 0.55em;}blockquote ul li{margin-left:1.38em;}blockquote ol li{margin-left:1.38em;}li > blockquote{margin-left:0;}nav{background-color:#f5f5f5;border:1px solid Black;padding:0.55em;margin:0.50em 0.30em 2em 0.30em;margin-right:0;box-shadow:0.27em 0.27em 0.27em Gray;overflow:hidden;clear:both;}nav#main_nav{position:fixed;top:0;right:0.55em;float:none;width:auto;}nav#main_nav_no_collapse li{font-size:1em;padding-left:2em;}nav#main_nav_no_collapse li{line-height:1.5;}nav ul{list-style-type:none;margin:0 0 0.11em 0;padding:0;}nav a:visited{color:black;}nav ul li{margin-bottom:0.16em;}nav li p{margin:0;padding:0;line-height:1;margin:0;padding:0;}nav li{font-size:0.9em;line-height:1.5;padding:0;margin-top:0;margin-bottom:0;margin-left:2em;}nav p{font-weight:bold;font-size:0.75rem;padding-top:0;}dl{margin-top:0.1em;margin-bottom:0.1em;}dt{margin-top:0.75em;margin-bottom:0.1em;font-weight:800;}label#hide_toc_label{font-size:1.1em;}.toc-container{position:relative;height:auto;}div.toc-container h1{font-size:0.88em;margin:0.27em 0 0.27em 0;}div.toc-container ul{margin-left:-2em;margin-right:1em;}[type="checkbox"]{position:absolute;left:-9999px;}label{display:block;width:100%;height:1.1em;cursor:pointer;top:0;padding-left:2em;}label:before{content:'Table of contents \25BC';font-weight:bold;font-size:80%;padding-bottom:0;}[type="checkbox"] ~ div{display:none;}[type="checkbox"]:checked ~ div{display:block;margin-top:1.1em;}[type="checkbox"]:checked + label{top:100%;}[type="checkbox"]:checked + label:before{content:'Table of contents ▲';}div#footnotes_div p{line-height:1;padding-bottom:0;padding-top:0;}div#footnotes_div ol{padding-top:0;}@font-face{font-family:"APLFont";src:local("APL385 Unicode"), url("https://misc.aplteam.com/apl385.ttf") format("truetype");}.no_display{display:none;}.red{color:red;}.center{text-align:center;margin-left:auto;margin-right:auto;}.left{text-align:left;margin-right:0 auto;}.right{text-align:right;margin-left:0 auto;}img{margin-top:0.55em;margin-bottom:0.27em;}div.leanpub{padding:0.83em 0.55em 1.11em 0;margin:0.55em 0 0 0.27em;overflow:auto;}div.leanpub_A{border:1px solid black;background-color:#f1f1f1;padding:0.55em;margin:1.11em 0 0.83em 0;}div.leanpub h3, div.leanpub_A h3{font-size:1.2em;padding:0;margin:0;}div.leanpub h4, div.leanpub_A h4{font-size:1.1em;padding:0.27em 0 0 0;margin:0;}div.leanpub h5, div.leanpub h5{font-size:1.0em;padding:0.27em 0 0 0;margin:0;}div.leanpub_A h5, div.leanpub_A h5{font-size:1.0em;padding:0.27em 0 0 0;margin:0;}div.leanpub img{padding:0;margin:0 1.11em 0.27em 0;}div.leanpub_A > p:first-child{padding-top:0;margin-top:0;}div.leanpub img{float:left;padding:0;margin:0.55em 1.11em 0 0;clear:both;}div.leanpub tbody *{background-color:transparent;}div.leanpub p{padding:0.17em 0 0 0;margin:0;}span.leanpub_code{color:Red;}div.leanpub p{display:block;padding:0.44em 0 0 0;}div.leanpub > div{margin-left:2.27em;}.print_only{display:none;}
+</style>
+<style media="print">
+@page{margin:25mm 20mm 25mm 20mm;}body{font-family:"Bookman Old Style", "Callisto MT", Bookman,"Goudy Old Style", Garamond, serif;font-size:9pt;line-height:1.2;}h1{font-size:170%;}h2{font-size:110%;}h3{font-size:110%;}h4{font-size:105%;}h5{font-size:100%;}h6{font-size:95%;}h1{margin:0 0 20pt 0;}h2{margin:15pt 0 3pt 0;}h3{margin:10pt 0 0pt 0;}h4{margin:10pt 0 0pt 0;}h5{margin:9pt 0 0pt 0;}h6{margin:9pt 0 0pt 0;}h1, h2, h3, h4, h5, h6{color:black;font-family:"Century Gothic", Verdana, "Sans";page-break-after:avoid;}h1 > code, h2 > code, h3 > code, h4 > code, h5 > code, h6 > code{font-size:100%;}h2{border-bottom:1pt solid Silver;padding-bottom:2pt;}.h_tag{page-break-after:avoid;break-after:avoid;}abbr[title]{border-bottom:0;text-decoration:none;}a{color:black;margin:0;padding:0;vertical-align:baseline;text-decoration:none;font-style:italic;}a.autoheader_anchor{text-decoration:none;font-style:normal;page-break-after:avoid;break-after:avoid;}ul{list-style-type:square;}ul, ol{padding:0;margin:0;margin-top:10pt;}li > ul, ol{padding-bottom:0;}li{line-height:1.3;margin-left:13pt;margin-bottom:5pt;}ul > li{margin-left:25pt;}ol > li{margin-left:25pt;}li ul{margin-left:5pt;}li ul{margin-left:3pt;}li p{padding:1pt 0 0 0;margin:5pt 0 3pt 0;line-height:1.3;}p, ul, ol{line-height:1.3;padding:4pt 0 0 0;margin:0;color:black;}ul, ol{margin-top:0.75em;}pre{padding:3pt;margin:5pt 0;white-space:pre-wrap;background-color:#FAFAFA;border:1pt Silver solid;display:block;font-family:APLFont, monospace;page-break-inside:avoid;}pre code{background-color:#FAFAFA;color:Black;padding:0;margin:0 0 -6pt 0;line-height:1.1;border:0;white-space:pre-wrap;}code{font-family:APLFont, monospace;line-height:1.2;font-size:9pt;padding:3pt 1pt 3pt 1pt;color:#950000;padding:3pt 4pt 3pt 4pt;}tbody th, tfoot tr{background-color:#e6e6e6;}tbody tr:nth-child(even){background-color:#fafafa;}th{background-color:#F0F0F0;}th, td{padding:1pt 5pt;border:1px solid #E3E3E3;vertical-align:top;}table td + td{border-left:1px solid gray;}table th + th{border-left:1px solid gray;}table code{font-style:normal;padding-left:0;padding-right:0;}table{margin:1.5em 0;font-family:APLFont;font-size:9pt;padding:0;border:1pt solid silver;border-collapse:collapse;}li > table{margin:10pt 0 10pt 0;}tr{margin:20pt;}th{font-weight:bold;}tfoot td{font-weight:bold;}blockquote{border-left:5pt solid silver;padding-left:5pt;margin:8pt 3pt 8pt 8pt;}nav{background-color:#f8f8f8;border:1pt solid Gray;width:auto;float:right;padding:5pt 5pt 5pt 0;margin:5pt 0 5pt 5pt;page-break-inside:avoid;break-inside:avoid;clear:both;overflow:hidden;}nav *{font-size:75%;}nav ul{list-style-type:none;margin:0 0 2pt 0;padding:0;}nav ul li{margin-bottom:0;}nav li p{margin:0;padding:0;line-height:1;margin:0;padding:0;}nav li{font-size:9pt;line-height:1;padding:0;margin-top:0;margin-bottom:0;margin-left:8pt;}dl{margin-top:0;margin-bottom:10pt;}dt{margin-top:10pt;margin-bottom:0;font-weight:800;page-break-inside:avoid;}dd{margin-top:2pt;}label#hide_toc_label{font-size:65%;}.toc-container{position:relative;height:auto;margin-top:2pt;background-color:inherit;}.toc-container h3{margin:0 0 2pt 7pt;}[type="checkbox"]{display:none;}label{display:block;width:100%;height:1.1em;top:0;padding-left:10pt;}label:before{content:'Table of contents';font-weight:bold;font-size:140%;padding-bottom:10pt;}a.external_link::before{content:" 🌎";}a.bookmark_link::before{content:" ➯";}a.mailto_link::before{content:" ✉"}nav a.bookmark_link{font-style:normal;}nav p{margin-left:10pt;font-weight:bold;font-size:9pt;}nav a{font-style:normal;}nav a.bookmark_link::before{content:"";}div#footnotes_div a::before{content:"";}div#footnotes_div a{font-style:normal;}div#footnotes_div{page-break-inside:avoid;}@font-face{font-family:"APLFont";src:local("APL385 Unicode"), url("https://misc.aplteam.com/apl385.ttf") format("truetype");}.no_print{display:none;}.red{color:red;}.center{text-align:center;margin:0 auto;}.left{text-align:left;margin-right:0 auto;}.right{text-align:right;margin-left:0 auto;}.avoid_page_break{page-break-inside:avoid;}.page_break_before{page-break-before:always;}div.leanpub{margin:10pt 0 10pt 8pt;page-break-inside:avoid;}div.leanpub_A{border:1pt solid black;background-color:#f9f9f9;padding:5pt;margin:10pt 0 10pt 0;page-break-inside:avoid;}div.leanpub h3, div.leanpub_A h3{font-size:1.2em;padding:3pt 0 0 0;margin:0;}div.leanpub h4, div.leanpub_A h4{font-size:1.1em;padding:3pt 0 0 0;margin:0;}div.leanpub h5, div.leanpub h5{font-size:1.0em;padding:3pt 0 0 0;margin:0;}div.leanpub_A h5, div.leanpub_A h5{font-size:1.0em;padding:3pt 0 0 0;margin:0;}div.leanpub img{padding:0;margin:0 10pt 2pt 0;}div.leanpub_A > p:first-child{padding-top:0;margin-top:0;}div.leanpub > div > h1:first-child{padding-top:5pt;}div.leanpub img{float:left;padding:0;margin:5pt 10pt 0 0;clear:both;}div.leanpub p{padding:3pt 0 0 0;margin:0;}span.leanpub_code{font-weight:bold;}div.leanpub p{display:block;padding:8pt 0 0 0;}div.leanpub > div{margin-left:35pt;}sup{font-size:0.75em;line-height:0;position:relative;vertical-align:baseline;top:-0.4em;}
+</style>
+
+</head>
+<body>
+<nav id="main_nav">
+<input type="checkbox" id="hide_toc">
+<label id="hide_toc_label" for="hide_toc"></label>
+<div class="toc-container">
+<ul>
+<li><a href="#Fire">Fire</a>
+<ul>
+<li><a href="#Features">1. Features</a></li>
+<li><a href="#Fire-to-the-rescue">2. Fire to the rescue</a></li>
+<li><a href="#Prerequisites">3. Prerequisites</a></li>
+<li><a href="#Installing-Fire">4. Installing Fire</a>
+<ul>
+<li><a href="#General-information">4.1. General information</a></li>
+<li><a href="#Get-rid-of-pre-installer-versions-of-Fire">4.2. Get rid of pre-installer versions of Fire</a></li>
+<li><a href="#Installing-Fire-somewhere-else">4.3. Installing Fire somewhere else</a></li>
+</ul></li>
+<li><a href="#Running-Fire">5. Running Fire</a></li>
+<li><a href="#What-Fire-scans">6. What Fire scans</a></li>
+<li><a href="#What-Fire-does-not-scan">7. What Fire does not scan</a></li>
+<li><a href="#Anomalies">8. Anomalies</a>
+<ul>
+<li><a href="#Scripted-versus-non-scripted-namespaces">8.1. Scripted versus non-scripted namespaces</a></li>
+<li><a href="#References">8.2. References</a></li>
+<li><a href="#Nested-scripted-namespaces">8.3. Nested scripted namespaces</a></li>
+<li><a href="#Ghostly-namespaces">8.4. Ghostly namespaces</a></li>
+<li><a href="#2-FIX-with-the-file-protocol">8.5. <code>2 ⎕FIX</code> with the file:// protocol</a></li>
+</ul></li>
+<li><a href="#Deleting-stuff">9. Deleting stuff</a></li>
+<li><a href="#Tips-and-Tricks">10. Tips and Tricks</a>
+<ul>
+<li><a href="#DQ-and-the-Wait-method">10.1. ⎕DQ and the “Wait” method</a></li>
+<li><a href="#Threads-and-Fire">10.2. Threads and Fire</a></li>
+<li><a href="#Editing">10.3. Editing</a></li>
+<li><a href="#Report-Detailed-hits">10.4. Report “Detailed hits”</a></li>
+<li><a href="#Print-object-name-to-the-session">10.5. Print object name(s) to the session</a></li>
+<li><a href="#Copy-object-name-to-Search-for">10.6. Copy object name to “Search for”</a></li>
+<li><a href="#The-Start-looking-here-control">10.7. The “Start looking here” control</a></li>
+<li><a href="#Enlarge-the-window">10.8. Enlarge the window</a></li>
+</ul></li>
+<li><a href="#Fires-API">11. Fire's API</a>
+<ul>
+<li><a href="#Searching-for-a-string">11.1. Searching for a string</a></li>
+<li><a href="#Search-NL">11.2. Search <code>⎕NL</code> (Name List)</a></li>
+</ul></li>
+<li><a href="#Useful-Regular-expressions">12. Useful Regular expressions</a></li>
+<li><a href="#Link-and-Fire">13. Link and Fire</a></li>
+<li><a href="#Salt-and-Fire">14. Salt and Fire</a></li>
+<li><a href="#Showing-the-PID-in-all-Fire-window-captions">15. Showing the PID in all Fire window captions</a>
+</li></ul></li>
+</ul>
+</div>
+</nav>
+<div class="h_tag">
+<a href="#Fire" id="Fire" class="autoheader_anchor">
+<h1 data-id="Fire">Fire</h1>
+</a>
+</div>
+<p>Note that FiRe stands for FInd and REplace. Fire is a Windows-only application.</p>
+<div class="h_tag">
+<a href="#Features" id="Features" class="autoheader_anchor">
+<h2 data-id="Features">1. Features</h2>
+</a>
+</div>
+<p>Fire has a couple of features that Dyalog's built-in “Search” tool do not offer. These are the main features:</p>
+<ul>
+<li>Most importantly, a global “Replace”.
+<p>This feature is particularly powerful since it allows you to inspect every single item that is going to be changed in a preview, and to exclude objects with a single click.</p></li>
+<li>The scope of a search can be restricted to just code while comments or even text will be ignored. Or you search just in comments, or just in text.</li>
+<li>A search result can become the source of another search.</li>
+<li>Regular Expressions can be used.</li>
+</ul>
+<p>Fire has however many more features:</p>
+<ul>
+<li>The “Start search in” control remembers the last 30 entries per workspace and user.</li>
+<li>The “Start looking here” control offers auto-completion.</li>
+<li>One can negate a search: all which do <em>not</em> contain …
+<p>In conjunction with “Search hit list” this can effectively be used to exclude unwanted stuff before triggering a “Replace”.</p></li>
+<li>Built-in reports designed to help refurbishing code that has started to smell.</li>
+<li>Search just the name list (<code>⎕NL</code>).</li>
+</ul>
+<div class="h_tag">
+<a href="#Fire-to-the-rescue" id="Fire-to-the-rescue" class="autoheader_anchor">
+<h2 data-id="Fire-to-the-rescue">2. Fire to the rescue</h2>
+</a>
+</div>
+<p>Fire also overcomes a couple of problems that Dyalog's built-in Search tool is suffering from.</p>
+<ul>
+<li>It handles circular references well thanks to Phil Last.</li>
+<li>It is less likely to generate a WS FULL.</li>
+</ul>
+<div class="h_tag">
+<a href="#Prerequisites" id="Prerequisites" class="autoheader_anchor">
+<h2 data-id="Prerequisites">3. Prerequisites</h2>
+</a>
+</div>
+<ul>
+<li>Fire requires at least version 18.0 Unicode in order to run</li>
+<li>Fire also requires the Dyalog package manager Tatin to be installed in order to bring in the packages Fire depends on.</li>
+</ul>
+<div class="h_tag">
+<a href="#Installing-Fire" id="Installing-Fire" class="autoheader_anchor">
+<h2 data-id="Installing-Fire">4. Installing Fire</h2>
+</a>
+</div>
+<div class="h_tag">
+<a href="#General-information" id="General-information" class="autoheader_anchor">
+<h3 data-id="General-information">4.1. General information</h3>
+</a>
+</div>
+<p>Since version 7.1.0 Fire comes with its own installer. Just double-click it and your are done. It does not require admin rights.</p>
+<p>The installer installs Fire by default into <code>%USERPROFILE%\Documents\MyUCMDs</code> which translates to <code>C:\Users\{userid}\Documents\MyUCMDs</code> with a default Windows installation. This folder, if it exists, is scanned by Dyalog for user commands.</p>
+<p>Note that installing into <code>%USERPROFILE%</code> means that you have to install it separately for every user who wants to use Fire.</p>
+<div class="h_tag">
+<a href="#Get-rid-of-pre-installer-versions-of-Fire" id="Get-rid-of-pre-installer-versions-of-Fire" class="autoheader_anchor">
+<h3 data-id="Get-rid-of-pre-installer-versions-of-Fire">4.2. Get rid of pre-installer versions of Fire</h3>
+</a>
+</div>
+<p>If you have used Fire before version 7.1 then you might have installed it somewhere different. If this is the case then your are strongly advised to remove Fire (both the script <code>Fire_uc.dyalog</code> and the folder <code>Fire\</code> from that folder before running the installer.</p>
+<p>Without doing this the old installation will continue to exist, and depending on the sequence of folders Dyalog scans for user commands Dyalog might continue to execute the older version, because the first one wins.</p>
+<div class="h_tag">
+<a href="#Installing-Fire-somewhere-else" id="Installing-Fire-somewhere-else" class="autoheader_anchor">
+<h3 data-id="Installing-Fire-somewhere-else">4.3. Installing Fire somewhere else</h3>
+</a>
+</div>
+<p>If for some reason you decide to install Fire not in the default location but somewhere else then that's fine. Of course the hosting folder must be among the folders scanned by Dyalog for user commands; see the “User Command” tab in the Dyalog Configuration dialog.</p>
+<p>If you want to change the installation folder later when you install Fire again then it is strongly recommended that you un-install it first: execute this EXE in order to achieve that:</p>
+<pre><code>%USERPROFILE%\Documents\MyUCMDs\Fire\unins000.exe</code></pre>
+<p>Without doing this the old installation will continue to exist, and depending on the sequence of folders Dyalog scans for user commands Dyalog might continue to execute the older version, because the first one wins.</p>
+<div class="h_tag">
+<a href="#Running-Fire" id="Running-Fire" class="autoheader_anchor">
+<h2 data-id="Running-Fire">5. Running Fire</h2>
+</a>
+</div>
+<p>After having installed Fire you can start it by executing:</p>
+<pre><code>]Fire</code></pre>
+<p>The User Command checks whether Fire is already available in <code>⎕SE</code>. If that is not the case then it is copied into <code>⎕SE</code>. From now on it is started directly from <code>⎕SE</code> which you might find significantly faster than loading it into <code>⎕SE</code> first depending on where Fire is copied from in your environment.</p>
+<p>Of course you can make that change persistent by saving your session. However, when a new version of Fire comes along you need a way to load this new version. This can be achieved by specifying an optional parameter:</p>
+<pre><code>]Fire -fl</code></pre>
+<p>“fl” stands for “force load”. This loads Fire into <code>⎕SE</code> no matter whether it's already there or not.</p>
+<div class="h_tag">
+<a href="#What-Fire-scans" id="What-Fire-scans" class="autoheader_anchor">
+<h2 data-id="What-Fire-scans">6. What Fire scans</h2>
+</a>
+</div>
+<ol start="1">
+<li>Named namespaces</li>
+<li>Scripts</li>
+<li>Functions and operators</li>
+<li>GUI instances which have <code>KeepOnClose←1</code></li>
+</ol>
+<div class="h_tag">
+<a href="#What-Fire-does-not-scan" id="What-Fire-does-not-scan" class="autoheader_anchor">
+<h2 data-id="What-Fire-does-not-scan">7. What Fire does not scan</h2>
+</a>
+</div>
+<ol start="1">
+<li>Unnamed namespaces.</li>
+<li>Class instances.</li>
+<li>GUI instances which have <code>KeepOnClose←0</code>.</li>
+<li>Ghostly namespaces.</li>
+<li>References</li>
+</ol>
+<div class="h_tag">
+<a href="#Anomalies" id="Anomalies" class="autoheader_anchor">
+<h2 data-id="Anomalies">8. Anomalies</h2>
+</a>
+</div>
+<div class="h_tag">
+<a href="#Scripted-versus-non-scripted-namespaces" id="Scripted-versus-non-scripted-namespaces" class="autoheader_anchor">
+<h3 data-id="Scripted-versus-non-scripted-namespaces">8.1. Scripted versus non-scripted namespaces</h3>
+</a>
+</div>
+<p>Scripted namespace are in some ways an anomaly in Dyalog APL. For example, if there is a function <code>foo</code> in a namespace <code>NS</code> then the statement <code>NS.⎕EX 'foo'</code> deletes the function from an ordinary (non-scripted) namespace but <em>not</em> from a scripted namespace, though it <em>is</em> removed from the namespace that is connected to the script. <code>⎕FX</code> behaves similarly strange.</p>
+<p>Fire processes functions and operators in scripted namespaces in the same way as in ordinary namespaces. That means that a function that carries a hit is listed on its own in both cases.</p>
+<p>A namespace script as such is <em>only</em> listed in the hit list when it carries variable definitions or comments with hits.</p>
+<p>However, this is inconsistent with what Fire does with functions and operators: in ordinary namespaces a variable is listed on it's own only when its value — not the name! — carries a hit. For scripted namespaces it's listed on its own when the value <em>or</em> the name carries a hit.</p>
+<p>The reason for this inconsistency is that there is no good way to tell function assignments (like <code>fns←+/</code>) from variable assignments.</p>
+<p>Since “Replace” is only available for variables of certain types anyway, this still seemed the best way to deal with the problem.</p>
+<div class="h_tag">
+<a href="#References" id="References" class="autoheader_anchor">
+<h3 data-id="References">8.2. References</h3>
+</a>
+</div>
+<p>There are two different flavours of references to be considered:</p>
+<ul>
+<li>References pointing to classes, interfaces or namespaces.
+<p>By default these are simply ignored by Fire.</p></li>
+<li>References pointing to functions, either traditional ones or dfns.</li>
+</ul>
+<p>It <strong>is</strong> possible to tell a reference pointing to a tfn from that tfn, but with a large number of functions it would slow down Fire siginificantly.</p>
+<p>Worse, there is no way to tell a reference pointing to a dfn from that dfn.</p>
+<p>Therefore Fire does not even attempt to identify such references. That could result in the same function listed twice in the hit list, once under its real name and once under the name of the reference.</p>
+<p>That should not pose a problem, even if you perform a “Replace” operation: Fire would carry out the same operation twice, wasting a bit of time but delivering the desired result.</p>
+<div class="h_tag">
+<a href="#Nested-scripted-namespaces" id="Nested-scripted-namespaces" class="autoheader_anchor">
+<h3 data-id="Nested-scripted-namespaces">8.3. Nested scripted namespaces</h3>
+</a>
+</div>
+<p>If you attempt to change a function or operator that lives in a scripted namespace which itself lives in a scripted namespace then Fire <em><strong>cannot</strong></em> perform the change.</p>
+<p>For example, given this script:</p>
+<pre><code>:Namespace Outer
+    :Namespace Inner
+        ∇ r←PI
+          r←3.14
+        ∇
+    :EndNamespace
+:EndNamespace</code></pre>
+<p>If you attempt to replace <code>3.14</code> by <code>3.14159265359</code> with Fire then that would fail; Fire will tell you BTW.</p>
+<p>Here is why:</p>
+<pre><code>      ⍪c←⎕nr '#.Outer.Inner.PI'
+  r←PI
+  r←3.14
+      2⊃c
+ r←3.14
+      (2⊃c)←'r←3.14159265359'
+      #.Outer.Inner.⎕FX c
+      ⍪#.Outer.Inner.⎕NR 'PI'
+  r←PI
+  r←3.14159265359
+      #.Outer.Inner.PI
+3.14159265359
+      ⍪⎕SRC #.Outer.Inner
+     :Namespace Inner
+         ∇ r←PI
+           r←3.14
+         ∇
+     :EndNamespace</code></pre>
+<p>As you can see, by now the code in the namespace associated with the script (that's what gets executed!) is no longer in sync with the script.</p>
+<p>Now this is in accordance with the documentation. When you want to change a function in a script you need to use <code>⎕FIX</code> and it will work. Fire is actually doing this behind the scenes, and it works well <em>unless scripted namespaces are nested</em>!</p>
+<p>To illustrate the problem let's start again with this script:</p>
+<pre><code>:Namespace Outer
+    :Namespace Inner
+        ∇ r←PI
+          r←3.14
+        ∇
+    :EndNamespace
+:EndNamespace</code></pre>
+<p>This time we modify not the function but the inner script:</p>
+<pre><code>      ⍪c←⎕src Outer.Inner
+     :Namespace Inner
+         ∇ r←PI
+           r←3.14
+         ∇
+     :EndNamespace
+      3⊃c
+          r←3.14
+      (3⊃c)←'r←3.14159265359'
+      Outer.⎕fix c
+      3⊃⎕src Outer.Inner
+          r←3.14159265359
+      Outer.Inner.PI
+3.14159265359
+      ⍪⎕SRC Outer
+ :Namespace Outer
+     :Namespace Inner
+         ∇ r←PI
+           r←3.14
+         ∇
+     :EndNamespace
+ :EndNamespace
+</code></pre>
+<p>This is unfortunate for two reasons:</p>
+<ol start="1">
+<li><code>⎕FIX</code> and <code>⎕SRC</code> should be the inverse of each other; they are not.</li>
+<li>As a programmer I do not have other means than <code>⎕FIX</code> for modifying <code>Inner</code>, but that does not work.</li>
+</ol>
+<p>However, for the time being all Fire can do when it finds a hit in an inner namespace is to tell you, the user, that it will not be able to carry out any changes in that inner namespace.</p>
+<p>Hopefully using nested namespaces will not become popular…</p>
+<div class="h_tag">
+<a href="#Ghostly-namespaces" id="Ghostly-namespaces" class="autoheader_anchor">
+<h3 data-id="Ghostly-namespaces">8.4. Ghostly namespaces</h3>
+</a>
+</div>
+<p>Note that Fire does not scan ghostly namespaces. These are namespaces which exist together with GUI objects as well as classes. If you did not know about ghostly namespaces then it might be best to ignore them: they can be quite confusing.</p>
+<p>Ghostly namespaces exist for a very long time but until OO was introduced to Dyalog APL they were kept hidden from users.</p>
+<p>If you would like to know more then consider this code:</p>
+<pre><code>      ⎕fix ':Class Test' ':EndClass'
+      Test.⎕FX'r←Hello' 'r←''World'''
+      Test.Hello
+World</code></pre>
+<p>If you are under the impression that you've created a method “Hello” in the class “Test” then you are wrong: that cannot work because the function “Hello” does not carry an “Access Public” statement, so it wouldn't be possible to call the method as a class member anyway.</p>
+<p>The same is true for this:</p>
+<pre><code>      #.Test.⎕IO←0</code></pre>
+<p>This statement does not throw an error, so somehow it was successful. Referencing works as well:</p>
+<pre><code>      #.Test.⎕IO
+1</code></pre>
+<p>However, <code>⎕IO</code> <em>must</em> be a private property of the class, so it can <em>never</em> be set or even referenced directly: you cannot specify anywhere an “Access Public” statement for <code>⎕IO</code>.</p>
+<p>But since we managed to execute these statements successfully (<code>⎕FX 'Hello'</code> and <code>⎕IO←0</code>) the question is where they have been executed. Well, in the ghostly namespace which exists together with the class script, sharing the same name.</p>
+<p>Even if Fire would show the function <code>Hello</code> in the hit list there is another anomaly: executing <code>Test.⎕ed 'Hello'</code> doesn't allow you to edit it. That means that Fire does not have the means to allow you editing the code.</p>
+<p>The final obstacle: making a change to the class <code>Test</code> will make <code>Hello</code> disappear because the ghostly namespace will be re-created when the class is (re-) fixed.</p>
+<p>Therefore it seems to be best to ignore ghostly namespaces altogether.</p>
+<div class="h_tag">
+<a href="#GUI-objects-and-ghostly-namespaces" id="GUI-objects-and-ghostly-namespaces" class="autoheader_anchor">
+<h4 data-id="GUI-objects-and-ghostly-namespaces">8.4.1. GUI objects and ghostly namespaces</h4>
+</a>
+</div>
+<p>Investigate this code:</p>
+<pre><code>      'MyForm' ⎕WC 'Form' ('KeepOnClose' 1)
+      MyForm.⎕FX'r←Hello' 'r←''World'''</code></pre>
+<p>Note that strictly speaking this is the same thing: There is a GUI object called “MyForm” but there is also a ghostly namespace holding the “Hello” function. However, Dyalog APL perfectly keeps that as a secret: it has always been that way since GUI objects were introduced into Dyalog APL a long time ago, yet nobody ever realized this because Dyalog APL behaved in a way that makes that actually impossible.</p>
+<div class="h_tag">
+<a href="#Semi-ghostly-namespaces" id="Semi-ghostly-namespaces" class="autoheader_anchor">
+<h4 data-id="Semi-ghostly-namespaces">8.4.2. Semi-ghostly namespaces</h4>
+</a>
+</div>
+<p>Note that this code:</p>
+<pre><code>      ⎕FIX':Namespace MyNS' ':EndNamespace'
+      MyNS.⎕FX'r←Hello' 'r←''World'''</code></pre>
+<p>has consequences that make it look as if a ghostly namespace is involved when actually there isn't. Look at this:</p>
+<pre><code>      MyNS.Hello
+World
+      ⎕←⍪MyNS.⎕SRC MyNS
+ :Namespace MyNS
+ :EndNamespace</code></pre>
+<p>You can execute “Hello” but it's not part of the script - looks like a ghostly namespace is involved, right?!</p>
+<p>Well, it's not. By definition a namespace script can only be changed by editing the script. Therefore the <code>⎕FX</code> statement did actually add the function “Hello” to the namespace but not to the namespace script. In other words, the script and the namespace are now out of sync.</p>
+<p>According to Dyalog this is not a bug but a feature.</p>
+<p>BTW, this:</p>
+<pre><code>      ⎕FIX ':Namespace MyNS' '∇r←Hello2' 'r←''1 2 3''' '∇' ':EndNamespace'
+      MyNS.Hello2
+1 2 3
+      MyNS.⎕EX 'Hello2'
+      MyNS.Hello2
+VALUE ERROR
+      MyNS.Hello2
+     ∧</code></pre>
+<p>has a similar effect: the <code>⎕EX</code> statement did actually remove the <code>Hello2</code> function from the namespace but not from the script.</p>
+<p>Note that Fire investigates the script rather than the namespace. <code>Hello2</code> therefore would not pop up in Fire because it's not part of the script. If you find this confusing - so do I.</p>
+<p>If you now think: “Hang on, if <code>⎕FX</code> does not change a script at all, then surely a ”Replace“ operation with Fire must fail, right?” then luckily you would be wrong: Fire is smart enough to recognize the situation and manipulates - and finally fixes - the script rather than individual functions.</p>
+<p>By the way, if for any reason you want to know whether there is code somewhere in a ghostly namespace then you can achieve this by executing the “Report ghosts” command from the “Reports” menu.</p>
+<p>Note that code that exists in a ghostly namespace associated with an external object (Like an Excel workbook) is not reported; Fire cares about APL objects only.</p>
+<div class="h_tag">
+<a href="#2-FIX-with-the-file-protocol" id="2-FIX-with-the-file-protocol" class="autoheader_anchor">
+<h3 data-id="2-FIX-with-the-file-protocol">8.5. <code>2 ⎕FIX</code> with the file:// protocol</h3>
+</a>
+</div>
+<p>You can use</p>
+<pre><code>2 ⎕FIX 'file:///path/to/MyClass.aplc'</code></pre>
+<p>This will bring the class into the workspace and link it to the file.</p>
+<p>If for any reason you break that link with the <code>5178⌶</code> I-Beam then it leaves behind a kind of zombie: you cannot edit the code anymore, and <code>⎕SRC</code> would generate a NONCE ERROR on it, despite the fact that the code still executes.</p>
+<p>Fire would not find anything inside such a zombie. Dyalogs own search tool would find stuff inside any function and any operator inside <code>MyClass</code>, be it private or public, but nothing outside functions and operators.</p>
+<p>Our advice is to not use <code>2 ⎕FIX</code> with the file protocol if you can help it; instead use</p>
+<pre><code>2 ⎕FIX ⊃⎕NGET '/path/to/MyClass.aplc</code></pre>
+<div class="h_tag">
+<a href="#Deleting-stuff" id="Deleting-stuff" class="autoheader_anchor">
+<h2 data-id="Deleting-stuff">9. Deleting stuff</h2>
+</a>
+</div>
+<p>The “Replace” dialog has a check box “Delete lines/items with hits”. That seems to be easy enough: any lines that carry the search string are going to be deleted. However, there are details you need to be aware of:</p>
+<ol start="1">
+<li>Variables of any type are ignored.</li>
+<li>The first and the last line of any script is never deleted, no matter whether they carry a hit or not. It should be obvious why that is.</li>
+<li>The first line of any function or operator is never deleted, no matter whether they carry a hit or not. However, be aware of the next topic.</li>
+<li>A tfn that carries hits on all its lines is deleted.</li>
+<li>A one-line dfn that carries a hit is deleted.</li>
+</ol>
+<div class="h_tag">
+<a href="#Tips-and-Tricks" id="Tips-and-Tricks" class="autoheader_anchor">
+<h2 data-id="Tips-and-Tricks">10. Tips and Tricks</h2>
+</a>
+</div>
+<div class="h_tag">
+<a href="#DQ-and-the-Wait-method" id="DQ-and-the-Wait-method" class="autoheader_anchor">
+<h3 data-id="DQ-and-the-Wait-method">10.1. ⎕DQ and the “Wait” method</h3>
+</a>
+</div>
+<p>Fire does not execute either <code>⎕DQ</code> or <code>Wait</code> on its main GUI. That allows one to move the focus to the session by pressing &lt;Ctrl+Tab&gt; in Fire. Sadly there is no way to move the focus back to Fire without the mouse.</p>
+<p>Avoiding <code>⎕DQ</code> works well in many circumstances but it might cause problems when other threads are running. In that case you are advised to finish those threads before you use Fire.</p>
+<div class="h_tag">
+<a href="#Threads-and-Fire" id="Threads-and-Fire" class="autoheader_anchor">
+<h3 data-id="Threads-and-Fire">10.2. Threads and Fire</h3>
+</a>
+</div>
+<p>Threads can pose a problem. This is particularly true for the “Replace” operation. That is the reason that the “Replace” operation cannot be triggered when other threads than the main threads are running.</p>
+<div class="h_tag">
+<a href="#Editing" id="Editing" class="autoheader_anchor">
+<h3 data-id="Editing">10.3. Editing</h3>
+</a>
+</div>
+<p>When you edit one or more APL objects from Fire you can double-click another APL object in an Edit window successfully. You can also go to the session and add another Edit window to those which are already open. However, you are advised to use this with care.</p>
+<div class="h_tag">
+<a href="#Report-Detailed-hits" id="Report-Detailed-hits" class="autoheader_anchor">
+<h3 data-id="Report-Detailed-hits">10.4. Report “Detailed hits”</h3>
+</a>
+</div>
+<p>After having performed a search the report “Detailed hits” allows you to check the hits in context. This is particularly useful in order to find out whether the hit list needs some fine tuning.</p>
+<p>Note that you can remove objects from the “Detailed hits” report, and this will <em>also</em> remove them from the hit list.</p>
+<div class="h_tag">
+<a href="#Print-object-name-to-the-session" id="Print-object-name-to-the-session" class="autoheader_anchor">
+<h3 data-id="Print-object-name-to-the-session">10.5. Print object name(s) to the session</h3>
+</a>
+</div>
+<p>Note that you can make Fire print the fully qualified name of all selected items in the hit list either by selecting the appropriate command from the context menu or by pressing F4.</p>
+<div class="h_tag">
+<a href="#Copy-object-name-to-Search-for" id="Copy-object-name-to-Search-for" class="autoheader_anchor">
+<h3 data-id="Copy-object-name-to-Search-for">10.6. Copy object name to “Search for”</h3>
+</a>
+</div>
+<p>Via the context menu or by pressing F6 you can copy the name of the currently selected object in the hit list to the “Search for” control. This option is inactive in case more than just one row of the hit list is selected.</p>
+<div class="h_tag">
+<a href="#The-Start-looking-here-control" id="The-Start-looking-here-control" class="autoheader_anchor">
+<h3 data-id="The-Start-looking-here-control">10.7. The “Start looking here” control</h3>
+</a>
+</div>
+<p>You can reduce the length of the path in the “Start looking in” by one “unit” by pressing Ctrl+Backspace. For example, if the current contents of the control is</p>
+<p><code>#.foo.my.subnamespaceNumber0911</code></p>
+<p>then pressing Ctrl+Backspace reduces this to</p>
+<p><code>#.foo.my</code></p>
+<p>Note that this works only when the cursor is positioned to the right of the contents.</p>
+<p>By pressing the &lt;delete&gt; key — when the focus is in the “Start looking here” field — you can reduce it from</p>
+<p><code>#.foo.my.subnamespaceNumber0911</code></p>
+<p>to just</p>
+<p><code>#</code></p>
+<div class="h_tag">
+<a href="#Enlarge-the-window" id="Enlarge-the-window" class="autoheader_anchor">
+<h3 data-id="Enlarge-the-window">10.8. Enlarge the window</h3>
+</a>
+</div>
+<p>If the hit list is too big to display all hits try pressing F8. This will enhance the height of the window to what's either necessary to display the full list or what is the maximum size of the monitor. This might not work too well on multiple-monitor systems when the screen sizes of the monitors involved are different.</p>
+<div class="h_tag">
+<a href="#Fires-API" id="Fires-API" class="autoheader_anchor">
+<h2 data-id="Fires-API">11. Fire's API</h2>
+</a>
+</div>
+<p>Since version 8.0 Fire comes with an API, meaning that you can take adantage of some of Fire's features under program control.</p>
+<p>You must make sure that Fire is available in <code>⎕SE</code>. This can either be achieved by just executing the <code>]Fire</code> user command or by executing <code>]Fire -noGUI</code> which does load Fire into <code>⎕SE</code> but does not run Fire, meaning that the GUI would not show.</p>
+<p>You can then execute the appropriate methods from the namespace <code>⎕SE._Fire.Fire.API</code>.</p>
+<div class="h_tag">
+<a href="#Searching-for-a-string" id="Searching-for-a-string" class="autoheader_anchor">
+<h3 data-id="Searching-for-a-string">11.1. Searching for a string</h3>
+</a>
+</div>
+<p>Let's assume you want to search the string “abc” in <code>⎕SE</code>. This is what you would do:</p>
+<pre><code>      F←⎕SE._Fire.Fire.API
+      parms←F.CreateParms
+      parms. ∆List
+ APL_Name       0
+ Greedy         0
+ Negate         0
+ Report         0
+ SearchIsRegEx  0
+ APL_Code       1
+ Case           1
+ Code           1
+ Comments       1
+ Text           1
+ Vars           1
+ StartSearchIn  #
+      parms.StartSearchIn←'⎕se'
+      parms F.Search 'abc'
+ ⎕SE.Parser        4 9.4
+ ⎕SE.SALT          2 9.4
+ ⎕SE.UnicodeFile   1 9.4</code></pre>
+<p>There are three columns:</p>
+<ul>
+<li><code>[;1]</code> = the names of the objects with hits</li>
+<li><code>[;2]</code> = Number of hits</li>
+<li><code>[;3]</code> = Name class</li>
+</ul>
+<p>If you want to get the hits listed set <code>Report</code> to 1:</p>
+<pre><code style="white-space: pre;">      parms←F.CreateParms
+      parms.StartSearchIn←'⎕se'
+      parms.Report←1
+      ⎕←parms F.Search 'abc'
+ ∇⎕SE.Parser[⎕47 130 131]∇
+  [47]  (LOWER UPPER)←'abcdefghijklmnopqrstuvwxyzàáâãåèéêëòóôõöøùúûäæü' 'ABCDEFGHIJKLMNOPQRSTUVWXYZÀÁÂÃÅÈÉÊËÒÓÔÕÖØÙÚÛÄÆÜ'
+  [130] ⍝ sw←123 Switch 'abc' ⍝ if 'abc' has not been set 123 is returned.
+  [131] ⍝ If /abc=789 was specified in the parsed string the value returned will be ,789, not '789'
+ ∇⎕SE.SALT[⎕735 737]∇
+  [735] t←'0123456789abcdefghijklmnopqrstuvwxyz' ⋄ ex←ex,(⍴ex)↓'^=_'
+  [737] to←t,'aaaaaaeeeeeiiiioooooouuuunpdsccabcdefghijklmnopqrstuvwxyzaaaaaaeeeeeiiiioooooouuuudyn',ex
+ ∇⎕SE.UnicodeFile[⎕298]∇
+  [298] charset←'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 abcdefghijklmnopqrstuvwxyz0123456789'</code></pre>
+<div class="h_tag">
+<a href="#Search-NL" id="Search-NL" class="autoheader_anchor">
+<h3 data-id="Search-NL">11.2. Search <code>⎕NL</code> (Name List)</h3>
+</a>
+</div>
+<p>Since version 9.0 the API also allows you to search <code>⎕NL</code> recursively. Note that this always searches <code>#</code>.</p>
+<p>Let's assume you want to perform a search for “string” in the names of all objects, and that the search should <em>not</em> be case sensitive.</p>
+<p>We can do this without further ado because the defaults fit:</p>
+<pre><code>      F.SearchQNL 'search'
+</code></pre>
+<p>If we want to search for all functions that start their names with “Search” we must use a RegEx, and it should be a case sensitive search. For that we need to set some parameters:</p>
+<pre><code>      parms←F.CreateParmsFor_QNL_Search
+      parms.∆List  ⍝ List the defaults
+ Case           0
+ FullPath       0
+ SearchFor
+ SearchIsRegEx  0
+      parms←SearchIsRegEx←1
+      parms←Case←1
+      parms F.SearchQNL '^Search'
+</code></pre>
+<p>Note that if you want to find “search” in the full path of the APL objects (like “Foo” in <code>#.Fist.Foo.MyFunction</code>) then you must set <code>FullPath</code> to 1.</p>
+<div class="h_tag">
+<a href="#Useful-Regular-expressions" id="Useful-Regular-expressions" class="autoheader_anchor">
+<h2 data-id="Useful-Regular-expressions">12. Useful Regular expressions</h2>
+</a>
+</div>
+<p>There is a separate document <code>UsefulRegExes.html</code> available — see there.</p>
+<div class="h_tag">
+<a href="#Link-and-Fire" id="Link-and-Fire" class="autoheader_anchor">
+<h2 data-id="Link-and-Fire">13. Link and Fire</h2>
+</a>
+</div>
+<p>Since version 9.2 Fire supports Link. However, Fire needs at least Link version 3.0.0 for that to work.</p>
+<p>In case only an older version is found Fire will print warnings to the session.</p>
+<div class="h_tag">
+<a href="#Salt-and-Fire" id="Salt-and-Fire" class="autoheader_anchor">
+<h2 data-id="Salt-and-Fire">14. Salt and Fire</h2>
+</a>
+</div>
+<p>Note that managing scripts with Salt it deprecated. Use Link instead.</p>
+<p>The Simple APL Library Toolkit (SALT) which is supplied with Dyalog APL is supported by Fire: when a script is managed by SALT then the script “contains” an ordinary namespace <code>SALT_Data</code>. This namespace contains a number of variables including</p>
+<ul>
+<li><code>CRC</code></li>
+<li><code>GlobalName</code></li>
+<li><code>LastWriteTime</code></li>
+<li><code>PreviousVersion</code></li>
+<li><code>SourceFile</code></li>
+<li><code>Version</code></li>
+</ul>
+<p>and others. SALT uses them for its own purposes.</p>
+<p>When a script is re-fixed with <code>⎕FIX</code> then the namespace <code>SALT_Data</code> disappears.</p>
+<p>However, Fire works out whether a script is managed by SALT and restores the namespace <code>SALT_Data</code> after having re-fixed it as part of a “Replace” operation. Therefore the script continues to be managed by SALT.</p>
+<p>What Fire does not do is actually saving any object via a SALT command. The simple reason is that when you change an object in the workspace it does not necessarily mean that you want to save those changes on disk. It's completely up to the programmer to make that decision.</p>
+<div class="h_tag">
+<a href="#Showing-the-PID-in-all-Fire-window-captions" id="Showing-the-PID-in-all-Fire-window-captions" class="autoheader_anchor">
+<h2 data-id="Showing-the-PID-in-all-Fire-window-captions">15. Showing the PID in all Fire window captions</h2>
+</a>
+</div>
+<p>Dyalog allows you to specify the captions of many GUI elements like the session, the Workspace Explorer, message boxes etc. by setting certain values in the Windows Registry. For details search for “Windows captions” in the Dyalog Help.</p>
+<p>In case you've added {PID} - which stands for “Process ID” - to the MessageBox value Fire will honor this and show the PID in all its GUI elements as well.</p>
+<p>In case you wonder what this is good for: there are people out there who have more than just one Dyalog session running at the same time, sometimes many. In such cases it can be very useful to know the process ID a particular message box belongs to, because it can be very awkward or impossible to find out by other means.</p>
+<p>Kai Jaeger — 2022-08-31</p>
+</body>
+</html>

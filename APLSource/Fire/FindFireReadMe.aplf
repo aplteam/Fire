@@ -25,4 +25,5 @@
          :EndIf
      :EndIf
      p←Parent.FilesAndDirs.NormalizePath p
+     'Cannot find HTML documents'Assert 0<≢p
  :EndIf

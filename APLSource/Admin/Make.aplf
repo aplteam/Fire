@@ -1,5 +1,9 @@
  Make flag;targetPath;home;M;name;setupExe;myUCMDsFolder;C;tempFolder;data;buff;cfg
 ⍝ Version 7.3.0 ⋄ 2023-06-18
+⍝ * 7.2.2 ⋄ 2023-09-11
+⍝   * Bug fixes
+⍝     * HTML documents were not found
+⍝     * Superfluous files removed from install folder
 ⍝ * 7.2.1 ⋄ 2023-06-18
 ⍝   * Uses latest features of MakeHelpers now
 ⍝   * Question added to avoid mishaps
@@ -16,7 +20,7 @@
      :If 18≢⊃⊃(//)⎕VFI buff←{⍵/⍨2>+\⍵='.'}2⊃# ⎕WG'APLVersion'  ⍝
          ('"Make" a new version with 18.0 - this is ',buff)⎕SIGNAL 11
      :EndIf
- :AndIf ##.TestCases.CommTools.YesOrNo 'Sure yout want to create a new version of Fire? (The WS will be destroyed in the process)'
+ :AndIf ##.TestCases.CommTools.YesOrNo'Sure yout want to create a new version of Fire? (The WS will be destroyed in the process)'
      home←##.CiderConfig.HOME,'/'
      targetPath←home,'Dist/'
      {⍵:.}' '≠1↑0⍴⎕FX↑'r←M' 'r←⎕SE.MakeHelpers'  ⍝ avoids creating a link in # that points to ⎕SE at the expense of defeating auto-complete
@@ -27,7 +31,9 @@
     ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
      M.RecreateFolder targetPath
      M.IncreaseBuildIDInFunction'#.Fire.Fire.Version'
-     M.FetchLaterUserCommand'Fire_uc.dyalog'cfg C('[MyUCMDs]',name)
+     :If ⎕NEXISTS M.GetMyUCMDsFolder'/Fire/Fire_uc.dyalog'
+         M.CopyBetter(home,'APLSource/Fire_uc.dyalog')(M.GetMyUCMDsFolder'/Fire/Fire_uc.dyalog')'Project version' '[MyUCMDs] version'
+     :EndIf
      {}⎕SE.Cider.CloseProject''  ⍝ Precaution
      ⎕WSID←tempFolder,name,'.dws'
      0 ⎕SAVE ⎕WSID
@@ -36,8 +42,8 @@
      '#.Fire.Fire'#.⎕CY ⎕WSID
      0 ⎕SAVE ⎕WSID
      './packages'M.CopyTo tempFolder
-     M.ConvertMarkdownToHtml5(home,'Docs/')(tempFolder,'html/')
-     M.##.F.DeleteFile tempFolder,'/html/readme.html'
+     M.ConvertMarkdownToHtml5(home,'Docs/')(home,'html/')
+     (home,'html/*')M.CopyTo tempFolder
      (home,##.CiderConfig.CIDER.source,'/',name,'_UC.dyalog')M.CopyTo tempFolder
      (home,'LICENSE')M.CopyTo tempFolder
      (home,'Fire.ico')M.CopyTo tempFolder
@@ -52,6 +58,7 @@
      :If 1 M.YesOrNo'Would you like to execute "',setupExe,'" ?'
          ⎕CMD targetPath,setupExe
      :EndIf
+     M.##.F.RmDirByForce tempFolder
      ⎕←'Clearing the workspace...'
      ⎕CLEAR
  :EndIf

@@ -43,13 +43,14 @@ Name: "english"; MessagesFile: "compiler:Default.isl"; LicenseFile: "License";
 
 [Files]
 Source: "{#TargetDir}Fire_uc.dyalog"; DestDir: "{app}";
-Source: "{#TargetDir}Fire_uc.dyalog"; DestDir: "{app}/test/";
-Source: "{#TargetDir}html/FireAndRegularExpressions.html"; DestDir: "{app}";
-Source: "{#TargetDir}html/ReleaseNotes.html"; DestDir: "{app}";
-Source: "{#TargetDir}html/UsefulRegExes.html"; DestDir: "{app}";
+Source: "{#TargetDir}ReadMe.html"; DestDir: "{app}";
+Source: "{#TargetDir}FireAndRegularExpressions.html"; DestDir: "{app}";
+Source: "{#TargetDir}FireAndRegularExpressions.html"; DestDir: "{app}";
+Source: "{#TargetDir}ReleaseNotes.html"; DestDir: "{app}";
+Source: "{#TargetDir}UsefulRegExes.html"; DestDir: "{app}";
 Source: "{#TargetDir}{#MyAppExeName}"; DestDir: "{app}"
 Source: "{#TargetDir}packages/*"; DestDir: "{app}/packages/"; Flags: recursesubdirs
-;Source: "{#TargetDir}LICENSE"; DestDir: "{app}"
+Source: "{#TargetDir}LICENSE"; DestDir: "{app}"
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

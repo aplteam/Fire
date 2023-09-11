@@ -13,6 +13,10 @@ A bump of the minor number indicates added functionality plus possibly bug fixes
 
 A bump of the patch number indicates bug fixes.
 
+## Version 9.6.0 from 2023-09-11
+
+* The "Search [ ]NL" report now allows to start a search in either `#` or in `⎕SE`.
+
 ## Version 9.5.2 from 2023-03-25
 
 Bug fix: people who do not tick "Options > Object Syntax > Expose GUI Properties" could not use "Replace"
@@ -137,3 +141,4 @@ Bug fix: people who do not tick "Options > Object Syntax > Expose GUI Properties
   * In the "Replace" dialog the "Delete lines" options should not be available (active) when it is a RegEx search.
   * The `∆List` function created by `Fire.API.CreateSearchParms` was buggy.
 * Internal change: all calls to acre via ⎕SE.UCMDS have now been replaced by calls to acre's API.
+

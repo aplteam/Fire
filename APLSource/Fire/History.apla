@@ -1,6 +1,10 @@
 (
  '⍝ Contains information regarding the last release. A full history is available on GitHub. (This line is ignored)'
  ''
+ '* 9.6.0 from 2023-09-11'
+ '  * The "Search ⎕NL" report now allows to search either in # or in ⎕SE'
+ '  * "Search in ⎕NL" has now a function key assigned to it: F7'
+ ''
  '* 9.5.2 from 2023-03-25'
  '  * Bug fix: people who do not tick "Options > Object Syntax > Expose GUI Properties" could not use "Replace"'
  ''

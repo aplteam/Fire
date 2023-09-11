@@ -5,6 +5,7 @@
  ∆←⊂'MenuItem'
  ∆,←⊂'Caption'('Search QNL...')
  ∆,←⊂'HintObj'n.Info
+ ∆,←⊂'Accelerator'(118 0)
  ∆,←⊂'Hint' 'Search for names recursively. Note that this is the only way to find the name of a non-scripted namespace!'
  n.SearchQNL←⍎'SearchQNL'rf.⎕WC ∆
  n.SearchQNL.onSelect←'OnSearchQNL'

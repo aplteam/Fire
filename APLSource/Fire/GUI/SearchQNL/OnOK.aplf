@@ -4,5 +4,6 @@
      parms.SearchIsRegEx←n2.IsRegEx.State
      parms.SearchFor←n2.SearchFor.Text
      parms.Case←n2.Case.State
+     parms.StartSearchIn←↑n2.(Root QSE).State/'#' '⎕SE'
      Search parms
  }
