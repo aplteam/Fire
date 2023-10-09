@@ -1,0 +1,9 @@
+ txt←ReplaceAliase txt;buff;keys;values
+⍝ Replaces aliase like "[HOME]" etc
+ :If '['∊txt
+     buff←'['(≠⊆⊢)txt
+     keys←1 ⎕C{⍵↑⍨⍵⍳']'}¨buff
+     buff←{⍵↓⍨1+⍵⍳']'}¨buff
+     values←ReplaceAliase_¨keys
+     txt←⊃,/(keys{0=≢⍵:'[',⍺,']' ⋄ ⍵}¨values),¨buff
+ :EndIf

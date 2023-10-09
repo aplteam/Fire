@@ -3,6 +3,7 @@
  r←⍬
  :If 0<≢path←↑⎕NPARTS G.HelpPath
      filename←path,'ReleaseNotes.html'
+⍝     Question.ShowMsg{'⌹'@(⍸⍵=' ')⊣⍵}filename
  :AndIf F.Exists filename
      A.GoToWebPage'file://',filename
  :Else

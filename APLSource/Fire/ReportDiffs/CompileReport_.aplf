@@ -45,9 +45,7 @@
          :If 0<noOf
              Drop G.DeleteLineFlag noOf noOf
          :ElseIf 1<≢⊆G.ReplaceBy  ⍝ Multi-line replacement?
-⍝             ∘∘∘
              data1←{(1=⍴⍵):∊⍵ ⋄ 1↓↑,/##.CR,¨⍵}{A.DLB ⍵}¨(≢⊆G.ReplaceBy)↑1↑New
-⍝             data2←##.A.DLB{2=≡⍵:{0=≢⍵:⍵ ⋄ 0⊃⍵}⍵ ⋄ ⍵}Old  ⍝TODO⍝
              data2←{(1=⍴⍵):∊⍵ ⋄ 1↓↑,/##.CR,¨⍵}{A.DLB ⍵}¨1↑Old
              data11←TAB,TAB,'p'Tag 1 MarkupDiff2 data2 data1 G.SearchFor G.ReplaceBy
              data22←TAB,TAB,'p'Tag 2 MarkupDiff2 data1 data2 G.ReplaceBy G.SearchFor

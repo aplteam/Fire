@@ -3,7 +3,7 @@
  rf←⍎'MB.TheReportMenu'n.Form.⎕WC'Menu' 'Reports'
 
  ∆←⊂'MenuItem'
- ∆,←⊂'Caption'('Search QNL...')
+ ∆,←⊂'Caption'('Search QNL...',##.TAB,'F7')
  ∆,←⊂'HintObj'n.Info
  ∆,←⊂'Accelerator'(118 0)
  ∆,←⊂'Hint' 'Search for names recursively. Note that this is the only way to find the name of a non-scripted namespace!'

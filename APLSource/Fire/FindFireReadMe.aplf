@@ -11,6 +11,7 @@
      ((regData∊'∘°')/regData)←';'
      v←';'Parent.APLTreeUtils2.Split regData
      :For thisPath :In v
+         thisPath←ReplaceAliase thisPath
          :If Parent.FilesAndDirs.Exists thisPath,'/Fire/ReadMe.html'
              p←thisPath,'/Fire/ReadMe.html'
              :Leave
