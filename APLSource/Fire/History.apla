@@ -1,6 +1,9 @@
 (
  '⍝ Contains information regarding the last release. A full history is available on GitHub. (This line is ignored)'
  ''
+ '* 9.6.2 from 2023-10-09'
+ '  * Version number corrected'
+ ''
  '* 9.6.1 from 2023-10-00'
  '  * Fire did not handle symbolic names on cmddir (SALT) at all, resulting in problems finding its documents'
  '  * The menu item "Reports > Search QNL" did not declare F7 being the hot key though the key did work'
