@@ -25,6 +25,7 @@
  ∆,←⊂'Attach'('Top' 'Left' 'Top' 'Right')
  n2.SearchFor←⍎'SearchFor'n2.Form.⎕WC ∆
  n2.SearchFor.onKeyPress←'OnKeyPressInSearchFor'
+ n2.SearchFor.Size[0]-←3
 
  ∆←⊂'Button'
  ∆,←⊂'Caption' '&Is RegEx'
@@ -70,7 +71,7 @@
  n2.Group2←⍎'Group'n2.Form.⎕WC ∆
 
  ∆←⊂'Button'
- ∆,←⊂'Caption' '&#'
+ ∆,←⊂'Caption' '#'
  ∆,←⊂'Posn'(20 10)
  ∆,←⊂'Style' 'Radio'
  ∆,←⊂'State' 1
@@ -78,7 +79,7 @@
  n2.Root←⍎'FullPath'n2.Group2.⎕WC ∆
 
  ∆←⊂'Button'
- ∆,←⊂'Caption' '⎕S&E'
+ ∆,←⊂'Caption' '⎕SE'
  ∆,←⊂'Posn'((15+↑+/⊃n2.FullPath.(Posn Size)),10)
  ∆,←⊂'Style' 'Radio'
  ∆,←⊂'Attach'(4⍴'Top' 'Left')

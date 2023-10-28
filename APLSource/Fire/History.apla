@@ -1,6 +1,9 @@
 (
  '⍝ Contains information regarding the last release. A full history is available on GitHub. (This line is ignored)'
  ''
+ '* 9.6.3 from 2023-10-28'
+ '  * "Search QNL" corrected: "#" cannot be a hot key.                       '
+ ''
  '* 9.6.2 from 2023-10-09'
  '  * Version number corrected'
  ''
