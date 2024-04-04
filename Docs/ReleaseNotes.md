@@ -13,10 +13,11 @@ A bump of the minor number indicates added functionality plus possibly bug fixes
 
 A bump of the patch number indicates bug fixes.
 
-## Version 9.6.3 from 2023-10-28
+## Version 9.6.3 from 2024-04-04
 
 * Bug fixes
   * "Search QNL" corrected: `#` cannot be a hot key
+  * Interpretation of `[HOME]` was sometimes wrong, resulting in not finding the release notes
 
 ## Version 9.6.2 from 2023-10-09
 
@@ -156,6 +157,7 @@ Bug fix: people who do not tick "Options > Object Syntax > Expose GUI Properties
   * In the "Replace" dialog the "Delete lines" options should not be available (active) when it is a RegEx search.
   * The `∆List` function created by `Fire.API.CreateSearchParms` was buggy.
 * Internal change: all calls to acre via ⎕SE.UCMDS have now been replaced by calls to acre's API.
+
 
 
 
