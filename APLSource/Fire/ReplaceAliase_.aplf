@@ -1,7 +1,7 @@
- r←ReplaceAliase_ key
+r←ReplaceAliase_ key
 ⍝ Sub-function of ReplaceAliase without independent meaning
  :If 'HOME'≡key
- :AndIf 0<≢r←1⊃4070⌶0
+ :AndIf 0<≢r←⎕se.SALTUtils.getEnvir 'HOME'
      r,←'/'
  :Else
      r←2 ⎕NQ #'GetEnvironment' key
