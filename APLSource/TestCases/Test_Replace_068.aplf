@@ -1,0 +1,50 @@
+ R←Test_Replace_068(stopFlag batchFlag);n;Text;n2;⎕TRAP;expected;tempDir;res;parms
+⍝ Replace a string in a function that changes the name; check whether Link is informed
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←T._Failed
+
+⍝ Preconditions
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+
+ tempDir←FilesAndDirs.GetTempSubDir↑⎕SI
+ #.⎕SHADOW'TEMP'
+ 'TEMP'#.⎕NS''
+ #.TEMP.⎕FX'r←Foo' 'r←42'
+ parms←⎕NS''
+ parms.watch←'ns'
+ res←parms ⎕SE.Link.Create'#.TEMP'tempDir
+ Assert res≡'Linked: #.TEMP → ',tempDir
+ Assert('.linkconfig' 'Foo.aplf')≡{↑,/1↓⎕NPARTS ⍵}¨↑FilesAndDirs.Dir tempDir,'/'
+
+ n.SearchFor.Text←'Foo'
+ n.StartSearchIn.Text←'#.TEMP'
+ n.(Case APL_Name).State←1
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →T.GoToTidyUp(,⊂'Foo')≢n.HitList.Items
+ expected←,⊂'#.TEMP'
+ →T.GoToTidyUp expected≢n.HitList.ReportInfo[;0]
+
+ {}∆Select n.ReplaceBtn
+ ∆Process n.Form
+
+ n2←#.Fire.Fire.Replace.n
+ n2.ReplaceBy.Text←'TheAnswerIs'
+
+ {}∆Select n2.StartBtn
+ ∆Process n.Form
+ →T.GoToTidyUp 1≠#.Fire.Fire.Replace.NoOfReplacements
+ →T.GoToTidyUp' r←Foo' ' r←42'≢⎕NR'#.TEMP.Foo'
+ →T.GoToTidyUp 42≢#.TEMP.TheAnswerIs
+ →T.GoToTidyUp~(,⊂'TheAnswerIs.aplf')∊{↑,/1↓⎕NPARTS ⍵}¨↑FilesAndDirs.Dir tempDir,'/'
+
+ R←T._OK
+
+∆TidyUp:
+ CloseFire
+ {}⎕SE.Link.Break'#.TEMP'
+ #.⎕EX'TEMP'
+ {}FilesAndDirs.RmDirByForce tempDir
+⍝Done

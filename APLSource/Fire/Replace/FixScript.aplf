@@ -1,26 +1,24 @@
- {r}←FixScript(ref name code i noOf);flag;msg;saltFlag;salt;_;cs;taa;managedFlag
+ {r}←FixScript(ref name code i noOf);flag;msg;saltFlag;salt;_;cs;tbt;managedFlag;res
 ⍝ Establishes script (class, interface or scripted namespace) "name" in the namepsace
 ⍝ ref is pointing to with the contents "code".
 ⍝ Returns 1 in case the user has cancelled the process, otherwise 0.
  r←flag←0
- taa←''         ⍝ Collect the names acre needs to be told about
+ tbt←''         ⍝ Collect the names acre needs To Be Told about
  :Repeat
      :If saltFlag←9=ref.⎕NC name,'.SALT_Data'       ⍝ Controlled by SALT?!
          salt←ref.⎕NS name,'.SALT_Data'
      :EndIf
      managedFlag←IsManagedByInterpreter name
      :Trap 11
-         ref.⎕FIX code
+         res←ref.⎕FIX code
          flag←1
          :If saltFlag
              'SALT_Data'(ref.⍎name).⎕NS salt.SALT_Data  ⍝ Restore the SALT data
-             ##.G.ChangedSaltedScript,←⊂name
-         :ElseIf managedFlag
-             ##.G.ChangedSaltedScript,←⊂name
          :EndIf
-         taa,←⊂(⍕ref),'.',name
+         ##.G.ChangedSaltedScript←∪##.G.ChangedSaltedScript,⊂name
+         tbt,←⊂(⍕res)
      :Else
-         msg←⊂'Sorry, but fixing the script of this object:'
+         msg←⊂'Sorry, but the attempt to fix the script of this object:'
          msg,←⊂'   ',name
          msg,←⊂'(no. ',(⍕i+1),' of ',(⍕noOf),')'
          msg,←⊂'did not work.'
@@ -40,7 +38,7 @@
          :EndSelect
      :EndTrap
  :Until flag
- :If ~TellAcre taa
-     TellLink taa
+ :If ~TellAcre tbt
+     TellLink tbt
  :EndIf
 ⍝Done

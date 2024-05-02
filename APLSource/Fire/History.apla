@@ -1,7 +1,11 @@
 (
  '⍝ Contains information regarding the last release. A full history is available on GitHub. (This line is ignored)'
  ''
- '* 9.6.3 from 2023-10-28'
+ '* 9.6.4 from 2024-05-02'
+ '  * When a function or a script was renamed implicitly via a "Replace" operation, Link/acre were given the old name '
+ '    rather than the new one, effectively loosing the change when the WS was destroyed one way or the other.'
+ ''
+ '* 9.6.3 from 2024-04-04'
  '  * "Search QNL" corrected: "#" cannot be a hot key.'
  '  * Under some circumstances Fire did not find its release notes                       '
  ''

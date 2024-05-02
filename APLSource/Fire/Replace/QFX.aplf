@@ -21,7 +21,12 @@
      l←ref.⎕FX code
      flag←0
      :Repeat
-         :If ' '≠1↑0⍴l
+         :If ' '=1↑0⍴l
+             flag←1
+             :If ~TellAcre(⍕ref),'.',l
+                 TellLink(⍕ref),'.',l
+             :EndIf
+         :Else
              msg←⊂'Sorry, but fixing the code of this object:'
              msg,←⊂'   ',name
              msg,←⊂'(no. ',(⍕i),' of ',(⍕noOf),')'
@@ -41,11 +46,6 @@
              :Case 2            ⍝ Cancel the whole operation
                  r←1 ⋄ :Return
              :EndSelect
-         :Else
-             flag←1
-             :If ~TellAcre(⍕ref),'.',name
-                 TellLink(⍕ref),'.',name
-             :EndIf
          :EndIf
      :Until flag
  :EndIf
