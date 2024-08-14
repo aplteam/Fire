@@ -1,2 +1,2 @@
  {n}←r
- n←Fire.Run 0
+ n←Fire.Run 0 'Firlefanz'

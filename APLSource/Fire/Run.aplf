@@ -1,5 +1,7 @@
- {n}←{testFlag}Run debugFlag;TheCounterForm
+ {n}←{testFlag}Run y;debugFlag;TheCounterForm;searchString
 ⍝ Fire's main function.\\
+⍝ The right argument can be either a Boolean (debugFlag) or a Bollean and a string. The string is
+⍝ then used to populate "Search for" box.\\
 ⍝ Set `debugFlag` to 1 and you get some developer-specific options making it easier to debug Fire.\\
 ⍝ `testFlag`, if specified, must be a Boolean. If it is true then a number of things are different:
 ⍝ Replace does not execute `⎕DQ`, the comparison tool is not really called etc. Used only when the\\
@@ -13,6 +15,14 @@
 ⍝ sure that the test cases always start with the defaults.\\
 ⍝ Home page: <https://github.com/aplteam/Fire>
  ⎕IO←0 ⋄ ⎕ML←3
+ :If (⊂y)∊0 1
+     debugFlag←y
+     searchString←''
+ :Else
+     'Right argument must be either a Boolean or a Boolean and a text vector'Assert 2=≢y
+     (debugFlag searchString)←y
+     'Second right argument is not a simple text vector'Assert(1=|≡,searchString)∧(' '≡↑1↑0⍴searchString)
+ :EndIf
  'This version of Fire requires at least Dyalog 18.0 Unicode'Assert ##.APLTreeUtils2.AtLeastVersion 18
  testFlag←↑{0<⎕NC ⍵:(⍎⍵),0 ⋄ 0}'testFlag'
  {}Cleanup
@@ -27,6 +37,7 @@
  G.TestFlag←testFlag
  G.HelpPath←FindFireReadMe ⍬
  n←GUI.n←GUI.CreateGUI debugFlag
+ n.SearchFor.Text←searchString
  ResetCertainRegKeySettings ⍬
  :If ~testFlag
      :Trap 6 ⋄ ⎕DL 0.05 ⋄ ⎕NQ GUI.n.SearchFor'GotFocus' ⋄ :EndTrap

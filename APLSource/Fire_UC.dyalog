@@ -1,10 +1,14 @@
-﻿:Class  Fire_UC
+:Class  Fire_UC
 ⍝ User Command script for "Fire"
 ⍝ Checks whether Fire is already loaded into ⎕SE.Fire.
 ⍝ If this is the case then Fire is started.
 ⍝ If this is not the case then Fire is copied into []SE from
 ⍝ the same directory the User Command stems from and then started.
 ⍝ Kai Jaeger
+⍝ * Version 4.1.0 - 2024-08-14
+⍝   * Syntax enhanced
+⍝     * "Start looking here" can now be any namespace
+⍝     * Optional second argument can define "Search for"
 ⍝ * Version 4.0.1 - 2022-08-30
 ⍝   * The user command was moved into the folder Fire/, and that required some changes.
 ⍝ * Version 4.0.0 - 2021-03-19
@@ -21,13 +25,6 @@
 ⍝   Now the user command checks whether the minimum requierements (Dyalog Version) are met.
 ⍝   In the past an attempt to use Fire from a version that was too old resulted in a
 ⍝   misleading error message.
-⍝ * Version 2.6.0 - 2019-12-22
-⍝   * New option -noGUI added: loads Fire into ⎕SE but does not run it.
-⍝ * Version 2.5.1 - 2019-08-22
-⍝   * Bug fix: Fire was copied each and every time, therefore forgetting former search tokens.
-⍝ * Version 2.5.0 - 2019-07-28
-⍝   * The script now simply assumes that the folder Fire\ is a sibling of this script.
-⍝   * Changed to group "WS".
 
     :Field Private Shared ReadOnly MinimumVersionOfDyalogNeeded←18
 
@@ -44,7 +41,7 @@
           r.Desc←'Starts Fire (FInd & REplace)'
           r.Group←'WS'
           ⍝ Parsing rules:
-          r.Parse←'1s -fl -noGUI'
+          r.Parse←'2s -fl -noGUI'
       :Else
           r←⍬                                   ⍝ Fire is a Windows0only application
       :EndIf
@@ -81,7 +78,7 @@
       :EndIf
     ∇
 
-    ∇ LoadFire(Args forceLoadFlag noGUIFlag);n;qdmx
+    ∇ LoadFire(Args forceLoadFlag noGUIFlag);n;qdmx;searchString
       '_Fire'⎕SE.⎕NS''
       :If forceLoadFlag
       :OrIf 0=⎕SE._Fire.⎕NC'Fire'
@@ -99,11 +96,18 @@
           11 ⎕SIGNAL⍨'Could not load Fire''s Tatin packages: ',qdmx.EM
       :EndTrap
       :If ~noGUIFlag
-          n←⎕SE._Fire.Fire.Run 0
-          :If 1=≢⊃Args.Arguments
-          :AndIf '.'=⊃Args.Arguments
-              n.StartSearchIn.Text←(⎕SI⍳⊂'UCMD')⊃⎕NSI
+          searchString←{0≡⍵:'' ⋄ ⍵}Args._2
+          n←⎕SE._Fire.Fire.Run 0 searchString
+          :If 0<≢⊃Args.Arguments
+              :If (,'.')≡,⊃Args.Arguments
+                  n.StartSearchIn.Text←(⎕SI⍳⊂'UCMD')⊃⎕NSI
+              :ElseIf ∨/(⊃Args.Arguments)∊'#⎕'
+                  n.StartSearchIn.Text←⊃Args.Arguments
+              :Else
+                  n.StartSearchIn.Text←((⎕SI⍳⊂'UCMD')⊃⎕NSI),'.',⊃Args.Arguments
+              :EndIf
               :If '['∊n.StartSearchIn.Text
+              :OrIf ~((,n.StartSearchIn.Text)≡,'#')∨((1 ⎕C n.StartSearchIn.Text)≡'⎕SE')∨9=⎕NC n.StartSearchIn.Text
                   n.StartSearchIn.Text←'#'
               :EndIf
           :EndIf

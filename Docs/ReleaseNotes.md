@@ -13,6 +13,10 @@ A bump of the minor number indicates added functionality plus possibly bug fixes
 
 A bump of the patch number indicates bug fixes.
 
+## Version 9.7.0 from 2024-08-14
+
+The API call as well as the user now allow to specify an additional (optional) argument that is used to populate the "Search for" field.
+
 ## Version 9.6.4 from 2024-05-02
 
 * Bug fix: when a function or a script was renamed implicitly via a "Replace" operation, Link/acre were given the old name rather than the new one, effectively loosing the change when the WS was destroyed one way or the other.
@@ -161,6 +165,7 @@ Bug fix: people who do not tick "Options > Object Syntax > Expose GUI Properties
   * In the "Replace" dialog the "Delete lines" options should not be available (active) when it is a RegEx search.
   * The `∆List` function created by `Fire.API.CreateSearchParms` was buggy.
 * Internal change: all calls to acre via ⎕SE.UCMDS have now been replaced by calls to acre's API.
+
 
 
 
