@@ -1,1 +1,0 @@
- ∆RemoveBuildFromVersion←{⍵/⍨3>+\⍵∊'.+'}

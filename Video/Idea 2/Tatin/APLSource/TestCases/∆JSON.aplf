@@ -1,2 +1,0 @@
- r←∆JSON json
- r←⎕JSON⍠('Dialect' 'JSON5')⊣json

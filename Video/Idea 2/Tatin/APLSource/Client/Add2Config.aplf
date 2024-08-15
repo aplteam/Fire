@@ -1,8 +1,0 @@
- Add2Config←{
-     path←⍺
-     (name value)←⍵
-     cfg←ReadPackageConfigFile path
-     _←⍎'cfg.',name,'←value'
-     _←WritePackageConfigFile path cfg
-     1:shy←0
- }

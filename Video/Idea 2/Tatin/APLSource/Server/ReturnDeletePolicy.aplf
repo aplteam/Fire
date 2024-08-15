@@ -1,6 +1,0 @@
- response←ReturnDeletePolicy request
-⍝ Returns the "delete" policy of the current server
- response←R.NewResponse request
- response.StatusCode←200
- response.Content←GetDeletePolicy
-⍝Done

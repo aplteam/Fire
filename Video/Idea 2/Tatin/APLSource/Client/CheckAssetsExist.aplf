@@ -1,5 +1,0 @@
- CheckAssetsExist←{
-     path←⍺∘{(':'∊⍵)∨('./'≡2⍴⍵)∨((1⍴⍵)∊'/\'):⍵ ⋄ ⍺,⍵}⍵
-     F.Exists path:shy←⍬
-     ('This asset does not exist: ',⍵)Assert 0
- }

@@ -1,3 +1,0 @@
- r←∆ThrownError
- r←98 ⍝ error number thrown by the TC.Assert function
-⍝Done

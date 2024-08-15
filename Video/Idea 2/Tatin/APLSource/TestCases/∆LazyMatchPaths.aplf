@@ -1,2 +1,0 @@
- r←path1 ∆LazyMatchPaths path2
- r←⊃∆LazyMatch/F.NormalizePath¨path1 path2

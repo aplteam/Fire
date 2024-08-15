@@ -1,2 +1,0 @@
- r←∆GetServerRegistryFolder
- r←(Reg.PROJECT_HOME),'/TestData/Server/Registry/'

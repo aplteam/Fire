@@ -1,2 +1,0 @@
- r←IsInstallFolder path
- r←⎕NEXISTS path,'/apl-buildlist.json' ⍝ An install folder must host this file.

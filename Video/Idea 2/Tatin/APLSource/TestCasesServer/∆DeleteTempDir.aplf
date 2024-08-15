@@ -1,7 +1,0 @@
- {rc}←∆DeleteTempDir flag;folder
-⍝ Clean up the temp dir in case of left-overs from earlier tests
- rc←0
- :If flag
-     folder←∆GetTempDir
-     ##.FilesAndDirs.RmDir folder
- :EndIf

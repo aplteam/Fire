@@ -1,6 +1,0 @@
- path←CompilePath2PackageInCache(url packageID)
- ⍝ Takes something like 'https://tatin.dev' 'aplteam-EventCodes-3.0.1'
- ⍝ and returns a full path to that package in the Tatin package cache or '' if not found.
- url←RemoveHttpProtocol url
- url←(-'/'=¯1↑url)↓url
- path←{⍵/⍨F.IsDir ⍵}GetPathToPackageCache,'/',url,'/',packageID

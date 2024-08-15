@@ -1,6 +1,0 @@
- Create←{
- ⍝ Create a depedency file in ⍵ (path).
-     path←⍵
-     filename←path,'/',DEP_NAME
-     1:shy←'' 'ASCII'##.F.NPUT filename
- }

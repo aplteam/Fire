@@ -1,2 +1,0 @@
- txt←FormatFloatDate val
- txt←Reg.FormatFloatDate val

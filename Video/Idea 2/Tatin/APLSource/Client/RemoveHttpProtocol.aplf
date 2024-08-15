@@ -1,1 +1,0 @@
- RemoveHttpProtocol←{'^http[s]?://'⎕R''⊣⍵}

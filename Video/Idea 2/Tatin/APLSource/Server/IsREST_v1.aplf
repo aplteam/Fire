@@ -1,3 +1,0 @@
- r←request IsREST_v1 url
- r←'v1/'{⍺≡(≢⍺)↑⍵}url
-⍝Done
