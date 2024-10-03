@@ -1,0 +1,6 @@
+ yes←x ∆LazyMatch y
+ :If 80=⎕DR y
+     yes←x≡(≢x)↑y
+ :Else
+     yes←(∧/x∊y)∧(∧/y∊x)
+ :EndIf

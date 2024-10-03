@@ -1,0 +1,19 @@
+ html←PrepareHtmlPageForGroupList list
+ html←HtmlHeader''
+ html,←⊂'<h2>List of all groups</h2>'
+ html,←AddSpecialMessage ⍬
+ html,←⊂'<table>'
+ html,←⊂'<thead>'
+ html,←⊂'<tr><th>Group name</th><th>≢ <sup>[1]</sup></th></tr>'
+ html,←⊂'</thead>'
+ html,←⊂'<body>'
+ :If 0<≢list
+     html,←{'<tr><td>',(1⊃⍵),'</td><td>',(⍕2⊃⍵),'</td></tr>'}¨↓list
+ :EndIf
+ html,←⊂'</body>'
+ html,←⊂'</table>'
+ html,←⊂'<p>1. Number of published packages of that group</p>'
+ html,←GetFooter
+ html,←⊂'</body>'
+ html,←⊂'</html>'
+ ⍝Done

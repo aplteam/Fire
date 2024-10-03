@@ -1,0 +1,12 @@
+ {r}←EstablishSystemVars(path cfg);ref
+ r←⍬
+ ref←⍎path Reg.CreateNamespace ⎕THIS
+ :If 2=cfg.⎕NC'io'
+ :AndIf ¯1≠cfg.io
+     ref.⎕IO←cfg.io
+ :EndIf
+ :If 2=cfg.⎕NC'ml'
+ :AndIf ¯1≠cfg.ml
+     ref.⎕ML←cfg.ml
+ :EndIf
+⍝Done

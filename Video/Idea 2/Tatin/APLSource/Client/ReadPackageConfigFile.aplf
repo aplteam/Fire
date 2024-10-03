@@ -1,0 +1,18 @@
+ cfg←ReadPackageConfigFile path;cfg_file;cfg;buff;Reg
+⍝ Takes path to a package and returns the config file for that package as a namespace populated with variables.\\
+⍝ `path` may or may not carry the filename.
+ Reg←##.Registry
+ path←ReplaceRegistryAlias path
+ :If Reg.IsHTTP path
+     cfg←ReadPackageConfigFile_ path
+ :Else
+     cfg_file←path,((⎕C CFG_Name≢⎕C(-≢CFG_Name)↑path))/'/',CFG_Name
+     ('Config file missing: ',cfg_file)Assert F.Exists cfg_file
+     cfg←InitPackageConfig''
+     ⍝ load in actual
+     buff←⊃F.NGET cfg_file
+     (('\'=buff)/buff)←'/'
+     'Odd number of " ?!'Assert 0=2|'"'+.=buff
+     {}'cfg'⎕NS ⎕JSON⍠('Dialect' 'JSON5')⊣buff
+ :EndIf
+⍝Done

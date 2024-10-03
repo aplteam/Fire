@@ -61,7 +61,7 @@
       :AndIf fireIsAvailable
       :AndIf 0=⎕SE.⎕NC'_Tatin'
           :Trap 0
-              {}⎕SE.UCMD'tatIN.LoadTatin'
+              {}⎕SE.UCMD'Tatin.LoadTatin'
           :EndTrap
           fireIsAvailable∧←0<⎕SE.⎕NC'_Tatin'  ⍝ Fire requires Tatin packages and therefore requires Tatin itself since 9.0
       :EndIf

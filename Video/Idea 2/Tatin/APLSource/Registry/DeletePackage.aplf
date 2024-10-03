@@ -1,0 +1,11 @@
+ msg←DeletePackage packagePath;msg;rc;en
+ msg←''
+ :If F.IsDir packagePath
+     (rc en msg)←F.RmDir packagePath
+     :If 0≠rc
+         msg,←'; RC=',⍕en
+     :EndIf
+ :Else
+     msg←'Package does not exist'
+ :EndIf
+⍝Done

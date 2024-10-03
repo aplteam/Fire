@@ -1,0 +1,17 @@
+ response←GetTagList request;parms;data;html
+⍝ Respond to a request for some or all tags, HTML or JSON
+ :If IsJsonRequest request.Headers
+     parms←⎕NS''
+     parms.tags←''
+     :If (⊂'tags')∊request.QueryParameters[;1]
+         parms.tags←⎕C{2⊃⍵[⍵[;1]⍳⊂'tags';]}request.QueryParameters
+     :EndIf
+     data←Reg.ListTags G.RegistryPath parms
+     response←request ReturnJSON Reg.JSON data
+ :Else
+     ⍝ Because it's a request from a Browser for the time
+     ⍝ being we know that *all* packages are requested.
+     data←Reg.ListTags G.RegistryPath(⎕NS'')
+     html←PrepareHtmlPageForTagList data
+     response←request ReturnHTML html
+ :EndIf

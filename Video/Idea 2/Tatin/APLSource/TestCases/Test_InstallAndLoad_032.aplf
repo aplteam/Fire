@@ -1,0 +1,68 @@
+ r←Test_InstallAndLoad_032(stopFlag batchFlag);⎕TRAP;rc;msg;zipFilename;toBeDeleted;res
+ ;dir;src;body;cfg;installFolder;src2;src3;reg
+⍝ A package that depend on another package that has several functions within a namespace
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ r←T._Failed
+
+ #.⎕EX TC.GetTatinRootSpace'#'
+ #.⎕SHADOW'TEMP' ⋄ 'TEMP'#.⎕NS'' ⍝ Used to load stuff into
+ dir←GetTempDir ⍬
+ (src reg)←(⊂dir,'/'),¨'src' 'reg'
+ src2←src,'/Example-Constants-0.1.0/'
+ src3←src,'/Example-MyMath-0.2.0/'
+ F.MkDir reg
+ F.MkDir src2 src3,¨⊂'/APLSource'
+ toBeDeleted←''
+
+ TC.Reg.CreateRegistry reg
+ TC.MyUserSettings.AddRegistry'[local2]',reg
+
+ body←':Class Constants' '∇r←PI' ':Access Public Shared' 'r←3.14' '∇' ':EndClass'
+ (⊂body)F.NPUT src2,'/APLSource/Constants.aplc'
+ cfg←TC.InitPackageConfig ⍬
+ cfg.(group name version)←'Example' 'Constants' '0.1.0'
+ cfg.source←'APLSource'
+ TC.WritePackageConfigFile src2 cfg
+ (rc msg zipFilename)←TC.PublishPackage src2 reg
+ toBeDeleted,←⊂zipFilename
+ Assert 200=rc
+
+ body←⊂':Namespace MyMath'
+ body,←'∇r←x Times y' 'r←##.Constants.PI× x×y' '∇'
+ body,←'∇r←Total x' 'r←+/x' '∇'
+ body,←'∇r←x Power y' 'r←x*y' '∇'
+ body,←⊂':EndNamespace'
+ (⊂body)F.NPUT src3,'/APLSource/MyMath.apln'
+ cfg←TC.InitPackageConfig ⍬
+ cfg.(group name version)←'Example' 'MyMath' '0.2.0'
+ cfg.source←'APLSource'
+ cfg.api←'MyMath'
+ TC.WritePackageConfigFile src3 cfg
+ src3 TC.Dependencies.Add'Example-Constants-0.1.0'
+ (rc msg zipFilename)←TC.PublishPackage src3 reg
+ toBeDeleted,←⊂zipFilename
+ Assert 200=rc
+
+ installFolder←GetTempDir'/Tatin_AppPackages'
+ res←TC.InstallPackage('Example-MyMath-0.2.0')installFolder
+ →T.GoToTidyUp res≢'Example-MyMath-0.2.0'
+
+ →T.GoToTidyUp 2≠≢F.ListDirs installFolder
+ →T.GoToTidyUp 2≠≢F.ListFiles installFolder
+ →T.GoToTidyUp(,⊂'Example-MyMath-0.2.0')≢TC.Dependencies.Get installFolder
+
+ {}TC.LoadDependencies installFolder #.TEMP
+ →T.GoToTidyUp(3.14×3×4)≠3 #.TEMP.MyMath.Times 4
+ →T.GoToTidyUp 7≠#.TEMP.MyMath.Total 3 4
+ →T.GoToTidyUp 81≠3 #.TEMP.MyMath.Power 4
+ →T.GoToTidyUp 1≠≢#.TEMP.⎕NL⍳16
+ →T.GoToTidyUp 2≠≢#._tatin.⎕NL⍳16
+
+ r←T._OK
+
+∆TidyUp:
+ Assert 0=⊃F.RmDir dir
+ Assert TC.MyUserSettings.RemoveRegistry'[local2]'
+ F.DeleteFile toBeDeleted
+ #.⎕EX TC.GetTatinRootSpace'#'
+⍝Done

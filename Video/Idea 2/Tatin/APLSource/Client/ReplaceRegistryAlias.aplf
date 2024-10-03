@@ -1,0 +1,27 @@
+ ReplaceRegistryAlias←{
+ ⍝ Replaces any string `[foo]` by its definition from the Client's config file.
+ ⍝ If ⍵ is an alias which cannot be found in the user settings then an empty vector is returned.
+ ⍝ ⍵ might be nested (more than one string): the function calls itself then recursively.
+ ⍝ Note that the result may start with <http[s]://" but not with "file://"
+     ⍺←MyUserSettings
+     cfg←⍺
+     txt←⍵
+     2=≡txt:∇¨txt
+     (alias txt)←SplitAtAlias txt
+     '['≠1⍴txt:alias,txt
+     txt~←' '
+     (offset end)←txt⍳'[]'
+     txt←1↓(offset-1)⌽txt
+     regAlias←⎕C ¯1↓' '~⍨(end-offset)↑txt
+     txt←(end-offset)↓txt
+     0=≢cfg.registries:''
+     ~(⊂regAlias)∊⎕C cfg.registries.alias:''
+     ind←1⍳⍨(⎕C cfg.registries.alias)≡¨⊂regAlias
+     replaceBy←ind⊃cfg.registries.uri
+     replaceBy{⍵∊0 80 443:⍺ ⋄ (⍺↓⍨¯1×'/'=¯1↑⍺),':',(⍕⍵),'/'}←ind⊃cfg.registries.port
+     txt↓⍨←(⊃txt)∊'/\'
+     f←~(¯1↑replaceBy)∊'/\'
+     sep←f/'/'
+     f:(-offset-1)⌽alias,replaceBy,sep,txt
+     (-offset-1)⌽replaceBy,alias,txt
+ }

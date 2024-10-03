@@ -1,0 +1,17 @@
+ list←home GetAllFiles cfg;list;subList;default;extension
+⍝ ⍵ Is an object presenting a package's config file
+⍝ ⍺ Is the folder that hosts the package
+⍝ ← Is a list of all cfg.source files
+ :If F.IsFile home,cfg.source
+     list←home∘,¨⊆cfg.source
+ :Else
+     home,←(~(¯1↑home)∊'\/')/'/'
+     ('"',cfg.source,'" is neither file nor folder')Assert F.IsDir home,cfg.source
+     list←⊃('recursive' 1)F.Dir home,cfg.source,'/'
+ :EndIf
+ list/⍨←F.IsFile list
+ list←(≢home)↓¨list
+ list~←Reg.DependenciesFilename CFG_Name
+ extension←'.aplf' '.aplo' '.aplc' '.apln' '.dyalog' '.apla'
+ list/⍨←(3⊃∘⎕NPARTS¨list)∊extension
+⍝Done

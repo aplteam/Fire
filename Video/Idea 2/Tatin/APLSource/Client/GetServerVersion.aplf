@@ -1,0 +1,16 @@
+ r←GetServerVersion uri;client;request;res
+ uri←ReplaceRegistryAlias uri
+ 'No URI provided'Assert 0<≢uri
+ request←R.NewRequest 0
+ request.RequestTarget←'/v1/version'
+ request.Headers,←⊂'Accept' 'application/json'
+ res←uri SendAndReceive request
+ :If 200≠res.StatusCode
+     :If 0<≢res.Content
+         ('Server: ',res.Content)Assert 0
+     :Else
+         ('Failed with status code ',⍕res.StatusCode)Assert 0
+     :EndIf
+ :EndIf
+ r←Reg.JSON res.Content
+⍝Done

@@ -1,0 +1,1 @@
+ Assert←{⍺←'' ⋄ (,1)≡,⍵:r←1 ⋄ ##.APLTreeUtils2.IsDevelopment:⍺ ⎕SIGNAL 11 ⋄ errCode←123 ⋄ ⎕OFF errCode}

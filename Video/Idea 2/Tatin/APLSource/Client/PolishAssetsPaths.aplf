@@ -1,0 +1,6 @@
+ PolishAssetsPaths←{
+     asset←⍵
+     0=≢asset:asset
+     pkgPath←F.EnforceSlash ⍺
+     pkgPath{⍵↓⍨(≢⍺)×⍺≡(≢⍺)↑⍵}F.EnforceSlash asset
+ }

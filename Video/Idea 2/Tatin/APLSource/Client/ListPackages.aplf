@@ -1,0 +1,38 @@
+ mat←{parms}ListPackages uri;client;request;res;uri_;parms;registries
+⍝ `uri` must be one of:
+⍝  * A path to a Registry and optionally a (possibly incomplete) package ID
+⍝  * A path to an install folder (must host a file apl-buildlist.json)
+⍝ For the latter all installed packages are listed together with a Boolean that marks principal packages with a 1.
+⍝ By default all packages saved in that Registry are returned, aggregated by major versions, as a two-column matrix.\\
+⍝ `r` is a matrix with two columns.\\
+⍝ `[;2]` carries the number of major versions.\\
+⍝ Optionally `parms` can be specified. This must be a namespace that must contain the variables `group`, `tags` and `aggregate.\\
+⍝ * `group` may specify the group
+⍝ * `tags` may specify one or more tags (simple comma-separated text vector)
+⍝ * `aggregate` is a Boolean that defaults to 1.\\
+⍝ These options are available:\\
+⍝ * `uri` is empty and `aggregate` is 0\\
+⍝   All packages are returned; the second column carries `⍬`\\
+⍝ * `uri` is empty and `aggregate` is 1 (the default):\\
+⍝   All packages are returned with the number of major versions in `[;2]`\\
+⍝ * `uri` specifies {group}-{name} and `aggregate` is 0\\
+⍝   All versions of that package are returned\\
+⍝ * `uri` specifies {group}-{name} and `aggregate` is 1\\
+⍝   All major versions of that package are returned\\
+⍝   `[;2]` caries the number of versions of each major version\\
+⍝ * `uri` specifies {group}-{name}-{major}; in this case `aggregate` is ignored\\
+⍝   All versions (minor and patch) of that package are returned\\
+⍝ * `uri` specifies {group}-{name}-{major}-{minor}; in this case `aggregate` is ignored\\
+⍝   All patch versions of that package are returned\\
+ parms←{0<⎕NC ⍵:⍎⍵ ⋄ ⎕NS''}'parms'
+ parms←Reg.CheckParmsForListPackages parms
+ uri_←ReplaceRegistryAlias uri
+ 'No (valid) Registry specified?!'Assert 0<≢uri_
+ :If Reg.IsHTTP uri_
+     mat←parms ListPackages_ uri_
+ :ElseIf IsInstallFolder uri_
+     mat←ListPackagesInInstallFolder uri_
+ :Else
+     mat←Reg.ListPackages uri_ parms
+ :EndIf
+⍝Done

@@ -15,11 +15,13 @@
      msg,←'' 'Would you like to download this version?'
      :If ##.Question.YesOrNo msg
          :Trap 11
-             url←api.GetRelease name'EXE'
+             url←tag api.GetRelease name'EXE'
          :Else
              →∆Exit,TellErrorWhileCheckingForBetterVersion''
          :EndTrap
          ##.A.GoToWebPage⍣(0<≢url)⊣url
+         msg←('Download of version ',tag,' initiated.')'Check the download folder of your browser.'
+         'Fire Download'##.Question.ShowMsg msg
      :EndIf
  :Else
      TellFireIsUp2Date n
