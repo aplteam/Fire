@@ -1,8 +1,9 @@
 (
  '⍝ Contains information regarding the last release. A full history is available on GitHub. (This line is ignored)'
  ''
- '* 9.7.1 from 2024-10-03'
- '  * "Update" improved.'
+ '* 9.7.1 from 2024-10-03                          '
+ '  * Installation can now deal with OneDrive '
+ '  * "Update" improved'
  '   '
  '* 9.7.0 from 2024-08-14'
  '  * It is now possible to prepopulate the "Search for" field by specifying an additional argument to ]Fire'
