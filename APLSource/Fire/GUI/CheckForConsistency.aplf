@@ -4,7 +4,9 @@
 ⍝ 2. a ⍝ (lamp) but not ticked "comment"
 ⍝ If that's the case then the check boxes "Text" and/or "Comment" are ticked.
  r←0
- :If n.SearchFor.Text∧.=' '
+ :If 0=≢n.SearchFor.Text
+     r←1 ⋄ →0
+ :ElseIf n.SearchFor.Text∧.=' '
      msg←⊂'You cannot search just for spaces.'
      ##.Question.ShowMsg msg
      r←1

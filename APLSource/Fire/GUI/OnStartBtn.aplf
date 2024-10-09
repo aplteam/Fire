@@ -1,4 +1,4 @@
- {r}←OnStartBtn msg;ref_____;flag;hits;noOfObj;noOfContainers;⎕TRAP;n
+  {r}←OnStartBtn msg;ref_____;flag;hits;noOfObj;noOfContainers;⎕TRAP;n
 ⍝ Perform the search.
 ⍝ This must be a dfns in order to avoid name clashes in case Fire searches itself.
 ⍝ Even so we must use exotic names here because otherwise one of our own test cases would
@@ -6,9 +6,7 @@
  r←0
  ⎕IO←0 ⋄ ⎕ML←3          ⍝ To overcome bug <01001>
  n←GetRefTo_n↑msg
- :If CheckForConsistency n
-     {}WriteInfo'Search cancelled'
- :Else
+ :If ~CheckForConsistency n
      CloseChildForms n.Form
      ⎕TRAP←(988 'C' '→∆RegExFailed')(0 'S')
      ref_____←⎕NS''              ⍝ Trick to hide `parms` from Fire itself.
