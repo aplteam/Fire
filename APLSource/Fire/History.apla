@@ -1,7 +1,7 @@
 (
  '⍝ Contains information regarding the last release. A full history is available on GitHub. (This line is ignored)'
  ''
- '* 9.7.2 from 2024-10-09'
+ '* 9.7.2 from 2024-10-13'
  '  * Bug fixes'
  '    * When the "Search for" field was empty and a "Find" operation triggered, a popup "You cannot search for spaces"'
  '      was wrongly presented. Now nothing happens at all.                     '
