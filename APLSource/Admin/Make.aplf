@@ -1,64 +1,27 @@
- Make flag;targetPath;home;M;name;setupExe;myUCMDsFolder;C;tempFolder;data;buff;cfg
-⍝ Version 7.3.0 ⋄ 2023-06-18
-⍝ * 7.2.2 ⋄ 2023-09-11
-⍝   * Bug fixes
-⍝     * HTML documents were not found
-⍝     * Superfluous files removed from install folder
-⍝ * 7.2.1 ⋄ 2023-06-18
-⍝   * Uses latest features of MakeHelpers now
-⍝   * Question added to avoid mishaps
-⍝ * 7.2.0 ⋄ 2022-11-08
-⍝   * Uses new MakeHelpers
-⍝ * 7.1.0 ⋄ 2022-11-08
-⍝   * Checks now the minimum version of Dyalog APL (18.0 at the time of writing this)
-⍝ * 7.0.1 ⋄ 2022-09-22
-⍝   * New version is assembled in a temp folder rather than Dist\ (Dropbox etc!)
-⍝   * Comment polished
-⍝   * Ref to FilesAndDir shortened
- ⎕IO←1 ⋄ ⎕ML←1
- :If flag
-     :If 18≢⊃⊃(//)⎕VFI buff←{⍵/⍨2>+\⍵='.'}2⊃# ⎕WG'APLVersion'  ⍝
-         ('"Make" a new version with 18.0 - this is ',buff)⎕SIGNAL 11
-     :EndIf
- :AndIf ##.TestCases.CommTools.YesOrNo'Sure yout want to create a new version of Fire? (The WS will be destroyed in the process)'
-     home←##.CiderConfig.HOME,'/'
-     targetPath←home,'Dist/'
-     {⍵:.}' '≠1↑0⍴⎕FX↑'r←M' 'r←⎕SE.MakeHelpers'  ⍝ avoids creating a link in # that points to ⎕SE at the expense of defeating auto-complete
-     C←##.CiderConfig
-     myUCMDsFolder←M.GetMyUCMDsFolder'\'
-     name←'Fire'
-     tempFolder←(M.##.F.GetTempSubDir name),'/'
-    ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
-     M.RecreateFolder targetPath
-     M.IncreaseBuildIDInFunction'#.Fire.Fire.Version'
-     :If ⎕NEXISTS M.GetMyUCMDsFolder'/Fire/Fire_uc.dyalog'
-         M.CopyBetter(home,'APLSource/Fire_uc.dyalog')(M.GetMyUCMDsFolder'/Fire/Fire_uc.dyalog')'Project version' '[MyUCMDs] version'
-     :EndIf
-     {}⎕SE.Cider.CloseProject''  ⍝ Precaution
-     ⎕WSID←tempFolder,name,'.dws'
-     0 ⎕SAVE ⎕WSID
-     #.⎕EX ⎕NL⍳16
-     ⎕LX←'#.',name,'.Run 0'
-     '#.Fire.Fire'#.⎕CY ⎕WSID
-     0 ⎕SAVE ⎕WSID
-     './packages'M.CopyTo tempFolder
-     M.ConvertMarkdownToHtml5(home,'Docs/')(home,'html/')
-     (home,'html/*')M.CopyTo tempFolder
-     (home,##.CiderConfig.CIDER.source,'/',name,'_UC.dyalog')M.CopyTo tempFolder
-     (home,'LICENSE')M.CopyTo tempFolder
-     (home,'Fire.ico')M.CopyTo tempFolder
-     (home,'Fire.iss')M.CopyTo tempFolder
-     data←⊃⎕NGET tempFolder,'Fire.iss'
-     data←M.##.F.EnforceSlash tempFolder{ss←'<<TARGETDIR>>' ⋄ sp←¯1+1⍳⍨ss⍷⍵ ⋄ (-sp)⌽⍺,(≢ss)↓sp⌽⍵}data
-     (⊂data)⎕NPUT(tempFolder,'Fire.iss')1
-     setupExe←tempFolder ##.TestCases.Inno.Run name
-     targetPath ⎕NMOVE setupExe
-     setupExe←⊃,/1↓⎕NPARTS setupExe
-     M.##.F.RmDir tempFolder
-     :If 1 M.YesOrNo'Would you like to execute "',setupExe,'" ?'
-         ⎕CMD targetPath,setupExe
-     :EndIf
-     M.##.F.RmDirByForce tempFolder
-     ⎕←'Clearing the workspace...'
-     ⎕CLEAR
+ {noQLX}Make flag;versionOfAPL;P;parms;P_;batchFlag
+ versionOfAPL←'18.0'
+ noQLX←{0<⎕NC ⍵:⍎⍵ ⋄ 0}'noQLX'
+ batchFlag←0
+ :If 0=#.⎕NC'APLProcess'
+     {⍵:.}0=⎕SE.Tatin.LoadPackages'https://tatin.dev/aplteam/APLProcess'#
  :EndIf
+ P←#.APLProcess
+ parms←P.CreateParms
+ parms.Exe←GetAPLVersion versionOfAPL
+ parms.CommandLineArgs,←'load="',##.FilesAndDirs.PWD,'\APLSource\Admin\Make_.aplc" '
+ parms.CommandLineArgs,←{0=≢v←2 ⎕NQ #'GetEnvironment'⍵:v ⋄ ⍵,'="',v,'"'}'DYALOGSTARTUPSE'
+ parms.CommandLineArgs,←' lx="#.Make_.Run 1"'
+ :If 0  ⍝ Only for analyzing problems:
+     parms.CommandLineArgs,←' -exec_setup=0 '
+     parms.CommandLineArgs,←' -stop_in_setup=1 '
+ :EndIf
+ :If noQLX
+     parms.CommandLineArgs,←' -x'
+ :EndIf
+ parms.SessionFile←1
+ parms.WindowsStyle←'Normal'
+ 0 0⍴{⎕←⍵}⍣(~batchFlag)⊣'   Process started for "making" a new version of Fire...'
+ P_←⎕NEW P(,⊂parms)
+ {⍵.HasExited:shy←0 ⋄ _←⎕DL 0.2 ⋄ ∇ ⍵}P_
+ 'The process exited with an error code'Assert 0=P_.Proc.ExitCode
+⍝Done
