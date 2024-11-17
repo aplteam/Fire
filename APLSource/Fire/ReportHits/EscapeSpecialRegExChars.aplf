@@ -1,0 +1,9 @@
+ EscapeSpecialRegExChars←{
+⍝ Escapes all characters that have a special meaning in Regular expressions.
+     specialChars←'\^$.|?*+()[]{}'
+     b←⍵∊specialChars
+     0=+/b:⍵
+     r←⍵
+     (b/r)←'\',¨b/r
+     ∊r
+ }

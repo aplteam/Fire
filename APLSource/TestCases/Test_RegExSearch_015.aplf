@@ -20,7 +20,7 @@
 
  {}∆Select n.StartBtn
  ∆Process n.Form
- →T.GoToTidyUp 2≠↑⍴n.HitList.ReportInfo
+ →T.GoToTidyUp 2≠≢n.HitList.ReportInfo
  →T.GoToTidyUp'fns1' 'fns2'≢n.Form.##.##.G.Hits[;1]
 
  n2←#.Fire.Fire.ReportHits.Run 1

@@ -29,8 +29,7 @@
              :EndIf
              ss,←⊂⍣(~1=≡ss)⊣##.G.SearchFor
              rs,←⊂⍣(~1=≡ss)⊣'<span class="diff">&</span>'
-⍝             data←ref.⍎name
-             r←ss ⎕R rs⍠options⊣data
+             r←(EscapeSpecialRegExChars ss)⎕R rs⍠options⊣data
              r←(∨/¨'<span class="diff"'∘⍷¨r)/r
              r[⍳¯1+≢r]←(¯1↓r),¨⊂'<br>'
              fullName←(⍕ref),'.',name

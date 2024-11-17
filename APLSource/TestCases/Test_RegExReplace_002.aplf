@@ -1,5 +1,5 @@
  R←Test_RegExReplace_002(stopFlag batchFlag);n;⎕TRAP;n2;html;expected;code
-⍝ Search for Text with "Greedy←1"
+⍝ Search for Text with "Greedy←1" with assignments in between
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  R←T._Failed
 
@@ -7,12 +7,12 @@
  1 #.Fire.Fire.Run 0
  n←#.Fire.Fire.GUI.n
 
- #.⎕SHADOW'Temp_RegExSearch_020'
- 'Temp_RegExReplace_001'#.⎕NS''
- #.Temp_RegExReplace_001.⎕FX'Fns' 'Start ⋄ r←''this is'' ⋄ End' 'Start ⋄ b←''this really is'' End'
+ #.⎕SHADOW'Temp_RegExSearch_002'
+ 'Temp_RegExReplace_002'#.⎕NS''
+ #.Temp_RegExReplace_002.⎕FX'Fns' 'Start ⋄ r←''this is'' ⋄ End' 'Start ⋄ b←''this really is'' End'
 
  n.SearchFor.Text←'Start.*End'
- n.StartSearchIn.Text←'#.Temp_RegExReplace_001'
+ n.StartSearchIn.Text←'#.Temp_RegExReplace_002'
  n.SearchIsRegEx.State←1
  n.Greedy.(Active State)←1
 
@@ -29,7 +29,7 @@
 
  {}∆Select n2.StartBtn
  ∆Process n.Form
- code←#.Temp_RegExReplace_001.⎕NR'Fns'
+ code←#.Temp_RegExReplace_002.⎕NR'Fns'
  expected←' Fns' ' This REALLY is' ' This REALLY is'
  →T.GoToTidyUp code≢expected
  R←T._OK

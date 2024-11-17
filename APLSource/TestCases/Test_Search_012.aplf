@@ -1,0 +1,33 @@
+ R←Test_Search_012(stopFlag batchFlag);n;⎕TRAP;n2;html;expected
+⍝ Search for Text that has special meaning in RegExes but without making it RegEx search
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←T._Failed
+
+⍝ Preconditions
+ 1 #.Fire.Fire.Run 0
+ n←#.Fire.Fire.GUI.n
+ #.⎕SHADOW'Temp_Search_012'
+ 'Temp_Search_012'#.⎕NS''
+ #.Temp_Search_012.vars←1↓∊(⎕UCS 13),¨'a←1' 'Foo\^$.|?*+()[]{}Boo' '123'
+
+ n.SearchFor.Text←'\^$.|?*+()[]{}'
+ n.StartSearchIn.Text←'#.Temp_Search_012'
+ n.SearchIsRegEx.State←0
+
+ {}∆Select n.StartBtn
+ ∆Process n.Form
+ →T.GoToTidyUp 1≠↑⍴n.HitList.ReportInfo
+ →T.GoToTidyUp'vars'≢⊃n.Form.##.##.G.Hits[0;1]
+
+ n2←#.Fire.Fire.ReportHits.Run 1
+ ∆Process n.Form
+ →T.GoToTidyUp 1≠≢n2.List.Items
+ →T.GoToTidyUp'HTML Document'≢n2.Browser.Type
+ html←⎕C↑FilesAndDirs.NGET n2.∆Filename
+ html←((⎕UCS 10)≠html)/html
+ expected←'<span class="diff">',n.SearchFor.Text,'</span>'
+ →T.GoToTidyUp~∧/∨/expected⍷∊html
+ R←T._OK
+
+∆TidyUp:
+ CloseFire

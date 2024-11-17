@@ -1,11 +1,11 @@
 (
  '⍝ Contains information regarding the last release. A full history is available on GitHub. (This line is ignored)'
  ''
- '* 9.7.2 from 2024-10-13'
+ '* 9.7.2 from 2024-11-17'
  '  * Bug fixes'
  '    * When the "Search for" field was empty and a "Find" operation triggered, a popup "You cannot search for spaces"'
  '      was wrongly presented. Now nothing happens at all.                     '
- ''
+ '    * Searching for characters that have a special meaning in a RegEx crashed the report  '
  '* 9.7.1 from 2024-10-03                          '
  '  * Installation can now deal with OneDrive '
  '  * "Update" improved'
