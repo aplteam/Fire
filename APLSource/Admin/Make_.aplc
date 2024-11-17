@@ -1,8 +1,11 @@
 :Class Make_
 
     ∇ Run flag;targetPath;home;M;name;setupExe;myUCMDsFolder;C;tempFolder;data;buff;cfg;parms
+    ⍝ Note that this is executed via the "Load" parameter in a separate and new instance of Dyalog as part of "Making" a new version
       :Access Public Shared
-    ⍝ Version 8.0.0 ⋄ 2024-10-18
+    ⍝ Version 8.0.1 ⋄ 2024-11-17
+    ⍝ * 8.0.1 ⋄ 2024-11-17
+    ⍝   * Increasing build number had no effect because the project was imported rather than opened.
     ⍝ * 8.0.0 ⋄ 2024-10-18
     ⍝   * Now a separate instance of Dyalog is started for making a new verson
       ⎕IO←1 ⋄ ⎕ML←1
@@ -15,11 +18,10 @@
           :EndIf
           ⎕FX↑'r←M' 'r←⎕SE.MakeHelpers'  ⍝ avoids creating a link in # that points to ⎕SE at the expense of defeating auto-complete
           parms←⎕SE.Cider.CreateOpenParms''
-          parms.importFlag←1
           parms.batch←1
           parms.folder←home
           buff←⎕SE.Cider.OpenProject parms
-          :If ~∨/'Importing project from '⍷∊buff
+          :If ~∨/'Loading project from '⍷∊buff
               ⎕OFF 123
           :EndIf
           C←#.Fire.CiderConfig
