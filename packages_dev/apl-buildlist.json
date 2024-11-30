@@ -1,6 +1,6 @@
 {
   packageID: [
-    "aplteam-Tester2-3.9.1",
+    "aplteam-Tester2-3.10.0",
     "aplteam-Inno-1.0.2",
     "aplteam-FilesAndDirs-5.8.1",
     "aplteam-CommTools-1.8.2",
@@ -9,7 +9,7 @@
     "aplteam-APLProcess-0.7.0",
     "aplteam-WinSys-5.0.1",
     "aplteam-OS-3.1.1",
-    "aplteam-IniFiles-5.0.3",
+    "aplteam-IniFiles-5.1.0",
     "aplteam-Execute-3.0.2",
   ],
   principal: [
