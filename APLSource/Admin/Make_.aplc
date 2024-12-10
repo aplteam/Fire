@@ -42,7 +42,7 @@
           ⎕LX←'#.',name,'.Run 0'
           '#.Fire.Fire'#.⎕CY ⎕WSID
           0 ⎕SAVE ⎕WSID
-          './packages'M.CopyTo tempFolder
+          './packages'M.CopyPackageFolderTo tempFolder,'packages'
           M.ConvertMarkdownToHtml5(home,'Docs/')(home,'html/')
           (home,'html/*')M.CopyTo tempFolder
           (home,cfg.CIDER.source,'/',name,'_UC.dyalog')M.CopyTo tempFolder
@@ -53,7 +53,7 @@
           data←M.##.F.EnforceSlash tempFolder{ss←'<<TARGETDIR>>' ⋄ sp←¯1+1⍳⍨ss⍷⍵ ⋄ (-sp)⌽⍺,(≢ss)↓sp⌽⍵}data
           (⊂data)⎕NPUT(tempFolder,'Fire.iss')1
           :If 0=#.⎕NC'Inno'
-          :AndIf 0=⎕SE.Tatin.LoadPackages'https://tatin.dev/aplteam/Inno' #
+          :AndIf 0=⎕SE.Tatin.LoadPackages'https://tatin.dev/aplteam/Inno'#
               ⎕OFF 123
           :EndIf
           setupExe←tempFolder #.Inno.Run name

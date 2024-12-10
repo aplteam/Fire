@@ -1,7 +1,7 @@
 {
   api: "WinReg",
   assets: "",
-  date: 20220805.104508,
+  date: 20241130.182815,
   description: "Tools for dealing with the Windows Registry",
   documentation: "",
   files: "",
@@ -17,9 +17,9 @@
   os_mac: 0,
   os_win: 1,
   project_url: "https://github.com/aplteam/WinReg",
-  source: "WinReg.aplc",
-  tags: "windows-registry",
+  source: "APLSource/WinReg.aplc",
+  tags: "windows-registry,registry",
   uri: "https://tatin.dev/",
   userCommandScript: "",
-  version: "5.0.4+22",
+  version: "5.1.0+24",
 }

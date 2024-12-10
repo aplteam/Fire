@@ -29,11 +29,13 @@
 
     ∇ R←Version
       :Access Public Shared
-      R←'WinReg' '5.0.4+22' '2021-08-05'
+      R←'WinReg' '5.1.0+22' '2024-11-30'
     ∇
 
     ∇ History
-      :Access Public Shared
+      :Access Public Shared 
+      ⍝ * 5.1.0 ⋄ 2024-11-30
+      ⍝   * Packages updated
       ⍝ * 5.0.4 ⋄ 2022-08-05
       ⍝   * Bug fix in `GetValue`
       ⍝ * 5.0.3 ⋄ 2022-08-04

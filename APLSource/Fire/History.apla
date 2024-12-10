@@ -1,6 +1,9 @@
 (
  '⍝ Contains information regarding the last release. A full history is available on GitHub. (This line is ignored)'
  ''
+ '* 9.7.3 from 2024-11-17'
+ '  * Bug fixes'
+ '    * So far all installed packages were copied into the application. Now only the required packages are copied.'
  '* 9.7.2 from 2024-11-17'
  '  * Bug fixes'
  '    * When the "Search for" field was empty and a "Find" operation triggered, a popup "You cannot search for spaces"'
