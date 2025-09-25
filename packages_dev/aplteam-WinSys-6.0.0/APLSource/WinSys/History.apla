@@ -1,0 +1,17 @@
+(
+ ' * 6.0.0'
+ '   * Potentially breaking change: `Version1 returns a char vector with the version number from the package config file'
+ '   * Class converted into a namespace'
+ '   * Fields are now niladic functions returning an integer, mimiking constants '
+ '   * `Init` function established for initialising the package'
+ '   * Packages updated (development only)    '
+ ' * 5.0.1'
+ '   * Package config corrected'
+ ' * 5.0.0'
+ '   * Requires Dyalog 18.0 or better now'
+ '   * Internal changes:'
+ '     * Uses `⎕ML←1` now'
+ '     * Does not `:Include APLTreeUtils` anymore'
+ (' '⋄)
+ ' For information regarding older versions see <https://github.com/aplteam/WinSys/releases>'
+)

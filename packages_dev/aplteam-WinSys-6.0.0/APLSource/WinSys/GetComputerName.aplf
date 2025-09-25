@@ -1,0 +1,7 @@
+ R←GetComputerName;∆GetComputerName;rc;buffer;size;multiByte
+⍝ Returns the NETBIOS name of the current system.\\
+⍝ In case of an error R is empty.
+ '∆GetComputerName'⎕NA'P KERNEL32|GetComputerName* >0T =P'
+ multiByte←1+80=⎕DR' '           ⍝ Unicode version? (used to double the buffer size)
+ (rc buffer size)←∆GetComputerName multiByte×2⍴32
+ R←(0=⊃rc)⊃buffer''

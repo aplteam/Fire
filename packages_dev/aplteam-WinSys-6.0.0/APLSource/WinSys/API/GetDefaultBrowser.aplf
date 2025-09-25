@@ -1,0 +1,2 @@
+ r←GetDefaultBrowser
+ r←##.GetDefaultBrowser

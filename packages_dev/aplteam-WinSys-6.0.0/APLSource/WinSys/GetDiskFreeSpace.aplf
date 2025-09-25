@@ -1,0 +1,15 @@
+ r←GetDiskFreeSpace drive;GetDiskFreeSpaceEx;rc;freeForCaller;capacity;freeInTotal
+⍝ Returns information about a drive.
+⍝ | r[1] | How many KB are available to caller
+⍝ | r[2] | Capacity of disk in KB
+⍝ | r[3] | How many KB are available in total
+⍝ In case of an error `r ←→ (¯1 ¯1 ¯1)` `drive` may be something like `C` or `C:`
+ drive←2↑drive,':'
+ 'GetDiskFreeSpaceEx'⎕NA'I KERNEL32|GetDiskFreeSpaceEx* <0T >U[2] >U[2] >U[2]'
+ (rc freeForCaller capacity freeInTotal)←GetDiskFreeSpaceEx drive 2 2 2
+ :If 0≠rc
+     r←⌊(65536*2)⊥¨⌽¨freeForCaller capacity freeInTotal
+     r←⌊r÷1000
+ :Else
+     r←¯1 ¯1 ¯1
+ :EndIf

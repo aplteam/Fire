@@ -1,0 +1,14 @@
+(
+ '* 2.0.0 from 2025-04-10'
+ '  * Potentially breaking: `Version` now returns a char vector stemming from the package config file'
+ '  * Packages updated'
+ '  * Bug fixes'
+ '    * Issue #1 fixed'
+ '  * "Make" improved'
+ '* 1.0.2 from 2023-09-11'
+ '  Bug fix in Run: targetDir carries the path twice.'
+ '* 1.0.1 from 2023-07-28'
+ '  * In case the target dir was specified as relative it was using the current dir rather than the project dir.'
+ '* 1.0.0 from 2022-09-11'
+ '  * First version'
+)

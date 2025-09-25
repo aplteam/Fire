@@ -1,0 +1,19 @@
+ filename←GetModuleFileName dllName;dll;length;buffer;∆GetModuleFileName;∆LoadLibrary
+⍝ Retrieves the fully qualified path for the file that contains the specified module.\\
+⍝ The module must have been loaded by the current process.\\
+⍝ When `filename` is empty `GetLastError` gives more information.\\
+⍝ <http://msdn.microsoft.com/en-us/library/windows/desktop/ms683197(v=vs.85).aspx>\\
+⍝ Note: this method can be helpful to find out which DLL was **really** loaded, in
+⍝ particular when a DLL is loaded from `.\` because in this case Windows tries
+⍝ to be smart and not only checks several directories rather than just the working dir!\\
+⍝ See <https://msdn.microsoft.com/en-us/library/windows/desktop/ms684175(v=vs.85).aspx>
+⍝ and search for "Remarks" on that page for details.
+ filename←''
+ ((dllName='/')/dllName)←'\'
+ '∆LoadLibrary'⎕NA'P kernel32|LoadLibrary* <0T'
+ :If 0<dll←∆LoadLibrary⊂dllName
+     '∆GetModuleFileName'⎕NA'P kernel32|GetModuleFileName* P >0T U'
+     (length buffer)←∆GetModuleFileName dll 255 255
+ :AndIf 0≠length
+     filename←length↑buffer
+ :EndIf

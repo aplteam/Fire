@@ -1,0 +1,2 @@
+ R←GetComputerName
+ R←##.GetComputerName

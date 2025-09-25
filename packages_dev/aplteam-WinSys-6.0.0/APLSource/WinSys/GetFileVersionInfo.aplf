@@ -1,0 +1,30 @@
+ version←GetFileVersionInfo filename;size;GetFileVersionInfoSize;Free;Aloc;Ulok;Size;Info;Valu;copy;hndl;addr;Lock;ok;buff;retn;version
+⍝ Returns the file version info for `filename` which is expected to be a DLL or an EXE.\\
+⍝ Example: `(3 3 1522)←WinSys.GetFileVersionInfo conga33_32.dll`
+ version←⍬
+ :If ⎕NEXISTS filename
+     'Aloc'⎕NA'P kernel32∣GlobalAlloc U4 P'
+     'Free'⎕NA'P kernel32∣GlobalFree P'
+     'Lock'⎕NA'P kernel32∣GlobalLock P'
+     'Ulok'⎕NA'U4 kernel32∣GlobalUnlock P'
+     'Size'⎕NA'U4 version∣GetFileVersionInfoSize* <0T >U4'
+     'Info'⎕NA'U4 version∣GetFileVersionInfo* <0T U4 U4 P'
+     'Valu'⎕NA'U4 version∣VerQueryValue* P <0T >U4 >U4'
+     'copy'⎕NA'P msvcrt∣memcpy >U4[] P U4'
+     :If ×size←⊃Size filename 0                        ⍝ Size of info.
+     :AndIf ×hndl←Aloc 0 size                          ⍝ Alloc memory.
+         :If ×addr←Lock hndl                           ⍝ Lock memory.
+             :If ×Info filename 0 size addr            ⍝ Version info.
+                 (ok buff size)←Valu addr'\' 0 0       ⍝ Version value.
+                 :If ok
+                     (retn buff)←copy(size÷4)buff size ⍝ Copy info.
+                     version←3↑,⍉(2/2*16)⊤↑2↓buff      ⍝ Encode version.
+                 :Else
+                     ('Call to "VerQueryValue" failed, rc=',⍕ok)⎕SIGNAL 11
+                 :EndIf
+             :EndIf
+             ok←Ulok hndl                              ⍝ Unlock memory.
+         :EndIf
+         {}Free hndl                                   ⍝ Free memory.
+     :EndIf
+ :EndIf

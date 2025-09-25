@@ -1,0 +1,1 @@
+GetDiskFreeSpace←{##.GetDiskFreeSpace ⍵}

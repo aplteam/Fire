@@ -1,0 +1,10 @@
+ R←GetWindowsDirectory;∆GetWindowsDirectory;buffer;size;length;multiByte
+⍝ Returns the directory name of the currently running Windows.
+ '∆GetWindowsDirectory'⎕NA'I4 KERNEL32|GetWindowsDirectory* >0T =I4'
+ multiByte←1+80=⎕DR' '           ⍝ Unicode version? (used to double the buffer size)
+ :Trap 0
+     (length buffer)←2↑∆GetWindowsDirectory 2⍴multiByte×256
+     R←length↑buffer
+ :Else
+     R←''
+ :EndTrap

@@ -1,0 +1,10 @@
+ h←{className}FindWindow caption;FindWindow
+⍝ Return handle to window with "caption".\\
+⍝ Notes:
+⍝ * `caption` must match the caption of the **window** exactly buy is **not** case sensitive.\\
+⍝ * `className` is optional. With the default 0 it finds _any_ window that matches `caption`.
+⍝ For details see <https://msdn.microsoft.com/en-us/library/windows/desktop/ms633499(v=vs.85).aspx>
+ className←{0<⎕NC ⍵:⍎⍵ ⋄ 0}'className'
+ 'FindWindow'⎕NA'P User32|FindWindow* P <0T'
+ h←FindWindow className caption
+⍝Done

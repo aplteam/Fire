@@ -1,0 +1,5 @@
+ r←GetFormCaptionFontInfo;rc;info
+ (rc info)←GetSystemParametersInfo
+ 'Error requesting "SystemParametersInfo"'⎕SIGNAL 11/⍨1≠rc
+ r←6⊃info
+⍝Done

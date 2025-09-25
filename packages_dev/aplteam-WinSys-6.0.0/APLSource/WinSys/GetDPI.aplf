@@ -1,0 +1,10 @@
+ r←GetDPI;GetDC;GetDeviceCaps;hdc;sy;ReleaseDC
+⍝ Returns the current setting of DPI. Typical settings are 100 (default), 125, 150.\\
+⍝ Use this to make your application DPI aware.
+ ⎕NA'u user32|GetDC u'
+ ⎕NA'u user32|ReleaseDC u u'
+ ⎕NA'u gdi32|GetDeviceCaps u u'
+ hdc←GetDC 0
+ sy←GetDeviceCaps hdc 90
+ {}ReleaseDC 0 hdc
+ r←⌊0.5+100×sy÷96

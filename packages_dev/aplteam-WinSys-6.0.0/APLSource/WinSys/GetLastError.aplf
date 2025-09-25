@@ -1,0 +1,5 @@
+ R←GetLastError;∆GetLastError
+ :Access Public Shared
+ '∆GetLastError'⎕NA'I4 kernel32|GetLastError'
+ R←∆GetLastError
+⍝Done

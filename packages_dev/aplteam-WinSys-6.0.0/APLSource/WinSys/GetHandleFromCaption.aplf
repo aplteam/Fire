@@ -1,0 +1,6 @@
+ h←GetHandleFromCaption caption
+⍝ Return handle to window with `caption`.\\
+⍝ Note that `caption` is not case sensitive.\\
+⍝ This is an alias for `FindWindow`.
+ h←FindWindow caption
+⍝Done

@@ -1,0 +1,12 @@
+ r←GetVersion;VOID;∆GetVersion;OSVERSIONINFO;rc;multiByte
+⍝ Gets the OS version.
+⍝ |r[1] | Major version
+⍝ |r[2] | Minor version
+⍝ |r[3] | BuildNumber
+⍝ |r[4] | Service pack information or empty
+ multiByte←1+80=⎕DR' '   ⍝ Unicode version?!
+ '∆GetVersion'⎕NA'I KERNEL32|GetVersionEx* ={I4 I4 I4 I4 I4 T[',(⍕multiByte×128),']}'
+ OSVERSIONINFO←((multiByte×128)+5×4)0 0 0 0((multiByte×128)⍴' ')
+ (rc r)←∆GetVersion⊂OSVERSIONINFO
+ r←r[1 2 3 5]
+ r[3]←⊂{⍵↓⍨-+/∧\' '=⌽⍵}3⊃r

@@ -1,8 +1,0 @@
-(
- '* 1.0.2 from 2023-09-11'
- '  Bug fix in Run: targetDir carries the path twice.'
- '* 1.0.1 from 2023-07-28'
- '  * In case the target dir was specified as relative it was using the current dir rather than the project dir.'
- '* 1.0.0 from 2022-09-11'
- '  * First version'
-)

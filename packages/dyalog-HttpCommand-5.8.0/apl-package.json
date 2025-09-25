@@ -1,6 +1,7 @@
 {
   api: "HttpCommand",
   assets: "",
+  checkLICENSEfile: 1,
   date: 20240914.092759,
   description: "Utility to execute HTTP requests",
   documentation: "https://dyalog.github.io/HttpCommand",

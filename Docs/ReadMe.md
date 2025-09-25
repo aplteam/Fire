@@ -1,13 +1,14 @@
 [parm]:toc            = 3
 [parm]:numberHeaders  = 2 3 4
-[parm]:collapsibleTOC = 1
 [parm]:saveHTML       = 0
 [parm]:title          = 'Fire ReadMe'
  
 
 # Fire
 
-Note that FiRe stands for FInd and REplace. Fire is a Windows-only application.
+Note that FiRe stands for FInd and REplace. 
+
+Up to version 9.x Fire was a Windows-only application. With version 10.0 Fire became multi-platform: it runs on Windows, Linux and Mac OS. It was not tested on the PI but most likely will work there as well.
 
 
 ## Features
@@ -50,20 +51,37 @@ Fire also overcomes a couple of problems that Dyalog's built-in Search tool is s
 
 ## Prerequisites
 
-* Fire requires at least version 18.0 Unicode in order to run
+### Before version 10
 
-* Fire also requires the Dyalog package manager Tatin to be installed in order to bring in the packages Fire depends on.
+* Fire requires at least version 18.2 Unicode in order to run
+
+* Fire also requires the Dyalog package manager Tatin to be installed in order to bring in the packages Fire depends on. 
+
+### From 10.0 onwards
+
+* Fire requires at least version 20.0 Unicode in order to run
+
+* Fire does not need Tatin anymore.
 
 
 ## Installing Fire
 
 ### General information
 
+#### Windows
+
 Since version 7.1.0 Fire comes with its own installer. Just double-click it and your are done. It does not require admin rights.
 
 The installer installs Fire by default into `%USERPROFILE%\Documents\MyUCMDs` which translates to `C:\Users\{userid}\Documents\MyUCMDs` with a default Windows installation. This folder, if it exists, is scanned by Dyalog for user commands.
 
 Note that installing into `%USERPROFILE%` means that you have to install it separately for every user who wants to use Fire.
+
+#### Non-Windows platforms
+
+
+```
+⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹⌹
+```
 
 ### Get rid of pre-installer versions of Fire
 
@@ -397,7 +415,7 @@ Avoiding `⎕DQ` works well in many circumstances but it might cause problems wh
 
 ### Threads and Fire
 
-Threads can pose a problem. This is particularly true for the "Replace" operation. That is the reason that the "Replace" operation cannot be triggered when other threads than the main threads are running.
+Threads can pose a problem. This is particularly true for the "Replace" operation. That is the reason that the "Replace" operation cannot be triggered when other threads than the main thread are running.
 
 
 ### Editing
@@ -580,3 +598,5 @@ In case you've added {PID} - which stands for "Process ID" - to the MessageBox v
 In case you wonder what this is good for: there are people out there who have more than just one Dyalog session running at the same time, sometimes many. In such cases it can be very useful to know the process ID a particular message box belongs to, because it can be very awkward or impossible to find out by other means.
 
 Kai Jaeger --- 2022-08-31
+
+

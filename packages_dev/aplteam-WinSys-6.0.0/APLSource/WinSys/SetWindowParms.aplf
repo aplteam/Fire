@@ -1,0 +1,19 @@
+ {rc}←{posn}SetWindowParms(hwnd size);∆Setwinpos
+⍝ Use this to specify Posn or Posn + Size for the window `hwnd` is pointing to.\\
+⍝ Examples:\\
+⍝ ~~~
+⍝ ⍝ (Re-)size the window but does not affect the position.:
+⍝ WinSys.SetWindowParms hwnd (300 400)
+⍝
+⍝ ⍝ (Re-)size the window and position it at (5 6):
+⍝ (5 6) WinSys.SetWindowParms hwnd (300 400)
+⍝ ~~~
+⍝ If the function failes it returns 1 otherwise 0.
+ '∆Setwinpos'⎕NA'U4 User32|SetWindowPos P P  I4 I4 I4 I4 U4'
+ 'Invalid: "size"'⎕SIGNAL 11/⍨2≠⍴,size
+ :If 0=⎕NC'posn'
+     rc←0=∆Setwinpos hwnd 0 0 0,size,582
+ :Else
+     'Invalid: "posn"'⎕SIGNAL 11/⍨2≠⍴,posn
+     rc←0=∆Setwinpos hwnd 0,posn,size,580
+ :EndIf

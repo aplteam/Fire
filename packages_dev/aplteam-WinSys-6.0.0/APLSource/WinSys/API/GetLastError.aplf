@@ -1,0 +1,2 @@
+ R←GetLastError
+ R←##.GetLastError

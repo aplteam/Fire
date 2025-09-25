@@ -1,0 +1,8 @@
+ R←GetDriveAndType;AllDrives;Txt;Types;∆GetDriveType
+⍝ Returns a matrix with the names and the types of all drives.\\
+⍝ The number of rows is defined by the number of drives found.\\
+⍝ "Types" may be something like "Fixed", "CD-ROM", "Removable", "Remote".
+ '∆GetDriveType'⎕NA'U4 KERNEL32|GetDriveType* <0T'
+ Types←∆GetDriveType∘⊂¨AllDrives←GetAllDrives
+ Txt←'Invalid Path' 'Removable' 'Fixed' 'Remote' 'CD-ROM' 'Ram-Disk'
+ R←AllDrives,Types,[0.5](Txt,⊂'Unknown')[¯1+(0,⍨⍳⍴Txt)⍳Types]

@@ -1,0 +1,18 @@
+ R←CONSTANT Y;name;value;tf;cf
+⍝ Returns a string. Executing this string creates a niladic function with
+⍝ the name of the "Constant". Calling this function returns the desired result.
+⍝ The function created this way acts in many respects like a "Constant" in other programming languages.
+⍝ In case `Y` is empty `R` is empty, too.\\
+⍝ Example:  (creates a function `PI` that returns 3.14)\\
+⍝ ~~~
+⍝ ⍎CONSTANT 'PI←3.14'
+⍝ ~~~
+ :If 0=≢Y
+     R←''
+ :Else
+     (name value)←Y{(⍵↑⍺)(1↓⍵↓⍺)}Y⍳'←'
+     cf←0⊃⎕NSI                     ⍝ Called from
+     ('Name is invalid: ',name)⎕SIGNAL 11/⍨¯1=⎕NC name
+     tf←''''''≡2⍴¯1⌽value          ⍝ Text flag
+     R←∊'⎕FX ''R←',name,'' ''' ''R←',(tf/''''),(⍕value),(tf/''''),''''
+ :EndIf

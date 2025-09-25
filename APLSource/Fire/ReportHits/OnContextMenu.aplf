@@ -18,7 +18,7 @@
      :Case 'mm.EditCode'
          EditCode(n.List.ReportInfo[⍸n.List.SelItems;0])(⍸n.List.SelItems)
      :Case 'mm.RemoveFromList'
-         RemoveFromList n
+         {}RemoveFromList n
      :Case 'mm.PrintName'
          PrintName¨n.List.ReportInfo[⍸n.List.SelItems;0]
      :EndSelect

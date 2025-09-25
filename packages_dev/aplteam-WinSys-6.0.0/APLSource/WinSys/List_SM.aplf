@@ -1,0 +1,5 @@
+ R←List_SM
+⍝ Lists all "Connstants" (niladic functions) with names that start with "SM\_"
+ R←↑⎕NL-3
+ R←(R[;⍳3]∧.='SM_')⌿R
+ R←(↓R)~¨' '

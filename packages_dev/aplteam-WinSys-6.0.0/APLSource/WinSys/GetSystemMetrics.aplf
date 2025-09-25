@@ -1,0 +1,7 @@
+ R←GetSystemMetrics Value;∆GetSystemMetrics
+⍝ Example: Hight of single line menu bar in pixels:\\
+⍝ ~~~
+⍝ #.WinSys.(GetSystemMetrics SM_CYMENU)
+⍝ ~~~
+ '∆GetSystemMetrics'⎕NA'I4 USER32|GetSystemMetrics I4'
+ R←∆GetSystemMetrics Value

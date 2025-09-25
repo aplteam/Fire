@@ -1,0 +1,8 @@
+ r←GetDefaultBrowser;regKey1;progID;regKey2;wsh
+⍝ Returns the full path to the current default browser EXE from the Windows Registry, possibly with
+⍝ command line parameters.
+ 'wsh'⎕WC'OLEClient' 'WScript.Shell'
+ regKey1←'HKCU\Software\Microsoft\Windows\Shell\Associations\UrlAssociations\https\UserChoice\ProgID'
+ progID←wsh.RegRead⊂regKey1
+ regKey2←'HKEY_LOCAL_MACHINE\SOFTWARE\Classes\',progID,'\shell\open\command\'
+ r←wsh.RegRead⊂regKey2

@@ -1,0 +1,12 @@
+ (rc info)←GetSystemParametersInfo;font;ncm;val;fsize;nsize;fval;nval;SystemParametersInfo;SPI_GETNONCLIENTMETRICS
+⍝ Returns the "SystemParametersInfo" structure. See <http://msdn.microsoft.com/en-us/library/ms724947.aspx> for details.
+ font←' {I I I I I U1 U1 U1 U1 U1 U1 U1 U1 T[32]} '
+ fval←⊂0 0 0 0 0 0 0 0 0 0 0 0 0(32⍴' ')
+ fsize←92
+ SPI_GETNONCLIENTMETRICS←41
+ nsize←40+5×fsize
+ ncm←'{ U4 I I I I I',font,'I I ',font,'I I',font,font,font,' }'
+ nval←nsize 0 0 0 0 0,fval,0 0,fval,0 0,fval,fval,fval
+ ⎕NA'u user32|SystemParametersInfo* U U =',ncm,'U'
+ (rc info)←SystemParametersInfo SPI_GETNONCLIENTMETRICS nsize nval 0
+⍝Done

@@ -1,0 +1,3 @@
+ r←IsRunningAsAdmin;IsUserAnAdmin
+⍝ Tells whether this process is being "Run as Administrator"
+ r←⍎⎕NA'I Shell32|IsUserAnAdmin'

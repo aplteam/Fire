@@ -1,0 +1,1 @@
+SetWindowParms←{⍺←⊢ ⋄ 1:shy←⍺ ##.SetWindowParms ⍵}

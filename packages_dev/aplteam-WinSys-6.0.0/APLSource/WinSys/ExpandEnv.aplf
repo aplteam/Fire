@@ -1,0 +1,12 @@
+ R←ExpandEnv Y;ExpandEnvironmentStrings;multiByte
+⍝ If `Y` does not contain any "%", `Y` is passed untouched.\\
+⍝ In case `Y` is empty `R` is empty as well.\\
+⍝ Example:\\
+⍝ ~~~
+⍝ 'C:\Windows\MyDir' ←→ #.WinSys.ExpandEnv '%WinDir%\MyDir'
+⍝ ~~~
+ :If '%'∊R←Y
+     'ExpandEnvironmentStrings'⎕NA'I4 KERNEL32|ExpandEnvironmentStrings* <0T >0T I4'
+     multiByte←1+80=⎕DR' '       ⍝ Unicode version? (used to double the buffer size)
+     R←1⊃ExpandEnvironmentStrings(Y(multiByte×1024)(multiByte×1024))
+ :EndIf

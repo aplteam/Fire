@@ -1,0 +1,6 @@
+ R←GetAllDrives;Values;Drives;∆GetLogicalDriveStrings
+⍝ Returns a vector of text vectors with the names of all drives, for example:  "C:\"
+ '∆GetLogicalDriveStrings'⎕NA'U4 KERNEL32|GetLogicalDriveStrings* U4 >T[]'
+ Values←∆GetLogicalDriveStrings 255 255
+ Drives←⊂(⊃Values)↑(⎕IO+1)⊃Values
+ R←{⎕ML←3 ⋄ ((~(⎕UCS 0)=∊⍵)⊂∊⍵)}Drives

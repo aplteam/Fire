@@ -1,0 +1,25 @@
+ (rc exe)←{directory}FindExecutable filename;f;length;buffer;∆FindExecutable;SE_ERR_NOASSOC;SE_ERR_OOM;SE_ERR_ACCESSDENIED;SE_ERR_PNF;SE_ERR_FNF;directory;hinstance;multiByte
+⍝ Returns the name of the file associated with the extension of `filename`.\\
+⍝ For "foo.html" it fires up the default browser, for example.
+⍝ The optional parameter `directory` allows you to set the default directory.\\
+⍝ Note that you cannot fake a filename in order to find out what program is
+⍝ associated with a particular extension. The contents of the file, however,
+⍝ doesn't matter at all.\\
+⍝ `exe`: either empty (see `rc`) or the path to the exe which can handle `filename`.\\
+⍝ `rc`: 0 in case of success, otherwise one of:
+ SE_ERR_FNF←2          ⍝ The specified file was not found.
+ SE_ERR_PNF←3          ⍝ The specified path is invalid.
+ SE_ERR_ACCESSDENIED←5 ⍝ The specified file cannot be accessed.
+ SE_ERR_OOM←8          ⍝ The system is out of memory or resources.
+ SE_ERR_NOASSOC←31     ⍝ There is no association for the specified file type with an executable file.
+      ⍝ ------------------------
+ directory←{0<⎕NC ⍵:⍎⍵ ⋄ ''}'directory'
+ '∆FindExecutable'⎕NA'I4 shell32|FindExecutable* <0T <0T >0T'
+ multiByte←1+80=⎕DR' '           ⍝ Unicode version? (used to double the buffer size)
+ (hinstance exe)←∆FindExecutable filename directory(multiByte×1024)
+ :If 32<hinstance
+     rc←0
+ :Else
+     rc←hinstance
+     exe←''
+ :EndIf
