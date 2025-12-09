@@ -15,5 +15,5 @@
      IDs←'old'∘GetIDs¨↓n2.List.(Items,ReportInfo)[nos;]
      CSS,←⊂(↑,/{⍺,',',⍵}/IDs),' {display:inline;}'
  :EndIf
- (⊂CSS)##.##.FilesAndDirs.NPUT fn 1
+ (⊂CSS)##.FilesAndDirs.NPUT fn 1
 ⍝Done

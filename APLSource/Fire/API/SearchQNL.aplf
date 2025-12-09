@@ -2,10 +2,9 @@
 ⍝ Performs the actual search: scan ⎕NL recursively
 ⍝ `r` reports objects that carry a hit.
  ⎕IO←0 ⋄ ⎕ML←3
+ parms←CreateParmsFor_QNL_Search
  :If 0<⎕NC'parms_'
      'parms'⎕NS parms_
- :Else
-     parms←CreateParmsFor_QNL_Search
  :EndIf
  :If 0=≢parms.SearchFor
  :OrIf parms.SearchFor≡searchFor

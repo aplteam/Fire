@@ -5,6 +5,8 @@
 ⍝ If this is not the case then Fire is copied into []SE from
 ⍝ the same directory the User Command stems from and then started.
 ⍝ Kai Jaeger
+⍝ * Version 4.2.0 - 2025-12-07
+⍝   * Does not load Tatin packages anymore.
 ⍝ * Version 4.1.0 - 2024-08-14
 ⍝   * Syntax enhanced
 ⍝     * "Start looking here" can now be any namespace
@@ -56,15 +58,7 @@
       r←0 0⍴''
       forceLoadFlag←Args.Switch'fl'
       noGUIFlag←Args.Switch'noGUI'
-      :If fireIsAvailable←AtLeastVersion MinimumVersionOfDyalogNeeded
-          fireIsAvailable←⎕NEXISTS(1⊃⎕NPARTS ##.SourceFile),'\Fire.dws'
-      :AndIf fireIsAvailable
-      :AndIf 0=⎕SE.⎕NC'_Tatin'
-          :Trap 0
-              {}⎕SE.UCMD'Tatin.LoadTatin'
-          :EndTrap
-          fireIsAvailable∧←0<⎕SE.⎕NC'_Tatin'  ⍝ Fire requires Tatin packages and therefore requires Tatin itself since 9.0
-      :EndIf
+      fireIsAvailable←⎕NEXISTS(1⊃⎕NPARTS ##.SourceFile),'\Fire.dws'
       'Fire is not available'⎕SIGNAL 11/⍨~fireIsAvailable
       :If forceLoadFlag
           :Trap 6 ⋄ ⎕SE._Fire.Fire.Cleanup ⋄ :EndTrap                           ⍝ Get rid of any GUI
@@ -89,12 +83,6 @@
           :EndTrap
       :EndIf
       ⎕SE.Fire←⎕SE._Fire.Fire.API
-      :Trap 0
-          {}⎕SE.Tatin.LoadDependencies((1⊃⎕NPARTS ##.SourceFile),'/packages')⎕SE._Fire
-      :Else
-          qdmx←⎕DMX
-          11 ⎕SIGNAL⍨'Could not load Fire''s Tatin packages: ',qdmx.EM
-      :EndTrap
       :If ~noGUIFlag
           searchString←{0≡⍵:'' ⋄ ⍵}Args._2
           n←⎕SE._Fire.Fire.Run 0 searchString

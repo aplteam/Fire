@@ -71,7 +71,7 @@ html{-webkit-text-size-adjust:100%;}body{margin:0;}main{display:block;}h1{margin
 </ul>
 </div>
 </nav>
-<p>Note that FiRe stands for FInd and REplace. Fire is a Windows-only application.</p>
+<p>Note that FiRe stands for FInd and REplace.</p>
 <div class="h_tag">
 <a href="#features" id="features" class="autoheader_anchor">
 <h2 data-id="Features">1. Features</h2>
@@ -81,7 +81,7 @@ html{-webkit-text-size-adjust:100%;}body{margin:0;}main{display:block;}h1{margin
 <ul>
 <li>Most importantly, a global “Replace”.
 <p>This feature is particularly powerful since it allows you to inspect every single item that is going to be changed in a preview, and to exclude objects with a single click.</p></li>
-<li>The scope of a search can be restricted to just code while comments or even text will be ignored. Or you search just in comments, or just in text.</li>
+<li>The scope of a search can be restricted to just code, while comments or even text will be ignored. Or you search just in comments, or just in text.</li>
 <li>A search result can become the source of another search.</li>
 <li>Regular Expressions can be used.</li>
 </ul>
@@ -110,7 +110,7 @@ html{-webkit-text-size-adjust:100%;}body{margin:0;}main{display:block;}h1{margin
 </a>
 </div>
 <ul>
-<li>Fire requires at least version 18.0 Unicode in order to run</li>
+<li>Fire requires at least version 18.2 Unicode in order to run</li>
 <li>Fire also requires the Dyalog package manager Tatin to be installed in order to bring in the packages Fire depends on.</li>
 </ul>
 <div class="h_tag">
@@ -121,6 +121,11 @@ html{-webkit-text-size-adjust:100%;}body{margin:0;}main{display:block;}h1{margin
 <div class="h_tag">
 <a href="#general-information" id="general-information" class="autoheader_anchor">
 <h3 data-id="General-information">4.1. General information</h3>
+</a>
+</div>
+<div class="h_tag">
+<a href="#windows" id="windows" class="autoheader_anchor">
+<h4 data-id="Windows">4.1.1. Windows</h4>
 </a>
 </div>
 <p>Since version 7.1.0 Fire comes with its own installer. Just double-click it and your are done. It does not require admin rights.</p>
@@ -299,7 +304,7 @@ World</code></pre>
 <pre tabindex="0"><code>      #.Test.⎕IO←0</code></pre>
 <p>This statement does not throw an error, so somehow it was successful. Referencing works as well:</p>
 <pre tabindex="0"><code>      #.Test.⎕IO
-1</code></pre>
+0</code></pre>
 <p>However, <code>⎕IO</code> <em>must</em> be a private property of the class, so it can <em>never</em> be set or even referenced directly: you cannot specify anywhere an “Access Public” statement for <code>⎕IO</code>.</p>
 <p>But since we managed to execute these statements successfully (<code>⎕FX 'Hello'</code> and <code>⎕IO←0</code>) the question is where they have been executed. Well, in the ghostly namespace which exists together with the class script, sharing the same name.</p>
 <p>Even if Fire would show the function <code>Hello</code> in the hit list there is another anomaly: executing <code>Test.⎕ed 'Hello'</code> doesn't allow you to edit it. That means that Fire does not have the means to allow you editing the code.</p>
@@ -313,7 +318,7 @@ World</code></pre>
 <p>Investigate this code:</p>
 <pre tabindex="0"><code>      'MyForm' ⎕WC 'Form' ('KeepOnClose' 1)
       MyForm.⎕FX'r←Hello' 'r←''World'''</code></pre>
-<p>Note that strictly speaking this is the same thing: There is a GUI object called “MyForm” but there is also a ghostly namespace holding the “Hello” function. However, Dyalog APL perfectly keeps that as a secret: it has always been that way since GUI objects were introduced into Dyalog APL a long time ago, yet nobody ever realized this because Dyalog APL behaved in a way that makes that actually impossible.</p>
+<p>Note that strictly speaking, this is the same thing: There is a GUI object called “MyForm”, but there is also a ghostly namespace holding the “Hello” function. However, Dyalog APL perfectly keeps that as a secret: it has always been that way since GUI objects were introduced into Dyalog APL a long time ago, yet nobody ever realized this because Dyalog APL behaved in a way that makes that actually impossible.</p>
 <div class="h_tag">
 <a href="#semi-ghostly-namespaces" id="semi-ghostly-namespaces" class="autoheader_anchor">
 <h4 data-id="Semi-ghostly-namespaces">8.4.2. Semi-ghostly namespaces</h4>
@@ -329,8 +334,8 @@ World
  :Namespace MyNS
  :EndNamespace</code></pre>
 <p>You can execute “Hello” but it's not part of the script - looks like a ghostly namespace is involved, right?!</p>
-<p>Well, it's not. By definition a namespace script can only be changed by editing the script. Therefore the <code>⎕FX</code> statement did actually add the function “Hello” to the namespace but not to the namespace script. In other words, the script and the namespace are now out of sync.</p>
-<p>According to Dyalog this is not a bug but a feature.</p>
+<p>Well, it's not. By definition a namespace script can only be changed by editing the script. Therefore the <code>⎕FX</code> statement did actually add the function “Hello” to the namespace, but not to the namespace script. In other words, the script and the namespace are now out of sync.</p>
+<p>According to Dyalog, this is not a bug but a feature.</p>
 <p>BTW, this:</p>
 <pre tabindex="0"><code>      ⎕FIX ':Namespace MyNS' '∇r←Hello2' 'r←''1 2 3''' '∇' ':EndNamespace'
       MyNS.Hello2
@@ -340,10 +345,10 @@ World
 VALUE ERROR
       MyNS.Hello2
      ∧</code></pre>
-<p>has a similar effect: the <code>⎕EX</code> statement did actually remove the <code>Hello2</code> function from the namespace but not from the script.</p>
+<p>has a similar effect: the <code>⎕EX</code> statement did actually remove the <code>Hello2</code> function from the namespace, but not from the script.</p>
 <p>Note that Fire investigates the script rather than the namespace. <code>Hello2</code> therefore would not pop up in Fire because it's not part of the script. If you find this confusing - so do I.</p>
 <p>If you now think: “Hang on, if <code>⎕FX</code> does not change a script at all, then surely a ”Replace“ operation with Fire must fail, right?” then luckily you would be wrong: Fire is smart enough to recognize the situation and manipulates - and finally fixes - the script rather than individual functions.</p>
-<p>By the way, if for any reason you want to know whether there is code somewhere in a ghostly namespace then you can achieve this by executing the “Report ghosts” command from the “Reports” menu.</p>
+<p>By the way, if for any reason you want to know whether there is code somewhere in a ghostly namespace, then you can achieve this by executing the “Report ghosts” command from the “Reports” menu.</p>
 <p>Note that code that exists in a ghostly namespace associated with an external object (Like an Excel workbook) is not reported; Fire cares about APL objects only.</p>
 <div class="h_tag">
 <a href="#2-fix-with-the-file-protocol" id="2-fix-with-the-file-protocol" class="autoheader_anchor">
@@ -353,7 +358,7 @@ VALUE ERROR
 <p>You can use</p>
 <pre tabindex="0"><code>2 ⎕FIX 'file:///path/to/MyClass.aplc'</code></pre>
 <p>This will bring the class into the workspace and link it to the file.</p>
-<p>If for any reason you break that link with the <code>5178⌶</code> I-Beam then it leaves behind a kind of zombie: you cannot edit the code anymore, and <code>⎕SRC</code> would generate a NONCE ERROR on it, despite the fact that the code still executes.</p>
+<p>If for any reason you break that link with the <code>5178⌶</code> I-Beam, then it leaves behind a kind of zombie: you cannot edit the code anymore, and <code>⎕SRC</code> would generate a NONCE ERROR on it, despite the fact that the code still executes.</p>
 <p>Fire would not find anything inside such a zombie. Dyalogs own search tool would find stuff inside any function and any operator inside <code>MyClass</code>, be it private or public, but nothing outside functions and operators.</p>
 <p>Our advice is to not use <code>2 ⎕FIX</code> with the file protocol if you can help it; instead use</p>
 <pre tabindex="0"><code>2 ⎕FIX ⊃⎕NGET '/path/to/MyClass.aplc</code></pre>
@@ -387,7 +392,7 @@ VALUE ERROR
 <h3 data-id="Threads-and-Fire">10.2. Threads and Fire</h3>
 </a>
 </div>
-<p>Threads can pose a problem. This is particularly true for the “Replace” operation. That is the reason that the “Replace” operation cannot be triggered when other threads than the main threads are running.</p>
+<p>Threads can pose a problem. This is particularly true for the “Replace” operation. That is the reason that the “Replace” operation cannot be triggered when other threads than the main thread are running.</p>
 <div class="h_tag">
 <a href="#editing" id="editing" class="autoheader_anchor">
 <h3 data-id="Editing">10.3. Editing</h3>
@@ -399,20 +404,20 @@ VALUE ERROR
 <h3 data-id="Report-Detailed-hits">10.4. Report “Detailed hits”</h3>
 </a>
 </div>
-<p>After having performed a search the report “Detailed hits” allows you to check the hits in context. This is particularly useful in order to find out whether the hit list needs some fine tuning.</p>
+<p>After having performed a search, the report “Detailed hits” allows you to check the hits in context. This is particularly useful in order to find out whether the hit list needs some fine tuning.</p>
 <p>Note that you can remove objects from the “Detailed hits” report, and this will <em>also</em> remove them from the hit list.</p>
 <div class="h_tag">
 <a href="#print-object-name-to-the-session" id="print-object-name-to-the-session" class="autoheader_anchor">
 <h3 data-id="Print-object-name-to-the-session">10.5. Print object name(s) to the session</h3>
 </a>
 </div>
-<p>Note that you can make Fire print the fully qualified name of all selected items in the hit list either by selecting the appropriate command from the context menu or by pressing F4.</p>
+<p>Note that you can make Fire print the fully qualified name of all selected items in the hit list, either by selecting the appropriate command from the context menu or by pressing F4.</p>
 <div class="h_tag">
 <a href="#copy-object-name-to-search-for" id="copy-object-name-to-search-for" class="autoheader_anchor">
 <h3 data-id="Copy-object-name-to-Search-for">10.6. Copy object name to “Search for”</h3>
 </a>
 </div>
-<p>Via the context menu or by pressing F6 you can copy the name of the currently selected object in the hit list to the “Search for” control. This option is inactive in case more than just one row of the hit list is selected.</p>
+<p>Via the context menu or by pressing F6 you can copy the name of the currently selected object in the hit list to the “Search for” control. This option is only available if a single row of the hit list is selected.</p>
 <div class="h_tag">
 <a href="#the-start-looking-here-control" id="the-start-looking-here-control" class="autoheader_anchor">
 <h3 data-id="The-Start-looking-here-control">10.7. The “Start looking here” control</h3>
@@ -423,7 +428,7 @@ VALUE ERROR
 <p>then pressing Ctrl+Backspace reduces this to</p>
 <p><code>#.foo.my</code></p>
 <p>Note that this works only when the cursor is positioned to the right of the contents.</p>
-<p>By pressing the <delete> key — when the focus is in the “Start looking here” field — you can reduce it from</p>
+<p>By pressing the <code>&lt;delete&gt;</code> key — when the focus is in the “Start looking here” field — you can reduce it from</p>
 <p><code>#.foo.my.subnamespaceNumber0911</code></p>
 <p>to just</p>
 <p><code>#</code></p>
@@ -432,22 +437,22 @@ VALUE ERROR
 <h3 data-id="Enlarge-the-window">10.8. Enlarge the window</h3>
 </a>
 </div>
-<p>If the hit list is too big to display all hits try pressing F8. This will enhance the height of the window to what's either necessary to display the full list or what is the maximum size of the monitor. This might not work too well on multiple-monitor systems when the screen sizes of the monitors involved are different.</p>
+<p>If the hit list is too big to display all hits, try pressing F8. This will enhance the height of the window to what's either necessary to display the full list or what is the maximum size of the monitor. This might not work too well on multiple-monitor systems when the screen sizes of the monitors involved are different.</p>
 <div class="h_tag">
 <a href="#fires-api" id="fires-api" class="autoheader_anchor">
 <h2 data-id="Fires-API">11. Fire's API</h2>
 </a>
 </div>
 <p>Since version 8.0 Fire comes with an API, meaning that you can take adantage of some of Fire's features under program control.</p>
-<p>You must make sure that Fire is available in <code>⎕SE</code>. This can either be achieved by just executing the <code>]Fire</code> user command or by executing <code>]Fire -noGUI</code> which does load Fire into <code>⎕SE</code> but does not run Fire, meaning that the GUI would not show.</p>
-<p>You can then execute the appropriate methods from the namespace <code>⎕SE._Fire.Fire.API</code>.</p>
+<p>You must make sure that Fire is available in <code>⎕SE</code>. This can either be achieved by just executing the <code>]Fire</code> user command at least once or by executing <code>]Fire -noGUI</code>, which does load Fire into <code>⎕SE</code> but does not run Fire, meaning that the GUI would not show.</p>
+<p>You can then execute the appropriate methods from the namespace <code>⎕SE.Fire</code>.</p>
 <div class="h_tag">
 <a href="#searching-for-a-string" id="searching-for-a-string" class="autoheader_anchor">
 <h3 data-id="Searching-for-a-string">11.1. Searching for a string</h3>
 </a>
 </div>
 <p>Let's assume you want to search the string “abc” in <code>⎕SE</code>. This is what you would do:</p>
-<pre tabindex="0"><code>      F←⎕SE._Fire.Fire.API
+<pre tabindex="0"><code>      F←⎕SE.Fire
       parms←F.CreateParms
       parms. ∆List
  APL_Name       0
@@ -462,18 +467,26 @@ VALUE ERROR
  Text           1
  Vars           1
  StartSearchIn  #
+
+⍝ Prior to version 20.0:
       parms.StartSearchIn←'⎕se'
       parms F.Search 'abc'
  ⎕SE.Parser        4 9.4
  ⎕SE.SALT          2 9.4
+ ⎕SE.UnicodeFile   1 9.4
+
+⍝ Version 20.0 or later
+      (StartSearchIn:'⎕se') F.Search 'abc'
+ ⎕SE.Parser        4 9.4
+ ⎕SE.SALT          2 9.4
  ⎕SE.UnicodeFile   1 9.4</code></pre>
-<p>There are three columns:</p>
+<p>The result comes with three columns:</p>
 <ul>
 <li><code>[;1]</code> = the names of the objects with hits</li>
 <li><code>[;2]</code> = Number of hits</li>
 <li><code>[;3]</code> = Name class</li>
 </ul>
-<p>If you want to get the hits listed set <code>Report</code> to 1:</p>
+<p>If you want to get the hits listed, set <code>Report</code> to 1:</p>
 <pre tabindex="0"><code style="white-space: pre;">      parms←F.CreateParms
       parms.StartSearchIn←'⎕se'
       parms.Report←1
@@ -492,7 +505,7 @@ VALUE ERROR
 <h3 data-id="Search-NL">11.2. Search <code>⎕NL</code> (Name List)</h3>
 </a>
 </div>
-<p>Since version 9.0 the API also allows you to search <code>⎕NL</code> recursively. Note that this always searches <code>#</code>.</p>
+<p>Since version 9.0 the API also allows you to search <code>⎕NL</code> recursively. Note that this searches <code>#</code> by default.</p>
 <p>Let's assume you want to perform a search for “string” in the names of all objects, and that the search should <em>not</em> be case sensitive.</p>
 <p>We can do this without further ado because the defaults fit:</p>
 <pre tabindex="0"><code>      F.SearchQNL 'search'
@@ -500,15 +513,29 @@ VALUE ERROR
 <p>If we want to search for all functions that start their names with “Search” we must use a RegEx, and it should be a case sensitive search. For that we need to set some parameters:</p>
 <pre tabindex="0"><code>      parms←F.CreateParmsFor_QNL_Search
       parms.∆List  ⍝ List the defaults
- Case           0
- FullPath       0
- SearchFor
- SearchIsRegEx  0
+ APL_Code         1
+ APL_Name         0
+ Case             1
+ Code             1
+ Comments         1
+ Greedy           0
+ IgnoreRefs       1
+ IgnoreTatinPkgs  1
+ LookForList
+ Negate           0
+ Report           0
+ SearchIsRegEx    0
+ StartSearchIn    #
+ Text             1
+ Vars             1
+
       parms←SearchIsRegEx←1
       parms←Case←1
       parms F.SearchQNL '^Search'
 </code></pre>
-<p>Note that if you want to find “search” in the full path of the APL objects (like “Foo” in <code>#.Fist.Foo.MyFunction</code>) then you must set <code>FullPath</code> to 1.</p>
+<p>If you want to find “search” in the full path of the APL objects (like “Foo” in <code>#.Fist.Foo.MyFunction</code>), then you must set <code>FullPath</code> to 1.</p>
+<p>In order to find “search” in <code>⎕SE</code> rather than <code>#</code> in version 20 and later:</p>
+<pre tabindex="0"><code>      (StartSearchIn:'⎕SE') F.SearchQNL 'search'</code></pre>
 <div class="h_tag">
 <a href="#useful-regular-expressions" id="useful-regular-expressions" class="autoheader_anchor">
 <h2 data-id="Useful-Regular-expressions">12. Useful Regular expressions</h2>
@@ -521,35 +548,22 @@ VALUE ERROR
 </a>
 </div>
 <p>Since version 9.2 Fire supports Link. However, Fire needs at least Link version 3.0.0 for that to work.</p>
-<p>In case only an older version is found Fire will print warnings to the session.</p>
+<p>In case only an older version is found, Fire will print warnings to the session.</p>
 <div class="h_tag">
 <a href="#salt-and-fire" id="salt-and-fire" class="autoheader_anchor">
 <h2 data-id="Salt-and-Fire">14. Salt and Fire</h2>
 </a>
 </div>
-<p>Note that managing scripts with Salt it deprecated. Use Link instead.</p>
-<p>The Simple APL Library Toolkit (SALT) which is supplied with Dyalog APL is supported by Fire: when a script is managed by SALT then the script “contains” an ordinary namespace <code>SALT_Data</code>. This namespace contains a number of variables including</p>
-<ul>
-<li><code>CRC</code></li>
-<li><code>GlobalName</code></li>
-<li><code>LastWriteTime</code></li>
-<li><code>PreviousVersion</code></li>
-<li><code>SourceFile</code></li>
-<li><code>Version</code></li>
-</ul>
-<p>and others. SALT uses them for its own purposes.</p>
-<p>When a script is re-fixed with <code>⎕FIX</code> then the namespace <code>SALT_Data</code> disappears.</p>
-<p>However, Fire works out whether a script is managed by SALT and restores the namespace <code>SALT_Data</code> after having re-fixed it as part of a “Replace” operation. Therefore the script continues to be managed by SALT.</p>
-<p>What Fire does not do is actually saving any object via a SALT command. The simple reason is that when you change an object in the workspace it does not necessarily mean that you want to save those changes on disk. It's completely up to the programmer to make that decision.</p>
+<p>Note that managing scripts with SALT is deprecated. Use Link instead.</p>
 <div class="h_tag">
 <a href="#showing-the-pid-in-all-fire-window-captions" id="showing-the-pid-in-all-fire-window-captions" class="autoheader_anchor">
 <h2 data-id="Showing-the-PID-in-all-Fire-window-captions">15. Showing the PID in all Fire window captions</h2>
 </a>
 </div>
 <p>Dyalog allows you to specify the captions of many GUI elements like the session, the Workspace Explorer, message boxes etc. by setting certain values in the Windows Registry. For details search for “Windows captions” in the Dyalog Help.</p>
-<p>In case you've added {PID} - which stands for “Process ID” - to the MessageBox value Fire will honor this and show the PID in all its GUI elements as well.</p>
+<p>In case you've added {PID} - which stands for “Process ID” - to the MessageBox value, Fire will honor this and show the PID in all its GUI elements as well.</p>
 <p>In case you wonder what this is good for: there are people out there who have more than just one Dyalog session running at the same time, sometimes many. In such cases it can be very useful to know the process ID a particular message box belongs to, because it can be very awkward or impossible to find out by other means.</p>
-<p>Kai Jaeger — 2022-08-31</p>
+<p>Kai Jaeger — 2025-12-04</p>
 
 <script>
 

@@ -7,17 +7,21 @@
 
 Note that with version 9.0.0 Fire started using the concept of semantic versioning ([SemVer](https://semver.org "Link to the document that introduced SemVer")).
 
-In short this means that a bump of the major version number indicates a breaking change. For example, 9.* does not run on versions of Dyalog older than 18.0.
+In short this means that a bump of the major version number indicates a breaking change. For example, 9.* does not run on versions of Dyalog older than 18.2.
 
 A bump of the minor number indicates added functionality plus possibly bug fixes.
 
 A bump of the patch number indicates bug fixes.
 
-## Version 9.7.3 from 2024-12-10
+## Version 9.7.3 from 2025-12-09
 
+* Fire does not require Tatin anymore at run time: packages are not loaded dynamically
+  but as part of the "Make" process.
 * Bug fixes
 
-  * So far all installed packages were copied into the application. Now only the required packages are copied.
+    * `SearchQNL` did not correctly process an parameter space when passed as optional left argument.
+    * So far all installed packages were copied into the application. Now only the required packages are copied.
+    * The "Remove from hit list" context menu command in the "Detailed report" printed an empty line to the session
 
 ## Version 9.7.2 from 2024-11-17
 
@@ -186,6 +190,10 @@ Bug fix: people who do not tick "Options > Object Syntax > Expose GUI Properties
   * In the "Replace" dialog the "Delete lines" options should not be available (active) when it is a RegEx search.
   * The `∆List` function created by `Fire.API.CreateSearchParms` was buggy.
 * Internal change: all calls to acre via ⎕SE.UCMDS have now been replaced by calls to acre's API.
+
+
+
+
 
 
 

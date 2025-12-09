@@ -2,7 +2,7 @@
  #.CursorObj←1
  name←'Fire'
  n←GetRefTo_n↑,msg
- api←⎕NEW ##.##.GitHubAPIv3(,⊂'aplteam')
+ api←⎕NEW ##.GitHubAPIv3(,⊂'aplteam')
  :Trap 0
      tag←1↓api.GetLatestTag name
  :Else

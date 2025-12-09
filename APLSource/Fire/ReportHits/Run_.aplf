@@ -4,8 +4,8 @@
  r←⍬
  htmlFilename←##.GetTempFileName'htm'
  cssFilename←##.GetTempFileName'css'
- (⊂TopOfDoc(GetCss ⍬)cssFilename)##.##.FilesAndDirs.NPUT htmlFilename 1
- write←htmlFilename∘{(⊂⍵)##.##.FilesAndDirs.NPUT ⍺ 2}
+ (⊂TopOfDoc(GetCss ⍬)cssFilename)##.FilesAndDirs.NPUT htmlFilename 1
+ write←htmlFilename∘{(⊂⍵)##.FilesAndDirs.NPUT ⍺ 2}
  :If 0≠≢data←##.G.Hits
      {}{'Compile report...'##.EnableProgressbar 1+≢⍵}⍣(0=noGui)⊣data
      :If ##.G.Negate
@@ -24,7 +24,7 @@
          write buffer
          write BottomOfDoc
          :If noGui
-             r←⊃##.##.FilesAndDirs.NGET htmlFilename
+             r←⊃##.FilesAndDirs.NGET htmlFilename
              ##.F.DeleteFile htmlFilename cssFilename
          :Else
              n←testFlag Display htmlFilename data

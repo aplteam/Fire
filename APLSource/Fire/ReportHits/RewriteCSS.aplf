@@ -6,5 +6,5 @@
      CSS,←⊂##.TAB,'display:none;'
      CSS,←⊂'}'
  :EndIf
- (⊂CSS)##.##.FilesAndDirs.NPUT n.∆CSSfilename 1
+ (⊂CSS)##.FilesAndDirs.NPUT n.∆CSSfilename 1
 ⍝Done

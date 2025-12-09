@@ -1,15 +1,5 @@
  {r}←n RemoveFromHitReport rows;file;buffer;searchFor;line;replaceBy;row;bool
  r←⍬
-⍝ file←(≢'file://')↓n.Browser.LocationURL
-⍝ file←('/'=1⍴file)↓file
-⍝ file←↑,/{l←⌊/(w←⌽⍵)⍳'/\' ⋄ (⌽l↓w)({⍵↑⍨⍵⍳'#'}⌽l↑w)}file  ⍝ Remove bookmark
-⍝ buffer←↑##.F.NGET file
-⍝ :For row :In rows
-⍝     searchFor←'<div class="obj" id="div-no-',(⍕row+1),'">'
-⍝     replaceBy←'<div class="obj removed" id="div-no-',(⍕row+1),'">'
-⍝     buffer←searchFor ⎕R replaceBy⍠('Greedy' 0)⊣buffer
-⍝ :EndFor
-⍝ (⊂buffer)##.##.FilesAndDirs.NPUT file 1
  :If 0≠≢##.G.Hits
      bool←~({(⍕↑⍵),'.',1⊃⍵}¨↓##.G.Hits)∊n.List.ReportInfo[rows;0]
      ##.G.Hits←bool⌿##.G.Hits

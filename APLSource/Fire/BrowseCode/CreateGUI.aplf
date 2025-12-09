@@ -2,7 +2,7 @@
  nb←⎕NS''
  nb.∆FontSizes←GetAllAPL385FontSizes ⍬
  :If (⎕NC name)∊3 4
-     parent←¯1↓0⊃'.'##.##.APLTreeUtils2.SplitPath name
+     parent←¯1↓0⊃'.'##.APLTreeUtils2.SplitPath name
  :AndIf ##.IsScripted⍎parent
      cs←##.Question.CreateDefaultParms
      cs.addToCaption←##.AddPidToCaption name
@@ -50,14 +50,14 @@
  :Select ↑⎕NC name
  :CaseList 3 4
      body←⎕VR name
-     body←(⎕UCS 13)##.##.APLTreeUtils2.Split body
+     body←(⎕UCS 13)##.APLTreeUtils2.Split body
  :Case 2
      body←⍎name
      :If 2>≡body
      :AndIf 2>⍴⍴body
      :AndIf ∨/⎕TC∊body
          sep←↑(⎕TC∊body)/⎕TC
-         body←sep ##.##.APLTreeUtils2.Split body
+         body←sep ##.APLTreeUtils2.Split body
      :EndIf
  :Else
      body←{⍵{'[',(⍕⍵),'] ',⍺}¨⍳⍴⍵}⎕SRC⍎name

@@ -6,7 +6,7 @@
 ⍝ Used in Fire to show the PID in the same way.
      rk←GetDyalogRegKey ⍬
      rk,←'\Captions\MessageBox'
-     caption←##.WinReg.GetString rk
+     caption←R.GetString rk
      0=+/'{PID}'⍷caption:⍵
-     (⍕##.OS.GetPID),' ',⍵
+     (⍕OS.GetPID),' ',⍵
  }

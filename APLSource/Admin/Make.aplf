@@ -1,5 +1,5 @@
  {noQLX}Make flag;versionOfAPL;P;parms;P_;batchFlag
- versionOfAPL←'18.0'
+ versionOfAPL←'18.2'   ⍝TODO⍝  Version 10 will require 20.0
  noQLX←{0<⎕NC ⍵:⍎⍵ ⋄ 0}'noQLX'
  batchFlag←0
  :If 0=#.⎕NC'APLProcess'
@@ -8,20 +8,20 @@
  P←#.APLProcess
  parms←P.CreateParms
  parms.Exe←GetAPLVersion versionOfAPL
- parms.CommandLineArgs,←'load="',##.FilesAndDirs.PWD,'\APLSource\Admin\Make_.aplc" '
- parms.CommandLineArgs,←{0=≢v←2 ⎕NQ #'GetEnvironment'⍵:v ⋄ ⍵,'="',v,'"'}'DYALOGSTARTUPSE'
- parms.CommandLineArgs,←' lx="#.Make_.Run 1"'
+ parms.ConfigParms⍪←'load'('"',##.Fire.FilesAndDirs.PWD,'\APLSource\Admin\Make_.aplc" ')
+ parms.ConfigParms⍪←{0=≢v←2 ⎕NQ #'GetEnvironment'⍵:0 2⍴v ⋄ ⍵('"',v,'"')}'DYALOGSTARTUPSE'
+ parms.ConfigParms⍪←'lx' '"#.Make_.Run 1"'
  :If 0  ⍝ Only for analyzing problems:
-     parms.CommandLineArgs,←' -exec_setup=0 '
-     parms.CommandLineArgs,←' -stop_in_setup=1 '
+     parms.ConfigParms⍪←'-exec_setup ' 0 '
+     parms.ConfigParms⍪←'-stop_in_setup' '1'
  :EndIf
  :If noQLX
-     parms.CommandLineArgs,←' -x'
+     parms.Options,←⊂'-x'
  :EndIf
  parms.SessionFile←1
  parms.WindowsStyle←'Normal'
  0 0⍴{⎕←⍵}⍣(~batchFlag)⊣'   Process started for "making" a new version of Fire...'
- P_←⎕NEW P(,⊂parms)
+ P_←P.New(,⊂parms)
  {⍵.HasExited:shy←0 ⋄ _←⎕DL 0.2 ⋄ ∇ ⍵}P_
  'The process exited with an error code'Assert 0=P_.Proc.ExitCode
 ⍝Done

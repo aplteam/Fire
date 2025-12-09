@@ -1,9 +1,9 @@
 :Class Make_
-
     ∇ Run flag;targetPath;home;M;name;setupExe;myUCMDsFolder;C;tempFolder;data;buff;cfg;parms
     ⍝ Note that this is executed via the "Load" parameter in a separate and new instance of Dyalog as part of "Making" a new version
       :Access Public Shared
-    ⍝ Version 8.0.1 ⋄ 2024-11-17
+    ⍝ Version 9.0.0 ⋄ 2025-12-07
+    ⍝   * Packages are now pre-loaded into Fire._tatin in order to not need Tatin for running Fire
     ⍝ * 8.0.1 ⋄ 2024-11-17
     ⍝   * Increasing build number had no effect because the project was imported rather than opened.
     ⍝ * 8.0.0 ⋄ 2024-10-18
@@ -35,6 +35,7 @@
               M.CopyBetter(home,'APLSource/Fire_uc.dyalog')(M.GetMyUCMDsFolder'/Fire/Fire_uc.dyalog')'Project version' '[MyUCMDs] version'
           :EndIf
           {}⎕SE.Cider.CloseProject''  ⍝ Precaution
+          {}⎕SE.Tatin.LoadDependencies C.CIDER.dependencies.tatin #.Fire.Fire '#.Fire.Fire'
           cfg←#.Fire.CiderConfig
           ⎕WSID←tempFolder,name,'.dws'
           0 ⎕SAVE ⎕WSID
@@ -67,5 +68,4 @@
           ⎕OFF
       :EndIf
     ∇
-
 :EndClass
